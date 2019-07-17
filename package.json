@@ -1,0 +1,11 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.14.1"
+  },
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "release": "lerna publish --conventional-commits"
+  }
+}

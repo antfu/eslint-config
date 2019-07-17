@@ -1,0 +1,26 @@
+{
+  "name": "@antfu/eslint-config-vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "eslint": ">=5.16.0"
+  },
+  "dependencies": {
+    "@antfu/eslint-config": "*",
+    "eslint-plugin-nuxt": "0.4.3",
+    "eslint-plugin-vue": "5.2.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  }
+}
