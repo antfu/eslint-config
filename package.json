@@ -1,11 +1,13 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "lerna": "^3.14.1"
-  },
+  "name": "@antfu/eslint-config",
+  "version": "0.1.0",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
+  "license": "MIT",
   "scripts": {
     "postinstall": "lerna bootstrap",
     "release": "lerna publish --conventional-commits"
+  },
+  "devDependencies": {
+    "lerna": "^3.14.1"
   }
 }
