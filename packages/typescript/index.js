@@ -4,8 +4,8 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   extends: [
-    '@antfu/eslint-config',
     'plugin:@typescript-eslint/recommended',
+    '@antfu/eslint-config',
   ],
   rules: {
     // TS

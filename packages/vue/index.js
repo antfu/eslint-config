@@ -4,8 +4,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
   extends: [
-    '@antfu/eslint-config-ts',
     'plugin:vue/recommended',
+    '@antfu/eslint-config-ts',
   ],
   plugins: [
     'vue'
