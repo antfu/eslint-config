@@ -4,23 +4,18 @@ module.exports = {
     browser: true,
     node: true,
   },
-  plugins: [
-    '@typescript-eslint',
-  ],
-  parser: '@typescript-eslint/parser',
   extends: [
     'standard',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:@typescript-eslint/recommended',
   ],
   plugins: [
     'unicorn',
   ],
   settings: {
     'import/resolver': {
-      node: { extensions: ['.js', '.mjs'] }
-    }
+      node: { extensions: ['.js', '.mjs'] },
+    },
   },
   rules: {
     // import
@@ -59,10 +54,6 @@ module.exports = {
     'no-spaced-func': 'error',
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
-    'prefer-const': ['error', {
-      'destructuring': 'any',
-      'ignoreReadBeforeAssign': false
-    }],
 
     // es6
     'no-var': 'error',
@@ -103,16 +94,6 @@ module.exports = {
     'no-return-assign': 'off',
     'operator-linebreak': [2, 'before'],
 
-    // TS
-    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
-    '@typescript-eslint/indent': ['error', 2],
-    '@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
-    '@typescript-eslint/type-annotation-spacing': ['error', {}],
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-member-accessibility': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-
     // unicorns
     // Pass error message when throwing errors
     'unicorn/error-message': 'error',
@@ -138,5 +119,5 @@ module.exports = {
     'unicorn/prefer-type-error': 'error',
     // Use new when throwing error
     'unicorn/throw-new-error': 'error',
-  }
+  },
 }

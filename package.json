@@ -5,9 +5,24 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint -- -- --fix",
     "release": "lerna publish --conventional-commits"
   },
   "devDependencies": {
-    "lerna": "^3.14.1"
+    "@antfu/eslint-config": "^0.1.5",
+    "@typescript-eslint/eslint-plugin": "1.11.0",
+    "@typescript-eslint/parser": "^1.10.2",
+    "eslint": "^6.0.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-nuxt": "0.4.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-unicorn": "^9.1.1",
+    "eslint-plugin-vue": "5.2.3",
+    "lerna": "^3.14.1",
+    "typescript": "^3.5.3"
   }
 }
