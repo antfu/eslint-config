@@ -11,6 +11,6 @@ module.exports = {
     'vue'
   ],
   rules: {
-    'vue/max-attributes-per-line': ['warning', { singleline: 5 }],
+    'vue/max-attributes-per-line': ['warn', { singleline: 5 }],
   }
 }
