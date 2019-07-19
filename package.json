@@ -7,7 +7,7 @@
     "postinstall": "lerna bootstrap",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint -- -- --fix",
-    "release": "lerna publish --conventional-commits"
+    "release": "lerna publish --conventional-commits -y"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.1.5",
