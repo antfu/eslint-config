@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/antfu/eslint-config/compare/v0.2.8...v0.2.10) (2019-12-11)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#12](https://github.com/antfu/eslint-config/issues/12)) ([e09cd41](https://github.com/antfu/eslint-config/commit/e09cd415f12fa1afe18430c50f6b72189700aa8c))
+* **deps:** update all non-major dependencies ([#14](https://github.com/antfu/eslint-config/issues/14)) ([0583881](https://github.com/antfu/eslint-config/commit/05838817541d500e3aab0e215f879c1c7ceb7ced))
+* **deps:** update dependency eslint-plugin-vue to v6 ([#13](https://github.com/antfu/eslint-config/issues/13)) ([5d0daca](https://github.com/antfu/eslint-config/commit/5d0dacae0af218e30868fcfb7b60afd6dbeda45b))
+
+
+
+
+
+
 ## [0.2.9](https://github.com/antfu/eslint-config/compare/v0.2.8...v0.2.9) (2019-12-11)
 
 
