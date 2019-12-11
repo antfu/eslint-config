@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.9](https://github.com/antfu/eslint-config/compare/v0.2.8...v0.2.9) (2019-12-11)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#12](https://github.com/antfu/eslint-config/issues/12)) ([e09cd41](https://github.com/antfu/eslint-config/commit/e09cd415f12fa1afe18430c50f6b72189700aa8c))
+* **deps:** update all non-major dependencies ([#14](https://github.com/antfu/eslint-config/issues/14)) ([0583881](https://github.com/antfu/eslint-config/commit/05838817541d500e3aab0e215f879c1c7ceb7ced))
+* **deps:** update dependency eslint-plugin-unicorn to v14 ([#16](https://github.com/antfu/eslint-config/issues/16)) ([49f5108](https://github.com/antfu/eslint-config/commit/49f5108fb2144f6ccc5f6a15d1bc135542070168))
+* **deps:** update dependency eslint-plugin-vue to v6 ([#13](https://github.com/antfu/eslint-config/issues/13)) ([5d0daca](https://github.com/antfu/eslint-config/commit/5d0dacae0af218e30868fcfb7b60afd6dbeda45b))
+* dependencies ([c773e5e](https://github.com/antfu/eslint-config/commit/c773e5e043ad37a90785ccfe4834b4fcd2a9dadd))
+
+
+
+
+
+
 ## [0.2.8](https://github.com/antfu/eslint-config/compare/v0.2.6...v0.2.8) (2019-10-29)
 
 
