@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/antfu/eslint-config/compare/v0.2.10...v0.2.11) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([faa9b11](https://github.com/antfu/eslint-config/commit/faa9b11d52d5d34a4c89917bb6b1aeaa8f7bbdb2))
+* **deps:** update dependency eslint-plugin-node to v11 ([#19](https://github.com/antfu/eslint-config/issues/19)) ([d37b5cc](https://github.com/antfu/eslint-config/commit/d37b5cc912b017eeca513a806a3f755c1094bafe))
+* **deps:** update dependency eslint-plugin-unicorn to v15 ([#18](https://github.com/antfu/eslint-config/issues/18)) ([b6c068c](https://github.com/antfu/eslint-config/commit/b6c068cf01539d2d94867664cbc54728fa99852e))
+* update ([ce7f9ec](https://github.com/antfu/eslint-config/commit/ce7f9ec9687fea47757e973344fd2068cc7e5a8f))
+
+
+
+
+
 ## [0.2.10](https://github.com/antfu/eslint-config/compare/v0.2.8...v0.2.10) (2019-12-11)
 
 

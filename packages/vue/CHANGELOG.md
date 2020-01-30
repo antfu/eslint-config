@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/antfu/eslint-config/compare/v0.2.10...v0.2.11) (2020-01-30)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([faa9b11](https://github.com/antfu/eslint-config/commit/faa9b11d52d5d34a4c89917bb6b1aeaa8f7bbdb2))
+
+
+
+
+
 ## [0.2.10](https://github.com/antfu/eslint-config/compare/v0.2.8...v0.2.10) (2019-12-11)
 
 
