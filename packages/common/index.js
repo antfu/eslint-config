@@ -54,6 +54,7 @@ module.exports = {
     'no-spaced-func': 'error',
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
+    'space-before-function-paren': ['error', 'never'],
 
     // es6
     'no-var': 'error',
