@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/antfu/eslint-config/compare/v0.2.11...v0.2.12) (2020-06-04)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([ae3acb4](https://github.com/antfu/eslint-config/commit/ae3acb40f34fa117bb0afe6f9959daa5c0f9a197))
+* **deps:** update all non-major dependencies ([367c663](https://github.com/antfu/eslint-config/commit/367c663eb0eca976b2e932d5666b0e47f751a03c))
+* **deps:** update all non-major dependencies ([d938b1d](https://github.com/antfu/eslint-config/commit/d938b1d714e429f4dd4cce56b8b2c4cdee0de242))
+* **deps:** update all non-major dependencies ([8bda49a](https://github.com/antfu/eslint-config/commit/8bda49afb37d50c647995354cec4d11589eeef8f))
+* **deps:** update all non-major dependencies ([cd48d47](https://github.com/antfu/eslint-config/commit/cd48d476bfe63623b66d9d5107b794f3b2e73129))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.21.0 ([ae238f2](https://github.com/antfu/eslint-config/commit/ae238f275c17c8959274da007b60cae2f029b7d0))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.23.0 ([ae8dee6](https://github.com/antfu/eslint-config/commit/ae8dee603589f80410cb19a009a4f50a7daf5472))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.25.0 ([da8bfed](https://github.com/antfu/eslint-config/commit/da8bfed5c582940ebef807cc396a4c28de7135dd))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.26.0 ([9c66671](https://github.com/antfu/eslint-config/commit/9c666715c2eef912e343649875441a564486d5ec))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.27.0 ([dc00c77](https://github.com/antfu/eslint-config/commit/dc00c77075c87f8e49b39b32d44ca4fde0590731))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.28.0 ([e42c576](https://github.com/antfu/eslint-config/commit/e42c5767f6f9a9013286354ee238977b36bbbee2))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.29.0 ([5e65853](https://github.com/antfu/eslint-config/commit/5e6585335d4f7b88355a7430911c9712bcd20115))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.30.0 ([cabb099](https://github.com/antfu/eslint-config/commit/cabb0999cd95d63fd35b50a0073c324f54a621e5))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.31.0 ([2fb8855](https://github.com/antfu/eslint-config/commit/2fb885521b80ba72511b1005ad919ed148c99428))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v2.33.0 ([d857537](https://github.com/antfu/eslint-config/commit/d8575375f6505bfee4165dc33b1cd924b63fb15e))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v3.0.2 ([214c0be](https://github.com/antfu/eslint-config/commit/214c0be0292d8b95d57d1fe0272ee7af7a130b78))
+* **deps:** update typescript-eslint monorepo to v3 ([ebb1820](https://github.com/antfu/eslint-config/commit/ebb18209d5c8417da41be7ca8b2b8658bd4ba1a5))
+
+
+
+
+
 ## [0.2.11](https://github.com/antfu/eslint-config/compare/v0.2.10...v0.2.11) (2020-01-30)
 
 

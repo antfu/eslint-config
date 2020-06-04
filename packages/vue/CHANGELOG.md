@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/antfu/eslint-config/compare/v0.2.11...v0.2.12) (2020-06-04)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([ae3acb4](https://github.com/antfu/eslint-config/commit/ae3acb40f34fa117bb0afe6f9959daa5c0f9a197))
+* **deps:** update all non-major dependencies ([367c663](https://github.com/antfu/eslint-config/commit/367c663eb0eca976b2e932d5666b0e47f751a03c))
+* **deps:** update all non-major dependencies ([d938b1d](https://github.com/antfu/eslint-config/commit/d938b1d714e429f4dd4cce56b8b2c4cdee0de242))
+* **deps:** update all non-major dependencies ([8bda49a](https://github.com/antfu/eslint-config/commit/8bda49afb37d50c647995354cec4d11589eeef8f))
+* **deps:** update all non-major dependencies ([cd48d47](https://github.com/antfu/eslint-config/commit/cd48d476bfe63623b66d9d5107b794f3b2e73129))
+* **deps:** update dependency eslint-plugin-nuxt to v1 ([f5d6ebd](https://github.com/antfu/eslint-config/commit/f5d6ebda7cfa17ad8992e1ccc4fd9be020711375))
+
+
+
+
+
 ## [0.2.11](https://github.com/antfu/eslint-config/compare/v0.2.10...v0.2.11) (2020-01-30)
 
 
