@@ -8,7 +8,6 @@ module.exports = {
     'standard',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:unicorn/recommended',
   ],
   plugins: [
     'unicorn',
