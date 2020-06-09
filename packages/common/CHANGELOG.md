@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.13](https://github.com/antfu/eslint-config/compare/v0.2.12...v0.2.13) (2020-06-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v3.1.0 ([494d99c](https://github.com/antfu/eslint-config/commit/494d99c2bb52895a055cea7be9b50494a6a67358))
+
+
+
+
+
 ## [0.2.12](https://github.com/antfu/eslint-config/compare/v0.2.11...v0.2.12) (2020-06-04)
 
 
