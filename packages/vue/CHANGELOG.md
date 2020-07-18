@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.14](https://github.com/antfu/eslint-config/compare/v0.2.13...v0.2.14) (2020-07-18)
+
+**Note:** Version bump only for package @antfu/eslint-config-vue
+
+
+
+
+
 ## [0.2.13](https://github.com/antfu/eslint-config/compare/v0.2.12...v0.2.13) (2020-06-09)
 
 **Note:** Version bump only for package @antfu/eslint-config-vue
