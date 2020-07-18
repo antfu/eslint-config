@@ -1,15 +1,5 @@
 importers:
   .:
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 3.6.1_23481f9b1b1c9bc97dca5e2fa7f077f9
-      '@typescript-eslint/parser': 3.6.1_eslint@7.4.0+typescript@3.9.7
-      eslint-config-standard: 14.1.1_7c3e74ca5ed71ba4520e19f5273397ef
-      eslint-plugin-import: 2.22.0_eslint@7.4.0
-      eslint-plugin-node: 11.1.0_eslint@7.4.0
-      eslint-plugin-promise: 4.2.1
-      eslint-plugin-standard: 4.0.1_eslint@7.4.0
-      eslint-plugin-unicorn: 21.0.0_eslint@7.4.0
-      eslint-plugin-vue: 7.0.0-alpha.10_eslint@7.4.0
     devDependencies:
       '@antfu/eslint-config': 'link:packages/common'
       eslint: 7.4.0
@@ -17,16 +7,7 @@ importers:
       typescript: 3.9.7
     specifiers:
       '@antfu/eslint-config': ^0.2.13
-      '@typescript-eslint/eslint-plugin': 3.6.1
-      '@typescript-eslint/parser': ^3.6.1
       eslint: ^7.4.0
-      eslint-config-standard: ^14.1.1
-      eslint-plugin-import: ^2.22.0
-      eslint-plugin-node: ^11.1.0
-      eslint-plugin-promise: ^4.2.1
-      eslint-plugin-standard: ^4.0.1
-      eslint-plugin-unicorn: ^21.0.0
-      eslint-plugin-vue: ^7.0.0-alpha.10
       lerna: ^3.22.1
       typescript: ^3.9.7
   packages/common:
@@ -56,7 +37,7 @@ importers:
       eslint: 7.4.0
       typescript: 3.9.7
     specifiers:
-      '@antfu/eslint-config': ^0.2.13
+      '@antfu/eslint-config': ^0.2.14
       '@typescript-eslint/eslint-plugin': 3.6.1
       '@typescript-eslint/parser': ^3.6.1
       eslint: ^7.0.0
@@ -69,7 +50,7 @@ importers:
       eslint: 7.4.0
       typescript: 3.9.7
     specifiers:
-      '@antfu/eslint-config-ts': ^0.2.13
+      '@antfu/eslint-config-ts': ^0.2.14
       eslint: ^7.0.0
       eslint-plugin-vue: 7.0.0-alpha.10
       typescript: ^3.9.7
