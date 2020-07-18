@@ -4,27 +4,26 @@
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
   "scripts": {
-    "postinstall": "lerna bootstrap",
+    "preinstall": "npx only-allow pnpm",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint -- -- --fix",
     "release": "lerna publish --conventional-commits --graph-type all -y"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.2.11",
-    "eslint": "^7.1.0",
-    "lerna": "^3.22.0",
-    "typescript": "^3.9.3"
+    "@antfu/eslint-config": "^0.2.13",
+    "eslint": "^7.4.0",
+    "lerna": "^3.22.1",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "3.1.0",
-    "@typescript-eslint/parser": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-nuxt": "1.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^20.1.0",
-    "eslint-plugin-vue": "6.2.2"
+    "eslint-plugin-unicorn": "^21.0.0",
+    "eslint-plugin-vue": "^7.0.0-alpha.10"
   }
 }
