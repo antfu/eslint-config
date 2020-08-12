@@ -5,7 +5,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'plugin:@typescript-eslint/recommended',
-    '@antfu/eslint-config',
+    '@antfu/eslint-config-basic',
   ],
   rules: {
     // TS
