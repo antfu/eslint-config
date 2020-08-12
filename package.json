@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "version": "lerna publish --conventional-commits"
+    "release": "lerna publish --conventional-commits"
   },
   "devDependencies": {
     "@antfu/eslint-config": "*",
