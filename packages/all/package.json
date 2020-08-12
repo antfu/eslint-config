@@ -1,5 +1,5 @@
 {
-  "name": "@antfu/eslint-config-ts",
+  "name": "@antfu/eslint-config",
   "version": "0.2.14",
   "description": "",
   "main": "index.js",
@@ -9,16 +9,14 @@
   "files": [
     "index.js"
   ],
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "eslint": ">=7.4.0",
-    "typescript": ">=3.9"
-  },
   "dependencies": {
-    "@antfu/eslint-config-basic": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "3.6.1",
-    "@typescript-eslint/parser": "^3.9.0"
+    "@antfu/eslint-config-vue": "workspace:*",
+    "@antfu/eslint-config-react": "workspace:*"
   }
 }

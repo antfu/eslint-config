@@ -10,6 +10,7 @@ module.exports = {
     'plugin:import/warnings',
   ],
   plugins: [
+    'html',
     'unicorn',
   ],
   settings: {

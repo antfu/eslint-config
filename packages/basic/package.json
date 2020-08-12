@@ -1,5 +1,5 @@
 {
-  "name": "@antfu/eslint-config",
+  "name": "@antfu/eslint-config-basic",
   "version": "0.2.14",
   "description": "",
   "main": "index.js",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.3",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -27,7 +28,6 @@
     "eslint-plugin-unicorn": "^21.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.0.0"
-  },
-  "gitHead": "bd0460759c73f7fcdf32570f40a13e37ab6961c0"
+    "eslint": "^7.6.0"
+  }
 }

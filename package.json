@@ -11,8 +11,8 @@
     "release": "lerna publish --conventional-commits --graph-type all -y"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.2.13",
-    "eslint": "^7.4.0",
+    "@antfu/eslint-config": "workspace:*",
+    "eslint": "^7.6.0",
     "lerna": "^3.22.1",
     "typescript": "^3.9.7"
   }
