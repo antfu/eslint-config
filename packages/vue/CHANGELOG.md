@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/antfu/eslint-config/compare/v0.2.14...v0.3.0) (2020-08-12)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([f82ee6f](https://github.com/antfu/eslint-config/commit/f82ee6fce9153f098c8fbbeef17f88261e08176f))
+* **deps:** update all non-major dependencies ([2243bf6](https://github.com/antfu/eslint-config/commit/2243bf67fac0f75c1a4e35c604f49ebb2092d960))
+* **deps:** update dependency eslint-plugin-vue to v7.0.0-beta.0 ([e0b59f2](https://github.com/antfu/eslint-config/commit/e0b59f271fa3c679e5c4a7d61b5af79cef37721f))
+
+
+### Features
+
+* add react and all ([a7fbdca](https://github.com/antfu/eslint-config/commit/a7fbdcad4b20294e26e817fae468f468376e49cf))
+
+
+
+
+
 ## [0.2.14](https://github.com/antfu/eslint-config/compare/v0.2.13...v0.2.14) (2020-07-18)
 
 **Note:** Version bump only for package @antfu/eslint-config-vue
