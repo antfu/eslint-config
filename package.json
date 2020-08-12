@@ -6,12 +6,10 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint -- -- --fix",
-    "release": "lerna publish --conventional-commits --graph-type all -y"
+    "version": "lerna publish --conventional-commits"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "workspace:*",
+    "@antfu/eslint-config": "*",
     "eslint": "^7.6.0",
     "lerna": "^3.22.1",
     "typescript": "^3.9.7"

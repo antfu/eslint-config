@@ -6,7 +6,7 @@ importers:
       lerna: 3.22.1
       typescript: 3.9.7
     specifiers:
-      '@antfu/eslint-config': 'workspace:*'
+      '@antfu/eslint-config': '*'
       eslint: ^7.6.0
       lerna: ^3.22.1
       typescript: ^3.9.7
@@ -15,8 +15,8 @@ importers:
       '@antfu/eslint-config-react': 'link:../react'
       '@antfu/eslint-config-vue': 'link:../vue'
     specifiers:
-      '@antfu/eslint-config-react': 'workspace:*'
-      '@antfu/eslint-config-vue': 'workspace:*'
+      '@antfu/eslint-config-react': '*'
+      '@antfu/eslint-config-vue': '*'
   packages/basic:
     dependencies:
       eslint-config-standard: 14.1.1_852544c994842eaa2dbc35fff65e8cbc
@@ -45,7 +45,7 @@ importers:
       eslint: 7.6.0
       typescript: 3.9.7
     specifiers:
-      '@antfu/eslint-config-ts': 'workspace:*'
+      '@antfu/eslint-config-ts': '*'
       eslint: ^7.6.0
       eslint-plugin-react: ^7.20.5
       typescript: ^3.9.7
@@ -55,7 +55,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 3.6.1_@typescript-eslint+parser@3.9.0
       '@typescript-eslint/parser': 3.9.0
     specifiers:
-      '@antfu/eslint-config-basic': 'workspace:*'
+      '@antfu/eslint-config-basic': '*'
       '@typescript-eslint/eslint-plugin': 3.6.1
       '@typescript-eslint/parser': ^3.9.0
   packages/vue:
@@ -63,7 +63,7 @@ importers:
       '@antfu/eslint-config-ts': 'link:../typescript'
       eslint-plugin-vue: 7.0.0-alpha.10
     specifiers:
-      '@antfu/eslint-config-ts': 'workspace:*'
+      '@antfu/eslint-config-ts': '*'
       eslint-plugin-vue: 7.0.0-alpha.10
 lockfileVersion: 5.1
 packages:
