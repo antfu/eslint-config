@@ -14,9 +14,12 @@ importers:
     dependencies:
       '@antfu/eslint-config-react': 'link:../react'
       '@antfu/eslint-config-vue': 'link:../vue'
+    devDependencies:
+      eslint: 7.6.0
     specifiers:
-      '@antfu/eslint-config-react': ^0.3.0
-      '@antfu/eslint-config-vue': ^0.3.0
+      '@antfu/eslint-config-react': ^0.3.1
+      '@antfu/eslint-config-vue': ^0.3.1
+      eslint: ^7.6.0
   packages/basic:
     dependencies:
       eslint-config-standard: 14.1.1_852544c994842eaa2dbc35fff65e8cbc
@@ -43,27 +46,35 @@ importers:
       eslint-plugin-react: 7.20.5_eslint@7.6.0
     devDependencies:
       eslint: 7.6.0
+      react: 16.13.1
       typescript: 3.9.7
     specifiers:
-      '@antfu/eslint-config-ts': ^0.3.0
+      '@antfu/eslint-config-ts': ^0.3.1
       eslint: ^7.6.0
       eslint-plugin-react: ^7.20.5
+      react: ^16.13.1
       typescript: ^3.9.7
   packages/typescript:
     dependencies:
       '@antfu/eslint-config-basic': 'link:../basic'
-      '@typescript-eslint/eslint-plugin': 3.6.1_@typescript-eslint+parser@3.9.0
-      '@typescript-eslint/parser': 3.9.0
+      '@typescript-eslint/eslint-plugin': 3.6.1_59c62cf4e3dde9582ccc3eef0435f14f
+      '@typescript-eslint/parser': 3.9.0_eslint@7.6.0
+    devDependencies:
+      eslint: 7.6.0
     specifiers:
       '@antfu/eslint-config-basic': ^0.3.0
       '@typescript-eslint/eslint-plugin': 3.6.1
       '@typescript-eslint/parser': ^3.9.0
+      eslint: ^7.6.0
   packages/vue:
     dependencies:
       '@antfu/eslint-config-ts': 'link:../typescript'
-      eslint-plugin-vue: 7.0.0-alpha.10
+      eslint-plugin-vue: 7.0.0-alpha.10_eslint@7.6.0
+    devDependencies:
+      eslint: 7.6.0
     specifiers:
-      '@antfu/eslint-config-ts': ^0.3.0
+      '@antfu/eslint-config-ts': ^0.3.1
+      eslint: ^7.6.0
       eslint-plugin-vue: 7.0.0-alpha.10
 lockfileVersion: 5.1
 packages:
@@ -1107,11 +1118,12 @@ packages:
   /@types/normalize-package-data/2.4.0:
     resolution:
       integrity: sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
-  /@typescript-eslint/eslint-plugin/3.6.1_@typescript-eslint+parser@3.9.0:
+  /@typescript-eslint/eslint-plugin/3.6.1_59c62cf4e3dde9582ccc3eef0435f14f:
     dependencies:
-      '@typescript-eslint/experimental-utils': 3.6.1
-      '@typescript-eslint/parser': 3.9.0
+      '@typescript-eslint/experimental-utils': 3.6.1_eslint@7.6.0
+      '@typescript-eslint/parser': 3.9.0_eslint@7.6.0
       debug: 4.1.1
+      eslint: 7.6.0
       functional-red-black-tree: 1.0.1
       regexpp: 3.1.0
       semver: 7.3.2
@@ -1128,11 +1140,12 @@ packages:
         optional: true
     resolution:
       integrity: sha512-06lfjo76naNeOMDl+mWG9Fh/a0UHKLGhin+mGaIw72FUMbMGBkdi/FEJmgEDzh4eE73KIYzHWvOCYJ0ak7nrJQ==
-  /@typescript-eslint/experimental-utils/3.6.1:
+  /@typescript-eslint/experimental-utils/3.6.1_eslint@7.6.0:
     dependencies:
       '@types/json-schema': 7.0.5
       '@typescript-eslint/types': 3.6.1
       '@typescript-eslint/typescript-estree': 3.6.1
+      eslint: 7.6.0
       eslint-scope: 5.1.0
       eslint-utils: 2.1.0
     dev: false
@@ -1142,11 +1155,12 @@ packages:
       eslint: '*'
     resolution:
       integrity: sha512-oS+hihzQE5M84ewXrTlVx7eTgc52eu+sVmG7ayLfOhyZmJ8Unvf3osyFQNADHP26yoThFfbxcibbO0d2FjnYhg==
-  /@typescript-eslint/experimental-utils/3.9.0:
+  /@typescript-eslint/experimental-utils/3.9.0_eslint@7.6.0:
     dependencies:
       '@types/json-schema': 7.0.5
       '@typescript-eslint/types': 3.9.0
       '@typescript-eslint/typescript-estree': 3.9.0
+      eslint: 7.6.0
       eslint-scope: 5.1.0
       eslint-utils: 2.1.0
     dev: false
@@ -1156,12 +1170,13 @@ packages:
       eslint: '*'
     resolution:
       integrity: sha512-/vSHUDYizSOhrOJdjYxPNGfb4a3ibO8zd4nUKo/QBFOmxosT3cVUV7KIg8Dwi6TXlr667G7YPqFK9+VSZOorNA==
-  /@typescript-eslint/parser/3.9.0:
+  /@typescript-eslint/parser/3.9.0_eslint@7.6.0:
     dependencies:
       '@types/eslint-visitor-keys': 1.0.0
-      '@typescript-eslint/experimental-utils': 3.9.0
+      '@typescript-eslint/experimental-utils': 3.9.0_eslint@7.6.0
       '@typescript-eslint/types': 3.9.0
       '@typescript-eslint/typescript-estree': 3.9.0
+      eslint: 7.6.0
       eslint-visitor-keys: 1.3.0
     dev: false
     engines:
@@ -2598,12 +2613,13 @@ packages:
       eslint: '>=7.3.0'
     resolution:
       integrity: sha512-S8v7+v4gZTQPj4pKKvexhgSUaLQSyItvxW2SVZDaX9Iu5IjlAmF2eni+L6w8a2aqshxgU8Lle4FIAVDtuejSKQ==
-  /eslint-plugin-vue/7.0.0-alpha.10:
+  /eslint-plugin-vue/7.0.0-alpha.10_eslint@7.6.0:
     dependencies:
+      eslint: 7.6.0
       eslint-utils: 2.1.0
       natural-compare: 1.4.0
       semver: 7.3.2
-      vue-eslint-parser: 7.1.0
+      vue-eslint-parser: 7.1.0_eslint@7.6.0
     dev: false
     engines:
       node: '>=8.10'
@@ -4008,7 +4024,6 @@ packages:
   /loose-envify/1.4.0:
     dependencies:
       js-tokens: 4.0.0
-    dev: false
     hasBin: true
     resolution:
       integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -4988,7 +5003,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: false
     resolution:
       integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
   /proto-list/1.2.4:
@@ -5063,9 +5077,18 @@ packages:
     resolution:
       integrity: sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
   /react-is/16.13.1:
-    dev: false
     resolution:
       integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+  /react/16.13.1:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
   /read-cmd-shim/1.0.5:
     dependencies:
       graceful-fs: 4.2.4
@@ -6241,9 +6264,10 @@ packages:
       '0': node >=0.6.0
     resolution:
       integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=
-  /vue-eslint-parser/7.1.0:
+  /vue-eslint-parser/7.1.0_eslint@7.6.0:
     dependencies:
       debug: 4.1.1
+      eslint: 7.6.0
       eslint-scope: 5.1.0
       eslint-visitor-keys: 1.3.0
       espree: 6.2.1
