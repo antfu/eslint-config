@@ -24,6 +24,7 @@ module.exports = {
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
+    'import/no-absolute-path': 'off',
 
     // Common
     semi: [2, 'never'],
