@@ -16,7 +16,7 @@ module.exports = {
     '@typescript-eslint/type-annotation-spacing': ['error', {}],
 
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    '@typescript-eslint/no-unused-vars': [2, { args: 'none', ignoreRestSiblings: true }],
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
 
