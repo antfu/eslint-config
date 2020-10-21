@@ -4,17 +4,22 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:@typescript-eslint/recommended',
     '@antfu/eslint-config-basic',
+    'plugin:@typescript-eslint/recommended',
   ],
   rules: {
     // TS
     'no-useless-constructor': 'off',
     '@typescript-eslint/semi': ['error', 'never'],
-    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
     '@typescript-eslint/type-annotation-spacing': ['error', {}],
+
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+
 
     // off
     '@typescript-eslint/camelcase': 'off',
