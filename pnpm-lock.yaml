@@ -17,12 +17,13 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-react': ^0.4.3
-      '@antfu/eslint-config-vue': ^0.4.3
+      '@antfu/eslint-config-react': ^0.5.0
+      '@antfu/eslint-config-vue': ^0.5.0
       eslint: ^7.22.0
   packages/basic:
     dependencies:
       eslint-config-standard: 16.0.2_c717d077e19c4e5e1a56938898252d9f
+      eslint-plugin-eslint-comments: 3.2.0_eslint@7.22.0
       eslint-plugin-html: 6.1.2
       eslint-plugin-import: 2.22.1_eslint@7.22.0
       eslint-plugin-node: 11.1.0_eslint@7.22.0
@@ -31,7 +32,6 @@ importers:
       eslint-plugin-unicorn: 28.0.2_eslint@7.22.0
     devDependencies:
       eslint: 7.22.0
-      eslint-plugin-eslint-comments: 3.2.0_eslint@7.22.0
     specifiers:
       eslint: ^7.22.0
       eslint-config-standard: ^16.0.2
@@ -51,7 +51,7 @@ importers:
       react: 17.0.1
       typescript: 4.2.3
     specifiers:
-      '@antfu/eslint-config-ts': ^0.4.3
+      '@antfu/eslint-config-ts': ^0.5.0
       eslint: ^7.22.0
       eslint-plugin-react: ^7.22.0
       react: ^17.0.1
@@ -64,7 +64,7 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-basic': ^0.4.3
+      '@antfu/eslint-config-basic': ^0.5.0
       '@typescript-eslint/eslint-plugin': ^4.17.0
       '@typescript-eslint/parser': ^4.17.0
       eslint: ^7.22.0
@@ -75,7 +75,7 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-ts': ^0.4.3
+      '@antfu/eslint-config-ts': ^0.5.0
       eslint: ^7.22.0
       eslint-plugin-vue: 7.7.0
 lockfileVersion: 5.2
@@ -2392,7 +2392,7 @@ packages:
       escape-string-regexp: 1.0.5
       eslint: 7.22.0
       ignore: 5.1.8
-    dev: true
+    dev: false
     engines:
       node: '>=6.5.0'
     peerDependencies:
