@@ -3,6 +3,11 @@ module.exports = {
     'plugin:react/recommended',
     '@antfu/eslint-config-ts',
   ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     'jsx-quotes': [
       'error',

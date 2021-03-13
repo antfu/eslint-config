@@ -4,7 +4,12 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['standard', 'plugin:import/errors', 'plugin:import/warnings'],
+  extends: [
+    'standard',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:eslint-comments/recommended',
+  ],
   plugins: ['html', 'unicorn'],
   settings: {
     'import/resolver': {
@@ -38,7 +43,7 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    indent: [ 'error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 } ],
+    indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': [
       'error',
       'DebuggerStatement',
