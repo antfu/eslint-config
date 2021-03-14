@@ -9,13 +9,67 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:eslint-comments/recommended',
+    'plugin:jsonc/recommended-with-jsonc',
+    'plugin:yml/standard',
   ],
-  plugins: ['html', 'unicorn'],
+  plugins: ['unicorn'],
   settings: {
     'import/resolver': {
-      node: { extensions: ['.js', '.mjs'] },
+      node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
     },
   },
+  overrides: [
+    {
+      files: ['*.json', '*.json5'],
+      parser: 'jsonc-eslint-parser',
+      rules: {
+        'quotes': ['error', 'double'],
+        'quote-props': ['error', 'always'],
+        'comma-dangle': ['error', 'never'],
+      },
+    },
+    {
+      files: ['package.json'],
+      parser: 'jsonc-eslint-parser',
+      rules: {
+        'jsonc/sort-keys': [
+          'error',
+          {
+            pathPattern: '^$',
+            order: [
+              'name',
+              'version',
+              'description',
+              'keywords',
+              'license',
+              'repository',
+              'funding',
+              'author',
+              'type',
+              'files',
+              'exports',
+              'main',
+              'module',
+              'unpkg',
+              'bin',
+              'scripts',
+              'husky',
+              'lint-staged',
+              'peerDependencies',
+              'peerDependenciesMeta',
+              'dependencies',
+              'devDependencies',
+              'eslintConfig',
+            ],
+          },
+          {
+            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+            order: { type: 'asc' },
+          },
+        ],
+      },
+    },
+  ],
   rules: {
     // import
     'import/order': 'error',
@@ -25,15 +79,16 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
-    semi: [2, 'never'],
-    curly: [2, 'multi-or-nest', 'consistent'],
-    quotes: ['error', 'single'],
+    'semi': ['error', 'never'],
+    'curly': ['error', 'multi-or-nest', 'consistent'],
+    'quotes': ['error', 'single'],
+    'quote-props': ['error', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
     'no-param-reassign': 'off',
     'array-bracket-spacing': ['error', 'never'],
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'block-spacing': ['error', 'always'],
-    camelcase: 'off',
+    'camelcase': 'off',
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
@@ -43,7 +98,7 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': [
       'error',
       'DebuggerStatement',
@@ -91,19 +146,19 @@ module.exports = {
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-return': 'off',
-    complexity: ['off', 11],
-    eqeqeq: ['error', 'allow-null'],
+    'complexity': ['off', 11],
+    'eqeqeq': ['error', 'allow-null'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
     'no-multi-spaces': 'error',
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
-    'no-useless-escape': 'error',
+    'no-useless-escape': 'off',
     'vars-on-top': 'error',
     'require-await': 'off',
     'no-return-assign': 'off',
-    'operator-linebreak': [2, 'before'],
+    'operator-linebreak': ['error', 'before'],
 
     // unicorns
     // Pass error message when throwing errors
@@ -116,7 +171,7 @@ module.exports = {
     'unicorn/no-new-buffer': 'error',
     // Keep regex literals safe!
     'unicorn/no-unsafe-regex': 'off',
-    // Lowercase number formatting for octal, hex, binary (0x12 instead of 0X12)
+    // Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
     'unicorn/number-literal-case': 'error',
     // ** instead of Math.pow()
     'unicorn/prefer-exponentiation-operator': 'error',

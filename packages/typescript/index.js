@@ -1,8 +1,4 @@
 module.exports = {
-  plugins: [
-    '@typescript-eslint',
-  ],
-  parser: '@typescript-eslint/parser',
   extends: [
     '@antfu/eslint-config-basic',
     'plugin:@typescript-eslint/recommended',
@@ -19,7 +15,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
-
 
     // off
     '@typescript-eslint/camelcase': 'off',

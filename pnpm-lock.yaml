@@ -17,8 +17,8 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-react': ^0.5.0
-      '@antfu/eslint-config-vue': ^0.5.0
+      '@antfu/eslint-config-react': ^0.5.1
+      '@antfu/eslint-config-vue': ^0.5.1
       eslint: ^7.22.0
   packages/basic:
     dependencies:
@@ -26,10 +26,13 @@ importers:
       eslint-plugin-eslint-comments: 3.2.0_eslint@7.22.0
       eslint-plugin-html: 6.1.2
       eslint-plugin-import: 2.22.1_eslint@7.22.0
+      eslint-plugin-jsonc: 1.2.1_eslint@7.22.0
       eslint-plugin-node: 11.1.0_eslint@7.22.0
       eslint-plugin-promise: 4.3.1
-      eslint-plugin-standard: 5.0.0_eslint@7.22.0
       eslint-plugin-unicorn: 28.0.2_eslint@7.22.0
+      eslint-plugin-yml: 0.8.1_eslint@7.22.0
+      jsonc-eslint-parser: 1.0.1
+      yaml-eslint-parser: 0.3.2
     devDependencies:
       eslint: 7.22.0
     specifiers:
@@ -38,10 +41,13 @@ importers:
       eslint-plugin-eslint-comments: ^3.2.0
       eslint-plugin-html: ^6.1.2
       eslint-plugin-import: ^2.22.1
+      eslint-plugin-jsonc: ^1.2.1
       eslint-plugin-node: ^11.1.0
       eslint-plugin-promise: ^4.3.1
-      eslint-plugin-standard: ^5.0.0
       eslint-plugin-unicorn: ^28.0.2
+      eslint-plugin-yml: ^0.8.1
+      jsonc-eslint-parser: ^1.0.1
+      yaml-eslint-parser: ^0.3.2
   packages/react:
     dependencies:
       '@antfu/eslint-config-ts': link:../typescript
@@ -51,7 +57,7 @@ importers:
       react: 17.0.1
       typescript: 4.2.3
     specifiers:
-      '@antfu/eslint-config-ts': ^0.5.0
+      '@antfu/eslint-config-ts': ^0.5.1
       eslint: ^7.22.0
       eslint-plugin-react: ^7.22.0
       react: ^17.0.1
@@ -64,7 +70,7 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-basic': ^0.5.0
+      '@antfu/eslint-config-basic': ^0.5.1
       '@typescript-eslint/eslint-plugin': ^4.17.0
       '@typescript-eslint/parser': ^4.17.0
       eslint: ^7.22.0
@@ -75,7 +81,7 @@ importers:
     devDependencies:
       eslint: 7.22.0
     specifiers:
-      '@antfu/eslint-config-ts': ^0.5.0
+      '@antfu/eslint-config-ts': ^0.5.1
       eslint: ^7.22.0
       eslint-plugin-vue: 7.7.0
 lockfileVersion: 5.2
@@ -1385,20 +1391,26 @@ packages:
       acorn: ^6.0.0 || ^7.0.0
     resolution:
       integrity: sha512-HiUX/+K2YpkpJ+SzBffkM/AQ2YE03S0U1kjTLVpoJdhZMOWy8qvXVN9JdLqv2QsaQ6MPYQIuNmwD8zOiYUofLQ==
-  /acorn-jsx/5.3.1_acorn@7.4.0:
+  /acorn-jsx/5.3.1_acorn@7.4.1:
     dependencies:
-      acorn: 7.4.0
-    dev: true
+      acorn: 7.4.1
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     resolution:
       integrity: sha512-K0Ptm/47OKfQRpNQ2J/oIN/3QYiK6FwW+eJbILhsdxh2WTLdl+30o8aGdTbm5JbffpFFAg/g+zi1E+jvJha5ng==
   /acorn/7.4.0:
+    dev: false
     engines:
       node: '>=0.4.0'
     hasBin: true
     resolution:
       integrity: sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
+  /acorn/7.4.1:
+    engines:
+      node: '>=0.4.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
   /add-stream/1.0.0:
     dev: true
     resolution:
@@ -2090,6 +2102,19 @@ packages:
     deprecated: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
     resolution:
       integrity: sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
+  /debug/4.3.1:
+    dependencies:
+      ms: 2.1.2
+    dev: false
+    engines:
+      node: '>=6.0'
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    resolution:
+      integrity: sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
   /debuglog/1.0.1:
     dev: true
     resolution:
@@ -2428,6 +2453,17 @@ packages:
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0
     resolution:
       integrity: sha512-8K7JjINHOpH64ozkAhpT3sd+FswIZTfMZTjdx052pnWrgRCVfp8op9tbjpAk3DdUeI/Ba4C8OjdC0r90erHEOw==
+  /eslint-plugin-jsonc/1.2.1_eslint@7.22.0:
+    dependencies:
+      eslint: 7.22.0
+      eslint-utils: 2.1.0
+      jsonc-eslint-parser: 1.0.1
+      natural-compare: 1.4.0
+    dev: false
+    peerDependencies:
+      eslint: ^5.0.0 || >=6.0.0
+    resolution:
+      integrity: sha512-m7o4gaNKojSwRJDNP0/7HK1vGfGgynX6DeTHTXhYGxWn2DB8E2RU5jeK95CYw1/mwej4ku2Xd9Tevn6WOlI6Dg==
   /eslint-plugin-node/11.1.0_eslint@7.22.0:
     dependencies:
       eslint: 7.22.0
@@ -2471,15 +2507,6 @@ packages:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7
     resolution:
       integrity: sha512-p30tuX3VS+NWv9nQot9xIGAHBXR0+xJVaZriEsHoJrASGCJZDJ8JLNM0YqKqI0AKm6Uxaa1VUHoNEibxRCMQHA==
-  /eslint-plugin-standard/5.0.0_eslint@7.22.0:
-    dependencies:
-      eslint: 7.22.0
-    deprecated: 'standard 16.0.0 and eslint-config-standard 16.0.0 no longer require the eslint-plugin-standard package. You can remove it from your dependencies with ''npm rm eslint-plugin-standard''. More info here: https://github.com/standard/standard/issues/1316'
-    dev: false
-    peerDependencies:
-      eslint: '>=5.0.0'
-    resolution:
-      integrity: sha512-eSIXPc9wBM4BrniMzJRBm2uoVuXz2EPa+NXPk2+itrVt+r5SbKFERx/IgrK/HmfjddyKVz2f+j+7gBRvu19xLg==
   /eslint-plugin-unicorn/28.0.2_eslint@7.22.0:
     dependencies:
       ci-info: 2.0.0
@@ -2517,6 +2544,18 @@ packages:
       eslint: ^6.2.0 || ^7.0.0
     resolution:
       integrity: sha512-mYz4bpLGv5jx6YG/GvKkqbGSfV7uma2u1P3mLA41Q5vQl8W1MeuTneB8tfsLq6xxxesFubcrOC0BZBJ5R+eaCQ==
+  /eslint-plugin-yml/0.8.1_eslint@7.22.0:
+    dependencies:
+      debug: 4.3.1
+      eslint: 7.22.0
+      lodash: 4.17.21
+      natural-compare: 1.4.0
+      yaml-eslint-parser: 0.3.2
+    dev: false
+    peerDependencies:
+      eslint: '>=6.0.0'
+    resolution:
+      integrity: sha512-Cmqj/8eUoQ3ryesaOgsS2wdhYJJ6NCCBiO1BtCMZ8d3LRvnW0J2aImfiAtgqkpXEbmfL8P9wI1FqxSVOdujbSA==
   /eslint-scope/5.1.0:
     dependencies:
       esrecurse: 4.3.0
@@ -2621,10 +2660,9 @@ packages:
       integrity: sha512-ysCxRQY3WaXJz9tdbWOwuWr5Y/XrPTGX9Kiz3yoUXwW0VZ4w30HTkQLaGx/+ttFjF8i+ACbArnB4ce68a9m5hw==
   /espree/7.3.1:
     dependencies:
-      acorn: 7.4.0
-      acorn-jsx: 5.3.1_acorn@7.4.0
+      acorn: 7.4.1
+      acorn-jsx: 5.3.1_acorn@7.4.1
       eslint-visitor-keys: 1.3.0
-    dev: true
     engines:
       node: ^10.12.0 || >=12.0.0
     resolution:
@@ -3554,6 +3592,14 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
+  /jsonc-eslint-parser/1.0.1:
+    dependencies:
+      eslint-utils: 2.1.0
+      eslint-visitor-keys: 2.0.0
+      espree: 7.3.1
+    dev: false
+    resolution:
+      integrity: sha512-mh5LY5byThmc692EqJS3Ss9sViNoNeCLNG5VQUgJLoAFFM3FzdIetd99qEiiQ+NXBVAIUgX5sWeK9leniS8RbQ==
   /jsonfile/6.1.0:
     dependencies:
       universalify: 2.0.0
@@ -5963,12 +6009,26 @@ packages:
   /yallist/4.0.0:
     resolution:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
+  /yaml-eslint-parser/0.3.2:
+    dependencies:
+      eslint-visitor-keys: 1.3.0
+      lodash: 4.17.21
+      yaml: 1.10.2
+    dev: false
+    resolution:
+      integrity: sha512-32kYO6kJUuZzqte82t4M/gB6/+11WAuHiEnK7FreMo20xsCKPeFH5tDBU7iWxR7zeJpNnMXfJyXwne48D0hGrg==
   /yaml/1.10.1:
     dev: true
     engines:
       node: '>= 6'
     resolution:
       integrity: sha512-z/asvd+V08l1ywhaemZVirCwjdzLo6O1/0j2JbYCsGjiezupNQqjs5IIPyNtctbHjPEckqzVGd4jvpU5Lr25vQ==
+  /yaml/1.10.2:
+    dev: false
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
   /yargs-parser/20.2.4:
     dev: true
     engines:
