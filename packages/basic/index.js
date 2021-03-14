@@ -185,5 +185,7 @@ module.exports = {
     'unicorn/prefer-type-error': 'error',
     // Use new when throwing error
     'unicorn/throw-new-error': 'error',
+
+    'eslint-comments/disable-enable-pair': 'off',
   },
 }
