@@ -186,6 +186,7 @@ module.exports = {
     // Use new when throwing error
     'unicorn/throw-new-error': 'error',
 
+    'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
   },
 }
