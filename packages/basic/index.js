@@ -12,7 +12,7 @@ module.exports = {
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:yml/standard',
   ],
-  plugins: ['unicorn'],
+  plugins: ['html', 'unicorn'],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
