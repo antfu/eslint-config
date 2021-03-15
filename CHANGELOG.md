@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/antfu/eslint-config/compare/v0.6.1...v0.6.2) (2021-03-15)
+
+
+### Bug Fixes
+
+* bring back eslint-plugin-html ([3150569](https://github.com/antfu/eslint-config/commit/31505698e4738ac77e074d6cddf89fd16b0ed01f))
+* only disable no-unused-vars on vue file ([6759593](https://github.com/antfu/eslint-config/commit/67595932e447824837d9776204c9b559cb06a185))
+
+
+
+
+
 ## [0.6.1](https://github.com/antfu/eslint-config/compare/v0.6.0...v0.6.1) (2021-03-14)
 
 **Note:** Version bump only for package @antfu/eslint-config-monorepo
