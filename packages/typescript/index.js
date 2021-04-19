@@ -1,8 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const basic = require('@antfu/eslint-config-basic')
+
 module.exports = {
   extends: [
-    'plugin:@typescript-eslint/recommended',
     '@antfu/eslint-config-basic',
+    'plugin:@typescript-eslint/recommended',
   ],
+  overrides: basic.overrides,
   rules: {
     // TS
     'no-useless-constructor': 'off',
