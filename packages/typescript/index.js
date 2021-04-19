@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
-    '@antfu/eslint-config-basic',
     'plugin:@typescript-eslint/recommended',
+    '@antfu/eslint-config-basic',
   ],
   rules: {
     // TS
