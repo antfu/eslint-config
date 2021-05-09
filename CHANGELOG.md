@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/antfu/eslint-config/compare/v0.6.4...v0.6.5) (2021-05-09)
+
+
+### Bug Fixes
+
+* `no-spaced-func` was deprecated in v3.3.0 ([#57](https://github.com/antfu/eslint-config/issues/57)) ([c968ecc](https://github.com/antfu/eslint-config/commit/c968eccbcda3f94fb8b66ed08051c41bde3acb48))
+* no-console ([ab21039](https://github.com/antfu/eslint-config/commit/ab21039962d1e24f026714abd394dbea19199eb2))
+
+
+
+
+
 ## [0.6.4](https://github.com/antfu/eslint-config/compare/v0.6.3...v0.6.4) (2021-04-19)
 
 

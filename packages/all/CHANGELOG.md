@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.5](https://github.com/antfu/eslint-config/compare/v0.6.4...v0.6.5) (2021-05-09)
+
+**Note:** Version bump only for package @antfu/eslint-config
+
+
+
+
+
 ## [0.6.4](https://github.com/antfu/eslint-config/compare/v0.6.3...v0.6.4) (2021-04-19)
 
 **Note:** Version bump only for package @antfu/eslint-config
