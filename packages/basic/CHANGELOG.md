@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.6](https://github.com/antfu/eslint-config/compare/v0.6.5...v0.6.6) (2021-06-11)
+
+
+### Bug Fixes
+
+* no-console allow warn and error ([8dce7d1](https://github.com/antfu/eslint-config/commit/8dce7d171d81b5e5a74188fc74b24a90227fac5e))
+
+
+
+
+
 ## [0.6.5](https://github.com/antfu/eslint-config/compare/v0.6.4...v0.6.5) (2021-05-09)
 
 
