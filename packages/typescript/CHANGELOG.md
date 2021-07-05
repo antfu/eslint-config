@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/antfu/eslint-config/compare/v0.6.6...v0.7.0) (2021-07-05)
+
+
+### Bug Fixes
+
+* typescript-eslint conflict with indent rule ([#59](https://github.com/antfu/eslint-config/issues/59)) ([5bc11e4](https://github.com/antfu/eslint-config/commit/5bc11e42e69d00c3b4be279338ae14a65b4886e5))
+
+
+
+
+
 ## [0.6.6](https://github.com/antfu/eslint-config/compare/v0.6.5...v0.6.6) (2021-06-11)
 
 **Note:** Version bump only for package @antfu/eslint-config-ts
