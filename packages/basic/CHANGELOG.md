@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/antfu/eslint-config/compare/v0.8.0...v0.8.1) (2021-09-08)
+
+
+### Bug Fixes
+
+* `eqeqeq` rule deprecated option allow-null ([#61](https://github.com/antfu/eslint-config/issues/61)) ([92c3e62](https://github.com/antfu/eslint-config/commit/92c3e62135d7a654f5de8a59f251f8a8e4a80686))
+
+
+
+
+
 # [0.8.0](https://github.com/antfu/eslint-config/compare/v0.7.0...v0.8.0) (2021-09-07)
 
 **Note:** Version bump only for package @antfu/eslint-config-basic
