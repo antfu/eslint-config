@@ -11,7 +11,10 @@ module.exports = {
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:yml/standard',
   ],
-  plugins: ['html', 'unicorn'],
+  plugins: [
+    'html',
+    'unicorn',
+  ],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -66,6 +69,24 @@ module.exports = {
             order: { type: 'asc' },
           },
         ],
+      },
+    },
+    {
+      files: ['*.d.ts'],
+      rules: {
+        'import/no-duplicates': 'off',
+      },
+    },
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+    {
+      files: ['scripts/**/*.*'],
+      rules: {
+        'no-console': 'off',
       },
     },
   ],

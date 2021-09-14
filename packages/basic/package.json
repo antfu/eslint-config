@@ -5,18 +5,12 @@
   "keywords": [],
   "license": "MIT",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
+  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "main": "index.js",
   "scripts": {
     "lint": "eslint . --config=index.js"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "peerDependencies": {
-    "eslint": ">=7.4.0"
   },
   "dependencies": {
     "eslint-config-standard": "^16.0.3",
@@ -33,5 +27,11 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
