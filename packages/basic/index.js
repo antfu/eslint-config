@@ -31,6 +31,10 @@ module.exports = {
       },
     },
     {
+      files: ["*.yaml", "*.yml"],
+      parser: "yaml-eslint-parser",
+    },
+    {
       files: ['package.json'],
       parser: 'jsonc-eslint-parser',
       rules: {
