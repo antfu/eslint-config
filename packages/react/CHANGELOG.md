@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/antfu/eslint-config/compare/v0.9.0...v0.10.0) (2021-10-16)
+
+
+### Features
+
+* support eslint v8 ([e9027d5](https://github.com/antfu/eslint-config/commit/e9027d5e20540dd6c6adb6a970a6dcbcf7314a81))
+
+
+
+
+
 # [0.9.0](https://github.com/antfu/eslint-config/compare/v0.8.2...v0.9.0) (2021-09-14)
 
 **Note:** Version bump only for package @antfu/eslint-config-react
