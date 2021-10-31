@@ -16,8 +16,8 @@ importers:
 
   packages/all:
     specifiers:
-      '@antfu/eslint-config-react': ^0.9.0
-      '@antfu/eslint-config-vue': ^0.9.0
+      '@antfu/eslint-config-react': ^0.10.0
+      '@antfu/eslint-config-vue': ^0.10.0
       '@typescript-eslint/eslint-plugin': ^5.0.0
       '@typescript-eslint/parser': ^5.0.0
       eslint: ^8.0.1
@@ -84,7 +84,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@antfu/eslint-config-ts': ^0.9.0
+      '@antfu/eslint-config-ts': ^0.10.0
       eslint: ^8.0.1
       eslint-plugin-react: ^7.26.1
       react: ^17.0.2
@@ -99,7 +99,7 @@ importers:
 
   packages/typescript:
     specifiers:
-      '@antfu/eslint-config-basic': ^0.9.0
+      '@antfu/eslint-config-basic': ^0.10.0
       '@typescript-eslint/eslint-plugin': ^5.0.0
       '@typescript-eslint/parser': ^5.0.0
       eslint: ^8.0.1
@@ -112,7 +112,7 @@ importers:
 
   packages/vue:
     specifiers:
-      '@antfu/eslint-config-ts': ^0.9.0
+      '@antfu/eslint-config-ts': ^0.10.0
       eslint: ^8.0.1
       eslint-plugin-vue: 7.19.1
     dependencies:
@@ -2230,7 +2230,8 @@ packages:
     dev: true
 
   /encoding/0.1.13:
-    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    resolution: {integrity: sha1-VldK/deR9UqOmyeFwFgqLSYhD6k=, tarball: encoding/download/encoding-0.1.13.tgz}
+    requiresBuild: true
     dependencies:
       iconv-lite: 0.6.2
     dev: true
@@ -5643,9 +5644,10 @@ packages:
     dev: true
 
   /uglify-js/3.10.0:
-    resolution: {integrity: sha512-Esj5HG5WAyrLIdYU74Z3JdG2PxdIusvj6IWHMtlyESxc7kcDz7zYlYjpnSokn1UbpV0d/QX9fan7gkCNd/9BQA==}
+    resolution: {integrity: sha1-OXp+bjHOggv9HLVbgE7hQMWHqec=, tarball: uglify-js/download/uglify-js-3.10.0.tgz}
     engines: {node: '>=0.8.0'}
     hasBin: true
+    requiresBuild: true
     dev: true
     optional: true
 
