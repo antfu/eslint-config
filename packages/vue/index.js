@@ -19,9 +19,9 @@ module.exports = {
   ],
   rules: {
     'vue/max-attributes-per-line': ['warn', { singleline: 5 }],
-    'vue/html-self-closing': 'off',
     'vue/no-v-html': 'off',
     'vue/require-prop-types': 'off',
     'vue/require-default-prop': 'off',
+    'vue/multi-word-component-names': 'off',
   },
 }
