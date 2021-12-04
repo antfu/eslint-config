@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/antfu/eslint-config/compare/v0.11.1...v0.12.0) (2021-12-04)
+
+
+### Features
+
+* rules for tests ([2e07691](https://github.com/antfu/eslint-config/commit/2e07691eebc3d74bf0c9d8b14cedc7ef7c89fbfb))
+
+
+
+
+
 # [0.11.0](https://github.com/antfu/eslint-config/compare/v0.10.0...v0.11.0) (2021-11-27)
 
 **Note:** Version bump only for package @antfu/eslint-config-basic
