@@ -93,6 +93,12 @@ module.exports = {
         'no-console': 'off',
       },
     },
+    {
+      files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
+      rules: {
+        'no-unused-expressions': 'off',
+      },
+    },
   ],
   rules: {
     // import
