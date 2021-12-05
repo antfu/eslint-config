@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/antfu/eslint-config/compare/v0.12.0...v0.12.1) (2021-12-05)
+
+
+### Bug Fixes
+
+* rules ([6373bc7](https://github.com/antfu/eslint-config/commit/6373bc7ec95fd97379ee6b550148fa34f0611ace))
+
+
+
+
+
 # [0.12.0](https://github.com/antfu/eslint-config/compare/v0.11.1...v0.12.0) (2021-12-04)
 
 
