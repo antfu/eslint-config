@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/antfu/eslint-config/compare/v0.13.0...v0.13.1) (2021-12-12)
+
+
+### Bug Fixes
+
+* `no-use-before-define` for functions ([0722603](https://github.com/antfu/eslint-config/commit/0722603cfee659abab80e9e7f30a8112702ccc12))
+
+
+
+
+
 # [0.13.0](https://github.com/antfu/eslint-config/compare/v0.12.2...v0.13.0) (2021-12-12)
 
 
