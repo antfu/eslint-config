@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/antfu/eslint-config/compare/v0.13.1...v0.14.0) (2021-12-18)
+
+
+### Features
+
+* enable sort-imports ([d45487e](https://github.com/antfu/eslint-config/commit/d45487e1f606ce88ca2e36b93953a1af4b726bc1))
+
+
+
+
+
 # [0.13.0](https://github.com/antfu/eslint-config/compare/v0.12.2...v0.13.0) (2021-12-12)
 
 
