@@ -18,7 +18,7 @@ module.exports = {
     '@antfu/eslint-config-ts',
   ],
   rules: {
-    'vue/max-attributes-per-line': ['warn', { singleline: 5 }],
+    'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
     'vue/require-prop-types': 'off',
     'vue/require-default-prop': 'off',
