@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/antfu/eslint-config/compare/v0.14.0...v0.14.1) (2021-12-27)
+
+
+### Bug Fixes
+
+* disable vue attrs wrap ([46e9ea3](https://github.com/antfu/eslint-config/commit/46e9ea35b9ba4d112cdd0290f0f3cd0309c79416))
+
+
+
+
+
 # [0.14.0](https://github.com/antfu/eslint-config/compare/v0.13.1...v0.14.0) (2021-12-18)
 
 **Note:** Version bump only for package @antfu/eslint-config-vue
