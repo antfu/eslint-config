@@ -132,7 +132,6 @@ module.exports = {
     'no-restricted-syntax': [
       'error',
       'DebuggerStatement',
-      'ForInStatement',
       'LabeledStatement',
       'WithStatement',
     ],
