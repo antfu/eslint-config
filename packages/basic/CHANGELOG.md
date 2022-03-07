@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/antfu/eslint-config/compare/v0.18.0...v0.18.1) (2022-03-07)
+
+
+### Bug Fixes
+
+* markdown parser ([a50bd85](https://github.com/antfu/eslint-config/commit/a50bd851d16a5d80b90a950a0466317e5c2f7575))
+
+
+
+
+
 # [0.18.0](https://github.com/antfu/eslint-config/compare/v0.17.0...v0.18.0) (2022-03-07)
 
 
