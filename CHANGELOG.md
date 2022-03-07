@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.3](https://github.com/antfu/eslint-config/compare/v0.18.2...v0.18.3) (2022-03-07)
+
+
+### Bug Fixes
+
+* disable no-callback-literal ([8e1140a](https://github.com/antfu/eslint-config/commit/8e1140aef29d3562eac9f009f45c7160494eec67))
+
+
+
+
+
 ## [0.18.2](https://github.com/antfu/eslint-config/compare/v0.18.1...v0.18.2) (2022-03-07)
 
 
