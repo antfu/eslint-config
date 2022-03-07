@@ -115,8 +115,11 @@ module.exports = {
       rules: {
         'no-unused-vars': 'off',
         'no-undef': 'off',
+        'no-console': 'off',
         'no-unused-expressions': 'off',
         'import/no-unresolved': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
       },
     },
   ],
