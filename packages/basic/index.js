@@ -10,6 +10,16 @@ module.exports = {
     'plugin:eslint-comments/recommended',
     'plugin:jsonc/recommended-with-jsonc',
     'plugin:yml/standard',
+    'plugin:markdown/recommended',
+  ],
+  ignorePatterns: [
+    '.cache',
+    '*.min.*',
+    'CHANGELOG.md',
+    'dist',
+    'LICENSE.*',
+    'public',
+    'temp',
   ],
   plugins: [
     'html',
@@ -88,7 +98,7 @@ module.exports = {
       },
     },
     {
-      files: ['scripts/**/*.*'],
+      files: ['scripts/**/*.*', 'cli.*'],
       rules: {
         'no-console': 'off',
       },
@@ -97,6 +107,20 @@ module.exports = {
       files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
       rules: {
         'no-unused-expressions': 'off',
+      },
+    },
+    {
+      files: ['*.md'],
+      parser: 'markdown-eslint-parser',
+    },
+    {
+      // Code blocks in markdown file
+      files: ['**/*.md/*.*'],
+      rules: {
+        'no-unused-vars': 'off',
+        'no-undef': 'off',
+        'no-unused-expressions': 'off',
+        'import/no-unresolved': 'off',
       },
     },
   ],
