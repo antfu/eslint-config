@@ -110,10 +110,6 @@ module.exports = {
       },
     },
     {
-      files: ['*.md'],
-      parser: 'markdown-eslint-parser',
-    },
-    {
       // Code blocks in markdown file
       files: ['**/*.md/*.*'],
       rules: {
