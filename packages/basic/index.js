@@ -20,6 +20,7 @@ module.exports = {
     'LICENSE.*',
     'public',
     'temp',
+    '!.vitepress',
   ],
   plugins: [
     'html',
