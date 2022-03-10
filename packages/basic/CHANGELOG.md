@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.6](https://github.com/antfu/eslint-config/compare/v0.18.5...v0.18.6) (2022-03-10)
+
+
+### Bug Fixes
+
+* ignore lock files ([98708f1](https://github.com/antfu/eslint-config/commit/98708f19962c2544ed5fb3385c9cd0054b44c981))
+
+
+
+
+
 ## [0.18.5](https://github.com/antfu/eslint-config/compare/v0.18.4...v0.18.5) (2022-03-10)
 
 
