@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.8](https://github.com/antfu/eslint-config/compare/v0.18.7...v0.18.8) (2022-03-10)
+
+
+### Bug Fixes
+
+* disable `spaced-comment` in yaml ([a3c897a](https://github.com/antfu/eslint-config/commit/a3c897a9ece0b15508564aa3dc1837eaaa161680))
+* disable no-var-requires in markdown ([774757b](https://github.com/antfu/eslint-config/commit/774757b0e5142f44678b1bd6f0db04aff0a5ee1f))
+
+
+
+
+
 ## [0.18.7](https://github.com/antfu/eslint-config/compare/v0.18.6...v0.18.7) (2022-03-10)
 
 
