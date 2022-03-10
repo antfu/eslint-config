@@ -20,6 +20,8 @@ module.exports = {
     'public',
     'temp',
     '!.vitepress',
+    '!.github',
+    '!.vscode',
   ],
   plugins: [
     'html',
@@ -266,5 +268,8 @@ module.exports = {
         allowSeparatedGroups: false,
       },
     ],
+
+    // yml
+    'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
   },
 }
