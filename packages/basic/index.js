@@ -51,6 +51,9 @@ module.exports = {
     {
       files: ['*.yaml', '*.yml'],
       parser: 'yaml-eslint-parser',
+      rules: {
+        'spaced-comment': 'off',
+      },
     },
     {
       files: ['package.json'],
