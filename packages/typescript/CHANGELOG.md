@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.7](https://github.com/antfu/eslint-config/compare/v0.18.6...v0.18.7) (2022-03-10)
+
+
+### Features
+
+* improve `no-unused-vars` rule ([2e962a2](https://github.com/antfu/eslint-config/commit/2e962a278571113853435221e8c3d43bd9fa1421))
+
+
+
+
+
 ## [0.18.6](https://github.com/antfu/eslint-config/compare/v0.18.5...v0.18.6) (2022-03-10)
 
 **Note:** Version bump only for package @antfu/eslint-config-ts
