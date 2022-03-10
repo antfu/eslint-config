@@ -2,6 +2,13 @@
 
 [![npm](https://img.shields.io/npm/v/@antfu/eslint-config)](https://npmjs.com/package/@antfu/eslint-config)
 
+- Single quotes, no semi
+- Auto fix for formatting (aimed to be used standalone without Prettier)
+- TypeScript, Vue, React out-of-box
+- Lint also for json, yaml, markdown
+- Sorted imports, dangling commas for cleaner commit diff
+- Reasonable defaults, best practices, only one-line of config
+
 ## Usage
 
 ### Install
@@ -17,6 +24,8 @@ pnpm add -D eslint @antfu/eslint-config
   "extends": "@antfu"
 }
 ```
+
+> You don't need `.eslintignore` normally as it has been provided by the preset.
 
 ### Add script for package.json
 
