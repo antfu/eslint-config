@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.4](https://github.com/antfu/eslint-config/compare/v0.18.3...v0.18.4) (2022-03-10)
+
+
+### Bug Fixes
+
+* imporve markdown rules ([e54ac17](https://github.com/antfu/eslint-config/commit/e54ac17e09090fd6ff18e65ecaf312b2a0556aa6))
+* lint vitepress by default ([8f51445](https://github.com/antfu/eslint-config/commit/8f51445a6781c98163a439b25b4fa1c1a6649110))
+* package.json key orders ([b6133dc](https://github.com/antfu/eslint-config/commit/b6133dcd42b1b051e4bd150897c9b307e61eda51))
+
+
+
+
+
 ## [0.18.3](https://github.com/antfu/eslint-config/compare/v0.18.2...v0.18.3) (2022-03-07)
 
 
