@@ -1,6 +1,6 @@
 # @antfu/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config)](https://npmjs.com/package/@antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@antfu/eslint-config)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone without Prettier)
@@ -51,3 +51,13 @@ Create `.vscode/settings.json`
   }
 }
 ```
+
+## Check Also
+
+- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
+- [antfu/ts-starter](https://github.com/antfu/ts-starter) - My starter template for TypeScript library
+- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
+
+## License
+
+MIT
