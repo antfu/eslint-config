@@ -130,6 +130,7 @@ module.exports = {
         '@typescript-eslint/no-redeclare': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
         'import/no-unresolved': 'off',
         'no-alert': 'off',
         'no-console': 'off',
