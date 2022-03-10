@@ -14,17 +14,8 @@ pnpm add -D eslint @antfu/eslint-config
 
 ```json
 {
-  "extends": [
-    "@antfu"
-  ]
+  "extends": "@antfu"
 }
-```
-
-### Config `.eslintignore`
-
-```txt
-dist
-public
 ```
 
 ### Add script for package.json
@@ -34,7 +25,7 @@ For example:
 ```json
 {
   "scripts": {
-    "lint": "eslint \"**/*.{vue,ts,js}\""
+    "lint": "eslint ."
   }
 }
 ```
