@@ -23,5 +23,8 @@ module.exports = {
     'vue/require-prop-types': 'off',
     'vue/require-default-prop': 'off',
     'vue/multi-word-component-names': 'off',
+
+    // reactivity transform
+    'vue/no-setup-props-destructure': 'off',
   },
 }
