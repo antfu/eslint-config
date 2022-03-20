@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.9](https://github.com/antfu/eslint-config/compare/v0.18.8...v0.18.9) (2022-03-20)
+
+
+### Bug Fixes
+
+* **vue:** disable `vue/no-setup-props-destructure` ([0a1f8c5](https://github.com/antfu/eslint-config/commit/0a1f8c56124ac1735e7b26879ac3e6ab9289ca74))
+
+
+
+
+
 ## [0.18.8](https://github.com/antfu/eslint-config/compare/v0.18.7...v0.18.8) (2022-03-10)
 
 **Note:** Version bump only for package @antfu/eslint-config-vue

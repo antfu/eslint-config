@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.9](https://github.com/antfu/eslint-config/compare/v0.18.8...v0.18.9) (2022-03-20)
+
+
+### Bug Fixes
+
+* disable `yml/no-empty-document` ([73a790c](https://github.com/antfu/eslint-config/commit/73a790c1d08f9ce9837cbad03d3f8b68a6b9a5f8))
+
+
+
+
+
 ## [0.18.8](https://github.com/antfu/eslint-config/compare/v0.18.7...v0.18.8) (2022-03-10)
 
 
