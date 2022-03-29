@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/antfu/eslint-config/compare/v0.18.9...v0.19.0) (2022-03-29)
+
+
+### Features
+
+* vue sfc tags order ([d4538f4](https://github.com/antfu/eslint-config/commit/d4538f42b14d0f7c824795945ffa556d585ceb06))
+
+
+
+
+
 ## [0.18.9](https://github.com/antfu/eslint-config/compare/v0.18.8...v0.18.9) (2022-03-20)
 
 
