@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/antfu/eslint-config/compare/v0.19.0...v0.19.1) (2022-03-30)
+
+**Note:** Version bump only for package @antfu/eslint-config-react
+
+
+
+
+
 # [0.19.0](https://github.com/antfu/eslint-config/compare/v0.18.9...v0.19.0) (2022-03-29)
 
 **Note:** Version bump only for package @antfu/eslint-config-react
