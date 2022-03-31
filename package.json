@@ -1,17 +1,17 @@
 {
   "name": "@antfu/eslint-config-monorepo",
+  "version": "0.19.1",
   "private": true,
   "license": "MIT",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
-    "release": "lerna publish --conventional-commits"
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
   "devDependencies": {
     "@antfu/eslint-config": "*",
+    "bumpp": "^7.1.1",
     "eslint": "^8.12.0",
-    "lerna": "^4.0.0",
     "typescript": "^4.6.3"
   }
 }
