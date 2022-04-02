@@ -18,12 +18,14 @@
   "scripts": {
     "build": "rimraf dist && unbuild",
     "stub": "unbuild --stub",
+    "test": "vitest",
     "prepublishOnly": "nr build"
   },
   "dependencies": {
     "@typescript-eslint/utils": "^5.17.0"
   },
   "devDependencies": {
-    "unbuild": "^0.7.0"
+    "unbuild": "^0.7.0",
+    "vitest": "^0.8.2"
   }
 }
