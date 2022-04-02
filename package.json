@@ -1,12 +1,12 @@
 {
   "name": "@antfu/eslint-config-monorepo",
-  "version": "0.19.2",
+  "version": "0.19.3",
   "private": true,
   "license": "MIT",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "scripts": {
     "lint": "eslint .",
-    "prepare":"pnpm -r run stub",
+    "prepare": "pnpm -r run stub",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
   "devDependencies": {
