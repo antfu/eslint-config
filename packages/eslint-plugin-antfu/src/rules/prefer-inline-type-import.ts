@@ -26,6 +26,9 @@ export default createEslintRule<Options, MessageIds>({
     const sourceCode = context.getSourceCode()
     return {
       ImportDeclaration: (node) => {
+        // ignore bare type imports
+        if (node.specifiers.length === 1 && ['ImportNamespaceSpecifier', 'ImportDefaultSpecifier'].includes(node.specifiers[0].type))
+          return
         if (node.importKind === 'type') {
           context.report({
             *fix(fixer) {
