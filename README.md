@@ -34,7 +34,8 @@ For example:
 ```json
 {
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
 ```
