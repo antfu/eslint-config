@@ -29,7 +29,12 @@ module.exports = {
     // Override JS
     'no-useless-constructor': 'off',
     'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/indent': ['error', 2, {
+      ignoredNodes: [
+        'JSXAttribute',
+        'TSTypeParameterInstantiation',
+      ],
+    }],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'no-redeclare': 'off',
