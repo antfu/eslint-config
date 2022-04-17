@@ -34,6 +34,7 @@ module.exports = {
         'JSXAttribute',
         'TSTypeParameterInstantiation',
       ],
+      SwitchCase: 1,
     }],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
