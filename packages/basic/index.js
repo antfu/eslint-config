@@ -293,7 +293,8 @@ module.exports = {
 
     // antfu
     'antfu/no-leading-newline': 'error',
-    'antfu/if-newline': 'error',
+    // 'antfu/if-newline': 'error',
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
     // 'antfu/prefer-inline-type-import': 'error',
   },
 }
