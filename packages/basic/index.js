@@ -184,6 +184,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
     'space-before-function-paren': ['error', 'never'],
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
 
     // es6
     'no-var': 'error',
@@ -292,9 +293,8 @@ module.exports = {
     'yml/no-empty-document': 'off',
 
     // antfu
-    'antfu/no-leading-newline': 'error',
-    // 'antfu/if-newline': 'error',
-    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
+    // 'antfu/no-leading-newline': 'error',
+    'antfu/if-newline': 'error',
     // 'antfu/prefer-inline-type-import': 'error',
   },
 }
