@@ -186,10 +186,10 @@ module.exports = {
     'space-before-function-paren': [
       'error',
       {
-        'anonymous': 'always',
-        'named': 'never',
-        'asyncArrow': 'always'
-      }
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
     ],
     'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
 
@@ -300,8 +300,8 @@ module.exports = {
     'yml/no-empty-document': 'off',
 
     // antfu
-    // 'antfu/no-leading-newline': 'error',
     'antfu/if-newline': 'error',
+    'antfu/import-dedupe': 'error',
     // 'antfu/prefer-inline-type-import': 'error',
   },
 }
