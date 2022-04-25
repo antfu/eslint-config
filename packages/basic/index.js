@@ -44,9 +44,9 @@ module.exports = {
       files: ['*.json', '*.json5'],
       parser: 'jsonc-eslint-parser',
       rules: {
-        'quotes': ['error', 'double'],
-        'quote-props': ['error', 'always'],
-        'comma-dangle': ['error', 'never'],
+        'jsonc/quotes': ['error', 'double'],
+        'jsonc/quote-props': ['error', 'always'],
+        'jsonc/comma-dangle': ['error', 'never'],
       },
     },
     {
