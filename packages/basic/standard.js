@@ -205,10 +205,10 @@ module.exports = {
     'space-before-function-paren': [
       'error',
       {
-        'anonymous': 'always',
-        'named': 'never',
-        'asyncArrow': 'always'
-      }
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
     ],
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
