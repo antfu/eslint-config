@@ -265,7 +265,7 @@ module.exports = {
     // Uppercase regex escapes
     'unicorn/escape-case': 'error',
     // Array.isArray instead of instanceof
-    'unicorn/no-array-instanceof': 'error',
+    'unicorn/no-instanceof-array': 'error',
     // Prevent deprecated `new Buffer()`
     'unicorn/no-new-buffer': 'error',
     // Keep regex literals safe!
