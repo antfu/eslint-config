@@ -223,6 +223,7 @@ module.exports = {
         avoidQuotes: true,
       },
     ],
+    'prefer-exponentiation-operator': 'error',
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
     'prefer-template': 'error',
@@ -272,8 +273,6 @@ module.exports = {
     'unicorn/no-unsafe-regex': 'off',
     // Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
     'unicorn/number-literal-case': 'error',
-    // ** instead of Math.pow()
-    'unicorn/prefer-exponentiation-operator': 'error',
     // includes over indexOf when checking for existence
     'unicorn/prefer-includes': 'error',
     // String methods startsWith/endsWith instead of more complicated stuff
