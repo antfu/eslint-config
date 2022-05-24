@@ -1,10 +1,12 @@
 {
   "name": "@antfu/eslint-config-vue",
-  "version": "0.24.1",
+  "version": "0.24.2",
   "description": "",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
-  "keywords": ["eslint-config"],
+  "keywords": [
+    "eslint-config"
+  ],
   "main": "index.js",
   "files": [
     "index.js"
@@ -12,7 +14,6 @@
   "peerDependencies": {
     "eslint": ">=7.4.0"
   },
-
   "dependencies": {
     "@antfu/eslint-config-ts": "workspace:*",
     "eslint-plugin-vue": "^9.0.1"
