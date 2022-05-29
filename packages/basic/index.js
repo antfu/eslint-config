@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     node: true,
   },
+  reportUnusedDisableDirectives: true,
   extends: [
     './standard',
     'plugin:import/recommended',
