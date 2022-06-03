@@ -21,7 +21,6 @@ module.exports = {
     '@typescript-eslint/type-annotation-spacing': ['error', {}],
     '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', disallowTypeAnnotations: false }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
 
     // Override JS
@@ -113,6 +112,7 @@ module.exports = {
     // '@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
 
     // off
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
