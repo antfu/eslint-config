@@ -63,4 +63,4 @@ Create `.vscode/settings.json`
 
 ## License
 
-MIT
+[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
