@@ -23,7 +23,7 @@ module.exports = {
     'coverage',
     'public',
     'temp',
-    'packages-lock.json',
+    'package-lock.json',
     'pnpm-lock.yaml',
     'yarn.lock',
     '__snapshots__',
