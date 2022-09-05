@@ -14,6 +14,7 @@ module.exports = {
     'plugin:markdown/recommended',
   ],
   ignorePatterns: [
+    '*.thrift',
     '*.min.*',
     '*.d.ts',
     'CHANGELOG.md',
