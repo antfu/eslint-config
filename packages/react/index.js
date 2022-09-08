@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     '@antfu/eslint-config-ts',
   ],
   settings: {
