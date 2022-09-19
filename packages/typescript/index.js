@@ -105,7 +105,7 @@ module.exports = {
     '@typescript-eslint/no-loss-of-precision': 'error',
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-    
+
     // The following rule overrides require a parser service, aka. require a `typescript.json` path.
     // This needs to be done individually for each project, and it slows down linting significantly.
     // 'no-throw-literal': 'off',
