@@ -100,11 +100,13 @@ importers:
       '@antfu/eslint-config-ts': workspace:*
       eslint: ^8.23.0
       eslint-plugin-react: ^7.31.1
+      eslint-plugin-react-hooks: ^4.6.0
       react: ^18.2.0
       typescript: ^4.8.2
     dependencies:
       '@antfu/eslint-config-ts': link:../typescript
       eslint-plugin-react: 7.31.1_eslint@8.23.0
+      eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
     devDependencies:
       eslint: 8.23.0
       react: 18.2.0
@@ -1854,6 +1856,15 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.23.0
+    dev: false
+
+  /eslint-plugin-react-hooks/4.6.0_eslint@8.23.0:
+    resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
     dependencies:
       eslint: 8.23.0
     dev: false
