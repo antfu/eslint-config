@@ -247,6 +247,12 @@ module.exports = {
         avoidQuotes: true,
       },
     ],
+    'prefer-destructuring': ['error', {
+      array: true,
+      object: true
+    }, {
+      enforceForRenamedProperties: false
+    }],
     'prefer-exponentiation-operator': 'error',
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
