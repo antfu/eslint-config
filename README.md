@@ -54,6 +54,10 @@ Create `.vscode/settings.json`
 }
 ```
 
+## Extended Reading
+
+Learn more about the context - [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier).
+
 ## Check Also
 
 - [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
