@@ -11,6 +11,7 @@
 <div align='left'>
 <a href="README.md">English</a> | <b>简体中文</b>
 </div>
+<br>
 
 ## 特性
 
@@ -52,7 +53,7 @@ pnpm add -D eslint @antfu/eslint-config
 }
 ```
 
-###  在Vscode中 配置自动修复
+###  在VS Code中 配置自动修复
 
 创建 `.vscode/settings.json`
 

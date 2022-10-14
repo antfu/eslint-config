@@ -11,6 +11,7 @@
 <div align='left'>
 <b>English</b> | <a href="README.zh-cn.md">简体中文</a>
 </div>
+<br>
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone without Prettier)
