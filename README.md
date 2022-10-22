@@ -42,7 +42,9 @@ For example:
 
 ### Config VS Code auto fix
 
-Create `.vscode/settings.json`
+#### Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+#### Create `.vscode/settings.json`
 
 ```json
 {
@@ -53,6 +55,7 @@ Create `.vscode/settings.json`
   }
 }
 ```
+
 
 ## Extended Reading
 
