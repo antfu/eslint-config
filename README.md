@@ -56,7 +56,6 @@ For example:
 }
 ```
 
-
 ## Extended Reading
 
 Learn more about the context - [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier).
@@ -65,7 +64,6 @@ Learn more about the context - [Why I don't use Prettier](https://antfu.me/posts
 
 - [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
 - [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/eslint-config](https://github.com/antfu/eslint-config) - My ESLint config
 - [antfu/ts-starter](https://github.com/antfu/ts-starter) - My starter template for TypeScript library
 - [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
 
