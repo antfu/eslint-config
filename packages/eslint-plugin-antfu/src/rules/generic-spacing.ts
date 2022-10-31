@@ -48,7 +48,8 @@ export default createEslintRule<Options, MessageIds>({
       TSTypeParameter: (node) => {
         if (!node.default)
           return
-        const from = node.name.range[1]
+        const endNode = node.constraint || node.name
+        const from = endNode.range[1]
         const to = node.default.range[0]
         if (sourceCode.text.slice(from, to) !== ' = ') {
           context.report({
@@ -56,7 +57,7 @@ export default createEslintRule<Options, MessageIds>({
               yield fixer.replaceTextRange([from, to], ' = ')
             },
             loc: {
-              start: node.name.loc.end,
+              start: endNode.loc.end,
               end: node.default.loc.start,
             },
             messageId: 'genericSpacingMismatch',

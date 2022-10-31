@@ -9,6 +9,7 @@ type Foo<
   T = true,
   K = false
 > = T`,
+  'type Foo<T extends true = true> = T',
 ]
 const invalids = [
   ['type Foo<T=true> = T', 'type Foo<T = true> = T'],
