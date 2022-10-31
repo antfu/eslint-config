@@ -63,6 +63,7 @@ importers:
       eslint-plugin-jsonc: ^2.4.0
       eslint-plugin-markdown: ^3.0.0
       eslint-plugin-n: ^15.2.5
+      eslint-plugin-no-only-tests: ^3.1.0
       eslint-plugin-promise: ^6.0.1
       eslint-plugin-unicorn: ^43.0.2
       eslint-plugin-yml: ^1.1.0
@@ -76,6 +77,7 @@ importers:
       eslint-plugin-jsonc: 2.4.0_eslint@8.23.0
       eslint-plugin-markdown: 3.0.0_eslint@8.23.0
       eslint-plugin-n: 15.2.5_eslint@8.23.0
+      eslint-plugin-no-only-tests: 3.1.0
       eslint-plugin-promise: 6.0.1_eslint@8.23.0
       eslint-plugin-unicorn: 43.0.2_eslint@8.23.0
       eslint-plugin-yml: 1.1.0_eslint@8.23.0
@@ -1866,6 +1868,11 @@ packages:
       minimatch: 3.1.2
       resolve: 1.22.1
       semver: 7.3.7
+    dev: false
+
+  /eslint-plugin-no-only-tests/3.1.0:
+    resolution: {integrity: sha512-Lf4YW/bL6Un1R6A76pRZyE1dl1vr31G/ev8UzIc/geCgFWyrKil8hVjYqWVKGB/UIGmb6Slzs9T0wNezdSVegw==}
+    engines: {node: '>=5.0.0'}
     dev: false
 
   /eslint-plugin-promise/6.0.1_eslint@8.23.0:
