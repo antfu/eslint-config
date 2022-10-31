@@ -106,6 +106,9 @@ module.exports = {
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
 
+    // antfu
+    'antfu/generic-spacing': 'error',
+
     // The following rule overrides require a parser service, aka. require a `typescript.json` path.
     // This needs to be done individually for each project, and it slows down linting significantly.
     // 'no-throw-literal': 'off',
