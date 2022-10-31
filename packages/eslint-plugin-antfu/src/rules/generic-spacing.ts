@@ -23,6 +23,20 @@ export default createEslintRule<Options, MessageIds>({
     const sourceCode = context.getSourceCode()
     return {
       TSTypeParameterDeclaration: (node) => {
+        const pre = sourceCode.text.slice(0, node.range[0])
+        const preSpace = pre.match(/(\s+)$/)?.[0]
+        // strip space before <T>
+        if (preSpace && preSpace.length) {
+          context.report({
+            node,
+            messageId: 'genericSpacingMismatch',
+            *fix(fixer) {
+              yield fixer.replaceTextRange([node.range[0] - preSpace.length, node.range[0]], '')
+            },
+          })
+        }
+
+        // add space between <T,K>
         const params = node.params
         for (let i = 1; i < params.length; i++) {
           const prev = params[i - 1]
@@ -45,6 +59,7 @@ export default createEslintRule<Options, MessageIds>({
           }
         }
       },
+      // add space around = in type Foo<T = true>
       TSTypeParameter: (node) => {
         if (!node.default)
           return

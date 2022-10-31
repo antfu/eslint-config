@@ -4,17 +4,21 @@ import rule, { RULE_NAME } from './generic-spacing'
 
 const valids = [
   'type Foo<T = true> = T',
+  'type Foo<T extends true = true> = T',
   `
 type Foo<
   T = true,
   K = false
 > = T`,
-  'type Foo<T extends true = true> = T',
+  `function foo<
+  T
+>() {}`,
 ]
 const invalids = [
   ['type Foo<T=true> = T', 'type Foo<T = true> = T'],
   ['type Foo<T,K> = T', 'type Foo<T, K> = T'],
   ['type Foo<T=false,K=1|2> = T', 'type Foo<T = false, K = 1|2> = T', 3],
+  ['function foo <T>() {}', 'function foo<T>() {}'],
 ] as const
 
 it('runs', () => {
