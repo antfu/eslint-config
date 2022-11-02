@@ -13,12 +13,24 @@ type Foo<
   `function foo<
   T
 >() {}`,
+  'const foo = <T>(name: T) => name',
+  `interface Log {
+    foo<T>(name: T): void
+  }`,
+  `interface Log {
+  <T>(name: T): void
+}`,
 ]
 const invalids = [
   ['type Foo<T=true> = T', 'type Foo<T = true> = T'],
   ['type Foo<T,K> = T', 'type Foo<T, K> = T'],
   ['type Foo<T=false,K=1|2> = T', 'type Foo<T = false, K = 1|2> = T', 3],
   ['function foo <T>() {}', 'function foo<T>() {}'],
+  [`interface Log {
+  foo <T>(name: T): void
+}`, `interface Log {
+  foo<T>(name: T): void
+}`],
 ] as const
 
 it('runs', () => {
