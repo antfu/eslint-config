@@ -23,7 +23,7 @@ export default createEslintRule<Options, MessageIds>({
     const sourceCode = context.getSourceCode()
     return {
       TSTypeParameterDeclaration: (node) => {
-        if (!['TSCallSignatureDeclaration', 'ArrowFunctionExpression'].includes(node.parent.type)) {
+        if (!['TSCallSignatureDeclaration', 'ArrowFunctionExpression', 'TSFunctionType'].includes(node.parent.type)) {
           const pre = sourceCode.text.slice(0, node.range[0])
           const preSpace = pre.match(/(\s+)$/)?.[0]
           // strip space before <T>

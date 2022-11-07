@@ -20,6 +20,9 @@ type Foo<
   `interface Log {
   <T>(name: T): void
 }`,
+`interface Foo {
+  foo?: <T>(name: T) => void
+}`,
 ]
 const invalids = [
   ['type Foo<T=true> = T', 'type Foo<T = true> = T'],
