@@ -131,14 +131,18 @@ importers:
 
   packages/vue:
     specifiers:
+      '@antfu/eslint-config-basic': workspace:*
       '@antfu/eslint-config-ts': workspace:*
       eslint: ^8.23.0
       eslint-plugin-vue: ^9.4.0
+      local-pkg: ^0.4.2
     dependencies:
+      '@antfu/eslint-config-basic': link:../basic
       '@antfu/eslint-config-ts': link:../typescript
       eslint-plugin-vue: 9.4.0_eslint@8.23.0
     devDependencies:
       eslint: 8.23.0
+      local-pkg: 0.4.2
 
 packages:
 
