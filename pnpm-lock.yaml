@@ -140,9 +140,9 @@ importers:
       '@antfu/eslint-config-basic': link:../basic
       '@antfu/eslint-config-ts': link:../typescript
       eslint-plugin-vue: 9.7.0_eslint@8.27.0
+      local-pkg: 0.4.2
     devDependencies:
       eslint: 8.27.0
-      local-pkg: 0.4.2
 
 packages:
 
@@ -2679,7 +2679,6 @@ packages:
   /local-pkg/0.4.2:
     resolution: {integrity: sha512-mlERgSPrbxU3BP4qBqAvvwlgW4MTg78iwJdGGnv7kibKjWcJksrG3t6LB5lXI93wXRDvG4NpUgJFmTG4T6rdrg==}
     engines: {node: '>=14'}
-    dev: true
 
   /locate-path/2.0.0:
     resolution: {integrity: sha1-K1aLJl7slExtnA3pw9u7ygNUzY4=}
