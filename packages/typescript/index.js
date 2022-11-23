@@ -1,3 +1,5 @@
+const fs = require('fs')
+const { join } = require('path')
 const basic = require('@antfu/eslint-config-basic')
 
 module.exports = {
@@ -11,7 +13,30 @@ module.exports = {
       node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
     },
   },
-  overrides: basic.overrides,
+  overrides: basic.overrides.concat(
+    !fs.existsSync(join(process.cwd(), 'tsconfig.json'))
+      ? []
+      : [{
+          parserOptions: {
+            tsconfigRootDir: process.cwd(),
+            project: ['tsconfig.json'],
+          },
+          parser: '@typescript-eslint/parser',
+          excludedFiles: ['**/*.md/*.*'],
+          files: ['*.ts', '*.tsx'],
+          rules: {
+            'no-throw-literal': 'off',
+            '@typescript-eslint/no-throw-literal': 'error',
+            'no-implied-eval': 'off',
+            '@typescript-eslint/no-implied-eval': 'error',
+            'dot-notation': 'off',
+            '@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
+            'no-void': ['error', { 'allowAsStatement': true }],
+            '@typescript-eslint/no-floating-promises': 'error',
+            '@typescript-eslint/no-misused-promises': 'error',
+          },
+        }],
+  ),
   rules: {
     'import/named': 'off',
 
@@ -108,17 +133,6 @@ module.exports = {
 
     // antfu
     'antfu/generic-spacing': 'error',
-
-    // The following rule overrides require a parser service, aka. require a `typescript.json` path.
-    // This needs to be done individually for each project, and it slows down linting significantly.
-    // 'no-throw-literal': 'off',
-    // '@typescript-eslint/no-throw-literal': 'error',
-    // 'no-implied-eval': 'off',
-    // '@typescript-eslint/no-implied-eval': 'error',
-    // 'dot-notation': 'off',
-    // '@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
-    // '@typescript-eslint/no-floating-promises': 'error',
-    // '@typescript-eslint/no-misused-promises': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
