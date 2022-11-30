@@ -6,8 +6,9 @@
 - Auto fix for formatting (aimed to be used standalone without Prettier)
 - Designed to work with TypeScript, Vue out-of-box
 - Lint also for json, yaml, markdown
-- Sorted imports, dangling commas for cleaner commit diff
+- Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
+- **Style principle**: Minimal for reading, stable for diff
 
 ## Usage
 
