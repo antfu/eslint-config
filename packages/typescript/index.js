@@ -19,11 +19,11 @@ module.exports = {
       : [{
           parserOptions: {
             tsconfigRootDir: process.cwd(),
-            project: ['tsconfig.json'],
+            project: ['tsconfig.eslint.json'],
           },
           parser: '@typescript-eslint/parser',
           excludedFiles: ['**/*.md/*.*'],
-          files: ['*.ts', '*.tsx'],
+          files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
           rules: {
             'no-throw-literal': 'off',
             '@typescript-eslint/no-throw-literal': 'error',
