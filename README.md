@@ -54,6 +54,10 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 }
 ```
 
+### TypeScript Aware Rules
+
+Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root. Refer to [this file](https://github.com/antfu/eslint-config/blob/main/packages/typescript/index.js#L17).
+
 ## Extended Reading
 
 Learn more about the context - [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier).
