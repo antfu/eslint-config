@@ -57,7 +57,16 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 
 ### TypeScript Aware Rules
 
-Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root. Refer to [this file](https://github.com/antfu/eslint-config/blob/main/packages/typescript/index.js#L17).
+Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root. If you want to enable it while have no `tsconfig.eslint.json` in the project root, you can change tsconfig name by modifying `ESLINT_TSCONFIG` env. 
+
+```js
+// .eslintrc.js
+process.env['ESLINT_TSCONFIG'] = 'tsconfig.json'
+
+module.exports = {
+  extends: '@antfu'
+}
+```
 
 ## Extended Reading
 
