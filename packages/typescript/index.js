@@ -2,7 +2,7 @@ const fs = require('fs')
 const { join } = require('path')
 const basic = require('@antfu/eslint-config-basic')
 
-const tsconfig = process.env['ESLINT_TSCONFIG'] || 'tsconfig.eslint.json'
+const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
 
 module.exports = {
   extends: [
