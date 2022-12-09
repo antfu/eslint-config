@@ -20,6 +20,7 @@ module.exports = {
     'dist',
     'LICENSE*',
     'output',
+    'out',
     'coverage',
     'public',
     'temp',
@@ -31,12 +32,7 @@ module.exports = {
     '!.vitepress',
     '!.vscode',
   ],
-  plugins: [
-    'html',
-    'unicorn',
-    'antfu',
-    'no-only-tests',
-  ],
+  plugins: ['html', 'unicorn', 'antfu', 'no-only-tests'],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs'] },
@@ -125,11 +121,7 @@ module.exports = {
           },
           {
             pathPattern: '^exports.*$',
-            order: [
-              'types',
-              'require',
-              'import',
-            ],
+            order: ['types', 'require', 'import'],
           },
         ],
       },
@@ -187,16 +179,16 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
-    'semi': ['error', 'never'],
-    'curly': ['error', 'multi-or-nest', 'consistent'],
-    'quotes': ['error', 'single'],
+    semi: ['error', 'never'],
+    curly: ['error', 'multi-or-nest', 'consistent'],
+    quotes: ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
     'no-param-reassign': 'off',
     'array-bracket-spacing': ['error', 'never'],
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'block-spacing': ['error', 'always'],
-    'camelcase': 'off',
+    camelcase: 'off',
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
@@ -206,13 +198,8 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
-    'no-restricted-syntax': [
-      'error',
-      'DebuggerStatement',
-      'LabeledStatement',
-      'WithStatement',
-    ],
+    indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
     'space-before-function-paren': [
@@ -256,24 +243,28 @@ module.exports = {
     'template-curly-spacing': 'error',
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'generator-star-spacing': 'off',
-    'spaced-comment': ['error', 'always', {
-      line: {
-        markers: ['/'],
-        exceptions: ['/', '#'],
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        line: {
+          markers: ['/'],
+          exceptions: ['/', '#'],
+        },
+        block: {
+          markers: ['!'],
+          exceptions: ['*'],
+          balanced: true,
+        },
       },
-      block: {
-        markers: ['!'],
-        exceptions: ['*'],
-        balanced: true,
-      },
-    }],
+    ],
 
     // best-practice
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-return': 'off',
-    'complexity': ['off', 11],
-    'eqeqeq': ['error', 'smart'],
+    complexity: ['off', 11],
+    eqeqeq: ['error', 'smart'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
     'no-multi-spaces': 'error',
