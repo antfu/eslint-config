@@ -169,6 +169,7 @@ module.exports = {
         '@typescript-eslint/no-use-before-define': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/comma-dangle': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
         'import/no-unresolved': 'off',
         'no-alert': 'off',
         'no-console': 'off',
