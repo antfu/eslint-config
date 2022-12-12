@@ -2,6 +2,8 @@ const fs = require('fs')
 const { join } = require('path')
 const basic = require('@antfu/eslint-config-basic')
 
+const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json'
+
 module.exports = {
   extends: [
     '@antfu/eslint-config-basic',
@@ -14,12 +16,12 @@ module.exports = {
     },
   },
   overrides: basic.overrides.concat(
-    !fs.existsSync(join(process.cwd(), 'tsconfig.eslint.json'))
+    !fs.existsSync(join(process.cwd(), tsconfig))
       ? []
       : [{
           parserOptions: {
             tsconfigRootDir: process.cwd(),
-            project: ['tsconfig.eslint.json'],
+            project: [tsconfig],
           },
           parser: '@typescript-eslint/parser',
           excludedFiles: ['**/*.md/*.*'],
