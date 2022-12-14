@@ -122,10 +122,12 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.46.0
       '@typescript-eslint/parser': ^5.46.0
       eslint: ^8.29.0
+      eslint-plugin-jest: ^27.1.6
     dependencies:
       '@antfu/eslint-config-basic': link:../basic
       '@typescript-eslint/eslint-plugin': 5.46.0_jx43xxcguvnqqmtmaaygwl7cmu
       '@typescript-eslint/parser': 5.46.0_eslint@8.29.0
+      eslint-plugin-jest: 27.1.6_az5lmaeuvswqhyu3aute3pgqim
     devDependencies:
       eslint: 8.29.0
 
@@ -1847,6 +1849,27 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: false
+
+  /eslint-plugin-jest/27.1.6_az5lmaeuvswqhyu3aute3pgqim:
+    resolution: {integrity: sha512-XA7RFLSrlQF9IGtAmhddkUkBuICCTuryfOTfCSWcZHiHb69OilIH05oozH2XA6CEOtztnOd0vgXyvxZodkxGjg==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': ^5.0.0
+      eslint: ^7.0.0 || ^8.0.0
+      jest: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
+      jest:
+        optional: true
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 5.46.0_jx43xxcguvnqqmtmaaygwl7cmu
+      '@typescript-eslint/utils': 5.46.0_eslint@8.29.0
+      eslint: 8.29.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: false
 
   /eslint-plugin-jsonc/2.5.0_eslint@8.29.0:
