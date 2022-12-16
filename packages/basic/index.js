@@ -148,6 +148,12 @@ module.exports = {
       },
     },
     {
+      files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+      rules: {
+        'no-void': ['error', { allowAsStatement: true }],
+      },
+    },
+    {
       files: ['scripts/**/*.*', 'cli.*'],
       rules: {
         'no-console': 'off',
