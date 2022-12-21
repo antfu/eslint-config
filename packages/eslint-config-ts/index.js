@@ -49,6 +49,7 @@ module.exports = {
             '@typescript-eslint/restrict-plus-operands': 'error',
             '@typescript-eslint/restrict-template-expressions': 'error',
             '@typescript-eslint/unbound-method': 'error',
+            '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
           },
         }, {
           // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
@@ -68,7 +69,6 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
     '@typescript-eslint/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
     '@typescript-eslint/type-annotation-spacing': ['error', {}],
-    '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', disallowTypeAnnotations: false }],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
 
