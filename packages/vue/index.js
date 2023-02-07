@@ -58,7 +58,6 @@ module.exports = {
     }],
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-v-bind': 'error',
-    'vue/no-v-text-v-html-on-component': 'error',
     'vue/padding-line-between-blocks': ['error', 'always'],
     'vue/prefer-separate-static-class': 'error',
 
