@@ -49,6 +49,7 @@ module.exports = {
     'antfu',
     'no-only-tests',
     'unused-imports',
+    'node',
   ],
   settings: {
     'import/resolver': {
@@ -313,6 +314,10 @@ module.exports = {
     'no-return-assign': 'off',
     'operator-linebreak': ['error', 'before'],
     'max-statements-per-line': ['error', { max: 1 }],
+
+    // node
+    // 'node/prefer-global/process': ['error', 'never'], // Not sure if we need it as we are using `process.env.NODE_ENV` a lot in front-end.
+    'node/prefer-global/buffer': ['error', 'never'],
 
     // unicorns
     // Pass error message when throwing errors
