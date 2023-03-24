@@ -11,14 +11,14 @@ importers:
       rimraf: ^4.4.0
       typescript: ^5.0.2
     devDependencies:
-      '@antfu/eslint-config': link:packages/all
+      '@antfu/eslint-config': link:packages/eslint-config
       bumpp: 9.0.0
       eslint: 8.36.0
       eslint-plugin-antfu: link:packages/eslint-plugin-antfu
       rimraf: 4.4.0
       typescript: 5.0.2
 
-  packages/all:
+  packages/eslint-config:
     specifiers:
       '@antfu/eslint-config-vue': workspace:*
       '@typescript-eslint/eslint-plugin': ^5.55.0
@@ -36,7 +36,7 @@ importers:
       jsonc-eslint-parser: ^2.2.0
       yaml-eslint-parser: ^1.2.0
     dependencies:
-      '@antfu/eslint-config-vue': link:../vue
+      '@antfu/eslint-config-vue': link:../eslint-config-vue
       '@typescript-eslint/eslint-plugin': 5.55.0_a7er6olmtneep4uytpot6gt7wu
       '@typescript-eslint/parser': 5.55.0_eslint@8.36.0
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.36.0
@@ -53,7 +53,7 @@ importers:
     devDependencies:
       eslint: 8.36.0
 
-  packages/basic:
+  packages/eslint-config-basic:
     specifiers:
       eslint: ^8.36.0
       eslint-plugin-antfu: workspace:*
@@ -88,6 +88,53 @@ importers:
     devDependencies:
       eslint: 8.36.0
 
+  packages/eslint-config-react:
+    specifiers:
+      '@antfu/eslint-config-ts': workspace:*
+      eslint: ^8.36.0
+      eslint-plugin-react: ^7.32.2
+      eslint-plugin-react-hooks: ^4.6.0
+      react: ^18.2.0
+      typescript: ^5.0.2
+    dependencies:
+      '@antfu/eslint-config-ts': link:../eslint-config-ts
+      eslint-plugin-react: 7.32.2_eslint@8.36.0
+      eslint-plugin-react-hooks: 4.6.0_eslint@8.36.0
+    devDependencies:
+      eslint: 8.36.0
+      react: 18.2.0
+      typescript: 5.0.2
+
+  packages/eslint-config-ts:
+    specifiers:
+      '@antfu/eslint-config-basic': workspace:*
+      '@typescript-eslint/eslint-plugin': ^5.55.0
+      '@typescript-eslint/parser': ^5.55.0
+      eslint: ^8.36.0
+      eslint-plugin-jest: ^27.2.1
+    dependencies:
+      '@antfu/eslint-config-basic': link:../eslint-config-basic
+      '@typescript-eslint/eslint-plugin': 5.55.0_a7er6olmtneep4uytpot6gt7wu
+      '@typescript-eslint/parser': 5.55.0_eslint@8.36.0
+      eslint-plugin-jest: 27.2.1_dchlkxfdm6cbfc25bfo3oeha6e
+    devDependencies:
+      eslint: 8.36.0
+
+  packages/eslint-config-vue:
+    specifiers:
+      '@antfu/eslint-config-basic': workspace:*
+      '@antfu/eslint-config-ts': workspace:*
+      eslint: ^8.36.0
+      eslint-plugin-vue: ^9.9.0
+      local-pkg: ^0.4.3
+    dependencies:
+      '@antfu/eslint-config-basic': link:../eslint-config-basic
+      '@antfu/eslint-config-ts': link:../eslint-config-ts
+      eslint-plugin-vue: 9.9.0_eslint@8.36.0
+      local-pkg: 0.4.3
+    devDependencies:
+      eslint: 8.36.0
+
   packages/eslint-plugin-antfu:
     specifiers:
       '@types/node': ^18.15.3
@@ -100,53 +147,6 @@ importers:
       '@types/node': 18.15.3
       unbuild: 1.1.2
       vitest: 0.29.3
-
-  packages/react:
-    specifiers:
-      '@antfu/eslint-config-ts': workspace:*
-      eslint: ^8.36.0
-      eslint-plugin-react: ^7.32.2
-      eslint-plugin-react-hooks: ^4.6.0
-      react: ^18.2.0
-      typescript: ^5.0.2
-    dependencies:
-      '@antfu/eslint-config-ts': link:../typescript
-      eslint-plugin-react: 7.32.2_eslint@8.36.0
-      eslint-plugin-react-hooks: 4.6.0_eslint@8.36.0
-    devDependencies:
-      eslint: 8.36.0
-      react: 18.2.0
-      typescript: 5.0.2
-
-  packages/typescript:
-    specifiers:
-      '@antfu/eslint-config-basic': workspace:*
-      '@typescript-eslint/eslint-plugin': ^5.55.0
-      '@typescript-eslint/parser': ^5.55.0
-      eslint: ^8.36.0
-      eslint-plugin-jest: ^27.2.1
-    dependencies:
-      '@antfu/eslint-config-basic': link:../basic
-      '@typescript-eslint/eslint-plugin': 5.55.0_a7er6olmtneep4uytpot6gt7wu
-      '@typescript-eslint/parser': 5.55.0_eslint@8.36.0
-      eslint-plugin-jest: 27.2.1_dchlkxfdm6cbfc25bfo3oeha6e
-    devDependencies:
-      eslint: 8.36.0
-
-  packages/vue:
-    specifiers:
-      '@antfu/eslint-config-basic': workspace:*
-      '@antfu/eslint-config-ts': workspace:*
-      eslint: ^8.36.0
-      eslint-plugin-vue: ^9.9.0
-      local-pkg: ^0.4.3
-    dependencies:
-      '@antfu/eslint-config-basic': link:../basic
-      '@antfu/eslint-config-ts': link:../typescript
-      eslint-plugin-vue: 9.9.0_eslint@8.36.0
-      local-pkg: 0.4.3
-    devDependencies:
-      eslint: 8.36.0
 
 packages:
 
@@ -559,16 +559,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@eslint-community/eslint-utils/4.1.2_eslint@8.36.0:
-    resolution: {integrity: sha512-7qELuQWWjVDdVsFQ5+beUl+KPczrEDA7S3zM4QUd/bJl7oXgsmpXaEVqrRTnOBqenOV4rWf2kVZk2Ot085zPWA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      eslint: 8.36.0
-      eslint-visitor-keys: 3.3.0
-    dev: false
 
   /@eslint-community/eslint-utils/4.3.0:
     resolution: {integrity: sha512-v3oplH6FYCULtFuCeqyuTd9D2WKO937Dxdq+GmHOLL72TTRriLxz2VLlNfkZRsvj6PKnOPAtuT6dwrs/pA5DvA==}
@@ -2006,11 +1996,11 @@ packages:
       eslint: '>=8.28.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
-      '@eslint-community/eslint-utils': 4.1.2_eslint@8.36.0
+      '@eslint-community/eslint-utils': 4.3.0_eslint@8.36.0
       ci-info: 3.7.0
       clean-regexp: 1.0.0
       eslint: 8.36.0
-      esquery: 1.4.0
+      esquery: 1.5.0
       indent-string: 4.0.0
       is-builtin-module: 3.2.0
       jsesc: 3.0.2
@@ -2170,15 +2160,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /espree/9.4.0:
-    resolution: {integrity: sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dependencies:
-      acorn: 8.8.2
-      acorn-jsx: 5.3.2_acorn@8.8.2
-      eslint-visitor-keys: 3.3.0
-    dev: false
-
   /espree/9.5.0:
     resolution: {integrity: sha512-JPbJGhKc47++oo4JkEoTe2wjy4fmMwvFpgJT9cQzmfXKp22Dr6Hf1tdCteLz1h0P3t+mGvWZ+4Uankvh8+c6zw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -2186,13 +2167,6 @@ packages:
       acorn: 8.8.2
       acorn-jsx: 5.3.2_acorn@8.8.2
       eslint-visitor-keys: 3.3.0
-
-  /esquery/1.4.0:
-    resolution: {integrity: sha512-cCDispWt5vHHtwMY2YrAQ4ibFkAL8RbH5YGBnZBc90MolvvfkkQcJro/aZiAQUlQ3qgrYS6D6v8Gc5G5CQsc9w==}
-    engines: {node: '>=0.10'}
-    dependencies:
-      estraverse: 5.3.0
-    dev: false
 
   /esquery/1.5.0:
     resolution: {integrity: sha512-YQLXUplAwJgCydQ78IMJywZCceoqk1oH01OERdSAJc/7U2AylwjhSCLDEtqwg811idIS/9fIU5GjG73IgjKMVg==}
@@ -2719,7 +2693,7 @@ packages:
     dependencies:
       acorn: 8.8.2
       eslint-visitor-keys: 3.3.0
-      espree: 9.4.0
+      espree: 9.5.0
       semver: 7.3.8
     dev: false
 
@@ -3862,8 +3836,8 @@ packages:
       eslint: 8.36.0
       eslint-scope: 7.1.1
       eslint-visitor-keys: 3.3.0
-      espree: 9.4.0
-      esquery: 1.4.0
+      espree: 9.5.0
+      esquery: 1.5.0
       lodash: 4.17.21
       semver: 7.3.8
     transitivePeerDependencies:
