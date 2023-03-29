@@ -14,6 +14,9 @@ const valids = [
   'const foo = (() => {}) as any',
   // allow iife
   ';(() => {})()',
+  // allow export default
+  'export default () => {}',
+  'export default defineConfig(() => {})',
 ]
 
 const invalids = [
