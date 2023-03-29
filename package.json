@@ -12,7 +12,7 @@
     "release": "bumpp -r && pnpm -r publish"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "*",
+    "@antfu/eslint-config": "workspace:*",
     "bumpp": "^9.0.0",
     "eslint": "^8.37.0",
     "eslint-plugin-antfu": "workspace:*",
