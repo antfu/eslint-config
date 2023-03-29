@@ -103,6 +103,8 @@ This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unoc
 
 Sure, you can override the rules in your `.eslintrc` file.
 
+<!-- eslint-skip -->
+
 ```jsonc
 {
   "extends": "@antfu",

@@ -365,6 +365,7 @@ module.exports = {
     // antfu
     'antfu/if-newline': 'error',
     'antfu/import-dedupe': 'error',
+    'antfu/top-level-function': 'error',
     // 'antfu/prefer-inline-type-import': 'error',
   },
 }

@@ -3,7 +3,7 @@ const user = useUserStore()
 const name = $ref(user.savedName)
 
 const router = useRouter()
-const go = () => {
+function go() {
   if (name)
     router.push(`/hi/${encodeURIComponent(name)}`)
 }
