@@ -48,8 +48,8 @@ export default createEslintRule<Options, MessageIds>({
         context.report({
           node,
           loc: {
-            start: node.loc.start,
-            end: node.loc.end,
+            start: id.loc.start,
+            end: body.loc.start,
           },
           messageId: 'topLevelFunctionDeclaration',
           fix(fixer) {
