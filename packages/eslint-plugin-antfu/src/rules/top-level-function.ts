@@ -60,7 +60,7 @@ export default createEslintRule<Options, MessageIds>({
               : ''
             const textBody = body.type === 'BlockStatement'
               ? code.slice(body.range[0], body.range[1])
-              : `{ return ${code.slice(body.range[0], body.range[1])} }`
+              : `{\n  return ${code.slice(body.range[0], body.range[1])}\n}`
             const textGeneric = arrowFn.typeParameters
               ? code.slice(arrowFn.typeParameters.range[0], arrowFn.typeParameters.range[1])
               : ''
