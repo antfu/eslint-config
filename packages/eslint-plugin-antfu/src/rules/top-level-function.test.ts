@@ -49,7 +49,7 @@ it('runs', () => {
   })
 
   ruleTester.run(RULE_NAME, rule, {
-    valid: [],
+    valid: valids,
     invalid: invalids.map(i => ({
       code: i[0],
       output: i[1],
