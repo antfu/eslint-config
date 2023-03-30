@@ -36,6 +36,10 @@ const invalids = [
     'export const foo = () => ({})',
     'export function foo () { return {} }',
   ],
+  [
+    'export const foo = async () => ({})',
+    'export async function foo () { return {} }',
+  ],
 ]
 
 it('runs', () => {

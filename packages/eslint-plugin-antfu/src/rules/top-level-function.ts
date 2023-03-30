@@ -67,12 +67,14 @@ export default createEslintRule<Options, MessageIds>({
             const textTypeReturn = arrowFn.returnType
               ? code.slice(arrowFn.returnType.range[0], arrowFn.returnType.range[1])
               : ''
-            const text = `function ${textName} ${textGeneric}(${textArgs})${textTypeReturn} ${textBody}`
+            const textAsync = arrowFn.async ? 'async ' : ''
+
+            const final = `${textAsync}function ${textName} ${textGeneric}(${textArgs})${textTypeReturn} ${textBody}`
             // console.log({
             //   input: code.slice(node.range[0], node.range[1]),
-            //   output: text,
+            //   output: final,
             // })
-            return fixer.replaceTextRange([node.range[0], node.range[1]], text)
+            return fixer.replaceTextRange([node.range[0], node.range[1]], final)
           },
         })
       },
