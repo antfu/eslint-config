@@ -11,6 +11,9 @@
     "prepare": "pnpm -r run stub",
     "release": "bumpp -r && pnpm -r publish"
   },
+  "dependencies": {
+    "vite": "^4.2.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "workspace:*",
     "bumpp": "^9.0.0",

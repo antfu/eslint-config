@@ -12,6 +12,7 @@ const valids = [
   'let foo = () => {}',
   // allow arrow function in as
   'const foo = (() => {}) as any',
+  'async function foo() {}',
   // allow iife
   ';(() => {})()',
   // allow export default
@@ -36,6 +37,10 @@ const invalids = [
     'export const foo = () => ({})',
     'export function foo () { return {} }',
   ],
+  [
+    'const foo= async (a) => {}',
+    'async function foo (a) {}',
+  ],
 ]
 
 it('runs', () => {
@@ -44,7 +49,7 @@ it('runs', () => {
   })
 
   ruleTester.run(RULE_NAME, rule, {
-    valid: valids,
+    valid: [],
     invalid: invalids.map(i => ({
       code: i[0],
       output: i[1],
