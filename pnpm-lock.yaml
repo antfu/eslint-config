@@ -14,7 +14,7 @@ importers:
         specifier: ^8.37.0
         version: 8.37.0
       eslint-plugin-antfu:
-        specifier: workspace:*
+        specifier: link:./packages/eslint-plugin-antfu
         version: link:packages/eslint-plugin-antfu
       rimraf:
         specifier: ^4.4.1
