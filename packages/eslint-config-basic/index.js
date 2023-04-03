@@ -208,6 +208,7 @@ module.exports = {
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
+    'import/newline-after-import': ['error', { 'count': 1 }],
 
     // Common
     'semi': ['error', 'never'],
@@ -370,6 +371,7 @@ module.exports = {
     // antfu
     'antfu/if-newline': 'error',
     'antfu/import-dedupe': 'error',
+    'antfu/top-level-function': 'error',
     // 'antfu/prefer-inline-type-import': 'error',
   },
 }
