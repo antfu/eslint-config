@@ -49,7 +49,6 @@ module.exports = {
     'antfu',
     'no-only-tests',
     'unused-imports',
-    'node',
   ],
   settings: {
     'import/resolver': {
@@ -317,8 +316,9 @@ module.exports = {
     'max-statements-per-line': ['error', { max: 1 }],
 
     // node
-    // 'node/prefer-global/process': ['error', 'never'], // Not sure if we need it as we are using `process.env.NODE_ENV` a lot in front-end.
-    'node/prefer-global/buffer': ['error', 'never'],
+    // 'n/prefer-global/process': ['error', 'never'], // Not sure if we need it as we are using `process.env.NODE_ENV` a lot in front-end.
+    'n/prefer-global/buffer': ['error', 'never'],
+    'n/no-callback-literal': 'off',
 
     // unicorns
     // Pass error message when throwing errors
@@ -351,7 +351,6 @@ module.exports = {
     'import/no-named-as-default-member': 'off',
     'import/no-named-as-default': 'off',
     'import/namespace': 'off',
-    'n/no-callback-literal': 'off',
 
     'sort-imports': [
       'error',
