@@ -158,6 +158,8 @@ module.exports = {
 
     // antfu
     'antfu/generic-spacing': 'error',
+    'antfu/no-cjs-exports': 'error',
+    'antfu/no-ts-export-equal': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
