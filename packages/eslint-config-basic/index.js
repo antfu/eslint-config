@@ -154,9 +154,10 @@ module.exports = {
       },
     },
     {
-      files: ['*.js', '*.cjs'],
+      files: ['*.js', '*.cjs', '*.jsx'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
       },
     },
     {
