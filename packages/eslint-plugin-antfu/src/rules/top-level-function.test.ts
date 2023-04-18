@@ -17,15 +17,24 @@ const valids = [
   // allow export default
   'export default () => {}',
   'export default defineConfig(() => {})',
+  // allow one-line arrow function
+  'const foo = (x, y) => x + y',
+  'const foo = async (x, y) => x + y',
+  'const foo = () => String(123)',
+  'const foo = () => ({})',
 ]
 
 const invalids = [
+  [
+    'const foo = (x, y) => \nx + y',
+    'function foo (x, y) {\n  return x + y\n}',
+  ],
   [
     'const foo = (as: string, bar: number) => { return as + bar }',
     'function foo (as: string, bar: number) { return as + bar }',
   ],
   [
-    'const foo = <K, T extends Boolean>(as: string, bar: number): Omit<T, K> => as + bar',
+    'const foo = <K, T extends Boolean>(as: string, bar: number): Omit<T, K> => \nas + bar',
     'function foo <K, T extends Boolean>(as: string, bar: number): Omit<T, K> {\n  return as + bar\n}',
   ],
   [
@@ -33,11 +42,11 @@ const invalids = [
     'export function foo () {}',
   ],
   [
-    'export const foo = () => ({})',
+    'export const foo = () => \n({})',
     'export function foo () {\n  return {}\n}',
   ],
   [
-    'export const foo = async () => ({})',
+    'export const foo = async () => \n({})',
     'export async function foo () {\n  return {}\n}',
   ],
 ]
