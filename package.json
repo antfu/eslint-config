@@ -6,8 +6,9 @@
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "pnpm run stub && eslint .",
     "test": "pnpm -r run test",
+    "build": "pnpm -r run build",
     "prepare": "pnpm -r run stub",
     "release": "bumpp -r && pnpm -r publish"
   },
