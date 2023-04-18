@@ -114,6 +114,8 @@ module.exports = {
       ],
       offsetTernaryExpressions: true,
     }],
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': 'error',
     'no-use-before-define': 'off',
