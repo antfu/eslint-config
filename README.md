@@ -74,6 +74,9 @@ If you want to apply lint and auto-fix before every commit, you can add the foll
 
 ```json
 {
+  "scripts": {
+    "postinstall": "npx simple-git-hooks",
+  },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },
