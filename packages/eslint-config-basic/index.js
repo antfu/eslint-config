@@ -1,3 +1,5 @@
+const { listUnsupportedExtensions } = require('./utils')
+
 module.exports = {
   env: {
     es6: true,
@@ -38,13 +40,14 @@ module.exports = {
     '*.crt',
     '*.key',
     'Dockerfile',
+    ...listUnsupportedExtensions(),
     // force include
     '!.github',
     '!.vitepress',
     '!.vscode',
     // force exclude
     '.vitepress/cache',
-  ],
+  ].filter((i, index, arr) => arr.indexOf(i) === index),
   plugins: [
     'html',
     'unicorn',
