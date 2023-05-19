@@ -313,6 +313,7 @@ module.exports = {
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
+    'no-plusplus': 'error',
     'no-useless-escape': 'off',
     'no-invalid-this': 'error',
     'vars-on-top': 'error',
