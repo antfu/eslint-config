@@ -56,8 +56,8 @@ importers:
         specifier: ^46.0.0
         version: 46.0.0(eslint@8.38.0)
       eslint-plugin-vue:
-        specifier: ^9.11.0
-        version: 9.11.0(eslint@8.38.0)
+        specifier: ^9.14.0
+        version: 9.14.0(eslint@8.38.0)
       eslint-plugin-yml:
         specifier: ^1.5.0
         version: 1.5.0(eslint@8.38.0)
@@ -174,8 +174,8 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config-ts
       eslint-plugin-vue:
-        specifier: ^9.11.0
-        version: 9.11.0(eslint@8.38.0)
+        specifier: ^9.14.0
+        version: 9.14.0(eslint@8.38.0)
       local-pkg:
         specifier: ^0.4.3
         version: 0.4.3
@@ -2054,8 +2054,8 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: false
 
-  /eslint-plugin-vue@9.11.0(eslint@8.38.0):
-    resolution: {integrity: sha512-bBCJAZnkBV7ATH4Z1E7CvN3nmtS4H7QUU3UBxPdo8WohRU+yHjnQRALpTbxMVcz0e4Mx3IyxIdP5HYODMxK9cQ==}
+  /eslint-plugin-vue@9.14.0(eslint@8.38.0):
+    resolution: {integrity: sha512-4O7EuiqPGVQA1wYCzLvCzsBTv9JIPHLHhrf0k55DLzbwtmJbSw2TKS0G/l7pOwi9RWMSkjIT7ftChU5gZpgnJw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -2066,7 +2066,7 @@ packages:
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.11
       semver: 7.3.8
-      vue-eslint-parser: 9.1.1(eslint@8.38.0)
+      vue-eslint-parser: 9.3.0(eslint@8.38.0)
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -4064,8 +4064,8 @@ packages:
       - terser
     dev: true
 
-  /vue-eslint-parser@9.1.1(eslint@8.38.0):
-    resolution: {integrity: sha512-C2aI/r85Q6tYcz4dpgvrs4wH/MqVrRAVIdpYedrxnATDHHkb+TroeRcDpKWGZCx/OcECMWfz7tVwQ8e+Opy6rA==}
+  /vue-eslint-parser@9.3.0(eslint@8.38.0):
+    resolution: {integrity: sha512-48IxT9d0+wArT1+3wNIy0tascRoywqSUe2E1YalIC1L8jsUGe5aJQItWfRok7DVFGz3UYvzEI7n5wiTXsCMAcQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
