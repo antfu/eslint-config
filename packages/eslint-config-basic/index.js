@@ -259,6 +259,7 @@ module.exports = {
         asyncArrow: 'always',
       },
     ],
+    'no-restricted-globals': ['error', { name: 'global', message: 'Use `globalThis` instead.' }],
 
     // es6
     'no-var': 'error',
