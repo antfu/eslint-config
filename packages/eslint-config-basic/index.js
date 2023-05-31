@@ -274,6 +274,10 @@ module.exports = {
       { object: 'globalThis', property: 'isFinite', message: 'Use `Number.isFinite` instead' },
       { object: 'globalThis', property: 'parseFloat', message: 'Use `Number.parseFloat` instead' },
       { object: 'globalThis', property: 'parseInt', message: 'Use `Number.parseInt` instead' },
+      { object: 'window', property: 'isNaN', message: 'Use `Number.isNaN` instead' },
+      { object: 'window', property: 'isFinite', message: 'Use `Number.isFinite` instead' },
+      { object: 'window', property: 'parseFloat', message: 'Use `Number.parseFloat` instead' },
+      { object: 'window', property: 'parseInt', message: 'Use `Number.parseInt` instead' },
     ],
 
     // es6
