@@ -263,7 +263,6 @@ module.exports = {
       'error',
       { name: 'global', message: 'Use `globalThis` instead.' },
       { name: 'self', message: 'Use `globalThis` instead.' },
-      { name: 'window', message: 'Use `globalThis` instead.' },
       { name: 'isNaN', message: 'Use `Number.isNaN` instead' },
       { name: 'isFinite', message: 'Use `Number.isFinite` instead' },
       { name: 'parseFloat', message: 'Use `Number.parseFloat` instead' },
