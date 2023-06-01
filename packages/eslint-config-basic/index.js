@@ -240,7 +240,7 @@ module.exports = {
     'no-debugger': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-cond-assign': ['error', 'always'],
-    'func-call-spacing': ['off', 'never'],
+    'func-call-spacing': 'off',
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
     'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': [
