@@ -263,23 +263,10 @@ module.exports = {
       'error',
       { name: 'global', message: 'Use `globalThis` instead.' },
       { name: 'self', message: 'Use `globalThis` instead.' },
-      { name: 'isNaN', message: 'Use `Number.isNaN` instead.' },
-      { name: 'isFinite', message: 'Use `Number.isFinite` instead.' },
-      { name: 'parseFloat', message: 'Use `Number.parseFloat` instead.' },
-      { name: 'parseInt', message: 'Use `Number.parseInt` instead.' },
     ],
     'no-restricted-properties': [
       'error',
-      { object: 'globalThis', property: 'isNaN', message: 'Use `Number.isNaN` instead.' },
-      { object: 'globalThis', property: 'isFinite', message: 'Use `Number.isFinite` instead.' },
-      { object: 'globalThis', property: 'parseFloat', message: 'Use `Number.parseFloat` instead.' },
-      { object: 'globalThis', property: 'parseInt', message: 'Use `Number.parseInt` instead.' },
-      { object: 'window', property: 'isNaN', message: 'Use `Number.isNaN` instead.' },
-      { object: 'window', property: 'isFinite', message: 'Use `Number.isFinite` instead.' },
-      { object: 'window', property: 'parseFloat', message: 'Use `Number.parseFloat` instead.' },
-      { object: 'window', property: 'parseInt', message: 'Use `Number.parseInt` instead.' },
-      { object: 'Math', property: 'pow', message: 'Use the exponentiation operator (**) instead.' },
-      { property: '__proto__', message: 'Use `Object.getPrototypeOf` instead.' },
+      { property: '__proto__', message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.' },
       { property: '__defineGetter__', message: 'Use `Object.defineProperty` instead.' },
       { property: '__defineSetter__', message: 'Use `Object.defineProperty` instead.' },
       { property: '__lookupGetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
@@ -379,6 +366,8 @@ module.exports = {
     'unicorn/throw-new-error': 'error',
     // Prefer using the node: protocol
     'unicorn/prefer-node-protocol': 'error',
+    // Prefer using number properties like `Number.isNaN` rather than `isNaN`
+    'unicorn/prefer-number-properties': 'error',
 
     'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
