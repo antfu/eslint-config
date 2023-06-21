@@ -41,9 +41,14 @@ For example:
 }
 ```
 
-### Config VS Code auto fix
+### VS Code support (auto fix)
 
-Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and create `.vscode/settings.json`
+- Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+- Add the following settings to `.vscode/settings.json` inside your _workspace_
+
+> **Warning**
+> We don't recommend to set these settings in your global settings, because they depend on this eslint-config being used in your project.
 
 ```json
 {
