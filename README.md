@@ -1,6 +1,6 @@
-# @antfu/eslint-config
+# @js-mark/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@js-mark/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@js-mark/eslint-config)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone without Prettier)
@@ -15,14 +15,14 @@
 ### Install
 
 ```bash
-pnpm add -D eslint @antfu/eslint-config
+pnpm add -D eslint @js-mark/eslint-config
 ```
 
 ### Config `.eslintrc`
 
 ```json
 {
-  "extends": "@antfu"
+  "extends": "@js-mark"
 }
 ```
 
@@ -57,14 +57,14 @@ Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?it
 
 ### TypeScript Aware Rules
 
-Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root, which will introduce some stricter rules into your project. If you want to enable it while have no `tsconfig.eslint.json` in the project root, you can change tsconfig name by modifying `ESLINT_TSCONFIG` env. 
+Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root, which will introduce some stricter rules into your project. If you want to enable it while have no `tsconfig.eslint.json` in the project root, you can change tsconfig name by modifying `ESLINT_TSCONFIG` env.
 
 ```js
 // .eslintrc.js
 process.env.ESLINT_TSCONFIG = 'tsconfig.json'
 
 module.exports = {
-  extends: '@antfu'
+  extends: '@js-mark'
 }
 ```
 
@@ -74,11 +74,9 @@ Learn more about the context - [Why I don't use Prettier](https://antfu.me/posts
 
 ## Check Also
 
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/ts-starter](https://github.com/antfu/ts-starter) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
+- [js-mark/dotfiles](https://github.com/js-mark/dotfiles) - My dotfiles
+- [js-mark/vscode-settings](https://github.com/js-mark/vscode-settings) - My VS Code settings
 
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License &copy; 2018-PRESENT [The Mark](https://github.com/js-mark)
