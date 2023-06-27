@@ -1,5 +1,3 @@
-// TODO remove dependency resolve-pkg-maps after https://github.com/un-es/eslint-plugin-i/issues/8 resolves
-
 module.exports = {
   env: {
     es6: true,
