@@ -368,6 +368,8 @@ module.exports = {
     'unicorn/prefer-node-protocol': 'error',
     // Prefer using number properties like `Number.isNaN` rather than `isNaN`
     'unicorn/prefer-number-properties': 'error',
+    // Ban `new Array` as `Array` constructor's params are ambiguous
+    'unicorn/no-new-array': 'error',
 
     'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
