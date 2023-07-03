@@ -72,6 +72,8 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/method-signature-style': 'error',
+
     // Override JS
     'no-useless-constructor': 'off',
     'indent': 'off',
