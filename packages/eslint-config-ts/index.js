@@ -173,7 +173,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     // handled by unused-imports/no-unused-imports
     '@typescript-eslint/no-unused-vars': 'off',
