@@ -215,6 +215,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
     'import/newline-after-import': ['error', { count: 1, considerComments: true }],
+    'import/no-self-import': 'error',
 
     // Common
     'semi': ['error', 'never'],
