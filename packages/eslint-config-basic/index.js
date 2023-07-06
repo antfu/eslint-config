@@ -338,7 +338,7 @@ module.exports = {
     'max-statements-per-line': ['error', { max: 1 }],
 
     // node
-    // 'n/prefer-global/process': ['error', 'never'], // Not sure if we need it as we are using `process.env.NODE_ENV` a lot in front-end.
+    'n/prefer-global/process': ['error', 'never'],
     'n/prefer-global/buffer': ['error', 'never'],
     'n/no-callback-literal': 'off',
 
