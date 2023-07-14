@@ -6,6 +6,7 @@ const valids = [
   'import { type Foo } from \'foo\'',
   'import type Foo from \'foo\'',
   'import type * as Foo from \'foo\'',
+  'import type {} from \'foo\'',
 ]
 const invalids = [
   ['import type { Foo } from \'foo\'', 'import { type Foo } from \'foo\''],
