@@ -53,9 +53,9 @@ Add the following settings to your `settings.json`:
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.organizeImports": false,
+    "source.organizeImports": false
   },
-  
+
   // The following is optional.
   // It's better to put under project setting `.vscode/settings.json`
   // to avoid conflicts with working with different eslint configs

@@ -204,6 +204,7 @@ module.exports = {
         'no-unused-vars': 'off',
         'antfu/no-cjs-exports': 'off',
         'antfu/no-ts-export-equal': 'off',
+        'n/prefer-global/process': 'off',
       },
     },
   ],
