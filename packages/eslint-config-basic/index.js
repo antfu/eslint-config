@@ -394,6 +394,7 @@ module.exports = {
     'yml/no-empty-document': 'off',
 
     // antfu
+    'antfu/no-import-node-modules-by-path': 'error',
     'antfu/if-newline': 'error',
     'antfu/import-dedupe': 'error',
     'antfu/top-level-function': 'error',
