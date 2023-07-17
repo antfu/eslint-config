@@ -109,6 +109,16 @@ and then
 npm i -D lint-staged simple-git-hooks
 ```
 
+## Badge
+
+If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
+
+```md
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+```
+
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+
 ## FAQ
 
 ### Prettier?
