@@ -1,6 +1,6 @@
 # @antfu/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=a1b858&label=)](https://npmjs.com/package/@antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
@@ -108,6 +108,16 @@ and then
 ```bash
 npm i -D lint-staged simple-git-hooks
 ```
+
+## Badge
+
+If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
+
+```md
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+```
+
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 ## FAQ
 
