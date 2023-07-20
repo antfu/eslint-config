@@ -77,16 +77,27 @@ Add the following settings to your `settings.json`:
 
 ### TypeScript Aware Rules
 
-Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root, which will introduce some stricter rules into your project. If you want to enable it while have no `tsconfig.eslint.json` in the project root, you can change tsconfig name by modifying `ESLINT_TSCONFIG` env.
+We disabled `@typescript-eslint/parser` by default for the [performance reason](https://typescript-eslint.io/linting/typed-linting/#how-is-performance). You can set `TS_PARSER` env to `true` to enable `@typescript-eslint/parser`, so that you can add [TypeScript aware rules](https://typescript-eslint.io/linting/typed-linting/) to `rules` easily.
 
-```js
-// .eslintrc.js
-const process = require('node:process')
-process.env.ESLINT_TSCONFIG = 'tsconfig.json'
-
-module.exports = {
-  extends: '@antfu'
+```json
+{
+  "extends": "@antfu",
+  "rules": {
+    // add TypeScript aware rules here
+  }
 }
+```
+
+```sh
+TS_PARSER=true eslint . --fix
+```
+
+### Strict Mode
+
+Some rules are good for managing a project with a big code base. But they are hard to use at the meantime. You can enable them if you want your project stricter. Setting `STRICT` env to `true` will enable them.
+
+```sh
+STRICT=true eslint . --fix
 ```
 
 ### Lint Staged
