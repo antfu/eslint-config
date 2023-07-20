@@ -337,6 +337,7 @@ module.exports = {
     'no-return-assign': 'off',
     'operator-linebreak': ['error', 'before'],
     'max-statements-per-line': ['error', { max: 1 }],
+    'no-implicit-coercion': ['error', { disallowTemplateShorthand: true, allow: ['!!'] }],
 
     // node
     'n/prefer-global/process': ['error', 'never'],
