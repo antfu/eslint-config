@@ -4,13 +4,15 @@ export const RULE_NAME = 'named-tuple-spacing'
 export type MessageIds = 'expectedSpaceAfter' | 'unexpectedSpaceBetween' | 'unexpectedSpaceBefore'
 export type Options = []
 
+const RE = /^([\w_$]+)(\s*)(\?\s*)?:(\s*)(.*)$/
+
 export default createEslintRule<Options, MessageIds>({
   name: RULE_NAME,
   meta: {
     type: 'suggestion',
     docs: {
       description: 'Expect space before type declaration in named tuple',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     fixable: 'code',
     schema: [],
@@ -24,16 +26,18 @@ export default createEslintRule<Options, MessageIds>({
   create: (context) => {
     const sourceCode = context.getSourceCode()
     return {
-      TSNamedTupleMember: (node) => {
+      TSNamedTupleMember: (node: any) => {
         const code = sourceCode.text.slice(node.range[0], node.range[1])
 
-        const reg = /(\w+)(\s*)(\?\s*)?:(\s*)(\w+)/
+        const match = code.match(RE)
+        if (!match)
+          return
 
         const labelName = node.label.name
-        const spaceBeforeColon = code.match(reg)?.[2]
-        const optionalMark = code.match(reg)?.[3]
-        const spacesAfterColon = code.match(reg)?.[4]
-        const elementType = code.match(reg)?.[5]
+        const spaceBeforeColon = match[2]
+        const optionalMark = match[3]
+        const spacesAfterColon = match[4]
+        const elementType = match[5]
 
         function getReplaceValue() {
           let ret = labelName
@@ -49,7 +53,7 @@ export default createEslintRule<Options, MessageIds>({
             node,
             messageId: 'unexpectedSpaceBetween',
             *fix(fixer) {
-              yield fixer.replaceTextRange(node.range, code.replace(reg, getReplaceValue()))
+              yield fixer.replaceTextRange(node.range, code.replace(RE, getReplaceValue()))
             },
           })
         }
@@ -59,17 +63,17 @@ export default createEslintRule<Options, MessageIds>({
             node,
             messageId: 'unexpectedSpaceBefore',
             *fix(fixer) {
-              yield fixer.replaceTextRange(node.range, code.replace(reg, getReplaceValue()))
+              yield fixer.replaceTextRange(node.range, code.replace(RE, getReplaceValue()))
             },
           })
         }
 
-        if (spacesAfterColon.length !== 1) {
+        if (spacesAfterColon != null && spacesAfterColon.length !== 1) {
           context.report({
             node,
             messageId: 'expectedSpaceAfter',
             *fix(fixer) {
-              yield fixer.replaceTextRange(node.range, code.replace(reg, getReplaceValue()))
+              yield fixer.replaceTextRange(node.range, code.replace(RE, getReplaceValue()))
             },
           })
         }
