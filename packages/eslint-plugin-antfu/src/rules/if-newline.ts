@@ -10,7 +10,7 @@ export default createEslintRule<Options, MessageIds>({
     type: 'problem',
     docs: {
       description: 'Newline after if',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     fixable: 'code',
     schema: [],

@@ -10,7 +10,7 @@ export default createEslintRule<Options, MessageIds>({
     type: 'suggestion',
     docs: {
       description: 'Spaces around generic type parameters',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     fixable: 'code',
     schema: [],

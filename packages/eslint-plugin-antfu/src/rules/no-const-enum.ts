@@ -10,7 +10,7 @@ export default createEslintRule<Options, MessageIds>({
     type: 'problem',
     docs: {
       description: 'Disallow using `const enum` expression',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

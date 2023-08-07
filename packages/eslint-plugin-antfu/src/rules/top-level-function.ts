@@ -10,7 +10,7 @@ export default createEslintRule<Options, MessageIds>({
     type: 'problem',
     docs: {
       description: 'Enforce top-level functions to be declared with function keyword',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     fixable: 'code',
     schema: [],

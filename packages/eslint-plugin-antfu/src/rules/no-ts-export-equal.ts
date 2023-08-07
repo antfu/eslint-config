@@ -10,7 +10,7 @@ export default createEslintRule<Options, MessageIds>({
     type: 'problem',
     docs: {
       description: 'Do not use `exports =`',
-      recommended: false,
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

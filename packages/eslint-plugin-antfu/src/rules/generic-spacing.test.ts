@@ -1,5 +1,4 @@
-import { RuleTester } from '@typescript-eslint/utils/dist/ts-eslint'
-import { it } from 'vitest'
+import { RuleTester } from '@typescript-eslint/rule-tester'
 import rule, { RULE_NAME } from './generic-spacing'
 
 const valids = [
@@ -36,17 +35,15 @@ const invalids = [
 }`],
 ] as const
 
-it('runs', () => {
-  const ruleTester: RuleTester = new RuleTester({
-    parser: require.resolve('@typescript-eslint/parser'),
-  })
+const ruleTester: RuleTester = new RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+})
 
-  ruleTester.run(RULE_NAME, rule, {
-    valid: valids,
-    invalid: invalids.map(i => ({
-      code: i[0],
-      output: i[1].trim(),
-      errors: Array.from({ length: i[2] || 1 }, () => ({ messageId: 'genericSpacingMismatch' })),
-    })),
-  })
+ruleTester.run(RULE_NAME, rule as any, {
+  valid: valids,
+  invalid: invalids.map(i => ({
+    code: i[0],
+    output: i[1].trim(),
+    errors: Array.from({ length: i[2] || 1 }, () => ({ messageId: 'genericSpacingMismatch' })),
+  })),
 })

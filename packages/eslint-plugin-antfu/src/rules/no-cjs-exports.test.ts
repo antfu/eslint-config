@@ -1,5 +1,4 @@
-import { RuleTester } from '@typescript-eslint/utils/dist/ts-eslint'
-import { it } from 'vitest'
+import { RuleTester } from '@typescript-eslint/rule-tester'
 import rule, { RULE_NAME } from './no-cjs-exports'
 
 const valids = [
@@ -13,16 +12,14 @@ const invalids = [
   { code: 'module.exports.a = {}', filename: 'test.ts' },
 ]
 
-it('runs', () => {
-  const ruleTester: RuleTester = new RuleTester({
-    parser: require.resolve('@typescript-eslint/parser'),
-  })
+const ruleTester: RuleTester = new RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+})
 
-  ruleTester.run(RULE_NAME, rule, {
-    valid: valids,
-    invalid: invalids.map(i => ({
-      ...i,
-      errors: [{ messageId: 'noCjsExports' }],
-    })),
-  })
+ruleTester.run(RULE_NAME, rule as any, {
+  valid: valids,
+  invalid: invalids.map(i => ({
+    ...i,
+    errors: [{ messageId: 'noCjsExports' }],
+  })),
 })

@@ -1,5 +1,4 @@
-import { RuleTester } from '@typescript-eslint/utils/dist/ts-eslint'
-import { it } from 'vitest'
+import { RuleTester } from '@typescript-eslint/rule-tester'
 import rule, { RULE_NAME } from './no-import-node-modules-by-path'
 
 const valids = [
@@ -16,16 +15,14 @@ const invalids = [
   'require("../node_modules/d")',
 ]
 
-it('runs', () => {
-  const ruleTester: RuleTester = new RuleTester({
-    parser: require.resolve('@typescript-eslint/parser'),
-  })
+const ruleTester: RuleTester = new RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
+})
 
-  ruleTester.run(RULE_NAME, rule, {
-    valid: valids,
-    invalid: invalids.map(i => ({
-      code: i,
-      errors: [{ messageId: 'noImportNodeModulesByPath' }],
-    })),
-  })
+ruleTester.run(RULE_NAME, rule as any, {
+  valid: valids,
+  invalid: invalids.map(i => ({
+    code: i,
+    errors: [{ messageId: 'noImportNodeModulesByPath' }],
+  })),
 })
