@@ -1,3 +1,7 @@
+// eslint-disable-next-line n/prefer-global/process
+const isInEditor = (process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI
+const offInEditor = isInEditor ? 'off' : 'error'
+
 module.exports = {
   env: {
     es6: true,
@@ -233,7 +237,7 @@ module.exports = {
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
 
-    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-imports': offInEditor,
     'unused-imports/no-unused-vars': [
       'warn',
       { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
