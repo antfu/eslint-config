@@ -39,9 +39,9 @@ module.exports = {
     'vue/no-dupe-keys': 'off',
 
     // reactivity transform
-    'vue/no-setup-props-destructure': 'off',
+    'vue/no-setup-props-reactivity-loss': 'off',
 
-    'vue/component-tags-order': ['error', {
+    'vue/block-order': ['error', {
       order: ['script', 'template', 'style'],
     }],
     'vue/block-tag-newline': ['error', {
