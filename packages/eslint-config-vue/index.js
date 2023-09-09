@@ -31,15 +31,15 @@ module.exports = {
   rules: {
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
-    'vue/require-prop-types': 'off',
-    'vue/require-default-prop': 'off',
-    'vue/multi-word-component-names': 'off',
-    'vue/prefer-import-from-vue': 'off',
-    'vue/no-v-text-v-html-on-component': 'off',
-    'vue/no-dupe-keys': 'off',
+    // 'vue/require-prop-types': 'off',
+    // 'vue/require-default-prop': 'off',
+    'vue/multi-word-component-names': 'warn',
+    // 'vue/prefer-import-from-vue': 'off',
+    // 'vue/no-v-text-v-html-on-component': 'off',
+    // 'vue/no-dupe-keys': 'off',
 
     // reactivity transform
-    'vue/no-setup-props-reactivity-loss': 'off',
+    // 'vue/no-setup-props-reactivity-loss': 'off',
 
     'vue/block-order': ['error', {
       order: ['script', 'template', 'style'],

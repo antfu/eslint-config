@@ -223,7 +223,11 @@ module.exports = {
   ],
   rules: {
     // import
-    'import/order': 'error',
+    'import/order': ['error', {
+      'groups': ['builtin', 'external', 'unknown', 'internal', 'parent', 'index', 'sibling', 'object', 'type'],
+      'newlines-between': 'never',
+      'alphabetize': { order: 'asc', caseInsensitive: true },
+    }],
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
@@ -409,7 +413,7 @@ module.exports = {
 
     // antfu
     'antfu/no-import-node-modules-by-path': 'error',
-    'antfu/if-newline': 'error',
+    // 'antfu/if-newline': 'error',
     'antfu/import-dedupe': 'error',
     'antfu/top-level-function': 'error',
     // 'antfu/prefer-inline-type-import': 'error',
