@@ -419,8 +419,13 @@ module.exports = {
     'jsdoc/check-values': 'off',
     'jsdoc/check-tag-names': 'off',
     'jsdoc/no-undefined-types': 'off',
+    "jsdoc/require-param": 'off',
+    "jsdoc/require-param-description": 'off',
+    "jsdoc/require-param-type": 'off',
     'jsdoc/require-returns': 'off',
     'jsdoc/require-returns-type': 'off',
+    "jsdoc/require-throws": 'off',
+    "jsdoc/require-yields": 'off',
 
     // antfu
     'antfu/no-import-node-modules-by-path': 'error',
