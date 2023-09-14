@@ -233,6 +233,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
     'import/newline-after-import': ['error', { count: 1, considerComments: true }],
     'import/no-self-import': 'error',
+    'import/named': 'off',
 
     // Common
     'semi': ['error', 'never'],
@@ -412,7 +413,7 @@ module.exports = {
 
     // jsdoc
     'jsdoc/require-jsdoc': 'off',
-    "jsdoc/require-param": 'off',
+    'jsdoc/require-param': 'off',
     'jsdoc/require-param-type': 'off',
     'jsdoc/require-param-description': 'off',
     'jsdoc/require-yields': 'off',
@@ -422,7 +423,7 @@ module.exports = {
     'jsdoc/no-undefined-types': 'off',
     'jsdoc/require-returns': 'off',
     'jsdoc/require-returns-type': 'off',
-    "jsdoc/require-throws": 'off',
+    'jsdoc/require-throws': 'off',
 
     // antfu
     'antfu/no-import-node-modules-by-path': 'error',
