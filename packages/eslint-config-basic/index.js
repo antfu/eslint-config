@@ -57,6 +57,7 @@ module.exports = {
     'no-only-tests',
     'unused-imports',
     'jsdoc',
+    '@stylistic/js',
   ],
   settings: {
     'import/resolver': {
@@ -83,7 +84,7 @@ module.exports = {
       files: ['*.yaml', '*.yml'],
       parser: 'yaml-eslint-parser',
       rules: {
-        'spaced-comment': 'off',
+        '@stylistic/js/spaced-comment': 'off',
       },
     },
     {
@@ -201,31 +202,37 @@ module.exports = {
       // Code blocks in markdown file
       files: ['**/*.md/*.*'],
       rules: {
-        '@typescript-eslint/no-redeclare': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        '@typescript-eslint/no-use-before-define': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/comma-dangle': 'off',
-        '@typescript-eslint/consistent-type-imports': 'off',
-        '@typescript-eslint/no-namespace': 'off',
-        '@typescript-eslint/no-require-imports': 'off',
-        'import/no-unresolved': 'off',
-        'unused-imports/no-unused-imports': 'off',
-        'unused-imports/no-unused-vars': 'off',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
+
+        '@typescript-eslint/no-redeclare': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
+
+        '@stylistic/ts/comma-dangle': 'off',
+   
+        'unused-imports/no-unused-imports': 'off',
+        'unused-imports/no-unused-vars': 'off',
+
+        'import/no-unresolved': 'off',
+
         'antfu/no-cjs-exports': 'off',
         'antfu/no-ts-export-equal': 'off',
+
         'n/prefer-global/process': 'off',
       },
     },
   ],
   rules: {
-    // import
+    // Import
     'import/order': 'error',
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
@@ -247,37 +254,47 @@ module.exports = {
       { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
     ],
 
+    // Stylistic
+    '@stylistic/js/array-bracket-spacing': ['error', 'never'],
+    '@stylistic/js/block-spacing': ['error', 'always'],
+    '@stylistic/js/comma-spacing': ['error', { before: false, after: true }],
+    '@stylistic/js/func-call-spacing': 'off',
+    '@stylistic/js/generator-star-spacing': 'off',
+    '@stylistic/js/indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    '@stylistic/js/key-spacing': ['error', { beforeColon: false, afterColon: true }],
+    '@stylistic/js/no-multi-spaces': 'error',
+    '@stylistic/js/object-curly-spacing': ['error', 'always'],
+    '@stylistic/js/operator-linebreak': ['error', 'before'],
+    '@stylistic/js/space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
+    '@stylistic/js/template-curly-spacing': 'error',
+    '@stylistic/js/spaced-comment': ['error', 'always', {
+      line: {
+        markers: ['/'],
+        exceptions: ['/', '#'],
+      },
+      block: {
+        markers: ['!'],
+        exceptions: ['*'],
+        balanced: true,
+      },
+    }],
+
     'no-param-reassign': 'off',
-    'array-bracket-spacing': ['error', 'never'],
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-    'block-spacing': ['error', 'always'],
     'camelcase': 'off',
-    'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
     'no-constant-condition': 'warn',
     'no-debugger': 'error',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'no-cond-assign': ['error', 'always'],
-    'func-call-spacing': 'off',
-    'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': [
       'error',
       'DebuggerStatement',
       'LabeledStatement',
       'WithStatement',
     ],
-    'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
-    'space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'always',
-        named: 'never',
-        asyncArrow: 'always',
-      },
-    ],
     'no-restricted-globals': [
       'error',
       { name: 'global', message: 'Use `globalThis` instead.' },
@@ -292,7 +309,7 @@ module.exports = {
       { property: '__lookupSetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
     ],
 
-    // es6
+    // ES6
     'no-var': 'error',
     'prefer-const': [
       'error',
@@ -320,20 +337,7 @@ module.exports = {
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
     'prefer-template': 'error',
-    'template-curly-spacing': 'error',
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    'generator-star-spacing': 'off',
-    'spaced-comment': ['error', 'always', {
-      line: {
-        markers: ['/'],
-        exceptions: ['/', '#'],
-      },
-      block: {
-        markers: ['!'],
-        exceptions: ['*'],
-        balanced: true,
-      },
-    }],
 
     // best-practice
     'array-callback-return': 'error',
@@ -343,7 +347,6 @@ module.exports = {
     'eqeqeq': ['error', 'smart'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
-    'no-multi-spaces': 'error',
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
@@ -352,10 +355,9 @@ module.exports = {
     'vars-on-top': 'error',
     'require-await': 'off',
     'no-return-assign': 'off',
-    'operator-linebreak': ['error', 'before'],
     'max-statements-per-line': ['error', { max: 1 }],
 
-    // node
+    // Node
     'n/prefer-global/process': ['error', 'never'],
     'n/prefer-global/buffer': ['error', 'never'],
     'n/no-callback-literal': 'off',
