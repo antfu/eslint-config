@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@8.7.5",
+  "packageManager": "pnpm@8.7.6",
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite --port 3333 --open",
@@ -17,16 +17,16 @@
   "dependencies": {
     "@unocss/reset": "^0.55.7",
     "@vueuse/core": "^10.4.1",
-    "@vueuse/head": "^1.3.1",
+    "@vueuse/head": "^2.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-demi": "^0.14.6",
-    "vue-i18n": "^9.4.0",
+    "vue-i18n": "^9.4.1",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.41.0",
+    "@antfu/eslint-config": "^0.42.1",
     "@iconify-json/carbon": "^1.1.21",
     "@intlify/vite-plugin-vue-i18n": "^7.0.0",
     "@types/markdown-it-link-attributes": "^3.0.1",
@@ -35,13 +35,13 @@
     "@vue/test-utils": "^2.4.1",
     "critters": "^0.0.20",
     "cross-env": "^7.0.3",
-    "cypress": "^13.1.0",
+    "cypress": "^13.2.0",
     "eslint": "^8.49.0",
     "eslint-plugin-cypress": "^2.14.0",
     "https-localhost": "^4.7.1",
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-shiki": "^0.9.0",
-    "pnpm": "^8.7.5",
+    "pnpm": "^8.7.6",
     "shiki": "^0.14.4",
     "taze": "^0.11.2",
     "typescript": "^5.2.2",
@@ -54,9 +54,9 @@
     "vite-plugin-pwa": "^0.16.5",
     "vite-plugin-vue-layouts": "^0.8.0",
     "vite-plugin-vue-markdown": "^0.23.8",
-    "vite-ssg": "^0.23.1",
+    "vite-ssg": "^0.23.2",
     "vite-ssg-sitemap": "^0.5.1",
     "vitest": "^0.34.4",
-    "vue-tsc": "^1.8.10"
+    "vue-tsc": "^1.8.11"
   }
 }
