@@ -202,31 +202,37 @@ module.exports = {
       // Code blocks in markdown file
       files: ['**/*.md/*.*'],
       rules: {
-        '@typescript-eslint/no-redeclare': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
-        '@typescript-eslint/no-use-before-define': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@stylistic/ts/comma-dangle': 'off',
-        '@typescript-eslint/consistent-type-imports': 'off',
-        '@typescript-eslint/no-namespace': 'off',
-        '@typescript-eslint/no-require-imports': 'off',
-        'import/no-unresolved': 'off',
-        'unused-imports/no-unused-imports': 'off',
-        'unused-imports/no-unused-vars': 'off',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
+
+        '@typescript-eslint/no-redeclare': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
+
+        '@stylistic/ts/comma-dangle': 'off',
+   
+        'unused-imports/no-unused-imports': 'off',
+        'unused-imports/no-unused-vars': 'off',
+
+        'import/no-unresolved': 'off',
+
         'antfu/no-cjs-exports': 'off',
         'antfu/no-ts-export-equal': 'off',
+
         'n/prefer-global/process': 'off',
       },
     },
   ],
   rules: {
-    // import
+    // Import
     'import/order': 'error',
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
@@ -253,19 +259,14 @@ module.exports = {
     '@stylistic/js/block-spacing': ['error', 'always'],
     '@stylistic/js/comma-spacing': ['error', { before: false, after: true }],
     '@stylistic/js/func-call-spacing': 'off',
-    '@stylistic/js/key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    '@stylistic/js/indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
-    '@stylistic/js/object-curly-spacing': ['error', 'always'],
-    '@stylistic/js/space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'always',
-        named: 'never',
-        asyncArrow: 'always',
-      },
-    ],
-    '@stylistic/js/template-curly-spacing': 'error',
     '@stylistic/js/generator-star-spacing': 'off',
+    '@stylistic/js/indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    '@stylistic/js/key-spacing': ['error', { beforeColon: false, afterColon: true }],
+    '@stylistic/js/no-multi-spaces': 'error',
+    '@stylistic/js/object-curly-spacing': ['error', 'always'],
+    '@stylistic/js/operator-linebreak': ['error', 'before'],
+    '@stylistic/js/space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
+    '@stylistic/js/template-curly-spacing': 'error',
     '@stylistic/js/spaced-comment': ['error', 'always', {
       line: {
         markers: ['/'],
@@ -277,8 +278,6 @@ module.exports = {
         balanced: true,
       },
     }],
-    '@stylistic/js/no-multi-spaces': 'error',
-    '@stylistic/js/operator-linebreak': ['error', 'before'],
 
     'no-param-reassign': 'off',
     'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
@@ -310,7 +309,7 @@ module.exports = {
       { property: '__lookupSetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
     ],
 
-    // es6
+    // ES6
     'no-var': 'error',
     'prefer-const': [
       'error',
@@ -358,7 +357,7 @@ module.exports = {
     'no-return-assign': 'off',
     'max-statements-per-line': ['error', { max: 1 }],
 
-    // node
+    // Node
     'n/prefer-global/process': ['error', 'never'],
     'n/prefer-global/buffer': ['error', 'never'],
     'n/no-callback-literal': 'off',
