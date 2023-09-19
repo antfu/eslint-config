@@ -20,7 +20,6 @@ module.exports = {
   ],
   ignorePatterns: [
     '*.min.*',
-    '*.d.ts',
     'CHANGELOG.md',
     'dist',
     'LICENSE*',
