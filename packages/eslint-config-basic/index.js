@@ -168,6 +168,7 @@ module.exports = {
       files: ['*.d.ts'],
       rules: {
         'import/no-duplicates': 'off',
+        'unused-imports/no-unused-vars': 'off',
         'eslint-comments/no-unlimited-disable': 'off',
       },
     },
