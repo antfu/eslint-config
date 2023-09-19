@@ -35,7 +35,7 @@ module.exports = {
       allowImplicit: false,
       checkForEach: false,
     }],
-    'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    '@stylistic/js/brace-style': ['error', '1tbs', { allowSingleLine: true }],
     'camelcase': ['error', {
       allow: ['^UNSAFE_'],
       properties: 'never',
@@ -48,11 +48,11 @@ module.exports = {
       exports: 'never',
       functions: 'never',
     }],
-    'comma-style': ['error', 'last'],
+    '@stylistic/js/comma-style': ['error', 'last'],
     'constructor-super': 'error',
     'curly': ['error', 'multi-line'],
     'default-case-last': 'error',
-    'dot-location': ['error', 'property'],
+    '@stylistic/js/dot-location': ['error', 'property'],
     'dot-notation': ['error', { allowKeywords: true }],
     'eol-last': 'error',
     'eqeqeq': ['error', 'always', { null: 'ignore' }],
@@ -126,7 +126,6 @@ module.exports = {
     'no-sequences': 'error',
     'no-shadow-restricted-names': 'error',
     'no-sparse-arrays': 'error',
-    'no-tabs': 'error',
     'no-template-curly-in-string': 'error',
     'no-this-before-super': 'error',
     'no-throw-literal': 'error',
@@ -174,6 +173,7 @@ module.exports = {
     'yoda': ['error', 'never'],
     
     // Stylistic
+    '@stylistic/js/no-tabs': 'error',
     '@stylistic/js/array-bracket-spacing': ['error', 'never'],
     '@stylistic/js/arrow-spacing': ['error', { before: true, after: true }],
     '@stylistic/js/block-spacing': ['error', 'always'],

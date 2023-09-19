@@ -211,20 +211,16 @@ module.exports = {
     '@typescript-eslint/no-dupe-class-members': 'error',
     'no-loss-of-precision': 'off',
     '@typescript-eslint/no-loss-of-precision': 'error',
-    
+    'semi': 'off',
+    '@typescript-eslint/semi': ['error', 'never'],
+    'quotes': 'off',
+    '@typescript-eslint/quotes': ['error', 'single'],
+    'no-extra-parens': 'off',
+    '@typescript-eslint/no-extra-parens': ['error', 'functions'],
+
     // Stylistic JS/TS Misalignments (should be fixed upstream)
-    'brace-style': 'off',
-    '@stylistic/ts/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'comma-dangle': 'off',
     '@stylistic/ts/comma-dangle': ['error', 'always-multiline'],
-    '@stylistic/js/object-curly-spacing': 'off',
-    '@typescript-eslint/object-curly-spacing': ['error', 'always'],
-    'semi': 'off',
-    '@stylistic/ts/semi': ['error', 'never'],
-    'quotes': 'off',
-    '@stylistic/ts/quotes': ['error', 'single'],
-    'no-extra-parens': 'off',
-    '@stylistic/ts/no-extra-parens': ['error', 'functions'],
 
     // Stylistic JS/TS
     '@stylistic/js/space-before-blocks': 'off',
@@ -238,6 +234,10 @@ module.exports = {
         asyncArrow: 'always',
       },
     ],
+    '@stylistic/js/brace-style': 'off',
+    '@stylistic/ts/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+    '@stylistic/js/object-curly-spacing': 'off',
+    '@stylistic/ts/object-curly-spacing': ['error', 'always'],
     '@stylistic/js/space-infix-ops': 'off',
     '@stylistic/ts/space-infix-ops': 'error',
     '@stylistic/js/keyword-spacing': 'off',

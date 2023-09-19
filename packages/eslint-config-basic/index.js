@@ -267,6 +267,8 @@ module.exports = {
     '@stylistic/js/operator-linebreak': ['error', 'before'],
     '@stylistic/js/space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
     '@stylistic/js/template-curly-spacing': 'error',
+    '@stylistic/js/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+    '@stylistic/js/comma-style': ['error', 'last'],
     '@stylistic/js/spaced-comment': ['error', 'always', {
       line: {
         markers: ['/'],
@@ -280,9 +282,7 @@ module.exports = {
     }],
 
     'no-param-reassign': 'off',
-    'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
     'camelcase': 'off',
-    'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
     'no-constant-condition': 'warn',
     'no-debugger': 'error',
