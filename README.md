@@ -10,6 +10,8 @@
 - Reasonable defaults, best practices, only one-line of config
 - **Style principle**: Minimal for reading, stable for diff
 
+> Configs uses [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+
 ## Usage
 
 ### Install
@@ -51,10 +53,20 @@ Add the following settings to your `settings.json`:
 {
   "prettier.enable": false,
   "editor.formatOnSave": false,
+
+  // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.organizeImports": false
   },
+
+  // Silent the stylistic rules in you IDE, but still auto fix them
+  "eslint.rules.customizations": [
+    {
+      "rule": "@stylistic/*",
+      "severity": "off"
+    }
+  ],
 
   // The following is optional.
   // It's better to put under project setting `.vscode/settings.json`
