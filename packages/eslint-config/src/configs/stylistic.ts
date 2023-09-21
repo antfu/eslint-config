@@ -61,12 +61,10 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       '@stylistic/js/keyword-spacing': ['error', { after: true, before: true }],
       '@stylistic/js/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
       '@stylistic/js/multiline-ternary': ['error', 'always-multiline'],
-
       '@stylistic/js/no-mixed-spaces-and-tabs': 'error',
       '@stylistic/js/no-multi-spaces': 'error',
       '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
       '@stylistic/js/no-tabs': 'error',
-
       '@stylistic/js/no-trailing-spaces': 'error',
       '@stylistic/js/no-whitespace-before-property': 'error',
       '@stylistic/js/object-curly-newline': ['error', { consistent: true, multiline: true }],
@@ -95,6 +93,12 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       '@stylistic/js/template-curly-spacing': 'error',
       '@stylistic/js/template-tag-spacing': ['error', 'never'],
       '@stylistic/js/yield-star-spacing': ['error', 'both'],
+
+      'antfu/if-newline': 'error',
+      'comma-dangle': ['error', 'always-multiline'],
+      'curly': ['error', 'multi-or-nest', 'consistent'],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'never'],
     },
   },
 ]

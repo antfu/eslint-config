@@ -32,7 +32,6 @@ export const javascript: FlatESLintConfigItem[] = [
     rules: {
       'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
-      'antfu/if-newline': 'error',
       'antfu/import-dedupe': 'error',
       'antfu/no-import-node-modules-by-path': 'error',
       'antfu/top-level-function': 'error',
@@ -41,11 +40,9 @@ export const javascript: FlatESLintConfigItem[] = [
       'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
       'block-scoped-var': 'error',
       'camelcase': OFF,
-      'comma-dangle': ['error', 'always-multiline'],
       'complexity': OFF,
       'consistent-return': OFF,
       'constructor-super': 'error',
-      'curly': ['error', 'multi-or-nest', 'consistent'],
       'default-case-last': 'error',
       'dot-notation': ['error', { allowKeywords: true }],
       'eol-last': 'error',
@@ -207,9 +204,7 @@ export const javascript: FlatESLintConfigItem[] = [
       'prefer-spread': 'error',
       'prefer-template': 'error',
       'quote-props': ['error', 'consistent-as-needed'],
-      'quotes': ['error', 'single'],
       'require-await': OFF,
-      'semi': ['error', 'never'],
       'sort-imports': [
         'error',
         {
