@@ -13,6 +13,14 @@ export interface OptionsTypeScriptWithLanguageServer {
   tsconfigRootDir?: string
 }
 
+export interface OptionsHasTypeScript {
+  typescript?: boolean
+}
+
+export interface OptionsIsInEditor {
+  isInEditor?: boolean
+}
+
 export interface OptionsConfig {
   /**
    * Enable TypeScript support.
@@ -64,4 +72,12 @@ export interface OptionsConfig {
    * @default true
    */
   stylistic?: boolean
+
+
+  /**
+   * Control to disable some rules in editors.
+   * 
+   * @default auto-detect based on the process.env
+   */
+  isInEditor?: boolean
 }

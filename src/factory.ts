@@ -1,4 +1,6 @@
+import process from 'node:process'
 import type { FlatESLintConfigItem } from 'eslint-define-config'
+import { isPackageExists } from 'local-pkg'
 import {
   comments,
   ignores,
@@ -19,27 +21,27 @@ import {
   vue,
   yml,
 } from './configs'
-import { hasTypeScript, hasVue } from './env'
 import type { OptionsConfig } from './types'
-import { combine } from '.'
+import { combine } from './utils'
 
 /**
  * Construct an array of ESLint flat config items.
  */
 export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
+  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI)
+  const enableVue = options.vue ?? (isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli'))
+  const enableTypeScript = options.typescript ?? (isPackageExists('typescript'))
+  const enableStylistic = options.stylistic ?? true
+
   const configs = [
     ignores,
-    javascript,
+    javascript({ isInEditor }),
     comments,
     node,
     jsdoc,
     imports,
     unicorn,
   ]
-
-  const enableVue = options.vue ?? hasVue
-  const enableTypeScript = options.typescript ?? hasTypeScript
-  const enableStylistic = options.stylistic ?? true
 
   // In the future we may support more component extensions like Svelte or so
   const componentExts: string[] = []
@@ -64,11 +66,11 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
   }
 
   if (options.test ?? true)
-    configs.push(test)
+    configs.push(test({ isInEditor }))
 
-  if (enableVue)
-    configs.push(vue)
-
+  if (enableVue) 
+    configs.push(vue({ typescript: !!enableTypeScript })) 
+  
   if (options.jsonc ?? true) {
     configs.push(
       jsonc,
@@ -80,11 +82,8 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
   if (options.yaml ?? true)
     configs.push(yml)
 
-  if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-    }))
-  }
+  if (options.markdown ?? true) 
+    configs.push(markdown({ componentExts }))
 
   return combine(
     ...configs,
