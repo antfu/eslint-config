@@ -68,9 +68,9 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
   if (options.test ?? true)
     configs.push(test({ isInEditor }))
 
-  if (enableVue) 
-    configs.push(vue({ typescript: !!enableTypeScript })) 
-  
+  if (enableVue)
+    configs.push(vue({ typescript: !!enableTypeScript }))
+
   if (options.jsonc ?? true) {
     configs.push(
       jsonc,
@@ -82,7 +82,7 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
   if (options.yaml ?? true)
     configs.push(yml)
 
-  if (options.markdown ?? true) 
+  if (options.markdown ?? true)
     configs.push(markdown({ componentExts }))
 
   return combine(

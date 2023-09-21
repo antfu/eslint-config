@@ -21,4 +21,3 @@ export { default as parserTs } from '@typescript-eslint/parser'
 export { default as parserVue } from 'vue-eslint-parser'
 export { default as parserYml } from 'yaml-eslint-parser'
 export { default as parserJsonc } from 'jsonc-eslint-parser'
-

@@ -46,7 +46,7 @@ export function markdown(options: OptionsComponentExts = {}): FlatESLintConfigIt
         'no-undef': OFF,
         'no-unused-expressions': OFF,
         'no-unused-vars': OFF,
-        
+
         'node/prefer-global/process': OFF,
 
         'ts/comma-dangle': OFF,

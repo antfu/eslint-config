@@ -4,7 +4,6 @@ import { pluginStylisticJs, pluginStylisticTs, pluginTs } from '../plugins'
 import { OFF } from '../flags'
 
 const tsPackage = packages.find(i => i.shortId === 'ts')!
-const jsPackage =  packages.find(i => i.shortId === 'js')!
 
 export const javascriptStylistic: FlatESLintConfigItem[] = [
   {
@@ -139,7 +138,7 @@ function stylisticJsToTS(input: Record<string, any>) {
           if (!key.startsWith('style/'))
             return null!
           const basename = key.replace('style/', '')
-          if (jsPackage.rules.find(i => i.name === basename))
+          if (tsPackage.rules.find(i => i.name === basename))
             return [key, OFF]
           return null!
         })

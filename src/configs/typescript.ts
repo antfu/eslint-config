@@ -54,7 +54,7 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
         'no-redeclare': OFF,
         'no-use-before-define': OFF,
         'no-useless-constructor': OFF,
-      
+
         // TS
         'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
         'ts/ban-ts-ignore': OFF,
