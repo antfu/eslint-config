@@ -15,7 +15,7 @@ export const yml: FlatESLintConfigItem[] = [
     rules: {
       ...pluginYml.configs.standard.rules as any,
 
-      '@stylistic/js/spaced-comment': OFF,
+      'style/spaced-comment': OFF,
       'yml/no-empty-document': OFF,
       'yml/no-empty-mapping-value': OFF,
 

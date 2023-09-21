@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// eslint-disable-next-line ts/ban-ts-comment
 // @ts-nocheck
 
 export { default as pluginAntfu } from 'eslint-plugin-antfu'
@@ -21,3 +21,4 @@ export { default as parserTs } from '@typescript-eslint/parser'
 export { default as parserVue } from 'vue-eslint-parser'
 export { default as parserYml } from 'yaml-eslint-parser'
 export { default as parserJsonc } from 'jsonc-eslint-parser'
+

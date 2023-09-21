@@ -1,25 +1,34 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config'
-import { rules } from '@eslint-stylistic/metadata'
-import { pluginStylisticJs, pluginStylisticTs } from '../plugins'
+import { packages } from '@eslint-stylistic/metadata'
+import { pluginStylisticJs, pluginStylisticTs, pluginTs } from '../plugins'
 import { OFF } from '../flags'
+
+const tsPackage = packages.find(i => i.shortId === 'ts')!
+const jsPackage =  packages.find(i => i.shortId === 'js')!
 
 export const javascriptStylistic: FlatESLintConfigItem[] = [
   {
     plugins: {
-      '@stylistic/js': pluginStylisticJs,
+      style: pluginStylisticJs,
     },
     rules: {
-      '@stylistic/js/array-bracket-spacing': ['error', 'never'],
-      '@stylistic/js/arrow-spacing': ['error', { after: true, before: true }],
-      '@stylistic/js/block-spacing': ['error', 'always'],
-      '@stylistic/js/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-      '@stylistic/js/comma-spacing': ['error', { after: true, before: false }],
-      '@stylistic/js/comma-style': ['error', 'last'],
-      '@stylistic/js/computed-property-spacing': ['error', 'never', { enforceForClassMembers: true }],
-      '@stylistic/js/dot-location': ['error', 'property'],
-      '@stylistic/js/func-call-spacing': OFF,
-      '@stylistic/js/generator-star-spacing': OFF,
-      '@stylistic/js/indent': ['error', 2, {
+      'antfu/if-newline': 'error',
+      'comma-dangle': ['error', 'always-multiline'],
+      'curly': ['error', 'multi-or-nest', 'consistent'],
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'never'],
+
+      'style/array-bracket-spacing': ['error', 'never'],
+      'style/arrow-spacing': ['error', { after: true, before: true }],
+      'style/block-spacing': ['error', 'always'],
+      'style/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+      'style/comma-spacing': ['error', { after: true, before: false }],
+      'style/comma-style': ['error', 'last'],
+      'style/computed-property-spacing': ['error', 'never', { enforceForClassMembers: true }],
+      'style/dot-location': ['error', 'property'],
+      'style/func-call-spacing': OFF,
+      'style/generator-star-spacing': OFF,
+      'style/indent': ['error', 2, {
         ArrayExpression: 1,
         CallExpression: { arguments: 1 },
         FunctionDeclaration: { body: 1, parameters: 1 },
@@ -57,29 +66,29 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
         offsetTernaryExpressions: true,
         outerIIFEBody: 1,
       }],
-      '@stylistic/js/key-spacing': ['error', { afterColon: true, beforeColon: false }],
-      '@stylistic/js/keyword-spacing': ['error', { after: true, before: true }],
-      '@stylistic/js/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-      '@stylistic/js/multiline-ternary': ['error', 'always-multiline'],
-      '@stylistic/js/no-mixed-spaces-and-tabs': 'error',
-      '@stylistic/js/no-multi-spaces': 'error',
-      '@stylistic/js/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-      '@stylistic/js/no-tabs': 'error',
-      '@stylistic/js/no-trailing-spaces': 'error',
-      '@stylistic/js/no-whitespace-before-property': 'error',
-      '@stylistic/js/object-curly-newline': ['error', { consistent: true, multiline: true }],
-      '@stylistic/js/object-curly-spacing': ['error', 'always'],
-      '@stylistic/js/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
-      '@stylistic/js/operator-linebreak': ['error', 'before'],
-      '@stylistic/js/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
-      '@stylistic/js/rest-spread-spacing': ['error', 'never'],
-      '@stylistic/js/semi-spacing': ['error', { after: true, before: false }],
-      '@stylistic/js/space-before-blocks': ['error', 'always'],
-      '@stylistic/js/space-before-function-paren': ['error', { anonymous: 'always', asyncArrow: 'always', named: 'never' }],
-      '@stylistic/js/space-in-parens': ['error', 'never'],
-      '@stylistic/js/space-infix-ops': 'error',
-      '@stylistic/js/space-unary-ops': ['error', { nonwords: false, words: true }],
-      '@stylistic/js/spaced-comment': ['error', 'always', {
+      'style/key-spacing': ['error', { afterColon: true, beforeColon: false }],
+      'style/keyword-spacing': ['error', { after: true, before: true }],
+      'style/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+      'style/multiline-ternary': ['error', 'always-multiline'],
+      'style/no-mixed-spaces-and-tabs': 'error',
+      'style/no-multi-spaces': 'error',
+      'style/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
+      'style/no-tabs': 'error',
+      'style/no-trailing-spaces': 'error',
+      'style/no-whitespace-before-property': 'error',
+      'style/object-curly-newline': ['error', { consistent: true, multiline: true }],
+      'style/object-curly-spacing': ['error', 'always'],
+      'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
+      'style/operator-linebreak': ['error', 'before'],
+      'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
+      'style/rest-spread-spacing': ['error', 'never'],
+      'style/semi-spacing': ['error', { after: true, before: false }],
+      'style/space-before-blocks': ['error', 'always'],
+      'style/space-before-function-paren': ['error', { anonymous: 'always', asyncArrow: 'always', named: 'never' }],
+      'style/space-in-parens': ['error', 'never'],
+      'style/space-infix-ops': 'error',
+      'style/space-unary-ops': ['error', { nonwords: false, words: true }],
+      'style/spaced-comment': ['error', 'always', {
         block: {
           balanced: true,
           exceptions: ['*'],
@@ -90,15 +99,9 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
           markers: ['/'],
         },
       }],
-      '@stylistic/js/template-curly-spacing': 'error',
-      '@stylistic/js/template-tag-spacing': ['error', 'never'],
-      '@stylistic/js/yield-star-spacing': ['error', 'both'],
-
-      'antfu/if-newline': 'error',
-      'comma-dangle': ['error', 'always-multiline'],
-      'curly': ['error', 'multi-or-nest', 'consistent'],
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'never'],
+      'style/template-curly-spacing': 'error',
+      'style/template-tag-spacing': ['error', 'never'],
+      'style/yield-star-spacing': ['error', 'both'],
     },
   },
 ]
@@ -106,13 +109,22 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
 export const typescriptStylistic: FlatESLintConfigItem[] = [
   {
     plugins: {
-      '@stylistic/js': pluginStylisticJs,
-      '@stylistic/ts': pluginStylisticTs,
+      'style-ts': pluginStylisticTs,
+      'ts': pluginTs as any,
     },
     rules: {
-      ...stylisticJsToTS(rules),
-      '@stylistic/ts/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
-      '@stylistic/ts/type-annotation-spacing': ['error', {}],
+      ...stylisticJsToTS(javascriptStylistic[0].rules!),
+
+      'comma-dangle': OFF,
+      'quotes': OFF,
+      'semi': OFF,
+
+      'style-ts/member-delimiter-style': ['error', { multiline: { delimiter: 'none' } }],
+      'style-ts/type-annotation-spacing': ['error', {}],
+
+      'ts/comma-dangle': ['error', 'always-multiline'],
+      'ts/quotes': ['error', 'single'],
+      'ts/semi': ['error', 'never'],
     },
   },
 ]
@@ -120,21 +132,28 @@ export const typescriptStylistic: FlatESLintConfigItem[] = [
 // TODO: move to ESLint Stylistic
 function stylisticJsToTS(input: Record<string, any>) {
   return {
-    // turn off all stylistic rules from @stylistic/js
+    // turn off all stylistic rules from style
     ...Object.fromEntries(
       Object.entries(input)
-        .map(([key]) => rules.find(i => i.name === key) ? [key, OFF] : null!)
+        .map(([key]) => {
+          if (!key.startsWith('style/'))
+            return null!
+          const basename = key.replace('style/', '')
+          if (jsPackage.rules.find(i => i.name === basename))
+            return [key, OFF]
+          return null!
+        })
         .filter(Boolean),
     ),
-    // rename all stylistic rules from @stylistic/js to @stylistic/ts
+    // rename all stylistic rules from style to style/ts
     ...Object.fromEntries(
       Object.entries(input)
         .map(([key, value]) => {
-          const newKey = key.replace('@stylistic/js', '@stylistic/ts')
-          if (newKey === key)
+          if (!key.startsWith('style/'))
             return null!
-          return rules.find(i => i.name === newKey)
-            ? [key.replace('@stylistic/js', '@stylistic/ts'), value]
+          const basename = key.replace('style/', '')
+          return tsPackage.rules.find(i => i.name === basename)
+            ? [`style-ts/${basename}`, value]
             : null!
         })
         .filter(Boolean),

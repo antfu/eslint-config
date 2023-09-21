@@ -100,7 +100,7 @@ Add the following settings to your `settings.json`:
 }
 ```
 
-## Flat Config
+## Customization
 
 Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
 
@@ -196,6 +196,26 @@ export default [
 Check out the [configs](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/factory.ts) for more details.
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
+
+## Plugins Renaming
+
+Since flat config support explicit provides the plugin names, we renamed some plugins to make them more consistent and hide the implementation details.
+
+| Original Prefix | New Prefix | Source Plugin |
+| --------------- | ---------- | ------------- |
+| `i/*` | `import/*` | [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i) |
+| `n/*` | `node` | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)
+| `@typescript-eslint/*` | `ts/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
+| `@stylistic/js` | `style/*` | [@stylistic/eslint-plugin-js](https://github.com/eslint-stylistic/eslint-stylistic) |
+| `@stylistic/ts` | `style-ts/` | [@stylistic/eslint-plugin-ts](https://github.com/eslint-stylistic/eslint-stylistic) |
+
+When you want to overrides rules, or disable them inline, you need to update to the new prefix:
+
+```diff
+-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
++// eslint-disable-next-line ts/consistent-type-definitions
+type foo = { bar: 2 }
+```
 
 ### Type Aware Rules
 
