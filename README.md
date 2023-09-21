@@ -9,12 +9,11 @@
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - **Style principle**: Minimal for reading, stable for diff
 
-> Configs uses [🌈 ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
-
 > [!IMPORTANT]
-> The main branch is for v1.0-beta, which rewrites to ESLint Flat config, check #250 for more details.
+> The main branch is for v1.0-beta, which rewrites to ESLint Flat config, check [#250](https://github.com/antfu/eslint-config/pull/250) for more details.
 
 ## Usage
 
