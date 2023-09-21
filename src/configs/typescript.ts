@@ -67,13 +67,12 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
         'ts/naming-convention': OFF,
         'ts/no-dupe-class-members': 'error',
         'ts/no-empty-function': OFF,
-
         'ts/no-empty-interface': OFF,
         'ts/no-explicit-any': OFF,
         'ts/no-extra-parens': ['error', 'functions'],
         'ts/no-invalid-this': 'error',
         'ts/no-loss-of-precision': 'error',
-
+        'ts/no-invalid-void-type': OFF,
         'ts/no-non-null-assertion': OFF,
         'ts/no-redeclare': 'error',
         'ts/no-require-imports': 'error',
