@@ -1,5 +1,6 @@
 {
   "name": "@antfu/eslint-config",
+  "type": "module",
   "version": "0.43.1",
   "description": "Anthony's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
@@ -8,27 +9,43 @@
   "keywords": [
     "eslint-config"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "index.js"
+    "dist"
   ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --clean",
+    "stub": "pnpm run build"
+  },
   "peerDependencies": {
-    "eslint": ">=7.4.0"
+    "eslint": ">=8.0.0"
   },
   "dependencies": {
-    "@antfu/eslint-config-vue": "workspace:*",
+    "@eslint-stylistic/metadata": "^0.0.4",
+    "@eslint/js": "^8.49.0",
+    "@stylistic/eslint-plugin-js": "0.0.4",
+    "@stylistic/eslint-plugin-ts": "0.0.4",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "eslint-define-config": "^1.23.0",
+    "eslint-plugin-antfu": "workspace:*",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-import": "npm:eslint-plugin-i@2.28.1",
+    "eslint-plugin-i": "^2.28.1",
+    "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-jsonc": "^2.9.0",
+    "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unicorn": "^48.0.1",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "eslint-plugin-vue": "^9.17.0",
     "eslint-plugin-yml": "^1.9.0",
+    "globals": "^13.22.0",
     "jsonc-eslint-parser": "^2.3.0",
+    "local-pkg": "^0.4.3",
+    "vue-eslint-parser": "^9.3.1",
     "yaml-eslint-parser": "^1.2.2"
   },
   "devDependencies": {

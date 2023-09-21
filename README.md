@@ -8,9 +8,10 @@
 - Lint also for json, yaml, markdown
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - **Style principle**: Minimal for reading, stable for diff
 
-> Configs uses [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+> Configs uses [🌈 ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 
 ## Usage
 
@@ -20,12 +21,20 @@
 pnpm add -D eslint @antfu/eslint-config
 ```
 
-### Config `.eslintrc`
+### Create config file
 
-```json
-{
-  "extends": "@antfu"
-}
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default [
+  ...antfu,
+  {
+    rules: {
+      // your overrides
+    },
+  },
+]
 ```
 
 > You don't need `.eslintignore` normally as it has been provided by the preset.
@@ -43,7 +52,7 @@ For example:
 }
 ```
 
-### VS Code support (auto fix)
+## VS Code support (auto fix)
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
@@ -51,6 +60,10 @@ Add the following settings to your `settings.json`:
 
 ```jsonc
 {
+  // Enable the flat config support
+  "eslint.experimental.useFlatConfig": true,
+
+  // Disable the default formatter
   "prettier.enable": false,
   "editor.formatOnSave": false,
 
@@ -87,19 +100,98 @@ Add the following settings to your `settings.json`:
 }
 ```
 
-### TypeScript Aware Rules
+## Flat Config
 
-Type aware rules are enabled when a `tsconfig.eslint.json` is found in the project root, which will introduce some stricter rules into your project. If you want to enable it while have no `tsconfig.eslint.json` in the project root, you can change tsconfig name by modifying `ESLINT_TSCONFIG` env.
+Since v0.44.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
+
+You can now compose your own config easily:
 
 ```js
-// .eslintrc.js
-const process = require('node:process')
+// eslint.config.js
+import {
+  presetAuto,
+  presetJavaScriptCore,
+  presetLangsExtensions,
+  presetTypeScript,
+} from '@antfu/eslint-config'
 
-process.env.ESLINT_TSCONFIG = 'tsconfig.json'
+export default [
+  // javascript, node, unicorn, jsdoc, imports, etc.
+  ...presetJavaScriptCore,
+  // typescript support
+  ...presetTypeScript,
+  // yaml, markdown, json, support
+  ...presetLangsExtensions,
+]
+```
 
-module.exports = {
-  extends: '@antfu'
-}
+Or even more granular:
+
+```js
+// eslint.config.js
+import {
+  comments,
+  ignores,
+  imports,
+  javascript,
+  javascriptStylistic,
+  jsdoc,
+  jsonc,
+  markdown,
+  node,
+  sortPackageJson,
+  sortTsconfig,
+  typescript,
+  typescriptStylistic,
+  unicorn,
+  vue,
+  yml,
+} from '@antfu/eslint-config'
+
+export default [
+  ...ignores,
+  ...javascript,
+  ...comments,
+  ...node,
+  ...jsdoc,
+  ...imports,
+  ...unicorn,
+  ...javascriptStylistic,
+
+  ...typescript,
+  ...typescriptStylistic,
+
+  ...vue,
+
+  ...jsonc,
+  ...yml,
+  ...markdown,
+]
+```
+
+Check out the [presets](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/presets.ts) and [configs](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/configs) for more details.
+
+> Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
+
+### Type Aware Rules
+
+You can optionally enable the [type aware rules](https://typescript-eslint.io/linting/typed-linting/) by importing `typescriptWithLanguageServer` config:
+
+```js
+// eslint.config.js
+import { presetAuto, typescriptWithLanguageServer } from '@antfu/eslint-config'
+
+export default [
+  ...presetAuto,
+  ...typescriptWithLanguageServer({
+    tsconfig: 'tsconfig.json', // path to your tsconfig
+  }),
+  {
+    rules: {
+      // your overrides
+    },
+  },
+]
 ```
 
 ### Lint Staged
@@ -145,20 +237,7 @@ This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unoc
 
 ### I prefer XXX...
 
-Sure, you can override the rules in your `.eslintrc` file.
-
-<!-- eslint-skip -->
-
-```jsonc
-{
-  "extends": "@antfu",
-  "rules": {
-    // your rules...
-  }
-}
-```
-
-Or you can always fork this repo and make your own.
+Sure, you can override rules locally in your project to fit your needs. Or you can always fork this repo and make your own.
 
 ## Check Also
 
