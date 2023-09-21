@@ -31,15 +31,13 @@ export const javascript: FlatESLintConfigItem[] = [
     },
     rules: {
       'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
+
       'antfu/if-newline': 'error',
       'antfu/import-dedupe': 'error',
       'antfu/no-import-node-modules-by-path': 'error',
-
       'antfu/top-level-function': 'error',
 
-      // best-practice
       'array-callback-return': 'error',
-
       'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
       'block-scoped-var': 'error',
       'camelcase': OFF,
@@ -77,26 +75,19 @@ export const javascript: FlatESLintConfigItem[] = [
       'no-empty-character-class': 'error',
       'no-empty-pattern': 'error',
       'no-eval': 'error',
-
       'no-ex-assign': 'error',
       'no-extend-native': 'error',
       'no-extra-bind': 'error',
       'no-extra-boolean-cast': 'error',
-
       'no-extra-parens': ['error', 'functions'],
       'no-fallthrough': 'error',
-
       'no-floating-decimal': 'error',
       'no-func-assign': 'error',
       'no-global-assign': 'error',
-
       'no-implied-eval': 'error',
       'no-import-assign': 'error',
-
       'no-invalid-regexp': 'error',
-
       'no-invalid-this': 'error',
-
       'no-irregular-whitespace': 'error',
       'no-iterator': 'error',
       'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
@@ -183,8 +174,6 @@ export const javascript: FlatESLintConfigItem[] = [
       'no-useless-escape': OFF,
       'no-useless-rename': 'error',
       'no-useless-return': 'error',
-
-      // ES6
       'no-var': 'error',
       'no-void': 'error',
       'no-with': 'error',
@@ -220,7 +209,6 @@ export const javascript: FlatESLintConfigItem[] = [
       'quote-props': ['error', 'consistent-as-needed'],
       'quotes': ['error', 'single'],
       'require-await': OFF,
-      // Common
       'semi': ['error', 'never'],
       'sort-imports': [
         'error',
@@ -234,14 +222,14 @@ export const javascript: FlatESLintConfigItem[] = [
       ],
       'symbol-description': 'error',
       'unicode-bom': ['error', 'never'],
-      'unused-imports/no-unused-imports': isInEditor ? OFF : 'error',
 
+      'unused-imports/no-unused-imports': isInEditor ? OFF : 'error',
       'unused-imports/no-unused-vars': [
         'warn',
         { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
       ],
-      'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
 
+      'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
       'valid-typeof': ['error', { requireStringLiterals: true }],
       'vars-on-top': 'error',
       'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
