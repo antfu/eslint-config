@@ -218,7 +218,7 @@ module.exports = {
         '@typescript-eslint/no-namespace': 'off',
         '@typescript-eslint/no-require-imports': 'off',
 
-        '@stylistic/ts/comma-dangle': 'off',
+        '@typescript-eslint/comma-dangle': 'off',
    
         'unused-imports/no-unused-imports': 'off',
         'unused-imports/no-unused-vars': 'off',
