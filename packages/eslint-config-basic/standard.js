@@ -171,7 +171,7 @@ module.exports = {
     'valid-typeof': ['error', { requireStringLiterals: true }],
     'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
     'yoda': ['error', 'never'],
-    
+
     // Stylistic
     '@stylistic/js/no-tabs': 'error',
     '@stylistic/js/array-bracket-spacing': ['error', 'never'],

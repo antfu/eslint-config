@@ -219,7 +219,7 @@ module.exports = {
         '@typescript-eslint/no-require-imports': 'off',
 
         '@typescript-eslint/comma-dangle': 'off',
-   
+
         'unused-imports/no-unused-imports': 'off',
         'unused-imports/no-unused-vars': 'off',
 
