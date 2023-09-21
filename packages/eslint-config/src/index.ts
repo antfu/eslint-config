@@ -1,9 +1,10 @@
-import { presetAuto } from './presets'
+import { antfu } from './factory'
 
-export default presetAuto
-
+export * from './types'
+export * from './factory'
 export * from './configs'
-export * from './presets'
 export * from './plugins'
 export * from './env'
 export * from './utils'
+
+export default antfu

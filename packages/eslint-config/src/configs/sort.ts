@@ -5,7 +5,6 @@ import type { FlatESLintConfigItem } from 'eslint-define-config'
  *
  * Requires `jsonc` config
  */
-
 export const sortPackageJson: FlatESLintConfigItem[] = [
   {
     files: ['**/package.json'],

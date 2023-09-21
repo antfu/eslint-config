@@ -9,7 +9,6 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       '@stylistic/js': pluginStylisticJs,
     },
     rules: {
-      // Stylistic
       '@stylistic/js/array-bracket-spacing': ['error', 'never'],
       '@stylistic/js/arrow-spacing': ['error', { after: true, before: true }],
       '@stylistic/js/block-spacing': ['error', 'always'],

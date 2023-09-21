@@ -1,10 +1,9 @@
-import { defineFlatConfig } from 'eslint-define-config'
-import { presetAuto } from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config'
 import stylisticMigrate from '@stylistic/eslint-plugin-migrate'
 import sortKeys from 'eslint-plugin-sort-keys'
 
-export default defineFlatConfig([
-  ...presetAuto,
+export default antfu(
+  undefined,
   {
     files: ['**/eslint-config/src/**/*.ts'],
     plugins: {
@@ -16,4 +15,4 @@ export default defineFlatConfig([
       'sort-keys/sort-keys-fix': 'error',
     },
   },
-])
+)

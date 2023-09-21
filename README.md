@@ -29,14 +29,7 @@ pnpm add -D eslint @antfu/eslint-config
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default [
-  ...antfu,
-  {
-    rules: {
-      // your overrides
-    },
-  },
-]
+export default antfu()
 ```
 
 > You don't need `.eslintignore` normally as it has been provided by the preset.
@@ -81,7 +74,11 @@ Add the following settings to your `settings.json`:
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" }
+    { "rule": "*-order", "severity": "off" },
+    { "rule": "*-dangle", "severity": "off" },
+    { "rule": "*-newline", "severity": "off" },
+    { "rule": "*quotes", "severity": "off" },
+    { "rule": "*semi", "severity": "off" }
   ],
 
   // The following is optional.
@@ -107,28 +104,53 @@ Add the following settings to your `settings.json`:
 
 Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
 
-You can now compose your own config easily:
+Normally you only need to import the `antfu` preset:
 
 ```js
 // eslint.config.js
-import {
-  presetAuto,
-  presetJavaScriptCore,
-  presetLangsExtensions,
-  presetTypeScript,
-} from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config'
 
-export default [
-  // javascript, node, unicorn, jsdoc, imports, etc.
-  ...presetJavaScriptCore,
-  // typescript support
-  ...presetTypeScript,
-  // yaml, markdown, json, support
-  ...presetLangsExtensions,
-]
+export default antfu()
 ```
 
-Or even more granular:
+You can configure each feature individually, for example:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  stylistic: true, // enable stylistic formatting rules
+  typescript: true,
+  vue: true,
+  jsonc: false,
+  yml: false,
+})
+```
+
+The `antfu` factory functions also accepts arbitrary numbers of constom configs overrides:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu(
+  {
+    // Configures for antfu's config
+  },
+
+  // From the second arguments they are ESLint Flat Configs
+  // you can have multiple configs
+  {
+    rules: {},
+  },
+  {
+    rules: {},
+  },
+)
+```
+
+Going more advanced, you can also import the very fine-grained configs and compose them as you wish:
 
 ```js
 // eslint.config.js
@@ -153,7 +175,7 @@ import {
 
 export default [
   ...ignores,
-  ...javascript,
+  ...javascript(),
   ...comments,
   ...node,
   ...jsdoc,
@@ -161,40 +183,33 @@ export default [
   ...unicorn,
   ...javascriptStylistic,
 
-  ...typescript,
+  ...typescript(),
   ...typescriptStylistic,
 
-  ...vue,
-
+  ...vue(),
   ...jsonc,
   ...yml,
-  ...markdown,
+  ...markdown(),
 ]
 ```
 
-Check out the [presets](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/presets.ts) and [configs](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/configs) for more details.
+Check out the [configs](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/factory.ts) for more details.
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
 
 ### Type Aware Rules
 
-You can optionally enable the [type aware rules](https://typescript-eslint.io/linting/typed-linting/) by importing `typescriptWithLanguageServer` config:
+You can optionally enable the [type aware rules](https://typescript-eslint.io/linting/typed-linting/) by passing the options object to the `typescript` config:
 
 ```js
 // eslint.config.js
-import { presetAuto, typescriptWithLanguageServer } from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config'
 
-export default [
-  ...presetAuto,
-  ...typescriptWithLanguageServer({
-    tsconfig: 'tsconfig.json', // path to your tsconfig
-  }),
-  {
-    rules: {
-      // your overrides
-    },
+export default antfu({
+  typescript: {
+    tsconfigPath: 'tsconfig.json',
   },
-]
+})
 ```
 
 ### Lint Staged
@@ -240,7 +255,7 @@ This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unoc
 
 ### I prefer XXX...
 
-Sure, you can override rules locally in your project to fit your needs. Or you can always fork this repo and make your own.
+Sure, you can config and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
 
 ## Check Also
 
