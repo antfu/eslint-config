@@ -1,5 +1,5 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config'
-import pluginUnicorn from 'eslint-plugin-unicorn'
+import { pluginUnicorn } from '../plugins'
 
 export const unicorn: FlatESLintConfigItem[] = [
   {

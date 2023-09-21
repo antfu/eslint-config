@@ -49,8 +49,12 @@ export default createEslintRule<Options, MessageIds>({
 
 function * removeTypeSpecifier(fixer: RuleFixer, sourceCode: Readonly<SourceCode>, node: TSESTree.ImportDeclaration) {
   const importKeyword = sourceCode.getFirstToken(node)
+  if (!importKeyword)
+    return
 
   const typeIdentifier = sourceCode.getTokenAfter(importKeyword)
+  if (!typeIdentifier)
+    return
 
   yield fixer.remove(typeIdentifier)
 

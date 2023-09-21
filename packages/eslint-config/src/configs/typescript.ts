@@ -19,12 +19,12 @@ export const typescript: FlatESLintConfigItem[] = [
       },
     },
     plugins: {
-      '@typescript-eslint': pluginTs,
+      '@typescript-eslint': pluginTs as any,
       'antfu': pluginAntfu,
       'import': pluginImport,
     },
     rules: {
-      ...pluginTs.configs['eslint-recommended'].overrides[0].rules,
+      ...pluginTs.configs['eslint-recommended'].overrides![0].rules,
       ...pluginTs.configs.strict.rules,
 
       // TS
@@ -114,7 +114,7 @@ export function typescriptWithLanguageServer({
         },
       },
       plugins: {
-        '@typescript-eslint': pluginTs,
+        '@typescript-eslint': pluginTs as any,
       },
       rules: {
         '@typescript-eslint/await-thenable': 'error',

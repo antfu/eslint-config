@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "pnpm -r run stub && eslint .",
+    "typecheck": "tsc --noEmit",
     "test": "pnpm -r run test",
     "build": "pnpm -r run build",
     "release": "bumpp -r && pnpm -r publish"

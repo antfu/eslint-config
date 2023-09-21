@@ -6,6 +6,7 @@ export { default as pluginComments } from 'eslint-plugin-eslint-comments'
 export { default as pluginImport } from 'eslint-plugin-i'
 // @ts-expect-error missing types
 export { default as pluginJsdoc } from 'eslint-plugin-jsdoc'
+export { default as pluginJsonc } from 'eslint-plugin-jsonc'
 // @ts-expect-error missing types
 export { default as pluginMarkdown } from 'eslint-plugin-markdown'
 // @ts-expect-error missing types
@@ -28,3 +29,4 @@ export { default as pluginNoOnlyTests } from 'eslint-plugin-no-only-tests'
 export { default as parserTs } from '@typescript-eslint/parser'
 export { default as parserVue } from 'vue-eslint-parser'
 export { default as parserYml } from 'yaml-eslint-parser'
+export { default as parserJsonc } from 'jsonc-eslint-parser'

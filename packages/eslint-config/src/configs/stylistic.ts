@@ -115,24 +115,24 @@ export const typescriptStylistic: FlatESLintConfigItem[] = [
 ]
 
 // TODO: move to ESLint Stylistic
-function stylisticJsToTS(rules: Record<string, any>) {
+function stylisticJsToTS(input: Record<string, any>) {
   return {
     // turn off all stylistic rules from @stylistic/js
     ...Object.fromEntries(
-      Object.entries(rules)
-        .map(([key]) => rules.find(i => i.name === key) ? [key, OFF] : null)
+      Object.entries(input)
+        .map(([key]) => rules.find(i => i.name === key) ? [key, OFF] : null!)
         .filter(Boolean),
     ),
     // rename all stylistic rules from @stylistic/js to @stylistic/ts
     ...Object.fromEntries(
-      Object.entries(rules)
+      Object.entries(input)
         .map(([key, value]) => {
           const newKey = key.replace('@stylistic/js', '@stylistic/ts')
           if (newKey === key)
-            return null
+            return null!
           return rules.find(i => i.name === newKey)
             ? [key.replace('@stylistic/js', '@stylistic/ts'), value]
-            : null
+            : null!
         })
         .filter(Boolean),
     ),
