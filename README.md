@@ -193,7 +193,7 @@ export default [
 ]
 ```
 
-Check out the [configs](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/packages/eslint-config/src/factory.ts) for more details.
+Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/src/factory.ts) for more details.
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
 

@@ -1,6 +1,6 @@
-import antfu from '@antfu/eslint-config'
 import stylisticMigrate from '@stylistic/eslint-plugin-migrate'
 import sortKeys from 'eslint-plugin-sort-keys'
+import antfu from '@antfu/eslint-config'
 
 export default antfu(
   undefined,
