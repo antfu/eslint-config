@@ -13,6 +13,9 @@
 
 > Configs uses [🌈 ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 
+> [!IMPORTANT]
+> The main branch is for v1.0-beta, which rewrites to ESLint Flat config, check #250 for more details.
+
 ## Usage
 
 ### Install
@@ -102,7 +105,7 @@ Add the following settings to your `settings.json`:
 
 ## Flat Config
 
-Since v0.44.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
+Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
 
 You can now compose your own config easily:
 
