@@ -1,5 +1,6 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config'
 import { pluginJsdoc } from '../plugins'
+import { OFF } from '../flags'
 
 export const jsdoc: FlatESLintConfigItem[] = [
   {
@@ -8,18 +9,18 @@ export const jsdoc: FlatESLintConfigItem[] = [
     },
     rules: {
       ...pluginJsdoc.configs.recommended.rules,
-      'jsdoc/require-jsdoc': 'off',
-      'jsdoc/require-param': 'off',
-      'jsdoc/require-param-type': 'off',
-      'jsdoc/require-param-description': 'off',
-      'jsdoc/require-yields': 'off',
-      'jsdoc/tag-lines': 'off',
-      'jsdoc/check-values': 'off',
-      'jsdoc/check-tag-names': 'off',
-      'jsdoc/no-undefined-types': 'off',
-      'jsdoc/require-returns': 'off',
-      'jsdoc/require-returns-type': 'off',
-      'jsdoc/require-throws': 'off',
+      'jsdoc/check-tag-names': OFF,
+      'jsdoc/check-values': OFF,
+      'jsdoc/no-undefined-types': OFF,
+      'jsdoc/require-jsdoc': OFF,
+      'jsdoc/require-param': OFF,
+      'jsdoc/require-param-description': OFF,
+      'jsdoc/require-param-type': OFF,
+      'jsdoc/require-returns': OFF,
+      'jsdoc/require-returns-type': OFF,
+      'jsdoc/require-throws': OFF,
+      'jsdoc/require-yields': OFF,
+      'jsdoc/tag-lines': OFF,
     },
   },
 ]

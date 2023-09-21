@@ -21,6 +21,12 @@ export const GLOB_VUE = '**/*.vue'
 export const GLOB_YAML = '**/*.y?(a)ml'
 export const GLOB_HTML = '**/*.htm?(l)'
 
+export const GLOB_TESTS = [
+  '**/__tests__/**/*.?([cm])[jt]s?(x)',
+  '**/*.spec.?([cm])[jt]s?(x)',
+  '**/*.test.?([cm])[jt]s?(x)',
+]
+
 export const GLOB_ALL_SRC = [
   GLOB_SRC,
   GLOB_STYLE,

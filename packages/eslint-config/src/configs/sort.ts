@@ -10,10 +10,16 @@ export const sortPackageJson: FlatESLintConfigItem[] = [
   {
     files: ['**/package.json'],
     rules: {
+      'jsonc/sort-array-values': [
+        'error',
+        {
+          order: { type: 'asc' },
+          pathPattern: '^files$',
+        },
+      ],
       'jsonc/sort-keys': [
         'error',
         {
-          pathPattern: '^$',
           order: [
             'publisher',
             'name',
@@ -59,34 +65,28 @@ export const sortPackageJson: FlatESLintConfigItem[] = [
             'lint-staged',
             'eslintConfig',
           ],
+          pathPattern: '^$',
         },
         {
+          order: { type: 'asc' },
           pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
-          order: { type: 'asc' },
         },
         {
+          order: { type: 'asc' },
           pathPattern: '^resolutions$',
-          order: { type: 'asc' },
         },
         {
+          order: { type: 'asc' },
           pathPattern: '^pnpm.overrides$',
-          order: { type: 'asc' },
         },
         {
-          pathPattern: '^exports.*$',
           order: [
             'types',
             'import',
             'require',
             'default',
           ],
-        },
-      ],
-      'jsonc/sort-array-values': [
-        'error',
-        {
-          pathPattern: '^files$',
-          order: { type: 'asc' },
+          pathPattern: '^exports.*$',
         },
       ],
     },
@@ -105,7 +105,6 @@ export const sortTsconfig: FlatESLintConfigItem[] = [
       'jsonc/sort-keys': [
         'error',
         {
-          pathPattern: '^$',
           order: [
             'extends',
             'compilerOptions',
@@ -114,9 +113,9 @@ export const sortTsconfig: FlatESLintConfigItem[] = [
             'include',
             'exclude',
           ],
+          pathPattern: '^$',
         },
         {
-          pathPattern: '^compilerOptions$',
           order: [
             /* Projects */
             'incremental',
@@ -215,6 +214,7 @@ export const sortTsconfig: FlatESLintConfigItem[] = [
             'skipDefaultLibCheck',
             'skipLibCheck',
           ],
+          pathPattern: '^compilerOptions$',
         },
       ],
     },

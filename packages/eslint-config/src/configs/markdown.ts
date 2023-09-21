@@ -1,6 +1,7 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config'
 import { GLOB_MARKDOWN, GLOB_SRC, GLOB_VUE } from '../globs'
-import { pluginMarkdown, pluginTs } from '../plugins'
+import { pluginMarkdown } from '../plugins'
+import { OFF } from '../flags'
 
 export const markdown: FlatESLintConfigItem[] = [
   {
@@ -19,36 +20,34 @@ export const markdown: FlatESLintConfigItem[] = [
         },
       },
     },
-    plugins: {
-      '@typescript-eslint': pluginTs,
-    },
     rules: {
       ...pluginMarkdown.configs.recommended.overrides[1].rules,
-      'no-alert': 'off',
-      'no-console': 'off',
-      'no-restricted-imports': 'off',
-      'no-undef': 'off',
-      'no-unused-expressions': 'off',
-      'no-unused-vars': 'off',
+      '@typescript-eslint/comma-dangle': OFF,
+      '@typescript-eslint/consistent-type-imports': OFF,
+      '@typescript-eslint/no-namespace': OFF,
+      '@typescript-eslint/no-redeclare': OFF,
+      '@typescript-eslint/no-require-imports': OFF,
+      '@typescript-eslint/no-unused-vars': OFF,
 
-      '@typescript-eslint/no-redeclare': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
-      '@typescript-eslint/no-use-before-define': 'off',
-      '@typescript-eslint/no-var-requires': 'off',
-      '@typescript-eslint/consistent-type-imports': 'off',
-      '@typescript-eslint/no-namespace': 'off',
-      '@typescript-eslint/no-require-imports': 'off',
-      '@typescript-eslint/comma-dangle': 'off',
+      '@typescript-eslint/no-use-before-define': OFF,
+      '@typescript-eslint/no-var-requires': OFF,
 
-      'unused-imports/no-unused-imports': 'off',
-      'unused-imports/no-unused-vars': 'off',
+      'antfu/no-cjs-exports': OFF,
+      'antfu/no-ts-export-equal': OFF,
 
-      'import/no-unresolved': 'off',
+      'import/no-unresolved': OFF,
 
-      'antfu/no-cjs-exports': 'off',
-      'antfu/no-ts-export-equal': 'off',
+      'n/prefer-global/process': OFF,
 
-      'n/prefer-global/process': 'off',
+      'no-alert': OFF,
+      'no-console': OFF,
+      'no-restricted-imports': OFF,
+      'no-undef': OFF,
+      'no-unused-expressions': OFF,
+      'no-unused-vars': OFF,
+
+      'unused-imports/no-unused-imports': OFF,
+      'unused-imports/no-unused-vars': OFF,
     },
   },
 ]

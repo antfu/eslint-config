@@ -10,6 +10,7 @@ import {
   node,
   sortPackageJson,
   sortTsconfig,
+  test,
   typescript,
   typescriptStylistic,
   unicorn,
@@ -62,6 +63,8 @@ export const presetAuto = [
   // ts
   ...hasTypeScript ? presetTypeScript : [],
 
+  ...test,
+
   // vue
   ...hasVue ? vue : [],
 
@@ -75,6 +78,7 @@ export const presetAuto = [
 export const presetAll = [
   ...presetJavaScript,
   ...presetTypeScript,
+  ...test,
   ...vue,
   ...presetLangsExtensions,
 ]

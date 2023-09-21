@@ -14,12 +14,21 @@ importers:
       '@stylistic/eslint-plugin-migrate':
         specifier: ^0.0.4
         version: 0.0.4(eslint@8.49.0)(typescript@5.2.2)
+      '@types/eslint':
+        specifier: ^8.44.2
+        version: 8.44.2
       bumpp:
         specifier: ^9.2.0
         version: 9.2.0
       eslint:
         specifier: ^8.49.0
         version: 8.49.0
+      eslint-define-config:
+        specifier: ^1.23.0
+        version: 1.23.0
+      eslint-plugin-sort-keys:
+        specifier: ^2.3.5
+        version: 2.3.5
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -53,9 +62,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.7.2
         version: 6.7.2(eslint@8.49.0)(typescript@5.2.2)
-      eslint-define-config:
-        specifier: ^1.23.0
-        version: 1.23.0
       eslint-plugin-antfu:
         specifier: workspace:*
         version: link:../eslint-plugin-antfu
@@ -1229,6 +1235,13 @@ packages:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: true
 
+  /@types/eslint@8.44.2:
+    resolution: {integrity: sha512-sdPRb9K6iL5XZOmBubg8yiFp5yS/JdUDQsq5e6h95km91MCYMuvp7mh1fjPEYUhvHepKpZOjnEaMBR4PxjWDzg==}
+    dependencies:
+      '@types/estree': 1.0.0
+      '@types/json-schema': 7.0.12
+    dev: true
+
   /@types/estree@1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
@@ -2111,7 +2124,7 @@ packages:
   /eslint-define-config@1.23.0:
     resolution: {integrity: sha512-4mMyu0JuBkQHsCtR+42irIQdFLmLIW+pMAVcyOV/gZRL4O1R8iuH0eMG3oL3Cbi1eo9fDAfT5CIHVHgdyxcf6w==}
     engines: {node: ^16.13.0 || >=18.0.0, npm: '>=7.0.0', pnpm: '>= 8.6.0'}
-    dev: false
+    dev: true
 
   /eslint-import-resolver-node@0.3.7:
     resolution: {integrity: sha512-gozW2blMLJCeFpBwugLTGyvVjNoeo1knonXAcatC6bjPBZitotxdWf7Gimr25N4c0AAOo4eOUfaG82IJPDpqCA==}
@@ -2278,6 +2291,12 @@ packages:
     dependencies:
       eslint: 8.49.0
     dev: false
+
+  /eslint-plugin-sort-keys@2.3.5:
+    resolution: {integrity: sha512-2j/XKQ9sNJwK8kIp/U0EvuF6stS6/8aIc53/NskE4C5NRNh4dt3xzbZyOdrVC11cTH6Zo59/pdzA0Kb+2fQGWg==}
+    dependencies:
+      natural-compare: 1.4.0
+    dev: true
 
   /eslint-plugin-unicorn@48.0.1(eslint@8.49.0):
     resolution: {integrity: sha512-FW+4r20myG/DqFcCSzoumaddKBicIPeFnTrifon2mWIzlfyvzwyqZjqVP7m4Cqr/ZYisS2aiLghkUWaPg6vtCw==}
