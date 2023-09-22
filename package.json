@@ -25,6 +25,10 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "engines": {
+    "node": ">=16",
+    "pnpm": "^8.7.6"
+  },
   "peerDependencies": {
     "eslint": ">=8.0.0"
   },
