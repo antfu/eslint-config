@@ -200,7 +200,7 @@ Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/con
 
 ## Plugins Renaming
 
-Since flat config support explicit provides the plugin names, we renamed some plugins to make them more consistent and hide the implementation details.
+Since flat config requires us to explicitly provide the plugin names (instead of mandatory convention from npm package name), we renamed some plugins to make overall scope more consistent and easier to write.
 
 | Original Prefix | New Prefix | Source Plugin |
 | --------------- | ---------- | ------------- |
