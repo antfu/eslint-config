@@ -80,8 +80,7 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
         'vue/no-unused-refs': 'error',
         'vue/no-useless-v-bind': 'error',
         'vue/no-v-html': OFF,
-        'vue/no-v-text-v-html-on-component': OFF,
-        'vue/object-curly-newline': ['error', { consistent: true, multiline: true }],
+        'vue/object-curly-newline': OFF,
         'vue/object-curly-spacing': ['error', 'always'],
         'vue/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
         'vue/object-shorthand': [
