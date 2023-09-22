@@ -54,7 +54,9 @@ export default antfu(${JSON.stringify(configs)})
   })
 
   for (const file of files) {
-    const content = await fs.readFile(join(target, file), 'utf-8')
+    let content = await fs.readFile(join(target, file), 'utf-8')
+    if (content.match(/\r\n/))
+      content = content.replace(/\r\n|\r/g, '\n')
     await expect.soft(content).toMatchFileSnapshot(join(output, file))
   }
 }
