@@ -205,10 +205,10 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 | Original Prefix | New Prefix | Source Plugin |
 | --------------- | ---------- | ------------- |
 | `i/*` | `import/*` | [eslint-plugin-i](https://github.com/un-es/eslint-plugin-i) |
-| `n/*` | `node` | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)
+| `n/*` | `node/*` | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)
 | `@typescript-eslint/*` | `ts/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
-| `@stylistic/js` | `style/*` | [@stylistic/eslint-plugin-js](https://github.com/eslint-stylistic/eslint-stylistic) |
-| `@stylistic/ts` | `style-ts/` | [@stylistic/eslint-plugin-ts](https://github.com/eslint-stylistic/eslint-stylistic) |
+| `@stylistic/js/*` | `style/*` | [@stylistic/eslint-plugin-js](https://github.com/eslint-stylistic/eslint-stylistic) |
+| `@stylistic/ts/*` | `style-ts/*` | [@stylistic/eslint-plugin-ts](https://github.com/eslint-stylistic/eslint-stylistic) |
 
 When you want to overrides rules, or disable them inline, you need to update to the new prefix:
 
