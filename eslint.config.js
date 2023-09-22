@@ -5,6 +5,12 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   undefined,
   {
+    ignores: [
+      'fixtures',
+      '_fixtures',
+    ],
+  },
+  {
     files: ['**/eslint-config/src/**/*.ts'],
     plugins: {
       '@stylistic/migrate': stylisticMigrate,

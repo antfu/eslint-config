@@ -90,6 +90,9 @@ importers:
       '@stylistic/eslint-plugin-migrate':
         specifier: 0.0.4
         version: 0.0.4(eslint@8.49.0)(typescript@5.2.2)
+      '@types/fs-extra':
+        specifier: ^11.0.2
+        version: 11.0.2
       '@types/node':
         specifier: ^20.6.3
         version: 20.6.3
@@ -105,6 +108,12 @@ importers:
       esno:
         specifier: ^0.17.0
         version: 0.17.0
+      fast-glob:
+        specifier: ^3.3.1
+        version: 3.3.1
+      fs-extra:
+        specifier: ^11.1.1
+        version: 11.1.1
       lint-staged:
         specifier: ^14.0.1
         version: 14.0.1
@@ -1264,8 +1273,21 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
+  /@types/fs-extra@11.0.2:
+    resolution: {integrity: sha512-c0hrgAOVYr21EX8J0jBMXGLMgJqVf/v6yxi0dLaJboW9aQPh16Id+z6w2Tx1hm+piJOLv8xPfVKZCLfjPw/IMQ==}
+    dependencies:
+      '@types/jsonfile': 6.1.2
+      '@types/node': 20.6.3
+    dev: true
+
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
+
+  /@types/jsonfile@6.1.2:
+    resolution: {integrity: sha512-8t92P+oeW4d/CRQfJaSqEwXujrhH4OEeHRjGU3v1Q8mUS8GPF3yiX26sw4svv6faL2HfBtGTe2xWIoVgN3dy9w==}
+    dependencies:
+      '@types/node': 20.6.3
+    dev: true
 
   /@types/mdast@3.0.11:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
