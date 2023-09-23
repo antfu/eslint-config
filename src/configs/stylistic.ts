@@ -12,7 +12,7 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
     },
     rules: {
       'antfu/if-newline': 'error',
-      'antfu/consistent-object-newline': 'error',
+      'antfu/consistent-list-newline': 'error',
 
       'comma-dangle': ['error', 'always-multiline'],
       'curly': ['error', 'multi-or-nest', 'consistent'],
@@ -27,8 +27,6 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       'style/comma-style': ['error', 'last'],
       'style/computed-property-spacing': ['error', 'never', { enforceForClassMembers: true }],
       'style/dot-location': ['error', 'property'],
-      'style/func-call-spacing': OFF,
-      'style/generator-star-spacing': OFF,
       'style/indent': ['error', 2, {
         ArrayExpression: 1,
         CallExpression: { arguments: 1 },
@@ -77,7 +75,6 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       'style/no-tabs': 'error',
       'style/no-trailing-spaces': 'error',
       'style/no-whitespace-before-property': 'error',
-      'style/object-curly-newline': OFF,
       'style/object-curly-spacing': ['error', 'always'],
       'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
       'style/operator-linebreak': ['error', 'before'],

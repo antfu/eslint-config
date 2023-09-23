@@ -3,7 +3,6 @@ import sortKeys from 'eslint-plugin-sort-keys'
 import antfu from '@antfu/eslint-config'
 
 export default antfu(
-  undefined,
   {
     ignores: [
       'fixtures',
