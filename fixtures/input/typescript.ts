@@ -1,7 +1,6 @@
 // Define a TypeScript interface
-interface Person {
-  name: string;
-  age: number;
+interface Person { 
+  name: string; age: number;
 }
 
 // Create an array of objects with the defined interface
@@ -26,7 +25,8 @@ function identity< T  >(arg: T): T {
 }
 
 // Use the generic function with type inference
-const result = identity('TypeScript is awesome');
+const result = identity(
+  'TypeScript is awesome');
 log(result);
 
 // Use optional properties in an interface

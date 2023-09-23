@@ -53,7 +53,10 @@ export default antfu(${JSON.stringify(configs)})
     })
 
     await Promise.all(files.map(async (file) => {
-      const content = await fs.readFile(join(target, file), 'utf-8')
+      let content = await fs.readFile(join(target, file), 'utf-8')
+      const source = await fs.readFile(join(from, file), 'utf-8')
+      if (content === source)
+        content = '// unchanged\n'
       await expect.soft(content).toMatchFileSnapshot(join(output, file))
     }))
   }, 30_000)
