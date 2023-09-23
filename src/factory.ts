@@ -24,10 +24,21 @@ import {
 import type { OptionsConfig } from './types'
 import { combine } from './utils'
 
+const flatConfigProps: (keyof FlatESLintConfigItem)[] = [
+  'files',
+  'ignores',
+  'languageOptions',
+  'linterOptions',
+  'processor',
+  'plugins',
+  'rules',
+  'settings',
+]
+
 /**
  * Construct an array of ESLint flat config items.
  */
-export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
+export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
   const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI)
   const enableVue = options.vue ?? (isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli'))
   const enableTypeScript = options.typescript ?? (isPackageExists('typescript'))
@@ -84,6 +95,16 @@ export function antfu(options: OptionsConfig = {}, ...userConfigs: (FlatESLintCo
 
   if (options.markdown ?? true)
     configs.push(markdown({ componentExts }))
+
+  // User can optionally pass a flat config item to the first argument
+  // We pick the known keys as ESLint would do schema validation
+  const fusedConfig = flatConfigProps.reduce((acc, key) => {
+    if (key in options)
+      acc[key] = options[key]
+    return acc
+  }, {} as FlatESLintConfigItem)
+  if (Object.keys(fusedConfig).length)
+    configs.push([fusedConfig])
 
   return combine(
     ...configs,
