@@ -10,7 +10,7 @@ export default antfu(
     ],
   },
   {
-    files: ['**/eslint-config/src/**/*.ts'],
+    files: ['src/**/*.ts'],
     plugins: {
       '@stylistic/migrate': stylisticMigrate,
       'sort-keys': sortKeys,

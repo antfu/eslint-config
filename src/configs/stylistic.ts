@@ -11,8 +11,8 @@ export const javascriptStylistic: FlatESLintConfigItem[] = [
       style: pluginStylisticJs,
     },
     rules: {
-      'antfu/if-newline': 'error',
       'antfu/consistent-list-newline': 'error',
+      'antfu/if-newline': 'error',
 
       'comma-dangle': ['error', 'always-multiline'],
       'curly': ['error', 'multi-or-nest', 'consistent'],

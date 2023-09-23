@@ -29,6 +29,8 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
         ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
         ...pluginVue.configs['vue3-recommended'].rules as any,
 
+        'node/prefer-global/process': OFF,
+
         'vue/array-bracket-spacing': ['error', 'never'],
         'vue/arrow-spacing': ['error', { after: true, before: true }],
         'vue/block-order': ['error', {
@@ -42,8 +44,8 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
         'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
         'vue/comma-dangle': ['error', 'always-multiline'],
         'vue/comma-spacing': ['error', { after: true, before: false }],
-        'vue/comma-style': ['error', 'last'],
 
+        'vue/comma-style': ['error', 'last'],
         'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         'vue/custom-event-name-casing': ['error', 'camelCase'],
@@ -60,7 +62,6 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
         'vue/keyword-spacing': ['error', { after: true, before: true }],
         'vue/max-attributes-per-line': OFF,
         'vue/multi-word-component-names': OFF,
-        'vue/no-constant-condition': 'warn',
         'vue/no-dupe-keys': OFF,
         'vue/no-empty-pattern': 'error',
         'vue/no-extra-parens': ['error', 'functions'],
@@ -73,8 +74,6 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
           'WithStatement',
         ],
         'vue/no-restricted-v-bind': ['error', '/^v-/'],
-
-        // reactivity transform
         'vue/no-setup-props-reactivity-loss': OFF,
         'vue/no-sparse-arrays': 'error',
         'vue/no-unused-refs': 'error',

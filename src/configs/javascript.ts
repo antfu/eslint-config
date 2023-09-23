@@ -3,6 +3,7 @@ import globals from 'globals'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 import { OFF } from '../flags'
 import type { OptionsIsInEditor } from '../types'
+import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
 export function javascript(options: OptionsIsInEditor = {}): FlatESLintConfigItem[] {
   return [
@@ -48,7 +49,7 @@ export function javascript(options: OptionsIsInEditor = {}): FlatESLintConfigIte
         'max-statements-per-line': ['error', { max: 1 }],
         'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
         'new-parens': 'error',
-        'no-alert': 'warn',
+        'no-alert': 'error',
         'no-array-constructor': 'error',
         'no-async-promise-executor': 'error',
         'no-caller': 'error',
@@ -58,7 +59,6 @@ export function javascript(options: OptionsIsInEditor = {}): FlatESLintConfigIte
         'no-cond-assign': ['error', 'always'],
         'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-const-assign': 'error',
-        'no-constant-condition': 'warn',
         'no-control-regex': 'error',
         'no-debugger': 'error',
         'no-delete-var': 'error',
@@ -213,7 +213,7 @@ export function javascript(options: OptionsIsInEditor = {}): FlatESLintConfigIte
 
         'unused-imports/no-unused-imports': options.isInEditor ? OFF : 'error',
         'unused-imports/no-unused-vars': [
-          'warn',
+          'error',
           { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^_' },
         ],
 
@@ -225,7 +225,7 @@ export function javascript(options: OptionsIsInEditor = {}): FlatESLintConfigIte
       },
     },
     {
-      files: ['scripts/**/*.*', 'cli.*'],
+      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
       rules: {
         'no-console': OFF,
       },
