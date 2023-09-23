@@ -19,8 +19,8 @@
     "build": "tsup src/index.ts --format esm --clean --dts",
     "stub": "tsup src/index.ts --format esm --clean",
     "lint": "pnpm run stub && eslint .",
-    "prepublishOnly": "nr build",
-    "release": "bumpp && npm publish",
+    "prepack": "nr build",
+    "release": "bumpp && pnpm publish",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
