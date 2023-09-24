@@ -1,3 +1,5 @@
+import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
+
 export interface OptionsComponentExts {
   /**
    * Additional extensions for components.
@@ -22,6 +24,16 @@ export interface OptionsIsInEditor {
 }
 
 export interface OptionsConfig {
+  /**
+   * Enable gitignore support.
+   *
+   * Passing an object to configure the options.
+   *
+   * @see https://github.com/antfu/eslint-config-flat-gitignore
+   * @default true
+   */
+  gitignore?: boolean | FlatGitignoreOptions
+
   /**
    * Enable TypeScript support.
    *
