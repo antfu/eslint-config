@@ -11,13 +11,20 @@
   "keywords": [
     "eslint-config"
   ],
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --clean --dts",
-    "stub": "tsup src/index.ts --format esm --clean",
+    "build": "tsup src/index.ts --format esm,cjs --clean --dts",
+    "stub": "tsup src/index.ts --format esm",
     "lint": "pnpm run stub && eslint .",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
@@ -58,7 +65,7 @@
     "@antfu/ni": "^0.21.8",
     "@stylistic/eslint-plugin-migrate": "0.0.4",
     "@types/fs-extra": "^11.0.2",
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.6.4",
     "bumpp": "^9.2.0",
     "eslint": "^8.50.0",
     "eslint-plugin-sort-keys": "^2.3.5",
