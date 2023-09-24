@@ -45,7 +45,7 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   const enableStylistic = options.stylistic ?? true
 
   const configs = [
-    ignores,
+    ignores(),
     javascript({ isInEditor }),
     comments,
     node,
