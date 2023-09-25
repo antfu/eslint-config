@@ -45,6 +45,8 @@ export function markdown(options: OptionsComponentExts = {}): FlatESLintConfigIt
 
         'node/prefer-global/process': OFF,
 
+        'style/comma-dangle': OFF,
+
         'ts/consistent-type-imports': OFF,
         'ts/no-namespace': OFF,
         'ts/no-redeclare': OFF,
