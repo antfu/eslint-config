@@ -36,9 +36,7 @@
     "eslint": ">=8.0.0"
   },
   "dependencies": {
-    "@eslint-stylistic/metadata": "0.0.4",
-    "@stylistic/eslint-plugin-js": "0.0.4",
-    "@stylistic/eslint-plugin-ts": "0.0.4",
+    "@stylistic/eslint-plugin": "0.0.5",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
     "eslint-config-flat-gitignore": "^0.1.0",
@@ -64,7 +62,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "^0.21.8",
-    "@stylistic/eslint-plugin-migrate": "0.0.4",
     "@types/fs-extra": "^11.0.2",
     "@types/node": "^20.6.4",
     "bumpp": "^9.2.0",

@@ -8,16 +8,15 @@ import {
   ignores,
   imports,
   javascript,
-  javascriptStylistic,
   jsdoc,
   jsonc,
   markdown,
   node,
   sortPackageJson,
   sortTsconfig,
+  stylistic,
   test,
   typescript,
-  typescriptStylistic,
   typescriptWithLanguageServer,
   unicorn,
   vue,
@@ -76,9 +75,6 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (enableVue)
     componentExts.push('vue')
 
-  if (enableStylistic)
-    configs.push(javascriptStylistic)
-
   if (enableTypeScript) {
     configs.push(typescript({ componentExts }))
 
@@ -88,10 +84,10 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
         componentExts,
       }))
     }
-
-    if (enableStylistic)
-      configs.push(typescriptStylistic)
   }
+
+  if (enableStylistic)
+    configs.push(stylistic)
 
   if (options.test ?? true)
     configs.push(test({ isInEditor }))
