@@ -119,8 +119,13 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (Object.keys(fusedConfig).length)
     configs.push([fusedConfig])
 
-  return combine(
+  const merged = combine(
     ...configs,
     ...userConfigs,
   )
+
+  // recordRulesStateConfigs(merged)
+  // warnUnnecessaryOffRules()
+
+  return merged
 }
