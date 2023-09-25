@@ -21,14 +21,14 @@ export function renameRules(rules: Record<string, any>, from: string, to: string
 const rulesOn = new Set<string>()
 const rulesOff = new Set<string>()
 
-export function recordRulesStateConfigs(configs: FlatESLintConfigItem[]) {
+export function recordRulesStateConfigs(configs: FlatESLintConfigItem[]): FlatESLintConfigItem[] {
   for (const config of configs)
     recordRulesState(config.rules ?? {})
 
   return configs
 }
 
-export function recordRulesState(rules: FlatESLintConfigItem['rules']) {
+export function recordRulesState(rules: FlatESLintConfigItem['rules']): FlatESLintConfigItem['rules'] {
   for (const [key, value] of Object.entries(rules ?? {})) {
     const firstValue = Array.isArray(value) ? value[0] : value
     if (firstValue == null)
