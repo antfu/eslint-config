@@ -36,15 +36,25 @@ const flatConfigProps: (keyof FlatESLintConfigItem)[] = [
   'settings',
 ]
 
+const VuePackages = [
+  'vue',
+  'nuxt',
+  'vitepress',
+  '@slidev/cli',
+]
+
 /**
  * Construct an array of ESLint flat config items.
  */
 export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...userConfigs: (FlatESLintConfigItem | FlatESLintConfigItem[])[]) {
-  const isInEditor = options.isInEditor ?? !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI)
-  const enableVue = options.vue ?? (isPackageExists('vue') || isPackageExists('nuxt') || isPackageExists('vitepress') || isPackageExists('@slidev/cli'))
-  const enableTypeScript = options.typescript ?? (isPackageExists('typescript'))
-  const enableStylistic = options.stylistic ?? true
-  const enableGitignore = options.gitignore ?? true
+  const {
+    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
+    vue: enableVue = VuePackages.some(i => isPackageExists(i)),
+    typescript: enableTypeScript = isPackageExists('typescript'),
+    stylistic: enableStylistic = true,
+    gitignore: enableGitignore = true,
+    overrides = {},
+  } = options
 
   const configs: FlatESLintConfigItem[][] = []
 
@@ -76,12 +86,16 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     componentExts.push('vue')
 
   if (enableTypeScript) {
-    configs.push(typescript({ componentExts }))
+    configs.push(typescript({
+      componentExts,
+      overrides: overrides.typescript,
+    }))
 
     if (typeof enableTypeScript !== 'boolean') {
       configs.push(typescriptWithLanguageServer({
         ...enableTypeScript,
         componentExts,
+        overrides: overrides.typescriptWithTypes,
       }))
     }
   }
@@ -89,11 +103,19 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (enableStylistic)
     configs.push(stylistic)
 
-  if (options.test ?? true)
-    configs.push(test({ isInEditor }))
+  if (options.test ?? true) {
+    configs.push(test({
+      isInEditor,
+      overrides: overrides.test,
+    }))
+  }
 
-  if (enableVue)
-    configs.push(vue({ typescript: !!enableTypeScript }))
+  if (enableVue) {
+    configs.push(vue({
+      overrides: overrides.vue,
+      typescript: !!enableTypeScript,
+    }))
+  }
 
   if (options.jsonc ?? true) {
     configs.push(
@@ -106,8 +128,12 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (options.yaml ?? true)
     configs.push(yml)
 
-  if (options.markdown ?? true)
-    configs.push(markdown({ componentExts }))
+  if (options.markdown ?? true) {
+    configs.push(markdown({
+      componentExts,
+      overrides: overrides.markdown,
+    }))
+  }
 
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation

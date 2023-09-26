@@ -3,12 +3,13 @@ import type { FlatESLintConfigItem } from 'eslint-define-config'
 import { GLOB_TS, GLOB_TSX } from '../globs'
 import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
 import { OFF } from '../flags'
-import type { OptionsComponentExts, OptionsTypeScriptWithLanguageServer } from '../types'
+import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptWithLanguageServer } from '../types'
 import { renameRules } from '../utils'
 
-export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem[] {
+export function typescript(options?: OptionsComponentExts & OptionsOverrides): FlatESLintConfigItem[] {
   const {
     componentExts = [],
+    overrides = {},
   } = options ?? {}
 
   return [
@@ -74,6 +75,8 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
         'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': OFF,
+
+        ...overrides,
       },
     },
     {
@@ -100,11 +103,14 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
   ]
 }
 
-export function typescriptWithLanguageServer(options: OptionsTypeScriptWithLanguageServer & OptionsComponentExts): FlatESLintConfigItem[] {
+export function typescriptWithLanguageServer(
+  options: OptionsTypeScriptWithLanguageServer & OptionsComponentExts & OptionsOverrides,
+): FlatESLintConfigItem[] {
   const {
     componentExts = [],
     tsconfigPath,
     tsconfigRootDir = process.cwd(),
+    overrides = {},
   } = options
 
   return [
@@ -113,8 +119,8 @@ export function typescriptWithLanguageServer(options: OptionsTypeScriptWithLangu
         GLOB_TS,
         GLOB_TSX,
         ...componentExts.map(ext => `**/*.${ext}`),
+        '!**/*.md/*.*',
       ],
-      ignores: ['**/*.md/*.*'],
       languageOptions: {
         parser: parserTs,
         parserOptions: {
@@ -142,6 +148,7 @@ export function typescriptWithLanguageServer(options: OptionsTypeScriptWithLangu
         'ts/restrict-plus-operands': 'error',
         'ts/restrict-template-expressions': 'error',
         'ts/unbound-method': 'error',
+        ...overrides,
       },
     },
   ]
