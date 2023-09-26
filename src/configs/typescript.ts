@@ -6,7 +6,9 @@ import { OFF } from '../flags'
 import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptWithLanguageServer } from '../types'
 import { renameRules } from '../utils'
 
-export function typescript(options?: OptionsComponentExts & OptionsOverrides): FlatESLintConfigItem[] {
+export function typescript(
+  options?: OptionsComponentExts & OptionsOverrides,
+): FlatESLintConfigItem[] {
   const {
     componentExts = [],
     overrides = {},

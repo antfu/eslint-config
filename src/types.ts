@@ -100,12 +100,13 @@ export interface OptionsConfig {
    * Provide overrides for rules for each integration.
    */
   overrides?: {
+    javascript?: FlatESLintConfigItem['rules']
     typescript?: FlatESLintConfigItem['rules']
     typescriptWithTypes?: FlatESLintConfigItem['rules']
-
     test?: FlatESLintConfigItem['rules']
     vue?: FlatESLintConfigItem['rules']
     jsonc?: FlatESLintConfigItem['rules']
     markdown?: FlatESLintConfigItem['rules']
+    yaml?: FlatESLintConfigItem['rules']
   }
 }
