@@ -11,7 +11,7 @@ export interface OptionsComponentExts {
   componentExts?: string[]
 }
 
-export interface OptionsTypeScriptWithLanguageServer {
+export interface OptionsTypeScriptWithTypes {
   tsconfigPath: string
   tsconfigRootDir?: string
 }
@@ -46,7 +46,7 @@ export interface OptionsConfig {
    *
    * @default auto-detect based on the dependencies
    */
-  typescript?: boolean | OptionsTypeScriptWithLanguageServer
+  typescript?: boolean | OptionsTypeScriptWithTypes
 
   /**
    * Enable test support.

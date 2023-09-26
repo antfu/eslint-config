@@ -17,7 +17,7 @@ import {
   stylistic,
   test,
   typescript,
-  typescriptWithLanguageServer,
+  typescriptWithTypes,
   unicorn,
   vue,
   yml,
@@ -95,7 +95,7 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     }))
 
     if (typeof enableTypeScript !== 'boolean') {
-      configs.push(typescriptWithLanguageServer({
+      configs.push(typescriptWithTypes({
         ...enableTypeScript,
         componentExts,
         overrides: overrides.typescriptWithTypes,

@@ -3,7 +3,7 @@ import type { FlatESLintConfigItem } from 'eslint-define-config'
 import { GLOB_TS, GLOB_TSX } from '../globs'
 import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
 import { OFF } from '../flags'
-import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptWithLanguageServer } from '../types'
+import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptWithTypes } from '../types'
 import { renameRules } from '../utils'
 
 export function typescript(
@@ -105,8 +105,8 @@ export function typescript(
   ]
 }
 
-export function typescriptWithLanguageServer(
-  options: OptionsTypeScriptWithLanguageServer & OptionsComponentExts & OptionsOverrides,
+export function typescriptWithTypes(
+  options: OptionsTypeScriptWithTypes & OptionsComponentExts & OptionsOverrides,
 ): FlatESLintConfigItem[] {
   const {
     componentExts = [],
