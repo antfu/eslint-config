@@ -7,6 +7,11 @@ import type { OptionsHasTypeScript } from '../types'
 export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] {
   return [
     {
+      plugins: {
+        vue: pluginVue,
+      },
+    },
+    {
       files: [GLOB_VUE],
       languageOptions: {
         parser: parserVue,
@@ -18,9 +23,6 @@ export function vue(options: OptionsHasTypeScript = {}): FlatESLintConfigItem[] 
           parser: options.typescript ? parserTs as any : null,
           sourceType: 'module',
         },
-      },
-      plugins: {
-        vue: pluginVue,
       },
       processor: pluginVue.processors['.vue'],
       rules: {

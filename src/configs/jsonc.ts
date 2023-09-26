@@ -4,12 +4,14 @@ import { parserJsonc, pluginJsonc } from '../plugins'
 
 export const jsonc: FlatESLintConfigItem[] = [
   {
+    plugins: {
+      jsonc: pluginJsonc as any,
+    },
+  },
+  {
     files: [GLOB_JSON, GLOB_JSON5, GLOB_JSONC],
     languageOptions: {
       parser: parserJsonc,
-    },
-    plugins: {
-      jsonc: pluginJsonc as any,
     },
     rules: {
       'jsonc/array-bracket-spacing': ['error', 'never'],

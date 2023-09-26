@@ -3,6 +3,7 @@ import { afterAll, beforeAll, it } from 'vitest'
 import fs from 'fs-extra'
 import { execa } from 'execa'
 import fg from 'fast-glob'
+import type { FlatESLintConfigItem } from 'eslint-define-config'
 import type { OptionsConfig } from '../src/types'
 
 beforeAll(async () => {
@@ -21,7 +22,20 @@ runWithConfig('all', {
   vue: true,
 })
 
-function runWithConfig(name: string, configs: OptionsConfig) {
+// https://github.com/antfu/eslint-config/issues/255
+runWithConfig(
+  'ts-override',
+  {
+    typescript: true,
+  },
+  {
+    rules: {
+      'ts/consistent-type-definitions': ['error', 'type'],
+    },
+  },
+)
+
+function runWithConfig(name: string, configs: OptionsConfig, ...items: FlatESLintConfigItem[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')
     const output = resolve('fixtures/output', name)
@@ -36,7 +50,10 @@ function runWithConfig(name: string, configs: OptionsConfig) {
 // @eslint-disable
 import antfu from '@antfu/eslint-config'
 
-export default antfu(${JSON.stringify(configs)})
+export default antfu(
+  ${JSON.stringify(configs)},
+  ...${JSON.stringify(items) ?? []},
+)
   `)
 
     await execa('npx', ['eslint', '.', '--fix'], {

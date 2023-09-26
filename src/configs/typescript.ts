@@ -13,6 +13,14 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
 
   return [
     {
+      // Install the plugins without globs, so they can be configured separately.
+      plugins: {
+        antfu: pluginAntfu,
+        import: pluginImport,
+        ts: pluginTs as any,
+      },
+    },
+    {
       files: [
         GLOB_TS,
         GLOB_TSX,
@@ -23,11 +31,6 @@ export function typescript(options?: OptionsComponentExts): FlatESLintConfigItem
         parserOptions: {
           sourceType: 'module',
         },
-      },
-      plugins: {
-        antfu: pluginAntfu,
-        import: pluginImport,
-        ts: pluginTs as any,
       },
       rules: {
         ...renameRules(
@@ -118,9 +121,6 @@ export function typescriptWithLanguageServer(options: OptionsTypeScriptWithLangu
           project: [tsconfigPath],
           tsconfigRootDir,
         },
-      },
-      plugins: {
-        ts: pluginTs as any,
       },
       rules: {
         'dot-notation': OFF,

@@ -5,12 +5,14 @@ import { OFF } from '../flags'
 
 export const yml: FlatESLintConfigItem[] = [
   {
+    plugins: {
+      yml: pluginYml as any,
+    },
+  },
+  {
     files: [GLOB_YAML],
     languageOptions: {
       parser: parserYml,
-    },
-    plugins: {
-      yml: pluginYml as any,
     },
     rules: {
       'style/spaced-comment': OFF,

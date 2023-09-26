@@ -7,10 +7,12 @@ import type { OptionsIsInEditor } from '../types'
 export function test(options: OptionsIsInEditor = {}): FlatESLintConfigItem[] {
   return [
     {
-      files: GLOB_TESTS,
       plugins: {
         'no-only-tests': pluginNoOnlyTests,
       },
+    },
+    {
+      files: GLOB_TESTS,
       rules: {
         'no-only-tests/no-only-tests': options.isInEditor ? OFF : 'error',
       },
