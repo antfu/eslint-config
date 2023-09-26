@@ -20,7 +20,7 @@ import {
   typescriptWithTypes,
   unicorn,
   vue,
-  yml,
+  yaml,
 } from './configs'
 import type { OptionsConfig } from './types'
 import { combine } from './utils'
@@ -129,7 +129,7 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   }
 
   if (options.yaml ?? true) {
-    configs.push(yml({
+    configs.push(yaml({
       overrides: overrides.yaml,
     }))
   }
