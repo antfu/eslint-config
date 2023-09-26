@@ -144,6 +144,7 @@ export default antfu(
   // From the second arguments they are ESLint Flat Configs
   // you can have multiple configs
   {
+    files: ['**/*.ts'],
     rules: {},
   },
   {
@@ -213,6 +214,52 @@ When you want to overrides rules, or disable them inline, you need to update to 
 -// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 +// eslint-disable-next-line ts/consistent-type-definitions
 type foo = { bar: 2 }
+```
+
+### Rules Overrides
+
+Certain rules would only be enabled in specific files, for example, `ts/*` rules would only be enabled in `.ts` files and `vue/*` rules would only be enabled in `.vue` files. If you want to override the rules, you need to specify the file extension:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu(
+  { vue: true, typescript: true },
+  {
+    // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
+    files: ['**/*.vue'],
+    rules: {
+      'vue/operator-linebreak': ['error', 'before'],
+    },
+  },
+  {
+    // Without `files`, they are general rules for all files
+    rules: {
+      'style/semi': ['error', 'never'],
+    },
+  }
+)
+```
+
+We also provided an `overrides` options to make it easier:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  overrides: {
+    vue: {
+      'vue/operator-linebreak': ['error', 'before'],
+    },
+    typescript: {
+      'ts/consistent-type-definitions': ['error', 'interface'],
+    },
+    yaml: {},
+    // ...
+  }
+})
 ```
 
 ### Type Aware Rules
