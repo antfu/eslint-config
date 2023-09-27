@@ -21,7 +21,7 @@
 ### Install
 
 ```bash
-pnpm add -D eslint @antfu/eslint-config
+pnpm i -D eslint @antfu/eslint-config
 ```
 
 ### Create config file
@@ -33,7 +33,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu()
 ```
 
-> You don't need `.eslintignore` normally as it has been provided by the preset.
+> Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
 
 ### Add script for package.json
 
@@ -71,8 +71,7 @@ Add the following settings to your `settings.json`:
 
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
-    { "rule": "@stylistic/*", "severity": "off" },
-    { "rule": "style*", "severity": "off" },
+    { "rule": "style/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
@@ -115,7 +114,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu()
 ```
 
-You can configure each feature individually, for example:
+And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
@@ -125,8 +124,14 @@ export default antfu({
   stylistic: true, // enable stylistic formatting rules
   typescript: true,
   vue: true,
-  jsonc: false,
-  yml: false,
+  jsonc: false, // disable jsonc support
+  yaml: false,
+
+  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+  ignores: [
+    './fixtures',
+    // ...globs
+  ]
 })
 ```
 
