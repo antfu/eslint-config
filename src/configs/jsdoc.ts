@@ -18,7 +18,6 @@ export function jsdoc(): FlatESLintConfigItem[] {
         'jsdoc/multiline-blocks': 'warn',
         'jsdoc/no-defaults': 'warn',
         'jsdoc/no-multi-asterisks': 'warn',
-        'jsdoc/no-types': 'warn',
         'jsdoc/require-param-name': 'warn',
         'jsdoc/require-property': 'warn',
         'jsdoc/require-property-description': 'warn',
