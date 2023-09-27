@@ -21,6 +21,11 @@ runWithConfig('all', {
   typescript: true,
   vue: true,
 })
+runWithConfig('no-style', {
+  typescript: true,
+  vue: true,
+  stylistic: false,
+})
 
 // https://github.com/antfu/eslint-config/issues/255
 runWithConfig(

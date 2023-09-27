@@ -20,6 +20,10 @@ export interface OptionsHasTypeScript {
   typescript?: boolean
 }
 
+export interface OptionsStylistic {
+  stylistic?: boolean
+}
+
 export interface OptionsOverrides {
   overrides?: FlatESLintConfigItem['rules']
 }

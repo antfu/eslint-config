@@ -77,8 +77,12 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     }),
     comments(),
     node(),
-    jsdoc(),
-    imports(),
+    jsdoc({
+      stylistic: enableStylistic,
+    }),
+    imports({
+      stylistic: enableStylistic,
+    }),
     unicorn(),
   )
 
@@ -116,13 +120,17 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (enableVue) {
     configs.push(vue({
       overrides: overrides.vue,
+      stylistic: enableStylistic,
       typescript: !!enableTypeScript,
     }))
   }
 
   if (options.jsonc ?? true) {
     configs.push(
-      jsonc(),
+      jsonc({
+        overrides: overrides.jsonc,
+        stylistic: enableStylistic,
+      }),
       sortPackageJson(),
       sortTsconfig(),
     )
@@ -131,6 +139,7 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
   if (options.yaml ?? true) {
     configs.push(yaml({
       overrides: overrides.yaml,
+      stylistic: enableStylistic,
     }))
   }
 
