@@ -59,6 +59,26 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
         'unused-imports/no-unused-imports': OFF,
         'unused-imports/no-unused-vars': OFF,
 
+        // Type aware rules
+        ...{
+          'ts/await-thenable': OFF,
+          'ts/dot-notation': OFF,
+          'ts/no-floating-promises': OFF,
+          'ts/no-for-in-array': OFF,
+          'ts/no-implied-eval': OFF,
+          'ts/no-misused-promises': OFF,
+          'ts/no-throw-literal': OFF,
+          'ts/no-unnecessary-type-assertion': OFF,
+          'ts/no-unsafe-argument': OFF,
+          'ts/no-unsafe-assignment': OFF,
+          'ts/no-unsafe-call': OFF,
+          'ts/no-unsafe-member-access': OFF,
+          'ts/no-unsafe-return': OFF,
+          'ts/restrict-plus-operands': OFF,
+          'ts/restrict-template-expressions': OFF,
+          'ts/unbound-method': OFF,
+        },
+
         ...overrides,
       },
     },
