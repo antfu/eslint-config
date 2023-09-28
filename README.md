@@ -52,14 +52,14 @@ For example:
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-Add the following settings to your `settings.json`:
+Add the following settings to your `.vscode/settings.json`:
 
 ```jsonc
 {
-  // Enable the flat config support
+  // Enable the ESlint flat config support
   "eslint.experimental.useFlatConfig": true,
 
-  // Disable the default formatter
+  // Disable the default formatter, use eslint instead
   "prettier.enable": false,
   "editor.formatOnSave": false,
 
@@ -82,10 +82,7 @@ Add the following settings to your `settings.json`:
     { "rule": "*semi", "severity": "off" }
   ],
 
-  // The following is optional.
-  // It's better to put under project setting `.vscode/settings.json`
-  // to avoid conflicts with working with different eslint configs
-  // that does not support all formats.
+  // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",
     "javascriptreact",
