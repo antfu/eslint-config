@@ -17,7 +17,6 @@ export function imports(options: OptionsStylistic = {}): FlatESLintConfigItem[] 
         'antfu/import-dedupe': 'error',
         'antfu/no-import-node-modules-by-path': 'error',
 
-        'import/export': 'error',
         'import/first': 'error',
         'import/no-duplicates': 'error',
         'import/no-mutable-exports': 'error',

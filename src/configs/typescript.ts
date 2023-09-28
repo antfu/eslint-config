@@ -99,6 +99,7 @@ export function typescript(
         'ts/no-dynamic-delete': OFF,
         'ts/no-explicit-any': OFF,
         'ts/no-extra-parens': ['error', 'functions'],
+        'ts/no-extraneous-class': OFF,
         'ts/no-invalid-this': 'error',
         'ts/no-invalid-void-type': OFF,
         'ts/no-loss-of-precision': 'error',
@@ -107,8 +108,10 @@ export function typescript(
         'ts/no-require-imports': 'error',
         'ts/no-unused-vars': OFF,
         'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+        'ts/no-useless-constructor': OFF,
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': OFF,
+        'ts/unified-signatures': OFF,
 
         ...tsconfigPath ? typeAwareRules : {},
         ...overrides,
