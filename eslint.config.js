@@ -1,5 +1,5 @@
 import sortKeys from 'eslint-plugin-sort-keys'
-import antfu from '@antfu/eslint-config'
+import antfu from './dist/index.js'
 
 export default antfu(
   {

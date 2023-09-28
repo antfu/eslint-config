@@ -25,6 +25,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --clean --dts",
     "stub": "tsup src/index.ts --format esm",
+    "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
     "lint": "pnpm run stub && eslint .",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
@@ -51,6 +52,7 @@
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-vitest": "^0.3.1",
     "eslint-plugin-vue": "^9.17.0",
     "eslint-plugin-yml": "^1.9.0",
     "globals": "^13.22.0",
@@ -66,6 +68,7 @@
     "@types/node": "^20.7.1",
     "bumpp": "^9.2.0",
     "eslint": "^8.50.0",
+    "eslint-flat-config-viewer": "^0.0.1",
     "eslint-plugin-sort-keys": "^2.3.5",
     "esno": "^0.17.0",
     "fast-glob": "^3.3.1",
