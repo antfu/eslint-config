@@ -17,7 +17,6 @@ import {
   stylistic,
   test,
   typescript,
-  typescriptWithTypes,
   unicorn,
   vue,
   yaml,
@@ -94,17 +93,12 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
 
   if (enableTypeScript) {
     configs.push(typescript({
+      ...typeof enableTypeScript !== 'boolean'
+        ? enableTypeScript
+        : {},
       componentExts,
       overrides: overrides.typescript,
     }))
-
-    if (typeof enableTypeScript !== 'boolean') {
-      configs.push(typescriptWithTypes({
-        ...enableTypeScript,
-        componentExts,
-        overrides: overrides.typescriptWithTypes,
-      }))
-    }
   }
 
   if (enableStylistic)

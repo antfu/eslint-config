@@ -3,16 +3,40 @@ import type { FlatESLintConfigItem } from 'eslint-define-config'
 import { GLOB_TS, GLOB_TSX } from '../globs'
 import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
 import { OFF } from '../flags'
-import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptWithTypes } from '../types'
+import type { OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
 import { renameRules } from '../utils'
 
 export function typescript(
-  options?: OptionsComponentExts & OptionsOverrides,
+  options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
 ): FlatESLintConfigItem[] {
   const {
     componentExts = [],
     overrides = {},
+    parserOptions = {},
+    tsconfigPath,
   } = options ?? {}
+
+  const typeAwareRules: FlatESLintConfigItem['rules'] = {
+    'dot-notation': OFF,
+    'no-implied-eval': OFF,
+    'no-throw-literal': OFF,
+    'ts/await-thenable': 'error',
+    'ts/dot-notation': ['error', { allowKeywords: true }],
+    'ts/no-floating-promises': 'error',
+    'ts/no-for-in-array': 'error',
+    'ts/no-implied-eval': 'error',
+    'ts/no-misused-promises': 'error',
+    'ts/no-throw-literal': 'error',
+    'ts/no-unnecessary-type-assertion': 'error',
+    'ts/no-unsafe-argument': 'error',
+    'ts/no-unsafe-assignment': 'error',
+    'ts/no-unsafe-call': 'error',
+    'ts/no-unsafe-member-access': 'error',
+    'ts/no-unsafe-return': 'error',
+    'ts/restrict-plus-operands': 'error',
+    'ts/restrict-template-expressions': 'error',
+    'ts/unbound-method': 'error',
+  }
 
   return [
     {
@@ -33,6 +57,13 @@ export function typescript(
         parser: parserTs,
         parserOptions: {
           sourceType: 'module',
+          ...tsconfigPath
+            ? {
+                project: [tsconfigPath],
+                tsconfigRootDir: process.cwd(),
+              }
+            : {},
+          ...parserOptions as any,
         },
       },
       rules: {
@@ -78,6 +109,7 @@ export function typescript(
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': OFF,
 
+        ...tsconfigPath ? typeAwareRules : {},
         ...overrides,
       },
     },
@@ -100,57 +132,6 @@ export function typescript(
       rules: {
         'ts/no-require-imports': OFF,
         'ts/no-var-requires': OFF,
-      },
-    },
-  ]
-}
-
-export function typescriptWithTypes(
-  options: OptionsTypeScriptWithTypes & OptionsComponentExts & OptionsOverrides,
-): FlatESLintConfigItem[] {
-  const {
-    componentExts = [],
-    tsconfigPath,
-    tsconfigRootDir = process.cwd(),
-    overrides = {},
-  } = options
-
-  return [
-    {
-      files: [
-        GLOB_TS,
-        GLOB_TSX,
-        ...componentExts.map(ext => `**/*.${ext}`),
-        '!**/*.md/*.*',
-      ],
-      languageOptions: {
-        parser: parserTs,
-        parserOptions: {
-          project: [tsconfigPath],
-          tsconfigRootDir,
-        },
-      },
-      rules: {
-        'dot-notation': OFF,
-        'no-implied-eval': OFF,
-        'no-throw-literal': OFF,
-        'ts/await-thenable': 'error',
-        'ts/dot-notation': ['error', { allowKeywords: true }],
-        'ts/no-floating-promises': 'error',
-        'ts/no-for-in-array': 'error',
-        'ts/no-implied-eval': 'error',
-        'ts/no-misused-promises': 'error',
-        'ts/no-throw-literal': 'error',
-        'ts/no-unnecessary-type-assertion': 'error',
-        'ts/no-unsafe-argument': 'error',
-        'ts/no-unsafe-assignment': 'error',
-        'ts/no-unsafe-call': 'error',
-        'ts/no-unsafe-member-access': 'error',
-        'ts/no-unsafe-return': 'error',
-        'ts/restrict-plus-operands': 'error',
-        'ts/restrict-template-expressions': 'error',
-        'ts/unbound-method': 'error',
-        ...overrides,
       },
     },
   ]

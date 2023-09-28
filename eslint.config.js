@@ -7,6 +7,9 @@ export default antfu(
       'fixtures',
       '_fixtures',
     ],
+    // typescript: {
+    //   tsconfigPath: 'tsconfig.json',
+    // },
   },
   {
     files: ['src/**/*.ts'],

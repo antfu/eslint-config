@@ -1,5 +1,6 @@
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { ParserOptions } from '@typescript-eslint/parser'
 
 export interface OptionsComponentExts {
   /**
@@ -11,9 +12,19 @@ export interface OptionsComponentExts {
   componentExts?: string[]
 }
 
+export interface OptionsTypeScriptParserOptions {
+  /**
+   * Additional parser options for TypeScript.
+   */
+  parserOptions?: Partial<ParserOptions>
+}
+
 export interface OptionsTypeScriptWithTypes {
-  tsconfigPath: string
-  tsconfigRootDir?: string
+  /**
+   * When this options is provided, type aware rules will be enabled.
+   * @see https://typescript-eslint.io/linting/typed-linting/
+   */
+  tsconfigPath?: string
 }
 
 export interface OptionsHasTypeScript {
@@ -106,7 +117,6 @@ export interface OptionsConfig {
   overrides?: {
     javascript?: FlatESLintConfigItem['rules']
     typescript?: FlatESLintConfigItem['rules']
-    typescriptWithTypes?: FlatESLintConfigItem['rules']
     test?: FlatESLintConfigItem['rules']
     vue?: FlatESLintConfigItem['rules']
     jsonc?: FlatESLintConfigItem['rules']
