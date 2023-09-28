@@ -43,7 +43,7 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
-export interface OptionsConfig {
+export interface OptionsConfig extends OptionsComponentExts {
   /**
    * Enable gitignore support.
    *

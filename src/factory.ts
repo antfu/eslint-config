@@ -53,6 +53,7 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     stylistic: enableStylistic = true,
     gitignore: enableGitignore = true,
     overrides = {},
+    componentExts = [],
   } = options
 
   const configs: FlatESLintConfigItem[][] = []
@@ -84,9 +85,6 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     }),
     unicorn(),
   )
-
-  // In the future we may support more component extensions like Svelte or so
-  const componentExts: string[] = []
 
   if (enableVue)
     componentExts.push('vue')
