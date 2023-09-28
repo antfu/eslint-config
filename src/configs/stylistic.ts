@@ -76,7 +76,7 @@ export function stylistic(): FlatESLintConfigItem[] {
         'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
         'style/operator-linebreak': ['error', 'before'],
         'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
-        'style/quotes': ['error', 'single'],
+        'style/quotes': ['error', 'single', { allowTemplateLiterals: true, avoidEscape: true }],
         'style/rest-spread-spacing': ['error', 'never'],
         'style/semi': ['error', 'never'],
         'style/semi-spacing': ['error', { after: true, before: false }],
