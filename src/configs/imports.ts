@@ -1,5 +1,5 @@
 import type { FlatESLintConfigItem } from 'eslint-define-config'
-import { pluginImport } from '../plugins'
+import { pluginAntfu, pluginImport } from '../plugins'
 import type { OptionsStylistic } from '../types'
 
 export function imports(options: OptionsStylistic = {}): FlatESLintConfigItem[] {
@@ -10,9 +10,13 @@ export function imports(options: OptionsStylistic = {}): FlatESLintConfigItem[] 
   return [
     {
       plugins: {
+        antfu: pluginAntfu,
         import: pluginImport,
       },
       rules: {
+        'antfu/import-dedupe': 'error',
+        'antfu/no-import-node-modules-by-path': 'error',
+
         'import/export': 'error',
         'import/first': 'error',
         'import/no-duplicates': 'error',

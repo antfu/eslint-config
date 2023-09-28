@@ -39,8 +39,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
       rules: {
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
-        'antfu/import-dedupe': 'error',
-        'antfu/no-import-node-modules-by-path': 'error',
         'antfu/top-level-function': 'error',
 
         'array-callback-return': 'error',
