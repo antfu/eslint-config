@@ -1,8 +1,7 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem, OptionsComponentExts, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../globs'
 import { pluginMarkdown } from '../plugins'
 import { OFF } from '../flags'
-import type { OptionsComponentExts, OptionsOverrides } from '../types'
 
 export function markdown(options: OptionsComponentExts & OptionsOverrides = {}): FlatESLintConfigItem[] {
   const {
@@ -12,12 +11,14 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
 
   return [
     {
+      name: 'antfu:markdown:setup',
       plugins: {
         markdown: pluginMarkdown,
       },
     },
     {
       files: [GLOB_MARKDOWN],
+      name: 'antfu:markdown:processor',
       processor: 'markdown/markdown',
     },
     {
@@ -32,6 +33,7 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
           },
         },
       },
+      name: 'antfu:markdown:rules',
       rules: {
         'antfu/no-cjs-exports': OFF,
         'antfu/no-ts-export-equal': OFF,

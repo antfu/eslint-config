@@ -1,9 +1,10 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem } from '../types'
 import { pluginNode } from '../plugins'
 
 export function node(): FlatESLintConfigItem[] {
   return [
     {
+      name: 'antfu:node',
       plugins: {
         node: pluginNode,
       },

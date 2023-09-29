@@ -1,9 +1,10 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem } from '../types'
 import { pluginComments } from '../plugins'
 
 export function comments(): FlatESLintConfigItem[] {
   return [
     {
+      name: 'antfu:eslint-comments',
       plugins: {
         'eslint-comments': pluginComments,
       },

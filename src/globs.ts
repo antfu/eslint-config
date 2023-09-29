@@ -55,6 +55,7 @@ export const GLOB_EXCLUDE = [
   '**/.vercel',
   '**/.changeset',
   '**/.idea',
+  '**/.cache',
   '**/.output',
   '**/.vite-inspect',
 

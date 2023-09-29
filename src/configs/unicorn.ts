@@ -1,9 +1,10 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem } from '../types'
 import { pluginUnicorn } from '../plugins'
 
 export function unicorn(): FlatESLintConfigItem[] {
   return [
     {
+      name: 'antfu:unicorn',
       plugins: {
         unicorn: pluginUnicorn,
       },

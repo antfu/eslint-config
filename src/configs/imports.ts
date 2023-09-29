@@ -1,6 +1,5 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
-import type { OptionsStylistic } from '../types'
 
 export function imports(options: OptionsStylistic = {}): FlatESLintConfigItem[] {
   const {
@@ -9,6 +8,7 @@ export function imports(options: OptionsStylistic = {}): FlatESLintConfigItem[] 
 
   return [
     {
+      name: 'antfu:imports',
       plugins: {
         antfu: pluginAntfu,
         import: pluginImport,

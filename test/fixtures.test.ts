@@ -3,7 +3,7 @@ import { afterAll, beforeAll, it } from 'vitest'
 import fs from 'fs-extra'
 import { execa } from 'execa'
 import fg from 'fast-glob'
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem } from '../types'
 import type { OptionsConfig } from '../src/types'
 
 beforeAll(async () => {

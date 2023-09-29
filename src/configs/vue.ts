@@ -1,8 +1,7 @@
-import type { FlatESLintConfigItem } from 'eslint-define-config'
+import type { FlatESLintConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_VUE } from '../globs'
 import { parserTs, parserVue, pluginVue } from '../plugins'
 import { OFF } from '../flags'
-import type { OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 
 export function vue(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic = {},
@@ -14,6 +13,7 @@ export function vue(
 
   return [
     {
+      name: 'antfu:vue:setup',
       plugins: {
         vue: pluginVue,
       },
@@ -31,6 +31,7 @@ export function vue(
           sourceType: 'module',
         },
       },
+      name: 'antfu:vue:rules',
       processor: pluginVue.processors['.vue'],
       rules: {
         ...pluginVue.configs.base.rules as any,
