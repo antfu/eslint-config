@@ -26,11 +26,22 @@ pnpm i -D eslint @antfu/eslint-config
 
 ### Create config file
 
+With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package.json` (recommended):
+
 ```js
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
 export default antfu()
+```
+
+With CJS:
+
+```js
+// eslint.config.js
+const antfu = require('@antfu/eslint-config').default
+
+module.exports = antfu()
 ```
 
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
