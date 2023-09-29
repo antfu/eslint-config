@@ -62,12 +62,8 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
       configs.push([gitignore(enableGitignore)])
     }
     else {
-      if (fs.existsSync('.gitignore')) {
-        configs.push([{
-          ...gitignore(),
-          name: 'antfu:ignores:gitignore',
-        }])
-      }
+      if (fs.existsSync('.gitignore'))
+        configs.push([gitignore()])
     }
   }
 
