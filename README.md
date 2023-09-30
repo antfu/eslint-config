@@ -111,7 +111,7 @@ Add the following settings to your `.vscode/settings.json`:
 
 ## Customization
 
-Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), provides a much better organization and composition.
+Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
 Normally you only need to import the `antfu` preset:
 
@@ -143,7 +143,7 @@ export default antfu({
 })
 ```
 
-The `antfu` factory functions also accepts arbitrary numbers of constom configs overrides:
+The `antfu` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
@@ -166,7 +166,7 @@ export default antfu(
 )
 ```
 
-Going more advanced, you can also import the very fine-grained configs and compose them as you wish:
+Going more advanced, you can also import fine-grained configs and compose them as you wish:
 
 ```js
 // eslint.config.js
@@ -223,7 +223,7 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 | `test/*` | `vitest/*` | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest) |
 | `test/*` | `no-only-tests/*` | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests) |
 
-When you want to overrides rules, or disable them inline, you need to update to the new prefix:
+When you want to override rules, or disable them inline, you need to update to the new prefix:
 
 ```diff
 -// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
