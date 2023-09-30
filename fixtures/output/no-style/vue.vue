@@ -6,9 +6,9 @@ const greeting = ref(`Hello, Vue 3!${  1}`);
 const counter = ref(0)
 
 // Define a function
-function incrementCounter () {
+const incrementCounter = () => {
   counter.value++;
-}
+};
 </script>
 
 <template>

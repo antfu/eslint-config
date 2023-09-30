@@ -72,7 +72,7 @@ class Dog extends Animal {
 const dog = new Dog('Buddy');
 dog.bark();
 
-function fn (): string {
+const fn = (): string => {
   return `hello${  1}`
 }
 
