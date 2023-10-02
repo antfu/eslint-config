@@ -64,6 +64,7 @@ export function stylistic(): FlatESLintConfigItem[] {
           offsetTernaryExpressions: true,
           outerIIFEBody: 1,
         }],
+        'style/jsx-quotes': 'error',
         'style/key-spacing': ['error', { afterColon: true, beforeColon: false }],
         'style/keyword-spacing': ['error', { after: true, before: true }],
         'style/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
