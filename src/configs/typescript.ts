@@ -81,15 +81,17 @@ export function typescript(
         'antfu/generic-spacing': 'error',
         'antfu/named-tuple-spacing': 'error',
         'antfu/no-cjs-exports': 'error',
-        'antfu/no-const-enum': 'error',
-        'antfu/no-ts-export-equal': 'error',
-
+        
         'no-dupe-class-members': OFF,
         'no-invalid-this': OFF,
         'no-loss-of-precision': OFF,
         'no-redeclare': OFF,
         'no-use-before-define': OFF,
         'no-useless-constructor': OFF,
+        'no-restricted-syntax': [
+          'error',
+          '[declare=true]',
+        ],
         'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
         'ts/ban-types': ['error', { types: { Function: false } }],
         'ts/consistent-type-definitions': ['error', 'interface'],
