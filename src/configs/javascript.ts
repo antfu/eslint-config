@@ -116,6 +116,8 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
           'DebuggerStatement',
           'LabeledStatement',
           'WithStatement',
+          'TSEnumDeclaration[const=true]',
+          'TSExportAssignment',
         ],
         'no-self-assign': ['error', { props: true }],
         'no-self-compare': 'error',
