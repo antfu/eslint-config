@@ -90,7 +90,6 @@ export function typescript(
         'no-useless-constructor': OFF,
         'no-restricted-syntax': [
           'error',
-          '[declare=true]',
           'TSEnumDeclaration[const=true]',
           'TSExportAssignment',
         ],
@@ -126,6 +125,7 @@ export function typescript(
         'eslint-comments/no-unlimited-disable': OFF,
         'import/no-duplicates': OFF,
         'unused-imports/no-unused-vars': OFF,
+        'no-restricted-syntax': ['error', '[declare=true]'],
       },
     },
     {
