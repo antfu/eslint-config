@@ -125,7 +125,10 @@ export function typescript(
         'eslint-comments/no-unlimited-disable': OFF,
         'import/no-duplicates': OFF,
         'unused-imports/no-unused-vars': OFF,
-        'no-restricted-syntax': ['error', '[declare=true]'],
+        'no-restricted-syntax': [
+          'error',
+          '[declare=true]',
+        ],
       },
     },
     {
