@@ -91,6 +91,8 @@ export function typescript(
         'no-restricted-syntax': [
           'error',
           '[declare=true]',
+          'TSEnumDeclaration[const=true]',
+          'TSExportAssignment',
         ],
         'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
         'ts/ban-types': ['error', { types: { Function: false } }],
