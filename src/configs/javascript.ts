@@ -58,6 +58,7 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-console': ['error', { allow: ['warn', 'error'] }],
         'no-const-assign': 'error',
         'no-control-regex': 'error',
+        'no-debugger': 'error',
         'no-delete-var': 'error',
         'no-dupe-args': 'error',
         'no-dupe-class-members': 'error',
