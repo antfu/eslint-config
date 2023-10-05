@@ -99,7 +99,12 @@ export interface OptionsHasTypeScript {
 }
 
 export interface OptionsStylistic {
-  stylistic?: boolean
+  stylistic?: boolean | StylisticConfig
+}
+
+export interface StylisticConfig {
+  indent?: number | 'tab'
+  quotes?: 'single' | 'double'
 }
 
 export interface OptionsOverrides {
@@ -170,7 +175,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  stylistic?: boolean
+  stylistic?: boolean | StylisticConfig
 
   /**
    * Control to disable some rules in editors.

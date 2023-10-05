@@ -11,6 +11,10 @@ export function vue(
     stylistic = true,
   } = options
 
+  const {
+    indent = 2,
+  } = typeof stylistic === 'boolean' ? {} : stylistic
+
   return [
     {
       name: 'antfu:vue:setup',
@@ -53,6 +57,8 @@ export function vue(
         'vue/dot-location': ['error', 'property'],
         'vue/dot-notation': ['error', { allowKeywords: true }],
         'vue/eqeqeq': ['error', 'smart'],
+        'vue/html-indent': ['error', indent],
+        'vue/html-quotes': ['error', 'double'],
         'vue/max-attributes-per-line': OFF,
         'vue/multi-word-component-names': OFF,
         'vue/no-dupe-keys': OFF,

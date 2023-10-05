@@ -1,7 +1,12 @@
-import type { FlatESLintConfigItem } from '../types'
+import type { FlatESLintConfigItem, StylisticConfig } from '../types'
 import { pluginAntfu, pluginStylistic } from '../plugins'
 
-export function stylistic(): FlatESLintConfigItem[] {
+export function stylistic(options: StylisticConfig = {}): FlatESLintConfigItem[] {
+  const {
+    indent = 2,
+    quotes = 'single',
+  } = options
+
   return [
     {
       name: 'antfu:stylistic',
@@ -26,7 +31,7 @@ export function stylistic(): FlatESLintConfigItem[] {
         'style/computed-property-spacing': ['error', 'never', { enforceForClassMembers: true }],
         'style/dot-location': ['error', 'property'],
         'style/eol-last': 'error',
-        'style/indent': ['error', 2, {
+        'style/indent': ['error', indent, {
           ArrayExpression: 1,
           CallExpression: { arguments: 1 },
           FunctionDeclaration: { body: 1, parameters: 1 },
@@ -85,7 +90,7 @@ export function stylistic(): FlatESLintConfigItem[] {
         'style/no-mixed-spaces-and-tabs': 'error',
         'style/no-multi-spaces': 'error',
         'style/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
-        'style/no-tabs': 'error',
+        'style/no-tabs': indent === 'tab' ? 'off' : 'error',
         'style/no-trailing-spaces': 'error',
         'style/no-whitespace-before-property': 'error',
         'style/object-curly-spacing': ['error', 'always'],
@@ -93,7 +98,7 @@ export function stylistic(): FlatESLintConfigItem[] {
         'style/operator-linebreak': ['error', 'before'],
         'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
         'style/quote-props': ['error', 'consistent-as-needed'],
-        'style/quotes': ['error', 'single', { allowTemplateLiterals: true, avoidEscape: true }],
+        'style/quotes': ['error', quotes, { allowTemplateLiterals: true, avoidEscape: true }],
         'style/rest-spread-spacing': ['error', 'never'],
         'style/semi': ['error', 'never'],
         'style/semi-spacing': ['error', { after: true, before: false }],

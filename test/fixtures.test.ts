@@ -25,6 +25,14 @@ runWithConfig('no-style', {
   vue: true,
   stylistic: false,
 })
+runWithConfig('tab-double-quotes', {
+  typescript: true,
+  vue: true,
+  stylistic: {
+    indent: 'tab',
+    quotes: 'double',
+  },
+})
 
 // https://github.com/antfu/eslint-config/issues/255
 runWithConfig(

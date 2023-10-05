@@ -98,8 +98,13 @@ export function antfu(options: OptionsConfig & FlatESLintConfigItem = {}, ...use
     }))
   }
 
-  if (enableStylistic)
-    configs.push(stylistic())
+  if (enableStylistic) {
+    configs.push(stylistic(
+      typeof enableStylistic === 'boolean'
+        ? {}
+        : enableStylistic,
+    ))
+  }
 
   if (options.test ?? true) {
     configs.push(test({
