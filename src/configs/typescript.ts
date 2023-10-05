@@ -119,10 +119,7 @@ export function typescript(
       rules: {
         'eslint-comments/no-unlimited-disable': OFF,
         'import/no-duplicates': OFF,
-        'no-restricted-syntax': [
-          'error',
-          '[declare=true]',
-        ],
+        'no-restricted-syntax': OFF,
         'unused-imports/no-unused-vars': OFF,
       },
     },
