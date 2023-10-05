@@ -12,6 +12,7 @@ export function yaml(
   } = options
 
   const {
+    indent = 2,
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
@@ -48,7 +49,7 @@ export function yaml(
               'yaml/flow-mapping-curly-spacing': 'error',
               'yaml/flow-sequence-bracket-newline': 'error',
               'yaml/flow-sequence-bracket-spacing': 'error',
-              'yaml/indent': ['error', 2],
+              'yaml/indent': ['error', indent === 'tabs' ? 2 : indent],
               'yaml/key-spacing': 'error',
               'yaml/no-tab-indent': 'error',
               'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
