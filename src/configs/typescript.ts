@@ -81,9 +81,7 @@ export function typescript(
         'antfu/generic-spacing': 'error',
         'antfu/named-tuple-spacing': 'error',
         'antfu/no-cjs-exports': 'error',
-        'antfu/no-const-enum': 'error',
-        'antfu/no-ts-export-equal': 'error',
-
+        
         'no-dupe-class-members': OFF,
         'no-invalid-this': OFF,
         'no-loss-of-precision': OFF,
@@ -122,6 +120,10 @@ export function typescript(
         'eslint-comments/no-unlimited-disable': OFF,
         'import/no-duplicates': OFF,
         'unused-imports/no-unused-vars': OFF,
+        'no-restricted-syntax': [
+          'error',
+          '[declare=true]',
+        ],
       },
     },
     {
