@@ -49,7 +49,7 @@ export function yaml(
               'yaml/flow-mapping-curly-spacing': 'error',
               'yaml/flow-sequence-bracket-newline': 'error',
               'yaml/flow-sequence-bracket-spacing': 'error',
-              'yaml/indent': ['error', indent === 'tabs' ? 2 : indent],
+              'yaml/indent': ['error', indent === 'tab' ? 2 : indent],
               'yaml/key-spacing': 'error',
               'yaml/no-tab-indent': 'error',
               'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
