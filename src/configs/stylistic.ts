@@ -98,7 +98,7 @@ export function stylistic(options: StylisticConfig = {}): FlatESLintConfigItem[]
         'style/operator-linebreak': ['error', 'before'],
         'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
         'style/quote-props': ['error', 'consistent-as-needed'],
-        'style/quotes': ['error', quotes, { allowTemplateLiterals: true, avoidEscape: true }],
+        'style/quotes': ['error', quotes, { allowTemplateLiterals: true, avoidEscape: false }],
         'style/rest-spread-spacing': ['error', 'never'],
         'style/semi': ['error', 'never'],
         'style/semi-spacing': ['error', { after: true, before: false }],
