@@ -76,7 +76,7 @@ Add the following settings to your `.vscode/settings.json`:
 
   // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll": true,
     "source.organizeImports": false
   },
 
