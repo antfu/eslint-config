@@ -196,7 +196,7 @@ import {
   typescript,
   unicorn,
   vue,
-  yml,
+  yaml,
 } from '@antfu/eslint-config'
 
 export default [
@@ -211,7 +211,7 @@ export default [
   ...stylistic(),
   ...vue(),
   ...jsonc(),
-  ...yml(),
+  ...yaml(),
   ...markdown(),
 ]
 ```
