@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import { packages } from '@eslint-stylistic/metadata'
 
-const main = packages.find(i => i.shortId === 'default')
+const main = packages.find(i => i.shortId === 'default')!
 
 console.log(main.rules)
 
