@@ -1,7 +1,7 @@
-import type { FlatESLintConfigItem, OptionsStylistic } from '../types'
+import type { ConfigItem, OptionsStylistic } from '../types'
 import { pluginJsdoc } from '../plugins'
 
-export function jsdoc(options: OptionsStylistic = {}): FlatESLintConfigItem[] {
+export function jsdoc(options: OptionsStylistic = {}): ConfigItem[] {
   const {
     stylistic = true,
   } = options

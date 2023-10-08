@@ -1,8 +1,8 @@
-import type { FlatESLintConfigItem, OptionsOverrides, OptionsStylistic } from '../types'
+import type { ConfigItem, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../globs'
 import { parserJsonc, pluginJsonc } from '../plugins'
 
-export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): FlatESLintConfigItem[] {
+export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): ConfigItem[] {
   const {
     stylistic = true,
     overrides = {},

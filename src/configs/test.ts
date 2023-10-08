@@ -1,9 +1,9 @@
-import type { FlatESLintConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
+import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { pluginNoOnlyTests, pluginVitest } from '../plugins'
 import { GLOB_TESTS } from '../globs'
 import { OFF } from '../flags'
 
-export function test(options: OptionsIsInEditor & OptionsOverrides = {}): FlatESLintConfigItem[] {
+export function test(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
     isInEditor = false,
     overrides = {},

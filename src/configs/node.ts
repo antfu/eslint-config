@@ -1,7 +1,7 @@
-import type { FlatESLintConfigItem } from '../types'
+import type { ConfigItem } from '../types'
 import { pluginNode } from '../plugins'
 
-export function node(): FlatESLintConfigItem[] {
+export function node(): ConfigItem[] {
   return [
     {
       name: 'antfu:node',

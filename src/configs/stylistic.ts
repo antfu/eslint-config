@@ -1,7 +1,7 @@
-import type { FlatESLintConfigItem, StylisticConfig } from '../types'
+import type { ConfigItem, StylisticConfig } from '../types'
 import { pluginAntfu, pluginStylistic } from '../plugins'
 
-export function stylistic(options: StylisticConfig = {}): FlatESLintConfigItem[] {
+export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
   const {
     indent = 2,
     quotes = 'single',

@@ -1,5 +1,5 @@
 import process from 'node:process'
-import type { FlatESLintConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
 import { GLOB_SRC } from '../globs'
 import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
 import { OFF } from '../flags'
@@ -7,7 +7,7 @@ import { renameRules } from '../utils'
 
 export function typescript(
   options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
-): FlatESLintConfigItem[] {
+): ConfigItem[] {
   const {
     componentExts = [],
     overrides = {},
@@ -15,7 +15,7 @@ export function typescript(
     tsconfigPath,
   } = options ?? {}
 
-  const typeAwareRules: FlatESLintConfigItem['rules'] = {
+  const typeAwareRules: ConfigItem['rules'] = {
     'dot-notation': OFF,
     'no-implied-eval': OFF,
     'no-throw-literal': OFF,

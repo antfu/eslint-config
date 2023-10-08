@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@antfu/eslint-define-config':
+        specifier: ^1.23.0-1
+        version: 1.23.0-1
       '@stylistic/eslint-plugin':
         specifier: 0.0.6
         version: 0.0.6(eslint@8.50.0)(typescript@5.2.2)
@@ -20,9 +23,6 @@ importers:
       eslint-config-flat-gitignore:
         specifier: ^0.1.0
         version: 0.1.0
-      eslint-define-config:
-        specifier: ^1.23.0
-        version: 1.23.0
       eslint-plugin-antfu:
         specifier: ^1.0.0-beta.10
         version: 1.0.0-beta.10(eslint@8.50.0)(typescript@5.2.2)
@@ -155,6 +155,11 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
     dev: true
+
+  /@antfu/eslint-define-config@1.23.0-1:
+    resolution: {integrity: sha512-FEhC42aXDQ315jXpMAp+P1oBW2K96Ruq/8xs1poA8rgxv0c5vqYsyWWwwNBDijqUyDn9kufa4eZrd94rcbVEhg==}
+    engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>= 8.6.0'}
+    dev: false
 
   /@antfu/ni@0.21.8:
     resolution: {integrity: sha512-90X8pU2szlvw0AJo9EZMbYc2eQKkmO7mAdC4tD4r5co2Mm56MT37MIG8EyB7p4WRheuzGxuLDxJ63mF6+Zajiw==}
@@ -2177,11 +2182,6 @@ packages:
     resolution: {integrity: sha512-5nQMQFRkkhCb+ejFhKSATn/41I7ot9oRcnEDzfqwMlBE9036qM9ioYBDtKLpwmlICXr/J7naMFfb39pa4v4sGA==}
     dependencies:
       parse-gitignore: 2.0.0
-    dev: false
-
-  /eslint-define-config@1.23.0:
-    resolution: {integrity: sha512-4mMyu0JuBkQHsCtR+42irIQdFLmLIW+pMAVcyOV/gZRL4O1R8iuH0eMG3oL3Cbi1eo9fDAfT5CIHVHgdyxcf6w==}
-    engines: {node: ^16.13.0 || >=18.0.0, npm: '>=7.0.0', pnpm: '>= 8.6.0'}
     dev: false
 
   /eslint-flat-config-viewer@0.0.8:

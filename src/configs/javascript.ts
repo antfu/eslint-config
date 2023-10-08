@@ -1,10 +1,10 @@
 import globals from 'globals'
-import type { FlatESLintConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
+import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 import { OFF } from '../flags'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
-export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): FlatESLintConfigItem[] {
+export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
   const {
     isInEditor = false,
     overrides = {},
