@@ -17,6 +17,7 @@ import type {
   VueRules,
   YmlRules,
 } from '@antfu/eslint-define-config'
+import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type { StylisticRules } from './generated/stylistic'
 
 export type Rules = MergeIntersection<
@@ -25,6 +26,7 @@ export type Rules = MergeIntersection<
   RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
   RenamePrefix<NRules, 'n/', 'node/'> &
   Prefix<StylisticRules, 'style/'> &
+  Prefix<AntfuRules, 'antfu/'> &
   ImportRules &
   EslintRules &
   JsoncRules &
