@@ -1,7 +1,6 @@
 import type { ConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_VUE } from '../globs'
 import { parserTs, parserVue, pluginVue } from '../plugins'
-import { OFF } from '../flags'
 
 export function vue(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic = {},
@@ -43,7 +42,7 @@ export function vue(
         ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
         ...pluginVue.configs['vue3-recommended'].rules as any,
 
-        'node/prefer-global/process': OFF,
+        'node/prefer-global/process': 'off',
 
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
@@ -59,9 +58,9 @@ export function vue(
         'vue/eqeqeq': ['error', 'smart'],
         'vue/html-indent': ['error', indent],
         'vue/html-quotes': ['error', 'double'],
-        'vue/max-attributes-per-line': OFF,
-        'vue/multi-word-component-names': OFF,
-        'vue/no-dupe-keys': OFF,
+        'vue/max-attributes-per-line': 'off',
+        'vue/multi-word-component-names': 'off',
+        'vue/no-dupe-keys': 'off',
         'vue/no-empty-pattern': 'error',
         'vue/no-extra-parens': ['error', 'functions'],
         'vue/no-irregular-whitespace': 'error',
@@ -73,11 +72,11 @@ export function vue(
           'WithStatement',
         ],
         'vue/no-restricted-v-bind': ['error', '/^v-/'],
-        'vue/no-setup-props-reactivity-loss': OFF,
+        'vue/no-setup-props-reactivity-loss': 'off',
         'vue/no-sparse-arrays': 'error',
         'vue/no-unused-refs': 'error',
         'vue/no-useless-v-bind': 'error',
-        'vue/no-v-html': OFF,
+        'vue/no-v-html': 'off',
         'vue/object-shorthand': [
           'error',
           'always',
@@ -88,8 +87,8 @@ export function vue(
         ],
         'vue/prefer-separate-static-class': 'error',
         'vue/prefer-template': 'error',
-        'vue/require-default-prop': OFF,
-        'vue/require-prop-types': OFF,
+        'vue/require-default-prop': 'off',
+        'vue/require-prop-types': 'off',
         'vue/space-infix-ops': 'error',
         'vue/space-unary-ops': ['error', { nonwords: false, words: true }],
 
@@ -111,7 +110,7 @@ export function vue(
               }],
               'vue/key-spacing': ['error', { afterColon: true, beforeColon: false }],
               'vue/keyword-spacing': ['error', { after: true, before: true }],
-              'vue/object-curly-newline': OFF,
+              'vue/object-curly-newline': 'off',
               'vue/object-curly-spacing': ['error', 'always'],
               'vue/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
               'vue/operator-linebreak': ['error', 'before'],

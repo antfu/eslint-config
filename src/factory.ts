@@ -161,8 +161,5 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     ...userConfigs,
   )
 
-  // recordRulesStateConfigs(merged)
-  // warnUnnecessaryOffRules()
-
   return merged
 }
