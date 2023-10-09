@@ -30,6 +30,9 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         },
         sourceType: 'module',
       },
+      linterOptions: {
+        reportUnusedDisableDirectives: true,
+      },
       name: 'antfu:javascript',
       plugins: {
         'antfu': pluginAntfu,
