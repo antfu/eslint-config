@@ -89,6 +89,7 @@ export interface OptionsStylistic {
 export interface StylisticConfig {
   indent?: number | 'tab'
   quotes?: 'single' | 'double'
+  jsx?: boolean
 }
 
 export interface OptionsOverrides {
@@ -118,6 +119,15 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default auto-detect based on the dependencies
    */
   typescript?: boolean | OptionsTypeScriptWithTypes
+
+  /**
+   * Enable JSX related rules.
+   *
+   * Currently only stylistic rules are included.
+   *
+   * @default true
+   */
+  jsx?: boolean
 
   /**
    * Enable test support.

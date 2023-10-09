@@ -49,11 +49,18 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
     typescript: enableTypeScript = isPackageExists('typescript'),
-    stylistic: enableStylistic = true,
     gitignore: enableGitignore = true,
     overrides = {},
     componentExts = [],
   } = options
+
+  const stylisticOptions = options.stylistic === false
+    ? false
+    : typeof options.stylistic === 'object'
+      ? options.stylistic
+      : {}
+  if (stylisticOptions && !('jsx' in stylisticOptions))
+    stylisticOptions.jsx = options.jsx ?? true
 
   const configs: ConfigItem[][] = []
 
@@ -77,10 +84,10 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     comments(),
     node(),
     jsdoc({
-      stylistic: enableStylistic,
+      stylistic: stylisticOptions,
     }),
     imports({
-      stylistic: enableStylistic,
+      stylistic: stylisticOptions,
     }),
     unicorn(),
   )
@@ -98,13 +105,8 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     }))
   }
 
-  if (enableStylistic) {
-    configs.push(stylistic(
-      typeof enableStylistic === 'boolean'
-        ? {}
-        : enableStylistic,
-    ))
-  }
+  if (stylisticOptions)
+    configs.push(stylistic(stylisticOptions))
 
   if (options.test ?? true) {
     configs.push(test({
@@ -116,7 +118,7 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
   if (enableVue) {
     configs.push(vue({
       overrides: overrides.vue,
-      stylistic: enableStylistic,
+      stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
   }
@@ -125,7 +127,7 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     configs.push(
       jsonc({
         overrides: overrides.jsonc,
-        stylistic: enableStylistic,
+        stylistic: stylisticOptions,
       }),
       sortPackageJson(),
       sortTsconfig(),
@@ -135,7 +137,7 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
   if (options.yaml ?? true) {
     configs.push(yaml({
       overrides: overrides.yaml,
-      stylistic: enableStylistic,
+      stylistic: stylisticOptions,
     }))
   }
 
