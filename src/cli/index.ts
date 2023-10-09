@@ -8,7 +8,7 @@ import c from 'kleur'
 export async function cli() {
   const cwd = process.cwd()
 
-  console.log(c.dim(`\nCreating eslint config...\n`))
+  console.log(c.dim(`\nSetup eslint config...\n`))
 
   // Update package.json
   let pkg: Record<string, any>
