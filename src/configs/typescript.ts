@@ -95,6 +95,7 @@ export function typescript(
         'ts/no-dynamic-delete': 'off',
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
+        'ts/no-import-type-side-effects': 'error',
         'ts/no-invalid-this': 'error',
         'ts/no-invalid-void-type': 'off',
         'ts/no-loss-of-precision': 'error',
