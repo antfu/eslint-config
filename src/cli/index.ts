@@ -27,13 +27,14 @@ export async function cli() {
     process.exit(1)
   }
 
-  const currentEslintVersion = (pkg.devDependencies.eslint ?? '').match(/\d+/)?.[0]
+  const currentEslintVersion: string = (pkg?.devDependencies?.eslint || '').match(/\d+/)?.[0]
 
-  if (currentEslintVersion < 8) {
+  if (!currentEslintVersion || Number.parseInt(currentEslintVersion) < 8) {
     let promptResult: prompts.Answers<'updateEslintVersion'>
 
     try {
       promptResult = await prompts({
+        initial: true,
         message: () => {
           if (currentEslintVersion) {
             console.log(c.red('Your eslint version does not support the configuration, the minimum version eslint is'), c.dim('8.x.x'))
@@ -136,6 +137,7 @@ module.exports = antfu({\n${antfuConfig}\n});`
 
   try {
     promptResult = await prompts({
+      initial: true,
       message: 'Update .vscode/settings.json for better performance?',
       name: 'updateVscodeSettings',
       type: 'confirm',
