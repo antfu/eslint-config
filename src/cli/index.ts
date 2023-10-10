@@ -27,7 +27,7 @@ export async function cli() {
     process.exit(1)
   }
 
-  const currentEslintVersion: number = (pkg.devDependencies.eslint ?? '').split('.')[0]
+  const currentEslintVersion = (pkg.devDependencies.eslint ?? '').match(/\d+/)?.[0]
 
   if (currentEslintVersion < 8) {
     let promptResult: prompts.Answers<'updateEslintVersion'>
