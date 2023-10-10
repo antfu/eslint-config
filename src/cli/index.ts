@@ -3,12 +3,16 @@ import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import prompts from 'prompts'
 import c from 'kleur'
+
+// @ts-expect-error missing types
+import parse from 'parse-gitignore'
 
 export async function cli() {
   const cwd = process.cwd()
 
-  console.log(c.dim(`\nSetup eslint config...\n`))
+  console.log(c.dim(`\nSetup eslint config ...\n`))
 
   // Update package.json
   let pkg: Record<string, any>
@@ -23,31 +27,53 @@ export async function cli() {
     process.exit(1)
   }
 
-  const eslintLastVersion = await execSync(`npm show eslint version --quite`)
+  const currentEslintVersion: number = (pkg.devDependencies.eslint ?? '').split('.')[0]
+
+  if (currentEslintVersion < 8) {
+    let promptResult: prompts.Answers<'updateEslintVersion'>
+
+    try {
+      promptResult = await prompts({
+        message: () => {
+          if (currentEslintVersion) {
+            console.log(c.red('Your eslint version does not support the configuration, the minimum version eslint is'), c.dim('8.x.x'))
+            return 'Update eslint to the current latest version?'
+          }
+          else {
+            return ''
+          }
+        },
+        name: 'updateEslintVersion',
+        type: currentEslintVersion ? 'confirm' : null,
+      }, { onCancel: () => {
+        throw new Error(`${c.red('✖')} Operation cancelled`)
+      } })
+    }
+    catch (cancelled: any) {
+      console.log(cancelled.message)
+      return
+    }
+
+    if (promptResult?.updateEslintVersion ?? true) {
+      const eslintLastVersion = await execSync(`npm show eslint version --quite`)
+
+      const eslintVersion: string = eslintLastVersion?.toString()?.trim()
+      pkg.devDependencies.eslint = eslintVersion
+    }
+    else {
+      console.log('Please update eslint and try again')
+      return
+    }
+  }
+
   const eslintConfigLastVersion = await execSync(`npm show @antfu/eslint-config version --quite`)
 
-  const eslintVersion: string = eslintLastVersion?.toString()?.trim()
   const eslintConfigVersion: string = eslintConfigLastVersion?.toString()?.trim()
-
-  pkg.type = 'module'
-
-  const pkgDep = ['dependencies', 'devDependencies']
-
-  pkgDep.forEach((depType) => {
-    if (pkg[depType]) {
-      Object.keys(pkg[depType]).forEach((key) => {
-        if (key.includes('eslint') || key.includes('prettier'))
-          delete pkg[depType][key]
-      })
-    }
-  })
-
   pkg.devDependencies['@antfu/eslint-config'] = eslintConfigVersion
-  pkg.devDependencies.eslint = eslintVersion
 
   try {
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
-    console.log(c.cyan('Updated -'), c.dim('package.json'))
+    console.log(c.cyan('Updated -'), c.dim('package.json\n'))
   }
   catch (error) {
     console.log(c.red('Failed to update -'), c.dim('package.json'))
@@ -58,29 +84,34 @@ export async function cli() {
   // Update eslint files
   const eslintConfigPath: string = path.join(cwd, 'eslint.config.js')
   const eslintIgnorePath: string = path.join(cwd, '.eslintignore')
-  let eslintIgnoreLines: string[] = []
+  const eslintIgnores: string[] = []
 
   if (fs.existsSync(eslintIgnorePath)) {
-    const eslintIgnoreContent: string = fs.readFileSync(eslintIgnorePath, 'utf-8')
-    eslintIgnoreLines = eslintIgnoreContent.split('\n')
+    const parsed = parse(eslintIgnorePath)
+    const globs = parsed.globs()
+
+    for (const glob of globs) {
+      if (glob.type === 'ignore')
+        eslintIgnores.push(...glob.patterns)
+      else if (glob.type === 'unignore')
+        eslintIgnores.push(...glob.patterns.map((pattern: string) => `!${pattern}`))
+    }
   }
 
-  const eslintConfigContent = `
-import antfu from '@antfu/eslint-config';
+  let eslintConfigContent: string = ''
 
-export default antfu({
-  ${eslintIgnoreLines.length
-  ? `ignores: [
-    ${eslintIgnoreLines?.map(line => `'${line}'`).join(',\n')}
-  ],`
- : ''}
-});`
+  const antfuConfig = `${eslintIgnores.length ? `ignores: ${JSON.stringify(eslintIgnores)}` : ''}`
 
-  const files = fs.readdirSync(cwd)
-  files.forEach((file) => {
-    if (file.includes('eslint') || file.includes('prettier'))
-      fs.unlinkSync(file)
-  })
+  if (pkg.type === 'module') {
+    eslintConfigContent = `
+import antfu from '@antfu/eslint-config';\n
+export default antfu({\n${antfuConfig}\n});`
+  }
+  else {
+    eslintConfigContent = `
+const antfu = require('@antfu/eslint-config').default;\n
+module.exports = antfu({\n${antfuConfig}\n});`
+  }
 
   try {
     fs.writeFileSync(eslintConfigPath, eslintConfigContent)
@@ -89,64 +120,99 @@ export default antfu({
   catch (error) {
     console.log(c.red('Failed to create -'), c.dim('eslint.config.js'))
   }
+
+  const files = fs.readdirSync(cwd)
+  const unnecessaryFiles: string[] = []
+  files.forEach((file) => {
+    if (file.includes('eslint') || file.includes('prettier'))
+      unnecessaryFiles.push(file)
+  })
+  if (unnecessaryFiles.length)
+    console.log('You can now remove those files:', c.dim(unnecessaryFiles.join(', ')), '\n')
   // End update eslint files
 
   // Update .vscode/settings.json
-  const dotVscodePath: string = path.join(cwd, '.vscode')
-  const settingsPath: string = path.join(dotVscodePath, 'settings.json')
+  let promptResult: prompts.Answers<'updateVscodeSettings'>
 
-  if (!fs.existsSync(dotVscodePath))
-    fs.mkdirSync(dotVscodePath)
-
-  if (!fs.existsSync(settingsPath))
-    fs.writeFileSync(settingsPath, '{}')
-
-  let settings: Record<string, any> = {}
   try {
-    const settingsContent: string = fs.readFileSync(settingsPath, 'utf8')
-    const settingsJsonWithoutComments = settingsContent.replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
-    settings = JSON.parse(settingsJsonWithoutComments)
+    promptResult = await prompts({
+      message: 'Update .vscode/settings.json for better performance?',
+      name: 'updateVscodeSettings',
+      type: 'confirm',
+    }, { onCancel: () => {
+      throw new Error(`${c.red('✖')} Operation cancelled`)
+    } })
   }
-  catch (error) {
-    console.log(c.red('Error when reading a file -'), c.dim('.vscode/settings.json'))
-    process.exit(1)
+  catch (cancelled: any) {
+    console.log(cancelled.message)
+    return
   }
 
-  settings['eslint.experimental.useFlatConfig'] = true
-  settings['eslint.format.enable'] = true
-  settings['prettier.enable'] = false
-  settings['editor.formatOnSave'] = false
-  settings['editor.codeActionsOnSave'] = {
-    'source.fixAll.eslint': 'explicit',
-    'source.organizeImports': 'never',
-  }
-  settings['eslint.rules.customizations'] = [
-    { rule: '@stylistic/*', severity: 'off' },
-    { rule: 'style*', severity: 'off' },
-    { rule: '*-indent', severity: 'off' },
-    { rule: '*-spacing', severity: 'off' },
-    { rule: '*-spaces', severity: 'off' },
-    { rule: '*-order', severity: 'off' },
-    { rule: '*-dangle', severity: 'off' },
-    { rule: '*-newline', severity: 'off' },
-    { rule: '*quotes', severity: 'off' },
-    { rule: '*semi', severity: 'off' },
-  ]
-  settings['eslint.validate'] = [
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-    'vue',
-    'html',
-    'markdown',
-    'json',
-    'jsonc',
-    'yaml',
-  ]
+  if (promptResult?.updateVscodeSettings ?? true) {
+    const dotVscodePath: string = path.join(cwd, '.vscode')
+    const settingsPath: string = path.join(dotVscodePath, 'settings.json')
+    let settingsContent: string = ''
 
-  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2))
-  console.log(c.cyan('Updated -'), c.dim('.vscode/settings.json'))
+    try {
+      if (!fs.existsSync(dotVscodePath))
+        fs.mkdirSync(dotVscodePath)
+
+      if (!fs.existsSync(settingsPath))
+        fs.writeFileSync(settingsPath, `{\n}`)
+
+      settingsContent = fs.readFileSync(settingsPath, 'utf8')
+    }
+    catch (error) {
+      console.log(c.red('Error when reading a file -'), c.dim('.vscode/settings.json'))
+      process.exit(1)
+    }
+
+    const vscodeSettingsRecommended = {
+      'editor.codeActionsOnSave': {
+        'source.fixAll': 'explicit',
+        'source.organizeImports': 'never',
+      },
+      'editor.formatOnSave': false,
+      'eslint.experimental.useFlatConfig': true,
+      'eslint.rules.customizations': [
+        { rule: 'style/*', severity: 'off' },
+        { rule: '*-indent', severity: 'off' },
+        { rule: '*-spacing', severity: 'off' },
+        { rule: '*-spaces', severity: 'off' },
+        { rule: '*-order', severity: 'off' },
+        { rule: '*-dangle', severity: 'off' },
+        { rule: '*-newline', severity: 'off' },
+        { rule: '*quotes', severity: 'off' },
+        { rule: '*semi', severity: 'off' },
+      ],
+      'eslint.validate': [
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'vue',
+        'html',
+        'markdown',
+        'json',
+        'jsonc',
+        'yaml',
+      ],
+      'prettier.enable': false,
+    }
+
+    settingsContent = settingsContent.trim().replace(/\s*}$/, '')
+    settingsContent += settingsContent.endsWith(',') || settingsContent === '{' ? '' : ','
+
+    settingsContent = Object.entries(vscodeSettingsRecommended).reduce(
+      (acc, [key, value]) => `${acc}\n"${key}": ${JSON.stringify(value, null, 2)},\n`,
+      settingsContent,
+    )
+    settingsContent += `}`
+
+    fs.writeFileSync(settingsPath, settingsContent)
+
+    console.log(c.cyan('Updated -'), c.dim('.vscode/settings.json'))
+  }
   // End update .vscode/settings.json
 
   console.log(c.green('\nSuccessful. Now you can update the dependencies and run'), c.dim('eslint . --fix\n'))

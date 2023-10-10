@@ -1,7 +1,7 @@
 // @ts-check
 import sortKeys from 'eslint-plugin-sort-keys'
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import antfu from './dist/index.js'
+import antfu from './dist/index.mjs'
 
 export default antfu(
   {
