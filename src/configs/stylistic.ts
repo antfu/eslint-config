@@ -135,9 +135,10 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
               'style/jsx-curly-spacing': ['error', 'never'],
               'style/jsx-equals-spacing': 'error',
               'style/jsx-first-prop-new-line': 'error',
-              'style/jsx-indent': ['error', indent, { checkAttributes: false, indentLogicalExpressions: true }],
+              'style/jsx-indent': ['error', indent, { checkAttributes: true, indentLogicalExpressions: true }],
               'style/jsx-indent-props': ['error', indent],
               'style/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+              'style/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
               'style/jsx-quotes': 'error',
               'style/jsx-tag-spacing': [
                 'error',
