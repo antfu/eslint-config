@@ -17,5 +17,8 @@ export function jsx2() {
             <div>Foo</div>
           Text<b > Bar</b>
         </div>
+        <p>
+          foo<i>bar</i><b>baz</b>
+        </p>
       </ a >
 }

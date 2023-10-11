@@ -22,6 +22,11 @@ export function jsx2() {
         Text
         <b> Bar</b>
       </div>
+      <p>
+        foo
+        <i>bar</i>
+        <b>baz</b>
+      </p>
     </a>
   )
 }

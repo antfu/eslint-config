@@ -127,7 +127,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
 
         ...jsx
           ? {
-              'style/jsx-child-element-spacing': 'error',
               'style/jsx-closing-bracket-location': 'error',
               'style/jsx-closing-tag-location': 'error',
               'style/jsx-curly-brace-presence': ['error', { propElementValues: 'always' }],
