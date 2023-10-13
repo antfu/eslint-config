@@ -242,6 +242,29 @@ When you want to override rules, or disable them inline, you need to update to t
 type foo = { bar: 2 }
 ```
 
+### Optional Rules
+
+This config also provides some optional plugins/rules for extended usages.
+
+#### `sort-keys`
+
+This plugin [`eslint-plugin-sort-keys`](https://github.com/namnm/eslint-plugin-sort-keys) allows you to keep object keys sorted with auto-fix.
+
+It's installed but no rules are enabled by default. 
+
+It's recommended to opt-in on each file individually using [configuration comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1).
+
+```js
+/* eslint sort-keys/sort-keys-fix: "error" */
+const objectWantedToSort = {
+  a: 2,
+  b: 1,
+  c: 3,
+}
+/* eslint sort-keys/sort-keys-fix: "off" */
+```
+
+
 ### Rules Overrides
 
 Certain rules would only be enabled in specific files, for example, `ts/*` rules would only be enabled in `.ts` files and `vue/*` rules would only be enabled in `.vue` files. If you want to override the rules, you need to specify the file extension:
