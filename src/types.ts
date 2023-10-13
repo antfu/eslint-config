@@ -9,16 +9,26 @@ import type {
   MergeIntersection,
   NRules,
   Prefix,
+  ReactRules,
   RenamePrefix,
   RuleConfig,
   TypeScriptRules,
   UnicornRules,
+  Unprefix,
   VitestRules,
   VueRules,
   YmlRules,
 } from '@antfu/eslint-define-config'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
-import type { StylisticRules } from './generated/stylistic'
+import type { UnprefixedRuleOptions } from '@stylistic/eslint-plugin'
+
+type StylisticMergedRules = MergeIntersection<
+  EslintRules &
+  Unprefix<ReactRules, 'react/'> &
+  Unprefix<TypeScriptRules, '@typescript-eslint/'>
+>
+
+type StylisticRules = Pick<StylisticMergedRules, keyof UnprefixedRuleOptions>
 
 export type Rules = MergeIntersection<
   RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
