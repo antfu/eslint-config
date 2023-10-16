@@ -83,5 +83,11 @@
     "typescript": "^5.2.2",
     "unbuild": "^2.0.0",
     "vitest": "^0.34.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
