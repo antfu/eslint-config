@@ -49,6 +49,7 @@ export function vue(
         }],
         'vue/component-name-in-template-casing': ['error', 'PascalCase', {
           registeredComponentsOnly: false,
+          ignores: ['component'],
         }],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         'vue/custom-event-name-casing': ['error', 'camelCase'],
