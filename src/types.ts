@@ -128,7 +128,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  typescript?: boolean | OptionsTypeScriptWithTypes
+  typescript?: boolean | OptionsTypeScriptWithTypes | OptionsTypeScriptParserOptions
 
   /**
    * Enable JSX related rules.
