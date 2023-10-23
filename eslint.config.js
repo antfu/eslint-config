@@ -1,5 +1,4 @@
 // @ts-check
-import sortKeys from 'eslint-plugin-sort-keys'
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
 import antfu from './dist/index.mjs'
 
@@ -14,9 +13,6 @@ export default antfu(
   },
   {
     files: ['src/**/*.ts'],
-    plugins: {
-      'sort-keys': sortKeys,
-    },
     rules: {
       'sort-keys/sort-keys-fix': 'error',
     },

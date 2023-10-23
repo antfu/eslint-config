@@ -9,16 +9,27 @@ import type {
   MergeIntersection,
   NRules,
   Prefix,
+  ReactRules,
   RenamePrefix,
   RuleConfig,
   TypeScriptRules,
   UnicornRules,
+  Unprefix,
   VitestRules,
   VueRules,
   YmlRules,
 } from '@antfu/eslint-define-config'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
-import type { StylisticRules } from './generated/stylistic'
+import type { UnprefixedRuleOptions } from '@stylistic/eslint-plugin'
+
+type StylisticMergedRules = MergeIntersection<
+  EslintRules &
+  Unprefix<ReactRules, 'react/'> &
+  Unprefix<TypeScriptRules, '@typescript-eslint/'>
+  & { 'jsx-self-closing-comp': ReactRules['react/self-closing-comp'] }
+>
+
+type StylisticRules = Pick<StylisticMergedRules, keyof UnprefixedRuleOptions>
 
 export type Rules = MergeIntersection<
   RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
@@ -118,7 +129,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  typescript?: boolean | OptionsTypeScriptWithTypes
+  typescript?: boolean | OptionsTypeScriptWithTypes | OptionsTypeScriptParserOptions
 
   /**
    * Enable JSX related rules.

@@ -12,5 +12,13 @@ export function jsx2() {
     <Component1>
       Block Text
       </Component1>
+      <div>
+        Mixed
+            <div>Foo</div>
+          Text<b > Bar</b>
+        </div>
+        <p>
+          foo<i>bar</i><b>baz</b>
+        </p>
       </ a >
 }
