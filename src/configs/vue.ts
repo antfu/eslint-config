@@ -52,7 +52,7 @@ export function vue(
         }],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         'vue/custom-event-name-casing': ['error', 'camelCase'],
-        "vue/prop-name-casing": ["error", "camelCase"],
+        'vue/prop-name-casing': ['error', 'camelCase'],
         'vue/define-macros-order': ['error', {
           order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],
         }],
