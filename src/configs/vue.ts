@@ -32,7 +32,7 @@ export function vue(
           extraFileExtensions: ['.vue'],
           parser: {
             '<template>': 'espree',
-            'js': parserTs as any,
+            'js': options.typescript ? parserTs as any : 'espree',
             'ts': options.typescript ? parserTs as any : null,
           },
           sourceType: 'module',
