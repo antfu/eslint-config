@@ -1,6 +1,6 @@
 // @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import antfu from './dist/index.mjs'
+import antfu from './dist/index.js'
 
 export default antfu(
   {

@@ -4,13 +4,31 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import prompts from 'prompts'
-import c from 'kleur'
+import c from 'picocolors'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
 
-export async function cli() {
+const SKIP_PROMPT = !!process.env.SKIP_PROMPT
+const SKIP_GIT_CHECK = !!process.env.SKIP_GIT_CHECK
+
+function isGitClean() {
+  try {
+    execSync('git diff-index --quiet HEAD --')
+    return true
+  }
+  catch (error) {
+    return false
+  }
+}
+
+export async function runCli() {
   const cwd = process.cwd()
+
+  if (!SKIP_GIT_CHECK && !isGitClean()) {
+    console.log(c.red('There are uncommitted changes in the current repository, please commit them and try again'))
+    return
+  }
 
   console.log(c.dim(`\nSetup eslint config ...\n`))
 
@@ -133,21 +151,27 @@ module.exports = antfu({\n${antfuConfig}\n});`
   // End update eslint files
 
   // Update .vscode/settings.json
-  let promptResult: prompts.Answers<'updateVscodeSettings'>
-
-  try {
-    promptResult = await prompts({
-      initial: true,
-      message: 'Update .vscode/settings.json for better performance?',
-      name: 'updateVscodeSettings',
-      type: 'confirm',
-    }, { onCancel: () => {
-      throw new Error(`${c.red('✖')} Operation cancelled`)
-    } })
+  let promptResult: prompts.Answers<'updateVscodeSettings'> = {
+    updateVscodeSettings: true,
   }
-  catch (cancelled: any) {
-    console.log(cancelled.message)
-    return
+
+  if (!SKIP_PROMPT) {
+    try {
+      promptResult = await prompts({
+        initial: true,
+        message: 'Update .vscode/settings.json for better experience?',
+        name: 'updateVscodeSettings',
+        type: 'confirm',
+      }, {
+        onCancel: () => {
+          throw new Error(`${c.red('✖')} Operation cancelled`)
+        },
+      })
+    }
+    catch (cancelled: any) {
+      console.log(cancelled.message)
+      return
+    }
   }
 
   if (promptResult?.updateVscodeSettings ?? true) {
