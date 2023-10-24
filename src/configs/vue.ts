@@ -89,6 +89,7 @@ export function vue(
         ],
         'vue/prefer-separate-static-class': 'error',
         'vue/prefer-template': 'error',
+        'vue/prop-name-casing': ['error', 'camelCase'],
         'vue/require-default-prop': 'off',
         'vue/require-prop-types': 'off',
         'vue/space-infix-ops': 'error',
