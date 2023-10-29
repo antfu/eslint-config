@@ -47,9 +47,7 @@ export function vue(
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],
-        'vue/component-name-in-template-casing': ['error', 'PascalCase', {
-          registeredComponentsOnly: false,
-        }],
+        'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         'vue/custom-event-name-casing': ['error', 'camelCase'],
         'vue/define-macros-order': ['error', {
