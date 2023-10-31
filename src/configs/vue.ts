@@ -30,7 +30,11 @@ export function vue(
             jsx: true,
           },
           extraFileExtensions: ['.vue'],
-          parser: options.typescript ? parserTs as any : null,
+          parser: {
+            '<template>': 'espree',
+            'js': options.typescript ? parserTs as any : 'espree',
+            'ts': options.typescript ? parserTs as any : null,
+          },
           sourceType: 'module',
         },
       },
