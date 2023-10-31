@@ -23,6 +23,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         'curly': ['error', 'multi-or-nest', 'consistent'],
 
         'style/array-bracket-spacing': ['error', 'never'],
+        'style/arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
         'style/arrow-spacing': ['error', { after: true, before: true }],
         'style/block-spacing': ['error', 'always'],
         'style/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
@@ -70,7 +71,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
           offsetTernaryExpressions: true,
           outerIIFEBody: 1,
         }],
-
         'style/key-spacing': ['error', { afterColon: true, beforeColon: false }],
         'style/keyword-spacing': ['error', { after: true, before: true }],
         'style/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
