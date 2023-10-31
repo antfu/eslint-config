@@ -17,3 +17,7 @@ export function renameRules(rules: Record<string, any>, from: string, to: string
       }),
   )
 }
+
+export function toArray<T>(value: T | T[]): T[] {
+  return Array.isArray(value) ? value : [value]
+}

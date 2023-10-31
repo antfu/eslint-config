@@ -2,7 +2,7 @@ import process from 'node:process'
 import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
 import { GLOB_SRC } from '../globs'
 import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
-import { renameRules } from '../utils'
+import { renameRules, toArray } from '../utils'
 
 export function typescript(
   options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
@@ -11,7 +11,6 @@ export function typescript(
     componentExts = [],
     overrides = {},
     parserOptions = {},
-    tsconfigPath: tsc,
   } = options ?? {}
 
   const typeAwareRules: ConfigItem['rules'] = {
@@ -36,11 +35,9 @@ export function typescript(
     'ts/unbound-method': 'error',
   }
 
-  const tsconfigPath = typeof tsc === 'string' && tsc.trim()
-    ? [tsc]
-    : Array.isArray(tsc) && tsc.length > 0
-      ? tsc
-      : null
+  const tsconfigPath = options?.tsconfigPath
+    ? toArray(options.tsconfigPath)
+    : undefined
 
   return [
     {
