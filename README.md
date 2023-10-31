@@ -328,6 +328,8 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
   typescript: {
     tsconfigPath: 'tsconfig.json',
+    // or if you have multiple tsconfigs
+    tsconfigPath: ['tsconfig.json', 'tsconfig.node.json'],
   },
 })
 ```

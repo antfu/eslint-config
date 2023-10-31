@@ -11,7 +11,7 @@ export function typescript(
     componentExts = [],
     overrides = {},
     parserOptions = {},
-    tsconfigPath,
+    tsconfigPath: tsc,
   } = options ?? {}
 
   const typeAwareRules: ConfigItem['rules'] = {
@@ -36,6 +36,12 @@ export function typescript(
     'ts/unbound-method': 'error',
   }
 
+  const tsconfigPath = typeof tsc === 'string' && tsc.trim()
+    ? [tsc]
+    : Array.isArray(tsc) && tsc.length > 0
+      ? tsc
+      : null
+
   return [
     {
       // Install the plugins without globs, so they can be configured separately.
@@ -58,7 +64,7 @@ export function typescript(
           sourceType: 'module',
           ...tsconfigPath
             ? {
-                project: [tsconfigPath],
+                project: tsconfigPath,
                 tsconfigRootDir: process.cwd(),
               }
             : {},
