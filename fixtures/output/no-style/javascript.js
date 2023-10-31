@@ -24,7 +24,7 @@ const people = [
 ];
 
 // Use the forEach method to iterate over the array
-people.forEach((person) => {
+people.forEach(person => {
   person.sayHello();
 });
 
