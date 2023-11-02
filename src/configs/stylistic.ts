@@ -95,7 +95,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         'style/no-trailing-spaces': 'error',
         'style/no-whitespace-before-property': 'error',
         'style/object-curly-spacing': ['error', 'always'],
-        'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
         'style/operator-linebreak': ['error', 'before'],
         'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
         'style/quote-props': ['error', 'consistent-as-needed'],
