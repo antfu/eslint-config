@@ -353,6 +353,23 @@ and then
 npm i -D lint-staged simple-git-hooks
 ```
 
+## Versioning Policy
+
+This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involved with opinions and many moving parts, we don't treat rules changes as breaking changes.
+
+### Changes Considered as Breaking Changes
+
+- Node.js version requirement changes
+- Huge refactors that might break the config
+- Plugins made major changes that might break the config
+- Changes that might affect most of the codebases
+
+### Changes Considered as Non-breaking Changes
+
+- Enable/disable rules and plugins (that might become stricter)
+- Rules options changes
+- Version bumps of dependencies
+
 ## Badge
 
 If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
