@@ -83,8 +83,10 @@ module.exports = antfu({\n${antfuConfig}\n})
     if (file.includes('eslint') || file.includes('prettier'))
       legacyConfig.push(file)
   })
-  if (legacyConfig.length)
-    console.log(`${WARN} you can now remove those files manually:`, c.dim(legacyConfig.join(', ')), '\n')
+  if (legacyConfig.length) {
+    console.log(`${WARN} you can now remove those files manually:`)
+    console.log(`   ${c.dim(legacyConfig.join(', '))}`)
+  }
 
   // End update eslint files
   // Update .vscode/settings.json

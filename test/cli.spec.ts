@@ -68,10 +68,18 @@ it('cjs eslint.config.js', async () => {
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
 
-  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')).replace(/\s+/g, '')
+  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')).replace(/\\/g, '/')
 
-  expect(eslintConfigContent.includes('ignores:["some-path","**/some-path/**","some-file","**/some-file/**"]')).toBeTruthy()
   expect(stdout).toContain('created eslint.config.js')
+  expect(eslintConfigContent)
+    .toMatchInlineSnapshot(`
+      "const antfu = require('@antfu/eslint-config').default
+
+      module.exports = antfu({
+      ignores: [\\"some-path\\",\\"**/some-path/**\\",\\"some-file\\",\\"**/some-file/**\\"]
+      })
+      "
+    `)
 })
 
 it('suggest remove unnecessary files', async () => {
