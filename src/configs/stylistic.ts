@@ -4,8 +4,8 @@ import { pluginAntfu, pluginStylistic } from '../plugins'
 export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
   const {
     indent = 2,
-    quotes = 'single',
     jsx = true,
+    quotes = 'single',
   } = options
 
   return [
@@ -23,6 +23,7 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         'curly': ['error', 'multi-or-nest', 'consistent'],
 
         'style/array-bracket-spacing': ['error', 'never'],
+        'style/arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
         'style/arrow-spacing': ['error', { after: true, before: true }],
         'style/block-spacing': ['error', 'always'],
         'style/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
@@ -35,14 +36,9 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         'style/indent': ['error', indent, {
           ArrayExpression: 1,
           CallExpression: { arguments: 1 },
+          flatTernaryExpressions: false,
           FunctionDeclaration: { body: 1, parameters: 1 },
           FunctionExpression: { body: 1, parameters: 1 },
-          ImportDeclaration: 1,
-          MemberExpression: 1,
-          ObjectExpression: 1,
-          SwitchCase: 1,
-          VariableDeclarator: 1,
-          flatTernaryExpressions: false,
           ignoreComments: false,
           ignoredNodes: [
             'TemplateLiteral *',
@@ -67,10 +63,14 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
             'FunctionExpression > .params > :matches(Decorator, :not(:first-child))',
             'ClassBody.body > PropertyDefinition[decorators.length > 0] > .key',
           ],
+          ImportDeclaration: 1,
+          MemberExpression: 1,
+          ObjectExpression: 1,
           offsetTernaryExpressions: true,
           outerIIFEBody: 1,
+          SwitchCase: 1,
+          VariableDeclarator: 1,
         }],
-
         'style/key-spacing': ['error', { afterColon: true, beforeColon: false }],
         'style/keyword-spacing': ['error', { after: true, before: true }],
         'style/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
@@ -95,7 +95,6 @@ export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
         'style/no-trailing-spaces': 'error',
         'style/no-whitespace-before-property': 'error',
         'style/object-curly-spacing': ['error', 'always'],
-        'style/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
         'style/operator-linebreak': ['error', 'before'],
         'style/padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
         'style/quote-props': ['error', 'consistent-as-needed'],

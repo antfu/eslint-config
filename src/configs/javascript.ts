@@ -42,7 +42,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
         'array-callback-return': 'error',
-        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
         'block-scoped-var': 'error',
         'constructor-super': 'error',
         'default-case-last': 'error',
@@ -158,7 +157,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-useless-rename': 'error',
         'no-useless-return': 'error',
         'no-var': 'error',
-        'no-void': 'error',
         'no-with': 'error',
         'object-shorthand': [
           'error',

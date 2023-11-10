@@ -4,8 +4,8 @@ import { parserJsonc, pluginJsonc } from '../plugins'
 
 export function jsonc(options: OptionsStylistic & OptionsOverrides = {}): ConfigItem[] {
   const {
-    stylistic = true,
     overrides = {},
+    stylistic = true,
   } = options
 
   const {

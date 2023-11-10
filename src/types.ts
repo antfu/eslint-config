@@ -86,7 +86,7 @@ export interface OptionsTypeScriptWithTypes {
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
-  tsconfigPath?: string
+  tsconfigPath?: string | string[]
 }
 
 export interface OptionsHasTypeScript {

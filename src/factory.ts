@@ -12,7 +12,7 @@ import {
   jsonc,
   markdown,
   node,
-  sortKeys,
+  perfectionist,
   sortPackageJson,
   sortTsconfig,
   stylistic,
@@ -47,12 +47,12 @@ const VuePackages = [
  */
 export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
   const {
-    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
-    vue: enableVue = VuePackages.some(i => isPackageExists(i)),
-    typescript: enableTypeScript = isPackageExists('typescript'),
-    gitignore: enableGitignore = true,
-    overrides = {},
     componentExts = [],
+    gitignore: enableGitignore = true,
+    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
+    overrides = {},
+    typescript: enableTypeScript = isPackageExists('typescript'),
+    vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
 
   const stylisticOptions = options.stylistic === false
@@ -92,8 +92,8 @@ export function antfu(options: OptionsConfig & ConfigItem = {}, ...userConfigs: 
     }),
     unicorn(),
 
-    // Optional plugins (not enabled by default)
-    sortKeys(),
+    // Optional plugins (installed but not enabled by default)
+    perfectionist(),
   )
 
   if (enableVue)

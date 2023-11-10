@@ -47,9 +47,7 @@ export function vue(
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],
-        'vue/component-name-in-template-casing': ['error', 'PascalCase', {
-          registeredComponentsOnly: false,
-        }],
+        'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         'vue/custom-event-name-casing': ['error', 'camelCase'],
         'vue/define-macros-order': ['error', {
@@ -89,6 +87,7 @@ export function vue(
         ],
         'vue/prefer-separate-static-class': 'error',
         'vue/prefer-template': 'error',
+        'vue/prop-name-casing': ['error', 'camelCase'],
         'vue/require-default-prop': 'off',
         'vue/require-prop-types': 'off',
         'vue/space-infix-ops': 'error',

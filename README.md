@@ -4,7 +4,7 @@
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
-- Designed to work with TypeScript, Vue out-of-box
+- Designed to work with TypeScript, JSX, Vue out-of-box
 - Lints also for json, yaml, markdown
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
@@ -14,7 +14,7 @@
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
 > [!IMPORTANT]
-> The main branch is for v1.0-beta, which rewrites to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check [#250](https://github.com/antfu/eslint-config/pull/250) for more details.
+> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
 
 ## Usage
 
@@ -42,6 +42,32 @@ With CJS:
 const antfu = require('@antfu/eslint-config').default
 
 module.exports = antfu()
+```
+
+Combined with legacy config:
+
+```js
+// eslint.config.js
+const antfu = require('@antfu/eslint-config').default
+const { FlatCompat } = require('@eslint/eslintrc')
+
+const compat = new FlatCompat()
+
+module.exports = antfu(
+  {
+    ignores: [],
+  },
+
+  // Legacy config
+  ...compat.config({
+    extends: [
+      'eslint:recommended',
+      // Other extends...
+    ],
+  })
+
+  // Other flat configs...
+)
 ```
 
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
@@ -76,7 +102,7 @@ Add the following settings to your `.vscode/settings.json`:
 
   // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
 
@@ -299,22 +325,22 @@ export default antfu({
 
 This config also provides some optional plugins/rules for extended usages.
 
-#### `sort-keys`
+#### `perfectionist` (sorting)
 
-This plugin [`eslint-plugin-sort-keys`](https://github.com/namnm/eslint-plugin-sort-keys) allows you to keep object keys sorted with auto-fix.
+This plugin [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) allows you to sorted object keys, imports, etc, with auto-fix.
 
-It's installed but no rules are enabled by default. 
+The plugin is installed but no rules are enabled by default. 
 
 It's recommended to opt-in on each file individually using [configuration comments](https://eslint.org/docs/latest/use/configure/rules#using-configuration-comments-1).
 
 ```js
-/* eslint sort-keys/sort-keys-fix: "error" */
+/* eslint perfectionist/sort-objects: "error" */
 const objectWantedToSort = {
   a: 2,
   b: 1,
   c: 3,
 }
-/* eslint sort-keys/sort-keys-fix: "off" */
+/* eslint perfectionist/sort-objects: "off" */
 ```
 
 ### Type Aware Rules
@@ -352,6 +378,23 @@ and then
 ```bash
 npm i -D lint-staged simple-git-hooks
 ```
+
+## Versioning Policy
+
+This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involved with opinions and many moving parts, we don't treat rules changes as breaking changes.
+
+### Changes Considered as Breaking Changes
+
+- Node.js version requirement changes
+- Huge refactors that might break the config
+- Plugins made major changes that might break the config
+- Changes that might affect most of the codebases
+
+### Changes Considered as Non-breaking Changes
+
+- Enable/disable rules and plugins (that might become stricter)
+- Rules options changes
+- Version bumps of dependencies
 
 ## Badge
 
