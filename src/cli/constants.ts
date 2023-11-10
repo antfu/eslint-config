@@ -1,8 +1,5 @@
-import { createRequire } from 'node:module'
 import c from 'picocolors'
-
-const require = createRequire(import.meta.url)
-const { version } = require('../../package.json')
+import { version } from '../../package.json'
 
 export const ARROW = c.cyan('→')
 export const CHECK = c.green('✔')
