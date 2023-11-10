@@ -5,4 +5,5 @@ export default defineConfig({
     'src/index.ts',
     'src/cli.ts',
   ],
+  shims: true,
 })

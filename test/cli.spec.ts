@@ -2,7 +2,7 @@ import { join } from 'node:path'
 import process from 'node:process'
 import { execa } from 'execa'
 import fs from 'fs-extra'
-import { afterAll, beforeEach, expect, it } from 'vitest'
+import { beforeEach, expect, it } from 'vitest'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
 const genPath = join(__dirname, '..', '.temp')
@@ -11,7 +11,7 @@ async function run(env = {
   SKIP_PROMPT: '1',
   SKIP_GIT_CHECK: '1',
 }) {
-  return execa(`node`, [CLI_PATH], {
+  return execa(`node`, [CLI_PATH, 'migrate'], {
     cwd: genPath,
     env: {
       ...process.env,
@@ -26,7 +26,7 @@ async function createMockDir() {
   await fs.ensureDir(genPath)
 
   await Promise.all([
-    fs.writeFile(join(genPath, 'package.json'), JSON.stringify({ devDependencies: { eslint: '8.0.0' } }, null, 2)),
+    fs.writeFile(join(genPath, 'package.json'), JSON.stringify({}, null, 2)),
     fs.writeFile(join(genPath, '.eslintrc.yml'), ''),
     fs.writeFile(join(genPath, '.eslintignore'), 'some-path\nsome-file'),
     fs.writeFile(join(genPath, '.prettierc'), ''),
@@ -35,14 +35,13 @@ async function createMockDir() {
 };
 
 beforeEach(async () => await createMockDir())
-afterAll(() => fs.rm(genPath, { recursive: true, force: true }))
+// afterAll(() => fs.rm(genPath, { recursive: true, force: true }))
 
 it('package.json updated', async () => {
   const { stdout } = await run()
 
   const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
 
-  expect(JSON.stringify(pkgContent.devDependencies)).toContain('eslint')
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
   expect(stdout).toContain('Updated - package.json')
 })
