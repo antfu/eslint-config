@@ -17,12 +17,6 @@ const instance = yargs(hideBin(process.argv))
     'migrate',
     'Migrate from legacy config to new flat config',
     args => args
-      // .option('detail', {
-      //   alias: 'a',
-      //   default: false,
-      //   describe: 'show more info',
-      //   type: 'boolean',
-      // })
       .help(),
     async (_args) => {
       header()

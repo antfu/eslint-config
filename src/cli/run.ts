@@ -84,7 +84,7 @@ module.exports = antfu({\n${antfuConfig}\n})
       legacyConfig.push(file)
   })
   if (legacyConfig.length)
-    console.log(`${WARN} You can now remove those files manually:`, c.dim(legacyConfig.join(', ')), '\n')
+    console.log(`${WARN} you can now remove those files manually:`, c.dim(legacyConfig.join(', ')), '\n')
 
   // End update eslint files
   // Update .vscode/settings.json

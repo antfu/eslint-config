@@ -43,7 +43,7 @@ it('package.json updated', async () => {
   const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
-  expect(stdout).toContain('Updated - package.json')
+  expect(stdout).toContain('changes wrote to package.json')
 })
 
 it('esm eslint.config.js', async () => {
@@ -54,7 +54,7 @@ it('esm eslint.config.js', async () => {
 
   const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
   expect(eslintConfigContent.includes('export default')).toBeTruthy()
-  expect(stdout).toContain('Created - eslint.config.js')
+  expect(stdout).toContain('created eslint.config.js')
 })
 
 it('cjs eslint.config.js', async () => {
@@ -62,7 +62,7 @@ it('cjs eslint.config.js', async () => {
 
   const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
   expect(eslintConfigContent.includes('module.exports')).toBeTruthy()
-  expect(stdout).toContain('Created - eslint.config.js')
+  expect(stdout).toContain('created eslint.config.js')
 })
 
 it('ignores files added in eslint.config.js', async () => {
@@ -71,11 +71,12 @@ it('ignores files added in eslint.config.js', async () => {
   const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')).replace(/\s+/g, '')
 
   expect(eslintConfigContent.includes('ignores:["some-path","**/some-path/**","some-file","**/some-file/**"]')).toBeTruthy()
-  expect(stdout).toContain('Created - eslint.config.js')
+  expect(stdout).toContain('created eslint.config.js')
 })
 
 it('suggest remove unnecessary files', async () => {
   const { stdout } = await run()
 
-  expect(stdout).toContain('You can now remove those files: .eslintignore, .eslintrc.yml, .prettierc, .prettierignore, eslint.config.js')
+  expect(stdout).toContain('you can now remove those files manually')
+  expect(stdout).toContain('.eslintignore, .eslintrc.yml, .prettierc, .prettierignore, eslint.config.js')
 })
