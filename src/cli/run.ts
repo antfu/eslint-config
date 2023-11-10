@@ -45,7 +45,9 @@ export async function run() {
   const eslintIgnores: string[] = []
   if (fs.existsSync(pathESLintIngore)) {
     console.log(c.cyan(`${ARROW} migrating existing .eslintignore`))
-    const parsed = parse(pathESLintIngore)
+    const parsed = parse(pathESLintIngore, {
+      path: pathESLintIngore.replace(/\\/g, '/'),
+    })
     const globs = parsed.globs()
 
     for (const glob of globs) {
