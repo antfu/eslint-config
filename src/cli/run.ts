@@ -45,7 +45,8 @@ export async function run() {
   const eslintIgnores: string[] = []
   if (fs.existsSync(pathESLintIngore)) {
     console.log(c.cyan(`${ARROW} migrating existing .eslintignore`))
-    const parsed = parse(pathESLintIngore.replace(/\\/g, '/'))
+    const content = await fsp.readFile(pathESLintIngore, 'utf-8')
+    const parsed = parse(content)
     const globs = parsed.globs()
 
     for (const glob of globs) {
