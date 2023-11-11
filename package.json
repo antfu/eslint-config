@@ -19,13 +19,15 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": "./bin/index.js",
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --clean --dts",
-    "stub": "tsup src/index.ts --format esm",
-    "dev": "tsup src/index.ts --format esm,cjs --watch & eslint-flat-config-viewer",
+    "build": "tsup --format esm,cjs --clean --dts",
+    "stub": "tsup --format esm",
+    "dev": "tsup --format esm,cjs --watch & eslint-flat-config-viewer",
     "lint": "pnpm run stub && eslint .",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
@@ -56,11 +58,16 @@
     "eslint-plugin-vitest": "^0.3.8",
     "eslint-plugin-vue": "^9.18.1",
     "eslint-plugin-yml": "^1.10.0",
+    "execa": "^8.0.1",
     "globals": "^13.23.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
+    "parse-gitignore": "^2.0.0",
+    "picocolors": "^1.0.0",
+    "prompts": "^2.4.2",
     "vue-eslint-parser": "^9.3.2",
-    "yaml-eslint-parser": "^1.2.2"
+    "yaml-eslint-parser": "^1.2.2",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "workspace:*",
@@ -69,6 +76,8 @@
     "@types/eslint": "^8.44.6",
     "@types/fs-extra": "^11.0.3",
     "@types/node": "^20.8.10",
+    "@types/prompts": "^2.4.7",
+    "@types/yargs": "^17.0.31",
     "bumpp": "^9.2.0",
     "eslint": "^8.52.0",
     "eslint-flat-config-viewer": "^0.1.0",
@@ -78,10 +87,8 @@
     "lint-staged": "^15.0.2",
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
-    "sucrase": "^3.34.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "unbuild": "^2.0.0",
     "vitest": "^0.34.6"
   },
   "simple-git-hooks": {
