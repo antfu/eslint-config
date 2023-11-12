@@ -2,7 +2,7 @@ import { join } from 'node:path'
 import process from 'node:process'
 import { execa } from 'execa'
 import fs from 'fs-extra'
-import { beforeEach, expect, it } from 'vitest'
+import { afterAll, beforeEach, expect, it } from 'vitest'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
 const genPath = join(__dirname, '..', '.temp')
