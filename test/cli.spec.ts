@@ -35,7 +35,7 @@ async function createMockDir() {
 };
 
 beforeEach(async () => await createMockDir())
-// afterAll(() => fs.rm(genPath, { recursive: true, force: true }))
+afterAll(async () => await fs.rm(genPath, { recursive: true, force: true }))
 
 it('package.json updated', async () => {
   const { stdout } = await run()
