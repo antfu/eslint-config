@@ -3,6 +3,7 @@ import process from 'node:process'
 import { execa } from 'execa'
 import fs from 'fs-extra'
 import { beforeEach, expect, it } from 'vitest'
+import { devDependencies } from '../package.json'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
 const genPath = join(__dirname, '..', '.temp')
@@ -44,6 +45,15 @@ it('package.json updated', async () => {
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
   expect(stdout).toContain('changes wrote to package.json')
+})
+
+it('update eslint version', async () => {
+  const { stdout } = await run()
+
+  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+
+  expect(pkgContent.devDependencies.eslint).toBe(devDependencies.eslint)
+  expect(stdout).toContain(`updated eslint to the version ${devDependencies.eslint}`)
 })
 
 it('esm eslint.config.js', async () => {

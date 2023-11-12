@@ -8,6 +8,7 @@ import c from 'picocolors'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
+import { devDependencies } from '../../package.json'
 import { ARROW, CHECK, WARN, version, vscodeSettingsString } from './constants'
 import { isGitClean } from './utils'
 
@@ -89,20 +90,34 @@ module.exports = antfu({\n${antfuConfig}\n})
     console.log(`   ${c.dim(legacyConfig.join(', '))}`)
   }
 
+  // Need to update the eslint version?
+  const updateESLintVersion = pkg.devDependencies?.eslint
+    ? pkg.devDependencies.eslint !== 'latest' && pkg.devDependencies.eslint.match(/\d+/)?.[0] < 8
+    : true
+
   // End update eslint files
   // Update .vscode/settings.json
-  let promptResult: prompts.Answers<'updateVscodeSettings'> = {
+  let promptResult: prompts.Answers<'updateVscodeSettings' | 'updateESLintVersion'> = {
+    updateESLintVersion,
     updateVscodeSettings: true,
   }
 
   if (!SKIP_PROMPT) {
     try {
-      promptResult = await prompts({
-        initial: true,
-        message: 'Update .vscode/settings.json for better VS Code experience?',
-        name: 'updateVscodeSettings',
-        type: 'confirm',
-      }, {
+      promptResult = await prompts([
+        {
+          initial: true,
+          message: 'Update .vscode/settings.json for better VS Code experience?',
+          name: 'updateVscodeSettings',
+          type: 'confirm',
+        },
+        {
+          initial: true,
+          message: 'Update ESLint to the latest version?',
+          name: 'updateESLintVersion',
+          type: 'confirm',
+        },
+      ], {
         onCancel: () => {
           throw new Error(`Cancelled`)
         },
@@ -135,6 +150,14 @@ module.exports = antfu({\n${antfuConfig}\n})
       await fsp.writeFile(settingsPath, settingsContent, 'utf-8')
       console.log(c.green(`${CHECK} updated .vscode/settings.json`))
     }
+  }
+
+  if (promptResult?.updateESLintVersion ?? true) {
+    pkg.devDependencies.eslint = devDependencies.eslint
+
+    await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
+
+    console.log(c.green(`${CHECK} updated eslint to the version ${devDependencies.eslint}`))
   }
 
   // End update .vscode/settings.json
