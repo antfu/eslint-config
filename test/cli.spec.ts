@@ -2,7 +2,7 @@ import { join } from 'node:path'
 import process from 'node:process'
 import { execa } from 'execa'
 import fs from 'fs-extra'
-import { beforeEach, expect, it } from 'vitest'
+import { afterAll, beforeEach, expect, it } from 'vitest'
 import { devDependencies } from '../package.json'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
@@ -36,7 +36,7 @@ async function createMockDir() {
 };
 
 beforeEach(async () => await createMockDir())
-// afterAll(() => fs.rm(genPath, { recursive: true, force: true }))
+afterAll(async () => await fs.rm(genPath, { recursive: true, force: true }))
 
 it('package.json updated', async () => {
   const { stdout } = await run()

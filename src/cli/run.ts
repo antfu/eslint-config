@@ -162,5 +162,5 @@ module.exports = antfu({\n${antfuConfig}\n})
 
   // End update .vscode/settings.json
   console.log(c.green(`${CHECK} migration completed`))
-  console.log(` ow you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
+  console.log(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
 }
