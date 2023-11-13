@@ -11,6 +11,15 @@ importers:
       '@antfu/eslint-define-config':
         specifier: ^1.23.0-2
         version: 1.23.0-2
+      '@eslint-types/jsdoc':
+        specifier: 46.8.2-1
+        version: 46.8.2-1
+      '@eslint-types/typescript-eslint':
+        specifier: ^6.9.1
+        version: 6.9.1
+      '@eslint-types/unicorn':
+        specifier: ^49.0.0
+        version: 49.0.0
       '@stylistic/eslint-plugin':
         specifier: ^1.2.0
         version: 1.2.0(eslint@8.53.0)(typescript@5.2.2)
@@ -397,6 +406,18 @@ packages:
   /@eslint-stylistic/metadata@1.2.0:
     resolution: {integrity: sha512-CQ8iE1dVGAbvneNFhWRfa5O7pzC6Ms6DsO8PaxlKAhpsWZZyiktrYYcVJb5oPNRdaRbGL+l07oRR59A7zaoeRg==}
     dev: true
+
+  /@eslint-types/jsdoc@46.8.2-1:
+    resolution: {integrity: sha512-FwD7V0xX0jyaqj8Ul5ZY+TAAPohDfVqtbuXJNHb+OIv1aTIqZi5+Zn3F2UwQ5O3BnQd2mTduyK0+HjGx3/AMFg==}
+    dev: false
+
+  /@eslint-types/typescript-eslint@6.9.1:
+    resolution: {integrity: sha512-mH3DMfVVg1d1oCoyI61J2FM5O7ta6J8PtAobSYrayUZ+7ukXwL2RNVF2sDaoqVrFTDmYBA6ol7VQrk1YgaO96w==}
+    dev: false
+
+  /@eslint-types/unicorn@49.0.0:
+    resolution: {integrity: sha512-NfXSZIsPFRD2fwTDZQj8SaXqS/rXjB5foxMraLovyrYGXiQK2y0780drDKYYSVbqvco29QIYoZNmnKTUkzZMvQ==}
+    dev: false
 
   /@eslint/eslintrc@2.1.3:
     resolution: {integrity: sha512-yZzuIG+jnVu6hNSzFEN07e8BxF3uAzYtQb6uDkaYZLo6oYZDCq454c5kB8zxnzfCYyP4MIuyBn10L0DqwujTmA==}

@@ -11,35 +11,39 @@ import type {
   Prefix,
   RenamePrefix,
   RuleConfig,
-  TypeScriptRules,
-  UnicornRules,
   VitestRules,
   VueRules,
   YmlRules,
 } from '@antfu/eslint-define-config'
+import type { RuleOptions as JSDocRules } from '@eslint-types/jsdoc/types'
+import type { RuleOptions as TypeScriptRules } from '@eslint-types/typescript-eslint/types'
+import type { RuleOptions as UnicornRules } from '@eslint-types/unicorn/types'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
-import type { UnprefixedRuleOptions as StylisticRuleOptions } from '@stylistic/eslint-plugin'
+import type { UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
 
-export type StylisticRules = {
-  [K in keyof StylisticRuleOptions]: RuleConfig<StylisticRuleOptions[K]>
+export type WrapRuleConfig<T extends { [key: string]: any }> = {
+  [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
 }
 
-export type Rules = MergeIntersection<
-  RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
-  RenamePrefix<VitestRules, 'vitest/', 'test/'> &
-  RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
-  RenamePrefix<NRules, 'n/', 'node/'> &
-  Prefix<StylisticRules, 'style/'> &
-  Prefix<AntfuRules, 'antfu/'> &
-  ImportRules &
-  EslintRules &
-  JsoncRules &
-  VueRules &
-  UnicornRules &
-  EslintCommentsRules &
-  {
-    'test/no-only-tests': RuleConfig<[]>
-  }
+export type Rules = WrapRuleConfig<
+  MergeIntersection<
+    RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
+    RenamePrefix<VitestRules, 'vitest/', 'test/'> &
+    RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
+    RenamePrefix<NRules, 'n/', 'node/'> &
+    Prefix<StylisticRules, 'style/'> &
+    Prefix<AntfuRules, 'antfu/'> &
+    JSDocRules &
+    ImportRules &
+    EslintRules &
+    JsoncRules &
+    VueRules &
+    UnicornRules &
+    EslintCommentsRules &
+    {
+      'test/no-only-tests': RuleConfig<[]>
+    }
+  >
 >
 
 export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
