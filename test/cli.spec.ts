@@ -47,10 +47,25 @@ it('package.json updated', async () => {
   expect(stdout).toContain('changes wrote to package.json')
 })
 
-it('update eslint version', async () => {
+it('update eslint version (dependencies)', async () => {
+  let pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  await fs.writeFile(join(genPath, 'package.json'), JSON.stringify({ ...pkgContent, dependencies: { eslint: '7.32.0' } }, null, 2))
+
   const { stdout } = await run()
 
-  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  pkgContent = await fs.readJSON(join(genPath, 'package.json'))
+
+  expect(pkgContent.dependencies.eslint).toBe(devDependencies.eslint)
+  expect(stdout).toContain(`updated eslint to the version ${devDependencies.eslint}`)
+})
+
+it('update eslint version (devDependencies)', async () => {
+  let pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  await fs.writeFile(join(genPath, 'package.json'), JSON.stringify({ ...pkgContent, devDependencies: { eslint: '7.32.0' } }, null, 2))
+
+  const { stdout } = await run()
+
+  pkgContent = await fs.readJSON(join(genPath, 'package.json'))
 
   expect(pkgContent.devDependencies.eslint).toBe(devDependencies.eslint)
   expect(stdout).toContain(`updated eslint to the version ${devDependencies.eslint}`)

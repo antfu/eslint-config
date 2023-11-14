@@ -91,8 +91,9 @@ module.exports = antfu({\n${antfuConfig}\n})
   }
 
   // Need to update the eslint version?
-  const updateESLintVersion = pkg.devDependencies?.eslint
-    ? pkg.devDependencies.eslint !== 'latest' && pkg.devDependencies.eslint.match(/\d+/)?.[0] < 8
+  const eslintVersion = pkg.devDependencies?.eslint || pkg.dependencies?.eslint
+  const updateESLintVersion = eslintVersion
+    ? eslintVersion !== 'latest' && eslintVersion.match(/\d+/)?.[0] < 8
     : true
 
   // End update eslint files
@@ -112,8 +113,8 @@ module.exports = antfu({\n${antfuConfig}\n})
           type: 'confirm',
         },
         {
-          initial: true,
-          message: 'Update ESLint to the latest version?',
+          initial: updateESLintVersion,
+          message: `Update ESLint to the latest version? (${updateESLintVersion ? c.green('Yes') : c.red('No')})`,
           name: 'updateESLintVersion',
           type: 'confirm',
         },
@@ -153,7 +154,10 @@ module.exports = antfu({\n${antfuConfig}\n})
   }
 
   if (promptResult?.updateESLintVersion ?? true) {
-    pkg.devDependencies.eslint = devDependencies.eslint
+    if (pkg.dependencies?.eslint)
+      pkg.dependencies.eslint = devDependencies.eslint
+    else
+      pkg.devDependencies.eslint = devDependencies.eslint
 
     await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
 
