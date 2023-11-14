@@ -41,6 +41,7 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
         'no-alert': 'off',
         'no-console': 'off',
         'no-labels': 'off',
+        'no-lone-blocks': 'off',
         'no-restricted-syntax': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
