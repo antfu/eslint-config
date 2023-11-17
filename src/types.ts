@@ -19,7 +19,7 @@ import type { RuleOptions as JSDocRules } from '@eslint-types/jsdoc/types'
 import type { RuleOptions as TypeScriptRules } from '@eslint-types/typescript-eslint/types'
 import type { RuleOptions as UnicornRules } from '@eslint-types/unicorn/types'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
-import type { UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
+import type { StylisticCustomizeOptions, UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
 
 export type WrapRuleConfig<T extends { [key: string]: any }> = {
   [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
@@ -94,10 +94,7 @@ export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig
 }
 
-export interface StylisticConfig {
-  indent?: number | 'tab'
-  quotes?: 'single' | 'double'
-  jsx?: boolean
+export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {
 }
 
 export interface OptionsOverrides {
