@@ -1,7 +1,7 @@
-import type { ConfigItem } from '../types'
+import type { FlatConfigItem } from '../types'
 import { pluginUnicorn } from '../plugins'
 
-export function unicorn(): ConfigItem[] {
+export async function unicorn(): Promise<FlatConfigItem[]> {
   return [
     {
       name: 'antfu:unicorn',

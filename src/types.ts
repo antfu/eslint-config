@@ -1,5 +1,6 @@
 import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { ParserOptions } from '@typescript-eslint/parser'
+import type { Linter } from 'eslint'
 import type {
   EslintCommentsRules,
   EslintRules,
@@ -25,6 +26,8 @@ export type WrapRuleConfig<T extends { [key: string]: any }> = {
   [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
 }
 
+export type Awaitable<T> = T | Promise<T>
+
 export type Rules = WrapRuleConfig<
   MergeIntersection<
     RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
@@ -46,7 +49,7 @@ export type Rules = WrapRuleConfig<
   >
 >
 
-export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
+export type FlatConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
   /**
    * Custom name of each config item
    */
@@ -60,6 +63,8 @@ export type ConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
    */
   plugins?: Record<string, any>
 }
+
+export type UserConfigItem = FlatConfigItem | Linter.FlatConfig
 
 export interface OptionsComponentExts {
   /**
@@ -98,7 +103,7 @@ export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent
 }
 
 export interface OptionsOverrides {
-  overrides?: ConfigItem['rules']
+  overrides?: FlatConfigItem['rules']
 }
 
 export interface OptionsIsInEditor {
@@ -186,12 +191,12 @@ export interface OptionsConfig extends OptionsComponentExts {
    * Provide overrides for rules for each integration.
    */
   overrides?: {
-    javascript?: ConfigItem['rules']
-    typescript?: ConfigItem['rules']
-    test?: ConfigItem['rules']
-    vue?: ConfigItem['rules']
-    jsonc?: ConfigItem['rules']
-    markdown?: ConfigItem['rules']
-    yaml?: ConfigItem['rules']
+    javascript?: FlatConfigItem['rules']
+    typescript?: FlatConfigItem['rules']
+    test?: FlatConfigItem['rules']
+    vue?: FlatConfigItem['rules']
+    jsonc?: FlatConfigItem['rules']
+    markdown?: FlatConfigItem['rules']
+    yaml?: FlatConfigItem['rules']
   }
 }
