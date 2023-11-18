@@ -182,6 +182,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   stylistic?: boolean | StylisticConfig
 
   /**
+   * Enable react rules.
+   *
+   * @default true
+   */
+  react?: boolean
+
+  /**
    * Control to disable some rules in editors.
    * @default auto-detect based on the process.env
    */
@@ -198,5 +205,6 @@ export interface OptionsConfig extends OptionsComponentExts {
     jsonc?: FlatConfigItem['rules']
     markdown?: FlatConfigItem['rules']
     yaml?: FlatConfigItem['rules']
+    react?: FlatConfigItem['rules']
   }
 }
