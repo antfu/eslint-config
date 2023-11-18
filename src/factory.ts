@@ -12,6 +12,7 @@ import {
   markdown,
   node,
   perfectionist,
+  react,
   sortPackageJson,
   sortTsconfig,
   stylistic,
@@ -41,6 +42,11 @@ const VuePackages = [
   '@slidev/cli',
 ]
 
+const ReactPackages = [
+  'react',
+  'next',
+]
+
 /**
  * Construct an array of ESLint flat config items.
  */
@@ -53,6 +59,7 @@ export async function antfu(
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     overrides = {},
+    react: enableReact = ReactPackages.some(i => isPackageExists(i)),
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
@@ -125,6 +132,13 @@ export async function antfu(
     configs.push(vue({
       overrides: overrides.vue,
       stylistic: stylisticOptions,
+      typescript: !!enableTypeScript,
+    }))
+  }
+
+  if (enableReact) {
+    configs.push(react({
+      overrides: overrides.react,
       typescript: !!enableTypeScript,
     }))
   }
