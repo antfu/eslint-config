@@ -1,14 +1,15 @@
 import globals from 'globals'
-import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
+import type { FlatConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
-export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
+export async function javascript(
+  options: OptionsIsInEditor & OptionsOverrides = {},
+): Promise<FlatConfigItem[]> {
   const {
     isInEditor = false,
     overrides = {},
   } = options
-
   return [
     {
       languageOptions: {

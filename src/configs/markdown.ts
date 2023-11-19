@@ -1,8 +1,8 @@
-import type { ConfigItem, OptionsComponentExts, OptionsOverrides } from '../types'
+import type { FlatConfigItem, OptionsComponentExts, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../globs'
-import { pluginMarkdown } from '../plugins'
+import { interopDefault } from '../utils'
 
-export function markdown(options: OptionsComponentExts & OptionsOverrides = {}): ConfigItem[] {
+export async function markdown(options: OptionsComponentExts & OptionsOverrides = {}): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
     overrides = {},
@@ -12,7 +12,8 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
     {
       name: 'antfu:markdown:setup',
       plugins: {
-        markdown: pluginMarkdown,
+        // @ts-expect-error missing types
+        markdown: await interopDefault(import('eslint-plugin-markdown')),
       },
     },
     {

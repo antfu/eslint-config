@@ -1,10 +1,10 @@
-import type { ConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
+import { interopDefault } from 'src'
+import type { FlatConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_VUE } from '../globs'
-import { parserTs, parserVue, pluginVue } from '../plugins'
 
-export function vue(
+export async function vue(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic = {},
-): ConfigItem[] {
+): Promise<FlatConfigItem[]> {
   const {
     overrides = {},
     stylistic = true,
@@ -13,6 +13,15 @@ export function vue(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  const [
+    pluginVue,
+    parserVue,
+  ] = await Promise.all([
+    // @ts-expect-error missing types
+    interopDefault(import('eslint-plugin-vue')),
+    interopDefault(import('vue-eslint-parser')),
+  ] as const)
 
   return [
     {
@@ -30,7 +39,9 @@ export function vue(
             jsx: true,
           },
           extraFileExtensions: ['.vue'],
-          parser: options.typescript ? parserTs as any : null,
+          parser: options.typescript
+            ? await interopDefault(import('@typescript-eslint/parser')) as any
+            : null,
           sourceType: 'module',
         },
       },

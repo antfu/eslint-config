@@ -223,6 +223,7 @@ We don't recommend using this style in general usages, as there are shared optio
 ```js
 // eslint.config.js
 import {
+  combine,
   comments,
   ignores,
   imports,
@@ -240,21 +241,21 @@ import {
   yaml,
 } from '@antfu/eslint-config'
 
-export default [
-  ...ignores(),
-  ...javascript(/* Options */),
-  ...comments(),
-  ...node(),
-  ...jsdoc(),
-  ...imports(),
-  ...unicorn(),
-  ...typescript(/* Options */),
-  ...stylistic(),
-  ...vue(),
-  ...jsonc(),
-  ...yaml(),
-  ...markdown(),
-]
+export default combine(
+  ignores(),
+  javascript(/* Options */),
+  comments(),
+  node(),
+  jsdoc(),
+  imports(),
+  unicorn(),
+  typescript(/* Options */),
+  stylistic(),
+  vue(),
+  jsonc(),
+  yaml(),
+  markdown(),
+)
 ```
 
 </details>

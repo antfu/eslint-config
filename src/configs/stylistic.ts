@@ -1,13 +1,16 @@
-import type { ConfigItem, StylisticConfig } from '../types'
-import { pluginAntfu, pluginStylistic } from '../plugins'
+import { interopDefault } from 'src'
+import type { FlatConfigItem, StylisticConfig } from '../types'
+import { pluginAntfu } from '../plugins'
 
-export function stylistic(options: StylisticConfig = {}): ConfigItem[] {
+export async function stylistic(options: StylisticConfig = {}): Promise<FlatConfigItem[]> {
   const {
     indent = 2,
     jsx = true,
     quotes = 'single',
     semi = false,
   } = options
+
+  const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'))
 
   const config = pluginStylistic.configs.customize({
     flat: true,
