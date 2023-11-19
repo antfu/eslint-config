@@ -1,6 +1,12 @@
 import { interopDefault } from 'src'
+import { isPackageExists } from 'local-pkg'
 import type { FlatConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
+
+// react refresh
+const ReactRefreshAllowConstantExportPackages = [
+  'vite',
+]
 
 export async function react(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic = {},
@@ -19,6 +25,10 @@ export async function react(
     interopDefault(import('eslint-plugin-react-hooks')),
     interopDefault(import('eslint-plugin-react-refresh')),
   ] as const)
+
+  const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(
+    i => isPackageExists(i),
+  )
 
   return [
     {
@@ -45,7 +55,10 @@ export async function react(
         'react-hooks/rules-of-hooks': 'error',
 
         // react refresh
-        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+        'react-refresh/only-export-components': [
+          'warn',
+          { allowConstantExport: isAllowConstantExport },
+        ],
 
         // recommended rules react
         'react/display-name': 'error',
