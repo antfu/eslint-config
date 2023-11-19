@@ -38,13 +38,17 @@
   "peerDependencies": {
     "eslint": ">=8.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4"
   },
   "peerDependenciesMeta": {
     "eslint-plugin-react": {
       "optional": true
     },
     "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
       "optional": true
     }
   },
@@ -93,6 +97,9 @@
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
     "eslint-flat-config-viewer": "^0.1.2",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
     "esno": "^4.0.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.1.1",

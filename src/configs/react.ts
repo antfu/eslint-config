@@ -13,10 +13,11 @@ export async function react(
   const [
     pluginReact,
     pluginReactHooks,
+    pluginReactRefresh,
   ] = await Promise.all([
-    // @ts-expect-error missing types
     interopDefault(import('eslint-plugin-react')),
     interopDefault(import('eslint-plugin-react-hooks')),
+    interopDefault(import('eslint-plugin-react-refresh')),
   ] as const)
 
   return [
@@ -25,6 +26,7 @@ export async function react(
       plugins: {
         'react': pluginReact,
         'react-hooks': pluginReactHooks,
+        'react-refresh': pluginReactRefresh,
       },
     },
     {
@@ -41,6 +43,9 @@ export async function react(
         // recommended rules react-hooks
         'react-hooks/exhaustive-deps': 'warn',
         'react-hooks/rules-of-hooks': 'error',
+
+        // react refresh
+        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
         // recommended rules react
         'react/display-name': 'error',
@@ -64,6 +69,7 @@ export async function react(
         'react/no-unsafe': 'off',
         'react/prop-types': 'error',
         'react/react-in-jsx-scope': 'off',
+
         'react/require-render-return': 'error',
 
         ...typescript
