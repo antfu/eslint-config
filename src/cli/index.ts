@@ -14,15 +14,16 @@ const instance = yargs(hideBin(process.argv))
   .scriptName('@antfu/eslint-config')
   .usage('')
   .command(
-    'migrate',
-    'Migrate from legacy config to new flat config',
+    '*',
+    'Run the initialization or migration',
     args => args
+      .option('yes', { alias: 'y', description: 'Skip prompts and use default values', type: 'boolean' })
       .help(),
-    async (_args) => {
+    async (args) => {
       header()
       console.log()
       try {
-        await run()
+        await run(args)
       }
       catch (error) {
         console.error(c.inverse(c.red(' Failed to migrate ')))
@@ -31,10 +32,6 @@ const instance = yargs(hideBin(process.argv))
       }
     },
   )
-  .command('*', false, args => args, () => {
-    header()
-    instance.showHelp()
-  })
   .showHelpOnFail(false)
   .alias('h', 'help')
   .version('version', version)
