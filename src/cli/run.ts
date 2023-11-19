@@ -11,10 +11,17 @@ import parse from 'parse-gitignore'
 import { ARROW, CHECK, WARN, version, vscodeSettingsString } from './constants'
 import { isGitClean } from './utils'
 
-const SKIP_PROMPT = !!process.env.SKIP_PROMPT
-const SKIP_GIT_CHECK = !!process.env.SKIP_GIT_CHECK
+export interface RuleOptions {
+  /**
+   * Skip prompts and use default values
+   */
+  yes?: boolean
+}
 
-export async function run() {
+export async function run(options: RuleOptions = {}) {
+  const SKIP_PROMPT = !!process.env.SKIP_PROMPT || options.yes
+  const SKIP_GIT_CHECK = !!process.env.SKIP_GIT_CHECK
+
   const cwd = process.cwd()
 
   const pathFlatConfig = path.join(cwd, 'eslint.config.js')
@@ -36,6 +43,9 @@ export async function run() {
 
   pkg.devDependencies ??= {}
   pkg.devDependencies['@antfu/eslint-config'] = `^${version}`
+
+  if (!pkg.devDependencies.eslint)
+    pkg.devDependencies.eslint = '^8'
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
   console.log(c.green(`${CHECK} changes wrote to package.json`))
