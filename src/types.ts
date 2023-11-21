@@ -10,6 +10,8 @@ import type {
   MergeIntersection,
   NRules,
   Prefix,
+  ReactHooksRules,
+  ReactRules,
   RenamePrefix,
   RuleConfig,
   VitestRules,
@@ -36,6 +38,8 @@ export type Rules = WrapRuleConfig<
     RenamePrefix<NRules, 'n/', 'node/'> &
     Prefix<StylisticRules, 'style/'> &
     Prefix<AntfuRules, 'antfu/'> &
+    ReactHooksRules &
+    ReactRules &
     JSDocRules &
     ImportRules &
     EslintRules &

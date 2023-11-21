@@ -92,6 +92,7 @@ export async function react(
 
         ...typescript
           ? {
+              'react/jsx-no-undef': 'off',
               'react/prop-type': 'off',
             }
           : {},
