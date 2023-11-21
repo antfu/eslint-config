@@ -1,5 +1,5 @@
-import { interopDefault } from 'src'
 import { isPackageExists } from 'local-pkg'
+import { ensurePackages, interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 
@@ -15,6 +15,12 @@ export async function react(
     overrides = {},
     typescript = true,
   } = options
+
+  await ensurePackages([
+    'eslint-plugin-react',
+    'eslint-plugin-react-hooks',
+    'eslint-plugin-react-refresh',
+  ])
 
   const [
     pluginReact,
@@ -82,7 +88,6 @@ export async function react(
         'react/no-unsafe': 'off',
         'react/prop-types': 'error',
         'react/react-in-jsx-scope': 'off',
-
         'react/require-render-return': 'error',
 
         ...typescript

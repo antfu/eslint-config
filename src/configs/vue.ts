@@ -1,4 +1,4 @@
-import { interopDefault } from 'src'
+import { interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_VUE } from '../globs'
 

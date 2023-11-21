@@ -42,11 +42,6 @@ const VuePackages = [
   '@slidev/cli',
 ]
 
-const ReactPackages = [
-  'react',
-  'next',
-]
-
 /**
  * Construct an array of ESLint flat config items.
  */
@@ -59,7 +54,7 @@ export async function antfu(
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     overrides = {},
-    react: enableReact = ReactPackages.some(i => isPackageExists(i)),
+    react: enableReact = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options

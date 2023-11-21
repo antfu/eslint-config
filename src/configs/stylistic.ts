@@ -1,4 +1,4 @@
-import { interopDefault } from 'src'
+import { interopDefault } from '../utils'
 import type { FlatConfigItem, StylisticConfig } from '../types'
 import { pluginAntfu } from '../plugins'
 
