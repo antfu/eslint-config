@@ -5,6 +5,7 @@ import antfu from './dist/index.js'
 export default antfu(
   {
     vue: true,
+    // react: true,
     typescript: true,
     ignores: [
       'fixtures',
