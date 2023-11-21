@@ -8,7 +8,7 @@ import c from 'picocolors'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
-import { ARROW, CHECK, WARN, version, vscodeSettingsString } from './constants'
+import { ARROW, CHECK, WARN, eslintVersion, version, vscodeSettingsString } from './constants'
 import { isGitClean } from './utils'
 
 export interface RuleOptions {
@@ -45,7 +45,7 @@ export async function run(options: RuleOptions = {}) {
   pkg.devDependencies['@antfu/eslint-config'] = `^${version}`
 
   if (!pkg.devDependencies.eslint)
-    pkg.devDependencies.eslint = '^8'
+    pkg.devDependencies.eslint = eslintVersion
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
   console.log(c.green(`${CHECK} changes wrote to package.json`))
