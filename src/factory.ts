@@ -12,6 +12,7 @@ import {
   markdown,
   node,
   perfectionist,
+  react,
   sortPackageJson,
   sortTsconfig,
   stylistic,
@@ -53,6 +54,7 @@ export async function antfu(
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE) && !process.env.CI),
     overrides = {},
+    react: enableReact = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
@@ -125,6 +127,13 @@ export async function antfu(
     configs.push(vue({
       overrides: overrides.vue,
       stylistic: stylisticOptions,
+      typescript: !!enableTypeScript,
+    }))
+  }
+
+  if (enableReact) {
+    configs.push(react({
+      overrides: overrides.react,
       typescript: !!enableTypeScript,
     }))
   }

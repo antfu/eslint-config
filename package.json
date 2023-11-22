@@ -36,10 +36,25 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
-    "eslint": ">=8.40.0"
+    "eslint": ">=8.40.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-react": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@antfu/eslint-define-config": "^1.23.0-2",
+    "@antfu/install-pkg": "^0.2.0",
     "@eslint-types/jsdoc": "46.8.2-1",
     "@eslint-types/typescript-eslint": "^6.11.0",
     "@eslint-types/unicorn": "^49.0.0",
@@ -61,7 +76,6 @@
     "eslint-plugin-vitest": "^0.3.9",
     "eslint-plugin-vue": "^9.18.1",
     "eslint-plugin-yml": "^1.10.0",
-    "execa": "^8.0.1",
     "globals": "^13.23.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
@@ -75,6 +89,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "^0.21.9",
+    "@stylistic/eslint-plugin-migrate": "^1.4.0",
     "@types/eslint": "^8.44.7",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.9.1",
@@ -83,7 +98,11 @@
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
     "eslint-flat-config-viewer": "^0.1.2",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
     "esno": "^4.0.0",
+    "execa": "^8.0.1",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.1.1",
     "lint-staged": "^15.1.0",
