@@ -81,7 +81,6 @@ export async function javascript(
         'no-implied-eval': 'error',
         'no-import-assign': 'error',
         'no-invalid-regexp': 'error',
-        'no-invalid-this': 'error',
         'no-irregular-whitespace': 'error',
         'no-iterator': 'error',
         'no-labels': ['error', { allowLoop: false, allowSwitch: false }],

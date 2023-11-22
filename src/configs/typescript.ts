@@ -94,7 +94,6 @@ export async function typescript(
         'antfu/named-tuple-spacing': 'error',
 
         'no-dupe-class-members': 'off',
-        'no-invalid-this': 'off',
         'no-loss-of-precision': 'off',
         'no-redeclare': 'off',
         'no-use-before-define': 'off',
@@ -108,7 +107,6 @@ export async function typescript(
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'error',
-        'ts/no-invalid-this': 'error',
         'ts/no-invalid-void-type': 'off',
         'ts/no-loss-of-precision': 'error',
         'ts/no-non-null-assertion': 'off',
