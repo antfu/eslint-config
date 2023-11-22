@@ -10,6 +10,7 @@ export async function javascript(
     isInEditor = false,
     overrides = {},
   } = options
+
   return [
     {
       languageOptions: {

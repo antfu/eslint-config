@@ -1,17 +1,22 @@
 import process from 'node:process'
-import type { FlatConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
 import { GLOB_SRC } from '../globs'
 import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules, toArray } from '../utils'
 
 export async function typescript(
-  options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
 ): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
     overrides = {},
     parserOptions = {},
-  } = options ?? {}
+  } = options
+
+  const files = options.files ?? [
+    GLOB_SRC,
+    ...componentExts.map(ext => `**/*.${ext}`),
+  ]
 
   const typeAwareRules: FlatConfigItem['rules'] = {
     'dot-notation': 'off',
@@ -57,10 +62,7 @@ export async function typescript(
       },
     },
     {
-      files: [
-        GLOB_SRC,
-        ...componentExts.map(ext => `**/*.${ext}`),
-      ],
+      files,
       languageOptions: {
         parser: parserTs,
         parserOptions: {

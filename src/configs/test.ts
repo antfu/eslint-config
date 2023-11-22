@@ -1,9 +1,12 @@
 import { interopDefault } from '../utils'
-import type { FlatConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
+import type { FlatConfigItem, OptionsFiles, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { GLOB_TESTS } from '../globs'
 
-export async function test(options: OptionsIsInEditor & OptionsOverrides = {}): Promise<FlatConfigItem[]> {
+export async function test(
+  options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {},
+): Promise<FlatConfigItem[]> {
   const {
+    files = GLOB_TESTS,
     isInEditor = false,
     overrides = {},
   } = options
@@ -32,7 +35,7 @@ export async function test(options: OptionsIsInEditor & OptionsOverrides = {}): 
       },
     },
     {
-      files: GLOB_TESTS,
+      files,
       name: 'antfu:test:rules',
       rules: {
         'node/prefer-global/process': 'off',

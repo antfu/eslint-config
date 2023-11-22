@@ -70,6 +70,13 @@ export type FlatConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'>
 
 export type UserConfigItem = FlatConfigItem | Linter.FlatConfig
 
+export interface OptionsFiles {
+  /**
+   * Override the `files` option to provide custom globs.
+   */
+  files?: string[]
+}
+
 export interface OptionsComponentExts {
   /**
    * Additional extensions for components.

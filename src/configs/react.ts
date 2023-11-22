@@ -1,6 +1,6 @@
 import { isPackageExists } from 'local-pkg'
 import { ensurePackages, interopDefault } from '../utils'
-import type { FlatConfigItem, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
+import type { FlatConfigItem, OptionsFiles, OptionsHasTypeScript, OptionsOverrides } from '../types'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
 
 // react refresh
@@ -9,9 +9,10 @@ const ReactRefreshAllowConstantExportPackages = [
 ]
 
 export async function react(
-  options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic = {},
+  options: OptionsHasTypeScript & OptionsOverrides & OptionsFiles = {},
 ): Promise<FlatConfigItem[]> {
   const {
+    files = [GLOB_JSX, GLOB_TSX],
     overrides = {},
     typescript = true,
   } = options
@@ -46,7 +47,7 @@ export async function react(
       },
     },
     {
-      files: [GLOB_JSX, GLOB_TSX],
+      files,
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {
