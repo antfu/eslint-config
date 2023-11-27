@@ -36,12 +36,16 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@unocss/eslint-plugin": ">=0.50.0",
     "eslint": ">=8.40.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4"
   },
   "peerDependenciesMeta": {
+    "@unocss/eslint-plugin": {
+      "optional": true
+    },
     "eslint-plugin-react": {
       "optional": true
     },
@@ -95,6 +99,7 @@
     "@types/node": "^20.9.4",
     "@types/prompts": "^2.4.9",
     "@types/yargs": "^17.0.32",
+    "@unocss/eslint-plugin": "^0.57.7",
     "bumpp": "^9.2.0",
     "eslint": "^8.54.0",
     "eslint-flat-config-viewer": "^0.1.3",

@@ -121,6 +121,19 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
+export interface OptionsUnoCSS {
+  /**
+   * Enable attributify support.
+   * @default true
+   */
+  attributify?: boolean
+  /**
+   * Enable strict mode by throwing errors about blocklisted classes.
+   * @default false
+   */
+  strict?: boolean
+}
+
 export interface OptionsConfig extends OptionsComponentExts {
   /**
    * Enable gitignore support.
@@ -195,9 +208,24 @@ export interface OptionsConfig extends OptionsComponentExts {
   /**
    * Enable react rules.
    *
-   * @default true
+   * Requires installing:
+   * - `eslint-plugin-react`
+   * - `eslint-plugin-react-hooks`
+   * - `eslint-plugin-react-refresh`
+   *
+   * @default false
    */
   react?: boolean
+
+  /**
+   * Enable unocss rules.
+   *
+   * Requires installing:
+   * - `@unocss/eslint-plugin`
+   *
+   * @default false
+   */
+  unocss?: boolean | OptionsUnoCSS
 
   /**
    * Control to disable some rules in editors.

@@ -19,6 +19,7 @@ import {
   test,
   typescript,
   unicorn,
+  unocss,
   vue,
   yaml,
 } from './configs'
@@ -56,6 +57,7 @@ export async function antfu(
     overrides = {},
     react: enableReact = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
+    unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
   } = options
 
@@ -136,6 +138,12 @@ export async function antfu(
       overrides: overrides.react,
       typescript: !!enableTypeScript,
     }))
+  }
+
+  if (enableUnoCSS) {
+    configs.push(unocss(
+      typeof enableUnoCSS === 'boolean' ? {} : enableUnoCSS,
+    ))
   }
 
   if (options.jsonc ?? true) {

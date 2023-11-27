@@ -334,9 +334,9 @@ export default antfu({
 
 ### Optional Configs
 
-#### React
+We provide some optional configs for specific use cases, that we don't include their dependencies by default.
 
-We do include configs for React. But due to the install size of React plugins we didn't include the dependencies by default.
+#### React
 
 To enable React support, need to explicitly turn it on:
 
@@ -349,10 +349,29 @@ export default antfu({
 })
 ```
 
-Running `npx eslint` should prompt you to install the required dependencies, otherwise you can install them manually:
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
 ```bash
 npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
+```
+
+#### UnoCSS
+
+To enable UnoCSS support, need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  unocss: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D @unocss/eslint-plugin
 ```
 
 ### Optional Rules
@@ -415,7 +434,7 @@ npm i -D lint-staged simple-git-hooks
 
 ## Versioning Policy
 
-This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involved with opinions and many moving parts, we don't treat rules changes as breaking changes.
+This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involves opinions and many moving parts, we don't treat rules changes as breaking changes.
 
 ### Changes Considered as Breaking Changes
 
@@ -452,7 +471,7 @@ This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unoc
 
 ### I prefer XXX...
 
-Sure, you can config and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
+Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
 
 ## Check Also
 
