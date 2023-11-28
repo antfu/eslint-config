@@ -53,9 +53,9 @@ export async function run(options: RuleOptions = {}) {
   // End update package.json
   // Update eslint files
   const eslintIgnores: string[] = []
-  if (fs.existsSync(pathESLintIngore)) {
+  if (fs.existsSync(pathESLintIgnore)) {
     console.log(c.cyan(`${ARROW} migrating existing .eslintignore`))
-    const content = await fsp.readFile(pathESLintIngore, 'utf-8')
+    const content = await fsp.readFile(pathESLintIgnore, 'utf-8')
     const parsed = parse(content)
     const globs = parsed.globs()
 
