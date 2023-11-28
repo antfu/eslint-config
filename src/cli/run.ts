@@ -26,7 +26,7 @@ export async function run(options: RuleOptions = {}) {
 
   const pathFlatConfig = path.join(cwd, 'eslint.config.js')
   const pathPackageJSON = path.join(cwd, 'package.json')
-  const pathESLintIngore = path.join(cwd, '.eslintignore')
+  const pathESLintIgnore = path.join(cwd, '.eslintignore')
 
   if (fs.existsSync(pathFlatConfig)) {
     console.log(c.yellow(`${WARN} eslint.config.js already exists, migration wizard exited.`))
