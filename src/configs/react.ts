@@ -48,7 +48,7 @@ export async function react(
       settings: {
         react: {
           version: 'detect',
-        }
+        },
       },
     },
     {
