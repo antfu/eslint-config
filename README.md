@@ -8,9 +8,10 @@
 - Lints also for json, yaml, markdown
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
-- Respects `.gitignore` by default
+- Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+- Respects `.gitignore` by default
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
 > [!IMPORTANT]
