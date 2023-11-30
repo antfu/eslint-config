@@ -45,6 +45,11 @@ export async function react(
         'react-hooks': pluginReactHooks,
         'react-refresh': pluginReactRefresh,
       },
+      settings: {
+        react: {
+          version: 'detect',
+        }
+      },
     },
     {
       files,
