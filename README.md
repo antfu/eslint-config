@@ -432,6 +432,16 @@ and then
 npm i -D lint-staged simple-git-hooks
 ```
 
+## View what rules are enabled
+
+I built a visual tool to help you view what rules are enabled in your project and apply them to what files, [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer)
+
+Go to your project root that contains `eslint.config.js` and run:
+
+```bash
+npx eslint-flat-config-viewer
+```
+
 ## Versioning Policy
 
 This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involves opinions and many moving parts, we don't treat rules changes as breaking changes.
