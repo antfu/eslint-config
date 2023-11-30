@@ -33,7 +33,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default await antfu()
+export default antfu()
 ```
 
 With CJS:
@@ -156,7 +156,7 @@ Normally you only need to import the `antfu` preset:
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default await antfu()
+export default antfu()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
@@ -165,7 +165,7 @@ And that's it! Or you can configure each integration individually, for example:
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default await antfu({
+export default antfu({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -197,7 +197,7 @@ The `antfu` factory function also accepts any number of arbitrary custom config 
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default await antfu(
+export default antfu(
   {
     // Configures for antfu's config
   },
@@ -242,7 +242,7 @@ import {
   yaml,
 } from '@antfu/eslint-config'
 
-export default await combine(
+export default combine(
   ignores(),
   javascript(/* Options */),
   comments(),
@@ -295,7 +295,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
-export default await antfu(
+export default antfu(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
