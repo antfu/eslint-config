@@ -23,6 +23,7 @@ import type { RuleOptions as TypeScriptRules } from '@eslint-types/typescript-es
 import type { RuleOptions as UnicornRules } from '@eslint-types/unicorn/types'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type { StylisticCustomizeOptions, UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
+import type { VendoredPrettierOptions } from './vender/prettier-types'
 
 export type WrapRuleConfig<T extends { [key: string]: any }> = {
   [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
@@ -90,13 +91,31 @@ export interface OptionsPrettier {
    * Enable Prettier support for GraphQL.
    */
   graphql?: boolean
+  /**
+   * Enable Prettier support for Markdown.
+   */
+  markdown?: boolean
 
   /**
    * Custom files to apply Prettier.
    *
    * The key is the parser in prettier, the value is the glob pattern.
    */
-  custom?: Record<string, string[]>
+  customFiles?: Record<string, string[]>
+
+  /**
+   * Custom options for Prettier.
+   *
+   * By default it's controlled by our own config.
+   */
+  options?: VendoredPrettierOptions
+
+  /**
+   * Use the prettierrc file.
+   *
+   * @default false
+   */
+  usePrettierrc?: boolean
 }
 
 export interface OptionsComponentExts {

@@ -11,6 +11,11 @@ export default antfu(
       'fixtures',
       '_fixtures',
     ],
+    prettier: {
+      html: true,
+      markdown: true,
+      css: true,
+    },
   },
   {
     files: ['src/**/*.ts'],
