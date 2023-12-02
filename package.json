@@ -28,6 +28,7 @@
     "build": "tsup --format esm,cjs --clean --dts",
     "stub": "tsup --format esm",
     "dev": "tsup --format esm,cjs --watch & eslint-flat-config-viewer",
+    "watch": "tsup --format esm,cjs --watch",
     "lint": "pnpm run stub && eslint .",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",

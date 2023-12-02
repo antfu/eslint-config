@@ -1,3 +1,4 @@
+import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_MARKDOWN_IN_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsPrettier, StylisticConfig } from '../types'
@@ -40,9 +41,9 @@ export async function prettier(
   }
 
   if (options.css) {
-    rules.css ||= ['**/*.css', '**/*.pcss', '**/*.postcss']
-    rules.less ||= ['**/*.less']
-    rules.scss ||= ['**/*.scss', '**/*.sass']
+    rules.css ||= [GLOB_CSS, GLOB_POSTCSS]
+    rules.less ||= [GLOB_LESS]
+    rules.scss ||= [GLOB_SCSS]
   }
 
   if (options.html)
@@ -52,7 +53,7 @@ export async function prettier(
     rules.graphql ||= ['**/*.graphql', '**/*.gql']
 
   if (options.markdown)
-    rules.markdown ||= ['**/*.md', '**/*.markdown']
+    rules.markdown ||= [GLOB_MARKDOWN]
 
   if (!Object.keys(rules).length)
     throw new Error('No languages specified for Prettier')
