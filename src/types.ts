@@ -23,6 +23,7 @@ import type { RuleOptions as TypeScriptRules } from '@eslint-types/typescript-es
 import type { RuleOptions as UnicornRules } from '@eslint-types/unicorn/types'
 import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
 import type { StylisticCustomizeOptions, UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
+import type { VendoredPrettierOptions } from './vender/prettier-types'
 
 export type WrapRuleConfig<T extends { [key: string]: any }> = {
   [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
@@ -75,6 +76,42 @@ export interface OptionsFiles {
    * Override the `files` option to provide custom globs.
    */
   files?: string[]
+}
+
+export interface OptionsPrettier {
+  /**
+   * Enable Prettier support for CSS, Less, Sass, and SCSS.
+   */
+  css?: boolean
+  /**
+   * Enable Prettier support for HTML.
+   */
+  html?: boolean
+  /**
+   * Enable Prettier support for GraphQL.
+   */
+  graphql?: boolean
+
+  /**
+   * Custom files to apply Prettier.
+   *
+   * The key is the parser in prettier, the value is the glob pattern.
+   */
+  customFiles?: Record<string, string[]>
+
+  /**
+   * Custom options for Prettier.
+   *
+   * By default it's controlled by our own config.
+   */
+  options?: VendoredPrettierOptions
+
+  /**
+   * Use the prettierrc file.
+   *
+   * @default false
+   */
+  usePrettierrc?: boolean
 }
 
 export interface OptionsComponentExts {
@@ -226,6 +263,16 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default false
    */
   unocss?: boolean | OptionsUnoCSS
+
+  /**
+   * Use Prettier to format files that not supported by ESLint.
+   *
+   * Requires installing:
+   * - `eslint-plugin-prettier`
+   *
+   * @default false
+   */
+  prettier?: OptionsPrettier
 
   /**
    * Control to disable some rules in editors.

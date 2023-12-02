@@ -1,5 +1,5 @@
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../globs'
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
 import { interopDefault } from '../utils'
 
 export async function markdown(
@@ -21,6 +21,7 @@ export async function markdown(
     },
     {
       files,
+      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
       name: 'antfu:markdown:processor',
       processor: 'markdown/markdown',
     },
@@ -36,7 +37,7 @@ export async function markdown(
           },
         },
       },
-      name: 'antfu:markdown:rules',
+      name: 'antfu:markdown:disables',
       rules: {
         'antfu/no-ts-export-equal': 'off',
 

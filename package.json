@@ -28,6 +28,7 @@
     "build": "tsup --format esm,cjs --clean --dts",
     "stub": "tsup --format esm",
     "dev": "tsup --format esm,cjs --watch & eslint-flat-config-viewer",
+    "watch": "tsup --format esm,cjs --watch",
     "lint": "pnpm run stub && eslint .",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
@@ -36,6 +37,7 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@antfu/eslint-plugin-prettier": "^5.0.1-1",
     "@unocss/eslint-plugin": ">=0.50.0",
     "eslint": ">=8.40.0",
     "eslint-plugin-react": "^7.33.2",
@@ -43,6 +45,9 @@
     "eslint-plugin-react-refresh": "^0.4.4"
   },
   "peerDependenciesMeta": {
+    "@antfu/eslint-plugin-prettier": {
+      "optional": true
+    },
     "@unocss/eslint-plugin": {
       "optional": true
     },
@@ -66,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "eslint-config-flat-gitignore": "^0.1.1",
+    "eslint-parser-plain": "^0.1.0",
     "eslint-plugin-antfu": "^1.0.11",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-i": "^2.29.0",
@@ -92,6 +98,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "workspace:*",
+    "@antfu/eslint-plugin-prettier": "^5.0.1-1",
     "@antfu/ni": "^0.21.12",
     "@stylistic/eslint-plugin-migrate": "^1.4.1",
     "@types/eslint": "^8.44.8",

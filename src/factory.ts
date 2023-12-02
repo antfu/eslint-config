@@ -12,6 +12,7 @@ import {
   markdown,
   node,
   perfectionist,
+  prettier,
   react,
   sortPackageJson,
   sortTsconfig,
@@ -169,6 +170,13 @@ export async function antfu(
       componentExts,
       overrides: overrides.markdown,
     }))
+  }
+
+  if (options.prettier) {
+    configs.push(prettier(
+      options.prettier,
+      typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
+    ))
   }
 
   // User can optionally pass a flat config item to the first argument
