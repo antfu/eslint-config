@@ -120,6 +120,7 @@ Add the following settings to your `.vscode/settings.json`:
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
+    { "rule": "prettier/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
@@ -313,7 +314,7 @@ export default antfu(
 )
 ```
 
-We also provided a `overrides` options to make it easier:
+We also provided an `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
