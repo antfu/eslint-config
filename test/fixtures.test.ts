@@ -41,6 +41,15 @@ runWithConfig(
     },
   },
 )
+runWithConfig(
+  'with-prettier',
+  {
+    prettier: {
+      html: true,
+      css: true,
+    },
+  },
+)
 
 // https://github.com/antfu/eslint-config/issues/255
 runWithConfig(

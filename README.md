@@ -337,9 +337,36 @@ export default antfu({
 
 We provide some optional configs for specific use cases, that we don't include their dependencies by default.
 
+#### Prettier
+
+ESLint is mainly forced on JavaScript. It can support other languages with custom parsers, but that requires a lot of effort to rule parsers and rules to build ecosystems around them. For example, ESLint does not handle CSS and HTML at this moment. It has been a shame for a long time. But since Prettier supports wider range of languages, why don't we use Prettier for them?
+
+> [!WARNING]
+> This is experiemental :)
+
+To enable Prettier support, you need to explicitly turn it on and specify the languages you want to handle:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  prettier: {
+    css: true, // Let Prettier handles CSS, LESS, SCSS, etc
+    html: true, // Let Prettier handles HTML
+  }
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-prettier prettier
+```
+
 #### React
 
-To enable React support, need to explicitly turn it on:
+To enable React support  you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
@@ -358,7 +385,7 @@ npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refre
 
 #### UnoCSS
 
-To enable UnoCSS support, need to explicitly turn it on:
+To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
@@ -476,9 +503,15 @@ If you enjoy this code style, and would like to mention it in your project, here
 
 [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
-### How to lint CSS?
+Well, on the other hand, you can [use still Prettier to handle CSS and HTML formatting](#prettier), which is not yet supported by ESLint.
 
-This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS. If you still prefer CSS, you can use [stylelint](https://stylelint.io/) for CSS linting.
+### How to format CSS?
+
+~~This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS.~~
+
+Yes, we do now! See [Prettier](#prettier) section for more details.
+
+For better linting, we recommend trying [stylelint](https://stylelint.io/).
 
 ### I prefer XXX...
 

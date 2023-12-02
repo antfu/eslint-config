@@ -12,6 +12,7 @@ import {
   markdown,
   node,
   perfectionist,
+  prettier,
   react,
   sortPackageJson,
   sortTsconfig,
@@ -139,6 +140,9 @@ export async function antfu(
       typescript: !!enableTypeScript,
     }))
   }
+
+  if (options.prettier)
+    configs.push(prettier(options.prettier))
 
   if (enableUnoCSS) {
     configs.push(unocss(
