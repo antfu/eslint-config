@@ -91,10 +91,6 @@ export interface OptionsPrettier {
    * Enable Prettier support for GraphQL.
    */
   graphql?: boolean
-  /**
-   * Enable Prettier support for Markdown.
-   */
-  markdown?: boolean
 
   /**
    * Custom files to apply Prettier.

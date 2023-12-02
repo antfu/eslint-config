@@ -13,7 +13,6 @@ export default antfu(
     ],
     prettier: {
       html: true,
-      markdown: true,
       css: true,
     },
   },

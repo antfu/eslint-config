@@ -47,7 +47,6 @@ runWithConfig(
     prettier: {
       html: true,
       css: true,
-      markdown: true,
     },
   },
 )
