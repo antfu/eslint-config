@@ -8,7 +8,7 @@ export async function prettier(
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
-    'eslint-plugin-prettier',
+    '@antfu/eslint-plugin-prettier',
   ])
 
   const {
@@ -57,7 +57,7 @@ export async function prettier(
   if (!Object.keys(rules).length)
     throw new Error('No languages specified for Prettier')
 
-  const pluginPrettier = await interopDefault(import('eslint-plugin-prettier'))
+  const pluginPrettier = await interopDefault(import('@antfu/eslint-plugin-prettier'))
   const parserPlain = await interopDefault(import('eslint-parser-plain'))
 
   return [
@@ -81,7 +81,10 @@ export async function prettier(
             embeddedLanguageFormatting: name === 'html' ? 'auto' : 'off',
             parser: name,
           },
-          { usePrettierrc },
+          {
+            fullControl: true,
+            usePrettierrc,
+          },
         ],
       },
     })),

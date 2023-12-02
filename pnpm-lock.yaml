@@ -111,6 +111,9 @@ importers:
       '@antfu/eslint-config':
         specifier: workspace:*
         version: 'link:'
+      '@antfu/eslint-plugin-prettier':
+        specifier: ^5.0.1-1
+        version: 5.0.1-1(@types/eslint@8.44.8)(eslint@8.54.0)(prettier@3.1.0)
       '@antfu/ni':
         specifier: ^0.21.12
         version: 0.21.12
@@ -144,9 +147,6 @@ importers:
       eslint-flat-config-viewer:
         specifier: ^0.1.3
         version: 0.1.3
-      eslint-plugin-prettier:
-        specifier: ^5.0.1
-        version: 5.0.1(@types/eslint@8.44.8)(eslint@8.54.0)(prettier@3.1.0)
       eslint-plugin-react:
         specifier: ^7.33.2
         version: 7.33.2(eslint@8.54.0)
@@ -197,6 +197,27 @@ packages:
     resolution: {integrity: sha512-LvxY21+ZhpuBf/aHeBUtGQhSEfad4PkNKXKvDOSvukaM3XVTfBhwmHX2EKwAsdq5DlfjbT3qqYyMiueBIO5iDQ==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>= 8.6.0'}
     dev: false
+
+  /@antfu/eslint-plugin-prettier@5.0.1-1(@types/eslint@8.44.8)(eslint@8.54.0)(prettier@3.1.0):
+    resolution: {integrity: sha512-Bmmb7SXmdrsPT/hPProT6UvPV0vvojq0kTA5KsKbFbFnMazrjYOT9rHffpSLHWlM6uCzF6OfolI0Cay5T+I6fg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      '@types/eslint': '>=8.0.0'
+      eslint: '>=8.0.0'
+      eslint-config-prettier: '*'
+      prettier: '>=3.0.0'
+    peerDependenciesMeta:
+      '@types/eslint':
+        optional: true
+      eslint-config-prettier:
+        optional: true
+    dependencies:
+      '@types/eslint': 8.44.8
+      eslint: 8.54.0
+      prettier: 3.1.0
+      prettier-linter-helpers: 1.0.0
+      synckit: 0.8.5
+    dev: true
 
   /@antfu/install-pkg@0.3.0:
     resolution: {integrity: sha512-hzTVgEFGBBMXUjsNhIRDdt9jvAkZzPbMLQW8q2wXz455+1zxGFtM0nxPl2pukFWHXcC/Bn/UCHV9rd0+pwYsmw==}
@@ -2306,27 +2327,6 @@ packages:
       - supports-color
       - typescript
     dev: false
-
-  /eslint-plugin-prettier@5.0.1(@types/eslint@8.44.8)(eslint@8.54.0)(prettier@3.1.0):
-    resolution: {integrity: sha512-m3u5RnR56asrwV/lDC4GHorlW75DsFfmUcjfCYylTUs85dBRnB7VM6xG8eCMJdeDRnppzmxZVf1GEPJvl1JmNg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      '@types/eslint': '>=8.0.0'
-      eslint: '>=8.0.0'
-      eslint-config-prettier: '*'
-      prettier: '>=3.0.0'
-    peerDependenciesMeta:
-      '@types/eslint':
-        optional: true
-      eslint-config-prettier:
-        optional: true
-    dependencies:
-      '@types/eslint': 8.44.8
-      eslint: 8.54.0
-      prettier: 3.1.0
-      prettier-linter-helpers: 1.0.0
-      synckit: 0.8.5
-    dev: true
 
   /eslint-plugin-react-hooks@4.6.0(eslint@8.54.0):
     resolution: {integrity: sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==}
