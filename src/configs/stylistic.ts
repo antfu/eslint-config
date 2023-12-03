@@ -43,7 +43,6 @@ export async function stylistic(options: StylisticConfig = {}): Promise<FlatConf
 
         'antfu/consistent-list-newline': 'error',
         'antfu/if-newline': 'error',
-        'antfu/indent-binary-ops': ['error', { indent }],
         'antfu/top-level-function': 'error',
 
         'curly': ['error', 'multi-or-nest', 'consistent'],

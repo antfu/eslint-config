@@ -90,9 +90,6 @@ export async function typescript(
           'ts/',
         ),
 
-        'antfu/generic-spacing': 'error',
-        'antfu/named-tuple-spacing': 'error',
-
         'no-dupe-class-members': 'off',
         'no-loss-of-precision': 'off',
         'no-redeclare': 'off',
