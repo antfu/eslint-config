@@ -1,29 +1,37 @@
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
-import { interopDefault } from '../utils'
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MDX } from '../globs'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
 ): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
-    files = [GLOB_MARKDOWN],
+    files = [GLOB_MARKDOWN, GLOB_MDX],
     overrides = {},
   } = options
+
+  const mdx = await import('eslint-plugin-mdx')
+  const mdxParser = await import('eslint-mdx')
 
   return [
     {
       name: 'antfu:markdown:setup',
       plugins: {
-        // @ts-expect-error missing types
-        markdown: await interopDefault(import('eslint-plugin-markdown')),
+        mdx,
       },
     },
     {
       files,
-      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
+      languageOptions: {
+        ecmaVersion: 'latest',
+        parser: mdxParser,
+        sourceType: 'module',
+      },
       name: 'antfu:markdown:processor',
-      processor: 'markdown/markdown',
+      processor: 'mdx/remark',
+      settings: {
+        'mdx/code-blocks': true,
+      },
     },
     {
       files: [
@@ -50,11 +58,13 @@ export async function markdown(
         'no-unused-expressions': 'off',
         'no-unused-labels': 'off',
         'no-unused-vars': 'off',
-
         'node/prefer-global/process': 'off',
-        'style/comma-dangle': 'off',
+        'strict': 'off',
 
+        'style/comma-dangle': 'off',
         'style/eol-last': 'off',
+        'style/padded-blocks': 'off',
+
         'ts/consistent-type-imports': 'off',
         'ts/no-namespace': 'off',
         'ts/no-redeclare': 'off',
@@ -62,8 +72,8 @@ export async function markdown(
         'ts/no-unused-vars': 'off',
         'ts/no-use-before-define': 'off',
         'ts/no-var-requires': 'off',
-
         'unicode-bom': 'off',
+
         'unused-imports/no-unused-imports': 'off',
         'unused-imports/no-unused-vars': 'off',
 
