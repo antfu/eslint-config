@@ -4,10 +4,15 @@ import { ensurePackages, interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsPrettier, StylisticConfig } from '../types'
 import { StylisticConfigDefaults } from './stylistic'
 
+/**
+ * @deprecated
+ */
 export async function prettier(
   options: OptionsPrettier = {},
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
+  console.warn('@antfu/eslint-config: `prettier` option is deprecated, please do not use it anymore. We will find better formatters to support that in the future.')
+
   await ensurePackages([
     '@antfu/eslint-plugin-prettier',
   ])
