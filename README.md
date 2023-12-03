@@ -338,33 +338,6 @@ export default antfu({
 
 We provide some optional configs for specific use cases, that we don't include their dependencies by default.
 
-#### Prettier
-
-ESLint is mainly forced on JavaScript. It can support other languages with custom parsers, but that requires a lot of effort to rule parsers and rules to build ecosystems around them. For example, ESLint does not handle CSS and HTML at this moment. It has been a shame for a long time. But since Prettier supports wider range of languages, why don't we use Prettier for them?
-
-> [!WARNING]
-> This is experiemental :)
-
-To enable Prettier support, you need to explicitly turn it on and specify the languages you want to handle:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  prettier: {
-    css: true, // Let Prettier handles CSS, LESS, SCSS, etc
-    html: true, // Let Prettier handles HTML
-  }
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-prettier prettier
-```
-
 #### React
 
 To enable React support  you need to explicitly turn it on:
