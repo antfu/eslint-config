@@ -120,7 +120,6 @@ Add the following settings to your `.vscode/settings.json`:
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
-    { "rule": "prettier/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
@@ -477,15 +476,9 @@ If you enjoy this code style, and would like to mention it in your project, here
 
 [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
-Well, on the other hand, you can [use still Prettier to handle CSS and HTML formatting](#prettier), which is not yet supported by ESLint.
-
 ### How to format CSS?
 
-~~This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS.~~
-
-Yes, we do now! See [Prettier](#prettier) section for more details.
-
-For better linting, we recommend trying [stylelint](https://stylelint.io/).
+This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS. For better linting, we recommend trying [stylelint](https://stylelint.io/).
 
 ### I prefer XXX...
 
