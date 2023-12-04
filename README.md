@@ -337,9 +337,36 @@ export default antfu({
 
 We provide some optional configs for specific use cases, that we don't include their dependencies by default.
 
+#### Formatters
+
+> [!WARNING]
+> Experimental feature, changes might not follow semver.
+
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  formatters: {
+    css: true, // by default use Prettier
+    html: true, // by default use Prettier
+    toml: 'dprint', // use dprint for TOML
+    markdown: 'prettier' // use prettier for markdown
+  }
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-format
+```
+
 #### React
 
-To enable React support  you need to explicitly turn it on:
+To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js

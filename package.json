@@ -37,15 +37,15 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
-    "@antfu/eslint-plugin-prettier": "^5.0.1-1",
     "@unocss/eslint-plugin": ">=0.50.0",
     "eslint": ">=8.40.0",
+    "eslint-plugin-format": "^0.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4"
   },
   "peerDependenciesMeta": {
-    "@antfu/eslint-plugin-prettier": {
+    "eslint-plugin-format": {
       "optional": true
     },
     "@unocss/eslint-plugin": {

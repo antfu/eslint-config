@@ -78,40 +78,50 @@ export interface OptionsFiles {
   files?: string[]
 }
 
-export interface OptionsPrettier {
+export interface OptionsFormatters {
   /**
-   * Enable Prettier support for CSS, Less, Sass, and SCSS.
+   * Enable formatting support for CSS, Less, Sass, and SCSS.
+   *
+   * Currently only support Prettier.
    */
-  css?: boolean
-  /**
-   * Enable Prettier support for HTML.
-   */
-  html?: boolean
-  /**
-   * Enable Prettier support for GraphQL.
-   */
-  graphql?: boolean
+  css?: 'prettier' | boolean
 
   /**
-   * Custom files to apply Prettier.
+   * Enable formatting support for HTML.
    *
-   * The key is the parser in prettier, the value is the glob pattern.
+   * Currently only support Prettier.
    */
-  customFiles?: Record<string, string[]>
+  html?: 'prettier' | boolean
+
+  /**
+   * Enable formatting support for TOML.
+   *
+   * Currently only support dprint.
+   */
+  toml?: 'dprint' | boolean
+
+  /**
+   * Enable formatting support for Markdown.
+   *
+   * Support both Prettier and dprint.
+   *
+   * When set to `true`, it will use Prettier.
+   */
+  markdown?: 'prettier' | 'dprint' | boolean
 
   /**
    * Custom options for Prettier.
    *
    * By default it's controlled by our own config.
    */
-  options?: VendoredPrettierOptions
+  prettierOptions?: VendoredPrettierOptions
 
   /**
-   * Use the prettierrc file.
+   * Custom options for dprint.
    *
-   * @default false
+   * By default it's controlled by our own config.
    */
-  usePrettierrc?: boolean
+  dprintOptions?: boolean
 }
 
 export interface OptionsComponentExts {
@@ -265,14 +275,14 @@ export interface OptionsConfig extends OptionsComponentExts {
   unocss?: boolean | OptionsUnoCSS
 
   /**
-   * Use Prettier to format files that not supported by ESLint.
+   * Use external formatters to format files.
    *
    * Requires installing:
-   * - `eslint-plugin-prettier`
+   * - `eslint-plugin-format`
    *
    * @default false
    */
-  prettier?: OptionsPrettier
+  formatters?: OptionsFormatters
 
   /**
    * Control to disable some rules in editors.
