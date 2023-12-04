@@ -166,10 +166,15 @@ export async function antfu(
   }
 
   if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-      overrides: overrides.markdown,
-    }))
+    configs.push(
+      markdown(
+        {
+          componentExts,
+          overrides: overrides.markdown,
+        },
+        !!options.formatters?.markdown,
+      ),
+    )
   }
 
   if (options.formatters) {

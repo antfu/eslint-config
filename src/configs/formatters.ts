@@ -147,8 +147,7 @@ export async function formatters(
     const formater = options.markdown === true ? 'prettier' : options.markdown
 
     configs.push({
-      files: ['**/*.md'],
-      ignores: ['**/*.md/*.md'],
+      files: ['**/*.__markdown_content__'],
       languageOptions: {
         parser: pluginFormat.parserPlain,
       },
@@ -156,10 +155,16 @@ export async function formatters(
       rules: {
         [`format/${formater}`]: [
           'error',
-          {
-            ...prettierOptions,
-            [formater === 'dprint' ? 'language' : 'parser']: 'markdown',
-          },
+          formater === 'prettier'
+            ? {
+                ...prettierOptions,
+                embeddedLanguageFormatting: 'off',
+                parser: 'markdown',
+              }
+            : {
+                ...dprintOptions,
+                language: 'markdown',
+              },
         ],
       },
     })
