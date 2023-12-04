@@ -12,7 +12,6 @@ import {
   markdown,
   node,
   perfectionist,
-  prettier,
   react,
   sortPackageJson,
   sortTsconfig,
@@ -25,6 +24,7 @@ import {
   yaml,
 } from './configs'
 import { combine, interopDefault } from './utils'
+import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
   'files',
@@ -166,15 +166,20 @@ export async function antfu(
   }
 
   if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-      overrides: overrides.markdown,
-    }))
+    configs.push(
+      markdown(
+        {
+          componentExts,
+          overrides: overrides.markdown,
+        },
+        !!options.formatters?.markdown,
+      ),
+    )
   }
 
-  if (options.prettier) {
-    configs.push(prettier(
-      options.prettier,
+  if (options.formatters) {
+    configs.push(formatters(
+      options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
     ))
   }

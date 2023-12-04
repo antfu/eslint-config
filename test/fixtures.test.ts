@@ -55,6 +55,20 @@ runWithConfig(
   },
 )
 
+runWithConfig(
+  'with-formatters',
+  {
+    typescript: true,
+    vue: true,
+    formatters: {
+      css: true,
+      html: true,
+      markdown: true,
+      toml: 'dprint',
+    },
+  },
+)
+
 function runWithConfig(name: string, configs: OptionsConfig, ...items: FlatConfigItem[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')
