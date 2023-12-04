@@ -172,7 +172,7 @@ export async function antfu(
           componentExts,
           overrides: overrides.markdown,
         },
-        !!options.formatters?.markdown,
+        options.formatters === true || !!(options.formatters || {})?.markdown,
       ),
     )
   }

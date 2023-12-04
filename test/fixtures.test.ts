@@ -60,12 +60,7 @@ runWithConfig(
   {
     typescript: true,
     vue: true,
-    formatters: {
-      css: true,
-      html: true,
-      markdown: true,
-      toml: 'dprint',
-    },
+    formatters: true,
   },
 )
 

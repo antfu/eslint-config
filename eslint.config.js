@@ -11,11 +11,7 @@ export default antfu(
       'fixtures',
       '_fixtures',
     ],
-    formatters: {
-      css: true,
-      html: true,
-      markdown: true,
-    },
+    formatters: true,
   },
   {
     files: ['src/**/*.ts'],

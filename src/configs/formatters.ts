@@ -5,12 +5,22 @@ import type { FlatConfigItem, OptionsFormatters, StylisticConfig } from '../type
 import { StylisticConfigDefaults } from './stylistic'
 
 export async function formatters(
-  options: OptionsFormatters = {},
+  options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
     'eslint-plugin-format',
   ])
+
+  if (options === true) {
+    options = {
+      css: true,
+      graphql: true,
+      html: true,
+      markdown: true,
+      toml: true,
+    }
+  }
 
   const {
     indent,
@@ -165,6 +175,25 @@ export async function formatters(
                 ...dprintOptions,
                 language: 'markdown',
               },
+        ],
+      },
+    })
+  }
+
+  if (options.graphql) {
+    configs.push({
+      files: ['**/*.graphql'],
+      languageOptions: {
+        parser: pluginFormat.parserPlain,
+      },
+      name: 'antfu:formatter:graphql',
+      rules: {
+        'format/prettier': [
+          'error',
+          {
+            ...prettierOptions,
+            parser: 'graphql',
+          },
         ],
       },
     })

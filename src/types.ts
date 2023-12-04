@@ -110,6 +110,11 @@ export interface OptionsFormatters {
   markdown?: 'prettier' | 'dprint' | boolean
 
   /**
+   * Enable formatting support for GraphQL.
+   */
+  graphql?: 'prettier' | boolean
+
+  /**
    * Custom options for Prettier.
    *
    * By default it's controlled by our own config.
@@ -280,9 +285,11 @@ export interface OptionsConfig extends OptionsComponentExts {
    * Requires installing:
    * - `eslint-plugin-format`
    *
+   * When set to `true`, it will enable all formatters.
+   *
    * @default false
    */
-  formatters?: OptionsFormatters
+  formatters?: boolean | OptionsFormatters
 
   /**
    * Control to disable some rules in editors.
