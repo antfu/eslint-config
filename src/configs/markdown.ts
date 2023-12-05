@@ -21,9 +21,17 @@ export async function markdown(
   // but not the markdown file itself. In order to format the whole markdown file,
   // we need to create another virtual file for the markdown file itself.
   const processor: Linter.Processor = !formatMarkdown
-    ? baseProcessor
-    : {
+    ? {
+        meta: {
+          name: 'markdown-processor',
+        },
+        supportsAutofix: true,
         ...baseProcessor,
+      }
+    : {
+        meta: {
+          name: 'markdown-processor-with-content',
+        },
         postprocess(messages, filename) {
           const markdownContent = messages.pop()
           const codeSnippets = baseProcessor.postprocess(messages, filename)
@@ -42,6 +50,7 @@ export async function markdown(
             },
           ]
         },
+        supportsAutofix: true,
       }
 
   return [
