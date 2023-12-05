@@ -1,4 +1,4 @@
-import { GLOB_CSS, GLOB_LESS, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
+import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsFormatters, StylisticConfig } from '../types'
@@ -7,6 +7,7 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  markdownEnabled = true,
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
     'eslint-plugin-format',
@@ -154,10 +155,14 @@ export async function formatters(
   }
 
   if (options.markdown) {
-    const formater = options.markdown === true ? 'prettier' : options.markdown
+    const formater = options.markdown === true
+      ? 'prettier'
+      : options.markdown
 
     configs.push({
-      files: ['**/*.__markdown_content__'],
+      files: markdownEnabled
+        ? ['**/*.__markdown_content__']
+        : [GLOB_MARKDOWN],
       languageOptions: {
         parser: pluginFormat.parserPlain,
       },

@@ -244,7 +244,9 @@ export interface OptionsConfig extends OptionsComponentExts {
   yaml?: boolean
 
   /**
-   * Enable Markdown support.
+   * Enable linting for **code snippets** in Markdown.
+   *
+   * For formatting Markdown content, enable also `formatters.markdown`.
    *
    * @default true
    */
