@@ -76,7 +76,7 @@ it('ignores files added in eslint.config.js', async () => {
       "const antfu = require('@antfu/eslint-config').default
 
       module.exports = antfu({
-      ignores: [\\"some-path\\",\\"**/some-path/**\\",\\"some-file\\",\\"**/some-file/**\\"]
+      ignores: ["some-path","**/some-path/**","some-file","**/some-file/**"]
       })
       "
     `)
