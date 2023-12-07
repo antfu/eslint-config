@@ -173,6 +173,10 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
+export interface OptionsVue {
+  vue2?: boolean
+}
+
 export interface OptionsUnoCSS {
   /**
    * Enable attributify support.

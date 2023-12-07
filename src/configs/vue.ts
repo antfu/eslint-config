@@ -1,14 +1,15 @@
 import { interopDefault } from '../utils'
-import type { FlatConfigItem, OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic } from '../types'
+import type { FlatConfigItem, OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue } from '../types'
 import { GLOB_VUE } from '../globs'
 
 export async function vue(
-  options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
+  options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
 ): Promise<FlatConfigItem[]> {
   const {
     files = [GLOB_VUE],
     overrides = {},
     stylistic = true,
+    vue2 = false,
   } = options
 
   const {
@@ -50,9 +51,18 @@ export async function vue(
       processor: pluginVue.processors['.vue'],
       rules: {
         ...pluginVue.configs.base.rules as any,
-        ...pluginVue.configs['vue3-essential'].rules as any,
-        ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
-        ...pluginVue.configs['vue3-recommended'].rules as any,
+
+        ...vue2
+          ? {
+              ...pluginVue.configs['vue-essential'].rules as any,
+              ...pluginVue.configs['vue-strongly-recommended'].rules as any,
+              ...pluginVue.configs['vue-recommended'].rules as any,
+            }
+          : {
+              ...pluginVue.configs['vue3-essential'].rules as any,
+              ...pluginVue.configs['vue3-strongly-recommended'].rules as any,
+              ...pluginVue.configs['vue3-recommended'].rules as any,
+            },
 
         'node/prefer-global/process': 'off',
 
