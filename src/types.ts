@@ -245,7 +245,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  vue?: boolean
+  vue?: boolean | OptionsVue
 
   /**
    * Enable JSONC support.

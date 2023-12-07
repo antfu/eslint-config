@@ -4,7 +4,7 @@ import type { FlatConfigItem, OptionsFiles, OptionsHasTypeScript, OptionsOverrid
 import { GLOB_VUE } from '../globs'
 
 export async function vue(
-  options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles & OptionsVue = {},
+  options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
 ): Promise<FlatConfigItem[]> {
   const {
     files = [GLOB_VUE],
@@ -62,8 +62,8 @@ export async function vue(
           processorVueBlocks({
             ...sfcBlocks,
             blocks: {
-              ...sfcBlocks.blocks,
               styles: true,
+              ...sfcBlocks.blocks,
             },
           }),
         ]),
