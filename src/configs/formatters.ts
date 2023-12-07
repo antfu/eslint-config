@@ -34,6 +34,7 @@ export async function formatters(
 
   const prettierOptions: VendoredPrettierOptions = Object.assign(
     {
+      endOfLine: 'auto',
       semi,
       singleQuote: quotes === 'single',
       tabWidth: typeof indent === 'number' ? indent : 2,
