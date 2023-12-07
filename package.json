@@ -71,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "eslint-config-flat-gitignore": "^0.1.2",
+    "eslint-merge-processors": "^0.1.0",
     "eslint-parser-plain": "^0.1.0",
     "eslint-plugin-antfu": "^2.0.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -86,6 +87,7 @@
     "eslint-plugin-vitest": "^0.3.10",
     "eslint-plugin-vue": "^9.19.2",
     "eslint-plugin-yml": "^1.10.0",
+    "eslint-processor-vue-blocks": "^0.1.1",
     "globals": "^13.23.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
@@ -103,7 +105,7 @@
     "@stylistic/eslint-plugin-migrate": "^1.5.0",
     "@types/eslint": "^8.44.8",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.10.3",
+    "@types/node": "^20.10.4",
     "@types/prompts": "^2.4.9",
     "@types/yargs": "^17.0.32",
     "@unocss/eslint-plugin": "^0.58.0",
@@ -122,8 +124,9 @@
     "rimraf": "^5.0.5",
     "simple-git-hooks": "^2.9.0",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.2",
-    "vitest": "^1.0.1"
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.2",
+    "vue": "^3.3.10"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
