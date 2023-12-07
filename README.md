@@ -352,10 +352,27 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   formatters: {
-    css: true, // by default use Prettier
-    html: true, // by default use Prettier
-    toml: 'dprint', // use dprint for TOML
-    markdown: 'prettier' // use prettier for markdown
+    /**
+     * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
+     * By default uses Prettier
+     */
+    css: true,
+    /**
+     * Format HTML files
+     * By default uses Prettier
+     */
+    html: true,
+    /**
+     * Format TOML files
+     * Currently only supports dprint
+     */
+    toml: 'dprint',
+    /**
+     * Format Markdown files
+     * Supports Prettier and dprint
+     * By default uses Prettier
+     */
+    markdown: 'prettier'
   }
 })
 ```
