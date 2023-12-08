@@ -1,17 +1,15 @@
 import * as mdx from 'eslint-plugin-mdx'
 
-import type {
-  FlatConfigItem,
-  OptionsComponentExts,
-  OptionsFiles,
-  OptionsOverrides,
-} from '../types'
+import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
 ): Promise<FlatConfigItem[]> {
-  const { componentExts = [], overrides = {} } = options
+  const {
+    componentExts = [],
+    overrides = {},
+  } = options
 
   return [
     {
