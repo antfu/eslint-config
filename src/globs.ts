@@ -18,12 +18,14 @@ export const GLOB_JSON5 = '**/*.json5'
 export const GLOB_JSONC = '**/*.jsonc'
 
 export const GLOB_MARKDOWN = '**/*.md'
-export const GLOB_MARKDOWN_IN_MARKDOWN = '**/*.md/*.md'
+export const GLOB_MDX = '**/*.mdx'
+export const GLOB_MARKDOWN_OR_MDX = '**/*.mdx?'
+export const GLOB_MARKDOWN_OR_MDX_IN_MARKDOWN_OR_MDX = '**/*.mdx?/*.mdx?'
 export const GLOB_VUE = '**/*.vue'
 export const GLOB_YAML = '**/*.y?(a)ml'
 export const GLOB_HTML = '**/*.htm?(l)'
 
-export const GLOB_MARKDOWN_CODE = `${GLOB_MARKDOWN}/${GLOB_SRC}`
+export const GLOB_MARKDOWN_CODE = `${GLOB_MARKDOWN_OR_MDX}/${GLOB_SRC}`
 
 export const GLOB_TESTS = [
   `**/__tests__/**/*.${GLOB_SRC_EXT}`,
@@ -38,7 +40,7 @@ export const GLOB_ALL_SRC = [
   GLOB_STYLE,
   GLOB_JSON,
   GLOB_JSON5,
-  GLOB_MARKDOWN,
+  GLOB_MARKDOWN_OR_MDX,
   GLOB_VUE,
   GLOB_YAML,
   GLOB_HTML,

@@ -1,51 +1,36 @@
-import * as parserPlain from 'eslint-parser-plain'
-import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
-import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
-import { interopDefault } from '../utils'
+import * as mdx from 'eslint-plugin-mdx'
+
+import type {
+  FlatConfigItem,
+  OptionsComponentExts,
+  OptionsFiles,
+  OptionsOverrides,
+} from '../types'
+import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
 ): Promise<FlatConfigItem[]> {
-  const {
-    componentExts = [],
-    files = [GLOB_MARKDOWN],
-    overrides = {},
-  } = options
-
-  // @ts-expect-error missing types
-  const markdown = await interopDefault(import('eslint-plugin-markdown'))
+  const { componentExts = [], overrides = {} } = options
 
   return [
     {
-      name: 'antfu:markdown:setup',
-      plugins: {
-        markdown,
+      name: 'antfu:markdown-mdx',
+      ...(mdx.flat as FlatConfigItem),
+      processor: mdx.createRemarkProcessor({
+        lintCodeBlocks: true,
+      }),
+      rules: {
+        ...mdx.flat.rules,
+        'style/indent': 'off',
       },
     },
     {
-      files,
-      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
-      name: 'antfu:markdown:processor',
-      // `eslint-plugin-markdown` only creates virtual files for code blocks,
-      // but not the markdown file itself. We use `eslint-merge-processors` to
-      // add a pass-through processor for the markdown file itself.
-      processor: mergeProcessors([
-        markdown.processors.markdown,
-        processorPassThrough,
-      ]),
-    },
-    {
-      files,
-      languageOptions: {
-        parser: parserPlain,
-      },
-      name: 'antfu:markdown:parser',
-    },
-    {
+      name: 'antfu:markdown-mdx:code-blocks',
+      ...(mdx.flatCodeBlocks as FlatConfigItem),
       files: [
         GLOB_MARKDOWN_CODE,
-        ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`),
+        ...componentExts.map(ext => `${GLOB_MARKDOWN_OR_MDX}/**/*.${ext}`),
       ],
       languageOptions: {
         parserOptions: {
@@ -54,8 +39,9 @@ export async function markdown(
           },
         },
       },
-      name: 'antfu:markdown:disables',
       rules: {
+        ...mdx.flatCodeBlocks.rules,
+
         'import/newline-after-import': 'off',
 
         'no-alert': 'off',
