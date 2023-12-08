@@ -1,26 +1,17 @@
 import * as parserPlain from 'eslint-parser-plain'
-import {
-  GLOB_CSS,
-  GLOB_LESS,
-  GLOB_MARKDOWN,
-  GLOB_MDX,
-  GLOB_POSTCSS,
-  GLOB_SCSS,
-} from '../globs'
+import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_MDX, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault } from '../utils'
-import type {
-  FlatConfigItem,
-  OptionsFormatters,
-  StylisticConfig,
-} from '../types'
+import type { FlatConfigItem, OptionsFormatters, StylisticConfig } from '../types'
 import { StylisticConfigDefaults } from './stylistic'
 
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
-  await ensurePackages(['eslint-plugin-format'])
+  await ensurePackages([
+    'eslint-plugin-format',
+  ])
 
   if (options === true) {
     options = {
@@ -32,7 +23,11 @@ export async function formatters(
     }
   }
 
-  const { indent, quotes, semi } = {
+  const {
+    indent,
+    quotes,
+    semi,
+  } = {
     ...StylisticConfigDefaults,
     ...stylistic,
   }
@@ -161,7 +156,9 @@ export async function formatters(
   }
 
   if (options.markdown) {
-    const formatter = options.markdown === true ? 'prettier' : options.markdown
+    const formatter = options.markdown === true
+      ? 'prettier'
+      : options.markdown
 
     configs.push(
       {
