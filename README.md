@@ -78,7 +78,7 @@ export default antfu(
       'eslint:recommended',
       // Other extends...
     ],
-  })
+  }),
 
   // Other flat configs...
 )
@@ -370,6 +370,12 @@ export default antfu({
   /** Disable jsonc and yaml support */
   jsonc: false,
   yaml: false,
+
+  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+  ignores: [
+    './fixtures',
+    // ...globs
+  ],
 })
 ```
 
@@ -415,8 +421,6 @@ import {
   jsonc,
   markdown,
   node,
-  sortPackageJson,
-  sortTsconfig,
   stylistic,
   toml,
   typescript,
@@ -527,7 +531,7 @@ export default antfu(
     rules: {
       'style/semi': ['error', 'never'],
     },
-  }
+  },
 )
 ```
 
@@ -550,15 +554,8 @@ export default antfu({
     overrides: {
       'ts/consistent-type-definitions': ['error', 'interface'],
     },
-    /** type aware rules overrides should write here */
-    overridesTypeAware: {
-      'ts/no-unsafe-assignment': ['warn'],
-    }
-  },
-  yaml: {
-    overrides: {
-      // ...
-    },
+    yaml: {},
+    // ...
   },
 })
 ```
@@ -675,8 +672,8 @@ export default antfu({
      * Supports Prettier and dprint
      * By default uses Prettier
      */
-    markdown: 'prettier'
-  }
+    markdown: 'prettier',
+  },
 })
 ```
 
@@ -805,12 +802,13 @@ npm i -D @unocss/eslint-plugin
 To enable Angular support, you need to explicitly turn it on:
 
 ```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  angular: true,
-})
+/* eslint perfectionist/sort-objects: "error" */
+export const objectWantedToSort = {
+  a: 2,
+  b: 1,
+  c: 3,
+}
+/* eslint perfectionist/sort-objects: "off" */
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:

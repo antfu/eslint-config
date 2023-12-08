@@ -1,64 +1,36 @@
-import type { OptionsComponentExts, OptionsFiles, OptionsMarkdown, TypedFlatConfigItem } from '../types'
+import * as mdx from 'eslint-plugin-mdx'
 
-import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
-
-import { interopDefault } from '../utils'
+import type {
+  FlatConfigItem,
+  OptionsComponentExts,
+  OptionsFiles,
+  OptionsOverrides,
+} from '../types'
+import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
 export async function markdown(
-  options: OptionsFiles & OptionsComponentExts & OptionsMarkdown = {},
-): Promise<TypedFlatConfigItem[]> {
-  const {
-    componentExts = [],
-    files = [GLOB_MARKDOWN],
-    gfm = true,
-    overrides = {},
-    overridesMarkdown = {},
-  } = options
-
-  const markdown = await interopDefault(import('@eslint/markdown'))
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
+): Promise<FlatConfigItem[]> {
+  const { componentExts = [], overrides = {} } = options
 
   return [
     {
-      name: 'antfu/markdown/setup',
-      plugins: {
-        markdown,
-      },
-    },
-    {
-      files,
-      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
-      name: 'antfu/markdown/processor',
-      /**
-       * `eslint-plugin-markdown` only creates virtual files for code blocks,
-       * but not the markdown file itself. We use `eslint-merge-processors` to
-       * add a pass-through processor for the markdown file itself.
-       */
-      processor: mergeProcessors([
-        markdown.processors!.markdown,
-        processorPassThrough,
-      ]),
-    },
-    {
-      files,
-      language: gfm ? 'markdown/gfm' : 'markdown/commonmark',
-      name: 'antfu/markdown/parser',
-    },
-    {
-      files,
-      name: 'antfu/markdown/rules',
+      name: 'antfu:markdown-mdx',
+      ...(mdx.flat as FlatConfigItem),
+      processor: mdx.createRemarkProcessor({
+        lintCodeBlocks: true,
+      }),
       rules: {
-        ...markdown.configs.recommended.at(0)?.rules,
-        'markdown/fenced-code-language': 'off',
-        /** https://github.com/eslint/markdown/issues/294 */
-        'markdown/no-missing-label-refs': 'off',
-        ...overridesMarkdown,
+        ...mdx.flat.rules,
+        'style/indent': 'off',
       },
     },
     {
+      name: 'antfu:markdown-mdx:code-blocks',
+      ...(mdx.flatCodeBlocks as FlatConfigItem),
       files: [
         GLOB_MARKDOWN_CODE,
-        ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`),
+        ...componentExts.map(ext => `${GLOB_MARKDOWN_OR_MDX}/**/*.${ext}`),
       ],
       languageOptions: {
         parserOptions: {
@@ -67,11 +39,10 @@ export async function markdown(
           },
         },
       },
-      name: 'antfu/markdown/disables/code',
       rules: {
-        'antfu/no-top-level-await': 'off',
+        ...mdx.flatCodeBlocks.rules,
 
-        'e18e/prefer-static-regex': 'off',
+        'import/newline-after-import': 'off',
 
         'no-alert': 'off',
         'no-console': 'off',

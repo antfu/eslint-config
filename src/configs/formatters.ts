@@ -1,23 +1,35 @@
-import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types'
-import type { VendoredPrettierOptions, VendoredPrettierRuleOptions } from '../vender/prettier-types'
-
-import { isPackageExists } from 'local-pkg'
-import { GLOB_ASTRO, GLOB_ASTRO_TS, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_SVG, GLOB_XML } from '../globs'
-
-import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils'
+import * as parserPlain from 'eslint-parser-plain'
+import {
+  GLOB_CSS,
+  GLOB_LESS,
+  GLOB_MARKDOWN,
+  GLOB_MDX,
+  GLOB_POSTCSS,
+  GLOB_SCSS,
+} from '../globs'
+import type { VendoredPrettierOptions } from '../vender/prettier-types'
+import { ensurePackages, interopDefault } from '../utils'
+import type {
+  FlatConfigItem,
+  OptionsFormatters,
+  StylisticConfig,
+} from '../types'
 import { StylisticConfigDefaults } from './stylistic'
 
-function mergePrettierOptions(
-  options: VendoredPrettierOptions,
-  overrides: VendoredPrettierRuleOptions,
-): VendoredPrettierRuleOptions {
-  return {
-    ...options,
-    ...overrides,
-    plugins: [
-      ...(overrides.plugins || []),
-      ...(options.plugins || []),
-    ],
+export async function formatters(
+  options: OptionsFormatters | true = {},
+  stylistic: StylisticConfig = {},
+): Promise<FlatConfigItem[]> {
+  await ensurePackages(['eslint-plugin-format'])
+
+  if (options === true) {
+    options = {
+      css: true,
+      graphql: true,
+      html: true,
+      markdown: true,
+      toml: true,
+    }
   }
 }
 
@@ -260,11 +272,7 @@ export async function formatters(
   if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
     throw new Error('`slidev` option only works when `markdown` is enabled with `prettier`')
 
-  const {
-    indent,
-    quotes,
-    semi,
-  } = {
+  const { indent, quotes, semi } = {
     ...StylisticConfigDefaults,
     ...stylistic,
   }
@@ -324,11 +332,45 @@ export async function formatters(
   if (options.xml)
     configs.push(buildXmlLikeConfig(prettierOptions, prettierXmlOptions, [GLOB_XML], 'antfu/formatter/xml'))
 
-  if (options.svg)
-    configs.push(buildXmlLikeConfig(prettierOptions, prettierXmlOptions, [GLOB_SVG], 'antfu/formatter/svg'))
+  if (options.markdown) {
+    const formatter = options.markdown === true ? 'prettier' : options.markdown
 
-  if (options.markdown)
-    configs.push(...buildMarkdownConfigs(options, prettierOptions, dprintOptions))
+    configs.push(
+      {
+        files: [GLOB_MARKDOWN],
+        name: 'antfu:formatter:markdown',
+        rules: {
+          [`format/${formatter}`]: [
+            'error',
+            formatter === 'prettier'
+              ? {
+                  ...prettierOptions,
+                  embeddedLanguageFormatting: 'off',
+                  parser: 'markdown',
+                }
+              : {
+                  ...dprintOptions,
+                  language: 'markdown',
+                },
+          ],
+        },
+      },
+      {
+        files: [GLOB_MDX],
+        name: 'antfu:formatter:mdx',
+        rules: {
+          [`format/${formatter}`]: [
+            'error',
+            {
+              ...prettierOptions,
+              embeddedLanguageFormatting: 'off',
+              parser: 'mdx',
+            },
+          ],
+        },
+      },
+    )
+  }
 
   if (options.astro)
     configs.push(...buildAstroConfigs(prettierOptions))
