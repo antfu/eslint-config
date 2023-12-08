@@ -72,9 +72,9 @@ export async function vue(
 
         ...vueVersion === 2
           ? {
-              ...pluginVue.configs['vue-essential'].rules as any,
-              ...pluginVue.configs['vue-strongly-recommended'].rules as any,
-              ...pluginVue.configs['vue-recommended'].rules as any,
+              ...pluginVue.configs.essential.rules as any,
+              ...pluginVue.configs['strongly-recommended'].rules as any,
+              ...pluginVue.configs.recommended.rules as any,
             }
           : {
               ...pluginVue.configs['vue3-essential'].rules as any,
