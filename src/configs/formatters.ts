@@ -19,7 +19,6 @@ export async function formatters(
       graphql: true,
       html: true,
       markdown: true,
-      toml: true,
     }
   }
 
@@ -130,25 +129,6 @@ export async function formatters(
           {
             ...prettierOptions,
             parser: 'html',
-          },
-        ],
-      },
-    })
-  }
-
-  if (options.toml) {
-    configs.push({
-      files: ['**/*.toml'],
-      languageOptions: {
-        parser: parserPlain,
-      },
-      name: 'antfu:formatter:toml',
-      rules: {
-        'format/dprint': [
-          'error',
-          {
-            ...dprintOptions,
-            language: 'toml',
           },
         ],
       },

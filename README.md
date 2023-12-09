@@ -12,7 +12,7 @@
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
-- Optional [formatters](#formatters) support for CSS, HTML, TOML, etc.
+- Optional [formatters](#formatters) support for CSS, HTML, etc.
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
 > [!IMPORTANT]
@@ -366,11 +366,6 @@ export default antfu({
      */
     html: true,
     /**
-     * Format TOML files
-     * Currently only supports dprint
-     */
-    toml: 'dprint',
-    /**
      * Format Markdown files
      * Supports Prettier and dprint
      * By default uses Prettier
@@ -531,7 +526,7 @@ Well, you can still use Prettier to format files that are not supported well by 
 
 [dprint](https://dprint.dev/) is also a great formatter that with more abilities to customize. However, it's in the same model as Prettier which reads the AST and reprints the code from scratch. This means it's similar to Prettier, which ignores the original line breaks and might also cause the inconsistent diff. So in general, we prefer to use ESLint to format and lint JavaScript/TypeScript code.
 
-Meanwhile, we do have dprint integrations for formatting other files such as `.toml` and `.md`. See [formatters](#formatters) for more details.
+Meanwhile, we do have dprint integrations for formatting other files such as `.md`. See [formatters](#formatters) for more details.
 
 ### How to format CSS?
 

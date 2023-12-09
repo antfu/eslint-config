@@ -113,13 +113,6 @@ export interface OptionsFormatters {
   html?: 'prettier' | boolean
 
   /**
-   * Enable formatting support for TOML.
-   *
-   * Currently only support dprint.
-   */
-  toml?: 'dprint' | boolean
-
-  /**
    * Enable formatting support for Markdown.
    *
    * Support both Prettier and dprint.
