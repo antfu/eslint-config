@@ -39,7 +39,7 @@ export async function run(options: RuleOptions = {}) {
       message: 'There are uncommitted changes in the current repository, are you sure to continue?',
       name: 'confirmed',
       type: 'confirm',
-    }) 
+    })
     if (!confirmed)
       return process.exit(1)
   }
