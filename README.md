@@ -5,7 +5,7 @@
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Designed to work with TypeScript, JSX, Vue out-of-box
-- Lints also for json, yaml, markdown
+- Lints also for json, yaml, toml, markdown
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
 - Opinionated, but [very customizable](#customization)
@@ -143,7 +143,8 @@ Add the following settings to your `.vscode/settings.json`:
     "markdown",
     "json",
     "jsonc",
-    "yaml"
+    "yaml",
+    "toml"
   ]
 }
 ```
@@ -238,6 +239,7 @@ import {
   sortPackageJson,
   sortTsconfig,
   stylistic,
+  toml,
   typescript,
   unicorn,
   vue,
@@ -257,6 +259,7 @@ export default combine(
   vue(),
   jsonc(),
   yaml(),
+  toml(),
   markdown(),
 )
 ```
