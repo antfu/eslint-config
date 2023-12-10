@@ -46,6 +46,9 @@ const antfu = require('@antfu/eslint-config').default
 module.exports = antfu()
 ```
 
+> [!TIP]
+> ESLint only detects `eslint.config.js` as the flat config entry, meaning you need to put `type: module` in your `package.json` or you have to use CJS in `eslint.config.js`. If you want explicit extension like `.mjs` or `.cjs`, or even `eslint.config.ts`, you can install [`eslint-ts-patch`](https://github.com/antfu/eslint-ts-patch) to fix it.
+
 Combined with legacy config:
 
 ```js
