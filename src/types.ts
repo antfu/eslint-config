@@ -122,6 +122,13 @@ export interface OptionsFormatters {
   markdown?: 'prettier' | 'dprint' | boolean
 
   /**
+   * Enable formatting support for MDX.
+   *
+   * Currently only support Prettier.
+   */
+  mdx?: 'prettier' | boolean
+
+  /**
    * Enable formatting support for GraphQL.
    */
   graphql?: 'prettier' | boolean
