@@ -1,4 +1,3 @@
-import { GLOB_MARKDOWN_OR_MDX } from '../globs'
 import { interopDefault } from '../utils'
 import type { FlatConfigItem, StylisticConfig } from '../types'
 import { pluginAntfu } from '../plugins'
@@ -34,9 +33,6 @@ export async function stylistic(options: StylisticConfig = {}): Promise<FlatConf
 
   return [
     {
-      ignores: [
-        GLOB_MARKDOWN_OR_MDX,
-      ],
       name: 'antfu:stylistic',
       plugins: {
         antfu: pluginAntfu,

@@ -156,6 +156,9 @@ importers:
       eslint:
         specifier: npm:eslint-ts-patch@^8.55.0-1
         version: /eslint-ts-patch@8.55.0-1
+      eslint-factory:
+        specifier: ^0.0.2
+        version: 0.0.2(@types/eslint@8.44.8)(eslint-ts-patch@8.55.0-1)(typescript@5.3.3)
       eslint-flat-config-viewer:
         specifier: ^0.1.3
         version: 0.1.3
@@ -2305,6 +2308,20 @@ packages:
     dependencies:
       parse-gitignore: 2.0.0
     dev: false
+
+  /eslint-factory@0.0.2(@types/eslint@8.44.8)(eslint-ts-patch@8.55.0-1)(typescript@5.3.3):
+    resolution: {integrity: sha512-XMGK91oUPt/B8dl4pvwzM5EzXPlxtWteNoHwhiay5qOcqoYUIdYK37nAEu60KBrHCcgsMJ2AQ/HYi8gRDYbjqw==}
+    peerDependencies:
+      '@types/eslint': ^8.44.0
+      eslint: ^8.44.0
+    dependencies:
+      '@types/eslint': 8.44.8
+      '@typescript-eslint/utils': 6.13.2(eslint-ts-patch@8.55.0-1)(typescript@5.3.3)
+      eslint: /eslint-ts-patch@8.55.0-1
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   /eslint-flat-config-viewer@0.1.3:
     resolution: {integrity: sha512-Fk2FFMoHj6cDBFS4GRUk8ZCOV0yc3rS0tSy5Mb+Uq7ICxkItzgBsgyCIolKd95zeYKXAqzMibjIMjf7NW3sytA==}

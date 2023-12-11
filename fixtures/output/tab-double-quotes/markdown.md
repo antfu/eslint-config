@@ -27,7 +27,6 @@ Jane Roe|JFK|314
  + with a [link] (/to/somewhere)
 + and [another one]
 
-
   [another one]:  http://example.com 'Example title'
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.

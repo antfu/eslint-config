@@ -1,27 +1,26 @@
-import     {     Baz   } from     './Fixture'
+import { Baz } from './Fixture'
 
-export  const   foo    = {
-  hi:     `Fudge ${Baz.displayName || 'Baz'}`,
+export const foo = {
+  hi: `Fudge ${Baz.displayName || 'Baz'}`,
   authors: [
-     'fred',
-           'sally'
-    ]
+    'fred',
+    'sally',
+  ],
 }
 
 export const hello = 'hello'
 
 # Hello,    world!
 
-
  I'm an awesome   paragraph.
 
 { /* I'm a comment */ }
 
-<Foo bg='red'>
-      <Bar    >hi    </Bar>
-       {  hello       }
-       {     /* another comment */}
-</Foo>
+  <Foo bg="red">
+    <Bar>hi    </Bar>
+       { hello }
+       { /* another comment */}
+  </Foo>
 
 ```
 test codeblock
@@ -39,4 +38,4 @@ npm i -g foo
 |    :---     | :----  |
 |   Col1  | Col2    |
 
-export   default     ({children   }) => < div>{    children}</div>
+export default ({ children }) => <div>{ children}</div>
