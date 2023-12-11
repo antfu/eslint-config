@@ -1,3 +1,4 @@
+import { interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
@@ -9,13 +10,7 @@ export async function markdown(
     overrides = {},
   } = options
 
-  const [
-    mdx,
-    mdxParser,
-  ] = await Promise.all([
-    import('eslint-plugin-mdx'),
-    import('eslint-mdx'),
-  ])
+  const mdx = await interopDefault(import('eslint-plugin-mdx'))
 
   return [
     {
@@ -25,7 +20,7 @@ export async function markdown(
         globals: {
           React: false,
         },
-        parser: mdxParser,
+        parser: mdx.configs.flat.languageOptions!.parser,
         sourceType: 'module',
       },
       name: 'antfu:markdown-mdx:setup',
