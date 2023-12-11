@@ -13,14 +13,13 @@ export async function markdown(
     mdx,
     mdxParser,
   ] = await Promise.all([
-    // @ts-expect-error missing types
     import('eslint-plugin-mdx'),
     import('eslint-mdx'),
   ])
 
   return [
     {
-      files: ['**/*.{md,mdx}'],
+      files: [GLOB_MARKDOWN_OR_MDX],
       languageOptions: {
         ecmaVersion: 'latest',
         globals: {

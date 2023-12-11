@@ -19,7 +19,7 @@ export async function formatters(
       graphql: true,
       html: true,
       markdown: true,
-      toml: true,
+      mdx: true,
     }
   }
 }
@@ -332,41 +332,42 @@ export async function formatters(
       ? 'prettier'
       : options.markdown
 
-    configs.push(
-      {
-        files: [GLOB_MARKDOWN],
-        name: 'antfu:formatter:markdown',
-        rules: {
-          [`format/${formatter}`]: [
-            'error',
-            formatter === 'prettier'
-              ? {
-                  ...prettierOptions,
-                  embeddedLanguageFormatting: 'off',
-                  parser: 'markdown',
-                }
-              : {
-                  ...dprintOptions,
-                  language: 'markdown',
-                },
-          ],
-        },
+    configs.push({
+      files: [GLOB_MARKDOWN],
+      name: 'antfu:formatter:markdown',
+      rules: {
+        [`format/${formatter}`]: [
+          'error',
+          formatter === 'prettier'
+            ? {
+                ...prettierOptions,
+                embeddedLanguageFormatting: 'off',
+                parser: 'markdown',
+              }
+            : {
+                ...dprintOptions,
+                language: 'markdown',
+              },
+        ],
       },
-      {
-        files: [GLOB_MDX],
-        name: 'antfu:formatter:mdx',
-        rules: {
-          [`format/${formatter}`]: [
-            'error',
-            {
-              ...prettierOptions,
-              embeddedLanguageFormatting: 'off',
-              parser: 'mdx',
-            },
-          ],
-        },
+    })
+  }
+
+  if (options.mdx) {
+    configs.push({
+      files: [GLOB_MDX],
+      name: 'antfu:formatter:mdx',
+      rules: {
+        'format/prettier': [
+          'error',
+          {
+            ...prettierOptions,
+            embeddedLanguageFormatting: 'off',
+            parser: 'mdx',
+          },
+        ],
       },
-    )
+    })
   }
 
   if (options.astro)
