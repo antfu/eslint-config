@@ -8,6 +8,7 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  markdownParserEnabled = true,
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
     'eslint-plugin-format',
@@ -143,6 +144,9 @@ export async function formatters(
 
     configs.push({
       files: [GLOB_MARKDOWN],
+      languageOptions: markdownParserEnabled
+        ? {}
+        : { parser: parserPlain },
       name: 'antfu:formatter:markdown',
       rules: {
         [`format/${formatter}`]: [
@@ -165,6 +169,9 @@ export async function formatters(
   if (options.mdx) {
     configs.push({
       files: [GLOB_MDX],
+      languageOptions: markdownParserEnabled
+        ? {}
+        : { parser: parserPlain },
       name: 'antfu:formatter:mdx',
       rules: {
         'format/prettier': [

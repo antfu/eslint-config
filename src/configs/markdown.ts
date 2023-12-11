@@ -33,7 +33,6 @@ export async function markdown(
       rules: {
         'mdx/remark': 'warn',
         'no-unused-expressions': 'error',
-        'style/indent': 'off',
       },
     },
     {
