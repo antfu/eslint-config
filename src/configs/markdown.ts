@@ -1,3 +1,4 @@
+import type { Linter } from 'eslint'
 import { interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
@@ -11,6 +12,33 @@ export async function markdown(
   } = options
 
   const mdx = await interopDefault(import('eslint-plugin-mdx'))
+  const mdxParser = mdx.configs.flat.languageOptions!.parser!
+
+  const patchedParser: Linter.ParserModule = {
+    ...mdxParser,
+    parse(text, options) {
+      // @ts-expect-error cast
+      const result = mdxParser.parseForESLint!(text, options)
+      const body = result.ast.body
+
+      function predicate(token: { start: number, end: number }) {
+        for (const node of body) {
+          if (node.start <= token.start! && node.end >= token.end!)
+            return true
+        }
+        return false
+      }
+
+      // `eslint-mdx` produces extra tokens that are not presented in the AST, causing rules like `indent` to fail
+      result.ast.tokens = result.ast.tokens.filter(predicate)
+      result.ast.comments = result.ast.comments.filter(predicate)
+
+      return result
+    },
+  }
+
+  // @ts-expect-error cast
+  patchedParser.parseForESLint = patchedParser.parse
 
   return [
     {
@@ -20,7 +48,7 @@ export async function markdown(
         globals: {
           React: false,
         },
-        parser: mdx.configs.flat.languageOptions!.parser,
+        parser: patchedParser,
         sourceType: 'module',
       },
       name: 'antfu:markdown-mdx:setup',
@@ -33,6 +61,11 @@ export async function markdown(
       rules: {
         'mdx/remark': 'warn',
         'no-unused-expressions': 'error',
+
+        // Those rules are not compatible with MDX
+        // 'style/indent': 'off',
+        'style/jsx-closing-bracket-location': 'off',
+        // 'style/jsx-indent': 'off',
       },
     },
     {
