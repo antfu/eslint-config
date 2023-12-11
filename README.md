@@ -69,7 +69,7 @@ module.exports = antfu(
       'eslint:recommended',
       // Other extends...
     ],
-  }),
+  })
 
   // Other flat configs...
 )
@@ -193,7 +193,7 @@ export default antfu({
   ignores: [
     './fixtures',
     // ...globs
-  ],
+  ]
 })
 ```
 
@@ -239,6 +239,8 @@ import {
   jsonc,
   markdown,
   node,
+  sortPackageJson,
+  sortTsconfig,
   stylistic,
   toml,
   typescript,
@@ -315,7 +317,7 @@ export default antfu(
     rules: {
       'style/semi': ['error', 'never'],
     },
-  },
+  }
 )
 ```
 
@@ -335,7 +337,7 @@ export default antfu({
     },
     yaml: {},
     // ...
-  },
+  }
 })
 ```
 
@@ -371,8 +373,8 @@ export default antfu({
      * Supports Prettier and dprint
      * By default uses Prettier
      */
-    markdown: 'prettier',
-  },
+    markdown: 'prettier'
+  }
 })
 ```
 
@@ -434,7 +436,7 @@ It's recommended to opt-in on each file individually using [configuration commen
 
 ```js
 /* eslint perfectionist/sort-objects: "error" */
-export const objectWantedToSort = {
+const objectWantedToSort = {
   a: 2,
   b: 1,
   c: 3,
