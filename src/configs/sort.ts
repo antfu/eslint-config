@@ -74,11 +74,7 @@ export async function sortPackageJson(): Promise<FlatConfigItem[]> {
           },
           {
             order: { type: 'asc' },
-            pathPattern: '^resolutions$',
-          },
-          {
-            order: { type: 'asc' },
-            pathPattern: '^pnpm.overrides$',
+            pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$',
           },
           {
             order: [
