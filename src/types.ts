@@ -49,6 +49,7 @@ export type Rules = WrapRuleConfig<
     VueRules &
     UnicornRules &
     EslintCommentsRules &
+    // TODO: TOML rules
     {
       'test/no-only-tests': RuleConfig<[]>
     }
@@ -110,13 +111,6 @@ export interface OptionsFormatters {
    * Currently only support Prettier.
    */
   html?: 'prettier' | boolean
-
-  /**
-   * Enable formatting support for TOML.
-   *
-   * Currently only support dprint.
-   */
-  toml?: 'dprint' | boolean
 
   /**
    * Enable formatting support for Markdown.
@@ -262,6 +256,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   yaml?: boolean
 
   /**
+   * Enable TOML support.
+   *
+   * @default true
+   */
+  toml?: boolean
+
+  /**
    * Enable linting for **code snippets** in Markdown.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
@@ -328,6 +329,7 @@ export interface OptionsConfig extends OptionsComponentExts {
     jsonc?: FlatConfigItem['rules']
     markdown?: FlatConfigItem['rules']
     yaml?: FlatConfigItem['rules']
+    toml?: FlatConfigItem['rules']
     react?: FlatConfigItem['rules']
   }
 }
