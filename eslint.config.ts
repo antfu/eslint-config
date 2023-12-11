@@ -1,5 +1,6 @@
 // @ts-expect-error missing types
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
+import { createSimplePlugin } from 'eslint-factory'
 import antfu from './src'
 
 export default antfu(
@@ -28,4 +29,11 @@ export default antfu(
       'style-migrate/migrate': ['error', { namespaceTo: 'style' }],
     },
   },
+  createSimplePlugin({
+    name: 'debugging',
+    include: ['**/*.mdx'],
+    create(context) {
+      console.log(context.sourceCode.ast.tokens)
+    },
+  }),
 )

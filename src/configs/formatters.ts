@@ -1,5 +1,5 @@
 import * as parserPlain from 'eslint-parser-plain'
-import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
+import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_MDX, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault } from '../utils'
 import type { FlatConfigItem, OptionsFormatters, StylisticConfig } from '../types'
@@ -8,6 +8,7 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  markdownParserEnabled = true,
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
     'eslint-plugin-format',
@@ -19,6 +20,7 @@ export async function formatters(
       graphql: true,
       html: true,
       markdown: true,
+      mdx: true,
     }
   }
 
@@ -136,20 +138,20 @@ export async function formatters(
   }
 
   if (options.markdown) {
-    const formater = options.markdown === true
+    const formatter = options.markdown === true
       ? 'prettier'
       : options.markdown
 
     configs.push({
       files: [GLOB_MARKDOWN],
-      languageOptions: {
-        parser: parserPlain,
-      },
+      languageOptions: markdownParserEnabled
+        ? {}
+        : { parser: parserPlain },
       name: 'antfu:formatter:markdown',
       rules: {
-        [`format/${formater}`]: [
+        [`format/${formatter}`]: [
           'error',
-          formater === 'prettier'
+          formatter === 'prettier'
             ? {
                 ...prettierOptions,
                 embeddedLanguageFormatting: 'off',
@@ -159,6 +161,26 @@ export async function formatters(
                 ...dprintOptions,
                 language: 'markdown',
               },
+        ],
+      },
+    })
+  }
+
+  if (options.mdx) {
+    configs.push({
+      files: [GLOB_MDX],
+      languageOptions: markdownParserEnabled
+        ? {}
+        : { parser: parserPlain },
+      name: 'antfu:formatter:mdx',
+      rules: {
+        'format/prettier': [
+          'error',
+          {
+            ...prettierOptions,
+            embeddedLanguageFormatting: 'off',
+            parser: 'mdx',
+          },
         ],
       },
     })

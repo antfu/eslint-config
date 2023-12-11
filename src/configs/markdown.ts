@@ -1,51 +1,77 @@
-import * as parserPlain from 'eslint-parser-plain'
-import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
-import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
+import type { Linter } from 'eslint'
 import { interopDefault } from '../utils'
+import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
+import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
 ): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
-    files = [GLOB_MARKDOWN],
     overrides = {},
   } = options
 
-  // @ts-expect-error missing types
-  const markdown = await interopDefault(import('eslint-plugin-markdown'))
+  const mdx = await interopDefault(import('eslint-plugin-mdx'))
+  const mdxParser = mdx.configs.flat.languageOptions!.parser!
+
+  const patchedParser: Linter.ParserModule = {
+    ...mdxParser,
+    parse(text, options) {
+      // @ts-expect-error cast
+      const result = mdxParser.parseForESLint!(text, options)
+      const body = result.ast.body
+
+      function predicate(token: { start: number, end: number }) {
+        for (const node of body) {
+          if (node.start <= token.start! && node.end >= token.end!)
+            return true
+        }
+        return false
+      }
+
+      // `eslint-mdx` produces extra tokens that are not presented in the AST, causing rules like `indent` to fail
+      result.ast.tokens = result.ast.tokens.filter(predicate)
+      result.ast.comments = result.ast.comments.filter(predicate)
+
+      return result
+    },
+  }
+
+  // @ts-expect-error cast
+  patchedParser.parseForESLint = patchedParser.parse
 
   return [
     {
-      name: 'antfu:markdown:setup',
-      plugins: {
-        markdown,
-      },
-    },
-    {
-      files,
-      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
-      name: 'antfu:markdown:processor',
-      // `eslint-plugin-markdown` only creates virtual files for code blocks,
-      // but not the markdown file itself. We use `eslint-merge-processors` to
-      // add a pass-through processor for the markdown file itself.
-      processor: mergeProcessors([
-        markdown.processors.markdown,
-        processorPassThrough,
-      ]),
-    },
-    {
-      files,
+      files: [GLOB_MARKDOWN_OR_MDX],
       languageOptions: {
-        parser: parserPlain,
+        ecmaVersion: 'latest',
+        globals: {
+          React: false,
+        },
+        parser: patchedParser,
+        sourceType: 'module',
       },
-      name: 'antfu:markdown:parser',
+      name: 'antfu:markdown-mdx:setup',
+      plugins: {
+        mdx,
+      },
+      processor: mdx.createRemarkProcessor({
+        lintCodeBlocks: true,
+      }),
+      rules: {
+        'mdx/remark': 'warn',
+        'no-unused-expressions': 'error',
+
+        // Those rules are not compatible with MDX
+        // 'style/indent': 'off',
+        'style/jsx-closing-bracket-location': 'off',
+        // 'style/jsx-indent': 'off',
+      },
     },
     {
       files: [
         GLOB_MARKDOWN_CODE,
-        ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`),
+        ...componentExts.map(ext => `${GLOB_MARKDOWN_OR_MDX}/**/*.${ext}`),
       ],
       languageOptions: {
         parserOptions: {
@@ -54,7 +80,7 @@ export async function markdown(
           },
         },
       },
-      name: 'antfu:markdown:disables',
+      name: 'antfu:markdown-mdx:code-blocks',
       rules: {
         'import/newline-after-import': 'off',
 
