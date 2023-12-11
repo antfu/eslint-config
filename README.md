@@ -78,7 +78,7 @@ export default antfu(
       'eslint:recommended',
       // Other extends...
     ],
-  }),
+  })
 
   // Other flat configs...
 )
@@ -375,7 +375,7 @@ export default antfu({
   ignores: [
     './fixtures',
     // ...globs
-  ],
+  ]
 })
 ```
 
@@ -421,6 +421,8 @@ import {
   jsonc,
   markdown,
   node,
+  sortPackageJson,
+  sortTsconfig,
   stylistic,
   toml,
   typescript,
@@ -531,7 +533,7 @@ export default antfu(
     rules: {
       'style/semi': ['error', 'never'],
     },
-  },
+  }
 )
 ```
 
@@ -556,7 +558,7 @@ export default antfu({
     },
     yaml: {},
     // ...
-  },
+  }
 })
 ```
 
@@ -672,8 +674,8 @@ export default antfu({
      * Supports Prettier and dprint
      * By default uses Prettier
      */
-    markdown: 'prettier',
-  },
+    markdown: 'prettier'
+  }
 })
 ```
 
@@ -803,7 +805,7 @@ To enable Angular support, you need to explicitly turn it on:
 
 ```js
 /* eslint perfectionist/sort-objects: "error" */
-export const objectWantedToSort = {
+const objectWantedToSort = {
   a: 2,
   b: 1,
   c: 3,
