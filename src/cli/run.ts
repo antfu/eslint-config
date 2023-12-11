@@ -30,11 +30,19 @@ export async function run(options: RuleOptions = {}) {
 
   if (fs.existsSync(pathFlatConfig)) {
     console.log(c.yellow(`${WARN} eslint.config.js already exists, migration wizard exited.`))
-    return
+    return process.exit(1)
   }
 
-  if (!SKIP_GIT_CHECK && !isGitClean())
-    throw new Error('There are uncommitted changes in the current repository, please commit them and try again')
+  if (!SKIP_GIT_CHECK && !isGitClean()) {
+    const { confirmed } = await prompts({
+      initial: false,
+      message: 'There are uncommitted changes in the current repository, are you sure to continue?',
+      name: 'confirmed',
+      type: 'confirm',
+    })
+    if (!confirmed)
+      return process.exit(1)
+  }
 
   // Update package.json
   console.log(c.cyan(`${ARROW} bumping @antfu/eslint-config to v${version}`))
