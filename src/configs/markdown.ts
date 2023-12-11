@@ -1,5 +1,3 @@
-import * as mdx from 'eslint-plugin-mdx'
-
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
@@ -11,21 +9,40 @@ export async function markdown(
     overrides = {},
   } = options
 
+  const [
+    mdx,
+    mdxParser,
+  ] = await Promise.all([
+    // @ts-expect-error missing types
+    import('eslint-plugin-mdx'),
+    import('eslint-mdx'),
+  ])
+
   return [
     {
-      name: 'antfu:markdown-mdx',
-      ...(mdx.flat as FlatConfigItem),
+      files: ['**/*.{md,mdx}'],
+      languageOptions: {
+        ecmaVersion: 'latest',
+        globals: {
+          React: false,
+        },
+        parser: mdxParser,
+        sourceType: 'module',
+      },
+      name: 'antfu:markdown-mdx:setup',
+      plugins: {
+        mdx,
+      },
       processor: mdx.createRemarkProcessor({
         lintCodeBlocks: true,
       }),
       rules: {
-        ...mdx.flat.rules,
+        'mdx/remark': 'warn',
+        'no-unused-expressions': 'error',
         'style/indent': 'off',
       },
     },
     {
-      name: 'antfu:markdown-mdx:code-blocks',
-      ...(mdx.flatCodeBlocks as FlatConfigItem),
       files: [
         GLOB_MARKDOWN_CODE,
         ...componentExts.map(ext => `${GLOB_MARKDOWN_OR_MDX}/**/*.${ext}`),
@@ -37,9 +54,8 @@ export async function markdown(
           },
         },
       },
+      name: 'antfu:markdown-mdx:code-blocks',
       rules: {
-        ...mdx.flatCodeBlocks.rules,
-
         'import/newline-after-import': 'off',
 
         'no-alert': 'off',
