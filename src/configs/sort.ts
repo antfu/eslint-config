@@ -70,7 +70,7 @@ export async function sortPackageJson(): Promise<FlatConfigItem[]> {
           },
           {
             order: { type: 'asc' },
-            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
           },
           {
             order: { type: 'asc' },
