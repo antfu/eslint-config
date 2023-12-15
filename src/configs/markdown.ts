@@ -1,8 +1,7 @@
-import * as parserPlain from 'eslint-parser-plain'
 import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
 import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
 import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
-import { interopDefault } from '../utils'
+import { interopDefault, parserPlain } from '../utils'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
