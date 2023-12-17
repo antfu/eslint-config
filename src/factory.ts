@@ -16,6 +16,7 @@ import {
   sortPackageJson,
   sortTsconfig,
   stylistic,
+  svelte,
   test,
   toml,
   typescript,
@@ -58,6 +59,7 @@ export async function antfu(
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     overrides = {},
     react: enableReact = false,
+    svelte: enableSvelte = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
@@ -141,6 +143,14 @@ export async function antfu(
   if (enableReact) {
     configs.push(react({
       overrides: overrides.react,
+      typescript: !!enableTypeScript,
+    }))
+  }
+
+  if (enableSvelte) {
+    configs.push(svelte({
+      overrides: overrides.svelte,
+      stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
   }
