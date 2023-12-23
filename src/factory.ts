@@ -24,7 +24,7 @@ import {
   vue,
   yaml,
 } from './configs'
-import { combine, interopDefault } from './utils'
+import { combine, getOptions, interopDefault } from './utils'
 import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
@@ -56,7 +56,6 @@ export async function antfu(
     componentExts = [],
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
-    overrides = {},
     react: enableReact = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
     unocss: enableUnoCSS = false,
@@ -88,7 +87,7 @@ export async function antfu(
     ignores(),
     javascript({
       isInEditor,
-      overrides: overrides.javascript,
+      overrides: options.javascript?.overrides,
     }),
     comments(),
     node(),
@@ -113,7 +112,6 @@ export async function antfu(
         ? enableTypeScript
         : {},
       componentExts,
-      overrides: overrides.typescript,
     }))
   }
 
@@ -123,7 +121,7 @@ export async function antfu(
   if (options.test ?? true) {
     configs.push(test({
       isInEditor,
-      overrides: overrides.test,
+      overrides: getOptions(options.test)?.overrides,
     }))
   }
 
@@ -132,7 +130,6 @@ export async function antfu(
       ...typeof enableVue !== 'boolean'
         ? enableVue
         : {},
-      overrides: overrides.vue,
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
@@ -140,7 +137,7 @@ export async function antfu(
 
   if (enableReact) {
     configs.push(react({
-      overrides: overrides.react,
+      overrides: getOptions(enableReact)?.overrides,
       typescript: !!enableTypeScript,
     }))
   }
@@ -154,7 +151,7 @@ export async function antfu(
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: overrides.jsonc,
+        overrides: getOptions(options.jsonc)?.overrides,
         stylistic: stylisticOptions,
       }),
       sortPackageJson(),
@@ -164,14 +161,14 @@ export async function antfu(
 
   if (options.yaml ?? true) {
     configs.push(yaml({
-      overrides: overrides.yaml,
+      overrides: getOptions(options.yaml)?.overrides,
       stylistic: stylisticOptions,
     }))
   }
 
   if (options.toml ?? true) {
     configs.push(toml({
-      overrides: overrides.toml,
+      overrides: getOptions(options.toml)?.overrides,
       stylistic: stylisticOptions,
     }))
   }
@@ -181,7 +178,7 @@ export async function antfu(
       markdown(
         {
           componentExts,
-          overrides: overrides.markdown,
+          overrides: getOptions(options.markdown)?.overrides,
         },
       ),
     )

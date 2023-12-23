@@ -80,7 +80,7 @@ export interface OptionsFiles {
   files?: string[]
 }
 
-export interface OptionsVue {
+export interface OptionsVue extends OptionsOverrides {
   /**
    * Create virtual files for Vue SFC blocks to enable linting.
    *
@@ -96,6 +96,10 @@ export interface OptionsVue {
    */
   vueVersion?: 2 | 3
 }
+
+export type OptionsTypescript =
+  (OptionsTypeScriptWithTypes & OptionsOverrides)
+  | (OptionsTypeScriptParserOptions & OptionsOverrides)
 
 export interface OptionsFormatters {
   /**
@@ -200,6 +204,10 @@ export interface OptionsUnoCSS {
 
 export interface OptionsConfig extends OptionsComponentExts {
   /**
+   * javascript rules
+   */
+  javascript?: OptionsOverrides
+  /**
    * Enable gitignore support.
    *
    * Passing an object to configure the options.
@@ -216,7 +224,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default auto-detect based on the dependencies
    */
-  typescript?: boolean | OptionsTypeScriptWithTypes | OptionsTypeScriptParserOptions
+  typescript?: boolean | OptionsTypescript
 
   /**
    * Enable JSX related rules.
@@ -232,7 +240,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  test?: boolean
+  test?: boolean | OptionsOverrides
 
   /**
    * Enable Vue support.
@@ -246,21 +254,21 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  jsonc?: boolean
+  jsonc?: boolean | OptionsOverrides
 
   /**
    * Enable YAML support.
    *
    * @default true
    */
-  yaml?: boolean
+  yaml?: boolean | OptionsOverrides
 
   /**
    * Enable TOML support.
    *
    * @default true
    */
-  toml?: boolean
+  toml?: boolean | OptionsOverrides
 
   /**
    * Enable linting for **code snippets** in Markdown.
@@ -269,7 +277,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default true
    */
-  markdown?: boolean
+  markdown?: boolean | OptionsOverrides
 
   /**
    * Enable stylistic rules.
@@ -288,7 +296,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    *
    * @default false
    */
-  react?: boolean
+  react?: boolean | OptionsOverrides
 
   /**
    * Enable unocss rules.
@@ -317,19 +325,4 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default auto-detect based on the process.env
    */
   isInEditor?: boolean
-
-  /**
-   * Provide overrides for rules for each integration.
-   */
-  overrides?: {
-    javascript?: FlatConfigItem['rules']
-    typescript?: FlatConfigItem['rules']
-    test?: FlatConfigItem['rules']
-    vue?: FlatConfigItem['rules']
-    jsonc?: FlatConfigItem['rules']
-    markdown?: FlatConfigItem['rules']
-    yaml?: FlatConfigItem['rules']
-    toml?: FlatConfigItem['rules']
-    react?: FlatConfigItem['rules']
-  }
 }
