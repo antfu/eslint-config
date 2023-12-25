@@ -291,6 +291,16 @@ export interface OptionsConfig extends OptionsComponentExts {
   react?: boolean
 
   /**
+   * Enable svelte rules.
+   *
+   * Requires installing:
+   * - `eslint-plugin-svelte`
+   *
+   * @default false
+   */
+  svelte?: boolean
+
+  /**
    * Enable unocss rules.
    *
    * Requires installing:
@@ -331,5 +341,6 @@ export interface OptionsConfig extends OptionsComponentExts {
     yaml?: FlatConfigItem['rules']
     toml?: FlatConfigItem['rules']
     react?: FlatConfigItem['rules']
+    svelte?: FlatConfigItem['rules']
   }
 }
