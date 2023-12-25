@@ -1,6 +1,6 @@
 import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
-import type { Awaitable, OptionsOverrides, UserConfigItem } from './types'
+import type { Awaitable, UserConfigItem } from './types'
 
 export const parserPlain = {
   meta: {
