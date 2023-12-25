@@ -1,7 +1,6 @@
 import process from 'node:process'
 import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
-import { g } from 'vitest/dist/suite-dF4WyktM.js'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
 import {
   comments,
@@ -120,7 +119,7 @@ export async function antfu(
   if (stylisticOptions) {
     configs.push(stylistic({
       ...stylisticOptions,
-      overrides: overrides.stylistic,
+      overrides: getOverrides(options, 'stylistic'),
     }))
   }
 
@@ -148,7 +147,7 @@ export async function antfu(
 
   if (enableSvelte) {
     configs.push(svelte({
-      overrides: overrides.svelte,
+      overrides: getOverrides(options, 'svelte'),
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
