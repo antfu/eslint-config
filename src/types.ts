@@ -160,6 +160,12 @@ export interface OptionsTypeScriptParserOptions {
    * Additional parser options for TypeScript.
    */
   parserOptions?: Partial<ParserOptions>
+
+  /**
+   * Glob patterns for files that should be type aware.
+   * @default ['**\/*.{ts,tsx}']
+   */
+  filesTypeAware?: string[]
 }
 
 export interface OptionsTypeScriptWithTypes {
@@ -300,6 +306,16 @@ export interface OptionsConfig extends OptionsComponentExts {
   react?: boolean | OptionsOverrides
 
   /**
+   * Enable svelte rules.
+   *
+   * Requires installing:
+   * - `eslint-plugin-svelte`
+   *
+   * @default false
+   */
+  svelte?: boolean
+
+  /**
    * Enable unocss rules.
    *
    * Requires installing:
@@ -333,6 +349,7 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @deprecated use `overrides` option in each integration key instead
    */
   overrides?: {
+    stylistic?: FlatConfigItem['rules']
     javascript?: FlatConfigItem['rules']
     typescript?: FlatConfigItem['rules']
     test?: FlatConfigItem['rules']
@@ -342,5 +359,6 @@ export interface OptionsConfig extends OptionsComponentExts {
     yaml?: FlatConfigItem['rules']
     toml?: FlatConfigItem['rules']
     react?: FlatConfigItem['rules']
+    svelte?: FlatConfigItem['rules']
   }
 }
