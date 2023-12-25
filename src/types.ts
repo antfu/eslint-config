@@ -189,7 +189,7 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
-export interface OptionsUnoCSS {
+export interface OptionsUnoCSS extends OptionsOverrides {
   /**
    * Enable attributify support.
    * @default true
@@ -204,10 +204,6 @@ export interface OptionsUnoCSS {
 
 export interface OptionsConfig extends OptionsComponentExts {
   /**
-   * javascript rules
-   */
-  javascript?: OptionsOverrides
-  /**
    * Enable gitignore support.
    *
    * Passing an object to configure the options.
@@ -216,6 +212,11 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   gitignore?: boolean | FlatGitignoreOptions
+
+  /**
+   * Core rules. Can't be disabled.
+   */
+  javascript?: OptionsOverrides
 
   /**
    * Enable TypeScript support.
@@ -325,4 +326,21 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default auto-detect based on the process.env
    */
   isInEditor?: boolean
+
+  /**
+   * Provide overrides for rules for each integration.
+   *
+   * @deprecated use `overrides` option in each integration key instead
+   */
+  overrides?: {
+    javascript?: FlatConfigItem['rules']
+    typescript?: FlatConfigItem['rules']
+    test?: FlatConfigItem['rules']
+    vue?: FlatConfigItem['rules']
+    jsonc?: FlatConfigItem['rules']
+    markdown?: FlatConfigItem['rules']
+    yaml?: FlatConfigItem['rules']
+    toml?: FlatConfigItem['rules']
+    react?: FlatConfigItem['rules']
+  }
 }

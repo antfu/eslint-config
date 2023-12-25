@@ -1,6 +1,7 @@
 import process from 'node:process'
 import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
+import { g } from 'vitest/dist/suite-dF4WyktM.js'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
 import {
   comments,
@@ -24,7 +25,7 @@ import {
   vue,
   yaml,
 } from './configs'
-import { combine, getOptions, interopDefault } from './utils'
+import { combine, interopDefault } from './utils'
 import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
@@ -67,6 +68,7 @@ export async function antfu(
     : typeof options.stylistic === 'object'
       ? options.stylistic
       : {}
+
   if (stylisticOptions && !('jsx' in stylisticOptions))
     stylisticOptions.jsx = options.jsx ?? true
 
@@ -87,7 +89,7 @@ export async function antfu(
     ignores(),
     javascript({
       isInEditor,
-      overrides: options.javascript?.overrides,
+      overrides: getOverrides(options, 'javascript'),
     }),
     comments(),
     node(),
@@ -108,9 +110,7 @@ export async function antfu(
 
   if (enableTypeScript) {
     configs.push(typescript({
-      ...typeof enableTypeScript !== 'boolean'
-        ? enableTypeScript
-        : {},
+      ...resolveSubOptions(options, 'typescript'),
       componentExts,
     }))
   }
@@ -121,15 +121,13 @@ export async function antfu(
   if (options.test ?? true) {
     configs.push(test({
       isInEditor,
-      overrides: getOptions(options.test)?.overrides,
+      overrides: getOverrides(options, 'test'),
     }))
   }
 
   if (enableVue) {
     configs.push(vue({
-      ...typeof enableVue !== 'boolean'
-        ? enableVue
-        : {},
+      ...resolveSubOptions(options, 'vue'),
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
@@ -137,21 +135,22 @@ export async function antfu(
 
   if (enableReact) {
     configs.push(react({
-      overrides: getOptions(enableReact)?.overrides,
+      overrides: getOverrides(options, 'react'),
       typescript: !!enableTypeScript,
     }))
   }
 
   if (enableUnoCSS) {
-    configs.push(unocss(
-      typeof enableUnoCSS === 'boolean' ? {} : enableUnoCSS,
-    ))
+    configs.push(unocss({
+      ...resolveSubOptions(options, 'unocss'),
+      overrides: getOverrides(options, 'unocss'),
+    }))
   }
 
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
-        overrides: getOptions(options.jsonc)?.overrides,
+        overrides: getOverrides(options, 'jsonc'),
         stylistic: stylisticOptions,
       }),
       sortPackageJson(),
@@ -161,14 +160,14 @@ export async function antfu(
 
   if (options.yaml ?? true) {
     configs.push(yaml({
-      overrides: getOptions(options.yaml)?.overrides,
+      overrides: getOverrides(options, 'yaml'),
       stylistic: stylisticOptions,
     }))
   }
 
   if (options.toml ?? true) {
     configs.push(toml({
-      overrides: getOptions(options.toml)?.overrides,
+      overrides: getOverrides(options, 'toml'),
       stylistic: stylisticOptions,
     }))
   }
@@ -178,7 +177,7 @@ export async function antfu(
       markdown(
         {
           componentExts,
-          overrides: getOptions(options.markdown)?.overrides,
+          overrides: getOverrides(options, 'markdown'),
         },
       ),
     )
@@ -207,4 +206,30 @@ export async function antfu(
   )
 
   return merged
+}
+
+export type ResolvedOptions<T> = T extends boolean
+  ? never
+  : NonNullable<T>
+
+export function resolveSubOptions<K extends keyof OptionsConfig>(
+  options: OptionsConfig,
+  key: K,
+): ResolvedOptions<OptionsConfig[K]> {
+  return typeof options[key] === 'boolean'
+    ? {} as any
+    : options[key] || {}
+}
+
+export function getOverrides<K extends keyof OptionsConfig>(
+  options: OptionsConfig,
+  key: K,
+) {
+  const sub = resolveSubOptions(options, key)
+  return {
+    ...(options.overrides as any)?.[key],
+    ...'overrides' in sub
+      ? sub.overrides
+      : {},
+  }
 }

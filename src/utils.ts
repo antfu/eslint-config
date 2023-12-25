@@ -70,7 +70,3 @@ export async function ensurePackages(packages: string[]) {
   if (result)
     await import('@antfu/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }))
 }
-
-export function getOptions(options?: OptionsOverrides | boolean) {
-  return typeof options !== 'boolean' ? options : {}
-}
