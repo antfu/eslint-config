@@ -305,7 +305,10 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 import antfu from '@antfu/eslint-config'
 
 export default antfu(
-  { vue: true, typescript: true },
+  {
+    vue: true,
+    typescript: true
+  },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
     files: ['**/*.vue'],
@@ -322,23 +325,28 @@ export default antfu(
 )
 ```
 
-We also provided an `overrides` options to make it easier:
+We also provided a `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  overrides: {
-    vue: {
+  vue: {
+    overrides: {
       'vue/operator-linebreak': ['error', 'before'],
     },
-    typescript: {
+  },
+  typescript: {
+    overrides: {
       'ts/consistent-type-definitions': ['error', 'interface'],
     },
-    yaml: {},
-    // ...
-  }
+  },
+  yaml: {
+    overrides: {
+      // ...
+    },
+  },
 })
 ```
 
@@ -444,7 +452,7 @@ npm i -D @unocss/eslint-plugin
 
 ### Optional Rules
 
-This config also provides some optional plugins/rules for extended usages.
+This config also provides some optional plugins/rules for extended usage.
 
 #### `perfectionist` (sorting)
 
