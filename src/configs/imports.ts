@@ -15,6 +15,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<FlatConfi
       },
       rules: {
         'antfu/import-dedupe': 'error',
+        'antfu/no-import-dist': 'error',
         'antfu/no-import-node-modules-by-path': 'error',
 
         'import/first': 'error',
