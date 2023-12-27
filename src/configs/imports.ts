@@ -1,5 +1,7 @@
+import { off } from 'node:process'
 import type { FlatConfigItem, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
+import { GLOB_SRC_EXT } from '../globs'
 
 export async function imports(options: OptionsStylistic = {}): Promise<FlatConfigItem[]> {
   const {
@@ -31,6 +33,14 @@ export async function imports(options: OptionsStylistic = {}): Promise<FlatConfi
               'import/newline-after-import': ['error', { considerComments: true, count: 1 }],
             }
           : {},
+      },
+    },
+    {
+      files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
+      name: 'antfu:imports:bin',
+      rules: {
+        'antfu/no-import-dist': 'off',
+        'antfu/no-import-node-modules-by-path': 'off',
       },
     },
   ]
