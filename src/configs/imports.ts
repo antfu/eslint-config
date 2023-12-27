@@ -1,4 +1,3 @@
-import { off } from 'node:process'
 import type { FlatConfigItem, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
 import { GLOB_SRC_EXT } from '../globs'
