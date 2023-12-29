@@ -506,6 +506,9 @@ and then
 
 ```bash
 npm i -D lint-staged simple-git-hooks
+
+// to active the hooks
+npx simple-git-hooks
 ```
 
 ## View what rules are enabled
