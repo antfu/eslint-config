@@ -19,6 +19,7 @@ runWithConfig('js', {
 runWithConfig('all', {
   typescript: true,
   vue: true,
+  svelte: true,
 })
 runWithConfig('no-style', {
   typescript: true,
