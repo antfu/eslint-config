@@ -47,6 +47,7 @@ export async function svelte(
         },
       },
       name: 'antfu:svelte:rules',
+      processor: pluginSvelte.processors['.svelte'],
       rules: {
         'import/no-mutable-exports': 'off',
         'no-undef': 'off', // incompatible with most recent (attribute-form) generic types RFC
