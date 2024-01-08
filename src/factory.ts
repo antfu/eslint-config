@@ -113,6 +113,7 @@ export async function antfu(
     configs.push(typescript({
       ...resolveSubOptions(options, 'typescript'),
       componentExts,
+      overrides: getOverrides(options, 'typescript'),
     }))
   }
 
@@ -133,6 +134,7 @@ export async function antfu(
   if (enableVue) {
     configs.push(vue({
       ...resolveSubOptions(options, 'vue'),
+      overrides: getOverrides(options, 'vue'),
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
     }))
