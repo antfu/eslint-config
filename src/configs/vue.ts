@@ -83,12 +83,14 @@ export async function vue(
             },
 
         'node/prefer-global/process': 'off',
-
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],
+
         'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
+        // this is deprecated
+        'vue/component-tags-order': 'off',
         'vue/custom-event-name-casing': ['error', 'camelCase'],
         'vue/define-macros-order': ['error', {
           order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],

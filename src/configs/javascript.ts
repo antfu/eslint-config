@@ -32,10 +32,8 @@ export async function javascript(
         },
         sourceType: 'module',
       },
-      overrideConfig: {
-        linterOptions: {
-          reportUnusedDisableDirectives: true,
-        },
+      linterOptions: {
+        reportUnusedDisableDirectives: true,
       },
       name: 'antfu:javascript',
       plugins: {
@@ -92,7 +90,6 @@ export async function javascript(
         'no-multi-str': 'error',
         'no-new': 'error',
         'no-new-func': 'error',
-        'no-new-object': 'error',
         'no-new-symbol': 'error',
         'no-new-wrappers': 'error',
         'no-obj-calls': 'error',
