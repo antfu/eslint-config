@@ -5,6 +5,7 @@ import type { Linter } from 'eslint'
 import type {
   EslintCommentsRules,
   EslintRules,
+  FlatESLintConfigItem,
   ImportRules,
   JsoncRules,
   MergeIntersection,
@@ -55,7 +56,7 @@ export type Rules = WrapRuleConfig<
   >
 >
 
-export type FlatConfigItem = Omit<Linter.FlatConfig, 'plugins'> & {
+export type FlatConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
   /**
    * Custom name of each config item
    */
