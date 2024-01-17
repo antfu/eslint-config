@@ -32,8 +32,10 @@ export async function javascript(
         },
         sourceType: 'module',
       },
-      linterOptions: {
-        reportUnusedDisableDirectives: true,
+      overrideConfig: {
+        linterOptions: {
+          reportUnusedDisableDirectives: true,
+        },
       },
       name: 'antfu:javascript',
       plugins: {
