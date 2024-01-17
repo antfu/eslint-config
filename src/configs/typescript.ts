@@ -19,6 +19,10 @@ export async function typescript(
   ]
 
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
+  const tsconfigPath = options?.tsconfigPath
+    ? toArray(options.tsconfigPath)
+    : undefined
+  const isTypeAware = !!tsconfigPath
 
   const typeAwareRules: FlatConfigItem['rules'] = {
     'dot-notation': 'off',
@@ -42,10 +46,6 @@ export async function typescript(
     'ts/unbound-method': 'error',
   }
 
-  const tsconfigPath = options?.tsconfigPath
-    ? toArray(options.tsconfigPath)
-    : undefined
-
   const [
     pluginTs,
     parserTs,
@@ -53,6 +53,28 @@ export async function typescript(
     interopDefault(import('@typescript-eslint/eslint-plugin')),
     interopDefault(import('@typescript-eslint/parser')),
   ] as const)
+
+  function makeParser(typeAware: boolean, files: string[], ignores?: string[]): FlatConfigItem {
+    return {
+      files,
+      ...ignores ? { ignores } : {},
+      languageOptions: {
+        parser: parserTs,
+        parserOptions: {
+          extraFileExtensions: componentExts.map(ext => `.${ext}`),
+          sourceType: 'module',
+          ...typeAware
+            ? {
+                project: tsconfigPath,
+                tsconfigRootDir: process.cwd(),
+              }
+            : {},
+          ...parserOptions as any,
+        },
+      },
+      name: `antfu:typescript:${typeAware ? 'type-aware-parser' : 'parser'}`,
+    }
+  }
 
   return [
     {
@@ -63,22 +85,15 @@ export async function typescript(
         ts: pluginTs as any,
       },
     },
+    // assign type-aware parser for type-aware files and type-unaware parser for the rest
+    ...isTypeAware
+      ? [
+          makeParser(true, filesTypeAware),
+          makeParser(false, files, filesTypeAware),
+        ]
+      : [makeParser(false, files)],
     {
       files,
-      languageOptions: {
-        parser: parserTs,
-        parserOptions: {
-          extraFileExtensions: componentExts.map(ext => `.${ext}`),
-          sourceType: 'module',
-          ...tsconfigPath
-            ? {
-                project: tsconfigPath,
-                tsconfigRootDir: process.cwd(),
-              }
-            : {},
-          ...parserOptions as any,
-        },
-      },
       name: 'antfu:typescript:rules',
       rules: {
         ...renameRules(
