@@ -88,6 +88,7 @@ export async function svelte(
 
         ...stylistic
           ? {
+              'style/indent': 'off', // superseded by svelte/indent
               'style/no-trailing-spaces': 'off', // superseded by svelte/no-trailing-spaces
               'svelte/derived-has-same-inputs-outputs': 'error',
               'svelte/html-closing-bracket-spacing': 'error',
