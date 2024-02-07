@@ -57,7 +57,7 @@ export async function antfu(
   const {
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((process.env.VSCODE_PID || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
+    isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     react: enableReact = false,
     svelte: enableSvelte = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
