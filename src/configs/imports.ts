@@ -1,9 +1,10 @@
-import type { FlatConfigItem, OptionsStylistic } from '../types'
+import type { FlatConfigItem, OptionsIsInEditor, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
 import { GLOB_SRC_EXT } from '../globs'
 
-export async function imports(options: OptionsStylistic = {}): Promise<FlatConfigItem[]> {
+export async function imports(options: OptionsIsInEditor & OptionsStylistic = {}): Promise<FlatConfigItem[]> {
   const {
+    isInEditor = false,
     stylistic = true,
   } = options
 
@@ -26,6 +27,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<FlatConfi
         'import/no-self-import': 'error',
         'import/no-webpack-loader-syntax': 'error',
         'import/order': 'error',
+        'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
 
         ...stylistic
           ? {

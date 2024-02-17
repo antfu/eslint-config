@@ -90,7 +90,6 @@ export async function antfu(
   configs.push(
     ignores(),
     javascript({
-      isInEditor,
       overrides: getOverrides(options, 'javascript'),
     }),
     comments(),
@@ -99,6 +98,7 @@ export async function antfu(
       stylistic: stylisticOptions,
     }),
     imports({
+      isInEditor,
       stylistic: stylisticOptions,
     }),
     unicorn(),
