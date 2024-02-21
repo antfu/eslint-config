@@ -132,6 +132,7 @@ export async function typescript(
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
+        'unused-imports/no-unused-imports-ts': 'error',
         ...overrides,
       },
     },
