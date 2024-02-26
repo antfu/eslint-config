@@ -1,11 +1,11 @@
-import type { ConfigItem } from '../types'
+import type { FlatConfigItem } from '../types'
 
 /**
  * Sort package.json
  *
  * Requires `jsonc` config
  */
-export function sortPackageJson(): ConfigItem[] {
+export async function sortPackageJson(): Promise<FlatConfigItem[]> {
   return [
     {
       files: ['**/package.json'],
@@ -70,15 +70,11 @@ export function sortPackageJson(): ConfigItem[] {
           },
           {
             order: { type: 'asc' },
-            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+            pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies(Meta)?$',
           },
           {
             order: { type: 'asc' },
-            pathPattern: '^resolutions$',
-          },
-          {
-            order: { type: 'asc' },
-            pathPattern: '^pnpm.overrides$',
+            pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$',
           },
           {
             order: [
@@ -100,7 +96,7 @@ export function sortPackageJson(): ConfigItem[] {
  * Requires `jsonc` config
  */
 
-export function sortTsconfig(): ConfigItem[] {
+export function sortTsconfig(): FlatConfigItem[] {
   return [
     {
       files: ['**/tsconfig.json', '**/tsconfig.*.json'],

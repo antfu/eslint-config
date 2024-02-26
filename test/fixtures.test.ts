@@ -3,7 +3,7 @@ import { afterAll, beforeAll, it } from 'vitest'
 import fs from 'fs-extra'
 import { execa } from 'execa'
 import fg from 'fast-glob'
-import type { ConfigItem, OptionsConfig } from '../src/types'
+import type { FlatConfigItem, OptionsConfig } from '../src/types'
 
 beforeAll(async () => {
   await fs.rm('_fixtures', { recursive: true, force: true })
@@ -19,20 +19,29 @@ runWithConfig('js', {
 runWithConfig('all', {
   typescript: true,
   vue: true,
+  svelte: true,
 })
 runWithConfig('no-style', {
   typescript: true,
   vue: true,
   stylistic: false,
 })
-runWithConfig('tab-double-quotes', {
-  typescript: true,
-  vue: true,
-  stylistic: {
-    indent: 'tab',
-    quotes: 'double',
+runWithConfig(
+  'tab-double-quotes',
+  {
+    typescript: true,
+    vue: true,
+    stylistic: {
+      indent: 'tab',
+      quotes: 'double',
+    },
   },
-})
+  {
+    rules: {
+      'style/no-mixed-spaces-and-tabs': 'off',
+    },
+  },
+)
 
 // https://github.com/antfu/eslint-config/issues/255
 runWithConfig(
@@ -47,7 +56,28 @@ runWithConfig(
   },
 )
 
-function runWithConfig(name: string, configs: OptionsConfig, ...items: ConfigItem[]) {
+runWithConfig(
+  'with-formatters',
+  {
+    typescript: true,
+    vue: true,
+    formatters: true,
+  },
+)
+
+runWithConfig(
+  'no-markdown-with-formatters',
+  {
+    jsx: false,
+    vue: false,
+    markdown: false,
+    formatters: {
+      markdown: true,
+    },
+  },
+)
+
+function runWithConfig(name: string, configs: OptionsConfig, ...items: FlatConfigItem[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')
     const output = resolve('fixtures/output', name)
@@ -82,10 +112,14 @@ export default antfu(
     })
 
     await Promise.all(files.map(async (file) => {
-      let content = await fs.readFile(join(target, file), 'utf-8')
+      const content = await fs.readFile(join(target, file), 'utf-8')
       const source = await fs.readFile(join(from, file), 'utf-8')
-      if (content === source)
-        content = '// unchanged\n'
+      const outputPath = join(output, file)
+      if (content === source) {
+        if (fs.existsSync(outputPath))
+          fs.remove(outputPath)
+        return
+      }
       await expect.soft(content).toMatchFileSnapshot(join(output, file))
     }))
   }, 30_000)

@@ -1,24 +1,45 @@
-import type { ConfigItem, OptionsComponentExts, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE } from '../globs'
-import { pluginMarkdown } from '../plugins'
+import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
+import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from '../globs'
+import { interopDefault, parserPlain } from '../utils'
 
-export function markdown(options: OptionsComponentExts & OptionsOverrides = {}): ConfigItem[] {
+export async function markdown(
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
+): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
+    files = [GLOB_MARKDOWN],
     overrides = {},
   } = options
+
+  // @ts-expect-error missing types
+  const markdown = await interopDefault(import('eslint-plugin-markdown'))
 
   return [
     {
       name: 'antfu:markdown:setup',
       plugins: {
-        markdown: pluginMarkdown,
+        markdown,
       },
     },
     {
-      files: [GLOB_MARKDOWN],
+      files,
+      ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
       name: 'antfu:markdown:processor',
-      processor: 'markdown/markdown',
+      // `eslint-plugin-markdown` only creates virtual files for code blocks,
+      // but not the markdown file itself. We use `eslint-merge-processors` to
+      // add a pass-through processor for the markdown file itself.
+      processor: mergeProcessors([
+        markdown.processors.markdown,
+        processorPassThrough,
+      ]),
+    },
+    {
+      files,
+      languageOptions: {
+        parser: parserPlain,
+      },
+      name: 'antfu:markdown:parser',
     },
     {
       files: [
@@ -32,22 +53,24 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
           },
         },
       },
-      name: 'antfu:markdown:rules',
+      name: 'antfu:markdown:disables',
       rules: {
-        'antfu/no-cjs-exports': 'off',
-        'antfu/no-ts-export-equal': 'off',
+        'import/newline-after-import': 'off',
 
         'no-alert': 'off',
         'no-console': 'off',
+        'no-labels': 'off',
+        'no-lone-blocks': 'off',
+        'no-restricted-syntax': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
+        'no-unused-labels': 'off',
         'no-unused-vars': 'off',
 
         'node/prefer-global/process': 'off',
-
         'style/comma-dangle': 'off',
-        'style/eol-last': 'off',
 
+        'style/eol-last': 'off',
         'ts/consistent-type-imports': 'off',
         'ts/no-namespace': 'off',
         'ts/no-redeclare': 'off',

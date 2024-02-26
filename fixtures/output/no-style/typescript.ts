@@ -77,3 +77,4 @@ const fn = (): string => {
 }
 
 log(car1, car2, favoriteFruit, numericValue, fn())
+

@@ -1,7 +1,8 @@
-import type { ConfigItem, OptionsStylistic } from '../types'
+import type { FlatConfigItem, OptionsStylistic } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
+import { GLOB_SRC_EXT } from '../globs'
 
-export function imports(options: OptionsStylistic = {}): ConfigItem[] {
+export async function imports(options: OptionsStylistic = {}): Promise<FlatConfigItem[]> {
   const {
     stylistic = true,
   } = options
@@ -15,6 +16,7 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
       },
       rules: {
         'antfu/import-dedupe': 'error',
+        'antfu/no-import-dist': 'error',
         'antfu/no-import-node-modules-by-path': 'error',
 
         'import/first': 'error',
@@ -30,6 +32,14 @@ export function imports(options: OptionsStylistic = {}): ConfigItem[] {
               'import/newline-after-import': ['error', { considerComments: true, count: 1 }],
             }
           : {},
+      },
+    },
+    {
+      files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
+      name: 'antfu:imports:bin',
+      rules: {
+        'antfu/no-import-dist': 'off',
+        'antfu/no-import-node-modules-by-path': 'off',
       },
     },
   ]

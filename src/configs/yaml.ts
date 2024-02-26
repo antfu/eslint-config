@@ -1,11 +1,12 @@
-import type { ConfigItem, OptionsOverrides, OptionsStylistic } from '../types'
+import type { FlatConfigItem, OptionsFiles, OptionsOverrides, OptionsStylistic } from '../types'
 import { GLOB_YAML } from '../globs'
-import { parserYaml, pluginYaml } from '../plugins'
+import { interopDefault } from '../utils'
 
-export function yaml(
-  options: OptionsOverrides & OptionsStylistic = {},
-): ConfigItem[] {
+export async function yaml(
+  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
+): Promise<FlatConfigItem[]> {
   const {
+    files = [GLOB_YAML],
     overrides = {},
     stylistic = true,
   } = options
@@ -15,15 +16,23 @@ export function yaml(
     quotes = 'single',
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
+  const [
+    pluginYaml,
+    parserYaml,
+  ] = await Promise.all([
+    interopDefault(import('eslint-plugin-yml')),
+    interopDefault(import('yaml-eslint-parser')),
+  ] as const)
+
   return [
     {
       name: 'antfu:yaml:setup',
       plugins: {
-        yaml: pluginYaml as any,
+        yaml: pluginYaml,
       },
     },
     {
-      files: [GLOB_YAML],
+      files,
       languageOptions: {
         parser: parserYaml,
       },

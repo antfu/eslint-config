@@ -1,20 +1,22 @@
-// @ts-check
+// @ts-expect-error missing types
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import antfu from './dist/index.js'
+import antfu from './src'
 
 export default antfu(
   {
     vue: true,
+    // react: true,
     typescript: true,
     ignores: [
       'fixtures',
       '_fixtures',
     ],
+    formatters: true,
   },
   {
     files: ['src/**/*.ts'],
     rules: {
-      'sort-keys/sort-keys-fix': 'error',
+      'perfectionist/sort-objects': 'error',
     },
   },
   {

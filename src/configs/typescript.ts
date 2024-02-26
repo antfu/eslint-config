@@ -1,20 +1,30 @@
 import process from 'node:process'
-import type { ConfigItem, OptionsComponentExts, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
-import { GLOB_SRC } from '../globs'
-import { parserTs, pluginAntfu, pluginImport, pluginTs } from '../plugins'
-import { renameRules } from '../utils'
+import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
+import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import { pluginAntfu } from '../plugins'
+import { interopDefault, renameRules, toArray } from '../utils'
 
-export function typescript(
-  options?: OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions,
-): ConfigItem[] {
+export async function typescript(
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
+): Promise<FlatConfigItem[]> {
   const {
     componentExts = [],
     overrides = {},
     parserOptions = {},
-    tsconfigPath,
-  } = options ?? {}
+  } = options
 
-  const typeAwareRules: ConfigItem['rules'] = {
+  const files = options.files ?? [
+    GLOB_SRC,
+    ...componentExts.map(ext => `**/*.${ext}`),
+  ]
+
+  const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
+  const tsconfigPath = options?.tsconfigPath
+    ? toArray(options.tsconfigPath)
+    : undefined
+  const isTypeAware = !!tsconfigPath
+
+  const typeAwareRules: FlatConfigItem['rules'] = {
     'dot-notation': 'off',
     'no-implied-eval': 'off',
     'no-throw-literal': 'off',
@@ -36,35 +46,54 @@ export function typescript(
     'ts/unbound-method': 'error',
   }
 
-  return [
-    {
-      // Install the plugins without globs, so they can be configured separately.
-      name: 'antfu:typescript:setup',
-      plugins: {
-        antfu: pluginAntfu,
-        import: pluginImport,
-        ts: pluginTs as any,
-      },
-    },
-    {
-      files: [
-        GLOB_SRC,
-        ...componentExts.map(ext => `**/*.${ext}`),
-      ],
+  const [
+    pluginTs,
+    parserTs,
+  ] = await Promise.all([
+    interopDefault(import('@typescript-eslint/eslint-plugin')),
+    interopDefault(import('@typescript-eslint/parser')),
+  ] as const)
+
+  function makeParser(typeAware: boolean, files: string[], ignores?: string[]): FlatConfigItem {
+    return {
+      files,
+      ...ignores ? { ignores } : {},
       languageOptions: {
         parser: parserTs,
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: 'module',
-          ...tsconfigPath
+          ...typeAware
             ? {
-                project: [tsconfigPath],
+                project: tsconfigPath,
                 tsconfigRootDir: process.cwd(),
               }
             : {},
           ...parserOptions as any,
         },
       },
+      name: `antfu:typescript:${typeAware ? 'type-aware-parser' : 'parser'}`,
+    }
+  }
+
+  return [
+    {
+      // Install the plugins without globs, so they can be configured separately.
+      name: 'antfu:typescript:setup',
+      plugins: {
+        antfu: pluginAntfu,
+        ts: pluginTs as any,
+      },
+    },
+    // assign type-aware parser for type-aware files and type-unaware parser for the rest
+    ...isTypeAware
+      ? [
+          makeParser(true, filesTypeAware),
+          makeParser(false, files, filesTypeAware),
+        ]
+      : [makeParser(false, files)],
+    {
+      files,
       name: 'antfu:typescript:rules',
       rules: {
         ...renameRules(
@@ -77,13 +106,7 @@ export function typescript(
           '@typescript-eslint/',
           'ts/',
         ),
-
-        'antfu/generic-spacing': 'error',
-        'antfu/named-tuple-spacing': 'error',
-        'antfu/no-cjs-exports': 'error',
-
         'no-dupe-class-members': 'off',
-        'no-invalid-this': 'off',
         'no-loss-of-precision': 'off',
         'no-redeclare': 'off',
         'no-use-before-define': 'off',
@@ -92,12 +115,12 @@ export function typescript(
         'ts/ban-types': ['error', { types: { Function: false } }],
         'ts/consistent-type-definitions': ['error', 'interface'],
         'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
+        'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         'ts/no-dupe-class-members': 'error',
         'ts/no-dynamic-delete': 'off',
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'error',
-        'ts/no-invalid-this': 'error',
         'ts/no-invalid-void-type': 'off',
         'ts/no-loss-of-precision': 'error',
         'ts/no-non-null-assertion': 'off',
@@ -109,7 +132,13 @@ export function typescript(
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
-
+        ...overrides,
+      },
+    },
+    {
+      files: filesTypeAware,
+      name: 'antfu:typescript:rules-type-aware',
+      rules: {
         ...tsconfigPath ? typeAwareRules : {},
         ...overrides,
       },

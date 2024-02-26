@@ -1,9 +1,11 @@
 import globals from 'globals'
-import type { ConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
+import type { FlatConfigItem, OptionsIsInEditor, OptionsOverrides } from '../types'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
-export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): ConfigItem[] {
+export async function javascript(
+  options: OptionsIsInEditor & OptionsOverrides = {},
+): Promise<FlatConfigItem[]> {
   const {
     isInEditor = false,
     overrides = {},
@@ -42,7 +44,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
         'array-callback-return': 'error',
-        'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
         'block-scoped-var': 'error',
         'constructor-super': 'error',
         'default-case-last': 'error',
@@ -80,7 +81,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-implied-eval': 'error',
         'no-import-assign': 'error',
         'no-invalid-regexp': 'error',
-        'no-invalid-this': 'error',
         'no-irregular-whitespace': 'error',
         'no-iterator': 'error',
         'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
@@ -90,7 +90,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-multi-str': 'error',
         'no-new': 'error',
         'no-new-func': 'error',
-        'no-new-object': 'error',
         'no-new-symbol': 'error',
         'no-new-wrappers': 'error',
         'no-obj-calls': 'error',
@@ -158,7 +157,6 @@ export function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): 
         'no-useless-rename': 'error',
         'no-useless-return': 'error',
         'no-var': 'error',
-        'no-void': 'error',
         'no-with': 'error',
         'object-shorthand': [
           'error',

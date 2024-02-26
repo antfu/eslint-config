@@ -24,7 +24,7 @@ const people = [
 ];
 
 // Use the forEach method to iterate over the array
-people.forEach((person) => {
+people.forEach(person => {
   person.sayHello();
 });
 
@@ -60,3 +60,13 @@ log(`${number} is ${isEven(number) ? 'even' : 'odd'}.`);
 setTimeout(() => {
   log('This code runs after a delay of 2 seconds.');
 }, 2000);
+
+let a, b, c,   d,   foo
+
+if (a 
+  || b 
+      || c || d
+        || (d && b)
+        ) {
+          foo()
+        }
