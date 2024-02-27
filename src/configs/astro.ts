@@ -8,6 +8,7 @@ export async function astro(
   const {
     files = [GLOB_ASTRO],
     overrides = {},
+    stylistic = true,
   } = options
 
   const [
@@ -38,6 +39,10 @@ export async function astro(
       rules: {
         'astro/no-set-html-directive': 'off',
         'astro/semi': 'off',
+
+        ...stylistic
+          ? {}
+          : {},
 
         ...overrides,
       },
