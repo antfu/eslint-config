@@ -146,8 +146,12 @@ export interface OptionsFormatters {
 
   /**
    * Install the prettier plugin for handle Slidev markdown
+   *
+   * Only works when `markdown` is enabled with `prettier`.
    */
-  slidev?: 'prettier' | boolean
+  slidev?: boolean | {
+    files?: string[]
+  }
 }
 
 export interface OptionsComponentExts {

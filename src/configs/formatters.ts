@@ -24,6 +24,9 @@ export async function formatters(
     options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
   ])
 
+  if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
+    throw new Error('`slidev` option only works when `markdown` is enabled with `prettier`')
+
   const {
     indent,
     quotes,
@@ -142,8 +145,11 @@ export async function formatters(
       ? 'prettier'
       : options.markdown
 
-    const hasSlidev = formater === 'prettier' && options.slidev
-    const GLOB_SLIDEV = hasSlidev ? ['**/slides.md'] : []
+    const GLOB_SLIDEV = !options.slidev
+      ? []
+      : options.slidev === true
+        ? ['**/slides.md']
+        : options.slidev.files
 
     configs.push({
       files: [GLOB_MARKDOWN],
@@ -170,7 +176,7 @@ export async function formatters(
       },
     })
 
-    if (hasSlidev) {
+    if (options.slidev) {
       configs.push({
         files: GLOB_SLIDEV,
         languageOptions: {
