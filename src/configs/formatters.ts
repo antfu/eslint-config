@@ -1,3 +1,4 @@
+import { isPackageExists } from 'local-pkg'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault, parserPlain } from '../utils'
@@ -8,18 +9,20 @@ export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
-  await ensurePackages([
-    'eslint-plugin-format',
-  ])
-
   if (options === true) {
     options = {
       css: true,
       graphql: true,
       html: true,
       markdown: true,
+      slidev: isPackageExists('@slidev/cli'),
     }
   }
+
+  await ensurePackages([
+    'eslint-plugin-format',
+    options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
+  ])
 
   const {
     indent,
@@ -139,8 +142,12 @@ export async function formatters(
       ? 'prettier'
       : options.markdown
 
+    const hasSlidev = formater === 'prettier' && options.slidev
+    const GLOB_SLIDEV = hasSlidev ? ['**/slides.md'] : []
+
     configs.push({
       files: [GLOB_MARKDOWN],
+      ignores: GLOB_SLIDEV,
       languageOptions: {
         parser: parserPlain,
       },
@@ -162,6 +169,30 @@ export async function formatters(
         ],
       },
     })
+
+    if (hasSlidev) {
+      configs.push({
+        files: GLOB_SLIDEV,
+        languageOptions: {
+          parser: parserPlain,
+        },
+        name: 'antfu:formatter:slidev',
+        rules: {
+          'format/prettier': [
+            'error',
+            {
+              printWidth: 120,
+              ...prettierOptions,
+              embeddedLanguageFormatting: 'off',
+              parser: 'slidev',
+              plugins: [
+                'prettier-plugin-slidev',
+              ],
+            },
+          ],
+        },
+      })
+    }
   }
 
   if (options.graphql) {

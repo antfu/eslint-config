@@ -143,6 +143,11 @@ export interface OptionsFormatters {
    * By default it's controlled by our own config.
    */
   dprintOptions?: boolean
+
+  /**
+   * Install the prettier plugin for handle Slidev markdown
+   */
+  slidev?: 'prettier' | boolean
 }
 
 export interface OptionsComponentExts {
