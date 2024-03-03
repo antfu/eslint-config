@@ -117,13 +117,6 @@ export interface OptionsFormatters {
   html?: 'prettier' | boolean
 
   /**
-   * Enable formatting support for ASTRO.
-   *
-   * Currently only support Prettier.
-   */
-  astro?: 'prettier' | boolean
-
-  /**
    * Enable formatting support for Markdown.
    *
    * Support both Prettier and dprint.
