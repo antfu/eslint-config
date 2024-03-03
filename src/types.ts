@@ -287,6 +287,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   toml?: boolean | OptionsOverrides
 
   /**
+   * Enable ASTRO support.
+   *
+   * @default true
+   */
+  astro?: boolean | OptionsOverrides
+
+  /**
    * Enable linting for **code snippets** in Markdown.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
