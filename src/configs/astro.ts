@@ -14,9 +14,11 @@ export async function astro(
   const [
     pluginAstro,
     parserAstro,
+    parserTs,
   ] = await Promise.all([
     interopDefault(import('eslint-plugin-astro')),
     interopDefault(import('astro-eslint-parser')),
+    interopDefault(import('@typescript-eslint/parser')),
   ] as const)
 
   return [
@@ -32,7 +34,7 @@ export async function astro(
         parser: parserAstro,
         parserOptions: {
           extraFileExtensions: ['.astro'],
-          parser: await interopDefault(import('@typescript-eslint/parser')) as any,
+          parser: parserTs as any,
         },
       },
       name: 'antfu:astro:rules',
