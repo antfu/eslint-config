@@ -1,3 +1,4 @@
+import { isPackageExists } from 'local-pkg'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault, parserPlain } from '../utils'
@@ -8,18 +9,23 @@ export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
 ): Promise<FlatConfigItem[]> {
-  await ensurePackages([
-    'eslint-plugin-format',
-  ])
-
   if (options === true) {
     options = {
       css: true,
       graphql: true,
       html: true,
       markdown: true,
+      slidev: isPackageExists('@slidev/cli'),
     }
   }
+
+  await ensurePackages([
+    'eslint-plugin-format',
+    options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
+  ])
+
+  if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
+    throw new Error('`slidev` option only works when `markdown` is enabled with `prettier`')
 
   const {
     indent,
@@ -139,8 +145,15 @@ export async function formatters(
       ? 'prettier'
       : options.markdown
 
+    const GLOB_SLIDEV = !options.slidev
+      ? []
+      : options.slidev === true
+        ? ['**/slides.md']
+        : options.slidev.files
+
     configs.push({
       files: [GLOB_MARKDOWN],
+      ignores: GLOB_SLIDEV,
       languageOptions: {
         parser: parserPlain,
       },
@@ -162,6 +175,30 @@ export async function formatters(
         ],
       },
     })
+
+    if (options.slidev) {
+      configs.push({
+        files: GLOB_SLIDEV,
+        languageOptions: {
+          parser: parserPlain,
+        },
+        name: 'antfu:formatter:slidev',
+        rules: {
+          'format/prettier': [
+            'error',
+            {
+              printWidth: 120,
+              ...prettierOptions,
+              embeddedLanguageFormatting: 'off',
+              parser: 'slidev',
+              plugins: [
+                'prettier-plugin-slidev',
+              ],
+            },
+          ],
+        },
+      })
+    }
   }
 
   if (options.graphql) {
