@@ -51,11 +51,11 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
   return (resolved as any).default || resolved
 }
 
-export async function ensurePackages(packages: string[]) {
+export async function ensurePackages(packages: (string | undefined)[]) {
   if (process.env.CI || process.stdout.isTTY === false)
     return
 
-  const nonExistingPackages = packages.filter(i => !isPackageExists(i))
+  const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[]
   if (nonExistingPackages.length === 0)
     return
 
