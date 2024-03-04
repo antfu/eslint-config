@@ -143,6 +143,15 @@ export interface OptionsFormatters {
    * By default it's controlled by our own config.
    */
   dprintOptions?: boolean
+
+  /**
+   * Install the prettier plugin for handle Slidev markdown
+   *
+   * Only works when `markdown` is enabled with `prettier`.
+   */
+  slidev?: boolean | {
+    files?: string[]
+  }
 }
 
 export interface OptionsComponentExts {
@@ -276,6 +285,13 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default true
    */
   toml?: boolean | OptionsOverrides
+
+  /**
+   * Enable ASTRO support.
+   *
+   * @default true
+   */
+  astro?: boolean | OptionsOverrides
 
   /**
    * Enable linting for **code snippets** in Markdown.
