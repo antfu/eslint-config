@@ -62,6 +62,7 @@ runWithConfig(
   {
     typescript: true,
     vue: true,
+    astro: true,
     formatters: true,
   },
 )

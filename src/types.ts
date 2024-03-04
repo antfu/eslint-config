@@ -152,6 +152,13 @@ export interface OptionsFormatters {
   slidev?: boolean | {
     files?: string[]
   }
+
+  /**
+   * Enable formatting support for Astro.
+   *
+   * Currently only support Prettier.
+   */
+  astro?: 'prettier' | boolean
 }
 
 export interface OptionsComponentExts {
