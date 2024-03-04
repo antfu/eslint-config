@@ -215,7 +215,6 @@ export async function formatters(
           'error',
           {
             ...prettierOptions,
-            embeddedLanguageFormatting: 'off',
             parser: 'astro',
             plugins: [
               'prettier-plugin-astro',

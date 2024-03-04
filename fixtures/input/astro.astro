@@ -1,7 +1,21 @@
 ---
+const isJsx = true
 const content = "hi!";
 ---
 
 <article>
   <div>{content}</div>
+  <div>
+    {isJsx && (
+      <h1>{content}</h1>
+    )}
+  </div>
 </article>
+
+
+<script>
+  document.querySelector('h1')?.addEventListener('click', () => {
+    alert('hi!');
+  });
+
+</script>
