@@ -29,9 +29,6 @@ export async function formatters(
   if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
     throw new Error('`slidev` option only works when `markdown` is enabled with `prettier`')
 
-  if (options.astro && options.astro !== 'prettier')
-    throw new Error('`astro` option only works with `prettier`')
-
   const {
     indent,
     quotes,
@@ -218,6 +215,7 @@ export async function formatters(
           'error',
           {
             ...prettierOptions,
+            embeddedLanguageFormatting: 'off',
             parser: 'astro',
             plugins: [
               'prettier-plugin-astro',
