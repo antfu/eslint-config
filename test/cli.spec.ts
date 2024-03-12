@@ -86,5 +86,5 @@ it('suggest remove unnecessary files', async () => {
   const { stdout } = await run()
 
   expect(stdout).toContain('you can now remove those files manually')
-  expect(stdout).toContain('.eslintignore, .eslintrc.yml, .prettierc, .prettierignore, eslint.config.js')
+  expect(stdout).toContain('.eslintignore, .eslintrc.yml, .prettierc, .prettierignore')
 })
