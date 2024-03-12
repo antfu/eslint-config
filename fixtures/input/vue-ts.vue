@@ -12,7 +12,7 @@
 import { ref } from 'vue';
 
 const greeting = ref('Hello, Vue 3!');
-let counter = ref<number  | string>(0);
+let counter = ref<number  | 1>(0);
 
 // Define a function
 const incrementCounter = () => {
