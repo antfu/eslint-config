@@ -72,6 +72,7 @@ export const GLOB_EXCLUDE = [
   '**/.cache',
   '**/.output',
   '**/.vite-inspect',
+  '**/.yarn',
 
   '**/CHANGELOG*.md',
   '**/*.min.*',

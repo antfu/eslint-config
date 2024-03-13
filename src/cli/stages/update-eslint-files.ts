@@ -57,7 +57,8 @@ ${result.template !== Template.Vanilla ? `${result.template}: true,` : ''}
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
   files.forEach((file) => {
-    if (file.includes('eslint') || file.includes('prettier'))
+    if (/eslint|prettier/.test(file)
+      && !/eslint.config./.test(file))
       legacyConfig.push(file)
   })
 
