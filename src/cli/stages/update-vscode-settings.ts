@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
 import path from 'node:path'
 import fsp from 'node:fs/promises'
 import fs from 'node:fs'
 import process from 'node:process'
 import c from 'picocolors'
+import * as p from '@clack/prompts'
 
-import { CHECK, vscodeSettingsString } from '../constants'
+import { vscodeSettingsString } from '../constants'
 import type { PromtResult } from '../types'
 
 export async function updateVscodeSettings(result: PromtResult) {
@@ -22,7 +22,7 @@ export async function updateVscodeSettings(result: PromtResult) {
 
   if (!fs.existsSync(settingsPath)) {
     await fsp.writeFile(settingsPath, `{${vscodeSettingsString}}\n`, 'utf-8')
-    console.log(c.green(`${CHECK} created .vscode/settings.json`))
+    p.log.success(c.green(`Created .vscode/settings.json`))
   }
   else {
     let settingsContent = await fsp.readFile(settingsPath, 'utf8')
@@ -32,6 +32,6 @@ export async function updateVscodeSettings(result: PromtResult) {
     settingsContent += `${vscodeSettingsString}}\n`
 
     await fsp.writeFile(settingsPath, settingsContent, 'utf-8')
-    console.log(c.green(`${CHECK} updated .vscode/settings.json`))
+    p.log.success(c.green(`Updated .vscode/settings.json`))
   }
 }

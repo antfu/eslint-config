@@ -1,13 +1,13 @@
-/* eslint-disable no-console */
+/* eslint-disable perfectionist/sort-objects */
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-import prompts from 'prompts'
 import c from 'picocolors'
+import * as p from '@clack/prompts'
 
-import { CHECK, WARN, extra, extraItems, templates, templatesItems } from './constants'
+import { extra, extraOptions, templates, templatesOptions } from './constants'
 import { isGitClean } from './utils'
-import type { Extra, PromtResult } from './types'
+import type { Extra, PromItem, PromtResult } from './types'
 import { Template } from './types'
 import { updatePackageJson } from './stages/update-package-json'
 import { updateEslintFiles } from './stages/update-eslint-files'
@@ -30,11 +30,11 @@ export interface RuleOptions {
 
 export async function run(options: RuleOptions = {}) {
   const argSkipPromt = !!process.env.SKIP_PROMPT || options.yes
-  const argTemplate = options.template?.trim()
-  const argExtra = options.extra?.map(m => m.trim())
+  const argTemplate = <Template>options.template?.trim()
+  const argExtra = <Extra[]>options.extra?.map(m => m.trim())
 
   if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
-    console.log(c.yellow(`${WARN} eslint.config.js already exists, migration wizard exited.`))
+    p.log.warn(c.yellow(`eslint.config.js already exists, migration wizard exited.`))
     return process.exit(1)
   }
 
@@ -47,74 +47,73 @@ export async function run(options: RuleOptions = {}) {
   }
 
   if (!argSkipPromt) {
-    try {
-      result = await prompts([
-        {
-          initial: true,
+    result = await p.group({
+      uncommittedConfirmed: () => {
+        if (argSkipPromt || isGitClean())
+          return
+
+        return p.confirm({
+          initialValue: false,
           message: 'There are uncommitted changes in the current repository, are you sure to continue?',
-          name: 'uncommittedConfirmed',
-          type: !argSkipPromt && !isGitClean() ? 'confirm' : null,
-        },
-        {
-          choices: templatesItems.map(({ color, description, title, value }) => ({
-            description,
-            title: color(title),
-            value,
-          })),
-          initial: 0,
-          message: typeof argTemplate === 'string' && !templates.includes(<Template>argTemplate)
-            ? c.reset(`"${argTemplate}" isn't a valid template. Please choose from below: `)
-            : c.reset('Select a framework:'),
-          name: 'template',
-          type: argTemplate && templates.includes(<Template>argTemplate) ? null : 'select',
-        },
-        {
-          choices: extraItems.map(({ color, description, title, value }) => ({
-            description,
-            title: color(title),
-            value,
-          })),
-          initial: 0,
-          instructions: false,
-          message: typeof argExtra === 'object' && argExtra.filter(element => !extra.includes(<Extra>element)).length
-            ? c.reset(`"${argExtra}" isn't a valid extra util. Please choose from below: `)
-            : c.reset('Select a extra utils:'),
-          name: 'extra',
-          type: argExtra && !argExtra.filter(element => !extra.includes(<Extra>element)).length ? null : 'multiselect',
-        },
-        {
-          initial: true,
+        })
+      },
+      template: ({ results }) => {
+        const isArgTemplateValid = typeof argTemplate === 'string' && !!templates.includes(<Template>argTemplate)
+
+        if (!results.uncommittedConfirmed || isArgTemplateValid)
+          return
+
+        const message = !isArgTemplateValid && argTemplate
+          ? `"${argTemplate}" isn't a valid template. Please choose from below: `
+          : 'Select a framework:'
+
+        return p.select<PromItem<Template>[], Template>({
+          maxItems: templatesOptions.length,
+          message: c.reset(message),
+          options: templatesOptions,
+        })
+      },
+      extra: ({ results }) => {
+        const isArgExtraValid = argExtra?.length && !argExtra.filter(element => !extra.includes(<Extra>element)).length
+
+        if (!results.uncommittedConfirmed || isArgExtraValid)
+          return
+
+        const message = !isArgExtraValid && argExtra
+          ? `"${argExtra}" isn't a valid extra util. Please choose from below: `
+          : 'Select a extra utils:'
+
+        return p.multiselect<PromItem<Extra>[], Extra>({
+          message: c.reset(message),
+          options: extraOptions,
+          required: false,
+        })
+      },
+
+      updateVscodeSettings: ({ results }) => {
+        if (!results.uncommittedConfirmed)
+          return
+
+        return p.confirm({
+          initialValue: true,
           message: 'Update .vscode/settings.json for better VS Code experience?',
-          name: 'updateVscodeSettings',
-          type: 'confirm',
-        },
-      ], {
-        onCancel: () => {
-          throw new Error(`Cancelled`)
-        },
-      })
-    }
-    catch (cancelled: any) {
-      console.log(cancelled.message)
-      return
-    }
+        })
+      },
+    }, {
+      onCancel: () => {
+        p.cancel('Operation cancelled.')
+        process.exit(0)
+      },
+    }) as PromtResult
 
     if (!result.uncommittedConfirmed)
       return process.exit(1)
-
-    // Reset value from args is they overite by promt
-    result = {
-      extra: result.extra ?? argExtra ?? [],
-      template: result.template ?? argTemplate ?? Template.Vanilla,
-      uncommittedConfirmed: result.uncommittedConfirmed ?? false,
-      updateVscodeSettings: result.updateVscodeSettings ?? true,
-    }
   }
 
   await updatePackageJson(result)
   await updateEslintFiles(result)
   await updateVscodeSettings(result)
 
-  console.log(c.green(`${CHECK} migration completed`))
-  console.log(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
+  p.log.success(c.green(`Migration completed`))
+  p.outro(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
 }

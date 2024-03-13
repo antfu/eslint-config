@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
 import path from 'node:path'
 import fsp from 'node:fs/promises'
 import process from 'node:process'
 import c from 'picocolors'
+import * as p from '@clack/prompts'
 
-import { ARROW, CHECK, pkgJson } from '../constants'
+import { pkgJson } from '../constants'
 import { Extra, type PromtResult, Template } from '../types'
 
 export async function updatePackageJson(result: PromtResult) {
@@ -12,7 +12,8 @@ export async function updatePackageJson(result: PromtResult) {
 
   const pathPackageJSON = path.join(cwd, 'package.json')
 
-  console.log(c.cyan(`${ARROW} bumping @antfu/eslint-config to v${pkgJson.version}`))
+  p.log.step(c.cyan(`Bumping @antfu/eslint-config to v${pkgJson.version}`))
+
   const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
   const pkg: Record<string, any> = JSON.parse(pkgContent)
 
@@ -20,27 +21,37 @@ export async function updatePackageJson(result: PromtResult) {
   pkg.devDependencies['@antfu/eslint-config'] = `^${pkgJson.version}`
   pkg.devDependencies.eslint ??= pkgJson.devDependencies.eslint
 
-  result.extra.forEach((item: Extra) => {
-    switch (item) {
-      case Extra.Formatter:
-        (<const>[
-          'eslint-plugin-format',
-        ]).forEach((f) => {
-          pkg.devDependencies[f] = pkgJson.devDependencies[f]
-        })
-        break
-      case Extra.Perfectionist:
-      // Already in dependencies
-        break
-      case Extra.UnoCSS:
-        (<const>[
-          '@unocss/eslint-plugin',
-        ]).forEach((f) => {
-          pkg.devDependencies[f] = pkgJson.devDependencies[f]
-        })
-        break
-    }
-  })
+  const addedPackages: string[] = []
+
+  if (result.extra.length) {
+    result.extra.forEach((item: Extra) => {
+      switch (item) {
+        case Extra.Formatter:
+          (<const>[
+            'eslint-plugin-format',
+            result.template.includes(Template.Astro) ? 'prettier-plugin-astro' : null,
+          ]).forEach((f) => {
+            if (!f)
+              return
+
+            pkg.devDependencies[f] = pkgJson.devDependencies[f]
+            addedPackages.push(f)
+          })
+          break
+        case Extra.Perfectionist:
+          // Already in dependencies
+          break
+        case Extra.UnoCSS:
+          (<const>[
+            '@unocss/eslint-plugin',
+          ]).forEach((f) => {
+            pkg.devDependencies[f] = pkgJson.devDependencies[f]
+            addedPackages.push(f)
+          })
+          break
+      }
+    })
+  }
 
   switch (result.template) {
     case Template.React:
@@ -50,15 +61,16 @@ export async function updatePackageJson(result: PromtResult) {
         'eslint-plugin-react-refresh',
       ]).forEach((f) => {
         pkg.devDependencies[f] = pkgJson.devDependencies[f]
+        addedPackages.push(f)
       })
       break
     case Template.Astro:
       (<const>[
         'eslint-plugin-astro',
         'astro-eslint-parser',
-        result.extra.includes(Extra.Formatter) ? 'prettier-plugin-astro' : null,
       ]).forEach((f) => {
-        !!f && (pkg.devDependencies[f] = pkgJson.devDependencies[f])
+        pkg.devDependencies[f] = pkgJson.devDependencies[f]
+        addedPackages.push(f)
       })
       break
     case Template.Svelte:
@@ -67,12 +79,14 @@ export async function updatePackageJson(result: PromtResult) {
         'svelte-eslint-parser',
       ]).forEach((f) => {
         pkg.devDependencies[f] = pkgJson.devDependencies[f]
+        addedPackages.push(f)
       })
       break
   }
 
-  console.log('nice')
+  if (addedPackages.length)
+    p.note(`${c.dim(addedPackages.join(', '))}`, 'Added packages')
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
-  console.log(c.green(`${CHECK} changes wrote to package.json`))
+  p.log.success(c.green(`Changes wrote to package.json`))
 }

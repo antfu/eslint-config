@@ -1,14 +1,13 @@
-/* eslint-disable no-console */
 import fs from 'node:fs'
 import fsp from 'node:fs/promises'
 import process from 'node:process'
 import path from 'node:path'
 import c from 'picocolors'
+import * as p from '@clack/prompts'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
 import { Extra, type PromtResult, Template } from '../types'
-import { ARROW, CHECK, WARN } from '../constants'
 import { getEslintConfigContent } from '../utils'
 
 export async function updateEslintFiles(result: PromtResult) {
@@ -22,7 +21,7 @@ export async function updateEslintFiles(result: PromtResult) {
 
   const eslintIgnores: string[] = []
   if (fs.existsSync(pathESLintIgnore)) {
-    console.log(c.cyan(`${ARROW} migrating existing .eslintignore`))
+    p.log.step(c.cyan(`Migrating existing .eslintignore`))
     const content = await fsp.readFile(pathESLintIgnore, 'utf-8')
     const parsed = parse(content)
     const globs = parsed.globs()
@@ -42,7 +41,7 @@ ${result.extra.includes(Extra.UnoCSS) ? `unocss: true,\n` : ''}\
 ${result.template !== Template.Vanilla ? `${result.template}: true,` : ''}
   `.trim()
 
-  const additionalConfig = [
+  const additionalConfig = <string[]>[
     result.extra.includes(Extra.Perfectionist) && `
   files: ['src/**/*.{ts,js}'],
   rules: {
@@ -53,7 +52,7 @@ ${result.template !== Template.Vanilla ? `${result.template}: true,` : ''}
   const eslintConfigContent: string = getEslintConfigContent(pkg, mainConfig, additionalConfig)
 
   await fsp.writeFile(pathFlatConfig, eslintConfigContent)
-  console.log(c.green(`${CHECK} created eslint.config.js`))
+  p.log.success(c.green(`Created eslint.config.js`))
 
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
@@ -62,8 +61,6 @@ ${result.template !== Template.Vanilla ? `${result.template}: true,` : ''}
       legacyConfig.push(file)
   })
 
-  if (legacyConfig.length) {
-    console.log(`${WARN} you can now remove those files manually:`)
-    console.log(`   ${c.dim(legacyConfig.join(', '))}`)
-  }
+  if (legacyConfig.length)
+    p.note(`${c.dim(legacyConfig.join(', '))}`, 'You can now remove those files manually')
 }

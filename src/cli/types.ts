@@ -1,7 +1,7 @@
-import type { Answers, Choice } from 'prompts'
-
-export interface PromItem extends Choice {
-  color: (str: string | number) => string
+export interface PromItem<T> {
+  label: string
+  value: T
+  hint?: string
 }
 
 export enum Template {
@@ -17,4 +17,9 @@ export enum Extra {
   UnoCSS = 'unocss',
 }
 
-export type PromtResult = Answers<'uncommittedConfirmed' | 'template' | 'extra' | 'updateVscodeSettings'>
+export interface PromtResult {
+  uncommittedConfirmed: boolean
+  template: Template
+  extra: Extra[]
+  updateVscodeSettings: unknown
+}

@@ -3,11 +3,6 @@ import pkgJson from '../../package.json'
 import type { PromItem } from './types'
 import { Extra, Template } from './types'
 
-export const ARROW = c.cyan('→')
-export const CHECK = c.green('✔')
-export const CROSS = c.red('✘')
-export const WARN = c.yellow('ℹ')
-
 export { pkgJson }
 
 export const vscodeSettingsString = `
@@ -55,49 +50,42 @@ export const vscodeSettingsString = `
   ]
 `
 
-export const templatesItems: PromItem[] = [
+export const templatesOptions: PromItem<Template>[] = [
   {
-    color: c.green,
-    title: 'Vanilla / Vue',
+    label: c.green('Vanilla / Vue'),
     value: Template.Vanilla,
   },
   {
-    color: c.cyan,
-    title: 'React',
+    label: c.cyan('React'),
     value: Template.React,
   },
   {
-    color: c.red,
-    title: 'Svelte',
+    label: c.red('Svelte'),
     value: Template.Svelte,
   },
   {
-    color: c.magenta,
-    title: 'Astro',
+    label: c.magenta('Astro'),
     value: Template.Astro,
   },
 ]
 
-export const templates: Template[] = templatesItems.map(({ value }) => (value))
+export const templates: Template[] = templatesOptions.map(({ value }) => (value))
 
-export const extraItems: PromItem[] = [
+export const extraOptions: PromItem<Extra>[] = [
   {
-    color: c.red,
-    description: 'Use external formatters to format files that ESLint cannot handle yet (.css, .html, etc)',
-    title: 'Formatter',
+    hint: 'Use external formatters to format files that ESLint cannot handle yet (.css, .html, etc)',
+    label: c.red('Formatter'),
     value: Extra.Formatter,
   },
   {
-    color: c.magenta,
-    description: 'Allows you to sorted object keys, imports, etc, with auto-fix',
-    title: 'Perfectionist',
+    hint: 'Allows you to sorted object keys, imports, etc, with auto-fix',
+    label: c.magenta('Perfectionist'),
     value: Extra.Perfectionist,
   },
   {
-    color: c.cyan,
-    title: 'UnoCSS',
+    label: c.cyan('UnoCSS'),
     value: Extra.UnoCSS,
   },
 ]
 
-export const extra: Extra[] = extraItems.map(({ value }) => (value))
+export const extra: Extra[] = extraOptions.map(({ value }) => (value))

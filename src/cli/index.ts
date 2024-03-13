@@ -1,13 +1,15 @@
-/* eslint-disable no-console */
 import process from 'node:process'
 import c from 'picocolors'
 import { hideBin } from 'yargs/helpers'
 import yargs from 'yargs'
+import * as p from '@clack/prompts'
 import { run } from './run'
-import { CROSS, pkgJson } from './constants'
+import { pkgJson } from './constants'
 
 function header() {
-  console.log(`\n${c.green(`@antfu/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`)
+  // eslint-disable-next-line no-console
+  console.log('\n')
+  p.intro(`${c.green(`@antfu/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`)
 }
 
 const instance = yargs(hideBin(process.argv))
@@ -36,13 +38,12 @@ const instance = yargs(hideBin(process.argv))
       .help(),
     async (args) => {
       header()
-      console.log()
       try {
         await run(args)
       }
       catch (error) {
-        console.error(c.inverse(c.red(' Failed to migrate ')))
-        console.error(c.red(`${CROSS} ${String(error)}`))
+        p.log.error(c.inverse(c.red(' Failed to migrate ')))
+        p.log.error(c.red(`✘ ${String(error)}`))
         process.exit(1)
       }
     },
