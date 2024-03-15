@@ -18,7 +18,7 @@ export function getEslintConfigContent(
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  ${mainConfig}
+${mainConfig}
 }${additionalConfigs?.map(config => `,{\n${config}\n}`)})
 `.trimStart()
 }
