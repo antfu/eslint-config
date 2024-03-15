@@ -7,15 +7,14 @@ import { afterAll, beforeEach, expect, it } from 'vitest'
 const CLI_PATH = join(__dirname, '../bin/index.js')
 const genPath = join(__dirname, '..', '.temp')
 
-async function run(env = {
+async function run(params: string[] = [], env = {
   SKIP_PROMPT: '1',
-  SKIP_GIT_CHECK: '1',
+  NO_COLOR: '1',
 }) {
-  return execa(`node`, [CLI_PATH, 'migrate'], {
+  return execa('node', [CLI_PATH, ...params], {
     cwd: genPath,
     env: {
       ...process.env,
-      NO_COLOR: '1',
       ...env,
     },
   })
@@ -43,7 +42,7 @@ it('package.json updated', async () => {
   const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
-  expect(stdout).toContain('changes wrote to package.json')
+  expect(stdout).toContain('Changes wrote to package.json')
 })
 
 it('esm eslint.config.js', async () => {
@@ -54,29 +53,29 @@ it('esm eslint.config.js', async () => {
 
   const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
   expect(eslintConfigContent.includes('export default')).toBeTruthy()
-  expect(stdout).toContain('created eslint.config.js')
+  expect(stdout).toContain('Created eslint.config.js')
 })
 
-it('cjs eslint.config.js', async () => {
+it('cjs eslint.config.mjs', async () => {
   const { stdout } = await run()
 
-  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
-  expect(eslintConfigContent.includes('module.exports')).toBeTruthy()
-  expect(stdout).toContain('created eslint.config.js')
+  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')
+  expect(eslintConfigContent.includes('export default')).toBeTruthy()
+  expect(stdout).toContain('Created eslint.config.mjs')
 })
 
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
 
-  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')).replace(/\\/g, '/')
+  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')).replace(/\\/g, '/')
 
-  expect(stdout).toContain('created eslint.config.js')
+  expect(stdout).toContain('Created eslint.config.mjs')
   expect(eslintConfigContent)
     .toMatchInlineSnapshot(`
-      "const antfu = require('@antfu/eslint-config').default
+      "import antfu from '@antfu/eslint-config'
 
-      module.exports = antfu({
-      ignores: ["some-path","**/some-path/**","some-file","**/some-file/**"]
+      export default antfu({
+        ignores: ["some-path","**/some-path/**","some-file","**/some-file/**"],
       })
       "
     `)
@@ -85,6 +84,6 @@ it('ignores files added in eslint.config.js', async () => {
 it('suggest remove unnecessary files', async () => {
   const { stdout } = await run()
 
-  expect(stdout).toContain('you can now remove those files manually')
+  expect(stdout).toContain('You can now remove those files manually')
   expect(stdout).toContain('.eslintignore, .eslintrc.yml, .prettierc, .prettierignore')
 })

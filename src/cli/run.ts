@@ -1,162 +1,117 @@
-/* eslint-disable no-console */
+/* eslint-disable perfectionist/sort-objects */
 import fs from 'node:fs'
-import fsp from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import prompts from 'prompts'
 import c from 'picocolors'
+import * as p from '@clack/prompts'
 
-// @ts-expect-error missing types
-import parse from 'parse-gitignore'
-import { ARROW, CHECK, WARN, eslintVersion, version, vscodeSettingsString } from './constants'
+import { extra, extraOptions, frameworkOptions, frameworks } from './constants'
 import { isGitClean } from './utils'
+import type { ExtraLibrariesOption, FrameworkOption, PromItem, PromtResult } from './types'
+import { updatePackageJson } from './stages/update-package-json'
+import { updateEslintFiles } from './stages/update-eslint-files'
+import { updateVscodeSettings } from './stages/update-vscode-settings'
 
-export interface RuleOptions {
+export interface CliRunOptions {
   /**
    * Skip prompts and use default values
    */
   yes?: boolean
+  /**
+   * Use the framework template for optimal customization: vue / react / svelte / astro
+   */
+  frameworks?: string[]
+  /**
+   * Use the extra utils: formatter / perfectionist / unocss
+   */
+  extra?: string[]
 }
 
-export async function run(options: RuleOptions = {}) {
-  const SKIP_PROMPT = !!process.env.SKIP_PROMPT || options.yes
-  const SKIP_GIT_CHECK = !!process.env.SKIP_GIT_CHECK
+export async function run(options: CliRunOptions = {}) {
+  const argSkipPrompt = !!process.env.SKIP_PROMPT || options.yes
+  const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m.trim())
+  const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m.trim())
 
-  const cwd = process.cwd()
-
-  const pathFlatConfig = path.join(cwd, 'eslint.config.js')
-  const pathPackageJSON = path.join(cwd, 'package.json')
-  const pathESLintIgnore = path.join(cwd, '.eslintignore')
-
-  if (fs.existsSync(pathFlatConfig)) {
-    console.log(c.yellow(`${WARN} eslint.config.js already exists, migration wizard exited.`))
+  if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
+    p.log.warn(c.yellow(`eslint.config.js already exists, migration wizard exited.`))
     return process.exit(1)
   }
 
-  if (!SKIP_GIT_CHECK && !isGitClean()) {
-    const { confirmed } = await prompts({
-      initial: false,
-      message: 'There are uncommitted changes in the current repository, are you sure to continue?',
-      name: 'confirmed',
-      type: 'confirm',
-    })
-    if (!confirmed)
-      return process.exit(1)
-  }
-
-  // Update package.json
-  console.log(c.cyan(`${ARROW} bumping @antfu/eslint-config to v${version}`))
-  const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
-  const pkg: Record<string, any> = JSON.parse(pkgContent)
-
-  pkg.devDependencies ??= {}
-  pkg.devDependencies['@antfu/eslint-config'] = `^${version}`
-
-  if (!pkg.devDependencies.eslint)
-    pkg.devDependencies.eslint = eslintVersion
-
-  await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
-  console.log(c.green(`${CHECK} changes wrote to package.json`))
-
-  // End update package.json
-  // Update eslint files
-  const eslintIgnores: string[] = []
-  if (fs.existsSync(pathESLintIgnore)) {
-    console.log(c.cyan(`${ARROW} migrating existing .eslintignore`))
-    const content = await fsp.readFile(pathESLintIgnore, 'utf-8')
-    const parsed = parse(content)
-    const globs = parsed.globs()
-
-    for (const glob of globs) {
-      if (glob.type === 'ignore')
-        eslintIgnores.push(...glob.patterns)
-      else if (glob.type === 'unignore')
-        eslintIgnores.push(...glob.patterns.map((pattern: string) => `!${pattern}`))
-    }
-  }
-
-  let eslintConfigContent: string = ''
-
-  const antfuConfig = `${eslintIgnores.length ? `ignores: ${JSON.stringify(eslintIgnores)}` : ''}`
-  if (pkg.type === 'module') {
-    eslintConfigContent = `
-import antfu from '@antfu/eslint-config'
-
-export default antfu({\n${antfuConfig}\n})
-`.trimStart()
-  }
-  else {
-    eslintConfigContent = `
-const antfu = require('@antfu/eslint-config').default
-
-module.exports = antfu({\n${antfuConfig}\n})
-`.trimStart()
-  }
-
-  await fsp.writeFile(pathFlatConfig, eslintConfigContent)
-  console.log(c.green(`${CHECK} created eslint.config.js`))
-
-  const files = fs.readdirSync(cwd)
-  const legacyConfig: string[] = []
-  files.forEach((file) => {
-    if (/eslint|prettier/.test(file)
-      && !/eslint.config./.test(file))
-      legacyConfig.push(file)
-  })
-  if (legacyConfig.length) {
-    console.log(`${WARN} you can now remove those files manually:`)
-    console.log(`   ${c.dim(legacyConfig.join(', '))}`)
-  }
-
-  // End update eslint files
-  // Update .vscode/settings.json
-  let promptResult: prompts.Answers<'updateVscodeSettings'> = {
+  // Set default value for promtResult if `argSkipPromt` is enabled
+  let result: PromtResult = {
+    extra: argExtra ?? [],
+    frameworks: argTemplate ?? [],
+    uncommittedConfirmed: false,
     updateVscodeSettings: true,
   }
 
-  if (!SKIP_PROMPT) {
-    try {
-      promptResult = await prompts({
-        initial: true,
-        message: 'Update .vscode/settings.json for better VS Code experience?',
-        name: 'updateVscodeSettings',
-        type: 'confirm',
-      }, {
-        onCancel: () => {
-          throw new Error(`Cancelled`)
-        },
-      })
-    }
-    catch (cancelled: any) {
-      console.log(cancelled.message)
-      return
-    }
+  if (!argSkipPrompt) {
+    result = await p.group({
+      uncommittedConfirmed: () => {
+        if (argSkipPrompt || isGitClean())
+          return
+
+        return p.confirm({
+          initialValue: false,
+          message: 'There are uncommitted changes in the current repository, are you sure to continue?',
+        })
+      },
+      frameworks: ({ results }) => {
+        const isArgTemplateValid = typeof argTemplate === 'string' && !!frameworks.includes(<FrameworkOption>argTemplate)
+
+        if (!results.uncommittedConfirmed || isArgTemplateValid)
+          return
+
+        const message = !isArgTemplateValid && argTemplate
+          ? `"${argTemplate}" isn't a valid template. Please choose from below: `
+          : 'Select a framework:'
+
+        return p.multiselect<PromItem<FrameworkOption>[], FrameworkOption>({
+          message: c.reset(message),
+          options: frameworkOptions,
+        })
+      },
+      extra: ({ results }) => {
+        const isArgExtraValid = argExtra?.length && !argExtra.filter(element => !extra.includes(<ExtraLibrariesOption>element)).length
+
+        if (!results.uncommittedConfirmed || isArgExtraValid)
+          return
+
+        const message = !isArgExtraValid && argExtra
+          ? `"${argExtra}" isn't a valid extra util. Please choose from below: `
+          : 'Select a extra utils:'
+
+        return p.multiselect<PromItem<ExtraLibrariesOption>[], ExtraLibrariesOption>({
+          message: c.reset(message),
+          options: extraOptions,
+          required: false,
+        })
+      },
+
+      updateVscodeSettings: ({ results }) => {
+        if (!results.uncommittedConfirmed)
+          return
+
+        return p.confirm({
+          initialValue: true,
+          message: 'Update .vscode/settings.json for better VS Code experience?',
+        })
+      },
+    }, {
+      onCancel: () => {
+        p.cancel('Operation cancelled.')
+        process.exit(0)
+      },
+    }) as PromtResult
+
+    if (!result.uncommittedConfirmed)
+      return process.exit(1)
   }
 
-  if (promptResult?.updateVscodeSettings ?? true) {
-    const dotVscodePath: string = path.join(cwd, '.vscode')
-    const settingsPath: string = path.join(dotVscodePath, 'settings.json')
+  await updatePackageJson(result)
+  await updateEslintFiles(result)
+  await updateVscodeSettings(result)
 
-    if (!fs.existsSync(dotVscodePath))
-      await fsp.mkdir(dotVscodePath, { recursive: true })
-
-    if (!fs.existsSync(settingsPath)) {
-      await fsp.writeFile(settingsPath, `{${vscodeSettingsString}}\n`, 'utf-8')
-      console.log(c.green(`${CHECK} created .vscode/settings.json`))
-    }
-    else {
-      let settingsContent = await fsp.readFile(settingsPath, 'utf8')
-
-      settingsContent = settingsContent.trim().replace(/\s*}$/, '')
-      settingsContent += settingsContent.endsWith(',') || settingsContent.endsWith('{') ? '' : ','
-      settingsContent += `${vscodeSettingsString}}\n`
-
-      await fsp.writeFile(settingsPath, settingsContent, 'utf-8')
-      console.log(c.green(`${CHECK} updated .vscode/settings.json`))
-    }
-  }
-
-  // End update .vscode/settings.json
-  console.log(c.green(`${CHECK} migration completed`))
-  console.log(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
+  p.log.success(c.green(`Setup completed`))
+  p.outro(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
 }
