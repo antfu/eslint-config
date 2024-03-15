@@ -4,22 +4,13 @@ export interface PromItem<T> {
   hint?: string
 }
 
-export enum Template {
-  Vanilla = 'vanilla',
-  React = 'react',
-  Svelte = 'svelte',
-  Astro = 'astro',
-}
+export type FrameworkOption = 'vue' | 'react' | 'svelte' | 'astro' | 'slidev'
 
-export enum Extra {
-  Formatter = 'formatter',
-  Perfectionist = 'perfectionist',
-  UnoCSS = 'unocss',
-}
+export type ExtraLibrariesOption = 'formatter' | 'unocss'
 
 export interface PromtResult {
   uncommittedConfirmed: boolean
-  template: Template
-  extra: Extra[]
+  frameworks: FrameworkOption[]
+  extra: ExtraLibrariesOption[]
   updateVscodeSettings: unknown
 }

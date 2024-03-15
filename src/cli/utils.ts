@@ -10,23 +10,15 @@ export function isGitClean() {
   }
 }
 
-export function getEslintConfigContent(pkg: Record<string, any>, mainConfig: string, additionalConfigs?: string[]) {
-  let content = ''
-
-  if (pkg.type === 'module') {
-    content = `
+export function getEslintConfigContent(
+  mainConfig: string,
+  additionalConfigs?: string[],
+) {
+  return `
 import antfu from '@antfu/eslint-config'
 
-export default antfu({\n${mainConfig}\n}${additionalConfigs?.map(config => `,{\n${config}\n}`)})
+export default antfu({
+  ${mainConfig}
+}${additionalConfigs?.map(config => `,{\n${config}\n}`)})
 `.trimStart()
-  }
-  else {
-    content = `
-const antfu = require('@antfu/eslint-config').default
-
-module.exports = antfu({\n${mainConfig}\n}${additionalConfigs?.map(config => `,{\n${config}\n}`)})
-`.trimStart()
-  }
-
-  return content.trimStart()
 }

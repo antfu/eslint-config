@@ -21,6 +21,14 @@
 
 ## Usage
 
+### Wizard
+
+We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config.
+
+```bash
+npx @antfu/eslint-config@latest
+```
+
 ### Install
 
 ```bash
@@ -90,16 +98,6 @@ For example:
   }
 }
 ```
-
-### Migration
-
-We provided an experimental CLI tool to help you migrate from the legacy config to the new flat config.
-
-```bash
-npx @antfu/eslint-config@latest
-```
-
-Before running the migration, make sure to commit your unsaved changes first.
 
 ## VS Code support (auto fix)
 

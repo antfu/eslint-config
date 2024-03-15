@@ -7,17 +7,19 @@ import * as p from '@clack/prompts'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
-import { Extra, type PromtResult, Template } from '../types'
 import { getEslintConfigContent } from '../utils'
+import type { PromtResult } from '../types'
 
 export async function updateEslintFiles(result: PromtResult) {
   const cwd = process.cwd()
-  const pathFlatConfig = path.join(cwd, 'eslint.config.js')
   const pathESLintIgnore = path.join(cwd, '.eslintignore')
   const pathPackageJSON = path.join(cwd, 'package.json')
 
   const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
   const pkg: Record<string, any> = JSON.parse(pkgContent)
+
+  const configFileName = pkg.type === 'module' ? 'eslint.config.js' : 'eslint.config.mjs'
+  const pathFlatConfig = path.join(cwd, configFileName)
 
   const eslintIgnores: string[] = []
   if (fs.existsSync(pathESLintIgnore)) {
@@ -34,31 +36,32 @@ export async function updateEslintFiles(result: PromtResult) {
     }
   }
 
-  const mainConfig = `
-${eslintIgnores.length ? `ignores: ${JSON.stringify(eslintIgnores)},\n` : ''}\
-${result.extra.includes(Extra.Formatter) ? `formatters: true,\n` : ''}\
-${result.extra.includes(Extra.UnoCSS) ? `unocss: true,\n` : ''}\
-${result.template !== Template.Vanilla ? `${result.template}: true,` : ''}
-  `.trim()
+  const configLines: string[] = []
 
-  const additionalConfig = <string[]>[
-    result.extra.includes(Extra.Perfectionist) && `
-  files: ['src/**/*.{ts,js}'],
-  rules: {
-    'perfectionist/sort-objects': 'error',
-  }`.trim(),
-  ].filter(f => !!f)
+  if (eslintIgnores.length)
+    configLines.push(`ignores: ${JSON.stringify(eslintIgnores)},`)
 
-  const eslintConfigContent: string = getEslintConfigContent(pkg, mainConfig, additionalConfig)
+  if (result.extra.includes('formatter'))
+    configLines.push(`formatters: true,`)
+
+  if (result.extra.includes('unocss'))
+    configLines.push(`unocss: true,`)
+
+  for (const framework of result.frameworks)
+    configLines.push(`${framework}: true,`)
+
+  const mainConfig = configLines.map(i => `  ${i}`).join('\n')
+  const additionalConfig: string[] = []
+
+  const eslintConfigContent: string = getEslintConfigContent(mainConfig, additionalConfig)
 
   await fsp.writeFile(pathFlatConfig, eslintConfigContent)
-  p.log.success(c.green(`Created eslint.config.js`))
+  p.log.success(c.green(`Created ${configFileName}`))
 
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
   files.forEach((file) => {
-    if (/eslint|prettier/.test(file)
-      && !/eslint.config./.test(file))
+    if (/eslint|prettier/.test(file) && !/eslint\.config\./.test(file))
       legacyConfig.push(file)
   })
 

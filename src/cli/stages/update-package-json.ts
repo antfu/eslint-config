@@ -4,8 +4,8 @@ import process from 'node:process'
 import c from 'picocolors'
 import * as p from '@clack/prompts'
 
-import { pkgJson } from '../constants'
-import { Extra, type PromtResult, Template } from '../types'
+import { dependenciesMap, pkgJson } from '../constants'
+import type { ExtraLibrariesOption, PromtResult } from '../types'
 
 export async function updatePackageJson(result: PromtResult) {
   const cwd = process.cwd()
@@ -20,28 +20,26 @@ export async function updatePackageJson(result: PromtResult) {
   pkg.devDependencies ??= {}
   pkg.devDependencies['@antfu/eslint-config'] = `^${pkgJson.version}`
   pkg.devDependencies.eslint ??= pkgJson.devDependencies.eslint
+    .replace('npm:eslint-ts-patch@', '')
+    .replace(/-\d+$/, '')
 
   const addedPackages: string[] = []
 
   if (result.extra.length) {
-    result.extra.forEach((item: Extra) => {
+    result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
-        case Extra.Formatter:
+        case 'formatter':
           (<const>[
             'eslint-plugin-format',
-            result.template.includes(Template.Astro) ? 'prettier-plugin-astro' : null,
+            result.frameworks.includes('astro') ? 'prettier-plugin-astro' : null,
           ]).forEach((f) => {
             if (!f)
               return
-
             pkg.devDependencies[f] = pkgJson.devDependencies[f]
             addedPackages.push(f)
           })
           break
-        case Extra.Perfectionist:
-          // Already in dependencies
-          break
-        case Extra.UnoCSS:
+        case 'unocss':
           (<const>[
             '@unocss/eslint-plugin',
           ]).forEach((f) => {
@@ -53,35 +51,14 @@ export async function updatePackageJson(result: PromtResult) {
     })
   }
 
-  switch (result.template) {
-    case Template.React:
-      (<const>[
-        'eslint-plugin-react',
-        'eslint-plugin-react-hooks',
-        'eslint-plugin-react-refresh',
-      ]).forEach((f) => {
+  for (const framework of result.frameworks) {
+    const deps = dependenciesMap[framework]
+    if (deps) {
+      deps.forEach((f) => {
         pkg.devDependencies[f] = pkgJson.devDependencies[f]
         addedPackages.push(f)
       })
-      break
-    case Template.Astro:
-      (<const>[
-        'eslint-plugin-astro',
-        'astro-eslint-parser',
-      ]).forEach((f) => {
-        pkg.devDependencies[f] = pkgJson.devDependencies[f]
-        addedPackages.push(f)
-      })
-      break
-    case Template.Svelte:
-      (<const>[
-        'eslint-plugin-svelte',
-        'svelte-eslint-parser',
-      ]).forEach((f) => {
-        pkg.devDependencies[f] = pkgJson.devDependencies[f]
-        addedPackages.push(f)
-      })
-      break
+    }
   }
 
   if (addedPackages.length)
