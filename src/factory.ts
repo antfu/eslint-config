@@ -50,6 +50,13 @@ const VuePackages = [
 
 /**
  * Construct an array of ESLint flat config items.
+ *
+ * @param {OptionsConfig & FlatConfigItem} options
+ *  The options for generating the ESLint configurations.
+ * @param {Awaitable<UserConfigItem | UserConfigItem[]>[]} userConfigs
+ *  The user configurations to be merged with the generated configurations.
+ * @returns {Promise<UserConfigItem[]>}
+ *  The merged ESLint configurations.
  */
 export async function antfu(
   options: OptionsConfig & FlatConfigItem = {},
