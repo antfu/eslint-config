@@ -296,7 +296,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   /**
    * Enable ASTRO support.
    *
-   * @default true
+   * Requires installing:
+   * - `eslint-plugin-astro`
+   *
+   * Requires installing for formatting .astro:
+   * - `prettier-plugin-astro`
+   *
+   * @default false
    */
   astro?: boolean | OptionsOverrides
 
