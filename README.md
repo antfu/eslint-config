@@ -506,6 +506,9 @@ export default antfu({
 
 ### Lint Staged
 
+> [!NOTE]  
+> [Some rules are disabled in editor by default](https://github.com/antfu/eslint-config/issues/422), this results in exceptions that are not visible in the editor, but may be thrown when lint staged, you should always use `eslint --fix` with git pre-commit hook in this case. Or set `isInEditor: false` to avoid this inconsistent situation.
+
 If you want to apply lint and auto-fix before every commit, you can add the following to your `package.json`:
 
 ```json
