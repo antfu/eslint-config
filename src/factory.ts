@@ -26,7 +26,7 @@ import {
   vue,
   yaml,
 } from './configs'
-import { combine, interopDefault } from './utils'
+import { combine, interopDefault, renamePluginInConfigs } from './utils'
 import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
@@ -48,6 +48,15 @@ const VuePackages = [
   '@slidev/cli',
 ]
 
+export const defaultPluginRenaming = {
+  '@stylistic': 'style',
+  '@typescript-eslint': 'ts',
+  'import-x': 'import',
+  'n': 'node',
+  'vitest': 'test',
+  'yml': 'yaml',
+}
+
 /**
  * Construct an array of ESLint flat config items.
  *
@@ -64,6 +73,7 @@ export async function antfu(
 ): Promise<UserConfigItem[]> {
   const {
     astro: enableAstro = false,
+    autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
@@ -232,10 +242,13 @@ export async function antfu(
   if (Object.keys(fusedConfig).length)
     configs.push([fusedConfig])
 
-  const merged = combine(
+  const merged = await combine(
     ...configs,
     ...userConfigs,
   )
+
+  if (autoRenamePlugins)
+    return renamePluginInConfigs(merged, defaultPluginRenaming)
 
   return merged
 }

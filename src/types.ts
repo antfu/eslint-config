@@ -373,6 +373,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   isInEditor?: boolean
 
   /**
+   * Automatically rename plugins in the config.
+   *
+   * @default true
+   */
+  autoRenamePlugins?: boolean
+
+  /**
    * Provide overrides for rules for each integration.
    *
    * @deprecated use `overrides` option in each integration key instead
