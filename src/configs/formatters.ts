@@ -1,5 +1,5 @@
 import { isPackageExists } from 'local-pkg'
-import { GLOB_ASTRO, GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
+import { GLOB_ASTRO, GLOB_CSS, GLOB_GRAPHQL, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault, parserPlain } from '../utils'
 import type { FlatConfigItem, OptionsFormatters, StylisticConfig } from '../types'
@@ -227,7 +227,7 @@ export async function formatters(
 
   if (options.graphql) {
     configs.push({
-      files: ['**/*.graphql'],
+      files: [GLOB_GRAPHQL],
       languageOptions: {
         parser: parserPlain,
       },
