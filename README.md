@@ -146,7 +146,9 @@ Add the following settings to your `.vscode/settings.json`:
     "json",
     "jsonc",
     "yaml",
-    "toml"
+    "toml",
+    "gql",
+    "graphql"
   ]
 }
 ```
