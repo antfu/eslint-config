@@ -1,0 +1,133 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 95512c7fec6a18b1d2db696f66c5626fbe8962e0..afc922e9ee784db9a7d1b845e6aba030699f414d 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -203,7 +203,7 @@ const parseVitestFnCallWithReasonInner = (node, context) => {
+   }
+   if (node.callee.type === utils.AST_NODE_TYPES.TaggedTemplateExpression && lastLink !== "each")
+     return null;
+-  const resolved = resolveVitestFn(context, getAccessorValue(first));
++  const resolved = resolveVitestFn(context, node, getAccessorValue(first));
+   if (!resolved)
+     return null;
+   const name = resolved.original ?? resolved.local;
+@@ -246,8 +246,9 @@ function getNodeChain(node) {
+   }
+   return null;
+ }
+-const resolveVitestFn = (context, identifier) => {
+-  const maybeImport = resolveScope(context.getScope(), identifier);
++const resolveVitestFn = (context, node, identifier) => {
++  const scope = context.sourceCode.getScope ? context.sourceCode.getScope(node) : context.getScope();
++  const maybeImport = resolveScope(scope, identifier);
+   if (maybeImport === "local")
+     return null;
+   if (maybeImport) {
+@@ -1443,7 +1444,8 @@ const noDisabledTests = createEslintRule({
+           testDepth--;
+       },
+       'CallExpression[callee.name="pending"]'(node) {
+-        if (resolveScope(context.getScope(), "pending"))
++        const scope = context.sourceCode.getScope ? context.sourceCode.getScope(node) : context.getScope();
++        if (resolveScope(scope, "pending"))
+           return;
+         if (testDepth > 0)
+           context.report({ messageId: "pendingTest", node });
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 039f37d236c77e8f8d4bd06ca76ae1a783735e03..1bfc26a497c82beb93ed02b9543fee8eb07f6df1 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -188,7 +188,7 @@ const parseVitestFnCallWithReasonInner = (node, context) => {
+   }
+   if (node.callee.type === AST_NODE_TYPES.TaggedTemplateExpression && lastLink !== "each")
+     return null;
+-  const resolved = resolveVitestFn(context, getAccessorValue(first));
++  const resolved = resolveVitestFn(context, node, getAccessorValue(first));
+   if (!resolved)
+     return null;
+   const name = resolved.original ?? resolved.local;
+@@ -231,8 +231,9 @@ function getNodeChain(node) {
+   }
+   return null;
+ }
+-const resolveVitestFn = (context, identifier) => {
+-  const maybeImport = resolveScope(context.getScope(), identifier);
++const resolveVitestFn = (context, node, identifier) => {
++  const scope = context.sourceCode.getScope ? context.sourceCode.getScope(node) : context.getScope();
++  const maybeImport = resolveScope(scope, identifier);
+   if (maybeImport === "local")
+     return null;
+   if (maybeImport) {
+@@ -1428,7 +1429,8 @@ const noDisabledTests = createEslintRule({
+           testDepth--;
+       },
+       'CallExpression[callee.name="pending"]'(node) {
+-        if (resolveScope(context.getScope(), "pending"))
++        const scope = context.sourceCode.getScope ? context.sourceCode.getScope(node) : context.getScope();
++        if (resolveScope(scope, "pending"))
+           return;
+         if (testDepth > 0)
+           context.report({ messageId: "pendingTest", node });
+diff --git a/package.json b/package.json
+index cbc4cb9aa0fa24947d4e363b0cd555796bd08857..7f7967a6e62d84c3963ef1a57d8d97a92fcf1e6d 100644
+--- a/package.json
++++ b/package.json
+@@ -26,12 +26,25 @@
+   "files": [
+     "dist"
+   ],
++  "scripts": {
++    "build": "unbuild",
++    "lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
++    "lint:js": "eslint . --fix",
++    "lint": "concurrently --prefixColors auto \"pnpm:lint:*\"",
++    "release": "pnpm build && bumpp package.json --commit --push --tag && pnpm publish",
++    "stub": "unbuild --stub",
++    "test:ci": "vitest run",
++    "test": "vitest",
++    "generate": "tsx scripts/generate.ts",
++    "update:eslint-docs": "pnpm build && eslint-doc-generator",
++    "tsc": "tsc --noEmit"
++  },
+   "devDependencies": {
+     "@babel/types": "^7.24.0",
+     "@types/mocha": "^10.0.6",
+-    "@types/node": "^20.11.25",
+-    "@typescript-eslint/eslint-plugin": "^7.1.1",
+-    "@typescript-eslint/rule-tester": "^7.1.1",
++    "@types/node": "^20.11.26",
++    "@typescript-eslint/eslint-plugin": "^7.2.0",
++    "@typescript-eslint/rule-tester": "^7.2.0",
+     "@veritem/eslint-config": "^0.0.11",
+     "bumpp": "^9.4.0",
+     "concurrently": "^8.2.2",
+@@ -39,7 +52,7 @@
+     "eslint-doc-generator": "^1.7.0",
+     "eslint-plugin-eslint-plugin": "^5.4.0",
+     "eslint-plugin-node": "^11.1.0",
+-    "eslint-plugin-vitest": "^0.3.24",
++    "eslint-plugin-vitest": "^0.3.26",
+     "eslint-remote-tester": "^3.0.1",
+     "eslint-remote-tester-repositories": "^1.0.1",
+     "ts-node": "^10.9.2",
+@@ -64,19 +77,6 @@
+     }
+   },
+   "dependencies": {
+-    "@typescript-eslint/utils": "^7.1.1"
+-  },
+-  "scripts": {
+-    "build": "unbuild",
+-    "lint:eslint-docs": "pnpm build && eslint-doc-generator --check",
+-    "lint:js": "eslint . --fix",
+-    "lint": "concurrently --prefixColors auto \"pnpm:lint:*\"",
+-    "release": "pnpm build && bumpp package.json --commit --push --tag && pnpm publish",
+-    "stub": "unbuild --stub",
+-    "test:ci": "vitest run",
+-    "test": "vitest",
+-    "generate": "tsx scripts/generate.ts",
+-    "update:eslint-docs": "pnpm build && eslint-doc-generator",
+-    "tsc": "tsc --noEmit"
++    "@typescript-eslint/utils": "^7.2.0"
+   }
+ }

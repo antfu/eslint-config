@@ -1,0 +1,99 @@
+diff --git a/lib/rules/newline-after-import.js b/lib/rules/newline-after-import.js
+index 1bc9fd4e8ffd286f788a6809bc658c5ac29c1e86..3f49a3c0e26fb63b933d6bd3227aba58eec3b607 100644
+--- a/lib/rules/newline-after-import.js
++++ b/lib/rules/newline-after-import.js
+@@ -169,11 +169,11 @@ module.exports = (0, utils_1.createRule)({
+                     requireCalls.push(node);
+                 }
+             },
+-            'Program:exit'() {
++            'Program:exit'(node) {
+                 log('exit processing for', context.getPhysicalFilename
+                     ? context.getPhysicalFilename()
+                     : context.getFilename());
+-                const scopeBody = getScopeBody(context.getScope());
++                const scopeBody = getScopeBody(context.sourceCode.getScope(node));
+                 log('got scope:', scopeBody);
+                 for (const [index, node] of requireCalls.entries()) {
+                     const nodePosition = findNodeIndexInScopeBody(scopeBody, node);
+diff --git a/lib/rules/no-amd.js b/lib/rules/no-amd.js
+index 984dac73ef8111e1565ff6763ef1eb4b39171a78..b10df20847e4f2a12a823a32b85ae07ed2ce5ae7 100644
+--- a/lib/rules/no-amd.js
++++ b/lib/rules/no-amd.js
+@@ -17,7 +17,7 @@ module.exports = (0, utils_1.createRule)({
+     create(context) {
+         return {
+             CallExpression(node) {
+-                if (context.getScope().type !== 'module') {
++                if (context.scope.type !== 'module') {
+                     return;
+                 }
+                 if (node.callee.type !== 'Identifier') {
+diff --git a/lib/rules/no-commonjs.js b/lib/rules/no-commonjs.js
+index 177aa5779481b8e991d5d051ca50796e4a1764e2..6126119ffcc50d4c5553579035ebb12e5a919a83 100644
+--- a/lib/rules/no-commonjs.js
++++ b/lib/rules/no-commonjs.js
+@@ -87,7 +87,7 @@ module.exports = (0, utils_1.createRule)({
+                 }
+                 if ('name' in node.object && node.object.name === 'exports') {
+                     const isInScope = context
+-                        .getScope()
++                        .sourceCode.getScope(node)
+                         .variables.some(variable => variable.name === 'exports');
+                     if (!isInScope) {
+                         context.report({ node, messageId: 'export' });
+@@ -95,7 +95,7 @@ module.exports = (0, utils_1.createRule)({
+                 }
+             },
+             CallExpression(call) {
+-                if (!validateScope(context.getScope())) {
++                if (!validateScope(context.sourceCode.getScope(node))) {
+                     return;
+                 }
+                 if (call.callee.type !== 'Identifier') {
+diff --git a/lib/rules/no-mutable-exports.js b/lib/rules/no-mutable-exports.js
+index f0147c3185b6c3eb4a2ac9d50b389fbf778e0466..f8f9824d30b224eb5589ea2e344f1429dd2f80ac 100644
+--- a/lib/rules/no-mutable-exports.js
++++ b/lib/rules/no-mutable-exports.js
+@@ -39,13 +39,13 @@ module.exports = (0, utils_1.createRule)({
+         }
+         return {
+             ExportDefaultDeclaration(node) {
+-                const scope = context.getScope();
++                const scope = context.sourceCode.getScope(node);
+                 if ('name' in node.declaration) {
+                     checkDeclarationsInScope(scope, node.declaration.name);
+                 }
+             },
+             ExportNamedDeclaration(node) {
+-                const scope = context.getScope();
++                const scope = context.sourceCode.getScope(node);
+                 if (node.declaration) {
+                     checkDeclaration(node.declaration);
+                 }
+diff --git a/lib/rules/no-namespace.js b/lib/rules/no-namespace.js
+index 3393185e50ef3c7bbae9a83cd934a66736c23873..c76ae77d8aed551571cb67379c31b506968d1090 100644
+--- a/lib/rules/no-namespace.js
++++ b/lib/rules/no-namespace.js
+@@ -82,7 +82,7 @@ module.exports = (0, utils_1.createRule)({
+                 if (ignoreGlobs === null || ignoreGlobs === void 0 ? void 0 : ignoreGlobs.find(glob => (0, minimatch_1.minimatch)(node.parent.source.value, glob, { matchBase: true }))) {
+                     return;
+                 }
+-                const scopeVariables = context.getScope().variables;
++                const scopeVariables = context.sourceCode.getScope(node).variables;
+                 const namespaceVariable = scopeVariables.find(variable => variable.defs[0].node === node);
+                 const namespaceReferences = namespaceVariable.references;
+                 const namespaceIdentifiers = namespaceReferences.map(reference => reference.identifier);
+diff --git a/lib/utils/declared-scope.js b/lib/utils/declared-scope.js
+index f7cac7cc5013dbbb2a363496a3884be19bd16505..de595621e12a5edbc3fb9fa8afc70ce5a9bc733b 100644
+--- a/lib/utils/declared-scope.js
++++ b/lib/utils/declared-scope.js
+@@ -2,7 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.declaredScope = void 0;
+ function declaredScope(context, name) {
+-    const references = context.getScope().references;
++    const references = context.sourceCode.getScope(node).references;
+     const reference = references.find(x => x.identifier.name === name);
+     if (!reference || !reference.resolved) {
+         return;
