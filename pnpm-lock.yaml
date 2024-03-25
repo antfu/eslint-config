@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  eslint-plugin-import-x@0.4.1:
-    hash: m3pvtwn6kqy6ftfvyg3gkdt3ru
-    path: patches/eslint-plugin-import-x@0.4.1.patch
   eslint-plugin-vitest@0.3.26:
     hash: scqnkc4gidgwasqcqircha4zfm
     path: patches/eslint-plugin-vitest@0.3.26.patch
@@ -56,8 +53,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0(eslint@9.0.0-rc.0)
       eslint-plugin-import-x:
-        specifier: ^0.4.1
-        version: 0.4.1(patch_hash=m3pvtwn6kqy6ftfvyg3gkdt3ru)(eslint@9.0.0-rc.0)(typescript@5.4.3)
+        specifier: ^0.4.4
+        version: 0.4.4(eslint@9.0.0-rc.0)(typescript@5.4.3)
       eslint-plugin-jsdoc:
         specifier: ^48.2.1
         version: 48.2.1(eslint@9.0.0-rc.0)
@@ -89,8 +86,8 @@ importers:
         specifier: ^0.3.26
         version: 0.3.26(patch_hash=scqnkc4gidgwasqcqircha4zfm)(@typescript-eslint/eslint-plugin@7.3.1)(eslint@9.0.0-rc.0)(typescript@5.4.3)(vitest@1.4.0)
       eslint-plugin-vue:
-        specifier: ^9.23.0
-        version: 9.23.0(eslint@9.0.0-rc.0)
+        specifier: ^9.24.0
+        version: 9.24.0(eslint@9.0.0-rc.0)
       eslint-plugin-yml:
         specifier: ^1.13.2
         version: 1.13.2(eslint@9.0.0-rc.0)
@@ -168,8 +165,8 @@ importers:
         specifier: ^0.1.14
         version: 0.1.14(eslint@9.0.0-rc.0)(typescript@5.4.3)
       eslint-plugin-astro:
-        specifier: ^0.32.0
-        version: 0.32.0(eslint@9.0.0-rc.0)
+        specifier: ^0.33.1
+        version: 0.33.1(eslint@9.0.0-rc.0)
       eslint-plugin-format:
         specifier: ^0.1.0
         version: 0.1.0(eslint@9.0.0-rc.0)
@@ -2375,8 +2372,8 @@ packages:
       eslint: 9.0.0-rc.0
     dev: false
 
-  /eslint-plugin-astro@0.32.0(eslint@9.0.0-rc.0):
-    resolution: {integrity: sha512-T8Chx9yG4vrWLCMkQGEbBvUJYSwMVXbw95+EpceFue/jr8JavjYw9A6K1xUxMyycnlWOGMiK7wJ5d/hHNsKBhg==}
+  /eslint-plugin-astro@0.33.1(eslint@9.0.0-rc.0):
+    resolution: {integrity: sha512-wVyxAf8Ulmljv5qJQLgspWe17LR4hLXcksIENtUlEC3W7rleBVEKXS+hIqzBfCbpkBLZpl1tsYes1AGpYHd13w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=7.0.0'
@@ -2432,16 +2429,17 @@ packages:
       synckit: 0.8.8
     dev: true
 
-  /eslint-plugin-import-x@0.4.1(patch_hash=m3pvtwn6kqy6ftfvyg3gkdt3ru)(eslint@9.0.0-rc.0)(typescript@5.4.3):
-    resolution: {integrity: sha512-UqbL8DEewDKdCQZmSsm9lzdzyyDhWmWo//HQTnbLkNW7nIWukluuc6IaE5dAFQSa9mK/M8IHTywvOvMMaX25XQ==}
+  /eslint-plugin-import-x@0.4.4(eslint@9.0.0-rc.0)(typescript@5.4.3):
+    resolution: {integrity: sha512-+6vns/GOAL0K5tzQ7ZescD2vFBz3cICZqT9R5CQ9h/bTA+Jkae8DuHT2gYhFb2K97kzsLnmPmKM51Iq9g6vTRA==}
     engines: {node: '>=16'}
     peerDependencies:
-      eslint: ^7.2.0 || ^8
+      eslint: ^7.2.0 || ^8 || ^9.0.0-0
     dependencies:
       '@typescript-eslint/utils': 5.62.0(eslint@9.0.0-rc.0)(typescript@5.4.3)
       debug: 4.3.4
       doctrine: 3.0.0
       eslint: 9.0.0-rc.0
+      eslint-compat-utils: 0.5.0(eslint@9.0.0-rc.0)
       eslint-import-resolver-node: 0.3.9
       get-tsconfig: 4.7.3
       is-glob: 4.0.3
@@ -2451,7 +2449,6 @@ packages:
       - supports-color
       - typescript
     dev: false
-    patched: true
 
   /eslint-plugin-jsdoc@48.2.1(eslint@9.0.0-rc.0):
     resolution: {integrity: sha512-iUvbcyDZSO/9xSuRv2HQBw++8VkV/pt3UWtX9cpPH0l7GKPq78QC/6+PmyQHHvNZaTjAce6QVciEbnc6J/zH5g==}
@@ -2710,14 +2707,15 @@ packages:
     dev: false
     patched: true
 
-  /eslint-plugin-vue@9.23.0(eslint@9.0.0-rc.0):
-    resolution: {integrity: sha512-Bqd/b7hGYGrlV+wP/g77tjyFmp81lh5TMw0be9093X02SyelxRRfCI6/IsGq/J7Um0YwB9s0Ry0wlFyjPdmtUw==}
+  /eslint-plugin-vue@9.24.0(eslint@9.0.0-rc.0):
+    resolution: {integrity: sha512-9SkJMvF8NGMT9aQCwFc5rj8Wo1XWSMSHk36i7ZwdI614BU7sIOR28ZjuFPKp8YGymZN12BSEbiSwa7qikp+PBw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.0.0-rc.0)
       eslint: 9.0.0-rc.0
+      globals: 13.24.0
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.0.15
