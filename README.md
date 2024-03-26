@@ -54,13 +54,13 @@ Combined with legacy config:
 If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
 
 ```js
-// eslint.config.js
+// eslint.config.mjs
 import antfu from '@antfu/eslint-config'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat()
 
-module.exports = antfu(
+export default antfu(
   {
     ignores: [],
   },
