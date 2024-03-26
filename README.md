@@ -391,9 +391,6 @@ We provide some optional configs for specific use cases, that we don't include t
 
 #### Formatters
 
-> [!WARNING]
-> Experimental feature, changes might not follow semver.
-
 Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
 
 ```js
