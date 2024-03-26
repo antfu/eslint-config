@@ -1,3 +1,4 @@
+// @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
 import JITI from 'jiti'
 

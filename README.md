@@ -300,6 +300,8 @@ type foo = { bar: 2 }
 >
 > Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
 
+Since v2.9.0, this preset will automatically rename the plugins also for your custom configs. You can use the original prefix to override the rules directly.
+
 ### Rules Overrides
 
 Certain rules would only be enabled in specific files, for example, `ts/*` rules would only be enabled in `.ts` files and `vue/*` rules would only be enabled in `.vue` files. If you want to override the rules, you need to specify the file extension:
@@ -352,6 +354,35 @@ export default antfu({
     },
   },
 })
+```
+
+### Pipeline
+
+Since v2.10.0, the factory function `antfu()` returns a [pipeline object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#pipe) where you can chain the methods to compose the config even more flexibly.
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu()
+  .prepend(
+    // some configs before the main config
+  )
+  // overrides any named configs
+  .override(
+    'antfu:imports',
+    {
+      rules: {
+        'import/order': ['error', { 'newlines-between': 'always' }],
+      }
+    }
+  )
+  // rename plugin prefixes
+  .renamePlugins({
+    'old-prefix': 'new-prefix',
+    // ...
+  })
+// ...
 ```
 
 ### Optional Configs

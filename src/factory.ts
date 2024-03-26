@@ -1,6 +1,7 @@
 import process from 'node:process'
 import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
+import { FlatConfigPipeline } from 'eslint-flat-config-utils'
 import type { Awaitable, FlatConfigItem, OptionsConfig, UserConfigItem } from './types'
 import {
   astro,
@@ -26,7 +27,7 @@ import {
   vue,
   yaml,
 } from './configs'
-import { combine, interopDefault, renamePluginInConfigs } from './utils'
+import { interopDefault } from './utils'
 import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
@@ -67,10 +68,10 @@ export const defaultPluginRenaming = {
  * @returns {Promise<UserConfigItem[]>}
  *  The merged ESLint configurations.
  */
-export async function antfu(
+export function antfu(
   options: OptionsConfig & FlatConfigItem = {},
   ...userConfigs: Awaitable<UserConfigItem | UserConfigItem[]>[]
-): Promise<UserConfigItem[]> {
+): FlatConfigPipeline<UserConfigItem> {
   const {
     astro: enableAstro = false,
     autoRenamePlugins = true,
@@ -242,15 +243,20 @@ export async function antfu(
   if (Object.keys(fusedConfig).length)
     configs.push([fusedConfig])
 
-  const merged = await combine(
-    ...configs,
-    ...userConfigs,
-  )
+  let pipeline = new FlatConfigPipeline<UserConfigItem>()
 
-  if (autoRenamePlugins)
-    return renamePluginInConfigs(merged, defaultPluginRenaming)
+  pipeline = pipeline
+    .append(
+      ...configs,
+      ...userConfigs,
+    )
 
-  return merged
+  if (autoRenamePlugins) {
+    pipeline = pipeline
+      .renamePlugins(defaultPluginRenaming)
+  }
+
+  return pipeline
 }
 
 export type ResolvedOptions<T> = T extends boolean
