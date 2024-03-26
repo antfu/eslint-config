@@ -21,49 +21,42 @@
 
 ## Usage
 
-### Wizard
+### Starter Wizard
 
-We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config.
+We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
 npx @antfu/eslint-config@latest
 ```
 
-### Install
+### Manual Install
+
+If you prefer to set up manually:
 
 ```bash
 pnpm i -D eslint @antfu/eslint-config
 ```
 
-### Create config file
-
-With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package.json` (recommended):
+And create `eslint.config.mjs` in your project root:
 
 ```js
-// eslint.config.js
+// eslint.config.mjs
 import antfu from '@antfu/eslint-config'
 
 export default antfu()
 ```
 
-With CJS:
-
-```js
-// eslint.config.js
-const antfu = require('@antfu/eslint-config').default
-
-module.exports = antfu()
-```
-
-> [!TIP]
-> ESLint only detects `eslint.config.js` as the flat config entry, meaning you need to put `type: module` in your `package.json` or you have to use CJS in `eslint.config.js`. If you want explicit extension like `.mjs` or `.cjs`, or even `eslint.config.ts`, you can install [`eslint-ts-patch`](https://github.com/antfu/eslint-ts-patch) to fix it.
-
+<details>
+<summary>
 Combined with legacy config:
+</summary>
+
+If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
 
 ```js
 // eslint.config.js
-const antfu = require('@antfu/eslint-config').default
-const { FlatCompat } = require('@eslint/eslintrc')
+import antfu from '@antfu/eslint-config'
+import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat()
 
@@ -86,6 +79,8 @@ module.exports = antfu(
 
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
 
+</details>
+
 ### Add script for package.json
 
 For example:
@@ -99,7 +94,7 @@ For example:
 }
 ```
 
-## VS Code support (auto fix)
+## VS Code support (auto fix on save)
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
