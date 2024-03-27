@@ -2,61 +2,15 @@ import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore'
 import type { ParserOptions } from '@typescript-eslint/parser'
 import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks'
 import type { Linter } from 'eslint'
-import type {
-  EslintCommentsRules,
-  EslintRules,
-  FlatESLintConfigItem,
-  ImportRules,
-  JsoncRules,
-  MergeIntersection,
-  NRules,
-  Prefix,
-  ReactHooksRules,
-  ReactRules,
-  RenamePrefix,
-  RuleConfig,
-  VitestRules,
-  VueRules,
-  YmlRules,
-} from '@antfu/eslint-define-config'
-import type { RuleOptions as JSDocRules } from '@eslint-types/jsdoc/types'
-import type { RuleOptions as TypeScriptRules } from '@eslint-types/typescript-eslint/types'
-import type { RuleOptions as UnicornRules } from '@eslint-types/unicorn/types'
-import type { Rules as AntfuRules } from 'eslint-plugin-antfu'
-import type { StylisticCustomizeOptions, UnprefixedRuleOptions as StylisticRules } from '@stylistic/eslint-plugin'
+import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import type { VendoredPrettierOptions } from './vender/prettier-types'
-
-export type WrapRuleConfig<T extends { [key: string]: any }> = {
-  [K in keyof T]: T[K] extends RuleConfig ? T[K] : RuleConfig<T[K]>
-}
+import type { RulesOptions } from './typegen'
 
 export type Awaitable<T> = T | Promise<T>
 
-export type Rules = WrapRuleConfig<
-  MergeIntersection<
-    RenamePrefix<TypeScriptRules, '@typescript-eslint/', 'ts/'> &
-    RenamePrefix<VitestRules, 'vitest/', 'test/'> &
-    RenamePrefix<YmlRules, 'yml/', 'yaml/'> &
-    RenamePrefix<NRules, 'n/', 'node/'> &
-    Prefix<StylisticRules, 'style/'> &
-    Prefix<AntfuRules, 'antfu/'> &
-    ReactHooksRules &
-    ReactRules &
-    JSDocRules &
-    ImportRules &
-    EslintRules &
-    JsoncRules &
-    VueRules &
-    UnicornRules &
-    EslintCommentsRules &
-    // TODO: TOML rules
-    {
-      'test/no-only-tests': RuleConfig<[]>
-    }
-  >
->
+export type Rules = RulesOptions
 
-export type FlatConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'> & {
+export type FlatConfigItem = Omit<Linter.FlatConfig, 'plugins' | 'rules'> & {
   /**
    * Custom name of each config item
    */
@@ -69,9 +23,14 @@ export type FlatConfigItem = Omit<FlatESLintConfigItem<Rules, false>, 'plugins'>
    * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
    */
   plugins?: Record<string, any>
-}
 
-export type UserConfigItem = FlatConfigItem | Linter.FlatConfig
+  /**
+   * An object containing a name-value mapping of rules to use.
+   */
+  rules?: {
+    [key: string]: Linter.RuleEntry
+  } & RulesOptions
+}
 
 export interface OptionsFiles {
   /**
