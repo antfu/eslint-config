@@ -29,27 +29,11 @@ jobs:
       - name: Install
         run: nci
 
+      - name: Build
+        run: nr build
+
       - name: Lint
         run: nr lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Set node
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-
-      - name: Setup
-        run: npm i -g @antfu/ni
-
-      - name: Install
-        run: nci
 
       - name: Typecheck
         run: nr typecheck
