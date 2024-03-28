@@ -10,7 +10,7 @@ export type Awaitable<T> = T | Promise<T>
 
 export type Rules = RuleOptions
 
-export type FlatConfigItem = Omit<Linter.FlatConfig, 'plugins' | 'rules'> & {
+export type TypedFlatConfigItem = Omit<Linter.FlatConfig, 'plugins'> & {
   /**
    * Custom name of each config item
    */
@@ -27,9 +27,7 @@ export type FlatConfigItem = Omit<Linter.FlatConfig, 'plugins' | 'rules'> & {
   /**
    * An object containing a name-value mapping of rules to use.
    */
-  rules?: {
-    [key: string]: Linter.RuleEntry
-  } & Rules
+  rules?: Linter.RulesRecord & Rules
 }
 
 export interface OptionsFiles {
@@ -163,7 +161,7 @@ export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent
 }
 
 export interface OptionsOverrides {
-  overrides?: FlatConfigItem['rules']
+  overrides?: TypedFlatConfigItem['rules']
 }
 
 export interface OptionsIsInEditor {
@@ -344,16 +342,16 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @deprecated use `overrides` option in each integration key instead
    */
   overrides?: {
-    stylistic?: FlatConfigItem['rules']
-    javascript?: FlatConfigItem['rules']
-    typescript?: FlatConfigItem['rules']
-    test?: FlatConfigItem['rules']
-    vue?: FlatConfigItem['rules']
-    jsonc?: FlatConfigItem['rules']
-    markdown?: FlatConfigItem['rules']
-    yaml?: FlatConfigItem['rules']
-    toml?: FlatConfigItem['rules']
-    react?: FlatConfigItem['rules']
-    svelte?: FlatConfigItem['rules']
+    stylistic?: TypedFlatConfigItem['rules']
+    javascript?: TypedFlatConfigItem['rules']
+    typescript?: TypedFlatConfigItem['rules']
+    test?: TypedFlatConfigItem['rules']
+    vue?: TypedFlatConfigItem['rules']
+    jsonc?: TypedFlatConfigItem['rules']
+    markdown?: TypedFlatConfigItem['rules']
+    yaml?: TypedFlatConfigItem['rules']
+    toml?: TypedFlatConfigItem['rules']
+    react?: TypedFlatConfigItem['rules']
+    svelte?: TypedFlatConfigItem['rules']
   }
 }

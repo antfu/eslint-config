@@ -1,12 +1,12 @@
 import process from 'node:process'
 import { GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
-import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes } from '../types'
+import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules, toArray } from '../utils'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
-): Promise<FlatConfigItem[]> {
+): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],
     overrides = {},
@@ -24,7 +24,7 @@ export async function typescript(
     : undefined
   const isTypeAware = !!tsconfigPath
 
-  const typeAwareRules: FlatConfigItem['rules'] = {
+  const typeAwareRules: TypedFlatConfigItem['rules'] = {
     'dot-notation': 'off',
     'no-implied-eval': 'off',
     'no-throw-literal': 'off',
@@ -54,7 +54,7 @@ export async function typescript(
     interopDefault(import('@typescript-eslint/parser')),
   ] as const)
 
-  function makeParser(typeAware: boolean, files: string[], ignores?: string[]): FlatConfigItem {
+  function makeParser(typeAware: boolean, files: string[], ignores?: string[]): TypedFlatConfigItem {
     return {
       files,
       ...ignores ? { ignores } : {},
