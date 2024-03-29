@@ -578,12 +578,12 @@ npx simple-git-hooks
 
 ## View what rules are enabled
 
-I built a visual tool to help you view what rules are enabled in your project and apply them to what files, [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer)
+I built a visual tool to help you view what rules are enabled in your project and apply them to what files, [@eslint/config-inspector](https://github.com/eslint/config-inspector)
 
 Go to your project root that contains `eslint.config.js` and run:
 
 ```bash
-npx eslint-flat-config-viewer
+npx @eslint/config-inspector
 ```
 
 ## Versioning Policy
