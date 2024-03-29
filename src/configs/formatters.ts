@@ -63,7 +63,7 @@ export async function formatters(
 
   const configs: TypedFlatConfigItem[] = [
     {
-      name: 'antfu:formatters:setup',
+      name: 'antfu:formatter:setup',
       plugins: {
         format: pluginFormat,
       },

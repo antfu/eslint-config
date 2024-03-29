@@ -36,7 +36,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
     },
     {
       files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
-      name: 'antfu:imports:bin',
+      name: 'antfu:disables:imports-bin',
       rules: {
         'antfu/no-import-dist': 'off',
         'antfu/no-import-node-modules-by-path': 'off',
