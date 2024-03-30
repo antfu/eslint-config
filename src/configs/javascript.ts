@@ -120,7 +120,7 @@ export async function javascript(
           'TSEnumDeclaration[const=true]',
           'TSExportAssignment',
         ],
-        'no-self-assign': ['error', { props: true }],
+        'no-self-assign': ['error'],
         'no-self-compare': 'error',
         'no-sequences': 'error',
         'no-shadow-restricted-names': 'error',

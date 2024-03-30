@@ -48,7 +48,7 @@ export async function stylistic(
         'antfu/if-newline': 'error',
         'antfu/top-level-function': 'error',
 
-        'curly': ['error', 'multi-or-nest', 'consistent'],
+        'curly': ['error', 'multi-or-nest'],
 
         ...overrides,
       },

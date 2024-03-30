@@ -28,7 +28,7 @@ export type TypedFlatConfigItem = Omit<Linter.FlatConfig, 'plugins'> & {
   /**
    * An object containing a name-value mapping of rules to use.
    */
-  rules?: Linter.RulesRecord & Rules
+  rules?: Rules
 }
 
 export interface OptionsFiles {
