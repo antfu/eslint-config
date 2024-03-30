@@ -3,12 +3,13 @@ import type { ParserOptions } from '@typescript-eslint/parser'
 import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks'
 import type { Linter } from 'eslint'
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+import type { ESLintRules } from 'eslint/rules'
 import type { VendoredPrettierOptions } from './vender/prettier-types'
 import type { RuleOptions } from './typegen'
 
 export type Awaitable<T> = T | Promise<T>
 
-export type Rules = RuleOptions
+export type Rules = RuleOptions & Partial<ESLintRules>
 
 export type TypedFlatConfigItem = Omit<Linter.FlatConfig, 'plugins'> & {
   /**
