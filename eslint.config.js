@@ -15,7 +15,6 @@ export default antfu(
     svelte: true,
     astro: true,
     typescript: true,
-
     formatters: true,
   },
   {
