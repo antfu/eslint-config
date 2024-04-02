@@ -72,14 +72,14 @@ export async function typescript(
           ...parserOptions as any,
         },
       },
-      name: `antfu:typescript:${typeAware ? 'type-aware-parser' : 'parser'}`,
+      name: `antfu/typescript/${typeAware ? 'type-aware-parser' : 'parser'}`,
     }
   }
 
   return [
     {
       // Install the plugins without globs, so they can be configured separately.
-      name: 'antfu:typescript:setup',
+      name: 'antfu/typescript/setup',
       plugins: {
         antfu: pluginAntfu,
         ts: pluginTs as any,
@@ -94,7 +94,7 @@ export async function typescript(
       : [makeParser(false, files)],
     {
       files,
-      name: 'antfu:typescript:rules',
+      name: 'antfu/typescript/rules',
       rules: {
         ...renameRules(
           pluginTs.configs['eslint-recommended'].overrides![0].rules!,
@@ -133,17 +133,19 @@ export async function typescript(
         ...overrides,
       },
     },
-    {
-      files: filesTypeAware,
-      name: 'antfu:typescript:rules-type-aware',
-      rules: {
-        ...tsconfigPath ? typeAwareRules : {},
-        ...overrides,
-      },
-    },
+    ...isTypeAware
+      ? [{
+          files: filesTypeAware,
+          name: 'antfu/typescript/rules-type-aware',
+          rules: {
+            ...tsconfigPath ? typeAwareRules : {},
+            ...overrides,
+          },
+        }]
+      : [],
     {
       files: ['**/*.d.ts'],
-      name: 'antfu:typescript:dts-overrides',
+      name: 'antfu/typescript/disables/dts',
       rules: {
         'eslint-comments/no-unlimited-disable': 'off',
         'import/no-duplicates': 'off',
@@ -153,14 +155,14 @@ export async function typescript(
     },
     {
       files: ['**/*.{test,spec}.ts?(x)'],
-      name: 'antfu:typescript:tests-overrides',
+      name: 'antfu/typescript/disables/test',
       rules: {
         'no-unused-expressions': 'off',
       },
     },
     {
       files: ['**/*.js', '**/*.cjs'],
-      name: 'antfu:typescript:javascript-overrides',
+      name: 'antfu/typescript/disables/cjs',
       rules: {
         'ts/no-require-imports': 'off',
         'ts/no-var-requires': 'off',

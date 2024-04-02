@@ -370,7 +370,7 @@ export default antfu()
   )
   // overrides any named configs
   .override(
-    'antfu:imports',
+    'antfu/imports',
     {
       rules: {
         'import/order': ['error', { 'newlines-between': 'always' }],

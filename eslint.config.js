@@ -11,13 +11,18 @@ const antfu = jiti('./src').default
 export default antfu(
   {
     vue: true,
-    // react: true,
+    react: true,
+    svelte: true,
+    astro: true,
     typescript: true,
+
+    formatters: true,
+  },
+  {
     ignores: [
       'fixtures',
       '_fixtures',
     ],
-    formatters: true,
   },
   {
     files: ['src/**/*.ts'],

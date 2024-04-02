@@ -36,7 +36,7 @@ export async function stylistic(
 
   return [
     {
-      name: 'antfu:stylistic',
+      name: 'antfu/stylistic/rules',
       plugins: {
         antfu: pluginAntfu,
         style: pluginStylistic,
