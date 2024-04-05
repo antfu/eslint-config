@@ -27,8 +27,8 @@ importers:
         specifier: ^0.1.5
         version: 0.1.5
       eslint-flat-config-utils:
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.2.1
+        version: 0.2.1
       eslint-merge-processors:
         specifier: ^0.1.0
         version: 0.1.0(eslint@9.0.0)
@@ -118,8 +118,8 @@ importers:
         specifier: ^0.21.12
         version: 0.21.12
       '@eslint/config-inspector':
-        specifier: ^0.4.0
-        version: 0.4.0(eslint@9.0.0)
+        specifier: ^0.4.1
+        version: 0.4.1(eslint@9.0.0)
       '@stylistic/eslint-plugin-migrate':
         specifier: ^1.7.0
         version: 1.7.0(eslint@9.0.0)(typescript@5.4.4)
@@ -769,11 +769,11 @@ packages:
     resolution: {integrity: sha512-EdyFKr1BHcx45o6gMZuCkFS64XHzVGFql0V3oL6mZwepnueulpmjsPxTiRRdrYdRknmQA+vjj1/znFkGRrPWHQ==}
     dev: true
 
-  /@eslint/config-inspector@0.4.0(eslint@9.0.0):
-    resolution: {integrity: sha512-Z2EQRgu/PIxOxALXpCrCJOeJVRKCfsOw2MGfF/rZY/Og3CNLmaSsvOC/uHsYFaKL3J0swD7L7uyX3qenbrdH3Q==}
+  /@eslint/config-inspector@0.4.1(eslint@9.0.0):
+    resolution: {integrity: sha512-3y8DNOw2vT9/HVdNKlwBVxdfRUiOsh5JuvEk5cyN7+0wtVWpLgFIRlgNOuNkYOOaf6gSAonrCyU9VmejCh1BPA==}
     hasBin: true
     peerDependencies:
-      eslint: ^8.50.0
+      eslint: ^8.50.0 || ^9.0.0
     dependencies:
       bundle-require: 4.0.2(esbuild@0.20.2)
       cac: 6.7.14
@@ -2455,8 +2455,8 @@ packages:
       parse-gitignore: 2.0.0
     dev: false
 
-  /eslint-flat-config-utils@0.2.0:
-    resolution: {integrity: sha512-8jLkFKKBAzWPBEjygdH/P9Y/c+K9AcuMAig9u/4/x7mtsDRHj8EdgEJHX1IEvOTAbZiWXEUoZqiKZUIx/1FWKg==}
+  /eslint-flat-config-utils@0.2.1:
+    resolution: {integrity: sha512-SKnSr4YdPD7xxynNpaad/IlJYfeDmtWvZ0UEmHEA0+eTOcZFPt1075KO87LIWN30jXGCREG2qcCqdAnRoCiAWQ==}
     dependencies:
       '@types/eslint': 8.56.7
       pathe: 1.1.2
