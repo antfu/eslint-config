@@ -5,7 +5,11 @@ import fs from 'fs-extra'
 import { afterAll, beforeEach, expect, it } from 'vitest'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
-const genPath = join(__dirname, '..', '.temp')
+const genPath = join(__dirname, '..', '.temp', randomStr())
+
+function randomStr() {
+  return Math.random().toString(36).slice(2)
+}
 
 async function run(params: string[] = [], env = {
   SKIP_PROMPT: '1',
