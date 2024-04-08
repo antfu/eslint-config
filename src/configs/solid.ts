@@ -64,20 +64,13 @@ export async function solid(
         'solid/jsx-no-script-url': 'error',
         'solid/jsx-no-undef': 'error',
         'solid/jsx-uses-vars': 'error',
-        'solid/no-array-handlers': 'off',
         'solid/no-destructure': 'error',
         // security problems
         'solid/no-innerhtml': ['error', { allowStatic: true }],
-        // only necessary for resource-constrained environments
-        'solid/no-proxy-apis': 'off',
         'solid/no-react-deps': 'error',
         'solid/no-react-specific-props': 'error',
         'solid/no-unknown-namespaces': 'error',
-        // deprecated
-        'solid/prefer-classlist': 'off',
         'solid/prefer-for': 'error',
-        // handled by Solid compiler, opt-in style suggestion
-        'solid/prefer-show': 'off',
         'solid/reactivity': 'warn',
         'solid/self-closing-comp': 'error',
         'solid/style-prop': ['error', { styleProps: ['style', 'css'] }],
@@ -87,7 +80,6 @@ export async function solid(
               'solid/no-unknown-namespaces': 'off',
             }
           : {},
-
         // overrides
         ...overrides,
       },
