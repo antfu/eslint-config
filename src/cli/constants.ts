@@ -67,6 +67,10 @@ export const frameworkOptions: PromItem<FrameworkOption>[] = [
     value: 'astro',
   },
   {
+    label: c.cyan('Solid'),
+    value: 'solid',
+  },
+  {
     label: c.blue('Slidev'),
     value: 'slidev',
   },
@@ -100,6 +104,9 @@ export const dependenciesMap = {
   ],
   slidev: [
     'prettier-plugin-slidev',
+  ],
+  solid: [
+    'eslint-plugin-solid',
   ],
   svelte: [
     'eslint-plugin-svelte',
