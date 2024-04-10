@@ -27,7 +27,7 @@
   "scripts": {
     "build": "nr typegen && tsup --format esm,cjs --clean --dts",
     "stub": "tsup --format esm",
-    "dev": "tsup --format esm,cjs --watch & npx @eslint/config-inspector",
+    "dev": "npx @eslint/config-inspector --config eslint.config.ts",
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     "watch": "tsup --format esm,cjs --watch",
     "lint": "eslint .",
@@ -140,6 +140,7 @@
     "@unocss/eslint-plugin": "^0.59.0",
     "astro-eslint-parser": "^0.17.0",
     "bumpp": "^9.4.0",
+    "bundle-require": "^4.0.2",
     "eslint": "^9.0.0",
     "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-format": "^0.1.0",
