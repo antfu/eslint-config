@@ -2,6 +2,9 @@ import { interopDefault } from '../utils'
 import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
 import { GLOB_TESTS } from '../globs'
 
+// Hold the reference so we don't redeclare the plugin on each call
+let _pluginTest: any
+
 export async function test(
   options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {},
 ): Promise<TypedFlatConfigItem[]> {
@@ -20,18 +23,20 @@ export async function test(
     interopDefault(import('eslint-plugin-no-only-tests')),
   ] as const)
 
+  _pluginTest = _pluginTest || {
+    ...pluginVitest,
+    rules: {
+      ...pluginVitest.rules,
+      // extend `test/no-only-tests` rule
+      ...pluginNoOnlyTests.rules,
+    },
+  }
+
   return [
     {
       name: 'antfu/test/setup',
       plugins: {
-        test: {
-          ...pluginVitest,
-          rules: {
-            ...pluginVitest.rules,
-            // extend `test/no-only-tests` rule
-            ...pluginNoOnlyTests.rules,
-          },
-        },
+        test: _pluginTest,
       },
     },
     {
