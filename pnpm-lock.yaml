@@ -69,8 +69,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@9.0.0)
       eslint-plugin-vitest:
-        specifier: ^0.5.0
-        version: 0.5.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0)
+        specifier: ^0.5.1
+        version: 0.5.1(@typescript-eslint/eslint-plugin@7.6.0)(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0)
       eslint-plugin-vue:
         specifier: ^9.24.1
         version: 9.24.1(eslint@9.0.0)
@@ -118,8 +118,8 @@ importers:
         specifier: ^0.21.12
         version: 0.21.12
       '@eslint/config-inspector':
-        specifier: ^0.4.4
-        version: 0.4.4(eslint@9.0.0)
+        specifier: ^0.4.5
+        version: 0.4.5(eslint@9.0.0)
       '@stylistic/eslint-plugin-migrate':
         specifier: ^1.7.0
         version: 1.7.0(eslint@9.0.0)(typescript@5.4.4)
@@ -777,8 +777,8 @@ packages:
     resolution: {integrity: sha512-EdyFKr1BHcx45o6gMZuCkFS64XHzVGFql0V3oL6mZwepnueulpmjsPxTiRRdrYdRknmQA+vjj1/znFkGRrPWHQ==}
     dev: true
 
-  /@eslint/config-inspector@0.4.4(eslint@9.0.0):
-    resolution: {integrity: sha512-iSlwhvGp4iUxVCkdSVE9Ss1op82mDvqAMwTDIvSg3QHWrPLIaU/XCZoGPof/IixndHExqX0C/hJG/fjhG4maCQ==}
+  /@eslint/config-inspector@0.4.5(eslint@9.0.0):
+    resolution: {integrity: sha512-C8dLAq4nLJt/KiE9YFqvzL9hIw2LkxvC9CrX7IgKi8Nh7N4nu8JGAHVHl9RUwUPyeuOHx8gSF2Lq9FxttcgKrw==}
     hasBin: true
     peerDependencies:
       eslint: ^8.50.0 || ^9.0.0
@@ -2902,8 +2902,8 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: false
 
-  /eslint-plugin-vitest@0.5.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0):
-    resolution: {integrity: sha512-zaXzIjNUJgAkDUODagPNOcm9tO+CxlB0tnmKMkH3eRioXZ9YGuwr6eQzv9Vodot0qfPwqb5+SMjy7KfwJBd8tw==}
+  /eslint-plugin-vitest@0.5.1(@typescript-eslint/eslint-plugin@7.6.0)(eslint@9.0.0)(typescript@5.4.4)(vitest@1.4.0):
+    resolution: {integrity: sha512-g137wC+LCq2N+tfqK39Nl6Rs2N9u+zu6lWxaVgpN3wX+Kq6zSyxjPSI/ZBXUjP+qandT3z1DM5wK5IjD4XrAIw==}
     engines: {node: ^18.0.0 || >= 20.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '*'
