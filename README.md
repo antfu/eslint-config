@@ -464,20 +464,21 @@ To control which rules apply to your Svelte files, you can apply overrides like 
  
 ```js
 // eslint.config.js
-import { antfu, svelte } from '@antfu/eslint-config'
+import { antfu } from '@antfu/eslint-config'
 
-export default antfu(
-  {},
-  svelte({
-    typescript: true,
-    overrides: {
-      'svelte/no-dom-manipulating': 'error', // Svelte overrides here
+export default antfu({
+  svelte: true,
+).overrides({
+  'antfu/svelte/rules': {
+    rules: {
+      'svelte/no-dom-manipulating': 'error',
     },
-  }),
-).override('antfu/typescript/rules', {
-  files: ['**/*.svelte'],
-  rules: {
-    'prefer-destructuring': 'error', // Typescript overrides here
+  },
+  'antfu/typescript/rules': {
+    files: ['**/*.svelte'],
+    rules: {
+      'prefer-destructuring': 'error',
+    },
   },
 })
 ```
