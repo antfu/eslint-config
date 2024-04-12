@@ -254,20 +254,20 @@ export function antfu(
   if (Object.keys(fusedConfig).length)
     configs.push([fusedConfig])
 
-  let pipeline = new FlatConfigComposer<TypedFlatConfigItem>()
+  let composer = new FlatConfigComposer<TypedFlatConfigItem>()
 
-  pipeline = pipeline
+  composer = composer
     .append(
       ...configs,
       ...userConfigs as any,
     )
 
   if (autoRenamePlugins) {
-    pipeline = pipeline
+    composer = composer
       .renamePlugins(defaultPluginRenaming)
   }
 
-  return pipeline
+  return composer
 }
 
 export type ResolvedOptions<T> = T extends boolean
