@@ -1,4 +1,5 @@
 import { mergeProcessors } from 'eslint-merge-processors'
+import { isVue2 } from 'vue-demi'
 import { interopDefault } from '../utils'
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue, TypedFlatConfigItem } from '../types'
 import { GLOB_VUE } from '../globs'
@@ -10,7 +11,7 @@ export async function vue(
     files = [GLOB_VUE],
     overrides = {},
     stylistic = true,
-    vueVersion = 3,
+    vueVersion = isVue2 ? 2 : 3,
   } = options
 
   const sfcBlocks = options.sfcBlocks === true
