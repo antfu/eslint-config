@@ -356,19 +356,6 @@ export default antfu({
 })
 ```
 
-### Vue version
-
-The default Vue version is 3, if you're using Vue 2:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  vue: { vueVersion: 2 },
-})
-```
-
 ### Pipeline
 
 Since v2.10.0, the factory function `antfu()` returns a [pipeline object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#pipe) where you can chain the methods to compose the config even more flexibly.
@@ -397,6 +384,36 @@ export default antfu()
   })
 // ...
 ```
+
+### Vue
+
+Vue support is detected automatically by checking if `vue` is installed in your project. You can also explicitly enable/disable it:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  vue: true
+})
+```
+
+#### Vue 2
+
+We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuejs.org/eol/)). If you are still using Vue 2, you can configure it manually by setting `vueVersion` to `2`:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  vue: {
+    vueVersion: 2
+  },
+})
+```
+
+As it's in maintenance mode, we only accept bug fixes for Vue 2. It might also be removed in the future when `eslint-plugin-vue` drops support for Vue 2. We recommend upgrading to Vue 3 if possible.
 
 ### Optional Configs
 
