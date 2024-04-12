@@ -460,24 +460,26 @@ export default antfu({
 })
 ```
 
-For more control over which rules apply to your Svelte files, you apply overrides like this:
+To control which rules apply to your Svelte files, you can apply overrides like this:
  
 ```js
 // eslint.config.js
-import { antfu, svelte, typescript } from '@antfu/eslint-config'
+import { antfu, svelte } from '@antfu/eslint-config'
 
 export default antfu(
   {},
-  typescript({
-    componentExts: ['svelte'],
-  }),
   svelte({
     typescript: true,
     overrides: {
-      'svelte/no-dom-manipulating': 'error',
+      'svelte/no-dom-manipulating': 'error', // Svelte overrides here
     },
   }),
-)
+).override('antfu/typescript/rules', {
+  files: ['**/*.svelte'],
+  rules: {
+    'prefer-destructuring': 'error', // Typescript overrides here
+  },
+})
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
