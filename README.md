@@ -356,6 +356,19 @@ export default antfu({
 })
 ```
 
+### Vue version
+
+The default Vue version is 3, if you're using Vue 2:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  vue: { vueVersion: 2 },
+})
+```
+
 ### Pipeline
 
 Since v2.10.0, the factory function `antfu()` returns a [pipeline object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#pipe) where you can chain the methods to compose the config even more flexibly.
