@@ -175,6 +175,9 @@ export default antfu({
   stylistic: {
     indent: 2, // 4, or 'tab'
     quotes: 'single', // or 'double'
+    overrides: {
+      'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    },
   },
 
   // TypeScript and Vue are auto-detected, you can also explicitly enable them:
@@ -455,6 +458,26 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
   svelte: true,
 })
+```
+
+For more control over which rules apply to your Svelte files, you apply overrides like this:
+ 
+```js
+// eslint.config.js
+import { antfu, svelte, typescript } from '@antfu/eslint-config'
+
+export default antfu(
+  {},
+  typescript({
+    componentExts: ['svelte'],
+  }),
+  svelte({
+    typescript: true,
+    overrides: {
+      'svelte/no-dom-manipulating': 'error',
+    },
+  }),
+)
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
