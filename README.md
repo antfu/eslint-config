@@ -6,7 +6,7 @@
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one line of config
-- Designed to work with TypeScript, JSX, Vue out-of-box
+- Designed to work with TypeScript, JSX, Vue 2 & 3 out-of-box
 - Lints also for json, yaml, toml, markdown
 - Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
@@ -353,6 +353,19 @@ export default antfu({
       // ...
     },
   },
+})
+```
+
+### Vue version
+
+The default Vue version is 3, if you're using Vue 2:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  vue: { vueVersion: 2 },
 })
 ```
 
