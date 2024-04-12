@@ -468,7 +468,7 @@ import { antfu } from '@antfu/eslint-config'
 
 export default antfu({
   svelte: true,
-).overrides({
+}).overrides({
   'antfu/svelte/rules': {
     rules: {
       'svelte/no-dom-manipulating': 'error',
