@@ -365,7 +365,7 @@ The default Vue version is 3, if you're using Vue 2:
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  vue: { vueVersion: 2 },
+  vue: { version: 2 },
 })
 ```
 

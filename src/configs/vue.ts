@@ -10,7 +10,7 @@ export async function vue(
     files = [GLOB_VUE],
     overrides = {},
     stylistic = true,
-    vueVersion = 3,
+    version = 3,
   } = options
 
   const sfcBlocks = options.sfcBlocks === true
@@ -90,7 +90,7 @@ export async function vue(
       rules: {
         ...pluginVue.configs.base.rules as any,
 
-        ...vueVersion === 2
+        ...version === 2
           ? {
               ...pluginVue.configs.essential.rules as any,
               ...pluginVue.configs['strongly-recommended'].rules as any,

@@ -51,7 +51,7 @@ export interface OptionsVue extends OptionsOverrides {
    *
    * @default 3
    */
-  vueVersion?: 2 | 3
+  version?: 2 | 3
 }
 
 export type OptionsTypescript =
