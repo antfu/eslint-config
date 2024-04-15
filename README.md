@@ -680,6 +680,20 @@ Meanwhile, we do have dprint integrations for formatting other files such as `.m
 
 You can opt-in to the [`formatters`](#formatters) feature to format your CSS. Note that it's only doing formatting, but not linting. If you want proper linting support, give [`stylelint`](https://stylelint.io/) a try.
 
+### Top-level Function Style, etc.
+
+I am a very opinionated person, so as this config. I prefer the top-level functions always using the function declaration over arrow functions; I prefer one-line if statements without braces and always wraps, and so on. I even wrote some custom rules to enforce them.
+
+I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
+
+```ts
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  lessOpinionated: true
+})
+```
+
 ### I prefer XXX...
 
 Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.

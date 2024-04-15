@@ -185,6 +185,17 @@ export interface OptionsConfig extends OptionsComponentExts {
   gitignore?: boolean | FlatGitignoreOptions
 
   /**
+   * Disable some opinionated rules to Anthony's preference.
+   *
+   * Including:
+   * - `antfu/top-level-function`
+   * - `antfu/if-newline`
+   *
+   * @default false
+   */
+  lessOpinionated?: boolean
+
+  /**
    * Core rules. Can't be disabled.
    */
   javascript?: OptionsOverrides

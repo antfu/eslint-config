@@ -144,6 +144,7 @@ export function antfu(
   if (stylisticOptions) {
     configs.push(stylistic({
       ...stylisticOptions,
+      lessOpinionated: options.lessOpinionated,
       overrides: getOverrides(options, 'stylistic'),
     }))
   }
