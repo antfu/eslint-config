@@ -98,7 +98,7 @@ export const dependenciesMap = {
     'astro-eslint-parser',
   ],
   react: [
-    'eslint-plugin-react',
+    '@eslint-react/eslint-plugin',
     'eslint-plugin-react-hooks',
     'eslint-plugin-react-refresh',
   ],
