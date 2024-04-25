@@ -13,6 +13,9 @@ const RemixPackages = [
   '@remix-run/serve',
   '@remix-run/dev',
 ]
+const NextJsPackages = [
+  'next',
+]
 
 export async function react(
   options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
@@ -45,11 +48,9 @@ export async function react(
     interopDefault(import('@typescript-eslint/parser')),
   ] as const)
 
-  const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(
-    i => isPackageExists(i),
-  )
+  const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i))
   const isUsingRemix = RemixPackages.some(i => isPackageExists(i))
-  const isUsingNext = isPackageExists('next')
+  const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
 
   const plugins = pluginReact.configs.all.plugins
 
@@ -101,16 +102,18 @@ export async function react(
           'warn',
           {
             allowConstantExport: isAllowConstantExport,
-            allowExportNames: isUsingNext
-              ? [
-                  'config',
-                  'generateStaticParams',
-                  'metadata',
-                  'generateMetadata',
-                  'viewport',
-                  'generateViewport',
-                ]
-              : isUsingRemix
+            allowExportNames: [
+              ...(isUsingNext
+                ? [
+                    'config',
+                    'generateStaticParams',
+                    'metadata',
+                    'generateMetadata',
+                    'viewport',
+                    'generateViewport',
+                  ]
+                : []),
+              ...(isUsingRemix
                 ? [
                     'meta',
                     'links',
@@ -118,7 +121,8 @@ export async function react(
                     'loader',
                     'action',
                   ]
-                : undefined,
+                : []),
+            ],
           },
         ],
 
