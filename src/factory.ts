@@ -6,6 +6,7 @@ import type { Linter } from 'eslint'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 import {
   astro,
+  command,
   comments,
   ignores,
   imports,
@@ -130,6 +131,7 @@ export function antfu(
       stylistic: stylisticOptions,
     }),
     unicorn(),
+    command(),
 
     // Optional plugins (installed but not enabled by default)
     perfectionist(),

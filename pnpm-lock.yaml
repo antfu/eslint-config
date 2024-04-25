@@ -35,6 +35,9 @@ importers:
       eslint-plugin-antfu:
         specifier: ^2.1.2
         version: 2.1.2(eslint@9.1.1)
+      eslint-plugin-command:
+        specifier: ^0.1.2
+        version: 0.1.2(eslint@9.1.1)
       eslint-plugin-eslint-comments:
         specifier: ^3.2.0
         version: 3.2.0(eslint@9.1.1)
@@ -1489,6 +1492,11 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=7.0.0'
+
+  eslint-plugin-command@0.1.2:
+    resolution: {integrity: sha512-LxP9coE/GwLvF4JMFyJxqjyMxOASxl8Y3UPWyjjfaIBz4X0yWGqidX0gbAeVuZ9xkaBNWIWZtlPtLPlN/wckOA==}
+    peerDependencies:
+      eslint: '*'
 
   eslint-plugin-es-x@7.5.0:
     resolution: {integrity: sha512-ODswlDSO0HJDzXU0XvgZ3lF3lS3XAZEossh15Q2UHjwrJggWeBoKqqEsLTZLXl+dh5eOAozG0zRcYtuE35oTuQ==}
@@ -4471,6 +4479,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - typescript
+
+  eslint-plugin-command@0.1.2(eslint@9.1.1):
+    dependencies:
+      eslint: 9.1.1
 
   eslint-plugin-es-x@7.5.0(eslint@9.1.1):
     dependencies:
