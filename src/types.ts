@@ -66,6 +66,13 @@ export interface OptionsFormatters {
   html?: 'prettier' | boolean
 
   /**
+   * Enable formatting support for XML.
+   *
+   * Currently only support Prettier.
+   */
+  xml?: 'prettier' | boolean
+
+  /**
    * Enable formatting support for Markdown.
    *
    * Support both Prettier and dprint.
