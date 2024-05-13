@@ -245,7 +245,6 @@ import {
   typescript,
   unicorn,
   vue,
-  xml,
   yaml,
 } from '@antfu/eslint-config'
 
@@ -263,7 +262,6 @@ export default combine(
   jsonc(),
   yaml(),
   toml(),
-  xml(),
   markdown(),
 )
 ```
