@@ -32,6 +32,7 @@ import {
 } from './configs'
 import { interopDefault } from './utils'
 import { formatters } from './configs/formatters'
+import { regexp } from './configs/regexp'
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -87,6 +88,7 @@ export function antfu(
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     react: enableReact = false,
+    regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
@@ -155,6 +157,9 @@ export function antfu(
       overrides: getOverrides(options, 'stylistic'),
     }))
   }
+
+  if (enableRegexp)
+    configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp))
 
   if (options.test ?? true) {
     configs.push(test({
