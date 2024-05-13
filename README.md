@@ -8,7 +8,7 @@
 - Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Optional [React](#react), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro), [Solid](#solid) support
-- Optional [formatters](#formatters) support for formatting CSS, HTML, etc.
+- Optional [formatters](#formatters) support for formatting CSS, HTML, XML, etc.
 - **Style principle**: Minimal for reading, stable for diff, consistent
   - Sorted imports, dangling commas
   - Single quotes, no semi
@@ -143,6 +143,7 @@ Add the following settings to your `.vscode/settings.json`:
     "jsonc",
     "yaml",
     "toml",
+    "xml",
     "gql",
     "graphql",
     "astro"

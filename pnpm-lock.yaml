@@ -126,6 +126,9 @@ importers:
       '@eslint/config-inspector':
         specifier: ^0.4.8
         version: 0.4.8(eslint-ts-patch@9.2.0-6)
+      '@prettier/plugin-xml':
+        specifier: ^3.4.1
+        version: 3.4.1(prettier@3.2.5)
       '@stylistic/eslint-plugin-migrate':
         specifier: ^2.1.0
         version: 2.1.0(eslint-ts-patch@9.2.0-6)(typescript@5.4.5)
@@ -712,6 +715,11 @@ packages:
     resolution: {integrity: sha512-Zwq5OCzuwJC2jwqmpEQt7Ds1DTi6BWSwoGkbb1n9pO3hzb35BoJELx7c0T23iDkBGkh2e7tvOtjF3tr3OaQHDQ==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@prettier/plugin-xml@3.4.1':
+    resolution: {integrity: sha512-Uf/6/+9ez6z/IvZErgobZ2G9n1ybxF5BhCd7eMcKqfoWuOzzNUxBipNo3QAP8kRC1VD18TIo84no7LhqtyDcTg==}
+    peerDependencies:
+      prettier: ^3.0.0
+
   '@rollup/rollup-android-arm-eabi@4.4.1':
     resolution: {integrity: sha512-Ss4suS/sd+6xLRu+MLCkED2mUrAyqHmmvZB+zpzZ9Znn9S8wCkTQCJaQ8P8aHofnvG5L16u9MVnJjCqioPErwQ==}
     cpu: [arm]
@@ -1015,6 +1023,9 @@ packages:
   '@vue/shared@3.4.27':
     resolution: {integrity: sha512-DL3NmY2OFlqmYYrzp39yi3LDkKxa5vZVwxWdQ3rG0ekuWscHraeIbnI8t+aZK7qhYqEqWKTUdijadunb9pnrgA==}
 
+  '@xml-tools/parser@1.0.11':
+    resolution: {integrity: sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA==}
+
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1185,6 +1196,9 @@ packages:
 
   check-error@1.0.3:
     resolution: {integrity: sha512-iKEoDYaRmd1mxM90a2OEfWhjsjPpYPuQ+lMYsoxB126+t8fw7ySEO48nmDg5COTjxDI65/Y2OWpeEHk3ZOe8zg==}
+
+  chevrotain@7.1.1:
+    resolution: {integrity: sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==}
 
   chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
@@ -1912,8 +1926,8 @@ packages:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
 
-  importx@0.2.0:
-    resolution: {integrity: sha512-a1WsQz4efNJGPPaQkcMioCQ1ttRZlJh2e53ivJUuR/LvjYW0cCqe2m6gcBqj3U+QyG7KU5zLkkZ2CtObNKLhXA==}
+  importx@0.2.2:
+    resolution: {integrity: sha512-JPVUEEo8iNfxG3t8+ZCCk/vaI0RlCrw6sH8cdE8G9sqo7Kolq+ApF2SZXsuWmLZi3Y60GCTwwttIDQP0dbhuwA==}
 
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -2570,6 +2584,9 @@ packages:
   regexp-ast-analysis@0.7.1:
     resolution: {integrity: sha512-sZuz1dYW/ZsfG17WSAG7eS85r5a0dDsvg+7BiiYR5o6lKCAtUrEwdmRmaGF6rwVj3LcmAeYkOWKEPlbPzN3Y3A==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
+  regexp-to-ast@0.5.0:
+    resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
 
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
@@ -3579,6 +3596,11 @@ snapshots:
 
   '@pkgr/core@0.1.0': {}
 
+  '@prettier/plugin-xml@3.4.1(prettier@3.2.5)':
+    dependencies:
+      '@xml-tools/parser': 1.0.11
+      prettier: 3.2.5
+
   '@rollup/rollup-android-arm-eabi@4.4.1':
     optional: true
 
@@ -3964,6 +3986,10 @@ snapshots:
 
   '@vue/shared@3.4.27': {}
 
+  '@xml-tools/parser@1.0.11':
+    dependencies:
+      chevrotain: 7.1.1
+
   acorn-jsx@5.3.2(acorn@8.11.3):
     dependencies:
       acorn: 8.11.3
@@ -4154,6 +4180,10 @@ snapshots:
   check-error@1.0.3:
     dependencies:
       get-func-name: 2.0.2
+
+  chevrotain@7.1.1:
+    dependencies:
+      regexp-to-ast: 0.5.0
 
   chokidar@3.6.0:
     dependencies:
@@ -4768,7 +4798,7 @@ snapshots:
     dependencies:
       debug: 4.3.4
       eslint: 9.2.0
-      importx: 0.2.0
+      importx: 0.2.2
     transitivePeerDependencies:
       - supports-color
 
@@ -5094,7 +5124,7 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  importx@0.2.0:
+  importx@0.2.2:
     dependencies:
       bundle-require: 4.1.0(esbuild@0.20.2)
       debug: 4.3.4
@@ -5701,6 +5731,8 @@ snapshots:
     dependencies:
       '@eslint-community/regexpp': 4.10.0
       refa: 0.12.1
+
+  regexp-to-ast@0.5.0: {}
 
   regexp-tree@0.1.27: {}
 
