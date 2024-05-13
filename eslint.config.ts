@@ -1,5 +1,4 @@
 // @ts-expect-error missing types
-// @eslint-ts-patch-loader tsx
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
 import { antfu } from './src'
 

@@ -62,6 +62,9 @@ importers:
       eslint-plugin-perfectionist:
         specifier: ^2.10.0
         version: 2.10.0(astro-eslint-parser@1.0.2(typescript@5.4.5))(eslint-ts-patch@9.2.0-6)(svelte-eslint-parser@0.36.0(svelte@4.2.16))(svelte@4.2.16)(typescript@5.4.5)(vue-eslint-parser@9.4.2(eslint-ts-patch@9.2.0-6))
+      eslint-plugin-regexp:
+        specifier: ^2.5.0
+        version: 2.5.0(eslint-ts-patch@9.2.0-6)
       eslint-plugin-toml:
         specifier: ^0.11.0
         version: 0.11.0(eslint-ts-patch@9.2.0-6)
@@ -1561,6 +1564,12 @@ packages:
     peerDependencies:
       eslint: '>=7'
 
+  eslint-plugin-regexp@2.5.0:
+    resolution: {integrity: sha512-I7vKcP0o75WS5SHiVNXN+Eshq49sbrweMQIuqSL3AId9AwDe9Dhbfug65vw64LxmOd4v+yf5l5Xt41y9puiq0g==}
+    engines: {node: ^18 || >=20}
+    peerDependencies:
+      eslint: '>=8.44.0'
+
   eslint-plugin-solid@0.14.0:
     resolution: {integrity: sha512-EY0GJLOZdLynAyBM39WBLJH2bUftGI0KekyzpfxQEhCTuOhXkIRf648P97mQjME3TDaQQbY+ObVXeE2mjfs4FQ==}
     engines: {node: '>=12.0.0'}
@@ -2554,6 +2563,14 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
+  refa@0.12.1:
+    resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
+  regexp-ast-analysis@0.7.1:
+    resolution: {integrity: sha512-sZuz1dYW/ZsfG17WSAG7eS85r5a0dDsvg+7BiiYR5o6lKCAtUrEwdmRmaGF6rwVj3LcmAeYkOWKEPlbPzN3Y3A==}
+    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
   regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
     hasBin: true
@@ -2614,6 +2631,10 @@ packages:
 
   sass-formatter@0.7.9:
     resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
+
+  scslre@0.3.0:
+    resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
+    engines: {node: ^14.0.0 || >=16.0.0}
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
@@ -4606,6 +4627,17 @@ snapshots:
     dependencies:
       eslint: eslint-ts-patch@9.2.0-6
 
+  eslint-plugin-regexp@2.5.0(eslint-ts-patch@9.2.0-6):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.0(eslint-ts-patch@9.2.0-6)
+      '@eslint-community/regexpp': 4.10.0
+      comment-parser: 1.4.1
+      eslint: eslint-ts-patch@9.2.0-6
+      jsdoc-type-pratt-parser: 4.0.0
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
+      scslre: 0.3.0
+
   eslint-plugin-solid@0.14.0(eslint-ts-patch@9.2.0-6)(typescript@5.4.5):
     dependencies:
       '@typescript-eslint/utils': 7.8.0(eslint-ts-patch@9.2.0-6)(typescript@5.4.5)
@@ -5661,6 +5693,15 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
+  refa@0.12.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+
+  regexp-ast-analysis@0.7.1:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+      refa: 0.12.1
+
   regexp-tree@0.1.27: {}
 
   regjsparser@0.10.0:
@@ -5721,6 +5762,12 @@ snapshots:
   sass-formatter@0.7.9:
     dependencies:
       suf-log: 2.5.3
+
+  scslre@0.3.0:
+    dependencies:
+      '@eslint-community/regexpp': 4.10.0
+      refa: 0.12.1
+      regexp-ast-analysis: 0.7.1
 
   semver@5.7.2: {}
 

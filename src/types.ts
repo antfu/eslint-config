@@ -156,6 +156,13 @@ export interface OptionsOverrides {
   overrides?: TypedFlatConfigItem['rules']
 }
 
+export interface OptionsRegExp {
+  /**
+   * Override rulelevels
+   */
+  level?: 'error' | 'warn'
+}
+
 export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
@@ -278,9 +285,18 @@ export interface OptionsConfig extends OptionsComponentExts {
   /**
    * Enable stylistic rules.
    *
+   * @see https://eslint.style/
    * @default true
    */
   stylistic?: boolean | (StylisticConfig & OptionsOverrides)
+
+  /**
+   * Enable regexp rules.
+   *
+   * @see https://ota-meshi.github.io/eslint-plugin-regexp/
+   * @default true
+   */
+  regexp?: boolean | (OptionsRegExp & OptionsOverrides)
 
   /**
    * Enable react rules.
