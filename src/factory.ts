@@ -139,8 +139,9 @@ export function antfu(
     perfectionist(),
   )
 
-  if (enableVue)
+  if (enableVue) {
     componentExts.push('vue')
+  }
 
   if (enableTypeScript) {
     configs.push(typescript({
@@ -158,8 +159,9 @@ export function antfu(
     }))
   }
 
-  if (enableRegexp)
+  if (enableRegexp) {
     configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp))
+  }
 
   if (options.test ?? true) {
     configs.push(test({

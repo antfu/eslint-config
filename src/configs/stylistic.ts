@@ -56,9 +56,9 @@ export async function stylistic(
               curly: ['error', 'all'],
             }
           : {
+              'antfu/curly': 'error',
               'antfu/if-newline': 'error',
               'antfu/top-level-function': 'error',
-              'curly': ['error', 'multi-or-nest', 'consistent'],
             }
         ),
 
