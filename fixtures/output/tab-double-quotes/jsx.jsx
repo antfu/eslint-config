@@ -4,8 +4,9 @@ export function HelloWorld({
 	silent = false,
 	onMouseOver,
 	 }) {
-	if (!greeting)
+	if (!greeting) {
 		return null
+	};
 
 	// TODO: Don't use random in render
 	const num = Math.floor (Math.random() * 1e+7).toString()
