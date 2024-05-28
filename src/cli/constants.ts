@@ -49,7 +49,12 @@ export const vscodeSettingsString = `
     "xml",
     "gql",
     "graphql",
-    "astro"
+    "astro",
+    "css",
+    "less",
+    "scss",
+    "pcss",
+    "postcss"
   ]
 `
 
