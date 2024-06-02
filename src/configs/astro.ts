@@ -1,3 +1,4 @@
+import globals from 'globals'
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
 import { GLOB_ASTRO } from '../globs'
 import { interopDefault } from '../utils'
@@ -15,10 +16,12 @@ export async function astro(
     pluginAstro,
     parserAstro,
     parserTs,
+    pluginTs,
   ] = await Promise.all([
     interopDefault(import('eslint-plugin-astro')),
     interopDefault(import('astro-eslint-parser')),
     interopDefault(import('@typescript-eslint/parser')),
+    interopDefault(import('@typescript-eslint/eslint-plugin')),
   ] as const)
 
   return [
@@ -65,6 +68,42 @@ export async function astro(
           : {},
 
         ...overrides,
+      },
+    },
+    {
+      // Define the configuration for `<script>` tag.
+      files: ['**/*.astro/*.js', '*.astro/*.js'],
+      languageOptions: {
+        globals: {
+          ...globals.browser,
+        },
+        sourceType: 'module',
+      },
+      // Script in `<script>` is assigned a virtual file name with the `.js` extension.
+      name: 'antfu/astro/base/javascript',
+      rules: {
+        'prettier/prettier': 'off',
+      },
+    },
+    {
+      // Define the configuration for `<script>` tag when using `client-side-ts` processor.
+      files: ['**/*.astro/*.ts', '*.astro/*.ts'],
+      languageOptions: {
+        globals: {
+          ...globals.browser,
+        },
+        parser: parserTs,
+        parserOptions: {
+          project: null,
+        },
+        sourceType: 'module',
+      },
+      // Script in `<script>` is assigned a virtual file name with the `.ts` extension.
+      name: 'antfu/astro/base/typescript',
+      rules: {
+        'prettier/prettier': 'off',
+        // Type aware rules breaks the astro plugin
+        ...(pluginTs?.configs?.['disable-type-checked']?.rules ?? {}),
       },
     },
   ]
