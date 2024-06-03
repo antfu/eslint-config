@@ -6,9 +6,9 @@ import c from 'picocolors'
 import * as p from '@clack/prompts'
 
 import { vscodeSettingsString } from '../constants'
-import type { PromtResult } from '../types'
+import type { PromptResult } from '../types'
 
-export async function updateVscodeSettings(result: PromtResult) {
+export async function updateVscodeSettings(result: PromptResult) {
   const cwd = process.cwd()
 
   if (!result.updateVscodeSettings)
