@@ -8,10 +8,11 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  enableAstro: boolean,
 ): Promise<TypedFlatConfigItem[]> {
   if (options === true) {
     options = {
-      astro: isPackageExists('astro'),
+      astro: enableAstro,
       css: true,
       graphql: true,
       html: true,
@@ -247,6 +248,7 @@ export async function formatters(
           'error',
           {
             ...prettierOptions,
+            astroSkipFrontmatter: enableAstro,
             parser: 'astro',
             plugins: [
               'prettier-plugin-astro',

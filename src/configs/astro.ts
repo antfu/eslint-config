@@ -5,6 +5,7 @@ import { interopDefault } from '../utils'
 
 export async function astro(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
+  enableFormatter: boolean = false,
 ): Promise<TypedFlatConfigItem[]> {
   const {
     files = [GLOB_ASTRO],
@@ -71,21 +72,6 @@ export async function astro(
       },
     },
     {
-      // Define the configuration for `<script>` tag.
-      files: ['**/*.astro/*.js', '*.astro/*.js'],
-      languageOptions: {
-        globals: {
-          ...globals.browser,
-        },
-        sourceType: 'module',
-      },
-      // Script in `<script>` is assigned a virtual file name with the `.js` extension.
-      name: 'antfu/astro/base/javascript',
-      rules: {
-        'prettier/prettier': 'off',
-      },
-    },
-    {
       // Define the configuration for `<script>` tag when using `client-side-ts` processor.
       files: ['**/*.astro/*.ts', '*.astro/*.ts'],
       languageOptions: {
@@ -102,6 +88,11 @@ export async function astro(
       name: 'antfu/astro/base/typescript',
       rules: {
         'prettier/prettier': 'off',
+        ...(enableFormatter
+          ? {
+              'style/indent': 'off',
+            }
+          : {}),
         // Type aware rules breaks the astro plugin
         ...(pluginTs?.configs?.['disable-type-checked']?.rules ?? {}),
       },
