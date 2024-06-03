@@ -5,9 +5,9 @@ import c from 'picocolors'
 import * as p from '@clack/prompts'
 
 import { dependenciesMap, pkgJson } from '../constants'
-import type { ExtraLibrariesOption, PromtResult } from '../types'
+import type { ExtraLibrariesOption, PromptResult } from '../types'
 
-export async function updatePackageJson(result: PromtResult) {
+export async function updatePackageJson(result: PromptResult) {
   const cwd = process.cwd()
 
   const pathPackageJSON = path.join(cwd, 'package.json')
