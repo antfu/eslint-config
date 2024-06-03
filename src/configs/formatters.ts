@@ -8,7 +8,7 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
-  enableAstro: boolean,
+  enableAstro: boolean = false,
 ): Promise<TypedFlatConfigItem[]> {
   if (options === true) {
     options = {
