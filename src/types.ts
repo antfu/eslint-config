@@ -174,6 +174,10 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
+export interface OptionsUseFormatter {
+  formatter?: boolean
+}
+
 export interface OptionsUnoCSS extends OptionsOverrides {
   /**
    * Enable attributify support.

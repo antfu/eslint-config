@@ -1,14 +1,24 @@
 import globals from 'globals'
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, OptionsUseFormatter, TypedFlatConfigItem } from '../types'
 import { GLOB_ASTRO } from '../globs'
 import { interopDefault } from '../utils'
 
+const DISABLE_STYLISTIC_RULES: TypedFlatConfigItem['rules'] = {
+  'style/arrow-parens': 'off',
+  'style/block-spacing': 'off',
+  'style/comma-dangle': 'off',
+  'style/indent': 'off',
+  'style/no-multi-spaces': 'off',
+  'style/quotes': 'off',
+  'style/semi': 'off',
+}
+
 export async function astro(
-  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
-  enableFormatter: boolean = false,
+  options: OptionsOverrides & OptionsStylistic & OptionsUseFormatter & OptionsFiles = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
     files = [GLOB_ASTRO],
+    formatter = false,
     overrides = {},
     stylistic = true,
   } = options
@@ -68,6 +78,10 @@ export async function astro(
             }
           : {},
 
+        ...formatter
+          ? DISABLE_STYLISTIC_RULES
+          : {},
+
         ...overrides,
       },
     },
@@ -88,11 +102,11 @@ export async function astro(
       name: 'antfu/astro/base/typescript',
       rules: {
         'prettier/prettier': 'off',
-        ...(enableFormatter
-          ? {
-              'style/indent': 'off',
-            }
-          : {}),
+
+        ...formatter
+          ? DISABLE_STYLISTIC_RULES
+          : {},
+
         // Type aware rules breaks the astro plugin
         ...(pluginTs?.configs?.['disable-type-checked']?.rules ?? {}),
       },

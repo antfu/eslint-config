@@ -252,15 +252,15 @@ export function antfu(
     configs.push(formatters(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
-      !!enableAstro,
     ))
   }
 
   if (enableAstro) {
     configs.push(astro({
+      formatter: !!(options.formatters === true ? isPackageExists('prettier-plugin-astro') : resolveSubOptions(options, 'formatters').astro),
       overrides: getOverrides(options, 'astro'),
       stylistic: stylisticOptions,
-    }, !!(options.formatters === true || resolveSubOptions(options, 'formatters').astro)))
+    }))
   }
 
   // User can optionally pass a flat config item to the first argument
