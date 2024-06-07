@@ -18,19 +18,4 @@ export default antfu(
       '_fixtures',
     ],
   },
-  {
-    files: ['src/**/*.ts'],
-    rules: {
-      'perfectionist/sort-objects': 'error',
-    },
-  },
-  {
-    files: ['src/configs/*.ts'],
-    plugins: {
-      'style-migrate': styleMigrate,
-    },
-    rules: {
-      'style-migrate/migrate': ['error', { namespaceTo: 'style' }],
-    },
-  },
 )

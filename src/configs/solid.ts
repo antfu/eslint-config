@@ -85,6 +85,6 @@ export async function solid(
         ...overrides,
       },
     },
-    {name: "nirtamir2/solid/a11y",...a11y()}
+    ...a11y()
   ]
 }

@@ -36,7 +36,7 @@ export async function test(
     {
       name: 'antfu/vitest/setup',
       plugins: {
-        test: _pluginTest,
+        vitest: _pluginTest,
       },
     },
     {

@@ -6,7 +6,7 @@ export async function node(): Promise<TypedFlatConfigItem[]> {
     {
       name: 'antfu/node/rules',
       plugins: {
-        node: pluginNode,
+        n: pluginNode,
       },
       rules: {
         'n/handle-callback-err': ['error', '^(err|error)$'],

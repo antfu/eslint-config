@@ -12,7 +12,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
       name: 'antfu/imports/rules',
       plugins: {
         antfu: pluginAntfu,
-        import: pluginImport,
+        "import-x": pluginImport,
       },
       rules: {
         'antfu/import-dedupe': 'error',

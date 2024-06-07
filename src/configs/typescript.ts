@@ -9,7 +9,7 @@ import type {
   TypedFlatConfigItem
 } from '../types'
 import {pluginAntfu} from '../plugins'
-import {interopDefault, renameRules, toArray} from '../utils'
+import {interopDefault, toArray} from '../utils'
 import expectType from "eslint-plugin-expect-type/configs/recommended";
 import tseslint from "typescript-eslint";
 import {compat} from "../compat";
@@ -103,18 +103,14 @@ export async function typescript(
           makeParser(false, files, filesTypeAware),
         ]
       : [makeParser(false, files)],
+    ...tseslint.configs.recommended,
+    ...tseslint.configs.recommendedTypeChecked,
     {
       files,
       name: 'antfu/typescript/rules',
       rules: {
-        ...renameRules(
-          pluginTs.configs['eslint-recommended'].overrides![0].rules!,
-          { '@typescript-eslint': 'ts' },
-        ),
-        ...renameRules(
-          pluginTs.configs.strict.rules!,
-          { '@typescript-eslint': 'ts' },
-        ),
+          ...pluginTs.configs['eslint-recommended'].overrides![0].rules,
+          ...pluginTs.configs.strict.rules,
         'no-dupe-class-members': 'off',
         'no-loss-of-precision': 'off',
         'no-redeclare': 'off',
@@ -178,7 +174,8 @@ export async function typescript(
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off',
       },
-    }, compat.config({
+    },
+    ...compat.config({
       plugins: ["tsdoc"],
       rules: {
         "tsdoc/syntax": "warn",
@@ -193,10 +190,6 @@ export async function typescript(
     {
       files: ["**/*.ts", "**/*.tsx"],
       ignores: [".storybook/**"],
-      extends: [
-        ...tseslint.configs.recommended,
-        ...tseslint.configs.recommendedTypeChecked,
-      ],
       rules: {
         //#region @typescript-eslint off - too strict
         "no-magic-numbers": "off",
