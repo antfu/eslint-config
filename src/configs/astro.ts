@@ -101,13 +101,11 @@ export async function astro(
       // Script in `<script>` is assigned a virtual file name with the `.ts` extension.
       name: 'antfu/astro/base/typescript',
       rules: {
-        'prettier/prettier': 'off',
-
         ...formatter
           ? DISABLE_STYLISTIC_RULES
           : {},
 
-        // Type aware rules breaks the astro plugin
+        // Type aware rules breaks the astro plugin: https://github.com/ota-meshi/eslint-plugin-astro/issues/240
         ...(pluginTs?.configs?.['disable-type-checked']?.rules ?? {}),
       },
     },
