@@ -106,7 +106,6 @@ export async function javascript(
         "array-func/prefer-array-from": 0, // conflicts with unicorn/prefer-spread
       },
     },
-    {name: "nirtamir2/javascript/github",
       ...fixupConfigRules(
           compat.config({
             plugins: ["github"],
@@ -132,7 +131,7 @@ export async function javascript(
               "github/unescaped-html-literal": 2,
             },
           }),
-      )},
+      ),
     {
       languageOptions: {
         ecmaVersion: 2022,
@@ -353,21 +352,21 @@ export async function javascript(
         'dot-notation': 'off', // Collide with TypeScript TS4111: Property comes from an index signature, so it must be accessed with [].
       },
     },
-      fixupConfigRules(
+      ...fixupConfigRules(
           compat.config({
               extends: ["plugin:optimize-regex/recommended"],
           }),
       ),
-    fixupConfigRules(
+      ...fixupConfigRules(
         compat.config({
           extends: ["plugin:workspaces/recommended"],
         }),
     ),
-      compat.config({
+      ...compat.config({
           extends: ["plugin:eslint-comments/recommended"],
       }),
     eslintPluginNoUseExtendNative.configs.recommended,
     sonarjs.configs.recommended,
-    compat.extends("plugin:clsx/recommended"),
+      ...compat.extends("plugin:clsx/recommended"),
   ]
 }
