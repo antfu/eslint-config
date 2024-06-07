@@ -257,7 +257,6 @@ export function antfu(
 
   if (enableAstro) {
     configs.push(astro({
-      formatter: !!(options.formatters === true ? isPackageExists('prettier-plugin-astro') : resolveSubOptions(options, 'formatters').astro),
       overrides: getOverrides(options, 'astro'),
       stylistic: stylisticOptions,
     }))

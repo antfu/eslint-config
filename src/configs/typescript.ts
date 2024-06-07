@@ -142,6 +142,11 @@ export async function typescript(
             ...tsconfigPath ? typeAwareRules : {},
             ...overrides,
           },
+        }, {
+          files: ['**/*.astro/*.ts', '*.astro/*.ts'],
+          name: 'antfu/typescript/disables/astro',
+          // Type aware rules breaks the astro plugin: https://github.com/ota-meshi/eslint-plugin-astro/issues/240
+          rules: pluginTs.configs['disable-type-checked'].rules,
         }]
       : [],
     {

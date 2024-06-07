@@ -1,24 +1,13 @@
 import globals from 'globals'
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, OptionsUseFormatter, TypedFlatConfigItem } from '../types'
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
 import { GLOB_ASTRO } from '../globs'
 import { interopDefault } from '../utils'
 
-const DISABLE_STYLISTIC_RULES: TypedFlatConfigItem['rules'] = {
-  'style/arrow-parens': 'off',
-  'style/block-spacing': 'off',
-  'style/comma-dangle': 'off',
-  'style/indent': 'off',
-  'style/no-multi-spaces': 'off',
-  'style/quotes': 'off',
-  'style/semi': 'off',
-}
-
 export async function astro(
-  options: OptionsOverrides & OptionsStylistic & OptionsUseFormatter & OptionsFiles = {},
+  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
     files = [GLOB_ASTRO],
-    formatter = false,
     overrides = {},
     stylistic = true,
   } = options
@@ -27,12 +16,10 @@ export async function astro(
     pluginAstro,
     parserAstro,
     parserTs,
-    pluginTs,
   ] = await Promise.all([
     interopDefault(import('eslint-plugin-astro')),
     interopDefault(import('astro-eslint-parser')),
     interopDefault(import('@typescript-eslint/parser')),
-    interopDefault(import('@typescript-eslint/eslint-plugin')),
   ] as const)
 
   return [
@@ -78,15 +65,10 @@ export async function astro(
             }
           : {},
 
-        ...formatter
-          ? DISABLE_STYLISTIC_RULES
-          : {},
-
         ...overrides,
       },
     },
     {
-      // Define the configuration for `<script>` tag when using `client-side-ts` processor.
       files: ['**/*.astro/*.ts', '*.astro/*.ts'],
       languageOptions: {
         globals: {
@@ -98,16 +80,7 @@ export async function astro(
         },
         sourceType: 'module',
       },
-      // Script in `<script>` is assigned a virtual file name with the `.ts` extension.
       name: 'antfu/astro/base/typescript',
-      rules: {
-        ...formatter
-          ? DISABLE_STYLISTIC_RULES
-          : {},
-
-        // Type aware rules breaks the astro plugin: https://github.com/ota-meshi/eslint-plugin-astro/issues/240
-        ...(pluginTs?.configs?.['disable-type-checked']?.rules ?? {}),
-      },
     },
   ]
 }

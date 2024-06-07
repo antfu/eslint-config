@@ -255,6 +255,20 @@ export async function formatters(
         ],
       },
     })
+
+    configs.push({
+      files: [GLOB_ASTRO, '**/*.astro/*.ts', '*.astro/*.ts'],
+      name: 'antfu/formatter/disable/astro',
+      rules: {
+        'style/arrow-parens': 'off',
+        'style/block-spacing': 'off',
+        'style/comma-dangle': 'off',
+        'style/indent': 'off',
+        'style/no-multi-spaces': 'off',
+        'style/quotes': 'off',
+        'style/semi': 'off',
+      },
+    })
   }
 
   if (options.graphql) {
