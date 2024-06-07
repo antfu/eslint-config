@@ -1,5 +1,6 @@
 import { interopDefault } from '../utils'
 import type { OptionsStylistic, TypedFlatConfigItem } from '../types'
+import jsdocPlugin from "eslint-plugin-jsdoc";
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
   const {
@@ -36,6 +37,11 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
             }
           : {},
       },
-    },
-  ]
+    }, jsdocPlugin.configs["flat/recommended-typescript-flavor"],
+    {
+      name: "nirtami2/jsdoc/overrides",
+      rules: {
+        "jsdoc/require-jsdoc": "off",
+      },
+    },]
 }

@@ -27,14 +27,14 @@ export async function test(
     ...pluginVitest,
     rules: {
       ...pluginVitest.rules,
-      // extend `test/no-only-tests` rule
+      // extend `vitest/no-only-tests` rule
       ...pluginNoOnlyTests.rules,
     },
   }
 
   return [
     {
-      name: 'antfu/test/setup',
+      name: 'antfu/vitest/setup',
       plugins: {
         test: _pluginTest,
       },
@@ -43,14 +43,14 @@ export async function test(
       files,
       name: 'antfu/test/rules',
       rules: {
-        'node/prefer-global/process': 'off',
+        'n/prefer-global/process': 'off',
 
-        'test/consistent-test-it': ['error', { fn: 'it', withinDescribe: 'it' }],
-        'test/no-identical-title': 'error',
-        'test/no-import-node-test': 'error',
-        'test/no-only-tests': isInEditor ? 'off' : 'error',
-        'test/prefer-hooks-in-order': 'error',
-        'test/prefer-lowercase-title': 'error',
+        'vitest/consistent-test-it': ['error', { fn: 'it', withinDescribe: 'it' }],
+        'vitest/no-identical-title': 'error',
+        'vitest/no-import-node-test': 'error',
+        'vitest/no-only-tests': isInEditor ? 'off' : 'error',
+        'vitest/prefer-hooks-in-order': 'error',
+        'vitest/prefer-lowercase-title': 'error',
 
         ...overrides,
       },

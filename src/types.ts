@@ -72,6 +72,8 @@ export interface OptionsFormatters {
    */
   xml?: 'prettier' | boolean
 
+  tailwindcss?: 'prettier' | boolean
+
   /**
    * Enable formatting support for Markdown.
    *
@@ -208,6 +210,11 @@ export interface OptionsConfig extends OptionsComponentExts {
    * @default false
    */
   lessOpinionated?: boolean
+
+  tailwindcss?: boolean
+  storybook?: boolean
+  i18n?: boolean
+  security?: boolean
 
   /**
    * Core rules. Can't be disabled.
@@ -364,12 +371,12 @@ export interface OptionsConfig extends OptionsComponentExts {
    */
   isInEditor?: boolean
 
-  /**
-   * Automatically rename plugins in the config.
-   *
-   * @default true
-   */
-  autoRenamePlugins?: boolean
+  // /**
+  //  * Automatically rename plugins in the config.
+  //  *
+  //  * @default true
+  //  */
+  // autoRenamePlugins?: boolean
 
   /**
    * Provide overrides for rules for each integration.

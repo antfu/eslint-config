@@ -39,7 +39,7 @@ runWithConfig(
   },
   {
     rules: {
-      'style/no-mixed-spaces-and-tabs': 'off',
+      '@stylistic/no-mixed-spaces-and-tabs': 'off',
     },
   },
 )
@@ -52,7 +52,7 @@ runWithConfig(
   },
   {
     rules: {
-      'ts/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   },
 )
@@ -114,8 +114,8 @@ export default antfu(
     })
 
     await Promise.all(files.map(async (file) => {
-      const content = await fs.readFile(join(target, file), 'utf-8')
-      const source = await fs.readFile(join(from, file), 'utf-8')
+      const content = await fs.readFile(join(target, file), 'utf8')
+      const source = await fs.readFile(join(from, file), 'utf8')
       const outputPath = join(output, file)
       if (content === source) {
         if (fs.existsSync(outputPath))

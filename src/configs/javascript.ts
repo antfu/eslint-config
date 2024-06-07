@@ -1,7 +1,18 @@
 import globals from 'globals'
-import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
-import { pluginAntfu, pluginUnusedImports } from '../plugins'
-import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
+import type {OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem} from '../types'
+import {
+  arrayFunc,
+  confusingBrowserGlobals,
+  eslintPluginNoUseExtendNative,
+  js,
+  pluginAntfu,
+  pluginUnusedImports
+} from '../plugins'
+import {GLOB_SRC, GLOB_SRC_EXT} from '../globs'
+import {fixupConfigRules} from "@eslint/compat";
+import sonarjs from "eslint-plugin-sonarjs";
+import {compat} from "../compat";
+
 
 export async function javascript(
   options: OptionsIsInEditor & OptionsOverrides = {},
@@ -12,6 +23,116 @@ export async function javascript(
   } = options
 
   return [
+    js.configs.recommended,
+    {
+      name: "nirtamir2/javascript/overrides",
+      rules: {
+        //#region eslint
+
+        "no-constant-binary-expression": "error",
+        "max-params": "error",
+
+        // ignore eslint prettier that remove this rule, because I want to remove useless template literal
+        // quotes: [2, "double", { allowTemplateLiterals: false }],
+        "no-implicit-coercion": ["error"],
+        "prefer-destructuring": ["error", { object: true, array: false }], // a[0] should not destruct
+        "func-style": ["error", "declaration", { allowArrowFunctions: true }],
+
+        // Based on https://github.com/antfu/eslint-config/blob/master/packages/basic/index.js
+        // Common
+        "no-param-reassign": "off",
+        camelcase: "off",
+        "no-constant-condition": "warn",
+        "no-debugger": "error",
+        "no-console": ["error", { allow: ["warn", "error"] }],
+        "no-cond-assign": ["error", "always"],
+        "no-restricted-globals": ["error", ...confusingBrowserGlobals],
+        "no-restricted-syntax": [
+          "error",
+          "DebuggerStatement",
+          "ForInStatement",
+          "LabeledStatement",
+          "WithStatement",
+        ],
+
+        // es6
+        "no-var": "error",
+        "prefer-const": [
+          "error",
+          {
+            destructuring: "any",
+            ignoreReadBeforeAssign: true,
+          },
+        ],
+        "prefer-arrow-callback": [
+          "error",
+          {
+            allowNamedFunctions: false,
+            allowUnboundThis: true,
+          },
+        ],
+        "object-shorthand": [
+          "error",
+          "always",
+          {
+            ignoreConstructors: false,
+            avoidQuotes: true,
+          },
+        ],
+        "prefer-rest-params": "error",
+        "prefer-spread": "error",
+        "prefer-template": "error",
+
+        // best-practice
+        "array-callback-return": "error",
+        "block-scoped-var": "error",
+        "consistent-return": "off",
+        complexity: ["off", 11],
+        eqeqeq: ["error", "always", { null: "ignore" }],
+        "no-alert": "warn",
+        "no-case-declarations": "error",
+        "no-multi-str": "error",
+        "no-with": "error",
+        "no-useless-escape": "off",
+        "vars-on-top": "error",
+        "require-await": "off",
+        "no-return-assign": "off",
+      },
+    },
+    arrayFunc.configs.recommended,
+    {
+      name: "nirtamir2/javascript/arrayFunc/overrides",
+      rules: {
+        "array-func/prefer-array-from": 0, // conflicts with unicorn/prefer-spread
+      },
+    },
+    {name: "nirtamir2/javascript/github",
+      ...fixupConfigRules(
+          compat.config({
+            plugins: ["github"],
+            rules: {
+              "github/a11y-no-generic-link-text": 2,
+              "github/array-foreach": 2,
+              "github/async-currenttarget": 2,
+              "github/async-preventdefault": 2,
+              "github/authenticity-token": 2,
+              "github/get-attribute": 2,
+              "github/js-class-name": 2,
+              "github/no-blur": 2,
+              "github/no-d-none": 2,
+              "github/no-dataset": 2,
+              "github/no-implicit-buggy-globals": 2,
+              "github/no-inner-html": 2,
+              "github/no-innerText": 2,
+              "github/no-dynamic-script-tag": 2,
+              "github/no-then": 2,
+              "github/no-useless-passive": 2,
+              "github/prefer-observers": 2,
+              "github/require-passive-events": 2,
+              "github/unescaped-html-literal": 2,
+            },
+          }),
+      )},
     {
       languageOptions: {
         ecmaVersion: 2022,
@@ -226,5 +347,27 @@ export async function javascript(
         'no-console': 'off',
       },
     },
+    {
+      name: 'nirtamir2/javascript/overrides',
+      rules: {
+        'dot-notation': 'off', // Collide with TypeScript TS4111: Property comes from an index signature, so it must be accessed with [].
+      },
+    },
+      fixupConfigRules(
+          compat.config({
+              extends: ["plugin:optimize-regex/recommended"],
+          }),
+      ),
+    fixupConfigRules(
+        compat.config({
+          extends: ["plugin:workspaces/recommended"],
+        }),
+    ),
+      compat.config({
+          extends: ["plugin:eslint-comments/recommended"],
+      }),
+    eslintPluginNoUseExtendNative.configs.recommended,
+    sonarjs.configs.recommended,
+    compat.extends("plugin:clsx/recommended"),
   ]
 }

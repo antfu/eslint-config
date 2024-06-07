@@ -254,20 +254,20 @@ import {
 } from '@antfu/eslint-config'
 
 export default combine(
-  ignores(),
-  javascript(/* Options */),
-  comments(),
-  node(),
-  jsdoc(),
-  imports(),
-  unicorn(),
-  typescript(/* Options */),
-  stylistic(),
-  vue(),
-  jsonc(),
-  yaml(),
-  toml(),
-  markdown(),
+        ignores(),
+        javascript(/* Options */),
+        comments(),
+        node(),
+        jsdoc(),
+        imports(),
+        unicorn(),
+        typescript(/* Options */),
+        stylistic(),
+        vue(),
+        jsonc(),
+        yaml(),
+        toml(),
+        markdown(),
 )
 ```
 
@@ -285,7 +285,7 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 | ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
 | `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-es/eslint-plugin-import-x)                  |
 | `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
-| `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
+| `yaml/*`   | `yaml/*`                | [eslint-plugin-yaml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
 | `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
 | `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
 | `test/*`   | `vitest/*`             | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)                    |
@@ -333,7 +333,7 @@ export default antfu(
   {
     // Without `files`, they are general rules for all files
     rules: {
-      'style/semi': ['error', 'never'],
+      '@stylistic/semi': ['error', 'never'],
     },
   }
 )
@@ -353,7 +353,7 @@ export default antfu({
   },
   typescript: {
     overrides: {
-      'ts/consistent-type-definitions': ['error', 'interface'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     },
   },
   yaml: {

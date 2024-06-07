@@ -17,12 +17,16 @@ export async function formatters(
       html: true,
       markdown: true,
       slidev: isPackageExists('@slidev/cli'),
+      tailwindcss: isPackageExists('tailwindcss'),
       xml: isPackageExists('@prettier/plugin-xml'),
     }
   }
 
   await ensurePackages([
     'eslint-plugin-format',
+    '@trivago/prettier-plugin-sort-imports',
+    'prettier-plugin-packagejson',
+    options.tailwindcss ? 'prettier-plugin-tailwindcss' : undefined,
     options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
     options.astro ? 'prettier-plugin-astro' : undefined,
     options.xml ? '@prettier/plugin-xml' : undefined,
@@ -179,11 +183,11 @@ export async function formatters(
       ? 'prettier'
       : options.markdown
 
-    const GLOB_SLIDEV = !options.slidev
-      ? []
-      : options.slidev === true
+    const GLOB_SLIDEV = options.slidev
+      ? options.slidev === true
         ? ['**/slides.md']
         : options.slidev.files
+      : []
 
     configs.push({
       files: [GLOB_MARKDOWN],

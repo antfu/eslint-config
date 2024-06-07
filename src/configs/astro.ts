@@ -8,6 +8,7 @@ export async function astro(
   const {
     files = [GLOB_ASTRO],
     overrides = {},
+
     stylistic = true,
   } = options
 
@@ -56,11 +57,11 @@ export async function astro(
 
         ...stylistic
           ? {
-              'style/indent': 'off',
-              'style/jsx-closing-tag-location': 'off',
-              'style/jsx-indent': 'off',
-              'style/jsx-one-expression-per-line': 'off',
-              'style/no-multiple-empty-lines': 'off',
+              '@stylistic/indent': 'off',
+              '@stylistic/jsx-closing-tag-location': 'off',
+              '@stylistic/jsx-indent': 'off',
+              '@stylistic/jsx-one-expression-per-line': 'off',
+              '@stylistic/no-multiple-empty-lines': 'off',
             }
           : {},
 

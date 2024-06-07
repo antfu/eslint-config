@@ -1,8 +1,6 @@
 import c from 'picocolors'
-import pkgJson from '../../package.json'
-import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types'
 
-export { pkgJson }
+import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types'
 
 export const vscodeSettingsString = `
   // Enable the ESlint flat config support
@@ -123,3 +121,5 @@ export const dependenciesMap = {
   ],
   vue: [],
 } as const
+
+export { default as pkgJson } from '../../package.json'

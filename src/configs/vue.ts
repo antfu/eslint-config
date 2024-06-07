@@ -102,7 +102,7 @@ export async function vue(
               ...pluginVue.configs['vue3-recommended'].rules as any,
             },
 
-        'node/prefer-global/process': 'off',
+        'n/prefer-global/process': 'off',
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],

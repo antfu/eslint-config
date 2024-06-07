@@ -30,7 +30,7 @@ async function createMockDir() {
 
   await Promise.all([
     fs.writeFile(join(genPath, 'package.json'), JSON.stringify({}, null, 2)),
-    fs.writeFile(join(genPath, '.eslintrc.yml'), ''),
+    fs.writeFile(join(genPath, '.eslintrc.yaml'), ''),
     fs.writeFile(join(genPath, '.eslintignore'), 'some-path\nsome-file'),
     fs.writeFile(join(genPath, '.prettierc'), ''),
     fs.writeFile(join(genPath, '.prettierignore'), 'some-path\nsome-file'),
@@ -50,12 +50,12 @@ it('package.json updated', async () => {
 })
 
 it('esm eslint.config.js', async () => {
-  const pkgContent = await fs.readFile('package.json', 'utf-8')
+  const pkgContent = await fs.readFile('package.json', 'utf8')
   await fs.writeFile(join(genPath, 'package.json'), JSON.stringify({ ...JSON.parse(pkgContent), type: 'module' }, null, 2))
 
   const { stdout } = await run()
 
-  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
+  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf8')
   expect(eslintConfigContent.includes('export default')).toBeTruthy()
   expect(stdout).toContain('Created eslint.config.js')
 })
@@ -63,7 +63,7 @@ it('esm eslint.config.js', async () => {
 it('cjs eslint.config.mjs', async () => {
   const { stdout } = await run()
 
-  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')
+  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf8')
   expect(eslintConfigContent.includes('export default')).toBeTruthy()
   expect(stdout).toContain('Created eslint.config.mjs')
 })
@@ -71,7 +71,7 @@ it('cjs eslint.config.mjs', async () => {
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
 
-  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')).replace(/\\/g, '/')
+  const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf8')).replaceAll('\\', '/')
 
   expect(stdout).toContain('Created eslint.config.mjs')
   expect(eslintConfigContent)
@@ -89,5 +89,5 @@ it('suggest remove unnecessary files', async () => {
   const { stdout } = await run()
 
   expect(stdout).toContain('You can now remove those files manually')
-  expect(stdout).toContain('.eslintignore, .eslintrc.yml, .prettierc, .prettierignore')
+  expect(stdout).toContain('.eslintignore, .eslintrc.yaml, .prettierc, .prettierignore')
 })

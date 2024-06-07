@@ -33,6 +33,12 @@ import {
 import { interopDefault } from './utils'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
+import { prettier } from './configs/prettier'
+import {tailwindcss} from "./configs/tailwindcss";
+import {storybook} from "./configs/storybook";
+import {i18n} from "./configs/i18n";
+import {security} from "./configs/security";
+
 
 const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
   'name',
@@ -51,6 +57,17 @@ const VuePackages = [
   'nuxt',
   'vitepress',
   '@slidev/cli',
+]
+const StorybookPackages = [
+  "@storybook/addon-a11y",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-links",
+    "@storybook/addon-storysource",
+    "@storybook/blocks",
+    "@storybook/nextjs",
+    "@storybook/react",
+    "@storybook/test",
 ]
 
 export const defaultPluginRenaming = {
@@ -83,7 +100,7 @@ export function antfu(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     astro: enableAstro = false,
-    autoRenamePlugins = true,
+    // autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
@@ -91,9 +108,13 @@ export function antfu(
     regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
+    tailwindcss: enableTailwindCSS = isPackageExists('tailwindcss'),
     typescript: enableTypeScript = isPackageExists('typescript'),
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
+    storybook: enableStorybook = StorybookPackages.some(i => isPackageExists(i)),
+    i18n: enableI18n = false,
+    security: enableSecurity = false
   } = options
 
   const stylisticOptions = options.stylistic === false
@@ -108,12 +129,12 @@ export function antfu(
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
   if (enableGitignore) {
-    if (typeof enableGitignore !== 'boolean') {
-      configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r(enableGitignore)]))
-    }
-    else {
+    if (typeof enableGitignore === 'boolean') {
       if (fs.existsSync('.gitignore'))
         configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r()]))
+    }
+    else {
+      configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r(enableGitignore)]))
     }
   }
 
@@ -212,11 +233,28 @@ export function antfu(
     }))
   }
 
+  if(enableI18n){
+    configs.push(i18n())
+  }
+
+  if(enableSecurity){
+    configs.push(security())
+  }
+
+  if (enableTailwindCSS) {
+    configs.push(tailwindcss())
+  }
+
   if (enableAstro) {
     configs.push(astro({
       overrides: getOverrides(options, 'astro'),
       stylistic: stylisticOptions,
     }))
+  }
+
+
+  if (enableStorybook) {
+    configs.push(storybook())
   }
 
   if (options.jsonc ?? true) {
@@ -262,6 +300,8 @@ export function antfu(
     ))
   }
 
+  configs.push(prettier())
+
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
@@ -269,7 +309,7 @@ export function antfu(
       acc[key] = options[key] as any
     return acc
   }, {} as TypedFlatConfigItem)
-  if (Object.keys(fusedConfig).length)
+  if (Object.keys(fusedConfig).length > 0)
     configs.push([fusedConfig])
 
   let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()
@@ -280,10 +320,10 @@ export function antfu(
       ...userConfigs as any,
     )
 
-  if (autoRenamePlugins) {
-    composer = composer
-      .renamePlugins(defaultPluginRenaming)
-  }
+  // if (autoRenamePlugins) {
+  //   composer = composer
+  //     .renamePlugins(defaultPluginRenaming)
+  // }
 
   return composer
 }

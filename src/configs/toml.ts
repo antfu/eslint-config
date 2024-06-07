@@ -37,7 +37,7 @@ export async function toml(
       },
       name: 'antfu/toml/rules',
       rules: {
-        'style/spaced-comment': 'off',
+        '@stylistic/spaced-comment': 'off',
 
         'toml/comma-style': 'error',
         'toml/keys-order': 'error',

@@ -5,7 +5,9 @@ import { pluginAntfu } from '../plugins'
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,
   jsx: true,
+  // TODO-nir:   quotes: "double",
   quotes: 'single',
+  // TODO-nir   semi: true,
   semi: false,
 }
 

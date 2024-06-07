@@ -56,7 +56,7 @@ export async function svelte(
           caughtErrors: 'none',
           ignoreRestSiblings: true,
           vars: 'all',
-          varsIgnorePattern: '^(\\$\\$Props$|\\$\\$Events$|\\$\\$Slots$)',
+          varsIgnorePattern: String.raw`^(\$\$Props$|\$\$Events$|\$\$Slots$)`,
         }],
 
         'svelte/comment-directive': 'error',
@@ -83,13 +83,13 @@ export async function svelte(
 
         'unused-imports/no-unused-vars': [
           'error',
-          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: '^(_|\\$\\$Props$|\\$\\$Events$|\\$\\$Slots$)' },
+          { args: 'after-used', argsIgnorePattern: '^_', vars: 'all', varsIgnorePattern: String.raw`^(_|\$\$Props$|\$\$Events$|\$\$Slots$)` },
         ],
 
         ...stylistic
           ? {
-              'style/indent': 'off', // superseded by svelte/indent
-              'style/no-trailing-spaces': 'off', // superseded by svelte/no-trailing-spaces
+              '@stylistic/indent': 'off', // superseded by svelte/indent
+              '@stylistic/no-trailing-spaces': 'off', // superseded by svelte/no-trailing-spaces
               'svelte/derived-has-same-inputs-outputs': 'error',
               'svelte/html-closing-bracket-spacing': 'error',
               'svelte/html-quotes': ['error', { prefer: quotes }],
