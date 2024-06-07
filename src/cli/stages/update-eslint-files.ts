@@ -15,7 +15,7 @@ export async function updateEslintFiles(result: PromptResult) {
   const pathESLintIgnore = path.join(cwd, '.eslintignore')
   const pathPackageJSON = path.join(cwd, 'package.json')
 
-  const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
+  const pkgContent = await fsp.readFile(pathPackageJSON, 'utf8')
   const pkg: Record<string, any> = JSON.parse(pkgContent)
 
   const configFileName = pkg.type === 'module' ? 'eslint.config.js' : 'eslint.config.mjs'
@@ -24,7 +24,7 @@ export async function updateEslintFiles(result: PromptResult) {
   const eslintIgnores: string[] = []
   if (fs.existsSync(pathESLintIgnore)) {
     p.log.step(c.cyan(`Migrating existing .eslintignore`))
-    const content = await fsp.readFile(pathESLintIgnore, 'utf-8')
+    const content = await fsp.readFile(pathESLintIgnore, 'utf8')
     const parsed = parse(content)
     const globs = parsed.globs()
 
@@ -38,7 +38,7 @@ export async function updateEslintFiles(result: PromptResult) {
 
   const configLines: string[] = []
 
-  if (eslintIgnores.length)
+  if (eslintIgnores.length > 0)
     configLines.push(`ignores: ${JSON.stringify(eslintIgnores)},`)
 
   if (result.extra.includes('formatter'))
@@ -60,11 +60,11 @@ export async function updateEslintFiles(result: PromptResult) {
 
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
-  files.forEach((file) => {
+  for (const file of files) {
     if (/eslint|prettier/.test(file) && !/eslint\.config\./.test(file))
       legacyConfig.push(file)
-  })
+  }
 
-  if (legacyConfig.length)
+  if (legacyConfig.length > 0)
     p.note(`${c.dim(legacyConfig.join(', '))}`, 'You can now remove those files manually')
 }

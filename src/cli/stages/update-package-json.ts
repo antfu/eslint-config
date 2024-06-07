@@ -14,7 +14,7 @@ export async function updatePackageJson(result: PromptResult) {
 
   p.log.step(c.cyan(`Bumping @antfu/eslint-config to v${pkgJson.version}`))
 
-  const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
+  const pkgContent = await fsp.readFile(pathPackageJSON, 'utf8')
   const pkg: Record<string, any> = JSON.parse(pkgContent)
 
   pkg.devDependencies ??= {}
@@ -25,28 +25,30 @@ export async function updatePackageJson(result: PromptResult) {
 
   const addedPackages: string[] = []
 
-  if (result.extra.length) {
+  if (result.extra.length > 0) {
     result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
-        case 'formatter':
-          (<const>[
+        case 'formatter': {
+          for (const f of (<const>[
             'eslint-plugin-format',
             result.frameworks.includes('astro') ? 'prettier-plugin-astro' : null,
-          ]).forEach((f) => {
+          ])) {
             if (!f)
-              return
+              continue
             pkg.devDependencies[f] = pkgJson.devDependencies[f]
             addedPackages.push(f)
-          })
+          }
           break
-        case 'unocss':
-          (<const>[
+        }
+        case 'unocss': {
+          for (const f of (<const>[
             '@unocss/eslint-plugin',
-          ]).forEach((f) => {
+          ])) {
             pkg.devDependencies[f] = pkgJson.devDependencies[f]
             addedPackages.push(f)
-          })
+          }
           break
+        }
       }
     })
   }
@@ -54,14 +56,14 @@ export async function updatePackageJson(result: PromptResult) {
   for (const framework of result.frameworks) {
     const deps = dependenciesMap[framework]
     if (deps) {
-      deps.forEach((f) => {
+      for (const f of deps) {
         pkg.devDependencies[f] = pkgJson.devDependencies[f]
         addedPackages.push(f)
-      })
+      }
     }
   }
 
-  if (addedPackages.length)
+  if (addedPackages.length > 0)
     p.note(`${c.dim(addedPackages.join(', '))}`, 'Added packages')
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
