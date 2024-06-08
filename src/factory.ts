@@ -212,6 +212,13 @@ export function antfu(
     }))
   }
 
+  if (enableAstro) {
+    configs.push(astro({
+      overrides: getOverrides(options, 'astro'),
+      stylistic: stylisticOptions,
+    }))
+  }
+
   if (options.jsonc ?? true) {
     configs.push(
       jsonc({
@@ -253,13 +260,6 @@ export function antfu(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
     ))
-  }
-
-  if (enableAstro) {
-    configs.push(astro({
-      overrides: getOverrides(options, 'astro'),
-      stylistic: stylisticOptions,
-    }))
   }
 
   // User can optionally pass a flat config item to the first argument

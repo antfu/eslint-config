@@ -1,4 +1,3 @@
-import globals from 'globals'
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
 import { GLOB_ASTRO } from '../globs'
 import { interopDefault } from '../utils'
@@ -67,20 +66,6 @@ export async function astro(
 
         ...overrides,
       },
-    },
-    {
-      files: ['**/*.astro/*.ts', '*.astro/*.ts'],
-      languageOptions: {
-        globals: {
-          ...globals.browser,
-        },
-        parser: parserTs,
-        parserOptions: {
-          project: null,
-        },
-        sourceType: 'module',
-      },
-      name: 'antfu/astro/base/typescript',
     },
   ]
 }
