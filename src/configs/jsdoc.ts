@@ -40,7 +40,7 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<Array<Typed
     },
     jsdocPlugin.configs["flat/recommended-typescript-flavor"],
     {
-      name: "nirtami2/jsdoc/overrides",
+      name: "nirtamir2/jsdoc/overrides",
       rules: {
         "jsdoc/require-jsdoc": "off",
       },

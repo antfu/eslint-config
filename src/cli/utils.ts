@@ -15,9 +15,9 @@ export function getEslintConfigContent(
   additionalConfigs?: Array<string>,
 ) {
   return `
-import antfu from '@antfu/eslint-config'
+import nirtamir2 from '@nirtamir2/eslint-config'
 
-export default antfu({
+export default nirtamir2({
 ${mainConfig}
 }${additionalConfigs?.map(config => `,{\n${config}\n}`)})
 `.trimStart();

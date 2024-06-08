@@ -1,7 +1,7 @@
 // @ts-expect-error missing types
-import { antfu } from "./src";
+import { nirtamir2 } from "./src";
 
-export default antfu(
+export default nirtamir2(
   {
     vue: true,
     react: true,

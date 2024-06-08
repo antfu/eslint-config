@@ -44,7 +44,7 @@ runWithConfig(
   },
 );
 
-// https://github.com/antfu/eslint-config/issues/255
+// https://github.com/nirtamir2/eslint-config/issues/255
 runWithConfig(
   "ts-override",
   {
@@ -92,9 +92,9 @@ function runWithConfig(name: string, configs: OptionsConfig, ...items: Array<Typ
     });
     await fs.writeFile(join(target, "eslint.config.js"), `
 // @eslint-disable
-import antfu from '@antfu/eslint-config'
+import nirtamir2 from '@nirtamir2/eslint-config'
 
-export default antfu(
+export default nirtamir2(
   ${JSON.stringify(configs)},
   ...${JSON.stringify(items) ?? []},
 )

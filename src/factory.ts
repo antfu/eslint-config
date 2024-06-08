@@ -92,7 +92,7 @@ export const defaultPluginRenaming = {
  * @returns {Promise<TypedFlatConfigItem[]>}
  *  The merged ESLint configurations.
  */
-export function antfu(
+export function nirtamir2(
   options: OptionsConfig & TypedFlatConfigItem = {},
   ...userConfigs: Array<Awaitable<TypedFlatConfigItem | Array<TypedFlatConfigItem> | FlatConfigComposer<any, any> | Array<Linter.FlatConfig>>>
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {

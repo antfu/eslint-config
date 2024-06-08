@@ -1,6 +1,8 @@
-# @antfu/eslint-config
+# @nirtamir2/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@nirtamir2/eslint-config?color=444&label=)](https://npmjs.com/package/@nirtamir2/eslint-config) [![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
+
+This is a fork of Anthony Fu's [ESLint Config](https://github.com/antfu/eslint-config) maintained by [Nir Tamir](https://github.com/nirtamir2/).
 
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Reasonable defaults, best practices, only one line of config
@@ -17,7 +19,7 @@
 - Supports ESLint v9 or v8.50.0+
 
 > [!IMPORTANT]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
+> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/nirtamir2/eslint-config/releases/tag/v1.0.0) for more details.
 
 ## Usage
 
@@ -26,7 +28,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-npx @antfu/eslint-config@latest
+npx @nirtamir2/eslint-config@latest
 ```
 
 ### Manual Install
@@ -34,16 +36,16 @@ npx @antfu/eslint-config@latest
 If you prefer to set up manually:
 
 ```bash
-pnpm i -D eslint @antfu/eslint-config
+pnpm i -D eslint @nirtamir2/eslint-config
 ```
 
 And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu();
+export default nirtamir2();
 ```
 
 <details>
@@ -55,12 +57,12 @@ If you still use some configs from the legacy eslintrc format, you can use the [
 
 ```js
 // eslint.config.mjs
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 import { FlatCompat } from "@eslint/eslintrc";
 
 const compat = new FlatCompat();
 
-export default antfu(
+export default nirtamir2(
   {
     ignores: [],
   },
@@ -158,24 +160,24 @@ Add the following settings to your `.vscode/settings.json`:
 
 ## Customization
 
-Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
+It uses [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
-Normally you only need to import the `antfu` preset:
+Normally you only need to import the `nirtamir2` preset:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu();
+export default nirtamir2();
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -201,15 +203,15 @@ export default antfu({
 });
 ```
 
-The `antfu` factory function also accepts any number of arbitrary custom config overrides:
+The `nirtamir2` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu(
+export default nirtamir2(
   {
-    // Configures for antfu's config
+    // Configures for nirtamir2's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -251,7 +253,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from "@antfu/eslint-config";
+} from "@nirtamir2/eslint-config";
 
 export default combine(
   ignores(),
@@ -273,42 +275,9 @@ export default combine(
 
 </details>
 
-Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/src/factory.ts) for more details.
+Check out the [configs](https://github.com/nirtamir2/eslint-config/blob/main/src/configs) and [factory](https://github.com/nirtamir2/eslint-config/blob/main/src/factory.ts) for more details.
 
 > Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
-
-### Plugins Renaming
-
-Since flat config requires us to explicitly provide the plugin names (instead of the mandatory convention from npm package name), we renamed some plugins to make the overall scope more consistent and easier to write.
-
-| New Prefix | Original Prefix        | Source Plugin                                                                              |
-| ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
-| `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-es/eslint-plugin-import-x)                  |
-| `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
-| `yaml/*`   | `yaml/*`               | [eslint-plugin-yaml](https://github.com/ota-meshi/eslint-plugin-yml)                       |
-| `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
-| `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
-| `test/*`   | `vitest/*`             | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)                    |
-| `test/*`   | `no-only-tests/*`      | [eslint-plugin-no-only-tests](https://github.com/levibuzolic/eslint-plugin-no-only-tests)  |
-
-When you want to override rules, or disable them inline, you need to update to the new prefix:
-
-```diff
--// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-+// eslint-disable-next-line ts/consistent-type-definitions
-type foo = { bar: 2 }
-```
-
-> [!NOTE]
-> About plugin renaming - it is actually rather a dangrous move that might leading to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
->
-> This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
->
-> That said, it's probably still not a good idea. You might not want to doing this if you are maintaining your own eslint config.
->
-> Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
-
-Since v2.9.0, this preset will automatically rename the plugins also for your custom configs. You can use the original prefix to override the rules directly.
 
 ### Rules Overrides
 
@@ -316,9 +285,9 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu(
+export default nirtamir2(
   {
     vue: true,
     typescript: true,
@@ -343,9 +312,9 @@ We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   vue: {
     overrides: {
       "vue/operator-linebreak": ["error", "before"],
@@ -366,19 +335,19 @@ export default antfu({
 
 ### Config Composer
 
-Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
+The factory function `nirtamir2()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/nirtamir2/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu()
+export default nirtamir2()
   .prepend(
     // some configs before the main config
   )
   // overrides any named configs
   .override(
-    "antfu/imports",
+    "nirtamir2/imports",
     {
       rules: {
         "import/order": ["error", { "newlines-between": "always" }],
@@ -399,9 +368,9 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   vue: true,
 });
 ```
@@ -412,9 +381,9 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   vue: {
     vueVersion: 2,
   },
@@ -433,9 +402,9 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   formatters: {
     /**
      * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
@@ -469,9 +438,9 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   react: true,
 });
 ```
@@ -488,9 +457,9 @@ To enable svelte support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   svelte: true,
 });
 ```
@@ -507,9 +476,9 @@ To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   astro: true,
 });
 ```
@@ -526,9 +495,9 @@ To enable Solid support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   solid: true,
 });
 ```
@@ -545,9 +514,9 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   unocss: true,
 });
 ```
@@ -602,9 +571,9 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   typescript: {
     tsconfigPath: "tsconfig.json",
   },
@@ -619,9 +588,9 @@ This is to prevent unused imports from getting removed by the IDE during refacto
 
 ```js
 // eslint.config.js
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   isInEditor: false,
 });
 ```
@@ -682,16 +651,16 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
 
 ```md
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
 ```
 
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
 
 ## FAQ
 
 ### Prettier?
 
-[Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
+[Why I don't use Prettier](https://nirtamir2.me/posts/why-not-prettier)
 
 Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
 
@@ -712,24 +681,15 @@ I am a very opinionated person, so as this config. I prefer the top-level functi
 I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
 
 ```ts
-import antfu from "@antfu/eslint-config";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
-export default antfu({
+export default nirtamir2({
   lessOpinionated: true,
 });
 ```
 
-### I prefer XXX...
-
-Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
-
-## Check Also
-
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/starter-ts](https://github.com/antfu/starter-ts) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
-
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu).
+
+[Nir Tamir](https://github.com/nirtamir2) fork his excellent work and adapt it to his own needs.

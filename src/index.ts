@@ -4,4 +4,4 @@ export * from "./globs";
 export * from "./types";
 export * from "./utils";
 
-export { antfu as default } from "./factory";
+export { nirtamir2 as default } from "./factory";

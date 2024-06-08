@@ -15,7 +15,7 @@ export async function i18n(): Promise<Array<TypedFlatConfigItem>> {
 
   return [
     {
-      name: "nirtami2/i18n",
+      name: "nirtamir2/i18n",
       ...fixupConfigRules(
         compat.config({
           extends: [

@@ -12,13 +12,13 @@ export async function updatePackageJson(result: PromptResult) {
 
   const pathPackageJSON = path.join(cwd, "package.json");
 
-  p.log.step(c.cyan(`Bumping @antfu/eslint-config to v${pkgJson.version}`));
+  p.log.step(c.cyan(`Bumping @nirtamir2/eslint-config to v${pkgJson.version}`));
 
   const pkgContent = await fsp.readFile(pathPackageJSON, "utf8");
   const pkg: Record<string, any> = JSON.parse(pkgContent);
 
   pkg.devDependencies ??= {};
-  pkg.devDependencies["@antfu/eslint-config"] = `^${pkgJson.version}`;
+  pkg.devDependencies["@nirtamir2/eslint-config"] = `^${pkgJson.version}`;
   pkg.devDependencies.eslint ??= pkgJson.devDependencies.eslint
     .replace("npm:eslint-ts-patch@", "")
     .replace(/-\d+$/, "");
