@@ -11,7 +11,7 @@ function randomStr() {
   return Math.random().toString(36).slice(2)
 }
 
-async function run(params: string[] = [], env = {
+async function run(params: Array<string> = [], env = {
   SKIP_PROMPT: '1',
   NO_COLOR: '1',
 }) {

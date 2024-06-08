@@ -1,11 +1,10 @@
-import {isPackageExists} from 'local-pkg'
-import {ensurePackages, interopDefault, toArray} from '../utils'
-import type {OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem} from '../types'
-import {GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX} from '../globs'
-import {fixupConfigRules} from "@eslint/compat";
-import {a11y} from "./a11y";
-import {compat} from "../compat";
-
+import { isPackageExists } from 'local-pkg'
+import { ensurePackages, interopDefault, toArray } from '../utils'
+import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from '../globs'
+import { fixupConfigRules } from '@eslint/compat'
+import { a11y } from './a11y'
+import { compat } from '../compat'
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = [
@@ -23,7 +22,7 @@ const NextJsPackages = [
 
 export async function react(
   options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],
     overrides = {},
@@ -36,20 +35,18 @@ export async function react(
     'eslint-plugin-react',
   ])
 
-    const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
+  const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
 
-    if(isUsingNext){
-        await ensurePackages(
-            ['@next/eslint-plugin-next']
-        )
-
-    }
-
+  if (isUsingNext) {
+    await ensurePackages(
+      ['@next/eslint-plugin-next'],
+    )
+  }
 
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined
-  const isTypeAware = !!tsconfigPath
+  const isTypeAware = Boolean(tsconfigPath)
 
   const [
     pluginReact,
@@ -66,8 +63,7 @@ export async function react(
   const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i))
   const isUsingRemix = RemixPackages.some(i => isPackageExists(i))
 
-
-  const plugins = pluginReact.configs.all.plugins
+  const { plugins } = pluginReact.configs.all
 
   return [
     {
@@ -189,71 +185,72 @@ export async function react(
         ...overrides,
       },
     },
-      ...fixupConfigRules(
-          compat.config({
-              extends: ["plugin:ssr-friendly/recommended"],
-              rules: {
-                  "ssr-friendly/no-dom-globals-in-react-cc-render": "off", // I don't use class components
-              },
-          }),
-      ),
-      ...compat.config({
-          extends: "plugin:react/recommended",
-          rules: {
-              //#region react
-              "react/jsx-no-leaked-render": [
-                  "error",
-                  { validStrategies: ["ternary"] },
-              ],
+    ...fixupConfigRules(
+      compat.config({
+        extends: ['plugin:ssr-friendly/recommended'],
+        rules: {
+          'ssr-friendly/no-dom-globals-in-react-cc-render': 'off', // I don't use class components
+        },
+      }),
+    ),
+    ...compat.config({
+      extends: 'plugin:react/recommended',
+      rules: {
+        // #region react
+        'react/jsx-no-leaked-render': [
+          'error',
+          { validStrategies: ['ternary'] },
+        ],
 
-              // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
-              "react/jsx-sort-props": [
-                  "error",
-                  {
-                      callbacksLast: true,
-                      shorthandFirst: true,
-                      // "shorthandLast": <boolean>,
-                      // "ignoreCase": <boolean>,
-                      noSortAlphabetically: true,
-                      reservedFirst: true,
-                  },
-              ],
-              "react/jsx-key": [
-                  1,
-                  { checkFragmentShorthand: true, checkKeyMustBeforeSpread: true },
-              ],
-              "react/display-name": 0,
-              "react/prop-types": 0,
-              "react/jsx-pascal-case": [
-                  2,
-                  {
-                      allowLeadingUnderscore: true,
-                      allowNamespace: true,
-                  },
-              ],
-              "react/jsx-no-constructed-context-values": 2,
-              "react/jsx-no-useless-fragment": 2,
-              "react/jsx-handler-names": 2,
-              "react/jsx-no-duplicate-props": 2,
-              "react/jsx-curly-brace-presence": [
-                  2,
-                  { props: "never", children: "never" },
-              ],
-
-              // As of React 16.14 and 17
-              // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
-              "react/react-in-jsx-scope": 0,
-              "react/jsx-uses-react": 0,
-
-              //#endregion react
+        // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
+        'react/jsx-sort-props': [
+          'error',
+          {
+            callbacksLast: true,
+            shorthandFirst: true,
+            // "shorthandLast": <boolean>,
+            // "ignoreCase": <boolean>,
+            noSortAlphabetically: true,
+            reservedFirst: true,
           },
-      })
-      ,
-          ...compat.extends("plugin:react/jsx-runtime"),
-          ...fixupConfigRules(
-              compat.extends(
-              "plugin:@next/next/recommended",
-              "plugin:@next/next/core-web-vitals")),
-      ...a11y()
+        ],
+        'react/jsx-key': [
+          1,
+          { checkFragmentShorthand: true, checkKeyMustBeforeSpread: true },
+        ],
+        'react/display-name': 0,
+        'react/prop-types': 0,
+        'react/jsx-pascal-case': [
+          2,
+          {
+            allowLeadingUnderscore: true,
+            allowNamespace: true,
+          },
+        ],
+        'react/jsx-no-constructed-context-values': 2,
+        'react/jsx-no-useless-fragment': 2,
+        'react/jsx-handler-names': 2,
+        'react/jsx-no-duplicate-props': 2,
+        'react/jsx-curly-brace-presence': [
+          2,
+          { props: 'never', children: 'never' },
+        ],
+
+        // As of React 16.14 and 17
+        // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
+        'react/react-in-jsx-scope': 0,
+        'react/jsx-uses-react': 0,
+
+        // #endregion react
+      },
+    }),
+    ...compat.extends('plugin:react/jsx-runtime'),
+    ...fixupConfigRules(
+      compat.extends(
+        'plugin:@next/next/recommended',
+        'plugin:@next/next/core-web-vitals',
+      ),
+    ),
+    ...a11y(),
   ]
 }

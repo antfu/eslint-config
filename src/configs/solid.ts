@@ -1,11 +1,11 @@
 import { ensurePackages, interopDefault, toArray } from '../utils'
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { GLOB_JSX, GLOB_TSX } from '../globs'
-import {a11y} from "./a11y";
+import { a11y } from './a11y'
 
 export async function solid(
   options: OptionsHasTypeScript & OptionsOverrides & OptionsFiles & OptionsTypeScriptWithTypes = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_JSX, GLOB_TSX],
     overrides = {},
@@ -19,7 +19,7 @@ export async function solid(
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined
-  const isTypeAware = !!tsconfigPath
+  const isTypeAware = Boolean(tsconfigPath)
 
   const [
     pluginSolid,
@@ -85,6 +85,6 @@ export async function solid(
         ...overrides,
       },
     },
-    ...a11y()
+    ...a11y(),
   ]
 }

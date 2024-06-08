@@ -3,7 +3,7 @@ import type { OptionsUnoCSS, TypedFlatConfigItem } from '../types'
 
 export async function unocss(
   options: OptionsUnoCSS = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     attributify = true,
     strict = false,

@@ -5,7 +5,7 @@ import { interopDefault, parserPlain } from '../utils'
 
 export async function markdown(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     componentExts = [],
     files = [GLOB_MARKDOWN],

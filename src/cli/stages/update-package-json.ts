@@ -23,16 +23,16 @@ export async function updatePackageJson(result: PromptResult) {
     .replace('npm:eslint-ts-patch@', '')
     .replace(/-\d+$/, '')
 
-  const addedPackages: string[] = []
+  const addedPackages: Array<string> = []
 
   if (result.extra.length > 0) {
     result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
         case 'formatter': {
-          for (const f of (<const>[
+          for (const f of ([
             'eslint-plugin-format',
             result.frameworks.includes('astro') ? 'prettier-plugin-astro' : null,
-          ])) {
+          ] as const)) {
             if (!f)
               continue
             pkg.devDependencies[f] = pkgJson.devDependencies[f]
@@ -41,9 +41,9 @@ export async function updatePackageJson(result: PromptResult) {
           break
         }
         case 'unocss': {
-          for (const f of (<const>[
+          for (const f of ([
             '@unocss/eslint-plugin',
-          ])) {
+          ] as const)) {
             pkg.devDependencies[f] = pkgJson.devDependencies[f]
             addedPackages.push(f)
           }

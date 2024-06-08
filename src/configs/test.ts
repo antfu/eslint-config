@@ -7,7 +7,7 @@ let _pluginTest: any
 
 export async function test(
   options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = GLOB_TESTS,
     isInEditor = false,

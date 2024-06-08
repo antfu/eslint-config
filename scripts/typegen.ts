@@ -2,30 +2,30 @@ import fs from 'node:fs/promises'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
 import {
-    astro,
-    combine,
-    comments,
-    formatters,
-    imports,
-    javascript,
-    jsdoc,
-    jsonc,
-    markdown,
-    node,
-    perfectionist,
-    react,
-    regexp,
-    solid,
-    sortPackageJson,
-    stylistic,
-    svelte,
-    test,
-    toml,
-    typescript,
-    unicorn,
-    unocss,
-    vue,
-    yaml
+  astro,
+  combine,
+  comments,
+  formatters,
+  imports,
+  javascript,
+  jsdoc,
+  jsonc,
+  markdown,
+  node,
+  perfectionist,
+  react,
+  regexp,
+  solid,
+  sortPackageJson,
+  stylistic,
+  svelte,
+  test,
+  toml,
+  typescript,
+  unicorn,
+  unocss,
+  vue,
+  yaml,
 } from '../src'
 
 const configs = await combine(
@@ -61,7 +61,7 @@ const configs = await combine(
   yaml(),
 )
 
-const configNames = configs.map(i => i.name).filter(Boolean) as string[]
+const configNames = configs.map(i => i.name).filter(Boolean) as Array<string>
 
 let dts = await flatConfigsToRulesDTS(configs, {
   includeAugmentation: false,

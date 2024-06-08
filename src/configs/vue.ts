@@ -5,7 +5,7 @@ import { GLOB_VUE } from '../globs'
 
 export async function vue(
   options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_VUE],
     overrides = {},

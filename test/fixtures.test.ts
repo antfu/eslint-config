@@ -79,7 +79,7 @@ runWithConfig(
   },
 )
 
-function runWithConfig(name: string, configs: OptionsConfig, ...items: TypedFlatConfigItem[]) {
+function runWithConfig(name: string, configs: OptionsConfig, ...items: Array<TypedFlatConfigItem>) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')
     const output = resolve('fixtures/output', name)

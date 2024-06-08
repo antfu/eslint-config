@@ -8,7 +8,7 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   if (options === true) {
     options = {
       astro: isPackageExists('astro'),
@@ -74,7 +74,7 @@ export async function formatters(
 
   const pluginFormat = await interopDefault(import('eslint-plugin-format'))
 
-  const configs: TypedFlatConfigItem[] = [
+  const configs: Array<TypedFlatConfigItem> = [
     {
       name: 'antfu/formatter/setup',
       plugins: {

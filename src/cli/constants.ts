@@ -56,7 +56,7 @@ export const vscodeSettingsString = `
   ]
 `
 
-export const frameworkOptions: PromItem<FrameworkOption>[] = [
+export const frameworkOptions: Array<PromItem<FrameworkOption>> = [
   {
     label: c.green('Vue'),
     value: 'vue',
@@ -83,9 +83,9 @@ export const frameworkOptions: PromItem<FrameworkOption>[] = [
   },
 ]
 
-export const frameworks: FrameworkOption[] = frameworkOptions.map(({ value }) => (value))
+export const frameworks: Array<FrameworkOption> = frameworkOptions.map(({ value }) => (value))
 
-export const extraOptions: PromItem<ExtraLibrariesOption>[] = [
+export const extraOptions: Array<PromItem<ExtraLibrariesOption>> = [
   {
     hint: 'Use external formatters (Prettier and/or dprint) to format files that ESLint cannot handle yet (.css, .html, etc)',
     label: c.red('Formatter'),
@@ -97,7 +97,7 @@ export const extraOptions: PromItem<ExtraLibrariesOption>[] = [
   },
 ]
 
-export const extra: ExtraLibrariesOption[] = extraOptions.map(({ value }) => (value))
+export const extra: Array<ExtraLibrariesOption> = extraOptions.map(({ value }) => (value))
 
 export const dependenciesMap = {
   astro: [

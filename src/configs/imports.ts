@@ -2,7 +2,7 @@ import type { OptionsStylistic, TypedFlatConfigItem } from '../types'
 import { pluginAntfu, pluginImport } from '../plugins'
 import { GLOB_SRC_EXT } from '../globs'
 
-export async function imports(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
+export async function imports(options: OptionsStylistic = {}): Promise<Array<TypedFlatConfigItem>> {
   const {
     stylistic = true,
   } = options
@@ -11,8 +11,8 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
     {
       name: 'antfu/imports/rules',
       plugins: {
-        antfu: pluginAntfu,
-        "import-x": pluginImport,
+        'antfu': pluginAntfu,
+        'import-x': pluginImport,
       },
       rules: {
         'antfu/import-dedupe': 'error',

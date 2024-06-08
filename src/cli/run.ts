@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-objects */
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -20,17 +19,17 @@ export interface CliRunOptions {
   /**
    * Use the framework template for optimal customization: vue / react / svelte / astro
    */
-  frameworks?: string[]
+  frameworks?: Array<string>
   /**
    * Use the extra utils: formatter / perfectionist / unocss
    */
-  extra?: string[]
+  extra?: Array<string>
 }
 
 export async function run(options: CliRunOptions = {}) {
-  const argSkipPrompt = !!process.env.SKIP_PROMPT || options.yes
-  const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m.trim())
-  const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m.trim())
+  const argSkipPrompt = Boolean(process.env.SKIP_PROMPT) || options.yes
+  const argTemplate = options.frameworks?.map(m => m.trim()) as Array<FrameworkOption>
+  const argExtra = options.extra?.map(m => m.trim()) as Array<ExtraLibrariesOption>
 
   if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
     p.log.warn(c.yellow(`eslint.config.js already exists, migration wizard exited.`))
@@ -57,7 +56,7 @@ export async function run(options: CliRunOptions = {}) {
         })
       },
       frameworks: ({ results }) => {
-        const isArgTemplateValid = typeof argTemplate === 'string' && !!frameworks.includes(<FrameworkOption>argTemplate)
+        const isArgTemplateValid = typeof argTemplate === 'string' && Boolean(frameworks.includes((argTemplate as FrameworkOption)))
 
         if (!results.uncommittedConfirmed || isArgTemplateValid)
           return
@@ -66,14 +65,14 @@ export async function run(options: CliRunOptions = {}) {
           ? `"${argTemplate}" isn't a valid template. Please choose from below: `
           : 'Select a framework:'
 
-        return p.multiselect<PromItem<FrameworkOption>[], FrameworkOption>({
+        return p.multiselect<Array<PromItem<FrameworkOption>>, FrameworkOption>({
           message: c.reset(message),
           options: frameworkOptions,
           required: false,
         })
       },
       extra: ({ results }) => {
-        const isArgExtraValid = argExtra?.length && argExtra.filter(element => !extra.includes(<ExtraLibrariesOption>element)).length === 0
+        const isArgExtraValid = argExtra?.length && argExtra.filter(element => !extra.includes((element as ExtraLibrariesOption))).length === 0
 
         if (!results.uncommittedConfirmed || isArgExtraValid)
           return
@@ -82,7 +81,7 @@ export async function run(options: CliRunOptions = {}) {
           ? `"${argExtra}" isn't a valid extra util. Please choose from below: `
           : 'Select a extra utils:'
 
-        return p.multiselect<PromItem<ExtraLibrariesOption>[], ExtraLibrariesOption>({
+        return p.multiselect<Array<PromItem<ExtraLibrariesOption>>, ExtraLibrariesOption>({
           message: c.reset(message),
           options: extraOptions,
           required: false,

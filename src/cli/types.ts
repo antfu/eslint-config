@@ -10,7 +10,7 @@ export type ExtraLibrariesOption = 'formatter' | 'unocss'
 
 export interface PromptResult {
   uncommittedConfirmed: boolean
-  frameworks: FrameworkOption[]
-  extra: ExtraLibrariesOption[]
+  frameworks: Array<FrameworkOption>
+  extra: Array<ExtraLibrariesOption>
   updateVscodeSettings: unknown
 }

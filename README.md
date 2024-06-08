@@ -71,7 +71,7 @@ export default antfu(
       'eslint:recommended',
       // Other extends...
     ],
-  })
+  }),
 
   // Other flat configs...
 )
@@ -197,7 +197,7 @@ export default antfu({
   ignores: [
     '**/fixtures',
     // ...globs
-  ]
+  ],
 })
 ```
 
@@ -254,20 +254,20 @@ import {
 } from '@antfu/eslint-config'
 
 export default combine(
-        ignores(),
-        javascript(/* Options */),
-        comments(),
-        node(),
-        jsdoc(),
-        imports(),
-        unicorn(),
-        typescript(/* Options */),
-        stylistic(),
-        vue(),
-        jsonc(),
-        yaml(),
-        toml(),
-        markdown(),
+  ignores(),
+  javascript(/* Options */),
+  comments(),
+  node(),
+  jsdoc(),
+  imports(),
+  unicorn(),
+  typescript(/* Options */),
+  stylistic(),
+  vue(),
+  jsonc(),
+  yaml(),
+  toml(),
+  markdown(),
 )
 ```
 
@@ -285,7 +285,7 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 | ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
 | `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-es/eslint-plugin-import-x)                  |
 | `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
-| `yaml/*`   | `yaml/*`                | [eslint-plugin-yaml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
+| `yaml/*`   | `yaml/*`               | [eslint-plugin-yaml](https://github.com/ota-meshi/eslint-plugin-yml)                       |
 | `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |
 | `style/*`  | `@stylistic/*`         | [@stylistic/eslint-plugin](https://github.com/eslint-stylistic/eslint-stylistic)           |
 | `test/*`   | `vitest/*`             | [eslint-plugin-vitest](https://github.com/veritem/eslint-plugin-vitest)                    |
@@ -321,7 +321,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     vue: true,
-    typescript: true
+    typescript: true,
   },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -335,7 +335,7 @@ export default antfu(
     rules: {
       '@stylistic/semi': ['error', 'never'],
     },
-  }
+  },
 )
 ```
 
@@ -382,8 +382,8 @@ export default antfu()
     {
       rules: {
         'import/order': ['error', { 'newlines-between': 'always' }],
-      }
-    }
+      },
+    },
   )
   // rename plugin prefixes
   .renamePlugins({
@@ -402,7 +402,7 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  vue: true
+  vue: true,
 })
 ```
 
@@ -416,7 +416,7 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   vue: {
-    vueVersion: 2
+    vueVersion: 2,
   },
 })
 ```
@@ -452,8 +452,8 @@ export default antfu({
      * Supports Prettier and dprint
      * By default uses Prettier
      */
-    markdown: 'prettier'
-  }
+    markdown: 'prettier',
+  },
 })
 ```
 
@@ -622,7 +622,7 @@ This is to prevent unused imports from getting removed by the IDE during refacto
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  isInEditor: false
+  isInEditor: false,
 })
 ```
 
@@ -715,7 +715,7 @@ I know they are not necessarily the popular opinions. If you really want to get 
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  lessOpinionated: true
+  lessOpinionated: true,
 })
 ```
 

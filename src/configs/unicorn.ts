@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from '../types'
 import { pluginUnicorn } from '../plugins'
 
-export async function unicorn(): Promise<TypedFlatConfigItem[]> {
+export async function unicorn(): Promise<Array<TypedFlatConfigItem>> {
   return [
     {
       name: 'nirtamir2/unicorn/rules',

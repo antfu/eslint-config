@@ -4,7 +4,7 @@ import { interopDefault } from '../utils'
 
 export async function astro(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_ASTRO],
     overrides = {},

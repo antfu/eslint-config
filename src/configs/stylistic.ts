@@ -17,7 +17,7 @@ export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
 
 export async function stylistic(
   options: StylisticOptions = {},
-): Promise<TypedFlatConfigItem[]> {
+): Promise<Array<TypedFlatConfigItem>> {
   const {
     indent,
     jsx,

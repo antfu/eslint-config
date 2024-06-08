@@ -12,7 +12,7 @@ export function isGitClean() {
 
 export function getEslintConfigContent(
   mainConfig: string,
-  additionalConfigs?: string[],
+  additionalConfigs?: Array<string>,
 ) {
   return `
 import antfu from '@antfu/eslint-config'

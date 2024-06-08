@@ -34,13 +34,12 @@ import { interopDefault } from './utils'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import { prettier } from './configs/prettier'
-import {tailwindcss} from "./configs/tailwindcss";
-import {storybook} from "./configs/storybook";
-import {i18n} from "./configs/i18n";
-import {security} from "./configs/security";
+import { tailwindcss } from './configs/tailwindcss'
+import { storybook } from './configs/storybook'
+import { i18n } from './configs/i18n'
+import { security } from './configs/security'
 
-
-const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
+const flatConfigProps: Array<keyof TypedFlatConfigItem> = [
   'name',
   'files',
   'ignores',
@@ -59,15 +58,15 @@ const VuePackages = [
   '@slidev/cli',
 ]
 const StorybookPackages = [
-  "@storybook/addon-a11y",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-links",
-    "@storybook/addon-storysource",
-    "@storybook/blocks",
-    "@storybook/nextjs",
-    "@storybook/react",
-    "@storybook/test",
+  '@storybook/addon-a11y',
+  '@storybook/addon-essentials',
+  '@storybook/addon-interactions',
+  '@storybook/addon-links',
+  '@storybook/addon-storysource',
+  '@storybook/blocks',
+  '@storybook/nextjs',
+  '@storybook/react',
+  '@storybook/test',
 ]
 
 export const defaultPluginRenaming = {
@@ -86,7 +85,6 @@ export const defaultPluginRenaming = {
 
 /**
  * Construct an array of ESLint flat config items.
- *
  * @param {OptionsConfig & TypedFlatConfigItem} options
  *  The options for generating the ESLint configurations.
  * @param {Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]} userConfigs
@@ -96,14 +94,14 @@ export const defaultPluginRenaming = {
  */
 export function antfu(
   options: OptionsConfig & TypedFlatConfigItem = {},
-  ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+  ...userConfigs: Array<Awaitable<TypedFlatConfigItem | Array<TypedFlatConfigItem> | FlatConfigComposer<any, any> | Array<Linter.FlatConfig>>>
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     astro: enableAstro = false,
     // autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
+    isInEditor = Boolean((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
@@ -114,7 +112,7 @@ export function antfu(
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
     storybook: enableStorybook = StorybookPackages.some(i => isPackageExists(i)),
     i18n: enableI18n = false,
-    security: enableSecurity = false
+    security: enableSecurity = false,
   } = options
 
   const stylisticOptions = options.stylistic === false
@@ -126,7 +124,7 @@ export function antfu(
   if (stylisticOptions && !('jsx' in stylisticOptions))
     stylisticOptions.jsx = options.jsx ?? true
 
-  const configs: Awaitable<TypedFlatConfigItem[]>[] = []
+  const configs: Array<Awaitable<Array<TypedFlatConfigItem>>> = []
 
   if (enableGitignore) {
     if (typeof enableGitignore === 'boolean') {
@@ -199,7 +197,7 @@ export function antfu(
       ...resolveSubOptions(options, 'vue'),
       overrides: getOverrides(options, 'vue'),
       stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
+      typescript: Boolean(enableTypeScript),
     }))
   }
 
@@ -214,7 +212,7 @@ export function antfu(
     configs.push(solid({
       overrides: getOverrides(options, 'solid'),
       tsconfigPath,
-      typescript: !!enableTypeScript,
+      typescript: Boolean(enableTypeScript),
     }))
   }
 
@@ -222,7 +220,7 @@ export function antfu(
     configs.push(svelte({
       overrides: getOverrides(options, 'svelte'),
       stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
+      typescript: Boolean(enableTypeScript),
     }))
   }
 
@@ -233,11 +231,11 @@ export function antfu(
     }))
   }
 
-  if(enableI18n){
+  if (enableI18n) {
     configs.push(i18n())
   }
 
-  if(enableSecurity){
+  if (enableSecurity) {
     configs.push(security())
   }
 
@@ -251,7 +249,6 @@ export function antfu(
       stylistic: stylisticOptions,
     }))
   }
-
 
   if (enableStorybook) {
     configs.push(storybook())

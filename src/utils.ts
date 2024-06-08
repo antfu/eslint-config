@@ -25,8 +25,9 @@ export const parserPlain = {
 
 /**
  * Combine array and non-array configs into a single array.
+ * @param {...any} configs
  */
-export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[]>[]): Promise<TypedFlatConfigItem[]> {
+export async function combine(...configs: Array<Awaitable<TypedFlatConfigItem | Array<TypedFlatConfigItem>>>): Promise<Array<TypedFlatConfigItem>> {
   const resolved = await Promise.all(configs)
   return resolved.flat()
 }
@@ -34,7 +35,8 @@ export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedF
 /**
  * Rename plugin prefixes in a rule object.
  * Accepts a map of prefixes to rename.
- *
+ * @param rules
+ * @param map
  * @example
  * ```ts
  * import { renameRules } from '@antfu/eslint-config'
@@ -64,7 +66,8 @@ export function renameRules(rules: Record<string, any>, map: Record<string, stri
 
 /**
  * Rename plugin names a flat configs array
- *
+ * @param configs
+ * @param map
  * @example
  * ```ts
  * import { renamePluginInConfigs } from '@antfu/eslint-config'
@@ -76,7 +79,7 @@ export function renameRules(rules: Record<string, any>, map: Record<string, stri
  * })
  * ```
  */
-export function renamePluginInConfigs(configs: TypedFlatConfigItem[], map: Record<string, string>): TypedFlatConfigItem[] {
+export function renamePluginInConfigs(configs: Array<TypedFlatConfigItem>, map: Record<string, string>): Array<TypedFlatConfigItem> {
   return configs.map((i) => {
     const clone = { ...i }
     if (clone.rules)
@@ -95,7 +98,7 @@ export function renamePluginInConfigs(configs: TypedFlatConfigItem[], map: Recor
   })
 }
 
-export function toArray<T>(value: T | T[]): T[] {
+export function toArray<T>(value: T | Array<T>): Array<T> {
   return Array.isArray(value) ? value : [value]
 }
 
@@ -104,11 +107,11 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
   return (resolved as any).default || resolved
 }
 
-export async function ensurePackages(packages: (string | undefined)[]) {
+export async function ensurePackages(packages: Array<string | undefined>) {
   if (process.env.CI || process.stdout.isTTY === false)
     return
 
-  const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[]
+  const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as Array<string>
   if (nonExistingPackages.length === 0)
     return
 
