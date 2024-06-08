@@ -372,4 +372,4 @@ export interface OptionsConfig extends OptionsComponentExts {
   };
 }
 
-export { type ConfigNames } from "./typegen";
+export { type ConfigNames } from "./typegen.d.ts";
