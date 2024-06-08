@@ -27,10 +27,10 @@ export async function updateVscodeSettings(result: PromptResult) {
       settingsContent.endsWith(",") || settingsContent.endsWith("{") ? "" : ",";
     settingsContent += `${vscodeSettingsString}}\n`;
 
-    await fsp.writeFile(settingsPath, settingsContent, "utf-8");
+    await fsp.writeFile(settingsPath, settingsContent, "utf8");
     p.log.success(c.green(`Updated .vscode/settings.json`));
   } else {
-    await fsp.writeFile(settingsPath, `{${vscodeSettingsString}}\n`, "utf-8");
+    await fsp.writeFile(settingsPath, `{${vscodeSettingsString}}\n`, "utf8");
     p.log.success(c.green(`Created .vscode/settings.json`));
   }
 }
