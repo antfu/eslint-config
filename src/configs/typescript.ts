@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { GLOB_TS, GLOB_TSX } from '../globs'
+import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules, toArray } from '../utils'
@@ -20,6 +20,10 @@ export async function typescript(
   ]
 
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX]
+  const ignoresTypeAware = options.ignoresTypeAware ?? [
+    `${GLOB_MARKDOWN}/**`,
+    GLOB_ASTRO_TS,
+  ]
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined
@@ -90,10 +94,12 @@ export async function typescript(
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
     ...isTypeAware
       ? [
-          makeParser(true, filesTypeAware),
+          makeParser(true, filesTypeAware, ignoresTypeAware),
           makeParser(false, files, filesTypeAware),
         ]
-      : [makeParser(false, files)],
+      : [
+          makeParser(false, files),
+        ],
     {
       files,
       name: 'antfu/typescript/rules',
@@ -138,6 +144,7 @@ export async function typescript(
     ...isTypeAware
       ? [{
           files: filesTypeAware,
+          ignores: ignoresTypeAware,
           name: 'antfu/typescript/rules-type-aware',
           rules: {
             ...tsconfigPath ? typeAwareRules : {},

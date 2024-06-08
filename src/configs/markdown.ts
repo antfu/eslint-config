@@ -83,26 +83,6 @@ export async function markdown(
         'unused-imports/no-unused-imports': 'off',
         'unused-imports/no-unused-vars': 'off',
 
-        // Type aware rules
-        ...{
-          'ts/await-thenable': 'off',
-          'ts/dot-notation': 'off',
-          'ts/no-floating-promises': 'off',
-          'ts/no-for-in-array': 'off',
-          'ts/no-implied-eval': 'off',
-          'ts/no-misused-promises': 'off',
-          'ts/no-throw-literal': 'off',
-          'ts/no-unnecessary-type-assertion': 'off',
-          'ts/no-unsafe-argument': 'off',
-          'ts/no-unsafe-assignment': 'off',
-          'ts/no-unsafe-call': 'off',
-          'ts/no-unsafe-member-access': 'off',
-          'ts/no-unsafe-return': 'off',
-          'ts/restrict-plus-operands': 'off',
-          'ts/restrict-template-expressions': 'off',
-          'ts/unbound-method': 'off',
-        },
-
         ...overrides,
       },
     },

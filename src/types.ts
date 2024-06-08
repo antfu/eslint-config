@@ -138,6 +138,12 @@ export interface OptionsTypeScriptParserOptions {
    * @default ['**\/*.{ts,tsx}']
    */
   filesTypeAware?: string[]
+
+  /**
+   * Glob patterns for files that should not be type aware.
+   * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+   */
+  ignoresTypeAware?: string[]
 }
 
 export interface OptionsTypeScriptWithTypes {
