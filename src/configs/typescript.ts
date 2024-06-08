@@ -14,7 +14,8 @@ export async function typescript(
   } = options
 
   const files = options.files ?? [
-    GLOB_SRC,
+    GLOB_TS,
+    GLOB_TSX,
     ...componentExts.map(ext => `**/*.${ext}`),
   ]
 
