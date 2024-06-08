@@ -1,5 +1,5 @@
 // @ts-expect-error missing types
-import { antfu } from './src'
+import { antfu } from "./src";
 
 export default antfu(
   {
@@ -13,8 +13,8 @@ export default antfu(
   },
   {
     ignores: [
-      'fixtures',
-      '_fixtures',
+      "fixtures",
+      "_fixtures",
     ],
   },
-)
+);

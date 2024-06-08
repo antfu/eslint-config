@@ -41,9 +41,9 @@ And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
-export default antfu()
+export default antfu();
 ```
 
 <details>
@@ -55,10 +55,10 @@ If you still use some configs from the legacy eslintrc format, you can use the [
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
-import { FlatCompat } from '@eslint/eslintrc'
+import antfu from "@antfu/eslint-config";
+import { FlatCompat } from "@eslint/eslintrc";
 
-const compat = new FlatCompat()
+const compat = new FlatCompat();
 
 export default antfu(
   {
@@ -68,13 +68,13 @@ export default antfu(
   // Legacy config
   ...compat.config({
     extends: [
-      'eslint:recommended',
+      "eslint:recommended",
       // Other extends...
     ],
   }),
 
   // Other flat configs...
-)
+);
 ```
 
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
@@ -164,16 +164,16 @@ Normally you only need to import the `antfu` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
-export default antfu()
+export default antfu();
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   // Enable stylistic formatting rules
@@ -182,7 +182,7 @@ export default antfu({
   // Or customize the stylistic rules
   stylistic: {
     indent: 2, // 4, or 'tab'
-    quotes: 'single', // or 'double'
+    quotes: "single", // or 'double'
   },
 
   // TypeScript and Vue are auto-detected, you can also explicitly enable them:
@@ -195,17 +195,17 @@ export default antfu({
 
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [
-    '**/fixtures',
+    "**/fixtures",
     // ...globs
   ],
-})
+});
 ```
 
 The `antfu` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu(
   {
@@ -215,13 +215,13 @@ export default antfu(
   // From the second arguments they are ESLint Flat Configs
   // you can have multiple configs
   {
-    files: ['**/*.ts'],
+    files: ["**/*.ts"],
     rules: {},
   },
   {
     rules: {},
   },
-)
+);
 ```
 
 Going more advanced, you can also import fine-grained configs and compose them as you wish:
@@ -251,7 +251,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@antfu/eslint-config'
+} from "@antfu/eslint-config";
 
 export default combine(
   ignores(),
@@ -268,7 +268,7 @@ export default combine(
   yaml(),
   toml(),
   markdown(),
-)
+);
 ```
 
 </details>
@@ -316,7 +316,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu(
   {
@@ -325,35 +325,35 @@ export default antfu(
   },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
-    files: ['**/*.vue'],
+    files: ["**/*.vue"],
     rules: {
-      'vue/operator-linebreak': ['error', 'before'],
+      "vue/operator-linebreak": ["error", "before"],
     },
   },
   {
     // Without `files`, they are general rules for all files
     rules: {
-      '@stylistic/semi': ['error', 'never'],
+      "@stylistic/semi": ["error", "never"],
     },
   },
-)
+);
 ```
 
 We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   vue: {
     overrides: {
-      'vue/operator-linebreak': ['error', 'before'],
+      "vue/operator-linebreak": ["error", "before"],
     },
   },
   typescript: {
     overrides: {
-      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
     },
   },
   yaml: {
@@ -361,7 +361,7 @@ export default antfu({
       // ...
     },
   },
-})
+});
 ```
 
 ### Config Composer
@@ -370,7 +370,7 @@ Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` ob
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu()
   .prepend(
@@ -378,18 +378,18 @@ export default antfu()
   )
   // overrides any named configs
   .override(
-    'antfu/imports',
+    "antfu/imports",
     {
       rules: {
-        'import/order': ['error', { 'newlines-between': 'always' }],
+        "import/order": ["error", { "newlines-between": "always" }],
       },
     },
   )
   // rename plugin prefixes
   .renamePlugins({
-    'old-prefix': 'new-prefix',
+    "old-prefix": "new-prefix",
     // ...
-  })
+  });
 // ...
 ```
 
@@ -399,11 +399,11 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   vue: true,
-})
+});
 ```
 
 #### Vue 2
@@ -412,13 +412,13 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   vue: {
     vueVersion: 2,
   },
-})
+});
 ```
 
 As it's in maintenance mode, we only accept bug fixes for Vue 2. It might also be removed in the future when `eslint-plugin-vue` drops support for Vue 2. We recommend upgrading to Vue 3 if possible.
@@ -433,7 +433,7 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   formatters: {
@@ -452,9 +452,9 @@ export default antfu({
      * Supports Prettier and dprint
      * By default uses Prettier
      */
-    markdown: 'prettier',
+    markdown: "prettier",
   },
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -469,11 +469,11 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   react: true,
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -488,11 +488,11 @@ To enable svelte support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   svelte: true,
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -507,11 +507,11 @@ To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   astro: true,
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -526,11 +526,11 @@ To enable Solid support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   solid: true,
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -545,11 +545,11 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   unocss: true,
-})
+});
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
@@ -590,7 +590,7 @@ Will be transformed to this when you hit save with your editor or run `eslint . 
 
 ```ts
 async function foo(msg: string): void {
-  console.log(msg)
+  console.log(msg);
 }
 ```
 
@@ -602,13 +602,13 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   typescript: {
-    tsconfigPath: 'tsconfig.json',
+    tsconfigPath: "tsconfig.json",
   },
-})
+});
 ```
 
 ### Editor Specific Disables
@@ -619,11 +619,11 @@ This is to prevent unused imports from getting removed by the IDE during refacto
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   isInEditor: false,
-})
+});
 ```
 
 ### Lint Staged
@@ -712,11 +712,11 @@ I am a very opinionated person, so as this config. I prefer the top-level functi
 I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
 
 ```ts
-import antfu from '@antfu/eslint-config'
+import antfu from "@antfu/eslint-config";
 
 export default antfu({
   lessOpinionated: true,
-})
+});
 ```
 
 ### I prefer XXX...

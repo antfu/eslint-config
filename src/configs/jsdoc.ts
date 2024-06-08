@@ -1,49 +1,49 @@
-import { interopDefault } from '../utils'
-import type { OptionsStylistic, TypedFlatConfigItem } from '../types'
-import jsdocPlugin from 'eslint-plugin-jsdoc'
+import { interopDefault } from "../utils";
+import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
+import jsdocPlugin from "eslint-plugin-jsdoc";
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<Array<TypedFlatConfigItem>> {
   const {
     stylistic = true,
-  } = options
+  } = options;
 
   return [
     {
-      name: 'antfu/jsdoc/rules',
+      name: "antfu/jsdoc/rules",
       plugins: {
-        jsdoc: await interopDefault(import('eslint-plugin-jsdoc')),
+        jsdoc: await interopDefault(import("eslint-plugin-jsdoc")),
       },
       rules: {
-        'jsdoc/check-access': 'warn',
-        'jsdoc/check-param-names': 'warn',
-        'jsdoc/check-property-names': 'warn',
-        'jsdoc/check-types': 'warn',
-        'jsdoc/empty-tags': 'warn',
-        'jsdoc/implements-on-classes': 'warn',
-        'jsdoc/no-defaults': 'warn',
-        'jsdoc/no-multi-asterisks': 'warn',
-        'jsdoc/require-param-name': 'warn',
-        'jsdoc/require-property': 'warn',
-        'jsdoc/require-property-description': 'warn',
-        'jsdoc/require-property-name': 'warn',
-        'jsdoc/require-returns-check': 'warn',
-        'jsdoc/require-returns-description': 'warn',
-        'jsdoc/require-yields-check': 'warn',
+        "jsdoc/check-access": "warn",
+        "jsdoc/check-param-names": "warn",
+        "jsdoc/check-property-names": "warn",
+        "jsdoc/check-types": "warn",
+        "jsdoc/empty-tags": "warn",
+        "jsdoc/implements-on-classes": "warn",
+        "jsdoc/no-defaults": "warn",
+        "jsdoc/no-multi-asterisks": "warn",
+        "jsdoc/require-param-name": "warn",
+        "jsdoc/require-property": "warn",
+        "jsdoc/require-property-description": "warn",
+        "jsdoc/require-property-name": "warn",
+        "jsdoc/require-returns-check": "warn",
+        "jsdoc/require-returns-description": "warn",
+        "jsdoc/require-yields-check": "warn",
 
         ...stylistic
           ? {
-              'jsdoc/check-alignment': 'warn',
-              'jsdoc/multiline-blocks': 'warn',
+              "jsdoc/check-alignment": "warn",
+              "jsdoc/multiline-blocks": "warn",
             }
           : {},
       },
     },
-    jsdocPlugin.configs['flat/recommended-typescript-flavor'],
+    jsdocPlugin.configs["flat/recommended-typescript-flavor"],
     {
-      name: 'nirtami2/jsdoc/overrides',
+      name: "nirtami2/jsdoc/overrides",
       rules: {
-        'jsdoc/require-jsdoc': 'off',
+        "jsdoc/require-jsdoc": "off",
       },
     },
-  ]
+  ];
 }

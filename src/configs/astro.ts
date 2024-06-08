@@ -1,6 +1,6 @@
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
-import { GLOB_ASTRO } from '../globs'
-import { interopDefault } from '../utils'
+import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from "../types";
+import { GLOB_ASTRO } from "../globs";
+import { interopDefault } from "../utils";
 
 export async function astro(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -10,21 +10,21 @@ export async function astro(
     overrides = {},
 
     stylistic = true,
-  } = options
+  } = options;
 
   const [
     pluginAstro,
     parserAstro,
     parserTs,
   ] = await Promise.all([
-    interopDefault(import('eslint-plugin-astro')),
-    interopDefault(import('astro-eslint-parser')),
-    interopDefault(import('@typescript-eslint/parser')),
-  ] as const)
+    interopDefault(import("eslint-plugin-astro")),
+    interopDefault(import("astro-eslint-parser")),
+    interopDefault(import("@typescript-eslint/parser")),
+  ] as const);
 
   return [
     {
-      name: 'antfu/astro/setup',
+      name: "antfu/astro/setup",
       plugins: {
         astro: pluginAstro,
       },
@@ -35,38 +35,38 @@ export async function astro(
         globals: pluginAstro.environments.astro.globals,
         parser: parserAstro,
         parserOptions: {
-          extraFileExtensions: ['.astro'],
+          extraFileExtensions: [".astro"],
           parser: parserTs,
         },
-        sourceType: 'module',
+        sourceType: "module",
       },
-      name: 'antfu/astro/rules',
-      processor: 'astro/client-side-ts',
+      name: "antfu/astro/rules",
+      processor: "astro/client-side-ts",
       rules: {
         // use recommended rules
-        'astro/missing-client-only-directive-value': 'error',
-        'astro/no-conflict-set-directives': 'error',
-        'astro/no-deprecated-astro-canonicalurl': 'error',
-        'astro/no-deprecated-astro-fetchcontent': 'error',
-        'astro/no-deprecated-astro-resolve': 'error',
-        'astro/no-deprecated-getentrybyslug': 'error',
-        'astro/no-set-html-directive': 'off',
-        'astro/no-unused-define-vars-in-style': 'error',
-        'astro/semi': 'off',
-        'astro/valid-compile': 'error',
+        "astro/missing-client-only-directive-value": "error",
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-deprecated-astro-canonicalurl": "error",
+        "astro/no-deprecated-astro-fetchcontent": "error",
+        "astro/no-deprecated-astro-resolve": "error",
+        "astro/no-deprecated-getentrybyslug": "error",
+        "astro/no-set-html-directive": "off",
+        "astro/no-unused-define-vars-in-style": "error",
+        "astro/semi": "off",
+        "astro/valid-compile": "error",
 
         ...stylistic
           ? {
-              '@stylistic/indent': 'off',
-              '@stylistic/jsx-closing-tag-location': 'off',
-              '@stylistic/jsx-indent': 'off',
-              '@stylistic/jsx-one-expression-per-line': 'off',
-              '@stylistic/no-multiple-empty-lines': 'off',
+              "@stylistic/indent": "off",
+              "@stylistic/jsx-closing-tag-location": "off",
+              "@stylistic/jsx-indent": "off",
+              "@stylistic/jsx-one-expression-per-line": "off",
+              "@stylistic/no-multiple-empty-lines": "off",
             }
           : {},
 
         ...overrides,
       },
     },
-  ]
+  ];
 }

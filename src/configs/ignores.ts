@@ -1,5 +1,5 @@
-import type { TypedFlatConfigItem } from '../types'
-import { GLOB_EXCLUDE } from '../globs'
+import type { TypedFlatConfigItem } from "../types";
+import { GLOB_EXCLUDE } from "../globs";
 
 export async function ignores(): Promise<Array<TypedFlatConfigItem>> {
   return [
@@ -8,5 +8,5 @@ export async function ignores(): Promise<Array<TypedFlatConfigItem>> {
       // Awaits https://github.com/humanwhocodes/config-array/pull/131
       // name: 'antfu/ignores',
     },
-  ]
+  ];
 }

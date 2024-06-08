@@ -1,16 +1,16 @@
 export interface PromItem<T> {
-  label: string
-  value: T
-  hint?: string
+  label: string;
+  value: T;
+  hint?: string;
 }
 
-export type FrameworkOption = 'vue' | 'react' | 'svelte' | 'astro' | 'solid' | 'slidev'
+export type FrameworkOption = "vue" | "react" | "svelte" | "astro" | "solid" | "slidev";
 
-export type ExtraLibrariesOption = 'formatter' | 'unocss'
+export type ExtraLibrariesOption = "formatter" | "unocss";
 
 export interface PromptResult {
-  uncommittedConfirmed: boolean
-  frameworks: Array<FrameworkOption>
-  extra: Array<ExtraLibrariesOption>
-  updateVscodeSettings: unknown
+  uncommittedConfirmed: boolean;
+  frameworks: Array<FrameworkOption>;
+  extra: Array<ExtraLibrariesOption>;
+  updateVscodeSettings: unknown;
 }
