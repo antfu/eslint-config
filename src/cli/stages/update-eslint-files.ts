@@ -8,9 +8,9 @@ import * as p from '@clack/prompts'
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
 import { getEslintConfigContent } from '../utils'
-import type { PromtResult } from '../types'
+import type { PromptResult } from '../types'
 
-export async function updateEslintFiles(result: PromtResult) {
+export async function updateEslintFiles(result: PromptResult) {
   const cwd = process.cwd()
   const pathESLintIgnore = path.join(cwd, '.eslintignore')
   const pathPackageJSON = path.join(cwd, 'package.json')

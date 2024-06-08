@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
+import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules, toArray } from '../utils'
@@ -14,7 +14,8 @@ export async function typescript(
   } = options
 
   const files = options.files ?? [
-    GLOB_SRC,
+    GLOB_TS,
+    GLOB_TSX,
     ...componentExts.map(ext => `**/*.${ext}`),
   ]
 
@@ -152,7 +153,7 @@ export async function typescript(
         }]
       : [],
     {
-      files: ['**/*.d.ts'],
+      files: ['**/*.d.([cm])ts'],
       name: 'antfu/typescript/disables/dts',
       rules: {
         'eslint-comments/no-unlimited-disable': 'off',
