@@ -93,7 +93,7 @@ export async function typescript(
       name: 'antfu/typescript/setup',
       plugins: {
         antfu: pluginAntfu,
-        ts: pluginTs as any,
+        // "@typescript-eslint": pluginTs as any,
       },
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
@@ -104,7 +104,7 @@ export async function typescript(
         ]
       : [makeParser(false, files)],
     ...tseslint.configs.recommended,
-    ...tseslint.configs.recommendedTypeChecked,
+    ...isTypeAware ? tseslint.configs.recommendedTypeChecked: [],
     {
       files,
       name: 'antfu/typescript/rules',
@@ -181,14 +181,14 @@ export async function typescript(
         "tsdoc/syntax": "warn",
       },
     }),
-    {
+    isTypeAware ? {
       name: "nirtamir2/typescript/expect-type",
       ...expectType,
-      files: [GLOB_TSX, GLOB_TS],
+      files,
       ignores: [".storybook/**"],
-    },
+    } : null,
     {
-      files: ["**/*.ts", "**/*.tsx"],
+      files,
       ignores: [".storybook/**"],
       rules: {
         //#region @typescript-eslint off - too strict
@@ -320,9 +320,8 @@ export async function typescript(
         "@typescript-eslint/no-unsafe-declaration-merging": "error",
         // "@typescript-eslint/no-unsafe-enum-comparison": "error", new rule
         "@typescript-eslint/sort-type-constituents": "off", // Style - too strict
-        "@typescript-eslint/no-mixed-enums": "error",
         "@typescript-eslint/no-import-type-side-effects": "error",
-        "@typescript-eslint/no-redundant-type-constituents": "error",
+
         "@typescript-eslint/no-duplicate-enum-values": "error",
         "@typescript-eslint/no-useless-empty-export": "error",
         "@typescript-eslint/ban-ts-comment": [
@@ -489,5 +488,7 @@ export async function typescript(
 
         "array-callback-return": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/2841 - false positive with TypeScript
       },
-    }]
+    },
+  !isTypeAware? tseslint.configs.disableTypeChecked : null,
+  ]
 }
