@@ -245,12 +245,12 @@ export async function react(
       },
     }),
     ...compat.extends("plugin:react/jsx-runtime"),
-    ...fixupConfigRules(
-      compat.extends(
-        "plugin:@next/next/recommended",
-        "plugin:@next/next/core-web-vitals",
-      ),
-    ),
+    ...isUsingNext ? fixupConfigRules(
+        compat.extends(
+            "plugin:@next/next/recommended",
+            "plugin:@next/next/core-web-vitals",
+        ),
+    ) : [],
     ...a11y(),
   ];
 }
