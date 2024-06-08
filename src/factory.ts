@@ -13,6 +13,7 @@ import {
   javascript,
   jsdoc,
   jsonc,
+  jsx,
   markdown,
   node,
   perfectionist,
@@ -87,6 +88,7 @@ export function antfu(
     componentExts = [],
     gitignore: enableGitignore = true,
     isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) && !process.env.CI),
+    jsx: enableJsx = true,
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
@@ -103,7 +105,7 @@ export function antfu(
       : {}
 
   if (stylisticOptions && !('jsx' in stylisticOptions))
-    stylisticOptions.jsx = options.jsx ?? true
+    stylisticOptions.jsx = enableJsx
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
@@ -144,6 +146,10 @@ export function antfu(
 
   if (enableVue) {
     componentExts.push('vue')
+  }
+
+  if (enableJsx) {
+    configs.push(jsx())
   }
 
   if (enableTypeScript) {
