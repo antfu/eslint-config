@@ -103,8 +103,8 @@ export async function typescript(
           makeParser(false, files, filesTypeAware),
         ]
       : [makeParser(false, files)],
-    ...tseslint.configs.recommended,
-    ...isTypeAware ? tseslint.configs.recommendedTypeChecked: [],
+    ...tseslint.configs.strict,
+    ...isTypeAware ? tseslint.configs.strictTypeChecked : [],
     {
       files,
       name: 'antfu/typescript/rules',
