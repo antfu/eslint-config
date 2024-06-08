@@ -1,13 +1,27 @@
 import { isPackageExists } from "local-pkg";
-import { GLOB_ASTRO, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_XML } from "../globs";
+import {
+  GLOB_ASTRO,
+  GLOB_CSS,
+  GLOB_GRAPHQL,
+  GLOB_HTML,
+  GLOB_LESS,
+  GLOB_MARKDOWN,
+  GLOB_POSTCSS,
+  GLOB_SCSS,
+  GLOB_XML,
+} from "../globs";
 import type { VendoredPrettierOptions } from "../vender/prettier-types";
 import { ensurePackages, interopDefault, parserPlain } from "../utils";
-import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsFormatters,
+  StylisticConfig,
+  TypedFlatConfigItem,
+} from "../types";
 import { StylisticConfigDefaults } from "./stylistic";
 
 export async function formatters(
   options: OptionsFormatters | true = {},
-  stylistic: StylisticConfig = {},
+  stylistic: StylisticConfig = {}
 ): Promise<Array<TypedFlatConfigItem>> {
   if (options === true) {
     options = {
@@ -32,14 +46,16 @@ export async function formatters(
     options.xml ? "@prettier/plugin-xml" : undefined,
   ]);
 
-  if (options.slidev && options.markdown !== true && options.markdown !== "prettier")
-    throw new Error("`slidev` option only works when `markdown` is enabled with `prettier`");
+  if (
+    options.slidev &&
+    options.markdown !== true &&
+    options.markdown !== "prettier"
+  )
+    throw new Error(
+      "`slidev` option only works when `markdown` is enabled with `prettier`"
+    );
 
-  const {
-    indent,
-    quotes,
-    semi,
-  } = {
+  const { indent, quotes, semi } = {
     ...StylisticConfigDefaults,
     ...stylistic,
   };
@@ -53,7 +69,7 @@ export async function formatters(
       trailingComma: "all",
       useTabs: indent === "tab",
     } satisfies VendoredPrettierOptions,
-    options.prettierOptions || {},
+    options.prettierOptions || {}
   );
 
   const prettierXmlOptions = {
@@ -69,7 +85,7 @@ export async function formatters(
       quoteStyle: quotes === "single" ? "preferSingle" : "preferDouble",
       useTabs: indent === "tab",
     },
-    options.dprintOptions || {},
+    options.dprintOptions || {}
   );
 
   const pluginFormat = await interopDefault(import("eslint-plugin-format"));
@@ -132,7 +148,7 @@ export async function formatters(
             },
           ],
         },
-      },
+      }
     );
   }
 
@@ -169,9 +185,7 @@ export async function formatters(
             ...prettierXmlOptions,
             ...prettierOptions,
             parser: "xml",
-            plugins: [
-              "@prettier/plugin-xml",
-            ],
+            plugins: ["@prettier/plugin-xml"],
           },
         ],
       },
@@ -179,9 +193,7 @@ export async function formatters(
   }
 
   if (options.markdown) {
-    const formater = options.markdown === true
-      ? "prettier"
-      : options.markdown;
+    const formater = options.markdown === true ? "prettier" : options.markdown;
 
     const GLOB_SLIDEV = options.slidev
       ? options.slidev === true
@@ -229,9 +241,7 @@ export async function formatters(
               ...prettierOptions,
               embeddedLanguageFormatting: "off",
               parser: "slidev",
-              plugins: [
-                "prettier-plugin-slidev",
-              ],
+              plugins: ["prettier-plugin-slidev"],
             },
           ],
         },
@@ -252,9 +262,7 @@ export async function formatters(
           {
             ...prettierOptions,
             parser: "astro",
-            plugins: [
-              "prettier-plugin-astro",
-            ],
+            plugins: ["prettier-plugin-astro"],
           },
         ],
       },

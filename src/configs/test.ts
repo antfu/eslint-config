@@ -1,23 +1,21 @@
 import { interopDefault } from "../utils";
-import type { OptionsFiles, OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsFiles,
+  OptionsIsInEditor,
+  OptionsOverrides,
+  TypedFlatConfigItem,
+} from "../types";
 import { GLOB_TESTS } from "../globs";
 
 // Hold the reference so we don't redeclare the plugin on each call
 let _pluginTest: any;
 
 export async function test(
-  options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {},
+  options: OptionsFiles & OptionsIsInEditor & OptionsOverrides = {}
 ): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    files = GLOB_TESTS,
-    isInEditor = false,
-    overrides = {},
-  } = options;
+  const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
 
-  const [
-    pluginVitest,
-    pluginNoOnlyTests,
-  ] = await Promise.all([
+  const [pluginVitest, pluginNoOnlyTests] = await Promise.all([
     interopDefault(import("eslint-plugin-vitest")),
     // @ts-expect-error missing types
     interopDefault(import("eslint-plugin-no-only-tests")),
@@ -45,7 +43,10 @@ export async function test(
       rules: {
         "n/prefer-global/process": "off",
 
-        "vitest/consistent-test-it": ["error", { fn: "it", withinDescribe: "it" }],
+        "vitest/consistent-test-it": [
+          "error",
+          { fn: "it", withinDescribe: "it" },
+        ],
         "vitest/no-identical-title": "error",
         "vitest/no-import-node-test": "error",
         "vitest/no-only-tests": isInEditor ? "off" : "error",

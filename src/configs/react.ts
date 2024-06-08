@@ -1,32 +1,31 @@
 import { isPackageExists } from "local-pkg";
 import { ensurePackages, interopDefault, toArray } from "../utils";
-import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsFiles,
+  OptionsOverrides,
+  OptionsTypeScriptWithTypes,
+  TypedFlatConfigItem,
+} from "../types";
 import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
 import { fixupConfigRules } from "@eslint/compat";
 import { a11y } from "./a11y";
 import { compat } from "../compat";
 
 // react refresh
-const ReactRefreshAllowConstantExportPackages = [
-  "vite",
-];
+const ReactRefreshAllowConstantExportPackages = ["vite"];
 const RemixPackages = [
   "@remix-run/node",
   "@remix-run/react",
   "@remix-run/serve",
   "@remix-run/dev",
 ];
-const NextJsPackages = [
-  "next",
-];
+const NextJsPackages = ["next"];
 
 export async function react(
-  options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
+  options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {}
 ): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    files = [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],
-    overrides = {},
-  } = options;
+  const { files = [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX], overrides = {} } =
+    options;
 
   await ensurePackages([
     "@eslint-react/eslint-plugin",
@@ -35,12 +34,10 @@ export async function react(
     "eslint-plugin-react",
   ]);
 
-  const isUsingNext = NextJsPackages.some(i => isPackageExists(i));
+  const isUsingNext = NextJsPackages.some((i) => isPackageExists(i));
 
   if (isUsingNext) {
-    await ensurePackages(
-      ["@next/eslint-plugin-next"],
-    );
+    await ensurePackages(["@next/eslint-plugin-next"]);
   }
 
   const tsconfigPath = options?.tsconfigPath
@@ -48,20 +45,18 @@ export async function react(
     : undefined;
   const isTypeAware = Boolean(tsconfigPath);
 
-  const [
-    pluginReact,
-    pluginReactHooks,
-    pluginReactRefresh,
-    parserTs,
-  ] = await Promise.all([
-    interopDefault(import("@eslint-react/eslint-plugin")),
-    interopDefault(import("eslint-plugin-react-hooks")),
-    interopDefault(import("eslint-plugin-react-refresh")),
-    interopDefault(import("@typescript-eslint/parser")),
-  ] as const);
+  const [pluginReact, pluginReactHooks, pluginReactRefresh, parserTs] =
+    await Promise.all([
+      interopDefault(import("@eslint-react/eslint-plugin")),
+      interopDefault(import("eslint-plugin-react-hooks")),
+      interopDefault(import("eslint-plugin-react-refresh")),
+      interopDefault(import("@typescript-eslint/parser")),
+    ] as const);
 
-  const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i));
-  const isUsingRemix = RemixPackages.some(i => isPackageExists(i));
+  const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(
+    (i) => isPackageExists(i)
+  );
+  const isUsingRemix = RemixPackages.some((i) => isPackageExists(i));
 
   const { plugins } = pluginReact.configs.all;
 
@@ -73,7 +68,8 @@ export async function react(
         "@eslint-react/dom": plugins["@eslint-react/dom"],
         "react-hooks": pluginReactHooks,
         "@eslint-react/hooks-extra": plugins["@eslint-react/hooks-extra"],
-        "@eslint-react/naming-convention": plugins["@eslint-react/naming-convention"],
+        "@eslint-react/naming-convention":
+          plugins["@eslint-react/naming-convention"],
         "react-refresh": pluginReactRefresh,
       },
     },
@@ -85,7 +81,7 @@ export async function react(
           ecmaFeatures: {
             jsx: true,
           },
-          ...isTypeAware ? { project: tsconfigPath } : {},
+          ...(isTypeAware ? { project: tsconfigPath } : {}),
         },
         sourceType: "module",
       },
@@ -125,13 +121,7 @@ export async function react(
                   ]
                 : []),
               ...(isUsingRemix
-                ? [
-                    "meta",
-                    "links",
-                    "headers",
-                    "loader",
-                    "action",
-                  ]
+                ? ["meta", "links", "headers", "loader", "action"]
                 : []),
             ],
           },
@@ -175,11 +165,11 @@ export async function react(
         "@eslint-react/prefer-shorthand-boolean": "warn",
         "@eslint-react/prefer-shorthand-fragment": "warn",
 
-        ...isTypeAware
+        ...(isTypeAware
           ? {
               "@eslint-react/no-leaked-conditional-rendering": "warn",
             }
-          : {},
+          : {}),
 
         // overrides
         ...overrides,
@@ -191,7 +181,7 @@ export async function react(
         rules: {
           "ssr-friendly/no-dom-globals-in-react-cc-render": "off", // I don't use class components
         },
-      }),
+      })
     ),
     ...compat.config({
       extends: "plugin:react/recommended",
@@ -245,14 +235,14 @@ export async function react(
       },
     }),
     ...compat.extends("plugin:react/jsx-runtime"),
-    ...isUsingNext
+    ...(isUsingNext
       ? fixupConfigRules(
-        compat.extends(
-          "plugin:@next/next/recommended",
-          "plugin:@next/next/core-web-vitals",
-        ),
-      )
-      : [],
+          compat.extends(
+            "plugin:@next/next/recommended",
+            "plugin:@next/next/core-web-vitals"
+          )
+        )
+      : []),
     ...a11y(),
   ];
 }

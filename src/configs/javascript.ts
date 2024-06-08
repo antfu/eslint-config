@@ -1,5 +1,9 @@
 import globals from "globals";
-import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsIsInEditor,
+  OptionsOverrides,
+  TypedFlatConfigItem,
+} from "../types";
 import {
   arrayFunc,
   confusingBrowserGlobals,
@@ -14,12 +18,9 @@ import sonarjs from "eslint-plugin-sonarjs";
 import { compat } from "../compat";
 
 export async function javascript(
-  options: OptionsIsInEditor & OptionsOverrides = {},
+  options: OptionsIsInEditor & OptionsOverrides = {}
 ): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    isInEditor = false,
-    overrides = {},
-  } = options;
+  const { isInEditor = false, overrides = {} } = options;
 
   return [
     js.configs.recommended,
@@ -40,7 +41,7 @@ export async function javascript(
         // Based on https://github.com/antfu/eslint-config/blob/master/packages/basic/index.js
         // Common
         "no-param-reassign": "off",
-        "camelcase": "off",
+        camelcase: "off",
         "no-constant-condition": "warn",
         "no-debugger": "error",
         "no-console": ["error", { allow: ["warn", "error"] }],
@@ -86,8 +87,8 @@ export async function javascript(
         "array-callback-return": "error",
         "block-scoped-var": "error",
         "consistent-return": "off",
-        "complexity": ["off", 11],
-        "eqeqeq": ["error", "always", { null: "ignore" }],
+        complexity: ["off", 11],
+        eqeqeq: ["error", "always", { null: "ignore" }],
         "no-alert": "warn",
         "no-case-declarations": "error",
         "no-multi-str": "error",
@@ -129,7 +130,7 @@ export async function javascript(
           "github/require-passive-events": 2,
           "github/unescaped-html-literal": 2,
         },
-      }),
+      })
     ),
     {
       languageOptions: {
@@ -156,19 +157,25 @@ export async function javascript(
       },
       name: "antfu/javascript/rules",
       plugins: {
-        "antfu": pluginAntfu,
+        antfu: pluginAntfu,
         "unused-imports": pluginUnusedImports,
       },
       rules: {
-        "accessor-pairs": ["error", { enforceForClassMembers: true, setWithoutGet: true }],
+        "accessor-pairs": [
+          "error",
+          { enforceForClassMembers: true, setWithoutGet: true },
+        ],
 
         "array-callback-return": "error",
         "block-scoped-var": "error",
         "constructor-super": "error",
         "default-case-last": "error",
         "dot-notation": ["error", { allowKeywords: true }],
-        "eqeqeq": ["error", "smart"],
-        "new-cap": ["error", { capIsNew: false, newIsCap: true, properties: true }],
+        eqeqeq: ["error", "smart"],
+        "new-cap": [
+          "error",
+          { capIsNew: false, newIsCap: true, properties: true },
+        ],
         "no-alert": "error",
         "no-array-constructor": "error",
         "no-async-promise-executor": "error",
@@ -225,11 +232,27 @@ export async function javascript(
         ],
         "no-restricted-properties": [
           "error",
-          { message: "Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.", property: "__proto__" },
-          { message: "Use `Object.defineProperty` instead.", property: "__defineGetter__" },
-          { message: "Use `Object.defineProperty` instead.", property: "__defineSetter__" },
-          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupGetter__" },
-          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupSetter__" },
+          {
+            message:
+              "Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.",
+            property: "__proto__",
+          },
+          {
+            message: "Use `Object.defineProperty` instead.",
+            property: "__defineGetter__",
+          },
+          {
+            message: "Use `Object.defineProperty` instead.",
+            property: "__defineSetter__",
+          },
+          {
+            message: "Use `Object.getOwnPropertyDescriptor` instead.",
+            property: "__lookupGetter__",
+          },
+          {
+            message: "Use `Object.getOwnPropertyDescriptor` instead.",
+            property: "__lookupSetter__",
+          },
         ],
         "no-restricted-syntax": [
           "error",
@@ -256,18 +279,27 @@ export async function javascript(
         "no-unreachable-loop": "error",
         "no-unsafe-finally": "error",
         "no-unsafe-negation": "error",
-        "no-unused-expressions": ["error", {
-          allowShortCircuit: true,
-          allowTaggedTemplates: true,
-          allowTernary: true,
-        }],
-        "no-unused-vars": ["error", {
-          args: "none",
-          caughtErrors: "none",
-          ignoreRestSiblings: true,
-          vars: "all",
-        }],
-        "no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
+        "no-unused-expressions": [
+          "error",
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true,
+          },
+        ],
+        "no-unused-vars": [
+          "error",
+          {
+            args: "none",
+            caughtErrors: "none",
+            ignoreRestSiblings: true,
+            vars: "all",
+          },
+        ],
+        "no-use-before-define": [
+          "error",
+          { classes: false, functions: false, variables: true },
+        ],
         "no-useless-backreference": "error",
         "no-useless-call": "error",
         "no-useless-catch": "error",
@@ -330,10 +362,13 @@ export async function javascript(
             varsIgnorePattern: "^_",
           },
         ],
-        "use-isnan": ["error", { enforceForIndexOf: true, enforceForSwitchCase: true }],
+        "use-isnan": [
+          "error",
+          { enforceForIndexOf: true, enforceForSwitchCase: true },
+        ],
         "valid-typeof": ["error", { requireStringLiterals: true }],
         "vars-on-top": "error",
-        "yoda": ["error", "never"],
+        yoda: ["error", "never"],
 
         ...overrides,
       },
@@ -354,12 +389,12 @@ export async function javascript(
     ...fixupConfigRules(
       compat.config({
         extends: ["plugin:optimize-regex/recommended"],
-      }),
+      })
     ),
     ...fixupConfigRules(
       compat.config({
         extends: ["plugin:workspaces/recommended"],
-      }),
+      })
     ),
     ...compat.config({
       extends: ["plugin:eslint-comments/recommended"],

@@ -2,16 +2,16 @@ import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
 import { pluginAntfu, pluginImport } from "../plugins";
 import { GLOB_SRC_EXT } from "../globs";
 
-export async function imports(options: OptionsStylistic = {}): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    stylistic = true,
-  } = options;
+export async function imports(
+  options: OptionsStylistic = {}
+): Promise<Array<TypedFlatConfigItem>> {
+  const { stylistic = false } = options;
 
   return [
     {
       name: "antfu/imports/rules",
       plugins: {
-        "antfu": pluginAntfu,
+        antfu: pluginAntfu,
         "import-x": pluginImport,
       },
       rules: {
@@ -27,11 +27,11 @@ export async function imports(options: OptionsStylistic = {}): Promise<Array<Typ
         "import-x/no-webpack-loader-syntax": "error",
         "import-x/order": "off", // use prettier for it
 
-        ...stylistic
+        ...(stylistic
           ? {
               "import-x/newline-after-import": ["error", { count: 1 }],
             }
-          : {},
+          : {}),
       },
     },
     {

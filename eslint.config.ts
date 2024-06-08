@@ -8,7 +8,8 @@ export default nirtamir2(
     svelte: true,
     astro: true,
     typescript: true,
-    formatters: true,
+    formatters: false,
+    stylistic: false,
   },
   {
     rules: {
@@ -25,11 +26,7 @@ export default nirtamir2(
       "unicorn/consistent-destructuring": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/init-declarations": "off",
-
     },
-    ignores: [
-      "fixtures",
-      "_fixtures",
-    ],
-  },
+    ignores: ["fixtures/**", "_fixtures/**"],
+  }
 );

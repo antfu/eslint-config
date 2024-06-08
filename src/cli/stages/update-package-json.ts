@@ -29,21 +29,20 @@ export async function updatePackageJson(result: PromptResult) {
     result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
         case "formatter": {
-          for (const f of ([
+          for (const f of [
             "eslint-plugin-format",
-            result.frameworks.includes("astro") ? "prettier-plugin-astro" : null,
-          ] as const)) {
-            if (!f)
-              continue;
+            result.frameworks.includes("astro")
+              ? "prettier-plugin-astro"
+              : null,
+          ] as const) {
+            if (!f) continue;
             pkg.devDependencies[f] = pkgJson.devDependencies[f];
             addedPackages.push(f);
           }
           break;
         }
         case "unocss": {
-          for (const f of ([
-            "@unocss/eslint-plugin",
-          ] as const)) {
+          for (const f of ["@unocss/eslint-plugin"] as const) {
             pkg.devDependencies[f] = pkgJson.devDependencies[f];
             addedPackages.push(f);
           }

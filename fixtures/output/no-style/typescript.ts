@@ -1,18 +1,18 @@
 // Define a TypeScript interface
-interface Person { 
-  name: string; age: number;
+interface Person {
+  name: string;
+  age: number;
 }
 
 // Create an array of objects with the defined interface
 const people: Person[] = [
-  { name: 'Alice', age: 30 },
- { name: 'Bob', age: 25 },
-  { name: 'Charlie', 
-  age: 35 }
+  { name: "Alice", age: 30 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 35 },
 ];
 
 // eslint-disable-next-line no-console
-const log = console.log
+const log = console.log;
 
 // Use a for...of loop to iterate over the array
 for (const person of people) {
@@ -20,13 +20,12 @@ for (const person of people) {
 }
 
 // Define a generic function
-function identity< T  >(arg: T): T {
+function identity<T>(arg: T): T {
   return arg;
 }
 
 // Use the generic function with type inference
-const result = identity(
-  'TypeScript is awesome');
+const result = identity("TypeScript is awesome");
 log(result);
 
 // Use optional properties in an interface
@@ -36,16 +35,18 @@ interface Car {
 }
 
 // Create objects using the interface
-const car1: Car = { make: 'Toyota' };
-const car2:  Car = { 
-  make: 'Ford', model: 'Focus' };
+const car1: Car = { make: "Toyota" };
+const car2: Car = {
+  make: "Ford",
+  model: "Focus",
+};
 
 // Use union types
-type Fruit = 'apple' | 'banana' | 'orange';
-const favoriteFruit: Fruit = 'apple';
+type Fruit = "apple" | "banana" | "orange";
+const favoriteFruit: Fruit = "apple";
 
 // Use a type assertion to tell TypeScript about the type
-const inputValue: any = '42';
+const inputValue: any = "42";
 const numericValue = inputValue as number;
 
 // Define a class with access modifiers
@@ -65,16 +66,15 @@ class Dog extends Animal {
     super(alias);
   }
   bark() {
-    this.makeSound('Woof!');
+    this.makeSound("Woof!");
   }
 }
 
-const dog = new Dog('Buddy');
+const dog = new Dog("Buddy");
 dog.bark();
 
 const fn = (): string => {
-  return `hello${  1}`
-}
+  return `hello${1}`;
+};
 
-log(car1, car2, favoriteFruit, numericValue, fn())
-
+log(car1, car2, favoriteFruit, numericValue, fn());

@@ -66,7 +66,7 @@ export async function i18n(): Promise<Array<TypedFlatConfigItem>> {
               },
             },
           ],
-        }),
+        })
       ),
     },
   ];

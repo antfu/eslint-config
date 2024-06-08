@@ -73,7 +73,7 @@ export default nirtamir2(
       "eslint:recommended",
       // Other extends...
     ],
-  }),
+  })
 
   // Other flat configs...
 );
@@ -222,7 +222,7 @@ export default nirtamir2(
   },
   {
     rules: {},
-  },
+  }
 );
 ```
 
@@ -269,7 +269,7 @@ export default combine(
   jsonc(),
   yaml(),
   toml(),
-  markdown(),
+  markdown()
 );
 ```
 
@@ -304,7 +304,7 @@ export default nirtamir2(
     rules: {
       "@stylistic/semi": ["error", "never"],
     },
-  },
+  }
 );
 ```
 
@@ -342,18 +342,15 @@ The factory function `nirtamir2()` returns a [`FlatConfigComposer` object from `
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2()
-  .prepend(
-    // some configs before the main config
-  )
+  .prepend
+  // some configs before the main config
+  ()
   // overrides any named configs
-  .override(
-    "nirtamir2/imports",
-    {
-      rules: {
-        "import/order": ["error", { "newlines-between": "always" }],
-      },
+  .override("nirtamir2/imports", {
+    rules: {
+      "import/order": ["error", { "newlines-between": "always" }],
     },
-  )
+  })
   // rename plugin prefixes
   .renamePlugins({
     "old-prefix": "new-prefix",
@@ -551,8 +548,8 @@ You can add the trigger comment one line above the code you want to transform, f
 ```ts
 /// to-function
 const foo = async (msg: string): void => {
-  console.log(msg)
-}
+  console.log(msg);
+};
 ```
 
 Will be transformed to this when you hit save with your editor or run `eslint . --fix`:

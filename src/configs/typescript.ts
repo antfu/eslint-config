@@ -15,17 +15,17 @@ import tseslint from "typescript-eslint";
 import { compat } from "../compat";
 
 export async function typescript(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
+  options: OptionsFiles &
+    OptionsComponentExts &
+    OptionsOverrides &
+    OptionsTypeScriptWithTypes &
+    OptionsTypeScriptParserOptions = {}
 ): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    componentExts = [],
-    overrides = {},
-    parserOptions = {},
-  } = options;
+  const { componentExts = [], overrides = {}, parserOptions = {} } = options;
 
   const files = options.files ?? [
     GLOB_SRC,
-    ...componentExts.map(ext => `**/*.${ext}`),
+    ...componentExts.map((ext) => `**/*.${ext}`),
   ];
 
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX];
@@ -57,30 +57,31 @@ export async function typescript(
     "@typescript-eslint/unbound-method": "error",
   };
 
-  const [
-    pluginTs,
-    parserTs,
-  ] = await Promise.all([
+  const [pluginTs, parserTs] = await Promise.all([
     interopDefault(import("@typescript-eslint/eslint-plugin")),
     interopDefault(import("@typescript-eslint/parser")),
   ] as const);
 
-  function makeParser(typeAware: boolean, files: Array<string>, ignores?: Array<string>): TypedFlatConfigItem {
+  function makeParser(
+    typeAware: boolean,
+    files: Array<string>,
+    ignores?: Array<string>
+  ): TypedFlatConfigItem {
     return {
       files,
-      ...ignores ? { ignores } : {},
+      ...(ignores ? { ignores } : {}),
       languageOptions: {
         parser: parserTs,
         parserOptions: {
-          extraFileExtensions: componentExts.map(ext => `.${ext}`),
+          extraFileExtensions: componentExts.map((ext) => `.${ext}`),
           sourceType: "module",
-          ...typeAware
+          ...(typeAware
             ? {
                 project: tsconfigPath,
                 tsconfigRootDir: process.cwd(),
               }
-            : {},
-          ...parserOptions as any,
+            : {}),
+          ...(parserOptions as any),
         },
       },
       name: `antfu/typescript/${typeAware ? "type-aware-parser" : "parser"}`,
@@ -97,14 +98,14 @@ export async function typescript(
       },
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
-    ...isTypeAware
+    ...(isTypeAware
       ? [
           makeParser(true, filesTypeAware),
           makeParser(false, files, filesTypeAware),
         ]
-      : [makeParser(false, files)],
+      : [makeParser(false, files)]),
     ...tseslint.configs.strict,
-    ...isTypeAware ? tseslint.configs.strictTypeChecked : [],
+    ...(isTypeAware ? tseslint.configs.strictTypeChecked : []),
     {
       files,
       name: "antfu/typescript/rules",
@@ -116,10 +117,22 @@ export async function typescript(
         "no-redeclare": "off",
         "no-use-before-define": "off",
         "no-useless-constructor": "off",
-        "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
-        "@typescript-eslint/ban-types": ["error", { types: { Function: false } }],
-        "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-        "@typescript-eslint/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports" }],
+        "@typescript-eslint/ban-ts-comment": [
+          "error",
+          { "ts-ignore": "allow-with-description" },
+        ],
+        "@typescript-eslint/ban-types": [
+          "error",
+          { types: { Function: false } },
+        ],
+        "@typescript-eslint/consistent-type-definitions": [
+          "error",
+          "interface",
+        ],
+        "@typescript-eslint/consistent-type-imports": [
+          "error",
+          { disallowTypeAnnotations: false, prefer: "type-imports" },
+        ],
         "@typescript-eslint/method-signature-style": ["error", "property"], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         "@typescript-eslint/no-dupe-class-members": "error",
         "@typescript-eslint/no-dynamic-delete": "off",
@@ -132,7 +145,10 @@ export async function typescript(
         "@typescript-eslint/no-redeclare": "error",
         "@typescript-eslint/no-require-imports": "error",
         "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
+        "@typescript-eslint/no-use-before-define": [
+          "error",
+          { classes: false, functions: false, variables: true },
+        ],
         "@typescript-eslint/no-useless-constructor": "off",
         "@typescript-eslint/prefer-ts-expect-error": "error",
         "@typescript-eslint/triple-slash-reference": "off",
@@ -140,16 +156,18 @@ export async function typescript(
         ...overrides,
       },
     },
-    ...isTypeAware
-      ? [{
-          files: filesTypeAware,
-          name: "antfu/typescript/rules-type-aware",
-          rules: {
-            ...tsconfigPath ? typeAwareRules : {},
-            ...overrides,
+    ...(isTypeAware
+      ? [
+          {
+            files: filesTypeAware,
+            name: "antfu/typescript/rules-type-aware",
+            rules: {
+              ...(tsconfigPath ? typeAwareRules : {}),
+              ...overrides,
+            },
           },
-        }]
-      : [],
+        ]
+      : []),
     {
       files: ["**/*.d.ts"],
       name: "antfu/typescript/disables/dts",
@@ -294,15 +312,15 @@ export async function typescript(
         "@typescript-eslint/comma-spacing": "off",
         "func-call-spacing": "off",
         "@typescript-eslint/func-call-spacing": "off",
-        "indent": "off",
+        indent: "off",
         "@typescript-eslint/indent": "off",
         "keyword-spacing": "off",
         "@typescript-eslint/keyword-spacing": "off",
         "@typescript-eslint/lines-between-class-members": "off",
         "@typescript-eslint/member-delimiter-style": "off",
-        "quotes": "off",
+        quotes: "off",
         "@typescript-eslint/quotes": "off",
-        "semi": "off",
+        semi: "off",
         "@typescript-eslint/semi": "off",
         "space-before-function-paren": "off",
         "@typescript-eslint/space-before-function-paren": "off",
@@ -339,39 +357,39 @@ export async function typescript(
           "error",
           {
             types: {
-              "String": {
+              String: {
                 message: "Use `string` instead.",
                 fixWith: "string",
               },
-              "Number": {
+              Number: {
                 message: "Use `number` instead.",
                 fixWith: "number",
               },
-              "Boolean": {
+              Boolean: {
                 message: "Use `boolean` instead.",
                 fixWith: "boolean",
               },
-              "Symbol": {
+              Symbol: {
                 message: "Use `symbol` instead.",
                 fixWith: "symbol",
               },
-              "Object": {
+              Object: {
                 message:
-                    "The `Object` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848",
+                  "The `Object` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848",
                 fixWith: "Record<string, unknown>",
               },
               "{}": {
                 message:
-                    "The `{}` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead.",
+                  "The `{}` type is mostly the same as `unknown`. You probably want `Record<string, unknown>` instead.",
                 fixWith: "Record<string, unknown>",
               },
-              "object": {
+              object: {
                 message:
-                    "The `object` type is hard to use. Use `Record<string, unknown>` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848",
+                  "The `object` type is hard to use. Use `Record<string, unknown>` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848",
                 fixWith: "Record<string, unknown>",
               },
-              "Function":
-                  "Use a specific function type instead, like `() => void`.",
+              Function:
+                "Use a specific function type instead, like `() => void`.",
             },
           },
         ],

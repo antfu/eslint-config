@@ -2,10 +2,10 @@ import { interopDefault } from "../utils";
 import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 
-export async function jsdoc(options: OptionsStylistic = {}): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    stylistic = true,
-  } = options;
+export async function jsdoc(
+  options: OptionsStylistic = {}
+): Promise<Array<TypedFlatConfigItem>> {
+  const { stylistic = false } = options;
 
   return [
     {
@@ -30,12 +30,12 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<Array<Typed
         "jsdoc/require-returns-description": "warn",
         "jsdoc/require-yields-check": "warn",
 
-        ...stylistic
+        ...(stylistic
           ? {
               "jsdoc/check-alignment": "warn",
               "jsdoc/multiline-blocks": "warn",
             }
-          : {},
+          : {}),
       },
     },
     jsdocPlugin.configs["flat/recommended-typescript-flavor"],

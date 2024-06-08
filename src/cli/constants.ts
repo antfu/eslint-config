@@ -83,7 +83,9 @@ export const frameworkOptions: Array<PromItem<FrameworkOption>> = [
   },
 ];
 
-export const frameworks: Array<FrameworkOption> = frameworkOptions.map(({ value }) => (value));
+export const frameworks: Array<FrameworkOption> = frameworkOptions.map(
+  ({ value }) => value
+);
 
 export const extraOptions: Array<PromItem<ExtraLibrariesOption>> = [
   {
@@ -97,28 +99,20 @@ export const extraOptions: Array<PromItem<ExtraLibrariesOption>> = [
   },
 ];
 
-export const extra: Array<ExtraLibrariesOption> = extraOptions.map(({ value }) => (value));
+export const extra: Array<ExtraLibrariesOption> = extraOptions.map(
+  ({ value }) => value
+);
 
 export const dependenciesMap = {
-  astro: [
-    "eslint-plugin-astro",
-    "astro-eslint-parser",
-  ],
+  astro: ["eslint-plugin-astro", "astro-eslint-parser"],
   react: [
     "@eslint-react/eslint-plugin",
     "eslint-plugin-react-hooks",
     "eslint-plugin-react-refresh",
   ],
-  slidev: [
-    "prettier-plugin-slidev",
-  ],
-  solid: [
-    "eslint-plugin-solid",
-  ],
-  svelte: [
-    "eslint-plugin-svelte",
-    "svelte-eslint-parser",
-  ],
+  slidev: ["prettier-plugin-slidev"],
+  solid: ["eslint-plugin-solid"],
+  svelte: ["eslint-plugin-svelte", "svelte-eslint-parser"],
   vue: [],
 } as const;
 

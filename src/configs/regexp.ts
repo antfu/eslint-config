@@ -1,5 +1,9 @@
 import { configs } from "eslint-plugin-regexp";
-import type { OptionsOverrides, OptionsRegExp, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsOverrides,
+  OptionsRegExp,
+  TypedFlatConfigItem,
+} from "../types";
 
 const nirOverridesConfig: TypedFlatConfigItem["rules"] = {
   // Nir's override
@@ -7,7 +11,7 @@ const nirOverridesConfig: TypedFlatConfigItem["rules"] = {
 };
 
 export async function regexp(
-  options: OptionsRegExp & OptionsOverrides = {},
+  options: OptionsRegExp & OptionsOverrides = {}
 ): Promise<Array<TypedFlatConfigItem>> {
   const config = configs["flat/recommended"] as TypedFlatConfigItem;
   const rules = {
@@ -17,8 +21,7 @@ export async function regexp(
 
   if (options.level === "warn") {
     for (const key in rules) {
-      if (rules[key] === "error")
-        rules[key] = "warn";
+      if (rules[key] === "error") rules[key] = "warn";
     }
   }
 

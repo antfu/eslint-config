@@ -1,25 +1,21 @@
-import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsFiles,
+  OptionsOverrides,
+  OptionsStylistic,
+  TypedFlatConfigItem,
+} from "../types";
 import { GLOB_YAML } from "../globs";
 import { interopDefault } from "../utils";
 
 export async function yaml(
-  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
+  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}
 ): Promise<Array<TypedFlatConfigItem>> {
-  const {
-    files = [GLOB_YAML],
-    overrides = {},
-    stylistic = true,
-  } = options;
+  const { files = [GLOB_YAML], overrides = {}, stylistic = false } = options;
 
-  const {
-    indent = 2,
-    quotes = "single",
-  } = typeof stylistic === "boolean" ? {} : stylistic;
+  const { indent = 2, quotes = "single" } =
+    typeof stylistic === "boolean" ? {} : stylistic;
 
-  const [
-    pluginYaml,
-    parserYaml,
-  ] = await Promise.all([
+  const [pluginYaml, parserYaml] = await Promise.all([
     interopDefault(import("eslint-plugin-yml")),
     interopDefault(import("yaml-eslint-parser")),
   ] as const);
@@ -49,7 +45,7 @@ export async function yaml(
 
         "yml/vue-custom-block/no-parsing-error": "error",
 
-        ...stylistic
+        ...(stylistic
           ? {
               "yml/block-mapping-question-indicator-newline": "error",
               "yml/block-sequence-hyphen-indicator-newline": "error",
@@ -63,7 +59,7 @@ export async function yaml(
               "yml/quotes": ["error", { avoidEscape: false, prefer: quotes }],
               "yml/spaced-comment": "error",
             }
-          : {},
+          : {}),
 
         ...overrides,
       },

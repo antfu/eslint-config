@@ -6,14 +6,16 @@ _Look,_ code blocks are formatted _too!_
 // This should be handled by ESLint instead of Prettier
 function identity(x) {
   if (foo) {
-    console.log('bar');
+    console.log("bar");
   }
-  }
+}
 ```
 
 ```css
 /* This should be handled by Prettier */
-.foo { color:red;}
+.foo {
+  color: red;
+}
 ```
 
 | Pilot    | Airport | Hours |
@@ -27,7 +29,7 @@ function identity(x) {
 - with a [link] (/to/somewhere)
 - and [another one]
 
-  [another one]: http://example.com 'Example title'
+  [another one]: http://example.com "Example title"
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Curabitur consectetur maximus risus, sed maximus tellus tincidunt et.

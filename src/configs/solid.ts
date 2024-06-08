@@ -1,10 +1,19 @@
 import { ensurePackages, interopDefault, toArray } from "../utils";
-import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsFiles,
+  OptionsHasTypeScript,
+  OptionsOverrides,
+  OptionsTypeScriptWithTypes,
+  TypedFlatConfigItem,
+} from "../types";
 import { GLOB_JSX, GLOB_TSX } from "../globs";
 import { a11y } from "./a11y";
 
 export async function solid(
-  options: OptionsHasTypeScript & OptionsOverrides & OptionsFiles & OptionsTypeScriptWithTypes = {},
+  options: OptionsHasTypeScript &
+    OptionsOverrides &
+    OptionsFiles &
+    OptionsTypeScriptWithTypes = {}
 ): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_JSX, GLOB_TSX],
@@ -12,19 +21,14 @@ export async function solid(
     typescript = true,
   } = options;
 
-  await ensurePackages([
-    "eslint-plugin-solid",
-  ]);
+  await ensurePackages(["eslint-plugin-solid"]);
 
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined;
   const isTypeAware = Boolean(tsconfigPath);
 
-  const [
-    pluginSolid,
-    parserTs,
-  ] = await Promise.all([
+  const [pluginSolid, parserTs] = await Promise.all([
     interopDefault(import("eslint-plugin-solid")),
     interopDefault(import("@typescript-eslint/parser")),
   ] as const);
@@ -44,7 +48,7 @@ export async function solid(
           ecmaFeatures: {
             jsx: true,
           },
-          ...isTypeAware ? { project: tsconfigPath } : {},
+          ...(isTypeAware ? { project: tsconfigPath } : {}),
         },
         sourceType: "module",
       },
@@ -52,12 +56,15 @@ export async function solid(
       rules: {
         // reactivity
         "solid/components-return-once": "warn",
-        "solid/event-handlers": ["error", {
-          // if true, don't warn on ambiguously named event handlers like `onclick` or `onchange`
-          ignoreCase: false,
-          // if true, warn when spreading event handlers onto JSX. Enable for Solid < v1.6.
-          warnOnSpread: false,
-        }],
+        "solid/event-handlers": [
+          "error",
+          {
+            // if true, don't warn on ambiguously named event handlers like `onclick` or `onchange`
+            ignoreCase: false,
+            // if true, warn when spreading event handlers onto JSX. Enable for Solid < v1.6.
+            warnOnSpread: false,
+          },
+        ],
         // these rules are mostly style suggestions
         "solid/imports": "error",
         // identifier usage is important
@@ -75,12 +82,12 @@ export async function solid(
         "solid/reactivity": "warn",
         "solid/self-closing-comp": "error",
         "solid/style-prop": ["error", { styleProps: ["style", "css"] }],
-        ...typescript
+        ...(typescript
           ? {
               "solid/jsx-no-undef": ["error", { typescriptEnabled: true }],
               "solid/no-unknown-namespaces": "off",
             }
-          : {},
+          : {}),
         // overrides
         ...overrides,
       },

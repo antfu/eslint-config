@@ -1,10 +1,19 @@
 import { mergeProcessors, processorPassThrough } from "eslint-merge-processors";
-import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, TypedFlatConfigItem } from "../types";
-import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN } from "../globs";
+import type {
+  OptionsComponentExts,
+  OptionsFiles,
+  OptionsOverrides,
+  TypedFlatConfigItem,
+} from "../types";
+import {
+  GLOB_MARKDOWN,
+  GLOB_MARKDOWN_CODE,
+  GLOB_MARKDOWN_IN_MARKDOWN,
+} from "../globs";
 import { interopDefault, parserPlain } from "../utils";
 
 export async function markdown(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {}
 ): Promise<Array<TypedFlatConfigItem>> {
   const {
     componentExts = [],
@@ -44,7 +53,7 @@ export async function markdown(
     {
       files: [
         GLOB_MARKDOWN_CODE,
-        ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`),
+        ...componentExts.map((ext) => `${GLOB_MARKDOWN}/**/*.${ext}`),
       ],
       languageOptions: {
         parserOptions: {

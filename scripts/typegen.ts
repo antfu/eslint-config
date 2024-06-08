@@ -58,10 +58,10 @@ const configs = await combine(
   unicorn(),
   unocss(),
   vue(),
-  yaml(),
+  yaml()
 );
 
-const configNames = configs.map(i => i.name).filter(Boolean) as Array<string>;
+const configNames = configs.map((i) => i.name).filter(Boolean) as Array<string>;
 
 let dts = await flatConfigsToRulesDTS(configs, {
   includeAugmentation: false,
@@ -69,7 +69,7 @@ let dts = await flatConfigsToRulesDTS(configs, {
 
 dts += `
 // Names of all the configs
-export type ConfigNames = ${configNames.map(i => `'${i}'`).join(" | ")}
+export type ConfigNames = ${configNames.map((i) => `'${i}'`).join(" | ")}
 `;
 
 await fs.writeFile("src/typegen.d.ts", dts);

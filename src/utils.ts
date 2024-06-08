@@ -27,7 +27,9 @@ export const parserPlain = {
  * Combine array and non-array configs into a single array.
  * @param {...any} configs
  */
-export async function combine(...configs: Array<Awaitable<TypedFlatConfigItem | Array<TypedFlatConfigItem>>>): Promise<Array<TypedFlatConfigItem>> {
+export async function combine(
+  ...configs: Array<Awaitable<TypedFlatConfigItem | Array<TypedFlatConfigItem>>>
+): Promise<Array<TypedFlatConfigItem>> {
   const resolved = await Promise.all(configs);
   return resolved.flat();
 }
@@ -51,16 +53,18 @@ export async function combine(...configs: Array<Awaitable<TypedFlatConfigItem | 
  * }]
  * ```
  */
-export function renameRules(rules: Record<string, any>, map: Record<string, string>) {
+export function renameRules(
+  rules: Record<string, any>,
+  map: Record<string, string>
+) {
   return Object.fromEntries(
-    Object.entries(rules)
-      .map(([key, value]) => {
-        for (const [from, to] of Object.entries(map)) {
-          if (key.startsWith(`${from}/`))
-            return [to + key.slice(from.length), value];
-        }
-        return [key, value];
-      }),
+    Object.entries(rules).map(([key, value]) => {
+      for (const [from, to] of Object.entries(map)) {
+        if (key.startsWith(`${from}/`))
+          return [to + key.slice(from.length), value];
+      }
+      return [key, value];
+    })
   );
 }
 
@@ -79,19 +83,19 @@ export function renameRules(rules: Record<string, any>, map: Record<string, stri
  * })
  * ```
  */
-export function renamePluginInConfigs(configs: Array<TypedFlatConfigItem>, map: Record<string, string>): Array<TypedFlatConfigItem> {
+export function renamePluginInConfigs(
+  configs: Array<TypedFlatConfigItem>,
+  map: Record<string, string>
+): Array<TypedFlatConfigItem> {
   return configs.map((i) => {
     const clone = { ...i };
-    if (clone.rules)
-      clone.rules = renameRules(clone.rules, map);
+    if (clone.rules) clone.rules = renameRules(clone.rules, map);
     if (clone.plugins) {
       clone.plugins = Object.fromEntries(
-        Object.entries(clone.plugins)
-          .map(([key, value]) => {
-            if (key in map)
-              return [map[key], value];
-            return [key, value];
-          }),
+        Object.entries(clone.plugins).map(([key, value]) => {
+          if (key in map) return [map[key], value];
+          return [key, value];
+        })
       );
     }
     return clone;
@@ -102,23 +106,31 @@ export function toArray<T>(value: T | Array<T>): Array<T> {
   return Array.isArray(value) ? value : [value];
 }
 
-export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
+export async function interopDefault<T>(
+  m: Awaitable<T>
+): Promise<T extends { default: infer U } ? U : T> {
   const resolved = await m;
   return (resolved as any).default || resolved;
 }
 
 export async function ensurePackages(packages: Array<string | undefined>) {
-  if (process.env.CI || process.stdout.isTTY === false)
-    return;
+  if (process.env.CI || process.stdout.isTTY === false) return;
 
-  const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as Array<string>;
-  if (nonExistingPackages.length === 0)
-    return;
+  const nonExistingPackages = packages.filter(
+    (i) => i && !isPackageExists(i)
+  ) as Array<string>;
+  if (nonExistingPackages.length === 0) return;
 
   const p = await import("@clack/prompts");
   const result = await p.confirm({
-    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`,
+    message: `${
+      nonExistingPackages.length === 1 ? "Package is" : "Packages are"
+    } required for this config: ${nonExistingPackages.join(
+      ", "
+    )}. Do you want to install them?`,
   });
   if (result)
-    await import("@antfu/install-pkg").then(i => i.installPackage(nonExistingPackages, { dev: true }));
+    await import("@antfu/install-pkg").then((i) =>
+      i.installPackage(nonExistingPackages, { dev: true })
+    );
 }

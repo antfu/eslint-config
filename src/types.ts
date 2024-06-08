@@ -10,7 +10,10 @@ export type Awaitable<T> = T | Promise<T>;
 
 export type Rules = RuleOptions;
 
-export type TypedFlatConfigItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Rules>, "plugins"> & {
+export type TypedFlatConfigItem = Omit<
+  Linter.FlatConfig<Linter.RulesRecord & Rules>,
+  "plugins"
+> & {
   // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
   /**
    * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
@@ -42,7 +45,7 @@ export interface OptionsVue extends OptionsOverrides {
 }
 
 export type OptionsTypescript =
-  (OptionsTypeScriptWithTypes & OptionsOverrides)
+  | (OptionsTypeScriptWithTypes & OptionsOverrides)
   | (OptionsTypeScriptParserOptions & OptionsOverrides);
 
 export interface OptionsFormatters {
@@ -102,9 +105,11 @@ export interface OptionsFormatters {
    *
    * Only works when `markdown` is enabled with `prettier`.
    */
-  slidev?: boolean | {
-    files?: Array<string>;
-  };
+  slidev?:
+    | boolean
+    | {
+        files?: Array<string>;
+      };
 
   /**
    * Enable formatting support for Astro.
@@ -152,7 +157,10 @@ export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig;
 }
 
-export type StylisticConfig = Pick<StylisticCustomizeOptions, "indent" | "quotes" | "jsx" | "semi">;
+export type StylisticConfig = Pick<
+  StylisticCustomizeOptions,
+  "indent" | "quotes" | "jsx" | "semi"
+>;
 
 export interface OptionsOverrides {
   overrides?: TypedFlatConfigItem["rules"];
