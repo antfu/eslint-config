@@ -206,7 +206,7 @@ export async function typescript(
           files,
           ignores: [".storybook/**"],
         }
-      : null,
+      : [],
     {
       files,
       ignores: [".storybook/**"],
@@ -509,6 +509,6 @@ export async function typescript(
         "array-callback-return": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/2841 - false positive with TypeScript
       },
     },
-    isTypeAware ? null : tseslint.configs.disableTypeChecked,
+    isTypeAware ? [] : tseslint.configs.disableTypeChecked,
   ];
 }
