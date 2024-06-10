@@ -233,5 +233,9 @@
   },
   "lint-staged": {
     "*": "eslint --fix --no-warn-ignored"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
