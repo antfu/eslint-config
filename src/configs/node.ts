@@ -19,5 +19,12 @@ export async function node(): Promise<Array<TypedFlatConfigItem>> {
         "n/process-exit-as-throw": "error",
       },
     },
+    {
+      name: "nirtamir2/node/t3-env",
+      files: ["**/env.ts"],
+      rules: {
+        "n/prefer-global/process": "off",
+      },
+    },
   ];
 }

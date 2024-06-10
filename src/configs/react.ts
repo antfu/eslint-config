@@ -72,6 +72,7 @@ export async function react(
           plugins["@eslint-react/naming-convention"],
         "react-refresh": pluginReactRefresh,
       },
+      settings: { react: { version: "detect" } },
     },
     {
       files,
