@@ -1,20 +1,19 @@
+import * as p from "@clack/prompts";
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import c from "picocolors";
-import * as p from "@clack/prompts";
-
 import { extra, extraOptions, frameworkOptions, frameworks } from "./constants";
-import { isGitClean } from "./utils";
+import { updateEslintFiles } from "./stages/update-eslint-files";
+import { updatePackageJson } from "./stages/update-package-json";
+import { updateVscodeSettings } from "./stages/update-vscode-settings";
 import type {
   ExtraLibrariesOption,
   FrameworkOption,
   PromItem,
   PromptResult,
 } from "./types";
-import { updatePackageJson } from "./stages/update-package-json";
-import { updateEslintFiles } from "./stages/update-eslint-files";
-import { updateVscodeSettings } from "./stages/update-vscode-settings";
+import { isGitClean } from "./utils";
 
 export interface CliRunOptions {
   /**
@@ -34,15 +33,15 @@ export interface CliRunOptions {
 export async function run(options: CliRunOptions = {}) {
   const argSkipPrompt = Boolean(process.env.SKIP_PROMPT) || options.yes;
   const argTemplate = options.frameworks?.map((m) =>
-    m.trim()
+    m.trim(),
   ) as Array<FrameworkOption>;
   const argExtra = options.extra?.map((m) =>
-    m.trim()
+    m.trim(),
   ) as Array<ExtraLibrariesOption>;
 
   if (fs.existsSync(path.join(process.cwd(), "eslint.config.js"))) {
     p.log.warn(
-      c.yellow(`eslint.config.js already exists, migration wizard exited.`)
+      c.yellow(`eslint.config.js already exists, migration wizard exited.`),
     );
     return process.exit(1);
   }
@@ -92,7 +91,7 @@ export async function run(options: CliRunOptions = {}) {
           const isArgExtraValid =
             argExtra?.length &&
             argExtra.filter(
-              (element) => !extra.includes(element as ExtraLibrariesOption)
+              (element) => !extra.includes(element as ExtraLibrariesOption),
             ).length === 0;
 
           if (!results.uncommittedConfirmed || isArgExtraValid) return;
@@ -127,7 +126,7 @@ export async function run(options: CliRunOptions = {}) {
           p.cancel("Operation cancelled.");
           process.exit(0);
         },
-      }
+      },
     )) as PromptResult;
 
     if (!result.uncommittedConfirmed) return process.exit(1);
@@ -139,6 +138,6 @@ export async function run(options: CliRunOptions = {}) {
 
   p.log.success(c.green(`Setup completed`));
   p.outro(
-    `Now you can update the dependencies and run ${c.blue("eslint . --fix")}\n`
+    `Now you can update the dependencies and run ${c.blue("eslint . --fix")}\n`,
   );
 }

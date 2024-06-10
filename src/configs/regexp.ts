@@ -11,7 +11,7 @@ const nirOverridesConfig: TypedFlatConfigItem["rules"] = {
 };
 
 export async function regexp(
-  options: OptionsRegExp & OptionsOverrides = {}
+  options: OptionsRegExp & OptionsOverrides = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const config = configs["flat/recommended"] as TypedFlatConfigItem;
   const rules = {

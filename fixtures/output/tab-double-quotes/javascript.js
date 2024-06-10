@@ -38,7 +38,7 @@ const multilineString = `
 const { name, age } = people[0];
 log(
   `First person in the array is ${name} and they are ${age} years old.`,
-  multilineString
+  multilineString,
 );
 
 // Use the spread operator to create a new array

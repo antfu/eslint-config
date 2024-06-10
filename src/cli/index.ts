@@ -1,16 +1,16 @@
+import * as p from "@clack/prompts";
 import process from "node:process";
 import c from "picocolors";
-import { hideBin } from "yargs/helpers";
 import yargs from "yargs";
-import * as p from "@clack/prompts";
-import { run } from "./run";
+import { hideBin } from "yargs/helpers";
 import { pkgJson } from "./constants";
+import { run } from "./run";
 
 function header() {
   // eslint-disable-next-line no-console
   console.log("\n");
   p.intro(
-    `${c.green(`@nirtamir2/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`
+    `${c.green(`@nirtamir2/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`,
   );
 }
 
@@ -50,7 +50,7 @@ const instance = yargs(hideBin(process.argv))
         p.log.error(c.red(`✘ ${String(error)}`));
         process.exit(1);
       }
-    }
+    },
   )
   .showHelpOnFail(false)
   .alias("h", "help")

@@ -1,7 +1,7 @@
-import { ensurePackages } from "../utils";
-import type { TypedFlatConfigItem } from "../types";
 import { fixupConfigRules } from "@eslint/compat";
 import { compat } from "../compat";
+import type { TypedFlatConfigItem } from "../types";
+import { ensurePackages } from "../utils";
 
 export async function storybook(): Promise<Array<TypedFlatConfigItem>> {
   await ensurePackages(["eslint-plugin-storybook"]);
@@ -18,7 +18,7 @@ export async function storybook(): Promise<Array<TypedFlatConfigItem>> {
           ],
           // .eslintignore is not supported with flat config, make sure to ignore also other build and test folders
           ignorePatterns: ["!.storybook", "storybook-static"],
-        })
+        }),
       ),
     },
     {

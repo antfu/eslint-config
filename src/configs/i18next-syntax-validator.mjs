@@ -14,12 +14,12 @@ export default function validate(message = "") {
     !/{{ ?(?:- |\w+)(?:, ?\w+)? ?}}/.test(message)
   ) {
     throw new SyntaxError(
-      "Interpolation error. See: https://www.i18next.com/misc/json-format"
+      "Interpolation error. See: https://www.i18next.com/misc/json-format",
     );
   }
   if (message.includes("$t(") && !/\$t\(\w+:\w+(?:\.\w+)*\)/.test(message)) {
     throw new SyntaxError(
-      "Nesting error. See: https://www.i18next.com/misc/json-format"
+      "Nesting error. See: https://www.i18next.com/misc/json-format",
     );
   }
 }

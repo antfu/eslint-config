@@ -1,14 +1,13 @@
+import * as p from "@clack/prompts";
 import fs from "node:fs";
 import fsp from "node:fs/promises";
-import process from "node:process";
 import path from "node:path";
-import c from "picocolors";
-import * as p from "@clack/prompts";
-
+import process from "node:process";
 // @ts-expect-error missing types
 import parse from "parse-gitignore";
-import { getEslintConfigContent } from "../utils";
+import c from "picocolors";
 import type { PromptResult } from "../types";
+import { getEslintConfigContent } from "../utils";
 
 export async function updateEslintFiles(result: PromptResult) {
   const cwd = process.cwd();
@@ -33,7 +32,7 @@ export async function updateEslintFiles(result: PromptResult) {
       if (glob.type === "ignore") eslintIgnores.push(...glob.patterns);
       else if (glob.type === "unignore")
         eslintIgnores.push(
-          ...glob.patterns.map((pattern: string) => `!${pattern}`)
+          ...glob.patterns.map((pattern: string) => `!${pattern}`),
         );
     }
   }
@@ -55,7 +54,7 @@ export async function updateEslintFiles(result: PromptResult) {
 
   const eslintConfigContent: string = getEslintConfigContent(
     mainConfig,
-    additionalConfig
+    additionalConfig,
   );
 
   await fsp.writeFile(pathFlatConfig, eslintConfigContent);
@@ -71,6 +70,6 @@ export async function updateEslintFiles(result: PromptResult) {
   if (legacyConfig.length > 0)
     p.note(
       `${c.dim(legacyConfig.join(", "))}`,
-      "You can now remove those files manually"
+      "You can now remove those files manually",
     );
 }

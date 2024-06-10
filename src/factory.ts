@@ -1,14 +1,8 @@
-import process from "node:process";
-import fs from "node:fs";
-import { isPackageExists } from "local-pkg";
-import { FlatConfigComposer } from "eslint-flat-config-utils";
 import type { Linter } from "eslint";
-import type {
-  Awaitable,
-  ConfigNames,
-  OptionsConfig,
-  TypedFlatConfigItem,
-} from "./types";
+import { FlatConfigComposer } from "eslint-flat-config-utils";
+import { isPackageExists } from "local-pkg";
+import fs from "node:fs";
+import process from "node:process";
 import {
   astro,
   command,
@@ -34,16 +28,22 @@ import {
   unicorn,
   unocss,
   vue,
-  yaml
+  yaml,
 } from "./configs";
-import { interopDefault } from "./utils";
 import { formatters } from "./configs/formatters";
-import { regexp } from "./configs/regexp";
-import { prettier } from "./configs/prettier";
-import { tailwindcss } from "./configs/tailwindcss";
-import { storybook } from "./configs/storybook";
 import { i18n } from "./configs/i18n";
+import { prettier } from "./configs/prettier";
+import { regexp } from "./configs/regexp";
 import { security } from "./configs/security";
+import { storybook } from "./configs/storybook";
+import { tailwindcss } from "./configs/tailwindcss";
+import type {
+  Awaitable,
+  ConfigNames,
+  OptionsConfig,
+  TypedFlatConfigItem,
+} from "./types";
+import { interopDefault } from "./utils";
 
 const flatConfigProps: Array<keyof TypedFlatConfigItem> = [
   "name",
@@ -114,7 +114,7 @@ export function nirtamir2(
         process.env.VSCODE_CWD ||
         process.env.JETBRAINS_IDE ||
         process.env.VIM) &&
-        !process.env.CI
+        !process.env.CI,
     ),
     jsx: enableJsx = true,
     react: enableReact = false,
@@ -126,21 +126,21 @@ export function nirtamir2(
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
     storybook: enableStorybook = StorybookPackages.some((i) =>
-      isPackageExists(i)
+      isPackageExists(i),
     ),
     i18n: enableI18n = false,
     security: enableSecurity = false,
   } = options;
 
   const stylisticOptions =
-    options.stylistic === false
+    options.stylistic === false || options.stylistic == null
       ? false
       : typeof options.stylistic === "object"
-      ? options.stylistic
-      : {};
+        ? options.stylistic
+        : {};
 
   if (stylisticOptions && !("jsx" in stylisticOptions))
-    stylisticOptions.jsx = enableJsx
+    stylisticOptions.jsx = enableJsx;
 
   const configs: Array<Awaitable<Array<TypedFlatConfigItem>>> = [];
 
@@ -150,13 +150,13 @@ export function nirtamir2(
         configs.push(
           interopDefault(import("eslint-config-flat-gitignore")).then((r) => [
             r(),
-          ])
+          ]),
         );
     } else {
       configs.push(
         interopDefault(import("eslint-config-flat-gitignore")).then((r) => [
           r(enableGitignore),
-        ])
+        ]),
       );
     }
   }
@@ -186,7 +186,7 @@ export function nirtamir2(
     command(),
 
     // Optional plugins (installed but not enabled by default)
-    perfectionist()
+    perfectionist(),
   );
 
   if (enableVue) {
@@ -194,7 +194,7 @@ export function nirtamir2(
   }
 
   if (enableJsx) {
-    configs.push(jsx())
+    configs.push(jsx());
   }
 
   if (enableTypeScript) {
@@ -203,7 +203,7 @@ export function nirtamir2(
         ...typescriptOptions,
         componentExts,
         overrides: getOverrides(options, "typescript"),
-      })
+      }),
     );
   }
 
@@ -213,7 +213,7 @@ export function nirtamir2(
         ...stylisticOptions,
         lessOpinionated: options.lessOpinionated,
         overrides: getOverrides(options, "stylistic"),
-      })
+      }),
     );
   }
 
@@ -226,7 +226,7 @@ export function nirtamir2(
       test({
         isInEditor,
         overrides: getOverrides(options, "test"),
-      })
+      }),
     );
   }
 
@@ -237,7 +237,7 @@ export function nirtamir2(
         overrides: getOverrides(options, "vue"),
         stylistic: stylisticOptions,
         typescript: Boolean(enableTypeScript),
-      })
+      }),
     );
   }
 
@@ -246,7 +246,7 @@ export function nirtamir2(
       react({
         overrides: getOverrides(options, "react"),
         tsconfigPath,
-      })
+      }),
     );
   }
 
@@ -256,7 +256,7 @@ export function nirtamir2(
         overrides: getOverrides(options, "solid"),
         tsconfigPath,
         typescript: Boolean(enableTypeScript),
-      })
+      }),
     );
   }
 
@@ -266,7 +266,7 @@ export function nirtamir2(
         overrides: getOverrides(options, "svelte"),
         stylistic: stylisticOptions,
         typescript: Boolean(enableTypeScript),
-      })
+      }),
     );
   }
 
@@ -275,7 +275,7 @@ export function nirtamir2(
       unocss({
         ...resolveSubOptions(options, "unocss"),
         overrides: getOverrides(options, "unocss"),
-      })
+      }),
     );
   }
 
@@ -296,7 +296,7 @@ export function nirtamir2(
       astro({
         overrides: getOverrides(options, "astro"),
         stylistic: stylisticOptions,
-      })
+      }),
     );
   }
 
@@ -311,7 +311,7 @@ export function nirtamir2(
         stylistic: stylisticOptions,
       }),
       sortPackageJson(),
-      sortTsconfig()
+      sortTsconfig(),
     );
   }
 
@@ -320,7 +320,7 @@ export function nirtamir2(
       yaml({
         overrides: getOverrides(options, "yaml"),
         stylistic: stylisticOptions,
-      })
+      }),
     );
   }
 
@@ -329,7 +329,7 @@ export function nirtamir2(
       toml({
         overrides: getOverrides(options, "toml"),
         stylistic: stylisticOptions,
-      })
+      }),
     );
   }
 
@@ -338,7 +338,7 @@ export function nirtamir2(
       markdown({
         componentExts,
         overrides: getOverrides(options, "markdown"),
-      })
+      }),
     );
   }
 
@@ -346,8 +346,8 @@ export function nirtamir2(
     configs.push(
       formatters(
         options.formatters,
-        typeof stylisticOptions === "boolean" ? {} : stylisticOptions
-      )
+        typeof stylisticOptions === "boolean" ? {} : stylisticOptions,
+      ),
     );
   }
 
@@ -377,14 +377,14 @@ export type ResolvedOptions<T> = T extends boolean ? never : NonNullable<T>;
 
 export function resolveSubOptions<K extends keyof OptionsConfig>(
   options: OptionsConfig,
-  key: K
+  key: K,
 ): ResolvedOptions<OptionsConfig[K]> {
   return typeof options[key] === "boolean" ? ({} as any) : options[key] || {};
 }
 
 export function getOverrides<K extends keyof OptionsConfig>(
   options: OptionsConfig,
-  key: K
+  key: K,
 ) {
   const sub = resolveSubOptions(options, key);
   return {

@@ -1,9 +1,8 @@
+import { fixupConfigRules } from "@eslint/compat";
+import sonarjs from "eslint-plugin-sonarjs";
 import globals from "globals";
-import type {
-  OptionsIsInEditor,
-  OptionsOverrides,
-  TypedFlatConfigItem,
-} from "../types";
+import { compat } from "../compat";
+import { GLOB_SRC, GLOB_SRC_EXT } from "../globs";
 import {
   arrayFunc,
   confusingBrowserGlobals,
@@ -12,13 +11,14 @@ import {
   pluginAntfu,
   pluginUnusedImports,
 } from "../plugins";
-import { GLOB_SRC, GLOB_SRC_EXT } from "../globs";
-import { fixupConfigRules } from "@eslint/compat";
-import sonarjs from "eslint-plugin-sonarjs";
-import { compat } from "../compat";
+import type {
+  OptionsIsInEditor,
+  OptionsOverrides,
+  TypedFlatConfigItem,
+} from "../types";
 
 export async function javascript(
-  options: OptionsIsInEditor & OptionsOverrides = {}
+  options: OptionsIsInEditor & OptionsOverrides = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const { isInEditor = false, overrides = {} } = options;
 
@@ -130,8 +130,14 @@ export async function javascript(
           "github/require-passive-events": 2,
           "github/unescaped-html-literal": 2,
         },
-      })
+      }),
     ),
+    {
+      files: [".prettierrc.mjs"],
+      rules: {
+        "github/unescaped-html-literal": 0,
+      },
+    },
     {
       languageOptions: {
         ecmaVersion: 2022,
@@ -155,7 +161,7 @@ export async function javascript(
       linterOptions: {
         reportUnusedDisableDirectives: true,
       },
-      name: 'antfu/javascript/setup',
+      name: "antfu/javascript/setup",
     },
     {
       name: "antfu/javascript/rules",
@@ -392,12 +398,12 @@ export async function javascript(
     ...fixupConfigRules(
       compat.config({
         extends: ["plugin:optimize-regex/recommended"],
-      })
+      }),
     ),
     ...fixupConfigRules(
       compat.config({
         extends: ["plugin:workspaces/recommended"],
-      })
+      }),
     ),
     ...compat.config({
       extends: ["plugin:eslint-comments/recommended"],

@@ -57,8 +57,8 @@ If you still use some configs from the legacy eslintrc format, you can use the [
 
 ```js
 // eslint.config.mjs
-import nirtamir2 from "@nirtamir2/eslint-config";
 import { FlatCompat } from "@eslint/eslintrc";
+import nirtamir2 from "@nirtamir2/eslint-config";
 
 const compat = new FlatCompat();
 
@@ -73,7 +73,7 @@ export default nirtamir2(
       "eslint:recommended",
       // Other extends...
     ],
-  })
+  }),
 
   // Other flat configs...
 );
@@ -115,7 +115,7 @@ Add the following settings to your `.vscode/settings.json`:
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": "never",
   },
 
   // Silent the stylistic rules in you IDE, but still auto fix them
@@ -129,7 +129,7 @@ Add the following settings to your `.vscode/settings.json`:
     { "rule": "*-dangle", "severity": "off" },
     { "rule": "*-newline", "severity": "off" },
     { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
+    { "rule": "*semi", "severity": "off" },
   ],
 
   // Enable eslint for all supported languages
@@ -153,8 +153,8 @@ Add the following settings to your `.vscode/settings.json`:
     "less",
     "scss",
     "pcss",
-    "postcss"
-  ]
+    "postcss",
+  ],
 }
 ```
 
@@ -222,7 +222,7 @@ export default nirtamir2(
   },
   {
     rules: {},
-  }
+  },
 );
 ```
 
@@ -269,7 +269,7 @@ export default combine(
   jsonc(),
   yaml(),
   toml(),
-  markdown()
+  markdown(),
 );
 ```
 
@@ -304,7 +304,7 @@ export default nirtamir2(
     rules: {
       "@stylistic/semi": ["error", "never"],
     },
-  }
+  },
 );
 ```
 

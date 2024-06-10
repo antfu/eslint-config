@@ -1,5 +1,5 @@
-import { ensurePackages, interopDefault } from "../utils";
 import type { TypedFlatConfigItem } from "../types";
+import { ensurePackages, interopDefault } from "../utils";
 
 export async function tailwindcss(): Promise<Array<TypedFlatConfigItem>> {
   await ensurePackages(["eslint-plugin-tailwindcss"]);

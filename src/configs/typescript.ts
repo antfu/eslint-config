@@ -1,5 +1,9 @@
+import expectType from "eslint-plugin-expect-type/configs/recommended";
 import process from "node:process";
-import {GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX} from '../globs'
+import tseslint from "typescript-eslint";
+import { compat } from "../compat";
+import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from "../globs";
+import { pluginAntfu } from "../plugins";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -8,18 +12,14 @@ import type {
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem,
 } from "../types";
-import { pluginAntfu } from "../plugins";
 import { interopDefault, toArray } from "../utils";
-import expectType from "eslint-plugin-expect-type/configs/recommended";
-import tseslint from "typescript-eslint";
-import { compat } from "../compat";
 
 export async function typescript(
   options: OptionsFiles &
     OptionsComponentExts &
     OptionsOverrides &
     OptionsTypeScriptWithTypes &
-    OptionsTypeScriptParserOptions = {}
+    OptionsTypeScriptParserOptions = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const { componentExts = [], overrides = {}, parserOptions = {} } = options;
 
@@ -33,7 +33,7 @@ export async function typescript(
   const ignoresTypeAware = options.ignoresTypeAware ?? [
     `${GLOB_MARKDOWN}/**`,
     GLOB_ASTRO_TS,
-  ]
+  ];
   const tsconfigPath = options?.tsconfigPath
     ? toArray(options.tsconfigPath)
     : undefined;
@@ -70,7 +70,7 @@ export async function typescript(
   function makeParser(
     typeAware: boolean,
     files: Array<string>,
-    ignores?: Array<string>
+    ignores?: Array<string>,
   ): TypedFlatConfigItem {
     return {
       files,
@@ -158,7 +158,6 @@ export async function typescript(
         "@typescript-eslint/prefer-ts-expect-error": "error",
         "@typescript-eslint/triple-slash-reference": "off",
         "@typescript-eslint/unified-signatures": "off",
-        ...overrides,
       },
     },
     ...(isTypeAware
@@ -175,7 +174,7 @@ export async function typescript(
         ]
       : []),
     {
-      files: ['**/*.d.([cm])ts'],
+      files: ["**/*.d.([cm])ts"],
       name: "antfu/typescript/disables/dts",
       rules: {
         "eslint-comments/no-unlimited-disable": "off",
@@ -516,5 +515,10 @@ export async function typescript(
       },
     },
     isTypeAware ? [] : tseslint.configs.disableTypeChecked,
+    {
+      name: "nirtamir2/typescript/overrides",
+      files,
+      ...overrides,
+    },
   ];
 }

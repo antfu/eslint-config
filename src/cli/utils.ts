@@ -11,7 +11,7 @@ export function isGitClean() {
 
 export function getEslintConfigContent(
   mainConfig: string,
-  additionalConfigs?: Array<string>
+  additionalConfigs?: Array<string>,
 ) {
   return `
 import nirtamir2 from '@nirtamir2/eslint-config'

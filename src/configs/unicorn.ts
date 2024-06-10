@@ -1,5 +1,5 @@
-import type { TypedFlatConfigItem } from "../types";
 import { pluginUnicorn } from "../plugins";
+import type { TypedFlatConfigItem } from "../types";
 
 export async function unicorn(): Promise<Array<TypedFlatConfigItem>> {
   return [

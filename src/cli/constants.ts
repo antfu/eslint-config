@@ -1,5 +1,4 @@
 import c from "picocolors";
-
 import type { ExtraLibrariesOption, FrameworkOption, PromItem } from "./types";
 
 export const vscodeSettingsString = `
@@ -84,7 +83,7 @@ export const frameworkOptions: Array<PromItem<FrameworkOption>> = [
 ];
 
 export const frameworks: Array<FrameworkOption> = frameworkOptions.map(
-  ({ value }) => value
+  ({ value }) => value,
 );
 
 export const extraOptions: Array<PromItem<ExtraLibrariesOption>> = [
@@ -100,7 +99,7 @@ export const extraOptions: Array<PromItem<ExtraLibrariesOption>> = [
 ];
 
 export const extra: Array<ExtraLibrariesOption> = extraOptions.map(
-  ({ value }) => value
+  ({ value }) => value,
 );
 
 export const dependenciesMap = {

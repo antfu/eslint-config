@@ -1,15 +1,15 @@
+import { fixupConfigRules } from "@eslint/compat";
 import { isPackageExists } from "local-pkg";
-import { ensurePackages, interopDefault, toArray } from "../utils";
+import { compat } from "../compat";
+import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
 import type {
   OptionsFiles,
   OptionsOverrides,
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem,
 } from "../types";
-import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
-import { fixupConfigRules } from "@eslint/compat";
+import { ensurePackages, interopDefault, toArray } from "../utils";
 import { a11y } from "./a11y";
-import { compat } from "../compat";
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = ["vite"];
@@ -22,7 +22,7 @@ const RemixPackages = [
 const NextJsPackages = ["next"];
 
 export async function react(
-  options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {}
+  options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const { files = [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX], overrides = {} } =
     options;
@@ -54,7 +54,7 @@ export async function react(
     ] as const);
 
   const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(
-    (i) => isPackageExists(i)
+    (i) => isPackageExists(i),
   );
   const isUsingRemix = RemixPackages.some((i) => isPackageExists(i));
 
@@ -181,7 +181,7 @@ export async function react(
         rules: {
           "ssr-friendly/no-dom-globals-in-react-cc-render": "off", // I don't use class components
         },
-      })
+      }),
     ),
     ...compat.config({
       extends: "plugin:react/recommended",
@@ -239,8 +239,8 @@ export async function react(
       ? fixupConfigRules(
           compat.extends(
             "plugin:@next/next/recommended",
-            "plugin:@next/next/core-web-vitals"
-          )
+            "plugin:@next/next/core-web-vitals",
+          ),
         )
       : []),
     ...a11y(),

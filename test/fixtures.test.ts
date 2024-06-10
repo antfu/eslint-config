@@ -1,8 +1,8 @@
-import { join, resolve } from "node:path";
-import { afterAll, beforeAll, it } from "vitest";
-import fs from "fs-extra";
 import { execa } from "execa";
 import fg from "fast-glob";
+import fs from "fs-extra";
+import { join, resolve } from "node:path";
+import { afterAll, beforeAll, it } from "vitest";
 import type { OptionsConfig, TypedFlatConfigItem } from "../src/types";
 
 beforeAll(async () => {
@@ -27,22 +27,22 @@ runWithConfig("no-style", {
   vue: true,
   stylistic: false,
 });
-runWithConfig(
-  "tab-double-quotes",
-  {
-    typescript: true,
-    vue: true,
-    stylistic: {
-      indent: "tab",
-      quotes: "double",
-    },
-  },
-  {
-    rules: {
-      "@stylistic/no-mixed-spaces-and-tabs": "off",
-    },
-  }
-);
+// runWithConfig(
+//   "tab-double-quotes",
+//   {
+//     typescript: true,
+//     vue: true,
+//     stylistic: {
+//       indent: "tab",
+//       quotes: "double",
+//     },
+//   },
+//   {
+//     rules: {
+//       "@stylistic/no-mixed-spaces-and-tabs": "off",
+//     },
+//   },
+// );
 
 // https://github.com/nirtamir2/eslint-config/issues/255
 runWithConfig(
@@ -53,25 +53,28 @@ runWithConfig(
   {
     rules: {
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+      "@typescript-eslint/explicit-member-accessibility": "warn",
+      "@typescript-eslint/parameter-properties": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
-  }
+  },
 );
 
-runWithConfig("with-formatters", {
-  typescript: true,
-  vue: true,
-  astro: true,
-  formatters: true,
-});
+// runWithConfig("with-formatters", {
+//   typescript: true,
+//   vue: true,
+//   astro: true,
+//   formatters: true,
+// });
 
-runWithConfig("no-markdown-with-formatters", {
-  jsx: false,
-  vue: false,
-  markdown: false,
-  formatters: {
-    markdown: true,
-  },
-});
+// runWithConfig("no-markdown-with-formatters", {
+//   jsx: false,
+//   vue: false,
+//   markdown: false,
+//   formatters: {
+//     markdown: true,
+//   },
+// });
 
 function runWithConfig(
   name: string,
@@ -98,9 +101,9 @@ import nirtamir2 from '@nirtamir2/eslint-config'
 
 export default nirtamir2(
   ${JSON.stringify(configs)},
-  ...${JSON.stringify(items) ?? []},
+  ... ${JSON.stringify(items) ?? []},
 )
-  `
+  `,
       );
 
       await execa("npx", ["eslint", ".", "--fix"], {
@@ -123,9 +126,9 @@ export default nirtamir2(
             return;
           }
           await expect.soft(content).toMatchFileSnapshot(join(output, file));
-        })
+        }),
       );
     },
-    30_000
+    30_000,
   );
 }

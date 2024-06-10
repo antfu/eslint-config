@@ -1,9 +1,9 @@
-import { interopDefault } from "../utils";
-import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
 import jsdocPlugin from "eslint-plugin-jsdoc";
+import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
+import { interopDefault } from "../utils";
 
 export async function jsdoc(
-  options: OptionsStylistic = {}
+  options: OptionsStylistic = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const { stylistic = false } = options;
 

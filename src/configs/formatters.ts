@@ -1,23 +1,23 @@
 import { isPackageExists } from "local-pkg";
 import {
   GLOB_ASTRO,
+  GLOB_ASTRO_TS,
   GLOB_CSS,
   GLOB_GRAPHQL,
   GLOB_HTML,
   GLOB_LESS,
   GLOB_MARKDOWN,
   GLOB_POSTCSS,
-  GLOB_ASTRO_TS,
   GLOB_SCSS,
   GLOB_XML,
 } from "../globs";
-import type { VendoredPrettierOptions } from "../vender/prettier-types";
-import { ensurePackages, interopDefault, parserPlain } from "../utils";
 import type {
   OptionsFormatters,
   StylisticConfig,
   TypedFlatConfigItem,
 } from "../types";
+import { ensurePackages, interopDefault, parserPlain } from "../utils";
+import type { VendoredPrettierOptions } from "../vender/prettier-types";
 import { StylisticConfigDefaults } from "./stylistic";
 
 export async function formatters(
@@ -267,9 +267,7 @@ export async function formatters(
           },
         ],
       },
-    });
-
-    configs.push({
+    }, {
       files: [GLOB_ASTRO, GLOB_ASTRO_TS],
       name: "antfu/formatter/astro/disables",
       rules: {

@@ -1,10 +1,10 @@
-import { interopDefault } from "../utils";
+import { pluginAntfu } from "../plugins";
 import type {
   OptionsOverrides,
   StylisticConfig,
   TypedFlatConfigItem,
 } from "../types";
-import { pluginAntfu } from "../plugins";
+import { interopDefault } from "../utils";
 
 export const StylisticConfigDefaults: StylisticConfig = {
   indent: 2,
@@ -18,7 +18,7 @@ export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
 }
 
 export async function stylistic(
-  options: StylisticOptions = {}
+  options: StylisticOptions = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const {
     indent,
@@ -33,7 +33,7 @@ export async function stylistic(
   };
 
   const pluginStylistic = await interopDefault(
-    import("@stylistic/eslint-plugin")
+    import("@stylistic/eslint-plugin"),
   );
 
   const config = pluginStylistic.configs.customize({

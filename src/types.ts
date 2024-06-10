@@ -1,10 +1,10 @@
-import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
-import type { ParserOptions } from "@typescript-eslint/parser";
-import type { Options as VueBlocksOptions } from "eslint-processor-vue-blocks";
-import type { Linter } from "eslint";
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
-import type { VendoredPrettierOptions } from "./vender/prettier-types";
+import type { ParserOptions } from "@typescript-eslint/parser";
+import type { Linter } from "eslint";
+import type { FlatGitignoreOptions } from "eslint-config-flat-gitignore";
+import type { Options as VueBlocksOptions } from "eslint-processor-vue-blocks";
 import type { RuleOptions } from "./typegen";
+import type { VendoredPrettierOptions } from "./vender/prettier-types";
 
 export type Awaitable<T> = T | Promise<T>;
 
@@ -144,7 +144,7 @@ export interface OptionsTypeScriptParserOptions {
    * Glob patterns for files that should not be type aware.
    * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
    */
-  ignoresTypeAware?: Array<string>
+  ignoresTypeAware?: Array<string>;
 }
 
 export interface OptionsTypeScriptWithTypes {

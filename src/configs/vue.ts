@@ -1,5 +1,5 @@
 import { mergeProcessors } from "eslint-merge-processors";
-import { interopDefault } from "../utils";
+import { GLOB_VUE } from "../globs";
 import type {
   OptionsFiles,
   OptionsHasTypeScript,
@@ -8,14 +8,14 @@ import type {
   OptionsVue,
   TypedFlatConfigItem,
 } from "../types";
-import { GLOB_VUE } from "../globs";
+import { interopDefault } from "../utils";
 
 export async function vue(
   options: OptionsVue &
     OptionsHasTypeScript &
     OptionsOverrides &
     OptionsStylistic &
-    OptionsFiles = {}
+    OptionsFiles = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const {
     files = [GLOB_VUE],
@@ -73,7 +73,7 @@ export async function vue(
           extraFileExtensions: [".vue"],
           parser: options.typescript
             ? ((await interopDefault(
-                import("@typescript-eslint/parser")
+                import("@typescript-eslint/parser"),
               )) as any)
             : null,
           sourceType: "module",

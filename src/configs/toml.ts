@@ -1,14 +1,14 @@
+import { GLOB_TOML } from "../globs";
 import type {
   OptionsFiles,
   OptionsOverrides,
   OptionsStylistic,
   TypedFlatConfigItem,
 } from "../types";
-import { GLOB_TOML } from "../globs";
 import { interopDefault } from "../utils";
 
 export async function toml(
-  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}
+  options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   const { files = [GLOB_TOML], overrides = {}, stylistic = false } = options;
 

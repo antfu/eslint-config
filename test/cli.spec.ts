@@ -1,7 +1,7 @@
-import { join } from "node:path";
-import process from "node:process";
 import { execa } from "execa";
 import fs from "fs-extra";
+import { join } from "node:path";
+import process from "node:process";
 import { afterAll, beforeEach, expect, it } from "vitest";
 
 const CLI_PATH = join(__dirname, "../bin/index.js");
@@ -16,7 +16,7 @@ async function run(
   env = {
     SKIP_PROMPT: "1",
     NO_COLOR: "1",
-  }
+  },
 ) {
   return execa("node", [CLI_PATH, ...params], {
     cwd: genPath,
@@ -47,11 +47,11 @@ it("package.json updated", async () => {
   const { stdout } = await run();
 
   const pkgContent: Record<string, any> = await fs.readJSON(
-    join(genPath, "package.json")
+    join(genPath, "package.json"),
   );
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain(
-    "@nirtamir2/eslint-config"
+    "@nirtamir2/eslint-config",
   );
   expect(stdout).toContain("Changes wrote to package.json");
 });
@@ -60,14 +60,14 @@ it("esm eslint.config.js", async () => {
   const pkgContent = await fs.readFile("package.json", "utf8");
   await fs.writeFile(
     join(genPath, "package.json"),
-    JSON.stringify({ ...JSON.parse(pkgContent), type: "module" }, null, 2)
+    JSON.stringify({ ...JSON.parse(pkgContent), type: "module" }, null, 2),
   );
 
   const { stdout } = await run();
 
   const eslintConfigContent = await fs.readFile(
     join(genPath, "eslint.config.js"),
-    "utf8"
+    "utf8",
   );
   expect(eslintConfigContent.includes("export default")).toBeTruthy();
   expect(stdout).toContain("Created eslint.config.js");
@@ -78,7 +78,7 @@ it("cjs eslint.config.mjs", async () => {
 
   const eslintConfigContent = await fs.readFile(
     join(genPath, "eslint.config.mjs"),
-    "utf8"
+    "utf8",
   );
   expect(eslintConfigContent.includes("export default")).toBeTruthy();
   expect(stdout).toContain("Created eslint.config.mjs");
@@ -107,6 +107,6 @@ it("suggest remove unnecessary files", async () => {
 
   expect(stdout).toContain("You can now remove those files manually");
   expect(stdout).toContain(
-    ".eslintignore, .eslintrc.yaml, .prettierc, .prettierignore"
+    ".eslintignore, .eslintrc.yaml, .prettierc, .prettierignore",
   );
 });

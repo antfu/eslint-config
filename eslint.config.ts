@@ -38,7 +38,7 @@ export default nirtamir2(
       },
     },
     {
-      ignores: ["fixtures", "_fixtures"],
+      ignores: ["fixtures/input", "_fixtures"],
     },
   ],
 );

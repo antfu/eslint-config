@@ -1,5 +1,5 @@
-import process from "node:process";
 import { isPackageExists } from "local-pkg";
+import process from "node:process";
 import type { Awaitable, TypedFlatConfigItem } from "./types";
 
 export const parserPlain = {
@@ -55,7 +55,7 @@ export async function combine(
  */
 export function renameRules(
   rules: Record<string, any>,
-  map: Record<string, string>
+  map: Record<string, string>,
 ) {
   return Object.fromEntries(
     Object.entries(rules).map(([key, value]) => {
@@ -64,7 +64,7 @@ export function renameRules(
           return [to + key.slice(from.length), value];
       }
       return [key, value];
-    })
+    }),
   );
 }
 
@@ -85,7 +85,7 @@ export function renameRules(
  */
 export function renamePluginInConfigs(
   configs: Array<TypedFlatConfigItem>,
-  map: Record<string, string>
+  map: Record<string, string>,
 ): Array<TypedFlatConfigItem> {
   return configs.map((i) => {
     const clone = { ...i };
@@ -95,7 +95,7 @@ export function renamePluginInConfigs(
         Object.entries(clone.plugins).map(([key, value]) => {
           if (key in map) return [map[key], value];
           return [key, value];
-        })
+        }),
       );
     }
     return clone;
@@ -107,7 +107,7 @@ export function toArray<T>(value: T | Array<T>): Array<T> {
 }
 
 export async function interopDefault<T>(
-  m: Awaitable<T>
+  m: Awaitable<T>,
 ): Promise<T extends { default: infer U } ? U : T> {
   const resolved = await m;
   return (resolved as any).default || resolved;
@@ -117,7 +117,7 @@ export async function ensurePackages(packages: Array<string | undefined>) {
   if (process.env.CI || process.stdout.isTTY === false) return;
 
   const nonExistingPackages = packages.filter(
-    (i) => i && !isPackageExists(i)
+    (i) => i && !isPackageExists(i),
   ) as Array<string>;
   if (nonExistingPackages.length === 0) return;
 
@@ -126,11 +126,11 @@ export async function ensurePackages(packages: Array<string | undefined>) {
     message: `${
       nonExistingPackages.length === 1 ? "Package is" : "Packages are"
     } required for this config: ${nonExistingPackages.join(
-      ", "
+      ", ",
     )}. Do you want to install them?`,
   });
   if (result)
     await import("@antfu/install-pkg").then((i) =>
-      i.installPackage(nonExistingPackages, { dev: true })
+      i.installPackage(nonExistingPackages, { dev: true }),
     );
 }
