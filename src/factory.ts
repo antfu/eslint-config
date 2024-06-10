@@ -18,6 +18,7 @@ import {
   javascript,
   jsdoc,
   jsonc,
+  jsx,
   markdown,
   node,
   perfectionist,
@@ -33,7 +34,7 @@ import {
   unicorn,
   unocss,
   vue,
-  yaml,
+  yaml
 } from "./configs";
 import { interopDefault } from "./utils";
 import { formatters } from "./configs/formatters";
@@ -115,6 +116,7 @@ export function nirtamir2(
         process.env.VIM) &&
         !process.env.CI
     ),
+    jsx: enableJsx = true,
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
@@ -138,7 +140,7 @@ export function nirtamir2(
       : {};
 
   if (stylisticOptions && !("jsx" in stylisticOptions))
-    stylisticOptions.jsx = options.jsx ?? true;
+    stylisticOptions.jsx = enableJsx
 
   const configs: Array<Awaitable<Array<TypedFlatConfigItem>>> = [];
 
@@ -189,6 +191,10 @@ export function nirtamir2(
 
   if (enableVue) {
     componentExts.push("vue");
+  }
+
+  if (enableJsx) {
+    configs.push(jsx())
   }
 
   if (enableTypeScript) {

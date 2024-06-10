@@ -13,8 +13,8 @@ import {
 import { interopDefault, parserPlain } from "../utils";
 
 export async function markdown(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {}
-): Promise<Array<TypedFlatConfigItem>> {
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
+): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],
     files = [GLOB_MARKDOWN],
@@ -76,37 +76,18 @@ export async function markdown(
         "no-unused-labels": "off",
         "no-unused-vars": "off",
 
-        "n/prefer-global/process": "off",
+        "node/prefer-global/process": "off",
         "@stylistic/comma-dangle": "off",
 
         "@stylistic/eol-last": "off",
-        "@typescript-eslint/await-thenable": "off",
         "@typescript-eslint/consistent-type-imports": "off",
-        "@typescript-eslint/dot-notation": "off",
-        "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-for-in-array": "off",
-        "@typescript-eslint/no-implied-eval": "off",
-        "@typescript-eslint/no-misused-promises": "off",
-
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/no-redeclare": "off",
         "@typescript-eslint/no-require-imports": "off",
-
-        // Type aware rules
-
-        "@typescript-eslint/no-throw-literal": "off",
-        "@typescript-eslint/no-unnecessary-type-assertion": "off",
-        "@typescript-eslint/no-unsafe-argument": "off",
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-call": "off",
-        "@typescript-eslint/no-unsafe-member-access": "off",
-        "@typescript-eslint/no-unsafe-return": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/restrict-plus-operands": "off",
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/unbound-method": "off",
+
         "unicode-bom": "off",
         "unused-imports/no-unused-imports": "off",
         "unused-imports/no-unused-vars": "off",

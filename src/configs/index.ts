@@ -9,6 +9,7 @@ export * from "./imports";
 export * from "./javascript";
 export * from "./jsdoc";
 export * from "./jsonc";
+export * from "./jsx";
 export * from "./markdown";
 export * from "./node";
 export * from "./perfectionist";

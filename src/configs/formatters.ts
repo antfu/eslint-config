@@ -7,6 +7,7 @@ import {
   GLOB_LESS,
   GLOB_MARKDOWN,
   GLOB_POSTCSS,
+  GLOB_ASTRO_TS,
   GLOB_SCSS,
   GLOB_XML,
 } from "../globs";
@@ -21,11 +22,11 @@ import { StylisticConfigDefaults } from "./stylistic";
 
 export async function formatters(
   options: OptionsFormatters | true = {},
-  stylistic: StylisticConfig = {}
+  stylistic: StylisticConfig = {},
 ): Promise<Array<TypedFlatConfigItem>> {
   if (options === true) {
     options = {
-      astro: isPackageExists("astro"),
+      astro: isPackageExists("prettier-plugin-astro"),
       css: true,
       graphql: true,
       html: true,
@@ -52,7 +53,7 @@ export async function formatters(
     options.markdown !== "prettier"
   )
     throw new Error(
-      "`slidev` option only works when `markdown` is enabled with `prettier`"
+      "`slidev` option only works when `markdown` is enabled with `prettier`",
     );
 
   const { indent, quotes, semi } = {
@@ -69,7 +70,7 @@ export async function formatters(
       trailingComma: "all",
       useTabs: indent === "tab",
     } satisfies VendoredPrettierOptions,
-    options.prettierOptions || {}
+    options.prettierOptions || {},
   );
 
   const prettierXmlOptions = {
@@ -85,7 +86,7 @@ export async function formatters(
       quoteStyle: quotes === "single" ? "preferSingle" : "preferDouble",
       useTabs: indent === "tab",
     },
-    options.dprintOptions || {}
+    options.dprintOptions || {},
   );
 
   const pluginFormat = await interopDefault(import("eslint-plugin-format"));
@@ -148,7 +149,7 @@ export async function formatters(
             },
           ],
         },
-      }
+      },
     );
   }
 
@@ -265,6 +266,20 @@ export async function formatters(
             plugins: ["prettier-plugin-astro"],
           },
         ],
+      },
+    });
+
+    configs.push({
+      files: [GLOB_ASTRO, GLOB_ASTRO_TS],
+      name: "antfu/formatter/astro/disables",
+      rules: {
+        "@stylistic/arrow-parens": "off",
+        "@stylistic/block-spacing": "off",
+        "@stylistic/comma-dangle": "off",
+        "@stylistic/indent": "off",
+        "@stylistic/no-multi-spaces": "off",
+        "@stylistic/quotes": "off",
+        "@stylistic/semi": "off",
       },
     });
   }
