@@ -271,7 +271,6 @@ export default nirtamir2()
 // ...
 ```
 
-
 ### Optional Rules
 
 This config also provides some optional plugins/rules for extended usage.
@@ -379,3 +378,13 @@ npx @eslint/config-inspector
 [MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu).
 
 [Nir Tamir](https://github.com/nirtamir2) fork his excellent work and adapt it to his own needs.
+
+## Nice ESLint configs
+
+[pawelblaszczyk5's ESLint config](https://github.com/pawelblaszczyk5/pawelblaszczyk.dev/tree/fb90e2982f7f3b6253a24fa51380da773ef12974/tooling/eslint-config)
+
+[eslint-config-sherif](https://github.com/AndreaPontrandolfo/sheriff)
+
+[Antfu's eslint-config](https://github.com/antfu/eslint-config)
+
+[eslint-config-nirtamir2](https://github.com/nirtamir2/eslint-config-nirtamir2)
