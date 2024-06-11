@@ -1,6 +1,6 @@
 # @nirtamir2/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@nirtamir2/eslint-config?color=444&label=)](https://npmjs.com/package/@nirtamir2/eslint-config) [![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
+[![npm](https://img.shields.io/npm/v/@nirtamir2/eslint-config?color=444&label=)](https://npmjs.com/package/@nirtamir2/eslint-config)
 
 This is a fork of Anthony Fu's [ESLint Config](https://github.com/antfu/eslint-config) maintained by [Nir Tamir](https://github.com/nirtamir2/).
 
@@ -18,8 +18,6 @@ This is a fork of Anthony Fu's [ESLint Config](https://github.com/antfu/eslint-c
 - Respects `.gitignore` by default
 - Supports ESLint v9 or v8.50.0+
 
-> [!IMPORTANT]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/nirtamir2/eslint-config/releases/tag/v1.0.0) for more details.
 
 ## Usage
 
