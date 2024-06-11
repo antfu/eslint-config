@@ -4,21 +4,6 @@
 
 This is a fork of Anthony Fu's [ESLint Config](https://github.com/antfu/eslint-config) maintained by [Nir Tamir](https://github.com/nirtamir2/).
 
-- Auto fix for formatting (aimed to be used standalone **without** Prettier)
-- Reasonable defaults, best practices, only one line of config
-- Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, etc. Out-of-box.
-- Opinionated, but [very customizable](#customization)
-- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
-- Optional [React](#react), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro), [Solid](#solid) support
-- Optional [formatters](#formatters) support for formatting CSS, HTML, XML, etc.
-- **Style principle**: Minimal for reading, stable for diff, consistent
-  - Sorted imports, dangling commas
-  - Single quotes, no semi
-  - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
-- Respects `.gitignore` by default
-- Supports ESLint v9 or v8.50.0+
-
-
 ## Usage
 
 ### Starter Wizard
@@ -94,68 +79,6 @@ For example:
 }
 ```
 
-## VS Code support (auto fix on save)
-
-Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-Add the following settings to your `.vscode/settings.json`:
-
-```jsonc
-{
-  // Enable the ESlint flat config support
-  // (remove this if your ESLint extension above v3.0.5)
-  "eslint.experimental.useFlatConfig": true,
-
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-
-  // Auto fix
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never",
-  },
-
-  // Silent the stylistic rules in you IDE, but still auto fix them
-  "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" },
-  ],
-
-  // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml",
-    "toml",
-    "xml",
-    "gql",
-    "graphql",
-    "astro",
-    "css",
-    "less",
-    "scss",
-    "pcss",
-    "postcss",
-  ],
-}
-```
-
 ## Customization
 
 It uses [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
@@ -176,15 +99,6 @@ And that's it! Or you can configure each integration individually, for example:
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2({
-  // Enable stylistic formatting rules
-  // stylistic: true,
-
-  // Or customize the stylistic rules
-  stylistic: {
-    indent: 2, // 4, or 'tab'
-    quotes: "single", // or 'double'
-  },
-
   // TypeScript and Vue are auto-detected, you can also explicitly enable them:
   typescript: true,
   vue: true,
@@ -344,9 +258,9 @@ export default nirtamir2()
   // some configs before the main config
   ()
   // overrides any named configs
-  .override("nirtamir2/imports", {
+  .override("antfu/imports/rules", {
     rules: {
-      "import/order": ["error", { "newlines-between": "always" }],
+      "import-x/order": ["error", { "newlines-between": "always" }],
     },
   })
   // rename plugin prefixes
@@ -357,170 +271,6 @@ export default nirtamir2()
 // ...
 ```
 
-### Vue
-
-Vue support is detected automatically by checking if `vue` is installed in your project. You can also explicitly enable/disable it:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  vue: true,
-});
-```
-
-#### Vue 2
-
-We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuejs.org/eol/)). If you are still using Vue 2, you can configure it manually by setting `vueVersion` to `2`:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  vue: {
-    vueVersion: 2,
-  },
-});
-```
-
-As it's in maintenance mode, we only accept bug fixes for Vue 2. It might also be removed in the future when `eslint-plugin-vue` drops support for Vue 2. We recommend upgrading to Vue 3 if possible.
-
-### Optional Configs
-
-We provide some optional configs for specific use cases, that we don't include their dependencies by default.
-
-#### Formatters
-
-Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  formatters: {
-    /**
-     * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
-     * By default uses Prettier
-     */
-    css: true,
-    /**
-     * Format HTML files
-     * By default uses Prettier
-     */
-    html: true,
-    /**
-     * Format Markdown files
-     * Supports Prettier and dprint
-     * By default uses Prettier
-     */
-    markdown: "prettier",
-  },
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-format
-```
-
-#### React
-
-To enable React support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  react: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh
-```
-
-#### Svelte
-
-To enable svelte support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  svelte: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-svelte
-```
-
-#### Astro
-
-To enable astro support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  astro: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-astro
-```
-
-#### Solid
-
-To enable Solid support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  solid: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D eslint-plugin-solid
-```
-
-#### UnoCSS
-
-To enable UnoCSS support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  unocss: true,
-});
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @unocss/eslint-plugin
-```
 
 ### Optional Rules
 
@@ -622,65 +372,6 @@ Go to your project root that contains `eslint.config.js` and run:
 
 ```bash
 npx @eslint/config-inspector
-```
-
-## Versioning Policy
-
-This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involves opinions and many moving parts, we don't treat rules changes as breaking changes.
-
-### Changes Considered as Breaking Changes
-
-- Node.js version requirement changes
-- Huge refactors that might break the config
-- Plugins made major changes that might break the config
-- Changes that might affect most of the codebases
-
-### Changes Considered as Non-breaking Changes
-
-- Enable/disable rules and plugins (that might become stricter)
-- Rules options changes
-- Version bumps of dependencies
-
-## Badge
-
-If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
-
-```md
-[![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
-```
-
-[![code style](https://nirtamir2.me/badge-code-style.svg)](https://github.com/nirtamir2/eslint-config)
-
-## FAQ
-
-### Prettier?
-
-[Why I don't use Prettier](https://nirtamir2.me/posts/why-not-prettier)
-
-Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
-
-### dprint?
-
-[dprint](https://dprint.dev/) is also a great formatter that with more abilities to customize. However, it's in the same model as Prettier which reads the AST and reprints the code from scratch. This means it's similar to Prettier, which ignores the original line breaks and might also cause the inconsistent diff. So in general, we prefer to use ESLint to format and lint JavaScript/TypeScript code.
-
-Meanwhile, we do have dprint integrations for formatting other files such as `.md`. See [formatters](#formatters) for more details.
-
-### How to format CSS?
-
-You can opt-in to the [`formatters`](#formatters) feature to format your CSS. Note that it's only doing formatting, but not linting. If you want proper linting support, give [`stylelint`](https://stylelint.io/) a try.
-
-### Top-level Function Style, etc.
-
-I am a very opinionated person, so as this config. I prefer the top-level functions always using the function declaration over arrow functions; I prefer one-line if statements without braces and always wraps, and so on. I even wrote some custom rules to enforce them.
-
-I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
-
-```ts
-import nirtamir2 from "@nirtamir2/eslint-config";
-
-export default nirtamir2({
-  lessOpinionated: true,
-});
 ```
 
 ## License
