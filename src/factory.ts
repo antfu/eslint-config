@@ -121,7 +121,7 @@ export function nirtamir2(
     regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
-    tailwindcss: enableTailwindCSS = false,
+    tailwindcss: enableTailwindCSS = isPackageExists("tailwindcss"),
     typescript: enableTypeScript = isPackageExists("typescript"),
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some((i) => isPackageExists(i)),
