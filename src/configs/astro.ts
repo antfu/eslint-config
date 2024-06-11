@@ -5,7 +5,7 @@ import type {
   OptionsStylistic,
   TypedFlatConfigItem,
 } from "../types";
-import { interopDefault } from "../utils";
+import {ensurePackages, interopDefault} from "../utils";
 
 export async function astro(
   options: OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -16,6 +16,8 @@ export async function astro(
 
     stylistic = false,
   } = options;
+
+  await ensurePackages(["eslint-plugin-astro"])
 
   const [pluginAstro, parserAstro, parserTs] = await Promise.all([
     interopDefault(import("eslint-plugin-astro")),
