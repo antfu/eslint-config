@@ -407,7 +407,7 @@ export async function typescript(
         "@typescript-eslint/default-param-last": "error",
         "dot-notation": "off",
         "@typescript-eslint/dot-notation": "error",
-        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/explicit-member-accessibility": "off",
         "init-declarations": "off",
         "@typescript-eslint/init-declarations": "error",
         "lines-between-class-members": "off",
