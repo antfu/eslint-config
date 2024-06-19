@@ -50,6 +50,7 @@ export async function typescript(
     'ts/restrict-template-expressions': 'error',
     'ts/return-await': 'error',
     'ts/strict-boolean-expressions': 'error',
+    'ts/switch-exhaustiveness-check': 'error',
     'ts/unbound-method': 'error',
   }
 
