@@ -24,6 +24,7 @@ import {
   svelte,
   test,
   toml,
+  tsdoc,
   typescript,
   unicorn,
   unocss,
@@ -113,7 +114,8 @@ export function nirtamir2(
       (process.env.VSCODE_PID ||
         process.env.VSCODE_CWD ||
         process.env.JETBRAINS_IDE ||
-        process.env.VIM) &&
+        process.env.VIM ||
+        process.env.NVIM) &&
         !process.env.CI,
     ),
     jsx: enableJsx = true,
@@ -176,9 +178,6 @@ export function nirtamir2(
     }),
     comments(),
     node(),
-    jsdoc({
-      stylistic: stylisticOptions,
-    }),
     imports({
       stylistic: stylisticOptions,
     }),
@@ -312,6 +311,23 @@ export function nirtamir2(
       }),
       sortPackageJson(),
       sortTsconfig(),
+    );
+  }
+
+  if (options.jsdoc ?? false) {
+    configs.push(
+      jsdoc({
+        stylistic: stylisticOptions,
+        overrides: getOverrides(options, "jsdoc"),
+      }),
+    );
+  }
+
+  if (options.tsdoc ?? false) {
+    configs.push(
+      tsdoc({
+        overrides: getOverrides(options, "tsdoc"),
+      }),
     );
   }
 

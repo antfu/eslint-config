@@ -58,5 +58,12 @@ export async function unicorn(): Promise<Array<TypedFlatConfigItem>> {
         "unicorn/throw-new-error": "error",
       },
     },
+    // {
+    //   name: "nirtamir2/unicorn/overrides",
+    //   files: ["postcss.config.js"],
+    //   rules: {
+    //     "unicorn/prefer-module": "off",
+    //   },
+    // },
   ];
 }

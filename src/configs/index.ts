@@ -30,3 +30,4 @@ export * from "./unicorn";
 export * from "./unocss";
 export * from "./vue";
 export * from "./yaml";
+export * from "./tsdoc";

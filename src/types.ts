@@ -261,6 +261,18 @@ export interface OptionsConfig extends OptionsComponentExts {
   jsonc?: boolean | OptionsOverrides;
 
   /**
+   * Enable TSDoc support.
+   * @default false
+   */
+  tsdoc?: boolean | OptionsOverrides;
+
+  /**
+   * Enable JSDoc support.
+   * @default false
+   */
+  jsdoc?: boolean | OptionsOverrides;
+
+  /**
    * Enable YAML support.
    * @default true
    */

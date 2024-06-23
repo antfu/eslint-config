@@ -1,7 +1,6 @@
 import expectType from "eslint-plugin-expect-type/configs/recommended";
 import process from "node:process";
 import tseslint from "typescript-eslint";
-import { compat } from "../compat";
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from "../globs";
 import { pluginAntfu } from "../plugins";
 import type {
@@ -58,7 +57,9 @@ export async function typescript(
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/restrict-template-expressions": "error",
+    "@typescript-eslint/return-await": "error",
     "@typescript-eslint/strict-boolean-expressions": "error",
+    "@typescript-eslint/switch-exhaustiveness-check": "error",
     "@typescript-eslint/unbound-method": "error",
   };
 
@@ -174,7 +175,7 @@ export async function typescript(
         ]
       : []),
     {
-      files: ['**/*.d.?([cm])ts'],
+      files: ["**/*.d.?([cm])ts"],
       name: "antfu/typescript/disables/dts",
       rules: {
         "eslint-comments/no-unlimited-disable": "off",
@@ -198,12 +199,6 @@ export async function typescript(
         "@typescript-eslint/no-var-requires": "off",
       },
     },
-    ...compat.config({
-      plugins: ["tsdoc"],
-      rules: {
-        "tsdoc/syntax": "warn",
-      },
-    }),
     isTypeAware
       ? {
           name: "nirtamir2/typescript/expect-type",
@@ -520,5 +515,5 @@ export async function typescript(
       files,
       ...overrides,
     },
-  ];
+  ] as Array<TypedFlatConfigItem>;
 }

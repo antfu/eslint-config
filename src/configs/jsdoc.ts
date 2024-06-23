@@ -1,11 +1,15 @@
 import jsdocPlugin from "eslint-plugin-jsdoc";
-import type { OptionsStylistic, TypedFlatConfigItem } from "../types";
+import type {
+  OptionsOverrides,
+  OptionsStylistic,
+  TypedFlatConfigItem,
+} from "../types";
 import { interopDefault } from "../utils";
 
 export async function jsdoc(
-  options: OptionsStylistic = {},
+  options: OptionsStylistic & OptionsOverrides = {},
 ): Promise<Array<TypedFlatConfigItem>> {
-  const { stylistic = false } = options;
+  const { stylistic = false, overrides } = options;
 
   return [
     {
@@ -43,6 +47,7 @@ export async function jsdoc(
       name: "nirtamir2/jsdoc/overrides",
       rules: {
         "jsdoc/require-jsdoc": "off",
+        ...overrides,
       },
     },
   ];
