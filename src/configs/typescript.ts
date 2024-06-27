@@ -32,14 +32,12 @@ export async function typescript(
   const typeAwareRules: TypedFlatConfigItem['rules'] = {
     'dot-notation': 'off',
     'no-implied-eval': 'off',
-    'no-throw-literal': 'off',
     'ts/await-thenable': 'error',
     'ts/dot-notation': ['error', { allowKeywords: true }],
     'ts/no-floating-promises': 'error',
     'ts/no-for-in-array': 'error',
     'ts/no-implied-eval': 'error',
     'ts/no-misused-promises': 'error',
-    'ts/no-throw-literal': 'error',
     'ts/no-unnecessary-type-assertion': 'error',
     'ts/no-unsafe-argument': 'error',
     'ts/no-unsafe-assignment': 'error',
@@ -73,7 +71,10 @@ export async function typescript(
           sourceType: 'module',
           ...typeAware
             ? {
-                project: tsconfigPath,
+                projectService: {
+                  allowDefaultProject: ['./*.js'],
+                  defaultProject: tsconfigPath,
+                },
                 tsconfigRootDir: process.cwd(),
               }
             : {},
@@ -120,7 +121,8 @@ export async function typescript(
         'no-use-before-define': 'off',
         'no-useless-constructor': 'off',
         'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-        'ts/ban-types': ['error', { types: { Function: false } }],
+        'ts/no-empty-object-type': 'error',
+        'ts/no-wrapper-object-types': 'error',
         'ts/consistent-type-definitions': ['error', 'interface'],
         'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
         'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful

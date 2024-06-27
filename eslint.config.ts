@@ -9,7 +9,9 @@ export default antfu(
     solid: true,
     svelte: true,
     astro: true,
-    typescript: true,
+    typescript: {
+      tsconfigPath: './tsconfig.json',
+    },
     formatters: true,
   },
   {
