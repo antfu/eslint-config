@@ -119,7 +119,7 @@ export default antfu(
       const outputPath = join(output, file)
       if (content === source) {
         if (fs.existsSync(outputPath))
-          fs.remove(outputPath)
+          await fs.remove(outputPath)
         return
       }
       await expect.soft(content).toMatchFileSnapshot(join(output, file))
