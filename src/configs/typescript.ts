@@ -46,6 +46,7 @@ export async function typescript(
     'ts/no-unsafe-call': 'error',
     'ts/no-unsafe-member-access': 'error',
     'ts/no-unsafe-return': 'error',
+    'ts/promise-function-async': 'error',
     'ts/restrict-plus-operands': 'error',
     'ts/restrict-template-expressions': 'error',
     'ts/return-await': 'error',
