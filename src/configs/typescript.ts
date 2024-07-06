@@ -44,10 +44,11 @@ export async function typescript(
     'ts/no-unsafe-call': 'error',
     'ts/no-unsafe-member-access': 'error',
     'ts/no-unsafe-return': 'error',
+    'ts/promise-function-async': 'error',
     'ts/restrict-plus-operands': 'error',
     'ts/restrict-template-expressions': 'error',
-    'ts/return-await': 'error',
-    'ts/strict-boolean-expressions': 'error',
+    'ts/return-await': ['error', 'in-try-catch'],
+    'ts/strict-boolean-expressions': ['error', { allowNullableBoolean: true, allowNullableObject: true }],
     'ts/switch-exhaustiveness-check': 'error',
     'ts/unbound-method': 'error',
   }
@@ -121,13 +122,12 @@ export async function typescript(
         'no-use-before-define': 'off',
         'no-useless-constructor': 'off',
         'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-        'ts/no-empty-object-type': 'error',
-        'ts/no-wrapper-object-types': 'error',
         'ts/consistent-type-definitions': ['error', 'interface'],
         'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
         'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         'ts/no-dupe-class-members': 'error',
         'ts/no-dynamic-delete': 'off',
+        'ts/no-empty-object-type': 'error',
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'error',
@@ -139,6 +139,7 @@ export async function typescript(
         'ts/no-unused-vars': 'off',
         'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
         'ts/no-useless-constructor': 'off',
+        'ts/no-wrapper-object-types': 'error',
         'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
@@ -150,10 +151,7 @@ export async function typescript(
           files: filesTypeAware,
           ignores: ignoresTypeAware,
           name: 'antfu/typescript/rules-type-aware',
-          rules: {
-            ...tsconfigPath ? typeAwareRules : {},
-            ...overrides,
-          },
+          rules: typeAwareRules,
         }]
       : [],
     {
