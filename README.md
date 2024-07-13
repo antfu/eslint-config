@@ -322,6 +322,7 @@ export default antfu()
     // ...
   })
 ```
+
 </details>
 
 ### Rules Overrides
