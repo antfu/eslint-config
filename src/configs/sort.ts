@@ -220,6 +220,7 @@ export function sortTsconfig(): Array<TypedFlatConfigItem> {
               "allowSyntheticDefaultImports",
               "esModuleInterop",
               "forceConsistentCasingInFileNames",
+              "isolatedDeclarations",
               "isolatedModules",
               "preserveSymlinks",
               "verbatimModuleSyntax",

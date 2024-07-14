@@ -1,7 +1,7 @@
 import { fixupConfigRules } from "@eslint/compat";
 import { isPackageExists } from "local-pkg";
 import { compat } from "../compat";
-import { GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX } from "../globs";
+import { GLOB_SRC } from "../globs";
 import type {
   OptionsFiles,
   OptionsOverrides,
@@ -24,8 +24,7 @@ const NextJsPackages = ["next"];
 export async function react(
   options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
 ): Promise<Array<TypedFlatConfigItem>> {
-  const { files = [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX], overrides = {} } =
-    options;
+  const { files = [GLOB_SRC], overrides = {} } = options;
 
   await ensurePackages([
     "@eslint-react/eslint-plugin",

@@ -164,9 +164,9 @@ export interface OptionsStylistic {
 }
 
 export type StylisticConfig = Pick<
-  StylisticCustomizeOptions,
-  "indent" | "quotes" | "jsx" | "semi"
->;
+    StylisticCustomizeOptions,
+    "indent" | "quotes" | "jsx" | "semi"
+  >
 
 export interface OptionsOverrides {
   overrides?: TypedFlatConfigItem["rules"];

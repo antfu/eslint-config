@@ -48,7 +48,6 @@ export async function typescript(
     "@typescript-eslint/no-for-in-array": "error",
     "@typescript-eslint/no-implied-eval": "error",
     "@typescript-eslint/no-misused-promises": "error",
-    "@typescript-eslint/no-throw-literal": "error",
     "@typescript-eslint/no-unnecessary-type-assertion": "error",
     "@typescript-eslint/no-unsafe-argument": "error",
     "@typescript-eslint/no-unsafe-assignment": "error",
@@ -56,6 +55,7 @@ export async function typescript(
     "@typescript-eslint/no-unsafe-member-access": "error",
     "@typescript-eslint/no-unsafe-return": "error",
     "@typescript-eslint/restrict-plus-operands": "error",
+    "@typescript-eslint/promise-function-async": "error",
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/strict-boolean-expressions": "error",
@@ -83,7 +83,10 @@ export async function typescript(
           sourceType: "module",
           ...(typeAware
             ? {
-                project: tsconfigPath,
+                projectService: {
+                  allowDefaultProject: ["./*.js"],
+                  defaultProject: tsconfigPath,
+                },
                 tsconfigRootDir: process.cwd(),
               }
             : {}),
@@ -125,11 +128,7 @@ export async function typescript(
         "no-useless-constructor": "off",
         "@typescript-eslint/ban-ts-comment": [
           "error",
-          { "ts-ignore": "allow-with-description" },
-        ],
-        "@typescript-eslint/ban-types": [
-          "error",
-          { types: { Function: false } },
+          { "ts-except-error": "allow-with-description" },
         ],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
@@ -156,7 +155,7 @@ export async function typescript(
           { classes: false, functions: false, variables: true },
         ],
         "@typescript-eslint/no-useless-constructor": "off",
-        "@typescript-eslint/prefer-ts-expect-error": "error",
+        "@typescript-eslint/no-wrapper-object-types": "error",
         "@typescript-eslint/triple-slash-reference": "off",
         "@typescript-eslint/unified-signatures": "off",
       },
@@ -293,45 +292,6 @@ export async function typescript(
           "warn",
           { argsIgnorePattern: "^_" },
         ],
-        // #endregion @typescript-eslint - too noisy rules
-
-        // #region @typescript-eslint - styling rules I don't care about (prettier can handle it so I put it in off)
-        "space-infix-ops": "off",
-        "@typescript-eslint/space-infix-ops": "off",
-        "no-extra-parens": "off",
-        "@typescript-eslint/no-extra-parens": "off",
-        "no-extra-semi": "off",
-        "@typescript-eslint/no-extra-semi": "off",
-        "object-curly-spacing": "off",
-        "@typescript-eslint/object-curly-spacing": "off",
-        "brace-style": "off",
-        "@typescript-eslint/brace-style": "off",
-        "comma-dangle": "off",
-        "@typescript-eslint/comma-dangle": "off",
-        "comma-spacing": "off",
-        "@typescript-eslint/comma-spacing": "off",
-        "func-call-spacing": "off",
-        "@typescript-eslint/func-call-spacing": "off",
-        indent: "off",
-        "@typescript-eslint/indent": "off",
-        "keyword-spacing": "off",
-        "@typescript-eslint/keyword-spacing": "off",
-        "@typescript-eslint/lines-between-class-members": "off",
-        "@typescript-eslint/member-delimiter-style": "off",
-        quotes: "off",
-        "@typescript-eslint/quotes": "off",
-        semi: "off",
-        "@typescript-eslint/semi": "off",
-        "space-before-function-paren": "off",
-        "@typescript-eslint/space-before-function-paren": "off",
-        "block-spacing": "off",
-        "@typescript-eslint/block-spacing": "off",
-        "key-spacing": "off",
-        "@typescript-eslint/key-spacing": "off",
-        "lines-around-comment": "off",
-        "@typescript-eslint/lines-around-comment": "off",
-        "space-before-blocks": "off",
-        "@typescript-eslint/space-before-blocks": "off",
         // #endregion
 
         // #region @typescript-eslint all https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/all.ts
@@ -339,7 +299,6 @@ export async function typescript(
         "@typescript-eslint/consistent-generic-constructors": "error",
         "@typescript-eslint/no-unsafe-declaration-merging": "error",
         // "@typescript-eslint/no-unsafe-enum-comparison": "error", new rule
-        "@typescript-eslint/sort-type-constituents": "off", // Style - too strict
         "@typescript-eslint/no-import-type-side-effects": "error",
 
         "@typescript-eslint/no-duplicate-enum-values": "error",
@@ -353,7 +312,7 @@ export async function typescript(
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": ["error", { default: "generic" }],
         "@typescript-eslint/await-thenable": "error",
-        "@typescript-eslint/ban-types": [
+        "@typescript-eslint/no-restricted-types": [
           "error",
           {
             types: {
@@ -405,7 +364,6 @@ export async function typescript(
         "@typescript-eslint/explicit-member-accessibility": "off",
         "init-declarations": "off",
         "@typescript-eslint/init-declarations": "error",
-        "lines-between-class-members": "off",
         "@typescript-eslint/member-ordering": "error",
         "@typescript-eslint/method-signature-style": "error",
         "no-array-constructor": "off",
@@ -417,6 +375,10 @@ export async function typescript(
         "@typescript-eslint/no-dupe-class-members": "error",
         "no-duplicate-imports": "off",
         "@typescript-eslint/no-dynamic-delete": "error",
+        "@typescript-eslint/no-empty-object-type": [
+          "error",
+          { allowInterfaces: "always" },
+        ],
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "error",
         "@typescript-eslint/no-empty-interface": "error",
@@ -452,7 +414,7 @@ export async function typescript(
         "@typescript-eslint/no-restricted-imports": "error",
         "@typescript-eslint/no-this-alias": "error",
         "no-throw-literal": "off",
-        "@typescript-eslint/no-throw-literal": "error",
+        "@typescript-eslint/only-throw-error": "error",
         // "@typescript-eslint/no-type-alias": "off", // A & B, type AppRouter = typeof appRouter, Merge<A,B>
         "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
         "@typescript-eslint/no-unnecessary-condition": "error",
@@ -473,8 +435,6 @@ export async function typescript(
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/no-var-requires": "error",
         "@typescript-eslint/non-nullable-type-assertion-style": "error",
-        "padding-line-between-statements": "off",
-        "@typescript-eslint/padding-line-between-statements": "error",
         "@typescript-eslint/prefer-as-const": "error",
         "@typescript-eslint/prefer-enum-initializers": "error",
         "@typescript-eslint/prefer-for-of": "error",
@@ -488,19 +448,16 @@ export async function typescript(
         "@typescript-eslint/prefer-regexp-exec": "error",
         "@typescript-eslint/prefer-return-this-type": "error",
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
-        "@typescript-eslint/prefer-ts-expect-error": "error",
         "@typescript-eslint/promise-function-async": "error",
         "@typescript-eslint/require-array-sort-compare": "error",
         "require-await": "off",
         "@typescript-eslint/require-await": "error",
         "@typescript-eslint/restrict-plus-operands": "error",
         "@typescript-eslint/restrict-template-expressions": "error",
-        "no-return-await": "off",
         "@typescript-eslint/return-await": ["error", "always"],
         "@typescript-eslint/strict-boolean-expressions": "error",
         "@typescript-eslint/switch-exhaustiveness-check": "error",
         "@typescript-eslint/triple-slash-reference": "error",
-        "@typescript-eslint/type-annotation-spacing": "error",
         "@typescript-eslint/typedef": "error",
         "@typescript-eslint/unbound-method": "error",
         "@typescript-eslint/unified-signatures": "error",
