@@ -2,7 +2,7 @@ import process from 'node:process'
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { pluginAntfu } from '../plugins'
-import { interopDefault, renameRules, toArray } from '../utils'
+import { interopDefault, renameRules } from '../utils'
 
 export async function typescript(
   options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions = {},
@@ -25,7 +25,7 @@ export async function typescript(
     GLOB_ASTRO_TS,
   ]
   const tsconfigPath = options?.tsconfigPath
-    ? toArray(options.tsconfigPath)
+    ? options.tsconfigPath
     : undefined
   const isTypeAware = !!tsconfigPath
 
