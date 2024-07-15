@@ -26,7 +26,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-npx @antfu/eslint-config@latest
+pnpm dlx @antfu/eslint-config@latest
 ```
 
 ### Manual Install
