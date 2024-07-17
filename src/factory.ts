@@ -1,5 +1,4 @@
 import process from 'node:process'
-import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import type { Linter } from 'eslint'
@@ -114,8 +113,7 @@ export function antfu(
       configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r(enableGitignore)]))
     }
     else {
-      if (fs.existsSync('.gitignore'))
-        configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r()]))
+      configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({ strict: false })]))
     }
   }
 
