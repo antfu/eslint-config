@@ -6,7 +6,7 @@ import * as p from '@clack/prompts'
 import { run } from './run'
 import { pkgJson } from './constants'
 
-function header() {
+function header(): void {
   // eslint-disable-next-line no-console
   console.log('\n')
   p.intro(`${c.green(`@antfu/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`)

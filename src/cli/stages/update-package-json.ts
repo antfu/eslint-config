@@ -7,7 +7,7 @@ import * as p from '@clack/prompts'
 import { dependenciesMap, pkgJson } from '../constants'
 import type { ExtraLibrariesOption, PromptResult } from '../types'
 
-export async function updatePackageJson(result: PromptResult) {
+export async function updatePackageJson(result: PromptResult): Promise<void> {
   const cwd = process.cwd()
 
   const pathPackageJSON = path.join(cwd, 'package.json')

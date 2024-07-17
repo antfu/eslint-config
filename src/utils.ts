@@ -49,7 +49,10 @@ export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedF
  * }]
  * ```
  */
-export function renameRules(rules: Record<string, any>, map: Record<string, string>) {
+export function renameRules(
+  rules: Record<string, any>,
+  map: Record<string, string>,
+): Record<string, any> {
   return Object.fromEntries(
     Object.entries(rules)
       .map(([key, value]) => {
@@ -104,7 +107,7 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
   return (resolved as any).default || resolved
 }
 
-export async function ensurePackages(packages: (string | undefined)[]) {
+export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
   if (process.env.CI || process.stdout.isTTY === false)
     return
 

@@ -172,6 +172,9 @@ And that's it! Or you can configure each integration individually, for example:
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
+// Type of the project. 'lib' for libraries, the default is 'app'
+  type: 'lib',
+
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -181,7 +184,7 @@ export default antfu({
     quotes: 'single', // or 'double'
   },
 
-  // TypeScript and Vue are auto-detected, you can also explicitly enable them:
+  // TypeScript and Vue are autoetected, you can also explicitly enable them:
   typescript: true,
   vue: true,
 

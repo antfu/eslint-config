@@ -10,7 +10,7 @@ import parse from 'parse-gitignore'
 import { getEslintConfigContent } from '../utils'
 import type { PromptResult } from '../types'
 
-export async function updateEslintFiles(result: PromptResult) {
+export async function updateEslintFiles(result: PromptResult): Promise<void> {
   const cwd = process.cwd()
   const pathESLintIgnore = path.join(cwd, '.eslintignore')
   const pathPackageJSON = path.join(cwd, 'package.json')

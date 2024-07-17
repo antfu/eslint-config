@@ -27,7 +27,7 @@ export interface CliRunOptions {
   extra?: string[]
 }
 
-export async function run(options: CliRunOptions = {}) {
+export async function run(options: CliRunOptions = {}): Promise<void> {
   const argSkipPrompt = !!process.env.SKIP_PROMPT || options.yes
   const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m.trim())
   const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m.trim())
