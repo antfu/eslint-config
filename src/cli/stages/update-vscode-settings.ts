@@ -8,7 +8,7 @@ import * as p from '@clack/prompts'
 import { vscodeSettingsString } from '../constants'
 import type { PromptResult } from '../types'
 
-export async function updateVscodeSettings(result: PromptResult) {
+export async function updateVscodeSettings(result: PromptResult): Promise<void> {
   const cwd = process.cwd()
 
   if (!result.updateVscodeSettings)
