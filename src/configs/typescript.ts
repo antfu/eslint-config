@@ -145,7 +145,6 @@ export async function typescript(
         'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
         'ts/no-useless-constructor': 'off',
         'ts/no-wrapper-object-types': 'error',
-        'ts/prefer-ts-expect-error': 'error',
         'ts/triple-slash-reference': 'off',
         'ts/unified-signatures': 'off',
 
