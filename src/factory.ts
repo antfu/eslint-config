@@ -1,4 +1,3 @@
-import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import type { Linter } from 'eslint'
@@ -30,7 +29,7 @@ import {
   vue,
   yaml,
 } from './configs'
-import { interopDefault } from './utils'
+import { interopDefault, isInEditorEnv } from './utils'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import type { RuleOptions } from './typegen'
@@ -87,7 +86,7 @@ export function antfu(
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM || process.env.NVIM) && !process.env.CI),
+    isInEditor = isInEditorEnv(),
     jsx: enableJsx = true,
     react: enableReact = false,
     regexp: enableRegexp = true,
