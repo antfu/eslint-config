@@ -201,6 +201,7 @@ lspconfig.eslint.setup(
   }
 )
 ```
+
 ### Neovim format on save
 
 There's few ways you can achieve format on save in neovim:
