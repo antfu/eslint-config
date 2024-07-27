@@ -3,7 +3,7 @@ export function HelloWorld({
 	greeted = "\"World\"",
 	silent = false,
 	onMouseOver,
-	 }) {
+}) {
 	if (!greeting) {
 		return null
 	};
