@@ -99,6 +99,8 @@ For example:
 <details>
 <summary>🟦 VS Code support</summary>
 
+<br>
+
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
 Add the following settings to your `.vscode/settings.json`:
@@ -160,6 +162,10 @@ Add the following settings to your `.vscode/settings.json`:
 
 <details>
 <summary>🟩 Neovim Support</summary>
+
+<br>
+
+Update your configuration to use the following:
 
 ```lua
 local customizations = {
