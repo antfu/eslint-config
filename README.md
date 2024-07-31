@@ -94,7 +94,10 @@ For example:
 }
 ```
 
-## VS Code support (auto fix on save)
+## IDE Support (auto fix on save)
+
+<details>
+<summary>🟦 VS Code support</summary>
 
 Install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
@@ -153,7 +156,10 @@ Add the following settings to your `.vscode/settings.json`:
 }
 ```
 
-## Neovim Support
+</details>
+
+<details>
+<summary>🟩 Neovim Support</summary>
 
 ```lua
 local customizations = {
@@ -227,6 +233,8 @@ lspconfig.eslint.setup({
 - Use [conform.nvim](https://github.com/stevearc/conform.nvim).
 - Use [none-ls](https://github.com/nvimtools/none-ls.nvim)
 - Use [nvim-lint](https://github.com/mfussenegger/nvim-lint)
+
+</details>
 
 ## Customization
 
