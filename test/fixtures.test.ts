@@ -62,7 +62,7 @@ runWithConfig(
   'ts-strict',
   {
     typescript: {
-      tsconfigPath: '../../tsconfig.json',
+      tsconfigPath: './tsconfig.json',
     },
   },
   {
