@@ -134,3 +134,14 @@ export async function ensurePackages(packages: Array<string | undefined>) {
       i.installPackage(nonExistingPackages, { dev: true }),
     );
 }
+
+export function isInEditorEnv(): boolean {
+  return Boolean(
+    (process.env.VSCODE_PID ||
+      process.env.VSCODE_CWD ||
+      process.env.JETBRAINS_IDE ||
+      process.env.VIM ||
+      process.env.NVIM) &&
+      !process.env.CI,
+  );
+}

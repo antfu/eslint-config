@@ -2,7 +2,7 @@ import expectType from "eslint-plugin-expect-type/configs/recommended";
 import process from "node:process";
 import tseslint from "typescript-eslint";
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from "../globs";
-import { pluginAntfu } from "../plugins";
+import { pluginAntfu, pluginSortDestructureKeysTypescript } from "../plugins";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -103,6 +103,7 @@ export async function typescript(
       name: "antfu/typescript/setup",
       plugins: {
         antfu: pluginAntfu,
+        "sort-destructure-keys-typescript": pluginSortDestructureKeysTypescript,
         // "@typescript-eslint": pluginTs as any,
       },
     },
@@ -162,6 +163,15 @@ export async function typescript(
     },
     ...(isTypeAware
       ? [
+          {
+            files: filesTypeAware,
+            ignores: ignoresTypeAware,
+            name: "nirtamir2/typescript/eslint-plugin-sort-destructure-keys-typescript",
+            rules: {
+              "sort-destructure-keys-typescript/sort-destructure-keys-by-type":
+                  "error",
+            },
+          },
           {
             files: filesTypeAware,
             ignores: ignoresTypeAware,

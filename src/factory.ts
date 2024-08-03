@@ -2,7 +2,6 @@ import type { Linter } from "eslint";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
 import { isPackageExists } from "local-pkg";
 import fs from "node:fs";
-import process from "node:process";
 import {
   astro,
   command,
@@ -44,7 +43,7 @@ import type {
   OptionsConfig,
   TypedFlatConfigItem,
 } from "./types";
-import { interopDefault } from "./utils";
+import { interopDefault, isInEditorEnv } from "./utils";
 
 const flatConfigProps: Array<keyof TypedFlatConfigItem> = [
   "name",
@@ -101,7 +100,7 @@ export function nirtamir2(
       | TypedFlatConfigItem
       | Array<TypedFlatConfigItem>
       | FlatConfigComposer<any, any>
-      | Array<Linter.FlatConfig>
+      | Array<Linter.Config>
     >
   >
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
@@ -110,14 +109,7 @@ export function nirtamir2(
     // autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = Boolean(
-      (process.env.VSCODE_PID ||
-        process.env.VSCODE_CWD ||
-        process.env.JETBRAINS_IDE ||
-        process.env.VIM ||
-        process.env.NVIM) &&
-        !process.env.CI,
-    ),
+    isInEditor = isInEditorEnv(),
     jsx: enableJsx = true,
     react: enableReact = false,
     regexp: enableRegexp = true,

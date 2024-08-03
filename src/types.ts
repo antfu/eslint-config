@@ -11,7 +11,7 @@ export type Awaitable<T> = T | Promise<T>;
 export type Rules = RuleOptions;
 
 export type TypedFlatConfigItem = Omit<
-  Linter.FlatConfig<Linter.RulesRecord & Rules>,
+  Linter.Config<Linter.RulesRecord & Rules>,
   "plugins"
 > & {
   // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
@@ -152,7 +152,7 @@ export interface OptionsTypeScriptWithTypes {
    * When this options is provided, type aware rules will be enabled.
    * @see https://typescript-eslint.io/linting/typed-linting/
    */
-  tsconfigPath?: string | Array<string>;
+  tsconfigPath?: string;
 }
 
 export interface OptionsHasTypeScript {
