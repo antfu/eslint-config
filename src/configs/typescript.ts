@@ -129,7 +129,13 @@ export async function typescript(
         "no-useless-constructor": "off",
         "@typescript-eslint/ban-ts-comment": [
           "error",
-          { "ts-except-error": "allow-with-description" },
+          {
+            "ts-expect-error": "allow-with-description",
+            "ts-ignore": true,
+            "ts-nocheck": true,
+            "ts-check": false,
+            minimumDescriptionLength: 3,
+          },
         ],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
@@ -169,7 +175,7 @@ export async function typescript(
             name: "nirtamir2/typescript/eslint-plugin-sort-destructure-keys-typescript",
             rules: {
               "sort-destructure-keys-typescript/sort-destructure-keys-by-type":
-                  "error",
+                "error",
             },
           },
           {
@@ -316,7 +322,11 @@ export async function typescript(
         "@typescript-eslint/ban-ts-comment": [
           "error",
           {
-            "ts-ignore": "allow-with-description",
+            "ts-expect-error": "allow-with-description",
+            "ts-ignore": true,
+            "ts-nocheck": true,
+            "ts-check": false,
+            minimumDescriptionLength: 3,
           },
         ],
         "@typescript-eslint/adjacent-overload-signatures": "error",
