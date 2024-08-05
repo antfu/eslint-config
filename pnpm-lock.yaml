@@ -81,8 +81,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(eslint-ts-patch@9.4.0-0)
       eslint-plugin-n:
-        specifier: ^17.10.1
-        version: 17.10.1(eslint-ts-patch@9.4.0-0)
+        specifier: ^17.10.2
+        version: 17.10.2(eslint-ts-patch@9.4.0-0)
       eslint-plugin-no-only-tests:
         specifier: ^3.1.0
         version: 3.1.0
@@ -93,8 +93,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       eslint-plugin-perfectionist:
-        specifier: ^3.1.0
-        version: 3.1.0(astro-eslint-parser@1.0.2(typescript@5.5.4))(eslint-ts-patch@9.4.0-0)(svelte-eslint-parser@0.41.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint-ts-patch@9.4.0-0))
+        specifier: ^3.1.1
+        version: 3.1.1(astro-eslint-parser@1.0.2(typescript@5.5.4))(eslint-ts-patch@9.4.0-0)(svelte-eslint-parser@0.41.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint-ts-patch@9.4.0-0))
       eslint-plugin-regexp:
         specifier: ^2.6.0
         version: 2.6.0(eslint-ts-patch@9.4.0-0)
@@ -102,8 +102,8 @@ importers:
         specifier: ^1.0.4
         version: 1.0.4(eslint-ts-patch@9.4.0-0)
       eslint-plugin-sort-destructure-keys-typescript:
-        specifier: ^0.0.1
-        version: 0.0.1(eslint-ts-patch@9.4.0-0)
+        specifier: ^0.0.3
+        version: 0.0.3(eslint-ts-patch@9.4.0-0)
       eslint-plugin-ssr-friendly:
         specifier: ^1.3.0
         version: 1.3.0(eslint-ts-patch@9.4.0-0)
@@ -2220,8 +2220,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-n@17.10.1:
-    resolution: {integrity: sha512-hm/q37W6efDptJXdwirsm6A257iY6ZNtpoSG0wEzFzjJ3AhL7OhEIhdSR2e4OdYfHO5EDeqlCfFrjf9q208IPw==}
+  eslint-plugin-n@17.10.2:
+    resolution: {integrity: sha512-e+s4eAf5NtJaxPhTNu3qMO0Iz40WANS93w9LQgYcvuljgvDmWi/a3rh+OrNyMHeng6aOWGJO0rCg5lH4zi8yTw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -2240,8 +2240,8 @@ packages:
     resolution: {integrity: sha512-fUaU7Tj1G/KSTDTABJw4Wp427Rl7RPl9ViYTu1Jrv36fJw4DFhd4elPdXiuYtdPsNsvzn9GcVlKEssGIVjw0UQ==}
     engines: {node: '>=10'}
 
-  eslint-plugin-perfectionist@3.1.0:
-    resolution: {integrity: sha512-QNL1L0CMo8FoKM3VkNdR8HUq8Nrl0nGZFF9jzjU8PYvDtds2bvNOm9RwpQC4Gf3M27F6CBp5JsA3jBYT4TBiHA==}
+  eslint-plugin-perfectionist@3.1.1:
+    resolution: {integrity: sha512-joaAPd2gVNV+Gm+xU6tqOxy9WlBcb/6TSCUaHLNSdhot/KcsyiKSzeTVToasrCPIxgqgGwcOy+AJaGaBhBwblw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       astro-eslint-parser: ^1.0.2
@@ -2362,8 +2362,8 @@ packages:
     peerDependencies:
       eslint: ^8.0.0 || ^9.0.0
 
-  eslint-plugin-sort-destructure-keys-typescript@0.0.1:
-    resolution: {integrity: sha512-SDF3+pCIJO29BLjP5stCeINX1F2TASDOeHnX9R36QKx/vX4gk/DMJZpMWEROLsnT6PmcEd/KHSq8jf96Ionwew==}
+  eslint-plugin-sort-destructure-keys-typescript@0.0.3:
+    resolution: {integrity: sha512-vJ6F499NIVSqz4G3DcerbBLFOYXo5+MC00Qp7nvWxPeHbhCt7jzZMcyPy+ec0diQSnW4EBbi+Q4BZajC+Gh0hg==}
     peerDependencies:
       eslint: '*'
 
@@ -6809,7 +6809,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-n@17.10.1(eslint-ts-patch@9.4.0-0):
+  eslint-plugin-n@17.10.2(eslint-ts-patch@9.4.0-0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint-ts-patch@9.4.0-0)
       enhanced-resolve: 5.17.1
@@ -6835,7 +6835,7 @@ snapshots:
     dependencies:
       regexp-tree: 0.1.27
 
-  eslint-plugin-perfectionist@3.1.0(astro-eslint-parser@1.0.2(typescript@5.5.4))(eslint-ts-patch@9.4.0-0)(svelte-eslint-parser@0.41.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint-ts-patch@9.4.0-0)):
+  eslint-plugin-perfectionist@3.1.1(astro-eslint-parser@1.0.2(typescript@5.5.4))(eslint-ts-patch@9.4.0-0)(svelte-eslint-parser@0.41.0(svelte@4.2.18))(svelte@4.2.18)(typescript@5.5.4)(vue-eslint-parser@9.4.3(eslint-ts-patch@9.4.0-0)):
     dependencies:
       '@typescript-eslint/types': 8.0.0
       '@typescript-eslint/utils': 8.0.0(eslint-ts-patch@9.4.0-0)(typescript@5.5.4)
@@ -7022,7 +7022,7 @@ snapshots:
     dependencies:
       eslint: eslint-ts-patch@9.4.0-0
 
-  eslint-plugin-sort-destructure-keys-typescript@0.0.1(eslint-ts-patch@9.4.0-0):
+  eslint-plugin-sort-destructure-keys-typescript@0.0.3(eslint-ts-patch@9.4.0-0):
     dependencies:
       '@antfu/utils': 0.7.10
       eslint: eslint-ts-patch@9.4.0-0
