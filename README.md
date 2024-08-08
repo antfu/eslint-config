@@ -274,7 +274,7 @@ export default antfu({
     quotes: 'single', // or 'double'
   },
 
-  // TypeScript and Vue are autoetected, you can also explicitly enable them:
+  // TypeScript and Vue are autodetected, you can also explicitly enable them:
   typescript: true,
   vue: true,
 
