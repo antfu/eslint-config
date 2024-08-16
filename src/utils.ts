@@ -1,6 +1,10 @@
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 import { isPackageExists } from 'local-pkg'
 import type { Awaitable, TypedFlatConfigItem } from './types'
+
+const scopeUrl = fileURLToPath(new URL('.', import.meta.url))
+const isCwdInScope = isPackageExists('@antfu/eslint-config')
 
 export const parserPlain = {
   meta: {
@@ -107,13 +111,9 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
   return (resolved as any).default || resolved
 }
 
-const scopeUrl = String(new URL('.', import.meta.url))
-
 export function isPackageInScope(name: string): boolean {
   return isPackageExists(name, { paths: [scopeUrl] })
 }
-
-const isCwdInScope = isPackageExists('@antfu/eslint-config')
 
 export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
   if (process.env.CI || process.stdout.isTTY === false || isCwdInScope === false)
