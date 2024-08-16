@@ -1,4 +1,5 @@
 import process from 'node:process'
+import { objectPick } from '@antfu/utils'
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs'
 import type { OptionsComponentExts, OptionsFiles, OptionsOverrides, OptionsProjectType, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 import { pluginAntfu } from '../plugins'
@@ -166,7 +167,10 @@ export async function typescript(
           files: filesTypeAware,
           ignores: ignoresTypeAware,
           name: 'antfu/typescript/rules-type-aware',
-          rules: typeAwareRules,
+          rules: {
+            ...typeAwareRules,
+            ...objectPick(overrides, Object.keys(typeAwareRules)),
+          },
         }]
       : [],
     {
