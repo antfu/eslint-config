@@ -107,11 +107,19 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
   return (resolved as any).default || resolved
 }
 
+const scopeUrl = String(new URL('.', import.meta.url))
+
+export function isPackageInScope(name: string): boolean {
+  return isPackageExists(name, { paths: [scopeUrl] })
+}
+
+const isCwdInScope = isPackageExists('@antfu/eslint-config')
+
 export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
-  if (process.env.CI || process.stdout.isTTY === false)
+  if (process.env.CI || process.stdout.isTTY === false || isCwdInScope === false)
     return
 
-  const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[]
+  const nonExistingPackages = packages.filter(i => i && !isPackageInScope(i)) as string[]
   if (nonExistingPackages.length === 0)
     return
 
