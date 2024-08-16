@@ -99,7 +99,7 @@
     "@antfu/install-pkg": "^0.3.5",
     "@clack/prompts": "^0.7.0",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.0",
-    "@stylistic/eslint-plugin": "^2.6.3",
+    "@stylistic/eslint-plugin": "^2.6.4",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "@vitest/eslint-plugin": "^1.0.3",
@@ -138,13 +138,13 @@
     "@eslint-react/eslint-plugin": "^1.10.1",
     "@eslint/config-inspector": "^0.5.3",
     "@prettier/plugin-xml": "^3.4.1",
-    "@stylistic/eslint-plugin-migrate": "^2.6.3",
+    "@stylistic/eslint-plugin-migrate": "^2.6.4",
     "@types/eslint": "^9.6.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.3.0",
     "@types/prompts": "^2.4.9",
     "@types/yargs": "^17.0.33",
-    "@unocss/eslint-plugin": "^0.62.1",
+    "@unocss/eslint-plugin": "^0.62.2",
     "astro-eslint-parser": "^1.0.2",
     "bumpp": "^9.5.1",
     "eslint": "npm:eslint-ts-patch@9.5.0-0",
@@ -174,6 +174,8 @@
     "vue": "^3.4.38"
   },
   "resolutions": {
+    "@eslint-community/eslint-utils": "^4.4.0",
+    "@typescript-eslint/utils": "^8.1.0",
     "tsx": "~4.17.0"
   },
   "simple-git-hooks": {
