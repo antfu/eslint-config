@@ -30,7 +30,7 @@
     "dev": "npx @eslint/config-inspector --config eslint.config.ts",
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     "watch": "tsup --format esm,cjs --watch",
-    "lint": "eslint .",
+    "lint": "eslint --flag unstable_ts_config .",
     "typegen": "esno scripts/typegen.ts",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
@@ -147,19 +147,19 @@
     "@unocss/eslint-plugin": "^0.62.2",
     "astro-eslint-parser": "^1.0.2",
     "bumpp": "^9.5.1",
-    "eslint": "npm:eslint-ts-patch@9.5.0-0",
+    "eslint": "^9.9.0",
     "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.10",
     "eslint-plugin-solid": "^0.14.2",
     "eslint-plugin-svelte": "^2.43.0",
-    "eslint-ts-patch": "9.5.0-0",
     "eslint-typegen": "^0.3.1",
     "esno": "^4.7.0",
     "execa": "^9.3.1",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
+    "jiti": "^1.21.6",
     "lint-staged": "^15.2.9",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-slidev": "^1.0.5",
@@ -182,6 +182,6 @@
     "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+    "*": "eslint --flag unstable_ts_config --fix"
   }
 }
