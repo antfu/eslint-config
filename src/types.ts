@@ -50,6 +50,11 @@ export type OptionsTypescript =
   (OptionsTypeScriptWithTypes & OptionsOverrides)
   | (OptionsTypeScriptParserOptions & OptionsOverrides)
 
+export interface PrettierOverridesOptions {
+  defaultOptions: VendoredPrettierOptions
+  defaultXmlOptions: VendoredPrettierOptions
+}
+
 export interface OptionsFormatters {
   /**
    * Enable formatting support for CSS, Less, Sass, and SCSS.
@@ -99,6 +104,11 @@ export interface OptionsFormatters {
    * By default it's controlled by our own config.
    */
   prettierOptions?: VendoredPrettierOptions
+
+  /**
+   * Custom overrides let you have different configuration for certain file extensions and specific files.
+   */
+  prettierOverrides?: (options: PrettierOverridesOptions) => TypedFlatConfigItem[]
 
   /**
    * Custom options for dprint.
