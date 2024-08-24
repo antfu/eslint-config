@@ -53,7 +53,7 @@ export async function formatters(
     options.prettierOptions || {},
   )
 
-  const prettierXmlOptions = {
+  const prettierXmlOptions: VendoredPrettierOptions = {
     xmlQuoteAttributes: 'double',
     xmlSelfClosingSpace: true,
     xmlSortAttributesByKey: false,
@@ -286,6 +286,16 @@ export async function formatters(
           },
         ],
       },
+    })
+  }
+
+  if (options.prettierConfigs) {
+    const prettierConfigs = options.prettierConfigs({
+      defaultOptions: prettierOptions,
+      defaultXmlOptions: prettierXmlOptions,
+    })
+    prettierConfigs.forEach((item) => {
+      configs.push(item)
     })
   }
 
