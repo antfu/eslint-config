@@ -1,5 +1,5 @@
 import { isPackageExists } from 'local-pkg'
-import { GLOB_ASTRO, GLOB_ASTRO_TS, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_XML } from '../globs'
+import { GLOB_ASTRO, GLOB_ASTRO_TS, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_SVG, GLOB_XML } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils'
 import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types'
@@ -10,6 +10,7 @@ export async function formatters(
   stylistic: StylisticConfig = {},
 ): Promise<TypedFlatConfigItem[]> {
   if (options === true) {
+    const isPrettierPluginXmlInScope = isPackageInScope('@prettier/plugin-xml')
     options = {
       astro: isPackageInScope('prettier-plugin-astro'),
       css: true,
@@ -17,7 +18,8 @@ export async function formatters(
       html: true,
       markdown: true,
       slidev: isPackageExists('@slidev/cli'),
-      xml: isPackageInScope('@prettier/plugin-xml'),
+      svg: isPrettierPluginXmlInScope,
+      xml: isPrettierPluginXmlInScope,
     }
   }
 
@@ -25,7 +27,7 @@ export async function formatters(
     'eslint-plugin-format',
     options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
     options.astro ? 'prettier-plugin-astro' : undefined,
-    options.xml ? '@prettier/plugin-xml' : undefined,
+    options.xml || options.svg ? '@prettier/plugin-xml' : undefined,
   ])
 
   if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
@@ -159,6 +161,28 @@ export async function formatters(
         parser: parserPlain,
       },
       name: 'antfu/formatter/xml',
+      rules: {
+        'format/prettier': [
+          'error',
+          {
+            ...prettierXmlOptions,
+            ...prettierOptions,
+            parser: 'xml',
+            plugins: [
+              '@prettier/plugin-xml',
+            ],
+          },
+        ],
+      },
+    })
+  }
+  if (options.svg) {
+    configs.push({
+      files: [GLOB_SVG],
+      languageOptions: {
+        parser: parserPlain,
+      },
+      name: 'antfu/formatter/svg',
       rules: {
         'format/prettier': [
           'error',
