@@ -27,7 +27,7 @@ export async function formatters(
     'eslint-plugin-format',
     options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
     options.astro ? 'prettier-plugin-astro' : undefined,
-    options.xml || options.svg ? '@prettier/plugin-xml' : undefined,
+    (options.xml || options.svg) ? '@prettier/plugin-xml' : undefined,
   ])
 
   if (options.slidev && options.markdown !== true && options.markdown !== 'prettier')
