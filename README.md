@@ -14,10 +14,12 @@
   - Single quotes, no semi
   - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
-- Supports ESLint v9 or v8.50.0+
+- Requires ESLint v9.5.0+
 
 > [!IMPORTANT]
 > Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
+>
+> Since v3.0.0, ESLint v9.5.0+ is now required.
 
 ## Usage
 
