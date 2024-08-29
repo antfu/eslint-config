@@ -34,17 +34,15 @@ import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import type { RuleOptions } from './typegen'
 
-const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
+const flatConfigProps = [
   'name',
-  'files',
-  'ignores',
   'languageOptions',
   'linterOptions',
   'processor',
   'plugins',
   'rules',
   'settings',
-]
+] satisfies (keyof TypedFlatConfigItem)[]
 
 const VuePackages = [
   'vue',
@@ -78,7 +76,7 @@ export const defaultPluginRenaming = {
  *  The merged ESLint configurations.
  */
 export function antfu(
-  options: OptionsConfig & TypedFlatConfigItem = {},
+  options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
@@ -129,7 +127,7 @@ export function antfu(
 
   // Base configs
   configs.push(
-    ignores(),
+    ignores(options.ignores),
     javascript({
       isInEditor,
       overrides: getOverrides(options, 'javascript'),
@@ -272,6 +270,10 @@ export function antfu(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
     ))
+  }
+
+  if ('files' in options) {
+    throw new Error('[@antfu/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.')
   }
 
   // User can optionally pass a flat config item to the first argument
