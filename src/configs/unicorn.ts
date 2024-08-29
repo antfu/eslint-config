@@ -1,7 +1,7 @@
-import type { TypedFlatConfigItem } from '../types'
+import type { OptionsUnicorn, TypedFlatConfigItem } from '../types'
 import { pluginUnicorn } from '../plugins'
 
-export async function unicorn(): Promise<TypedFlatConfigItem[]> {
+export async function unicorn(options: OptionsUnicorn): Promise<TypedFlatConfigItem[]> {
   return [
     {
       name: 'antfu/unicorn/rules',
@@ -9,32 +9,26 @@ export async function unicorn(): Promise<TypedFlatConfigItem[]> {
         unicorn: pluginUnicorn,
       },
       rules: {
-        // Pass error message when throwing errors
-        'unicorn/error-message': 'error',
-        // Uppercase regex escapes
-        'unicorn/escape-case': 'error',
-        // Array.isArray instead of instanceof
-        'unicorn/no-instanceof-array': 'error',
-        // Ban `new Array` as `Array` constructor's params are ambiguous
-        'unicorn/no-new-array': 'error',
-        // Prevent deprecated `new Buffer()`
-        'unicorn/no-new-buffer': 'error',
-        // Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
-        'unicorn/number-literal-case': 'error',
-        // textContent instead of innerText
-        'unicorn/prefer-dom-node-text-content': 'error',
-        // includes over indexOf when checking for existence
-        'unicorn/prefer-includes': 'error',
-        // Prefer using the node: protocol
-        'unicorn/prefer-node-protocol': 'error',
-        // Prefer using number properties like `Number.isNaN` rather than `isNaN`
-        'unicorn/prefer-number-properties': 'error',
-        // String methods startsWith/endsWith instead of more complicated stuff
-        'unicorn/prefer-string-starts-ends-with': 'error',
-        // Enforce throwing type error when throwing error while checking typeof
-        'unicorn/prefer-type-error': 'error',
-        // Use new when throwing error
-        'unicorn/throw-new-error': 'error',
+        ...(options.allRecommended
+          ? pluginUnicorn.configs['flat/recommended'].rules
+          : {
+              'unicorn/consistent-empty-array-spread': 'error',
+              'unicorn/consistent-function-scoping': 'error',
+              'unicorn/error-message': 'error',
+              'unicorn/escape-case': 'error',
+              'unicorn/new-for-builtins': 'error',
+              'unicorn/no-instanceof-array': 'error',
+              'unicorn/no-new-array': 'error',
+              'unicorn/no-new-buffer': 'error',
+              'unicorn/number-literal-case': 'error',
+              'unicorn/prefer-dom-node-text-content': 'error',
+              'unicorn/prefer-includes': 'error',
+              'unicorn/prefer-node-protocol': 'error',
+              'unicorn/prefer-number-properties': 'error',
+              'unicorn/prefer-string-starts-ends-with': 'error',
+              'unicorn/prefer-type-error': 'error',
+              'unicorn/throw-new-error': 'error',
+            }),
       },
     },
   ]
