@@ -53,6 +53,7 @@ export async function test(
         'test/prefer-lowercase-title': 'error',
 
         'ts/explicit-function-return-type': 'off',
+        'unicorn/consistent-function-scoping': 'off',
 
         ...overrides,
       },

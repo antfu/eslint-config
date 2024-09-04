@@ -1,7 +1,6 @@
 import globals from 'globals'
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
-import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 
 export async function javascript(
   options: OptionsIsInEditor & OptionsOverrides = {},
@@ -217,13 +216,6 @@ export async function javascript(
         'yoda': ['error', 'never'],
 
         ...overrides,
-      },
-    },
-    {
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: 'antfu/javascript/disables/cli',
-      rules: {
-        'no-console': 'off',
       },
     },
   ]
