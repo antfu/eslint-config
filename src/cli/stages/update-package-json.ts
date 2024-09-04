@@ -19,7 +19,9 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
 
   pkg.devDependencies ??= {}
   pkg.devDependencies['@antfu/eslint-config'] = `^${pkgJson.version}`
-  pkg.devDependencies.eslint ??= pkgJson.devDependencies.eslint
+  pkg.devDependencies.eslint ??= pkgJson
+    .devDependencies
+    .eslint
     .replace('npm:eslint-ts-patch@', '')
     .replace(/-\d+$/, '')
 
