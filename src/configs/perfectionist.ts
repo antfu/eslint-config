@@ -24,6 +24,7 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
             ['internal', 'internal-type'],
             ['parent', 'sibling', 'index'],
             ['parent-type', 'sibling-type', 'index-type'],
+            'side-effect',
             'object',
             'unknown',
           ],
