@@ -1,4 +1,5 @@
 import { configs } from 'eslint-plugin-regexp'
+
 import type { OptionsOverrides, OptionsRegExp, TypedFlatConfigItem } from '../types'
 
 export async function regexp(

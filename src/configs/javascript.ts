@@ -1,6 +1,8 @@
 import globals from 'globals'
-import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
+
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
+
+import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
 
 export async function javascript(
   options: OptionsIsInEditor & OptionsOverrides = {},
@@ -186,17 +188,6 @@ export async function javascript(
         'prefer-rest-params': 'error',
         'prefer-spread': 'error',
         'prefer-template': 'error',
-        'sort-imports': [
-          'error',
-          {
-            allowSeparatedGroups: false,
-            ignoreCase: false,
-            ignoreDeclarationSort: true,
-            ignoreMemberSort: false,
-            memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-          },
-        ],
-
         'symbol-description': 'error',
         'unicode-bom': ['error', 'never'],
         'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',

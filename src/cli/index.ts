@@ -1,10 +1,12 @@
 import process from 'node:process'
-import c from 'picocolors'
-import { hideBin } from 'yargs/helpers'
-import yargs from 'yargs'
+
 import * as p from '@clack/prompts'
-import { run } from './run'
+import c from 'picocolors'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+
 import { pkgJson } from './constants'
+import { run } from './run'
 
 function header(): void {
   // eslint-disable-next-line no-console

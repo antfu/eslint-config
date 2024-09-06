@@ -1,7 +1,9 @@
 import { isPackageExists } from 'local-pkg'
-import { ensurePackages, interopDefault, toArray } from '../utils'
-import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
+
 import { GLOB_SRC } from '../globs'
+import { ensurePackages, interopDefault, toArray } from '../utils'
+
+import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = [
