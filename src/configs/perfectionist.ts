@@ -27,6 +27,7 @@ export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
             'object',
             'unknown',
           ],
+          newlinesBetween: 'ignore',
           order: 'asc',
           type: 'natural',
         }],
