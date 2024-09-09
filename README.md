@@ -16,10 +16,15 @@
 - Respects `.gitignore` by default
 - Requires ESLint v9.5.0+
 
-> [!IMPORTANT]
+> [!NOTE]
 > Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
 >
 > Since v3.0.0, ESLint v9.5.0+ is now required.
+
+> [!WARNING]
+> I am very appreciated and flatted that so many of you are fond of using this config. I also tried to make it as flexible and customizable as possible to fit more user cases.
+>
+> However, please keep in mind that this is still **a personal config**. Changes might not always be pleased by everyone and every use cases. If you are using this config directly, I'd suggest you **review the changes every time you update**. Of if you want more control over the rules, always feel free to fork it. Thanks!
 
 ## Usage
 
