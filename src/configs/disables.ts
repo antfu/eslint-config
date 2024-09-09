@@ -10,7 +10,6 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       rules: {
         'no-console': 'off',
         'ts/explicit-function-return-type': 'off',
-        'unicorn/consistent-function-scoping': 'off',
       },
     },
     {

@@ -14,7 +14,6 @@ export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatCo
           ? pluginUnicorn.configs['flat/recommended'].rules
           : {
               'unicorn/consistent-empty-array-spread': 'error',
-              'unicorn/consistent-function-scoping': ['error', { checkArrowFunctions: false }],
               'unicorn/error-message': 'error',
               'unicorn/escape-case': 'error',
               'unicorn/new-for-builtins': 'error',
