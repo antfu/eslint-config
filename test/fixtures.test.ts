@@ -1,11 +1,11 @@
-import { join, resolve } from 'node:path'
+import type { OptionsConfig, TypedFlatConfigItem } from '../src/types'
 
+import { join, resolve } from 'node:path'
 import { execa } from 'execa'
 import fg from 'fast-glob'
 import fs from 'fs-extra'
-import { afterAll, beforeAll, it } from 'vitest'
 
-import type { OptionsConfig, TypedFlatConfigItem } from '../src/types'
+import { afterAll, beforeAll, it } from 'vitest'
 
 beforeAll(async () => {
   await fs.rm('_fixtures', { recursive: true, force: true })

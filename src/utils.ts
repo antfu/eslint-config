@@ -1,9 +1,8 @@
+import type { Awaitable, TypedFlatConfigItem } from './types'
+
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-
 import { isPackageExists } from 'local-pkg'
-
-import type { Awaitable, TypedFlatConfigItem } from './types'
 
 const scopeUrl = fileURLToPath(new URL('.', import.meta.url))
 const isCwdInScope = isPackageExists('@antfu/eslint-config')

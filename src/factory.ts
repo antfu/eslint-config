@@ -1,8 +1,9 @@
+import type { Linter } from 'eslint'
+import type { RuleOptions } from './typegen'
+import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
+
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
-
-import type { Linter } from 'eslint'
-
 import {
   astro,
   command,
@@ -32,11 +33,9 @@ import {
   yaml,
 } from './configs'
 import { formatters } from './configs/formatters'
+
 import { regexp } from './configs/regexp'
 import { interopDefault, isInEditorEnv } from './utils'
-
-import type { RuleOptions } from './typegen'
-import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 
 const flatConfigProps = [
   'name',
