@@ -107,6 +107,13 @@ export async function react(
             allowExportNames: [
               ...(isUsingNext
                 ? [
+                    'dynamic',
+                    'dynamicParams',
+                    'revalidate',
+                    'fetchCache',
+                    'runtime',
+                    'preferredRegion',
+                    'maxDuration',
                     'config',
                     'generateStaticParams',
                     'metadata',
