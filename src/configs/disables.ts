@@ -5,7 +5,7 @@ import { GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 export async function disables(): Promise<TypedFlatConfigItem[]> {
   return [
     {
-      files: [`scripts/${GLOB_SRC}`],
+      files: [`**/scripts/${GLOB_SRC}`],
       name: 'antfu/disables/scripts',
       rules: {
         'no-console': 'off',
@@ -13,7 +13,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       },
     },
     {
-      files: [`cli/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
+      files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
       name: 'antfu/disables/cli',
       rules: {
         'no-console': 'off',
