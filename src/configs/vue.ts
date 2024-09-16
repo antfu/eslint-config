@@ -111,10 +111,11 @@ export async function vue(
             },
 
         'node/prefer-global/process': 'off',
+        'ts/explicit-function-return-type': 'off',
+
         'vue/block-order': ['error', {
           order: ['script', 'template', 'style'],
         }],
-
         'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/component-options-name-casing': ['error', 'PascalCase'],
         // this is deprecated
