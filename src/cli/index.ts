@@ -9,7 +9,6 @@ import { pkgJson } from './constants'
 import { run } from './run'
 
 function header(): void {
-  // eslint-disable-next-line no-console
   console.log('\n')
   p.intro(`${c.green(`@antfu/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`)
 }

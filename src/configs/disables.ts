@@ -8,6 +8,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       files: [`**/scripts/${GLOB_SRC}`],
       name: 'antfu/disables/scripts',
       rules: {
+        'antfu/no-top-level-await': 'off',
         'no-console': 'off',
         'ts/explicit-function-return-type': 'off',
       },
@@ -16,6 +17,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
       name: 'antfu/disables/cli',
       rules: {
+        'antfu/no-top-level-await': 'off',
         'no-console': 'off',
       },
     },
@@ -41,6 +43,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       files: ['**/*.{test,spec}.([tj])s?(x)'],
       name: 'antfu/disables/test',
       rules: {
+        'antfu/no-top-level-await': 'off',
         'no-unused-expressions': 'off',
       },
     },

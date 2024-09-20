@@ -110,6 +110,7 @@ export async function vue(
               ...pluginVue.configs['vue3-recommended'].rules as any,
             },
 
+        'antfu/no-top-level-await': 'off',
         'node/prefer-global/process': 'off',
         'ts/explicit-function-return-type': 'off',
 
