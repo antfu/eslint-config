@@ -204,6 +204,12 @@ importers:
       '@prettier/plugin-xml':
         specifier: ^3.4.1
         version: 3.4.1(prettier@3.3.3)
+      '@stylistic/eslint-plugin-js':
+        specifier: ^2.8.0
+        version: 2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))
+      '@stylistic/eslint-plugin-jsx':
+        specifier: ^2.8.0
+        version: 2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))
       '@stylistic/eslint-plugin-migrate':
         specifier: ^2.8.0
         version: 2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))(typescript@5.6.2)
@@ -232,7 +238,7 @@ importers:
         specifier: ^9.5.2
         version: 9.5.2
       eslint:
-        specifier: ^9.11.1
+        specifier: ^9.10.0
         version: 9.11.1(jiti@2.0.0-rc.1)
       eslint-plugin-astro:
         specifier: ^1.2.4
@@ -1618,6 +1624,18 @@ packages:
 
   '@storybook/csf@0.0.1':
     resolution: {integrity: sha512-USTLkZze5gkel8MYCujSRBVIrUQ3YPBrLOx7GNk/0wttvVtlzWXAq9eLbQ4p/NicGxP+3T7KPEMVV//g+yubpw==}
+
+  '@stylistic/eslint-plugin-js@2.8.0':
+    resolution: {integrity: sha512-/e7pSzVMrwBd6yzSDsKHwax3TS96+pd/xSKzELaTkOuYqUhYfj/becWdfDbFSBGQD7BBBCiiE4L8L2cUfu5h+A==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^9.10.0
+
+  '@stylistic/eslint-plugin-jsx@2.8.0':
+    resolution: {integrity: sha512-fDeTX2Z9VtOBMpmTrbnc9vqvUyr3CnN6NfHHcu7JRVxamxyHwQ9fRX9FhlGNNlQRLeoQrLuNXTFCwBbJd4HJ1g==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^9.10.0
 
   '@stylistic/eslint-plugin-migrate@2.8.0':
     resolution: {integrity: sha512-XPxnm/ezY+ZbaCIXkUnpGsRe6LDAogj21UugrsyR03ZL50TGnsWWOAzL5rca4meML7Hgs42LexLVdPytJ5Bphg==}
@@ -6688,6 +6706,20 @@ snapshots:
   '@storybook/csf@0.0.1':
     dependencies:
       lodash: 4.17.21
+
+  '@stylistic/eslint-plugin-js@2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))':
+    dependencies:
+      eslint: 9.11.1(jiti@2.0.0-rc.1)
+      eslint-visitor-keys: 4.0.0
+      espree: 10.1.0
+
+  '@stylistic/eslint-plugin-jsx@2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))':
+    dependencies:
+      eslint: 9.11.1(jiti@2.0.0-rc.1)
+      eslint-visitor-keys: 4.0.0
+      espree: 10.1.0
+      estraverse: 5.3.0
+      picomatch: 4.0.2
 
   '@stylistic/eslint-plugin-migrate@2.8.0(eslint@9.11.1(jiti@2.0.0-rc.1))(typescript@5.6.2)':
     dependencies:
