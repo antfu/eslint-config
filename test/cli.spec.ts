@@ -8,6 +8,7 @@ const CLI_PATH = join(__dirname, "../bin/index.js");
 const genPath = join(__dirname, "..", ".temp", randomStr());
 
 function randomStr() {
+  // eslint-disable-next-line sonarjs/pseudo-random
   return Math.random().toString(36).slice(2);
 }
 
@@ -56,7 +57,7 @@ it("package.json updated", async () => {
   expect(stdout).toContain("Changes wrote to package.json");
 });
 
-it("esm eslint.config.js", async () => {
+it("esm eslint.config.ts", async () => {
   const pkgContent = await fs.readFile("package.json", "utf8");
   await fs.writeFile(
     join(genPath, "package.json"),
@@ -66,32 +67,32 @@ it("esm eslint.config.js", async () => {
   const { stdout } = await run();
 
   const eslintConfigContent = await fs.readFile(
-    join(genPath, "eslint.config.js"),
+    join(genPath, "eslint.config.ts"),
     "utf8",
   );
   expect(eslintConfigContent.includes("export default")).toBeTruthy();
-  expect(stdout).toContain("Created eslint.config.js");
+  expect(stdout).toContain("Created eslint.config.ts");
 });
 
-it("cjs eslint.config.mjs", async () => {
+it("cjs eslint.config.ts", async () => {
   const { stdout } = await run();
 
   const eslintConfigContent = await fs.readFile(
-    join(genPath, "eslint.config.mjs"),
+    join(genPath, "eslint.config.ts"),
     "utf8",
   );
   expect(eslintConfigContent.includes("export default")).toBeTruthy();
-  expect(stdout).toContain("Created eslint.config.mjs");
+  expect(stdout).toContain("Created eslint.config.ts");
 });
 
-it("ignores files added in eslint.config.js", async () => {
+it("ignores files added in eslint.config.ts", async () => {
   const { stdout } = await run();
 
   const eslintConfigContent = (
-    await fs.readFile(join(genPath, "eslint.config.mjs"), "utf8")
+    await fs.readFile(join(genPath, "eslint.config.ts"), "utf8")
   ).replaceAll("\\", "/");
 
-  expect(stdout).toContain("Created eslint.config.mjs");
+  expect(stdout).toContain("Created eslint.config.ts");
   expect(eslintConfigContent).toMatchInlineSnapshot(`
       "import nirtamir2 from '@nirtamir2/eslint-config'
 

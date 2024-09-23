@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 
 export function isGitClean() {
   try {
+    // eslint-disable-next-line sonarjs/no-os-command-from-path
     execSync("git diff-index --quiet HEAD --");
     return true;
   } catch {

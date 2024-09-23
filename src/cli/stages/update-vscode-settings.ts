@@ -23,6 +23,7 @@ export async function updateVscodeSettings(
   if (fs.existsSync(settingsPath)) {
     let settingsContent = await fsp.readFile(settingsPath, "utf8");
 
+    // eslint-disable-next-line sonarjs/slow-regex
     settingsContent = settingsContent.trim().replace(/\s*}$/, "");
     settingsContent +=
       settingsContent.endsWith(",") || settingsContent.endsWith("{") ? "" : ",";

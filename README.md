@@ -22,10 +22,10 @@ If you prefer to set up manually:
 pnpm i -D eslint @nirtamir2/eslint-config
 ```
 
-And create `eslint.config.mjs` in your project root:
+And create `eslint.config.ts` in your project root:
 
 ```js
-// eslint.config.mjs
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2();
@@ -39,7 +39,7 @@ Combined with legacy config:
 If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
 
 ```js
-// eslint.config.mjs
+// eslint.config.ts
 import { FlatCompat } from "@eslint/eslintrc";
 import nirtamir2 from "@nirtamir2/eslint-config";
 
@@ -86,7 +86,7 @@ It uses [ESLint Flat config](https://eslint.org/docs/latest/use/configure/config
 Normally you only need to import the `nirtamir2` preset:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2();
@@ -95,7 +95,7 @@ export default nirtamir2();
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2({
@@ -118,7 +118,7 @@ export default nirtamir2({
 The `nirtamir2` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2(
@@ -146,7 +146,7 @@ Going more advanced, you can also import fine-grained configs and compose them a
 We wouldn't recommend using this style in general unless you know exactly what they are doing, as there are shared options between configs and might need extra care to make them consistent.
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import {
   combine,
   comments,
@@ -175,6 +175,8 @@ export default combine(
   jsdoc(),
   imports(),
   unicorn(),
+  sortPackageJson(),
+  sortTsconfig(),
   typescript(/* Options */),
   stylistic(),
   vue(),
@@ -196,7 +198,7 @@ Check out the [configs](https://github.com/nirtamir2/eslint-config/blob/main/src
 Certain rules would only be enabled in specific files, for example, `ts/*` rules would only be enabled in `.ts` files and `vue/*` rules would only be enabled in `.vue` files. If you want to override the rules, you need to specify the file extension:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2(
@@ -223,7 +225,7 @@ export default nirtamir2(
 We also provided the `overrides` options in each integration to make it easier:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2({
@@ -250,7 +252,7 @@ export default nirtamir2({
 The factory function `nirtamir2()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/nirtamir2/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2()
@@ -314,7 +316,7 @@ The command comments are usually one-off and will be removed along with the tran
 You can optionally enable the [type aware rules](https://typescript-eslint.io/linting/typed-linting/) by passing the options object to the `typescript` config:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2({
@@ -331,7 +333,7 @@ Some rules are disabled when inside ESLint IDE integrations, namely [`unused-imp
 This is to prevent unused imports from getting removed by the IDE during refactoring to get a better developer experience. Those rules will be applied when you run ESLint in the terminal or [Lint Staged](#lint-staged). If you don't want this behavior, you can disable them:
 
 ```js
-// eslint.config.js
+// eslint.config.ts
 import nirtamir2 from "@nirtamir2/eslint-config";
 
 export default nirtamir2({
@@ -367,7 +369,7 @@ npx simple-git-hooks
 
 I built a visual tool to help you view what rules are enabled in your project and apply them to what files, [@eslint/config-inspector](https://github.com/eslint/config-inspector)
 
-Go to your project root that contains `eslint.config.js` and run:
+Go to your project root that contains `eslint.config.ts` and run:
 
 ```bash
 npx @eslint/config-inspector

@@ -16,7 +16,7 @@ export async function test(
   const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
 
   const [pluginVitest, pluginNoOnlyTests] = await Promise.all([
-    interopDefault(import("eslint-plugin-vitest")),
+    interopDefault(import("@vitest/eslint-plugin")),
     // @ts-expect-error missing types
     interopDefault(import("eslint-plugin-no-only-tests")),
   ] as const);

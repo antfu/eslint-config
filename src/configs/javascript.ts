@@ -175,6 +175,7 @@ export async function javascript(
           { enforceForClassMembers: true, setWithoutGet: true },
         ],
 
+        'antfu/no-top-level-await': 'error',
         "array-callback-return": "error",
         "block-scoped-var": "error",
         "constructor-super": "error",
@@ -383,7 +384,7 @@ export async function javascript(
       },
     },
     {
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
+      files: [`**/scripts/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
       name: "antfu/javascript/disables/cli",
       rules: {
         "no-console": "off",

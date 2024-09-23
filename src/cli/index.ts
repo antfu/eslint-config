@@ -7,7 +7,6 @@ import { pkgJson } from "./constants";
 import { run } from "./run";
 
 function header() {
-  // eslint-disable-next-line no-console
   console.log("\n");
   p.intro(
     `${c.green(`@nirtamir2/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`,
@@ -57,4 +56,5 @@ const instance = yargs(hideBin(process.argv))
   .version("version", pkgJson.version)
   .alias("v", "version");
 
+// eslint-disable-next-line sonarjs/no-unused-expressions
 instance.help().argv;

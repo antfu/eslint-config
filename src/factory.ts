@@ -6,6 +6,7 @@ import {
   astro,
   command,
   comments,
+  disables,
   ignores,
   imports,
   javascript,
@@ -129,7 +130,7 @@ export function nirtamir2(
   const stylisticOptions =
     options.stylistic === false || options.stylistic == null
       ? false
-      : typeof options.stylistic === "object"
+        : typeof options.stylistic === "object"
         ? options.stylistic
         : {};
 
@@ -360,6 +361,15 @@ export function nirtamir2(
   }
 
   configs.push(prettier());
+
+  // eslint-disable-next-line unicorn/no-array-push-push
+  configs.push(
+      disables(),
+  )
+
+  if ('files' in options) {
+    throw new Error('[@antfu/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.')
+  }
 
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation

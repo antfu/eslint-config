@@ -80,6 +80,7 @@ export async function formatters(
     xmlWhitespaceSensitivity: "ignore",
   };
 
+  // eslint-disable-next-line sonarjs/prefer-object-spread
   const dprintOptions = Object.assign(
     {
       indentWidth: typeof indent === "number" ? indent : 2,
