@@ -23,7 +23,6 @@ export default nirtamir2(
         "sonarjs/no-duplicate-string": "off",
         "sonarjs/no-gratuitous-expressions": "off",
         "sonarjs/no-nested-template-literals": "off",
-        "sonarjs/sonar-no-fallthrough": "off",
         "sonarjs/cognitive-complexity": "off",
         "sonarjs/no-nested-conditional": "off",
         "sonarjs/no-commented-code": "off",

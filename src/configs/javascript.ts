@@ -175,7 +175,7 @@ export async function javascript(
           { enforceForClassMembers: true, setWithoutGet: true },
         ],
 
-        'antfu/no-top-level-await': 'error',
+        "antfu/no-top-level-await": "error",
         "array-callback-return": "error",
         "block-scoped-var": "error",
         "constructor-super": "error",
@@ -411,6 +411,17 @@ export async function javascript(
     }),
     eslintPluginNoUseExtendNative.configs.recommended,
     sonarjs.configs.recommended,
+    {
+      name: "nirtami2/javascript/sonar/disables",
+      rules: {
+        "sonarjs/new-cap": "off", // sometimes I want api.GET()
+        "sonarjs/todo-tag": "off", // somtimes I want TODO: stuff
+
+        // Bugs in SonarJs
+        "sonarjs/sonar-no-fallthrough": "off", // error when using ESLint 9
+        "sonarjs/void-use": "off", // false positive on promises
+      },
+    },
     ...compat.extends("plugin:clsx/recommended"),
   ];
 }
