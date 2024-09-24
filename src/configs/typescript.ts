@@ -2,7 +2,11 @@ import expectType from "eslint-plugin-expect-type/configs/recommended";
 import process from "node:process";
 import tseslint from "typescript-eslint";
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from "../globs";
-import { pluginAntfu, pluginSortDestructureKeysTypescript } from "../plugins";
+import {
+  eslintPluginPaths,
+  pluginAntfu,
+  pluginSortDestructureKeysTypescript,
+} from "../plugins";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -102,6 +106,7 @@ export async function typescript(
       // Install the plugins without globs, so they can be configured separately.
       name: "antfu/typescript/setup",
       plugins: {
+        paths: eslintPluginPaths,
         antfu: pluginAntfu,
         "sort-destructure-keys-typescript": pluginSortDestructureKeysTypescript,
         // "@typescript-eslint": pluginTs as any,
@@ -484,6 +489,13 @@ export async function typescript(
         // #endregion
 
         "array-callback-return": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/2841 - false positive with TypeScript
+      },
+    },
+    {
+      name: "nirtamir2/typescript/paths",
+      files,
+      rules: {
+        "paths/alias": "error",
       },
     },
     isTypeAware ? [] : tseslint.configs.disableTypeChecked,
