@@ -25,12 +25,5 @@ export async function storybook(): Promise<Array<TypedFlatConfigItem>> {
         "i18next/no-string-literal": "off",
       },
     },
-    {
-      name: "nirtamir2/storybook/disables",
-      files: ["**/.storybook/**"],
-      rules: {
-        "paths/alias": "off",
-      },
-    },
   ];
 }

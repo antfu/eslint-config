@@ -13,5 +13,4 @@ export { default as js } from "@eslint/js";
 export { default as confusingBrowserGlobals } from "confusing-browser-globals";
 export { default as arrayFunc } from "eslint-plugin-array-func";
 export { default as eslintPluginNoUseExtendNative } from "eslint-plugin-no-use-extend-native";
-export { default as eslintPluginPaths } from "eslint-plugin-paths";
 export { default as eslintConfigPrettier } from "eslint-config-prettier";
