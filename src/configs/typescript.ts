@@ -495,7 +495,7 @@ export async function typescript(
       name: "nirtamir2/typescript/paths",
       files,
       rules: {
-        "paths/alias": "error",
+        "paths/alias": "warn",
       },
     },
     isTypeAware ? [] : tseslint.configs.disableTypeChecked,
