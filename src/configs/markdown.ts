@@ -56,6 +56,8 @@ export async function markdown(
       },
       name: 'antfu/markdown/disables',
       rules: {
+        'antfu/no-top-level-await': 'off',
+
         'import/newline-after-import': 'off',
 
         'no-alert': 'off',
@@ -66,8 +68,8 @@ export async function markdown(
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-unused-labels': 'off',
-        'no-unused-vars': 'off',
 
+        'no-unused-vars': 'off',
         'node/prefer-global/process': 'off',
         'style/comma-dangle': 'off',
 
