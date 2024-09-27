@@ -317,5 +317,15 @@ export async function formatters(
     })
   }
 
+  if (options.prettierConfigs) {
+    const prettierConfigs = options.prettierConfigs({
+      defaultOptions: prettierOptions,
+      defaultXmlOptions: prettierXmlOptions,
+    })
+    prettierConfigs.forEach((item) => {
+      configs.push(item)
+    })
+  }
+
   return configs
 }
