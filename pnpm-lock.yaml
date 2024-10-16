@@ -169,8 +169,8 @@ importers:
         specifier: ^0.1.2
         version: 0.1.2(eslint@9.11.1(jiti@2.0.0))
       eslint-plugin-react-hooks:
-        specifier: ^4.6.2
-        version: 4.6.2(eslint@9.11.1(jiti@2.0.0))
+        specifier: ^5.0.0
+        version: 5.0.0(eslint@9.11.1(jiti@2.0.0))
       eslint-plugin-react-refresh:
         specifier: ^0.4.12
         version: 0.4.12(eslint@9.11.1(jiti@2.0.0))
@@ -1737,8 +1737,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-react-hooks@4.6.2:
-    resolution: {integrity: sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==}
+  eslint-plugin-react-hooks@5.0.0:
+    resolution: {integrity: sha512-hIOwI+5hYGpJEc4uPRmz2ulCjAGD/N13Lukkh8cLV0i2IRk/bdZDYjgLVHj+U9Z704kLIdIO6iueGvxNur0sgw==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^9.11.1
@@ -5025,7 +5025,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-hooks@4.6.2(eslint@9.11.1(jiti@2.0.0)):
+  eslint-plugin-react-hooks@5.0.0(eslint@9.11.1(jiti@2.0.0)):
     dependencies:
       eslint: 9.11.1(jiti@2.0.0)
 
