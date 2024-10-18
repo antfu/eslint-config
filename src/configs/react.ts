@@ -1,6 +1,5 @@
 import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 
-import process from 'node:process'
 import { isPackageExists } from 'local-pkg'
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
 
@@ -31,7 +30,6 @@ export async function react(
       GLOB_ASTRO_TS,
     ],
     overrides = {},
-    parserOptions = {},
     tsconfigPath,
   } = options
 
@@ -186,17 +184,6 @@ export async function react(
       ? [{
           files: filesTypeAware,
           ignores: ignoresTypeAware,
-          languageOptions: {
-            parser: await interopDefault(import('@typescript-eslint/parser')),
-            parserOptions: {
-              projectService: {
-                allowDefaultProject: ['./*.js'],
-                defaultProject: tsconfigPath,
-              },
-              tsconfigRootDir: process.cwd(),
-              ...parserOptions as any,
-            },
-          },
           name: 'antfu/react/type-aware-rules',
           rules: {
             ...typeAwareRules,
