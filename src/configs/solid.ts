@@ -8,6 +8,7 @@ import type {
 } from "../types";
 import { ensurePackages, interopDefault, toArray } from "../utils";
 import { a11y } from "./a11y";
+import { react } from "./react";
 
 export async function solid(
   options: OptionsHasTypeScript &
@@ -90,6 +91,34 @@ export async function solid(
           : {}),
         // overrides
         ...overrides,
+      },
+    },
+    ...(await react()),
+    {
+      name: "nirtamir2/solid/typescript-disables",
+      rules: {
+        "sonarjs/no-unstable-nested-components": "off", // for Show callbacks
+        "sonarjs/jsx-no-constructed-context-values": "off", // Not valid for Solid.js context - only in react
+        "@typescript-eslint/no-non-null-assertion": "off", // let ref: HtmlDivElement = null!
+        "prefer-const": "off", // let ref: HtmlDivElement = null!
+      },
+    },
+    {
+      name: "nirtamir2/solid/react-rules-off",
+      rules: {
+        // Solid.js react rules off
+        "react/no-unknown-property": "off",
+        "@eslint-react/prefer-destructuring-assignment": "off",
+        "react-refresh/only-export-components": "off",
+        "react/jsx-no-constructed-context-values": "off",
+        "@eslint-react/no-unstable-context-value": "off",
+      },
+    },
+    {
+      name: "nirtamir2/solid/entry-client",
+      files: ["src/entry-client.tsx"],
+      rules: {
+        "ssr-friendly/no-dom-globals-in-module-scope": "off",
       },
     },
     ...a11y(),
