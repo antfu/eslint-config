@@ -97,7 +97,7 @@ export async function svelte(
               'style/no-trailing-spaces': 'off', // superseded by svelte/no-trailing-spaces
               'svelte/derived-has-same-inputs-outputs': 'error',
               'svelte/html-closing-bracket-spacing': 'error',
-              'svelte/html-quotes': ['error', { prefer: quotes }],
+              'svelte/html-quotes': ['error', { prefer: quotes === 'backtick' ? 'double' : quotes }],
               'svelte/indent': ['error', { alignAttributesVertically: true, indent }],
               'svelte/mustache-spacing': 'error',
               'svelte/no-spaces-around-equal-signs-in-attribute': 'error',
