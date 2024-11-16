@@ -116,5 +116,5 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
   await updateVscodeSettings(result)
 
   p.log.success(c.green(`Setup completed`))
-  p.outro(`Now you can update the dependencies and run ${c.blue('eslint . --fix')}\n`)
+  p.outro(`Now you can update the dependencies by run ${c.blue('pnpm install')} and run ${c.blue('eslint . --fix')}\n`)
 }
