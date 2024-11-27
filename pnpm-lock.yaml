@@ -15,8 +15,8 @@ importers:
   .:
     dependencies:
       '@antfu/install-pkg':
-        specifier: ^0.4.1
-        version: 0.4.1
+        specifier: ^0.5.0
+        version: 0.5.0
       '@clack/prompts':
         specifier: ^0.8.2
         version: 0.8.2
@@ -36,8 +36,8 @@ importers:
         specifier: ^8.16.0
         version: 8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       '@vitest/eslint-plugin':
-        specifier: ^1.1.10
-        version: 1.1.10(@typescript-eslint/utils@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)(vitest@2.1.5(@types/node@22.10.0))
+        specifier: ^1.1.11
+        version: 1.1.11(@typescript-eslint/utils@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.0))
       eslint-config-flat-gitignore:
         specifier: ^0.3.0
         version: 0.3.0(eslint@9.15.0(jiti@2.4.0))
@@ -57,8 +57,8 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint-plugin-jsdoc:
-        specifier: ^50.5.0
-        version: 50.5.0(eslint@9.15.0(jiti@2.4.0))
+        specifier: ^50.6.0
+        version: 50.6.0(eslint@9.15.0(jiti@2.4.0))
       eslint-plugin-jsonc:
         specifier: ^2.18.2
         version: 2.18.2(eslint@9.15.0(jiti@2.4.0))
@@ -179,7 +179,7 @@ importers:
         version: 0.14.4(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint-plugin-svelte:
         specifier: ^2.46.0
-        version: 2.46.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8)
+        version: 2.46.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.9)
       eslint-typegen:
         specifier: ^0.3.2
         version: 0.3.2(eslint@9.15.0(jiti@2.4.0))
@@ -214,11 +214,11 @@ importers:
         specifier: ^2.11.1
         version: 2.11.1
       svelte:
-        specifier: ^5.2.8
-        version: 5.2.8
+        specifier: ^5.2.9
+        version: 5.2.9
       svelte-eslint-parser:
         specifier: ^0.43.0
-        version: 0.43.0(svelte@5.2.8)
+        version: 0.43.0(svelte@5.2.9)
       tsup:
         specifier: ^8.3.5
         version: 8.3.5(jiti@2.4.0)(postcss@8.4.49)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.5.0)
@@ -229,8 +229,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       vitest:
-        specifier: ^2.1.5
-        version: 2.1.5(@types/node@22.10.0)
+        specifier: ^2.1.6
+        version: 2.1.6(@types/node@22.10.0)
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -245,8 +245,8 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@antfu/install-pkg@0.4.1':
-    resolution: {integrity: sha512-T7yB5QNG29afhWVkVq7XeIMBa5U/vs9mX69YqayXypPRmYzUmzwnYltplHmPtZ4HPCn+sQKeXW8I47wCbuBOjw==}
+  '@antfu/install-pkg@0.5.0':
+    resolution: {integrity: sha512-dKnk2xlAyC7rvTkpkHmu+Qy/2Zc3Vm/l8PtNyIOGDBtXPY3kThfU4ORNEp3V7SXw5XSOb+tOJaUYpfquPzL/Tg==}
 
   '@antfu/ni@0.23.1':
     resolution: {integrity: sha512-VFAvMTJhjP6L7CuBKT5FioDCSpdmZxJ4POKTJOrFNicI2CK6mlaRwVEBGWLGm2V6BtQgdbBn9X68piHSbw5wQQ==}
@@ -1141,8 +1141,8 @@ packages:
     resolution: {integrity: sha512-5Q1dI+oKpG1o9CLWukriOFXJZu11VOEpqdx8DbroRzNoJYY4Fq6st132e3L9PcxJtq8o1sX6YnhoVjUKvasRzQ==}
     engines: {node: '>=14'}
 
-  '@vitest/eslint-plugin@1.1.10':
-    resolution: {integrity: sha512-uScH5Kz5v32vvtQYB2iodpoPg2mGASK+VKpjlc2IUgE0+16uZKqVKi2vQxjxJ6sMCQLBs4xhBFZlmZBszsmfKQ==}
+  '@vitest/eslint-plugin@1.1.11':
+    resolution: {integrity: sha512-f24vqvW1GE94Qs1qIelMdhTaYoVS6TbNz7V/1xc1A7gggoz21Lon3bDh8SRoesRpXSJ+23fXUc9cOUAKoGgZ8g==}
     peerDependencies:
       '@typescript-eslint/utils': ^8.16.0
       eslint: ^9.15.0
@@ -1154,34 +1154,34 @@ packages:
       vitest:
         optional: true
 
-  '@vitest/expect@2.1.5':
-    resolution: {integrity: sha512-nZSBTW1XIdpZvEJyoP/Sy8fUg0b8od7ZpGDkTUcfJ7wz/VoZAFzFfLyxVxGFhUjJzhYqSbIpfMtl/+k/dpWa3Q==}
+  '@vitest/expect@2.1.6':
+    resolution: {integrity: sha512-9M1UR9CAmrhJOMoSwVnPh2rELPKhYo0m/CSgqw9PyStpxtkwhmdM6XYlXGKeYyERY1N6EIuzkQ7e3Lm1WKCoUg==}
 
-  '@vitest/mocker@2.1.5':
-    resolution: {integrity: sha512-XYW6l3UuBmitWqSUXTNXcVBUCRytDogBsWuNXQijc00dtnU/9OqpXWp4OJroVrad/gLIomAq9aW8yWDBtMthhQ==}
+  '@vitest/mocker@2.1.6':
+    resolution: {integrity: sha512-MHZp2Z+Q/A3am5oD4WSH04f9B0T7UvwEb+v5W0kCYMhtXGYbdyl2NUk1wdSMqGthmhpiThPDp/hEoVwu16+u1A==}
     peerDependencies:
       msw: ^2.4.9
-      vite: ^5.0.0
+      vite: ^5.0.0 || ^6.0.0
     peerDependenciesMeta:
       msw:
         optional: true
       vite:
         optional: true
 
-  '@vitest/pretty-format@2.1.5':
-    resolution: {integrity: sha512-4ZOwtk2bqG5Y6xRGHcveZVr+6txkH7M2e+nPFd6guSoN638v/1XQ0K06eOpi0ptVU/2tW/pIU4IoPotY/GZ9fw==}
+  '@vitest/pretty-format@2.1.6':
+    resolution: {integrity: sha512-exZyLcEnHgDMKc54TtHca4McV4sKT+NKAe9ix/yhd/qkYb/TP8HTyXRFDijV19qKqTZM0hPL4753zU/U8L/gAA==}
 
-  '@vitest/runner@2.1.5':
-    resolution: {integrity: sha512-pKHKy3uaUdh7X6p1pxOkgkVAFW7r2I818vHDthYLvUyjRfkKOU6P45PztOch4DZarWQne+VOaIMwA/erSSpB9g==}
+  '@vitest/runner@2.1.6':
+    resolution: {integrity: sha512-SjkRGSFyrA82m5nz7To4CkRSEVWn/rwQISHoia/DB8c6IHIhaE/UNAo+7UfeaeJRE979XceGl00LNkIz09RFsA==}
 
-  '@vitest/snapshot@2.1.5':
-    resolution: {integrity: sha512-zmYw47mhfdfnYbuhkQvkkzYroXUumrwWDGlMjpdUr4jBd3HZiV2w7CQHj+z7AAS4VOtWxI4Zt4bWt4/sKcoIjg==}
+  '@vitest/snapshot@2.1.6':
+    resolution: {integrity: sha512-5JTWHw8iS9l3v4/VSuthCndw1lN/hpPB+mlgn1BUhFbobeIUj1J1V/Bj2t2ovGEmkXLTckFjQddsxS5T6LuVWw==}
 
-  '@vitest/spy@2.1.5':
-    resolution: {integrity: sha512-aWZF3P0r3w6DiYTVskOYuhBc7EMc3jvn1TkBg8ttylFFRqNN2XGD7V5a4aQdk6QiUzZQ4klNBSpCLJgWNdIiNw==}
+  '@vitest/spy@2.1.6':
+    resolution: {integrity: sha512-oTFObV8bd4SDdRka5O+mSh5w9irgx5IetrD5i+OsUUsk/shsBoHifwCzy45SAORzAhtNiprUVaK3hSCCzZh1jQ==}
 
-  '@vitest/utils@2.1.5':
-    resolution: {integrity: sha512-yfj6Yrp0Vesw2cwJbP+cl04OC+IHFsuQsrsJBL9pyGeQXE56v1UAOQco+SR55Vf1nQzfV0QJg1Qum7AaWUwwYg==}
+  '@vitest/utils@2.1.6':
+    resolution: {integrity: sha512-ixNkFy3k4vokOUTU2blIUvOgKq/N2PW8vKIjZZYsGJCMX69MRa9J2sKqX5hY/k5O5Gty3YJChepkqZ3KM9LyIQ==}
 
   '@voxpelli/config-array-find-files@1.2.1':
     resolution: {integrity: sha512-mRqVGLcK+yU+fQyaHAL9Xbhw633spi+VGurX1+gwSiZS8SzX63WzOmGi3qXO7mn4cozJcExyzIC5WmbUFJWQOw==}
@@ -1711,8 +1711,8 @@ packages:
     peerDependencies:
       eslint: ^9.15.0
 
-  eslint-plugin-jsdoc@50.5.0:
-    resolution: {integrity: sha512-xTkshfZrUbiSHXBwZ/9d5ulZ2OcHXxSvm/NPo494H/hadLRJwOq5PMV0EUpMqsb9V+kQo+9BAgi6Z7aJtdBp2A==}
+  eslint-plugin-jsdoc@50.6.0:
+    resolution: {integrity: sha512-tCNp4fR79Le3dYTPB0dKEv7yFyvGkUCa+Z3yuTrrNGGOxBlXo9Pn0PEgroOZikUQOGjxoGMVKNjrOHcYEdfszg==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: ^9.15.0
@@ -2684,8 +2684,8 @@ packages:
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
 
-  package-manager-detector@0.2.0:
-    resolution: {integrity: sha512-E385OSk9qDcXhcM9LNSe4sdhx8a9mAPrZ4sMLW+tmxl5ZuGtPUcdFu+MPP2jbgiWAZ6Pfe5soGFMd+0Db5Vrog==}
+  package-manager-detector@0.2.5:
+    resolution: {integrity: sha512-3dS7y28uua+UDbRCLBqltMBrbI+A5U2mI9YuxHRxIWYmLj3DwntEBmERYzIAQ4DMeuCUOBSak7dBHHoXKpOTYQ==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -3121,8 +3121,8 @@ packages:
       svelte:
         optional: true
 
-  svelte@5.2.8:
-    resolution: {integrity: sha512-VU7a01XwnFi6wXVkH5QY3FYXRZWrhsWZhaE8AYU6UeYZdslE3TFgQq6+HLrbMjOLkVhdKt74NGHYbhFeErQQ6g==}
+  svelte@5.2.9:
+    resolution: {integrity: sha512-LjO7R6K8FI8dA3l+4CcsbJ3djIe2TtokHGzfpDTro5g8nworMbTz9alCR95EQXGsqlzIAvqJtZ7Yy0o33lL09Q==}
     engines: {node: '>=18'}
 
   synckit@0.6.2:
@@ -3312,9 +3312,9 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
-  vite-node@2.1.5:
-    resolution: {integrity: sha512-rd0QIgx74q4S1Rd56XIiL2cYEdyWn13cunYBIuqh9mpmQr7gGS0IxXoP8R6OaZtNQQLyXSWbd4rXKYUbhFpK5w==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  vite-node@2.1.6:
+    resolution: {integrity: sha512-DBfJY0n9JUwnyLxPSSUmEePT21j8JZp/sR9n+/gBwQU6DcQOioPdb8/pibWfXForbirSagZCilseYIwaL3f95A==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
   vite@5.0.5:
@@ -3345,15 +3345,15 @@ packages:
       terser:
         optional: true
 
-  vitest@2.1.5:
-    resolution: {integrity: sha512-P4ljsdpuzRTPI/kbND2sDZ4VmieerR2c9szEZpjc+98Z9ebvnXmM5+0tHEKqYZumXqlvnmfWsjeFOjXVriDG7A==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  vitest@2.1.6:
+    resolution: {integrity: sha512-isUCkvPL30J4c5O5hgONeFRsDmlw6kzFEdLQHLezmDdKQHy8Ke/B/dgdTMEgU0vm+iZ0TjW8GuK83DiahBoKWQ==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
       '@edge-runtime/vm': '*'
-      '@types/node': ^18.0.0 || >=20.0.0
-      '@vitest/browser': 2.1.5
-      '@vitest/ui': 2.1.5
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      '@vitest/browser': 2.1.6
+      '@vitest/ui': 2.1.6
       happy-dom: '*'
       jsdom: '*'
     peerDependenciesMeta:
@@ -3483,9 +3483,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@antfu/install-pkg@0.4.1':
+  '@antfu/install-pkg@0.5.0':
     dependencies:
-      package-manager-detector: 0.2.0
+      package-manager-detector: 0.2.5
       tinyexec: 0.3.1
 
   '@antfu/ni@0.23.1': {}
@@ -4281,51 +4281,51 @@ snapshots:
       - supports-color
       - typescript
 
-  '@vitest/eslint-plugin@1.1.10(@typescript-eslint/utils@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)(vitest@2.1.5(@types/node@22.10.0))':
+  '@vitest/eslint-plugin@1.1.11(@typescript-eslint/utils@8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2))(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)(vitest@2.1.6(@types/node@22.10.0))':
     dependencies:
       '@typescript-eslint/utils': 8.16.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.7.2)
       eslint: 9.15.0(jiti@2.4.0)
     optionalDependencies:
       typescript: 5.7.2
-      vitest: 2.1.5(@types/node@22.10.0)
+      vitest: 2.1.6(@types/node@22.10.0)
 
-  '@vitest/expect@2.1.5':
+  '@vitest/expect@2.1.6':
     dependencies:
-      '@vitest/spy': 2.1.5
-      '@vitest/utils': 2.1.5
+      '@vitest/spy': 2.1.6
+      '@vitest/utils': 2.1.6
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.5(vite@5.0.5(@types/node@22.10.0))':
+  '@vitest/mocker@2.1.6(vite@5.0.5(@types/node@22.10.0))':
     dependencies:
-      '@vitest/spy': 2.1.5
+      '@vitest/spy': 2.1.6
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
       vite: 5.0.5(@types/node@22.10.0)
 
-  '@vitest/pretty-format@2.1.5':
+  '@vitest/pretty-format@2.1.6':
     dependencies:
       tinyrainbow: 1.2.0
 
-  '@vitest/runner@2.1.5':
+  '@vitest/runner@2.1.6':
     dependencies:
-      '@vitest/utils': 2.1.5
+      '@vitest/utils': 2.1.6
       pathe: 1.1.2
 
-  '@vitest/snapshot@2.1.5':
+  '@vitest/snapshot@2.1.6':
     dependencies:
-      '@vitest/pretty-format': 2.1.5
+      '@vitest/pretty-format': 2.1.6
       magic-string: 0.30.12
       pathe: 1.1.2
 
-  '@vitest/spy@2.1.5':
+  '@vitest/spy@2.1.6':
     dependencies:
       tinyspy: 3.0.2
 
-  '@vitest/utils@2.1.5':
+  '@vitest/utils@2.1.6':
     dependencies:
-      '@vitest/pretty-format': 2.1.5
+      '@vitest/pretty-format': 2.1.6
       loupe: 3.1.2
       tinyrainbow: 1.2.0
 
@@ -4934,7 +4934,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-jsdoc@50.5.0(eslint@9.15.0(jiti@2.4.0)):
+  eslint-plugin-jsdoc@50.6.0(eslint@9.15.0(jiti@2.4.0)):
     dependencies:
       '@es-joy/jsdoccomment': 0.49.0
       are-docs-informative: 0.0.2
@@ -5143,7 +5143,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-svelte@2.46.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.8):
+  eslint-plugin-svelte@2.46.0(eslint@9.15.0(jiti@2.4.0))(svelte@5.2.9):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.15.0(jiti@2.4.0))
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -5156,9 +5156,9 @@ snapshots:
       postcss-safe-parser: 6.0.0(postcss@8.4.49)
       postcss-selector-parser: 6.1.0
       semver: 7.6.3
-      svelte-eslint-parser: 0.43.0(svelte@5.2.8)
+      svelte-eslint-parser: 0.43.0(svelte@5.2.9)
     optionalDependencies:
-      svelte: 5.2.8
+      svelte: 5.2.9
     transitivePeerDependencies:
       - ts-node
 
@@ -6244,7 +6244,7 @@ snapshots:
 
   package-json-from-dist@1.0.0: {}
 
-  package-manager-detector@0.2.0: {}
+  package-manager-detector@0.2.5: {}
 
   parent-module@1.0.1:
     dependencies:
@@ -6630,7 +6630,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-eslint-parser@0.43.0(svelte@5.2.8):
+  svelte-eslint-parser@0.43.0(svelte@5.2.9):
     dependencies:
       eslint-scope: 7.2.2
       eslint-visitor-keys: 3.4.3
@@ -6638,9 +6638,9 @@ snapshots:
       postcss: 8.4.49
       postcss-scss: 4.0.9(postcss@8.4.49)
     optionalDependencies:
-      svelte: 5.2.8
+      svelte: 5.2.9
 
-  svelte@5.2.8:
+  svelte@5.2.9:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -6842,7 +6842,7 @@ snapshots:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
 
-  vite-node@2.1.5(@types/node@22.10.0):
+  vite-node@2.1.6(@types/node@22.10.0):
     dependencies:
       cac: 6.7.14
       debug: 4.3.7
@@ -6868,15 +6868,15 @@ snapshots:
       '@types/node': 22.10.0
       fsevents: 2.3.3
 
-  vitest@2.1.5(@types/node@22.10.0):
+  vitest@2.1.6(@types/node@22.10.0):
     dependencies:
-      '@vitest/expect': 2.1.5
-      '@vitest/mocker': 2.1.5(vite@5.0.5(@types/node@22.10.0))
-      '@vitest/pretty-format': 2.1.5
-      '@vitest/runner': 2.1.5
-      '@vitest/snapshot': 2.1.5
-      '@vitest/spy': 2.1.5
-      '@vitest/utils': 2.1.5
+      '@vitest/expect': 2.1.6
+      '@vitest/mocker': 2.1.6(vite@5.0.5(@types/node@22.10.0))
+      '@vitest/pretty-format': 2.1.6
+      '@vitest/runner': 2.1.6
+      '@vitest/snapshot': 2.1.6
+      '@vitest/spy': 2.1.6
+      '@vitest/utils': 2.1.6
       chai: 5.1.2
       debug: 4.3.7
       expect-type: 1.1.0
@@ -6888,7 +6888,7 @@ snapshots:
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
       vite: 5.0.5(@types/node@22.10.0)
-      vite-node: 2.1.5(@types/node@22.10.0)
+      vite-node: 2.1.6(@types/node@22.10.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 22.10.0
