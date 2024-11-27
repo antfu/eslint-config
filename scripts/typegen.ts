@@ -9,7 +9,7 @@ const configs = await combine(
   {
     plugins: {
       '': {
-        rules: JS.configs.all,
+        rules: JS.configs.all.rules,
       },
     },
   },
