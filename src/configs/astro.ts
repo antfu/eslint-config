@@ -55,6 +55,10 @@ export async function astro(
         'astro/semi': 'off',
         'astro/valid-compile': 'error',
 
+        // Astro uses top level await for e.g. data fetching
+        // https://docs.astro.build/en/guides/data-fetching/#fetch-in-astro
+        'antfu/no-top-level-await': 'off',
+
         ...stylistic
           ? {
               'style/indent': 'off',
