@@ -29,7 +29,6 @@ export async function vue(
   const { indent = 2 } = typeof stylistic === "boolean" ? {} : stylistic;
 
   const [pluginVue, parserVue, processorVueBlocks] = await Promise.all([
-    // @ts-expect-error missing types
     interopDefault(import("eslint-plugin-vue")),
     interopDefault(import("vue-eslint-parser")),
     interopDefault(import("eslint-processor-vue-blocks")),

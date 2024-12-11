@@ -418,7 +418,7 @@ export async function javascript(
         "sonarjs/todo-tag": "off", // somtimes I want TODO: stuff
 
         // Bugs in SonarJs
-        "sonarjs/sonar-no-fallthrough": "off", // error when using ESLint 9
+        "sonarjs/no-fallthrough": "off", // error when using ESLint 9
         "sonarjs/void-use": "off", // false positive on promises
       },
     },

@@ -56,7 +56,13 @@ export async function yaml(
               "yml/indent": ["error", indent === "tab" ? 2 : indent],
               "yml/key-spacing": "error",
               "yml/no-tab-indent": "error",
-              "yml/quotes": ["error", { avoidEscape: false, prefer: quotes }],
+              "yml/quotes": [
+                "error",
+                {
+                  avoidEscape: false,
+                  prefer: quotes === "backtick" ? "single" : quotes,
+                },
+              ],
               "yml/spaced-comment": "error",
             }
           : {}),
