@@ -48,6 +48,7 @@ export const vscodeSettingsString = `
     "gql",
     "graphql",
     "astro",
+    "svelte",
     "css",
     "less",
     "scss",
