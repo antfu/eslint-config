@@ -33,7 +33,6 @@ import {
   yaml,
 } from './configs'
 import { formatters } from './configs/formatters'
-
 import { regexp } from './configs/regexp'
 import { interopDefault, isInEditorEnv } from './utils'
 

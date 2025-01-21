@@ -177,13 +177,15 @@ export async function javascript(
             allowUnboundThis: true,
           },
         ],
-        'prefer-const': [
-          'error',
-          {
-            destructuring: 'all',
-            ignoreReadBeforeAssign: true,
-          },
-        ],
+        'prefer-const': isInEditor
+          ? 'off'
+          : [
+              'error',
+              {
+                destructuring: 'all',
+                ignoreReadBeforeAssign: true,
+              },
+            ],
         'prefer-exponentiation-operator': 'error',
         'prefer-promise-reject-errors': 'error',
         'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
