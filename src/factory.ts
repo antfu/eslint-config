@@ -316,6 +316,17 @@ export function antfu(
       .renamePlugins(defaultPluginRenaming)
   }
 
+  if (isInEditor) {
+    composer = composer
+      .disableRulesFix([
+        'unused-imports/no-unused-imports',
+        'test/no-only-tests',
+        'prefer-const',
+      ], {
+        builtinRules: () => import(['eslint', 'use-at-your-own-risk'].join('/')).then(r => r.builtinRules),
+      })
+  }
+
   return composer
 }
 

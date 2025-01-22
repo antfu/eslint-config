@@ -47,7 +47,7 @@ export async function test(
         'test/consistent-test-it': ['error', { fn: 'it', withinDescribe: 'it' }],
         'test/no-identical-title': 'error',
         'test/no-import-node-test': 'error',
-        'test/no-only-tests': isInEditor ? 'off' : 'error',
+        'test/no-only-tests': isInEditor ? 'warn' : 'error',
 
         'test/prefer-hooks-in-order': 'error',
         'test/prefer-lowercase-title': 'error',
