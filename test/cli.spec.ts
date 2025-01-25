@@ -61,14 +61,6 @@ it('esm eslint.config.js', async () => {
   expect(stdout).toContain('Created eslint.config.js')
 })
 
-it('cjs eslint.config.mjs', async () => {
-  const { stdout } = await run()
-
-  const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')
-  expect(eslintConfigContent.includes('export default')).toBeTruthy()
-  expect(stdout).toContain('Created eslint.config.mjs')
-})
-
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
 
