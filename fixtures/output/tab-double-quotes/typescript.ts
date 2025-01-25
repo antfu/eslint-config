@@ -20,7 +20,7 @@ for (const person of people) {
 }
 
 // Define a generic function
-function identity< T >(arg: T): T {
+function identity<T>(arg: T): T {
 	return arg
 }
 
