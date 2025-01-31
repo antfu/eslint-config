@@ -1,5 +1,4 @@
 import * as p from "@clack/prompts";
-import process from "node:process";
 import c from "picocolors";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
@@ -56,5 +55,4 @@ const instance = yargs(hideBin(process.argv))
   .version("version", pkgJson.version)
   .alias("v", "version");
 
-// eslint-disable-next-line sonarjs/no-unused-expressions
 instance.help().argv;

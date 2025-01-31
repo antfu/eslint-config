@@ -1,7 +1,6 @@
 import * as p from "@clack/prompts";
 import fsp from "node:fs/promises";
 import path from "node:path";
-import process from "node:process";
 import c from "picocolors";
 import { dependenciesMap, pkgJson } from "../constants";
 import type { ExtraLibrariesOption, PromptResult } from "../types";

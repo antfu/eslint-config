@@ -19,6 +19,10 @@ export async function imports(
         "antfu/no-import-dist": "error",
         "antfu/no-import-node-modules-by-path": "error",
 
+        "import-x/consistent-type-specifier-style": [
+          "error",
+          "prefer-top-level",
+        ],
         "import-x/first": "error",
         "import-x/no-duplicates": "error",
         "import-x/no-mutable-exports": "error",

@@ -49,7 +49,7 @@ export async function test(
         ],
         "vitest/no-identical-title": "error",
         "vitest/no-import-node-test": "error",
-        "vitest/no-only-tests": isInEditor ? "off" : "error",
+        "vitest/no-only-tests": isInEditor ? "warn" : "error",
         "vitest/prefer-hooks-in-order": "error",
         "vitest/prefer-lowercase-title": "error",
 

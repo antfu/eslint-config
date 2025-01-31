@@ -1,5 +1,4 @@
 import expectType from "eslint-plugin-expect-type/configs/recommended";
-import process from "node:process";
 import tseslint from "typescript-eslint";
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from "../globs";
 import { pluginAntfu, pluginSortDestructureKeysTypescript } from "../plugins";
@@ -42,6 +41,7 @@ export async function typescript(
     "dot-notation": "off",
     "no-implied-eval": "off",
     "no-throw-literal": "off",
+    "sort-destructure-keys-typescript/sort-destructure-keys-by-type": "error",
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/dot-notation": ["error", { allowKeywords: true }],
     "@typescript-eslint/no-floating-promises": "error",
@@ -143,7 +143,11 @@ export async function typescript(
         ],
         "@typescript-eslint/consistent-type-imports": [
           "error",
-          { disallowTypeAnnotations: false, prefer: "type-imports" },
+          {
+            disallowTypeAnnotations: false,
+            fixStyle: "separate-type-imports",
+            prefer: "type-imports",
+          },
         ],
         "@typescript-eslint/method-signature-style": ["error", "property"], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         "@typescript-eslint/no-dupe-class-members": "error",
@@ -152,7 +156,6 @@ export async function typescript(
         "@typescript-eslint/no-extraneous-class": "off",
         "@typescript-eslint/no-import-type-side-effects": "error",
         "@typescript-eslint/no-invalid-void-type": "off",
-        "@typescript-eslint/no-loss-of-precision": "error",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-redeclare": "error",
         "@typescript-eslint/no-require-imports": "error",
@@ -169,15 +172,6 @@ export async function typescript(
     },
     ...(isTypeAware
       ? [
-          {
-            files: filesTypeAware,
-            ignores: ignoresTypeAware,
-            name: "nirtamir2/typescript/eslint-plugin-sort-destructure-keys-typescript",
-            rules: {
-              "sort-destructure-keys-typescript/sort-destructure-keys-by-type":
-                "error",
-            },
-          },
           {
             files: filesTypeAware,
             ignores: ignoresTypeAware,
@@ -211,7 +205,6 @@ export async function typescript(
       name: "antfu/typescript/disables/cjs",
       rules: {
         "@typescript-eslint/no-require-imports": "off",
-        "@typescript-eslint/no-var-requires": "off",
       },
     },
     isTypeAware
@@ -401,7 +394,6 @@ export async function typescript(
         ],
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "error",
-        "@typescript-eslint/no-empty-interface": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-extra-non-null-assertion": "error",
 
@@ -418,7 +410,6 @@ export async function typescript(
         "no-loop-func": "off",
         "@typescript-eslint/no-loop-func": "error",
         "no-loss-of-precision": "off",
-        "@typescript-eslint/no-loss-of-precision": "error",
         "@typescript-eslint/no-meaningless-void-operator": "error",
         "@typescript-eslint/no-misused-new": "error",
         "@typescript-eslint/no-misused-promises": "error",
@@ -453,7 +444,6 @@ export async function typescript(
         "@typescript-eslint/no-use-before-define": "error",
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
-        "@typescript-eslint/no-var-requires": "error",
         "@typescript-eslint/non-nullable-type-assertion-style": "error",
         "@typescript-eslint/prefer-as-const": "error",
         "@typescript-eslint/prefer-enum-initializers": "error",

@@ -361,7 +361,7 @@ export async function javascript(
 
         "symbol-description": "error",
         "unicode-bom": ["error", "never"],
-        "unused-imports/no-unused-imports": isInEditor ? "off" : "error",
+        "unused-imports/no-unused-imports": isInEditor ? "warn" : "error",
         "unused-imports/no-unused-vars": [
           "error",
           {
