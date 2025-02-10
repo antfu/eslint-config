@@ -32,7 +32,6 @@ export async function stylistic(
   const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'))
 
   const config = pluginStylistic.configs.customize({
-    flat: true,
     indent,
     jsx,
     pluginName: 'style',
