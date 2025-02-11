@@ -5,7 +5,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import * as p from '@clack/prompts'
-import c from 'picocolors'
+import c from 'ansis'
 
 import { extra, extraOptions, frameworkOptions, frameworks } from './constants'
 import { updateEslintFiles } from './stages/update-eslint-files'
@@ -35,7 +35,7 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
   const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m.trim())
 
   if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
-    p.log.warn(c.yellow(`eslint.config.js already exists, migration wizard exited.`))
+    p.log.warn(c.yellow`eslint.config.js already exists, migration wizard exited.`)
     return process.exit(1)
   }
 
@@ -115,6 +115,6 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
   await updateEslintFiles(result)
   await updateVscodeSettings(result)
 
-  p.log.success(c.green(`Setup completed`))
+  p.log.success(c.green`Setup completed`)
   p.outro(`Now you can update the dependencies by run ${c.blue('pnpm install')} and run ${c.blue('eslint . --fix')}\n`)
 }
