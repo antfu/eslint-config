@@ -1,7 +1,7 @@
 import process from 'node:process'
 
 import * as p from '@clack/prompts'
-import c from 'picocolors'
+import c from 'ansis'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
@@ -10,7 +10,7 @@ import { run } from './run'
 
 function header(): void {
   console.log('\n')
-  p.intro(`${c.green(`@antfu/eslint-config `)}${c.dim(`v${pkgJson.version}`)}`)
+  p.intro(`${c.green`@antfu/eslint-config `}${c.dim`v${pkgJson.version}`}`)
 }
 
 const instance = yargs(hideBin(process.argv))
@@ -43,8 +43,8 @@ const instance = yargs(hideBin(process.argv))
         await run(args)
       }
       catch (error) {
-        p.log.error(c.inverse(c.red(' Failed to migrate ')))
-        p.log.error(c.red(`✘ ${String(error)}`))
+        p.log.error(c.inverse.red(' Failed to migrate '))
+        p.log.error(c.red`✘ ${String(error)}`)
         process.exit(1)
       }
     },
