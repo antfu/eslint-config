@@ -22,11 +22,11 @@
 > Since v3.0.0, ESLint v9.5.0+ is now required.
 
 > [!WARNING]
-> I am super appreciated and even a bit flatted that so many of you are fond of using this config. For that, I tried to make it as flexible and customizable as possible to fit more use cases.
+> I am super appreciative and even a bit flattered that so many of you are fond of using this config. For that reason, I tried to make it as flexible and customizable as possible to fit more use cases.
 >
-> However, please keep in mind that this is still **_a personal config_** with a lot opinions. Changes might not always be pleased by everyone and every use cases.
+> However, please keep in mind that this is still **_a personal config_** with a lot of opinions. Changes might not always work for everyone and every use case.
 >
-> If you are using this config directly, I'd suggest you **review the changes everytime you update**. Or if you want more control over the rules, always feel free to fork it. Thanks!
+> If you are using this config directly, I suggest you **review the changes every time you update**. Or if you want more control over the rules, always feel free to fork it. Thanks!
 
 ## Usage
 
