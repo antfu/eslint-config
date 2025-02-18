@@ -31,8 +31,8 @@ export interface CliRunOptions {
 
 export async function run(options: CliRunOptions = {}): Promise<void> {
   const argSkipPrompt = !!process.env.SKIP_PROMPT || options.yes
-  const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m.trim())
-  const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m.trim())
+  const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m?.trim()).filter(Boolean)
+  const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m?.trim()).filter(Boolean)
 
   if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
     p.log.warn(c.yellow`eslint.config.js already exists, migration wizard exited.`)
