@@ -27,7 +27,7 @@
     "dev": "npx @eslint/config-inspector --config eslint.config.ts",
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     "watch": "tsup --watch",
-    "lint": "eslint .",
+    "lint": "eslint",
     "typegen": "tsx scripts/typegen.ts",
     "prepack": "nr build",
     "release": "bumpp && pnpm publish",
