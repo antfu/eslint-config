@@ -37,7 +37,6 @@ export async function stylistic(
   );
 
   const config = pluginStylistic.configs.customize({
-    flat: true,
     indent,
     jsx,
     pluginName: "style",

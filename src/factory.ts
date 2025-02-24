@@ -34,6 +34,7 @@ import {
 import { formatters } from "./configs/formatters";
 import { i18n } from "./configs/i18n";
 import { prettier } from "./configs/prettier";
+import { query } from "./configs/query";
 import { regexp } from "./configs/regexp";
 import { security } from "./configs/security";
 import { storybook } from "./configs/storybook";
@@ -59,6 +60,12 @@ const flatConfigProps: Array<keyof TypedFlatConfigItem> = [
 ];
 
 const VuePackages = ["vue", "nuxt", "vitepress", "@slidev/cli"];
+
+const TanstackQueryPackages = [
+  "@tanstack/react-query",
+  "@tanstack/solid-query",
+];
+
 const StorybookPackages = [
   "@storybook/addon-a11y",
   "@storybook/addon-essentials",
@@ -123,6 +130,7 @@ export function nirtamir2(
     storybook: enableStorybook = StorybookPackages.some((i) =>
       isPackageExists(i),
     ),
+    query: enableQuery = TanstackQueryPackages.some((i) => isPackageExists(i)),
     i18n: enableI18n = false,
     security: enableSecurity = false,
   } = options;
@@ -281,6 +289,10 @@ export function nirtamir2(
 
   if (enableTailwindCSS) {
     configs.push(tailwindcss());
+
+    if (enableQuery) {
+      configs.push(query());
+    }
   }
 
   if (enableAstro) {

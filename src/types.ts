@@ -255,6 +255,12 @@ export interface OptionsConfig extends OptionsComponentExts {
   vue?: boolean | OptionsVue;
 
   /**
+   * Enable @tanstack/query support.
+   * @default auto-detect based on the dependencies
+   */
+  query?: boolean;
+
+  /**
    * Enable JSONC support.
    * @default true
    */
