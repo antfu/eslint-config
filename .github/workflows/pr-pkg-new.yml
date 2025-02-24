@@ -9,7 +9,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - run: corepack enable
+      # corepack bug requires me to add `npm i -g --force corepack &&` before `corepack enable`
+      # @see https://github.com/actions/setup-node/issues/1222#issuecomment-2631024706
+      - run: npm i -g --force corepack && corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22
