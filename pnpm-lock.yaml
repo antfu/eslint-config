@@ -213,6 +213,9 @@ importers:
       '@stylistic/eslint-plugin-migrate':
         specifier: ^3.0.1
         version: 3.0.1(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.66.1
+        version: 5.66.1(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^5.2.2
         version: 5.2.2(@vue/compiler-sfc@3.5.13)(prettier@3.4.2)(svelte@5.19.6)
@@ -1588,6 +1591,11 @@ packages:
   '@stylistic/eslint-plugin@3.0.1':
     resolution: {integrity: sha512-rQ3tcT5N2cynofJfbjUsnL4seoewTaOVBLyUEwtNldo7iNMPo3h/GUQk+Cl3iHEWwRxjq2wuH6q0FufQrbVL1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^9.13.0
+
+  '@tanstack/eslint-plugin-query@5.66.1':
+    resolution: {integrity: sha512-pYMVTGgJ7yPk9Rm6UWEmbY6TX0EmMmxJqYkthgeDCwEznToy2m+W928nUODFirtZBZlhBsqHy33LO0kyTlgf0w==}
     peerDependencies:
       eslint: ^9.13.0
 
@@ -6457,6 +6465,14 @@ snapshots:
       espree: 10.3.0
       estraverse: 5.3.0
       picomatch: 4.0.2
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  '@tanstack/eslint-plugin-query@5.66.1(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+      eslint: 9.19.0(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
