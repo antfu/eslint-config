@@ -340,7 +340,7 @@ export function resolveSubOptions<K extends keyof OptionsConfig>(
 ): ResolvedOptions<OptionsConfig[K]> {
   return typeof options[key] === 'boolean'
     ? {} as any
-    : options[key] || {}
+    : options[key] || {} as any
 }
 
 export function getOverrides<K extends keyof OptionsConfig>(
