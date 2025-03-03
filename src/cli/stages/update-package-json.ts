@@ -20,6 +20,15 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
   const pkg: Record<string, any> = JSON.parse(pkgContent)
 
   pkg.devDependencies ??= {}
+
+  // Handle lint script configuration
+  if (result.lintScript !== 'keep') {
+    pkg.scripts ??= {}
+    pkg.scripts.lint = result.lintScript === 'fix'
+      ? 'eslint --fix --cache'
+      : 'eslint --cache'
+  }
+
   pkg.devDependencies['@antfu/eslint-config'] = `^${pkgJson.version}`
   pkg.devDependencies.eslint ??= pkgJson
     .devDependencies
