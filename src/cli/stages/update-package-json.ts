@@ -22,9 +22,9 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
   pkg.devDependencies ??= {}
 
   // Handle lint script configuration
-  if (result.lintScript !== 'keep') {
+  if (result.lint !== 'keep') {
     pkg.scripts ??= {}
-    pkg.scripts.lint = result.lintScript === 'fix'
+    pkg.scripts.lint = result.lint === 'fix'
       ? 'eslint --fix --cache'
       : 'eslint --cache'
   }

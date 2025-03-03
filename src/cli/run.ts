@@ -1,5 +1,5 @@
 /* eslint-disable perfectionist/sort-objects */
-import type { ExtraLibrariesOption, FrameworkOption, LintScriptOption, PromptResult } from './types'
+import type { ExtraLibrariesOption, FrameworkOption, LintOption, PromptResult } from './types'
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -37,7 +37,7 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
   const argSkipPrompt = !!process.env.SKIP_PROMPT || options.yes
   const argTemplate = <FrameworkOption[]>options.frameworks?.map(m => m?.trim()).filter(Boolean)
   const argExtra = <ExtraLibrariesOption[]>options.extra?.map(m => m?.trim()).filter(Boolean)
-  const argLintScript = <LintScriptOption>options.lint?.trim()
+  const argLint = <LintOption>options.lint?.trim()
 
   if (fs.existsSync(path.join(process.cwd(), 'eslint.config.js'))) {
     p.log.warn(c.yellow`eslint.config.js already exists, migration wizard exited.`)
@@ -50,7 +50,7 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
     frameworks: argTemplate ?? [],
     uncommittedConfirmed: false,
     updateVscodeSettings: true,
-    lintScript: argLintScript ?? 'keep',
+    lint: argLint ?? 'keep',
   }
 
   if (!argSkipPrompt) {
@@ -106,13 +106,13 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
           message: 'Update .vscode/settings.json for better VS Code experience?',
         })
       },
-      lintScript: async ({ results }) => {
+      lint: async ({ results }) => {
         if (!results.uncommittedConfirmed)
           return 'keep'
 
-        const isArgLintScriptValid = argLintScript && ['keep', 'check', 'fix'].includes(argLintScript)
-        if (isArgLintScriptValid)
-          return argLintScript
+        const isArgLintValid = argLint && ['keep', 'check', 'fix'].includes(argLint)
+        if (isArgLintValid)
+          return argLint
 
         const pkgPath = path.join(process.cwd(), 'package.json')
         const existingScript = fs.existsSync(pkgPath)
