@@ -63,6 +63,9 @@ export async function stylistic(
             }
         ),
 
+        'style/generator-star-spacing': ['error', { after: true, before: false }],
+        'style/yield-star-spacing': ['error', { after: true, before: false }],
+
         ...overrides,
       },
     },
