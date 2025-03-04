@@ -11,13 +11,13 @@ export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatCo
       },
       rules: {
         ...(options.allRecommended
-          ? pluginUnicorn.configs['flat/recommended'].rules
+          ? pluginUnicorn.configs.recommended.rules
           : {
               'unicorn/consistent-empty-array-spread': 'error',
               'unicorn/error-message': 'error',
               'unicorn/escape-case': 'error',
               'unicorn/new-for-builtins': 'error',
-              'unicorn/no-instanceof-array': 'error',
+              'unicorn/no-instanceof-builtins': 'error',
               'unicorn/no-new-array': 'error',
               'unicorn/no-new-buffer': 'error',
               'unicorn/number-literal-case': 'error',
