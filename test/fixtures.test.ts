@@ -3,7 +3,7 @@ import type { OptionsConfig, TypedFlatConfigItem } from '../src/types'
 import fs from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { execa } from 'execa'
-import fg from 'fast-glob'
+import { glob } from 'tinyglobby'
 
 import { afterAll, beforeAll, it } from 'vitest'
 
@@ -139,7 +139,7 @@ export default antfu(
       stdio: 'pipe',
     })
 
-    const files = await fg('**/*', {
+    const files = await glob('**/*', {
       ignore: [
         'node_modules',
         'eslint.config.js',
