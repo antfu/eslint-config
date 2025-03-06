@@ -1,8 +1,8 @@
+import fs from 'node:fs/promises'
 import { join } from 'node:path'
 import process from 'node:process'
 
 import { execa } from 'execa'
-import fs from 'fs-extra'
 import { afterAll, beforeEach, expect, it } from 'vitest'
 
 const CLI_PATH = join(__dirname, '../bin/index.js')
@@ -27,7 +27,7 @@ async function run(params: string[] = [], env = {
 
 async function createMockDir() {
   await fs.rm(genPath, { recursive: true, force: true })
-  await fs.ensureDir(genPath)
+  await fs.mkdir(genPath, { recursive: true })
 
   await Promise.all([
     fs.writeFile(join(genPath, 'package.json'), JSON.stringify({}, null, 2)),
@@ -44,7 +44,7 @@ afterAll(async () => await fs.rm(genPath, { recursive: true, force: true }))
 it('package.json updated', async () => {
   const { stdout } = await run()
 
-  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  const pkgContent: Record<string, any> = JSON.parse(await fs.readFile(join(genPath, 'package.json'), 'utf-8'))
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
   expect(stdout).toContain('Changes wrote to package.json')
