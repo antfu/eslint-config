@@ -69,5 +69,22 @@ export async function yaml(
         ...overrides,
       },
     },
+    {
+      files: ['pnpm-workspace.yaml'],
+      name: 'antfu/yaml/pnpm-workspace',
+      rules: {
+        'yaml/sort-keys': [
+          'error',
+          {
+            order: [
+              'packages',
+              'catalog',
+              'catalogs',
+            ],
+            pathPattern: '^$',
+          },
+        ],
+      },
+    },
   ]
 }
