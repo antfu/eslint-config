@@ -18,7 +18,7 @@ import {
   markdown,
   node,
   perfectionist,
-  pnpmCatalogs,
+  pnpm,
   react,
   solid,
   sortPackageJson,
@@ -88,7 +88,7 @@ export function antfu(
     componentExts = [],
     gitignore: enableGitignore = true,
     jsx: enableJsx = true,
-    pnpmCatalogs: enablePnpmCatalogs = false, // TOD: smart detect
+    pnpm: enableCatalogs = false, // TODO: smart detect
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
@@ -255,9 +255,9 @@ export function antfu(
     )
   }
 
-  if (enablePnpmCatalogs) {
+  if (enableCatalogs) {
     configs.push(
-      pnpmCatalogs(),
+      pnpm(),
     )
   }
 

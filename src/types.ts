@@ -391,16 +391,16 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   unocss?: boolean | OptionsUnoCSS
 
   /**
-   * Enable pnpm catalogs support.
+   * Enable pnpm (workspace/catalogs) support.
    *
    * Currently it's disabled by default, as it's still experimental.
-   * In the future it will be smartly enabled based on the project catalog usage.
+   * In the future it will be smartly enabled based on the project usage.
    *
-   * @see https://github.com/antfu/pnpm-catalogs-utils
+   * @see https://github.com/antfu/pnpm-workspace-utils
    * @experimental
    * @default false
    */
-  pnpmCatalogs?: boolean
+  pnpm?: boolean
 
   /**
    * Use external formatters to format files.

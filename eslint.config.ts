@@ -11,6 +11,7 @@ export default antfu(
     astro: true,
     typescript: true,
     formatters: true,
+    pnpm: true,
     type: 'lib',
   },
   {
