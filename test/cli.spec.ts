@@ -50,6 +50,45 @@ it('package.json updated', async () => {
   expect(stdout).toContain('Changes wrote to package.json')
 })
 
+it('lint script - keep should preserve existing script', async () => {
+  // Setup existing lint script
+  await fs.writeJSON(join(genPath, 'package.json'), {
+    scripts: {
+      lint: 'custom-lint-command',
+    },
+  }, { spaces: 2 })
+
+  const { stdout } = await run(['--lint=keep'])
+
+  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  expect(pkgContent.scripts?.lint).toBe('custom-lint-command')
+  expect(stdout).toContain('Changes wrote to package.json')
+})
+
+it('lint script - check should add check script', async () => {
+  const { stdout } = await run(['--lint=check'])
+
+  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  expect(pkgContent.scripts?.lint).toBe('eslint --cache')
+  expect(stdout).toContain('Changes wrote to package.json')
+})
+
+it('lint script - fix should add fix script', async () => {
+  const { stdout } = await run(['--lint=fix'])
+
+  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  expect(pkgContent.scripts?.lint).toBe('eslint --fix --cache')
+  expect(stdout).toContain('Changes wrote to package.json')
+})
+
+it('lint script - keep should not add script if none exists', async () => {
+  const { stdout } = await run(['--lint=keep'])
+
+  const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
+  expect(pkgContent.scripts?.lint).toBeUndefined()
+  expect(stdout).toContain('Changes wrote to package.json')
+})
+
 it('esm eslint.config.js', async () => {
   const pkgContent = await fs.readFile('package.json', 'utf-8')
   await fs.writeFile(join(genPath, 'package.json'), JSON.stringify({ ...JSON.parse(pkgContent), type: 'module' }, null, 2))
