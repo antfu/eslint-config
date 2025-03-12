@@ -5,13 +5,16 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  cli:
+  dev:
     '@antfu/ni':
       specifier: ^24.1.0
       version: 24.1.0
     '@eslint/config-inspector':
       specifier: ^1.0.2
       version: 1.0.2
+    '@stylistic/eslint-plugin-migrate':
+      specifier: ^4.2.0
+      version: 4.2.0
     '@types/node':
       specifier: ^22.13.10
       version: 22.13.10
@@ -107,9 +110,6 @@ catalogs:
     '@stylistic/eslint-plugin':
       specifier: ^4.2.0
       version: 4.2.0
-    '@stylistic/eslint-plugin-migrate':
-      specifier: ^4.2.0
-      version: 4.2.0
     '@typescript-eslint/eslint-plugin':
       specifier: ^8.26.1
       version: 8.26.1
@@ -159,8 +159,8 @@ catalogs:
       specifier: ^4.10.1
       version: 4.10.1
     eslint-plugin-pnpm:
-      specifier: ^0.2.0
-      version: 0.2.0
+      specifier: ^0.3.0
+      version: 0.3.0
     eslint-plugin-regexp:
       specifier: ^2.7.0
       version: 2.7.0
@@ -279,7 +279,7 @@ importers:
         version: 4.10.1(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       eslint-plugin-pnpm:
         specifier: catalog:prod
-        version: 0.2.0(eslint@9.22.0(jiti@2.4.2))
+        version: 0.3.0(eslint@9.22.0(jiti@2.4.2))
       eslint-plugin-regexp:
         specifier: catalog:prod
         version: 2.7.0(eslint@9.22.0(jiti@2.4.2))
@@ -327,22 +327,22 @@ importers:
         specifier: workspace:*
         version: 'link:'
       '@antfu/ni':
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 24.1.0
       '@eslint-react/eslint-plugin':
         specifier: catalog:peer
         version: 1.32.0(eslint@9.22.0(jiti@2.4.2))(ts-api-utils@2.0.1(typescript@5.8.2))(typescript@5.8.2)
       '@eslint/config-inspector':
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 1.0.2(eslint@9.22.0(jiti@2.4.2))
       '@prettier/plugin-xml':
         specifier: catalog:peer
         version: 3.4.1(prettier@3.4.2)
       '@stylistic/eslint-plugin-migrate':
-        specifier: catalog:prod
+        specifier: catalog:dev
         version: 4.2.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       '@types/node':
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 22.13.10
       '@unocss/eslint-plugin':
         specifier: catalog:peer
@@ -351,7 +351,7 @@ importers:
         specifier: catalog:peer
         version: 1.2.1
       bumpp:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 10.1.0
       eslint:
         specifier: ^9.22.0
@@ -375,16 +375,16 @@ importers:
         specifier: catalog:peer
         version: 3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.23.0)
       eslint-typegen:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 2.0.0(eslint@9.22.0(jiti@2.4.2))
       execa:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 9.5.2
       jiti:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 2.4.2
       lint-staged:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 15.4.3
       prettier-plugin-astro:
         specifier: catalog:peer
@@ -393,7 +393,7 @@ importers:
         specifier: catalog:peer
         version: 1.0.5(prettier@3.4.2)
       simple-git-hooks:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 2.11.1
       svelte:
         specifier: catalog:peer
@@ -402,19 +402,19 @@ importers:
         specifier: catalog:peer
         version: 1.0.1(svelte@5.23.0)
       tinyglobby:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 0.2.12
       tsup:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 8.4.0(jiti@2.4.2)(postcss@8.4.49)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
       typescript:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 5.8.2
       vitest:
-        specifier: catalog:cli
+        specifier: catalog:dev
         version: 3.0.8(@types/debug@4.1.12)(@types/node@22.13.10)
       vue:
         specifier: catalog:peer
@@ -1722,8 +1722,8 @@ packages:
     peerDependencies:
       eslint: ^9.22.0
 
-  eslint-plugin-pnpm@0.2.0:
-    resolution: {integrity: sha512-ROGJ5q5JXJ4xAEFn7B+Z5DqIYiXXbsvoPV//U2o5NBe65shJpgwu+JH0Ee7zFgYnQx5MA6KWIX1Wm6mj7hX7wg==}
+  eslint-plugin-pnpm@0.3.0:
+    resolution: {integrity: sha512-MSmU6O6jC+LZYWX9Mfh7JznSz6GqUpVS0wXMSH3qG6Spr7tQc60CjJ5C6VVEGKtT3/7jLeNl4LSpIe/9KPdaTw==}
     peerDependencies:
       eslint: ^9.22.0
 
@@ -2668,8 +2668,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pnpm-workspace-yaml@0.2.0:
-    resolution: {integrity: sha512-LWDk/rDoTPfW9GSsP26VSGlmnY8xel5/VNINmSh7h8svszptWWwzuLS16YT8Pb19Mw1qq7JlSKhgfb+4Pq0lxw==}
+  pnpm-workspace-yaml@0.3.0:
+    resolution: {integrity: sha512-akyhU8XeKUbVqOatMoiFWq9OCvYa8X9gHyZIB0dQEIHV73sXgbnUm7sOf2mpl3AoEFN4p4oFFxIJKQfsoAiuJg==}
 
   postcss-load-config@3.1.4:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
@@ -4635,12 +4635,15 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-pnpm@0.2.0(eslint@9.22.0(jiti@2.4.2)):
+  eslint-plugin-pnpm@0.3.0(eslint@9.22.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.22.0(jiti@2.4.2)
       find-up-simple: 1.0.1
       jsonc-eslint-parser: 2.4.0
-      pnpm-workspace-yaml: 0.2.0
+      pathe: 2.0.3
+      pnpm-workspace-yaml: 0.3.0
+      tinyglobby: 0.2.12
+      yaml-eslint-parser: 1.3.0
 
   eslint-plugin-react-debug@1.32.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2):
     dependencies:
@@ -5839,7 +5842,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pnpm-workspace-yaml@0.2.0:
+  pnpm-workspace-yaml@0.3.0:
     dependencies:
       yaml: 2.7.0
 
