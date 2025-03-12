@@ -5,6 +5,7 @@ import { antfu } from './src'
 export default antfu(
   {
     vue: true,
+    vueA11y: true,
     react: true,
     solid: true,
     svelte: true,

@@ -291,6 +291,14 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   vue?: boolean | OptionsVue
 
   /**
+   * Enable Vue A11y support.
+   *
+   * @see https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/
+   * @default auto-detect based on the dependencies
+   */
+  vueA11y?: boolean | OptionsOverrides
+
+  /**
    * Enable JSONC support.
    *
    * @default true
