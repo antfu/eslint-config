@@ -31,7 +31,6 @@ import {
   unicorn,
   unocss,
   vue,
-  vueA11y,
   yaml,
 } from './configs'
 import { formatters } from './configs/formatters'
@@ -98,7 +97,6 @@ export function antfu(
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
-    vueA11y: enableVueA11y = false,
   } = options
 
   let isInEditor = options.isInEditor
@@ -205,12 +203,6 @@ export function antfu(
       overrides: getOverrides(options, 'vue'),
       stylistic: stylisticOptions,
       typescript: !!enableTypeScript,
-    }))
-  }
-
-  if (enableVueA11y) {
-    configs.push(vueA11y({
-      overrides: getOverrides(options, 'vueA11y'),
     }))
   }
 

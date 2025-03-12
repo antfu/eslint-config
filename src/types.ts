@@ -44,6 +44,14 @@ export interface OptionsVue extends OptionsOverrides {
    * @default 3
    */
   vueVersion?: 2 | 3
+
+  /**
+   * Vue accessibility plugin. Help check a11y issue in `.vue` files upon enabled
+   *
+   * @see https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/
+   * @default false
+   */
+  a11y?: boolean
 }
 
 export type OptionsTypescript =
@@ -289,14 +297,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default auto-detect based on the dependencies
    */
   vue?: boolean | OptionsVue
-
-  /**
-   * Enable Vue A11y support.
-   *
-   * @see https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/
-   * @default auto-detect based on the dependencies
-   */
-  vueA11y?: boolean | OptionsOverrides
 
   /**
    * Enable JSONC support.
