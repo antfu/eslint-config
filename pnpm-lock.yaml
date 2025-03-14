@@ -79,6 +79,9 @@ catalogs:
     eslint-plugin-svelte:
       specifier: ^3.1.0
       version: 3.1.0
+    eslint-plugin-vuejs-accessibility:
+      specifier: ^2.4.1
+      version: 2.4.1
     prettier-plugin-astro:
       specifier: ^0.14.1
       version: 0.14.1
@@ -375,7 +378,7 @@ importers:
         specifier: catalog:peer
         version: 3.1.0(eslint@9.22.0(jiti@2.4.2))(svelte@5.23.0)
       eslint-plugin-vuejs-accessibility:
-        specifier: ^2.4.1
+        specifier: catalog:peer
         version: 2.4.1(eslint@9.22.0(jiti@2.4.2))
       eslint-typegen:
         specifier: catalog:dev

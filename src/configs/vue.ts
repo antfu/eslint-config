@@ -9,7 +9,7 @@ import type {
 
 import { mergeProcessors } from 'eslint-merge-processors'
 import { GLOB_VUE } from '../globs'
-import { interopDefault } from '../utils'
+import { ensurePackages, interopDefault } from '../utils'
 
 export async function vue(
   options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {},
@@ -29,6 +29,12 @@ export async function vue(
   const {
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  if (a11y) {
+    await ensurePackages([
+      'eslint-plugin-vuejs-accessibility',
+    ])
+  }
 
   const [
     pluginVue,
