@@ -132,7 +132,6 @@ export async function react(
         'react/no-unused-state': 'warn',
         'react/no-use-context': 'warn',
         'react/no-useless-forward-ref': 'warn',
-        'react/no-useless-fragment': 'warn',
         'react/use-jsx-vars': 'warn',
 
         // recommended rules from eslint-plugin-react-dom https://eslint-react.xyz/docs/rules/overview#dom-rules
