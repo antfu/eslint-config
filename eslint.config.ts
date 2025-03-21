@@ -18,6 +18,7 @@ export default antfu(
     ignores: [
       'fixtures',
       '_fixtures',
+      '**/constants-generated.ts',
     ],
   },
   {

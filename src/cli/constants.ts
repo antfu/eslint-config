@@ -1,9 +1,6 @@
 import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types'
 
 import c from 'ansis'
-import pkgJson from '../../package.json'
-
-export { pkgJson }
 
 export const vscodeSettingsString = `
   // Disable the default formatter, use eslint instead
@@ -105,6 +102,12 @@ export const dependenciesMap = {
     'eslint-plugin-astro',
     'astro-eslint-parser',
   ],
+  formatter: [
+    'eslint-plugin-format',
+  ],
+  formatterAstro: [
+    'prettier-plugin-astro',
+  ],
   react: [
     '@eslint-react/eslint-plugin',
     'eslint-plugin-react-hooks',
@@ -119,6 +122,9 @@ export const dependenciesMap = {
   svelte: [
     'eslint-plugin-svelte',
     'svelte-eslint-parser',
+  ],
+  unocss: [
+    '@unocss/eslint-plugin',
   ],
   vue: [],
 } as const
