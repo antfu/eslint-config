@@ -538,6 +538,8 @@ export default antfu({
 })
 ```
 
+As it's in maintenance mode, we only accept bug fixes for Vue 2. It might also be removed in the future when `eslint-plugin-vue` drops support for Vue 2. We recommend upgrading to Vue 3 if possible.
+
 #### Vue Accessibility
 
 To enable Vue accessibility support, you need to explicitly turn it on:
