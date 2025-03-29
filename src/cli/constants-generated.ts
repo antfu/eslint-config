@@ -1,5 +1,5 @@
 export const versionsMap = {
-  "@eslint-react/eslint-plugin": "^1.37.3",
+  "@eslint-react/eslint-plugin": "^1.38.4",
   "@unocss/eslint-plugin": "^66.0.0",
   "astro-eslint-parser": "^1.2.2",
   "eslint": "^9.23.0",

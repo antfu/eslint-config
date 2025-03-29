@@ -95,6 +95,8 @@ export async function react(
       name: 'antfu/react/rules',
       rules: {
         // recommended rules from eslint-plugin-react-x https://eslint-react.xyz/docs/rules/overview#core-rules
+        'react/jsx-no-duplicate-props': 'warn',
+        'react/jsx-uses-vars': 'warn',
         'react/no-access-state-in-setstate': 'error',
         'react/no-array-index-key': 'warn',
         'react/no-children-count': 'warn',
@@ -111,7 +113,6 @@ export async function react(
         'react/no-create-ref': 'error',
         'react/no-default-props': 'error',
         'react/no-direct-mutation-state': 'error',
-        'react/no-duplicate-jsx-props': 'warn',
         'react/no-duplicate-key': 'warn',
         'react/no-forward-ref': 'warn',
         'react/no-implicit-key': 'warn',
@@ -132,7 +133,6 @@ export async function react(
         'react/no-unused-state': 'warn',
         'react/no-use-context': 'warn',
         'react/no-useless-forward-ref': 'warn',
-        'react/use-jsx-vars': 'warn',
 
         // recommended rules from eslint-plugin-react-dom https://eslint-react.xyz/docs/rules/overview#dom-rules
         'react-dom/no-dangerously-set-innerhtml': 'warn',
@@ -158,6 +158,7 @@ export async function react(
         // recommended rules from eslint-plugin-react-hooks-extra https://eslint-react.xyz/docs/rules/overview#hooks-extra-rules
         'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',
         'react-hooks-extra/no-unnecessary-use-prefix': 'warn',
+        'react-hooks-extra/prefer-use-state-lazy-initialization': 'warn',
 
         // recommended rules from eslint-plugin-react-web-api https://eslint-react.xyz/docs/rules/overview#web-api-rules
         'react-web-api/no-leaked-event-listener': 'warn',
