@@ -386,7 +386,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    *
    * @default false
    */
-  svelte?: boolean
+  svelte?: boolean | OptionsOverrides
 
   /**
    * Enable unocss rules.
