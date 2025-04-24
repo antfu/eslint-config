@@ -29,11 +29,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "nr gen && tsup --clean --dts",
-    "stub": "tsup",
+    "build": "nr gen && tsdown --clean --dts",
+    "stub": "tsdown",
     "dev": "npx @eslint/config-inspector --config eslint.config.ts",
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
-    "watch": "tsup --watch",
+    "watch": "tsdown --watch",
     "lint": "eslint",
     "gen": "tsx scripts/typegen.ts && tsx scripts/versiongen.ts",
     "prepack": "nr build",
@@ -171,7 +171,7 @@
     "svelte": "catalog:peer",
     "svelte-eslint-parser": "catalog:peer",
     "tinyglobby": "catalog:dev",
-    "tsup": "catalog:dev",
+    "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
     "vitest": "catalog:dev",
