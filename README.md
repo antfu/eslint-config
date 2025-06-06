@@ -384,7 +384,6 @@ Since flat config requires us to explicitly provide the plugin names (instead of
 
 | New Prefix | Original Prefix        | Source Plugin                                                                              |
 | ---------- | ---------------------- | ------------------------------------------------------------------------------------------ |
-| `import/*` | `import-x/*`           | [eslint-plugin-import-x](https://github.com/un-es/eslint-plugin-import-x)                  |
 | `node/*`   | `n/*`                  | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                     |
 | `yaml/*`   | `yml/*`                | [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml)                        |
 | `ts/*`     | `@typescript-eslint/*` | [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) |

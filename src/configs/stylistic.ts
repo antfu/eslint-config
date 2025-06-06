@@ -1,5 +1,4 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types'
-
 import { pluginAntfu } from '../plugins'
 import { interopDefault } from '../utils'
 
@@ -64,6 +63,11 @@ export async function stylistic(
         ),
 
         'style/generator-star-spacing': ['error', { after: true, before: false }],
+        'style/padding-line-between-statements': [
+          'error',
+          { blankLine: 'always', next: '*', prev: 'import' },
+          { blankLine: 'any', next: 'import', prev: 'import' },
+        ],
         'style/yield-star-spacing': ['error', { after: true, before: false }],
 
         ...overrides,
