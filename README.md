@@ -497,10 +497,10 @@ export default antfu()
   )
   // overrides any named configs
   .override(
-    'antfu/imports',
+    'antfu/stylistic/rules',
     {
       rules: {
-        'import/order': ['error', { 'newlines-between': 'always' }],
+        'style/generator-star-spacing': ['error', { after: true, before: false }],
       }
     }
   )
