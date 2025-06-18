@@ -285,6 +285,13 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   unicorn?: boolean | OptionsUnicorn
 
   /**
+   * Options for eslint-plugin-import-lite.
+   *
+   * @default true
+   */
+  imports?: boolean | OptionsOverrides
+
+  /**
    * Enable test support.
    *
    * @default true
