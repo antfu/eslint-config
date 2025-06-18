@@ -63,11 +63,6 @@ export async function stylistic(
         ),
 
         'style/generator-star-spacing': ['error', { after: true, before: false }],
-        'style/padding-line-between-statements': [
-          'error',
-          { blankLine: 'always', next: '*', prev: 'import' },
-          { blankLine: 'any', next: 'import', prev: 'import' },
-        ],
         'style/yield-star-spacing': ['error', { after: true, before: false }],
 
         ...overrides,
