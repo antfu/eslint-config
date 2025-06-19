@@ -62,6 +62,7 @@ export const defaultPluginRenaming = {
 
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
+  'import-lite': 'import',
   'n': 'node',
   'vitest': 'test',
   'yml': 'yaml',
@@ -86,6 +87,7 @@ export function antfu(
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
+    imports: enableImports = true,
     jsx: enableJsx = true,
     pnpm: enableCatalogs = false, // TODO: smart detect
     react: enableReact = false,
@@ -155,6 +157,19 @@ export function antfu(
     // Optional plugins (installed but not enabled by default)
     perfectionist(),
   )
+
+  if (enableImports) {
+    configs.push(
+      imports(enableImports === true
+        ? {
+            stylistic: stylisticOptions,
+          }
+        : {
+            stylistic: stylisticOptions,
+            ...enableImports,
+          }),
+    )
+  }
 
   if (enableUnicorn) {
     configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn))

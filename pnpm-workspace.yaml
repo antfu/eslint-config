@@ -2,6 +2,7 @@ packages:
   - fixtures/*
 overrides:
   '@eslint-community/eslint-utils': ^4.7.0
+  '@typescript-eslint/types': ^8.33.1
   '@typescript-eslint/utils': ^8.33.1
   eslint: ^9.28.0
   tsx: ^4.19.4
@@ -56,6 +57,7 @@ catalogs:
     eslint-merge-processors: ^2.0.0
     eslint-plugin-antfu: ^3.1.1
     eslint-plugin-command: ^3.2.1
+    eslint-plugin-import-lite: ^0.3.0
     eslint-plugin-jsdoc: ^50.7.1
     eslint-plugin-jsonc: ^2.20.1
     eslint-plugin-n: ^17.19.0
