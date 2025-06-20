@@ -196,6 +196,10 @@ export async function react(
                     'headers',
                     'loader',
                     'action',
+                    'clientLoader',
+                    'clientAction',
+                    'handle',
+                    'shouldRevalidate',
                   ]
                 : []),
             ],
