@@ -199,7 +199,7 @@ export async function react(
                     'clientLoader',
                     'clientAction',
                     'handle',
-                    'shouldRevalidate'
+                    'shouldRevalidate',
                   ]
                 : []),
             ],
