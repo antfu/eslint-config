@@ -623,6 +623,25 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh
 ```
 
+#### Next.js
+
+To enable Next.js support, you need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  nextjs: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D @next/eslint-plugin-next
+```
+
 #### Svelte
 
 To enable svelte support, you need to explicitly turn it on:
