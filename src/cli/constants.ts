@@ -108,6 +108,9 @@ export const dependenciesMap = {
   formatterAstro: [
     'prettier-plugin-astro',
   ],
+  nextjs: [
+    '@next/eslint-plugin-next',
+  ],
   react: [
     '@eslint-react/eslint-plugin',
     'eslint-plugin-react-hooks',

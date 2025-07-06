@@ -375,6 +375,17 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default false
    */
   react?: boolean | OptionsOverrides
+
+  /**
+   * Enable nextjs rules.
+   *
+   * Requires installing:
+   * - `@next/eslint-plugin-next`
+   *
+   * @default false
+   */
+  nextjs?: boolean | OptionsOverrides
+
   /**
    * Enable solid rules.
    *
