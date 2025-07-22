@@ -8,8 +8,8 @@ export const versionsMap = {
   "eslint-plugin-react-hooks": "^5.2.0",
   "eslint-plugin-react-refresh": "^0.4.20",
   "eslint-plugin-solid": "^0.14.5",
-  "eslint-plugin-svelte": "^3.10.1",
+  "eslint-plugin-svelte": "^3.11.0",
   "prettier-plugin-astro": "^0.14.1",
   "prettier-plugin-slidev": "^1.0.5",
-  "svelte-eslint-parser": "^1.2.0"
+  "svelte-eslint-parser": "^1.3.0"
 }
