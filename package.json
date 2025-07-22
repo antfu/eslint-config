@@ -176,6 +176,9 @@
     "vitest": "catalog:dev",
     "vue": "catalog:peer"
   },
+  "resolutions": {
+    "eslint": "catalog:peer"
+  },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
