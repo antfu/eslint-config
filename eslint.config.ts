@@ -9,6 +9,7 @@ export default antfu(
     solid: true,
     svelte: true,
     astro: true,
+    nextjs: true,
     typescript: true,
     formatters: true,
     pnpm: true,
