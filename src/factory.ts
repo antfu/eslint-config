@@ -61,11 +61,13 @@ export const defaultPluginRenaming = {
   '@eslint-react/hooks-extra': 'react-hooks-extra',
   '@eslint-react/naming-convention': 'react-naming-convention',
 
+  '@next/next': 'next',
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
   'import-lite': 'import',
   'n': 'node',
   'vitest': 'test',
+
   'yml': 'yaml',
 }
 

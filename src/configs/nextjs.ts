@@ -28,7 +28,7 @@ export async function nextjs(
     {
       name: 'antfu/nextjs/setup',
       plugins: {
-        '@next/next': pluginNextJS,
+        next: pluginNextJS,
       },
     },
     {
