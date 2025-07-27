@@ -65,6 +65,19 @@ export interface OptionsVue extends OptionsOverrides {
   a11y?: boolean
 }
 
+export interface OptionsJSXA11y extends OptionsOverrides {
+  // Add future a11y-specific options here
+}
+
+export interface OptionsJSX {
+  /**
+   * Enable JSX accessibility rules.
+   * Can be a boolean or an object for custom options and overrides.
+   * @default false
+   */
+  a11y?: boolean | OptionsJSXA11y
+}
+
 export type OptionsTypescript
   = (OptionsTypeScriptWithTypes & OptionsOverrides)
     | (OptionsTypeScriptParserOptions & OptionsOverrides)
@@ -282,11 +295,11 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   /**
    * Enable JSX related rules.
    *
-   * Currently only stylistic rules are included.
+   * Passing an object to enable JSX accessibility rules.
    *
    * @default true
    */
-  jsx?: boolean
+  jsx?: boolean | OptionsJSX
 
   /**
    * Options for eslint-plugin-unicorn.
