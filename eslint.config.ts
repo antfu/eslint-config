@@ -14,6 +14,9 @@ export default antfu(
     formatters: true,
     pnpm: true,
     type: 'lib',
+    jsx: {
+      a11y: true,
+    },
   },
   {
     ignores: [
