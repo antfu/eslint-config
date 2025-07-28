@@ -72,6 +72,10 @@ export interface OptionsJSXA11y extends OptionsOverrides {
 export interface OptionsJSX {
   /**
    * Enable JSX accessibility rules.
+   *
+   * Requires installing:
+   * - `eslint-plugin-jsx-a11y`
+   *
    * Can be a boolean or an object for custom options and overrides.
    * @default false
    */
