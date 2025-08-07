@@ -138,8 +138,7 @@ export function isInEditorEnv(): boolean {
   if (isInGitHooksOrLintStaged())
     return false
   return !!(false
-    || process.env.VSCODE_PID
-    || process.env.VSCODE_CWD
+    || Object.keys(process.env).find(value => /^VSCODE_.*/.test(value))
     || process.env.JETBRAINS_IDE
     || process.env.VIM
     || process.env.NVIM
