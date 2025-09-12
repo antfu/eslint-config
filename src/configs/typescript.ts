@@ -1,5 +1,7 @@
 import type {
   OptionsComponentExts,
+
+  OptionsErasable,
   OptionsFiles,
   OptionsOverrides,
   OptionsProjectType,
@@ -14,10 +16,11 @@ import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules } from '../utils'
 
 export async function typescript(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType = {},
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType & OptionsErasable = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],
+    erasable = false,
     overrides = {},
     overridesTypeAware = {},
     parserOptions = {},
@@ -185,6 +188,22 @@ export async function typescript(
             ...overridesTypeAware,
           },
         }]
+      : [],
+    ...erasable
+      ? [
+          {
+            name: 'antfu/typescript/erasable-syntax-only',
+            plugins: {
+              'erasable-syntax-only': await interopDefault(import('eslint-plugin-erasable-syntax-only')),
+            },
+            rules: {
+              'erasable-syntax-only/enums': 'error',
+              'erasable-syntax-only/import-aliases': 'error',
+              'erasable-syntax-only/namespaces': 'error',
+              'erasable-syntax-only/parameter-properties': 'error',
+            },
+          },
+        ]
       : [],
   ]
 }

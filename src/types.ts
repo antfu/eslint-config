@@ -83,8 +83,8 @@ export interface OptionsJSX {
 }
 
 export type OptionsTypescript
-  = (OptionsTypeScriptWithTypes & OptionsOverrides)
-    | (OptionsTypeScriptParserOptions & OptionsOverrides)
+  = (OptionsTypeScriptWithTypes & OptionsOverrides & OptionsErasable)
+    | (OptionsTypeScriptParserOptions & OptionsOverrides & OptionsErasable)
 
 export interface OptionsFormatters {
   /**
@@ -234,6 +234,16 @@ export interface OptionsProjectType {
    * @default 'app'
    */
   type?: 'app' | 'lib'
+}
+
+export interface OptionsErasable {
+  /**
+   * Enable erasable syntax only rules.
+   *
+   * @see https://github.com/JoshuaKGoldberg/eslint-plugin-erasable-syntax-only
+   * @default false
+   */
+  erasable?: boolean
 }
 
 export interface OptionsRegExp {
