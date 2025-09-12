@@ -243,7 +243,7 @@ export interface OptionsErasable {
    * @see https://github.com/JoshuaKGoldberg/eslint-plugin-erasable-syntax-only
    * @default false
    */
-  erasable?: boolean
+  erasableOnly?: boolean
 }
 
 export interface OptionsRegExp {

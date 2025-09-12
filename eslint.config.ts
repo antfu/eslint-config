@@ -11,7 +11,7 @@ export default antfu(
     astro: true,
     nextjs: true,
     typescript: {
-      erasable: true,
+      erasableOnly: true,
     },
     formatters: true,
     pnpm: true,

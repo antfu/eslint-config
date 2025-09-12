@@ -21,7 +21,7 @@ export async function typescript(
 ): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],
-    erasable = false,
+    erasableOnly = false,
     overrides = {},
     overridesTypeAware = {},
     parserOptions = {},
@@ -190,7 +190,7 @@ export async function typescript(
           },
         }]
       : [],
-    ...erasable
+    ...erasableOnly
       ? [
           {
             name: 'antfu/typescript/erasable-syntax-only',
