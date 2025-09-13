@@ -3,10 +3,10 @@ import type { Linter } from 'eslint'
 import type {
   OptionsComponentExts,
 
-  OptionsErasable,
   OptionsFiles,
   OptionsOverrides,
   OptionsProjectType,
+  OptionsTypeScriptErasableOnly,
   OptionsTypeScriptParserOptions,
   OptionsTypeScriptWithTypes,
   TypedFlatConfigItem,
@@ -17,7 +17,7 @@ import { pluginAntfu } from '../plugins'
 import { interopDefault, renameRules } from '../utils'
 
 export async function typescript(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType & OptionsErasable = {},
+  options: OptionsFiles & OptionsComponentExts & OptionsOverrides & OptionsTypeScriptWithTypes & OptionsTypeScriptParserOptions & OptionsProjectType & OptionsTypeScriptErasableOnly = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],

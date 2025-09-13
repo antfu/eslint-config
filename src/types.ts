@@ -83,8 +83,8 @@ export interface OptionsJSX {
 }
 
 export type OptionsTypescript
-  = (OptionsTypeScriptWithTypes & OptionsOverrides & OptionsErasable)
-    | (OptionsTypeScriptParserOptions & OptionsOverrides & OptionsErasable)
+  = (OptionsTypeScriptWithTypes & OptionsOverrides & OptionsTypeScriptErasableOnly)
+    | (OptionsTypeScriptParserOptions & OptionsOverrides & OptionsTypeScriptErasableOnly)
 
 export interface OptionsFormatters {
   /**
@@ -236,7 +236,7 @@ export interface OptionsProjectType {
   type?: 'app' | 'lib'
 }
 
-export interface OptionsErasable {
+export interface OptionsTypeScriptErasableOnly {
   /**
    * Enable erasable syntax only rules.
    *
