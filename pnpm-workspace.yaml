@@ -1,6 +1,11 @@
 packages:
   - fixtures/*
 
+strictPeerDependencies: false
+shamefullyHoist: true
+ignoreWorkspaceRootCheck: true
+shellEmulator: true
+
 overrides:
   '@eslint-community/eslint-utils': ^4.9.0
   '@typescript-eslint/types': ^8.44.0
