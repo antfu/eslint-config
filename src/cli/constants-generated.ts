@@ -6,7 +6,7 @@ export const versionsMap = {
   "eslint": "^9.36.0",
   "eslint-plugin-astro": "^1.3.1",
   "eslint-plugin-format": "^1.0.1",
-  "eslint-plugin-react-hooks": "^5.2.0",
+  "eslint-plugin-react-hooks": "^7.0.0",
   "eslint-plugin-react-refresh": "^0.4.20",
   "eslint-plugin-solid": "^0.14.5",
   "eslint-plugin-svelte": "^3.12.3",
