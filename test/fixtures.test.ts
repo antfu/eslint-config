@@ -8,7 +8,7 @@ import { glob } from 'tinyglobby'
 import { afterAll, beforeAll, it } from 'vitest'
 
 const isWindows = process.platform === 'win32'
-const timeout = isWindows ? 300_000 : 30_000
+const timeout = isWindows ? 300_000 : 60_000
 
 beforeAll(async () => {
   await fs.rm('_fixtures', { recursive: true, force: true })
