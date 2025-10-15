@@ -140,7 +140,6 @@ export function isInEditorEnv(): boolean {
   return !!(false
     || process.env.VSCODE_PID
     || process.env.VSCODE_CWD
-    || process.env.TERM_PROGRAM === "vscode"
     || process.env.JETBRAINS_IDE
     || process.env.VIM
     || process.env.NVIM
