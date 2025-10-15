@@ -67,7 +67,7 @@ export async function react(
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i))
   const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
 
-  const plugins = pluginReact.configs.all.plugins
+  const plugins = (pluginReact.configs.all as any).plugins
 
   return [
     {
