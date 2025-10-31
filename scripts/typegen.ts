@@ -2,43 +2,47 @@ import fs from 'node:fs/promises'
 
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
+import { antfu } from '../src/factory'
 
-import { astro, combine, comments, formatters, imports, javascript, jsdoc, jsonc, jsx, markdown, nextjs, node, perfectionist, react, regexp, solid, sortPackageJson, stylistic, svelte, test, toml, typescript, unicorn, unocss, vue, yaml } from '../src'
-
-const configs = await combine(
-  {
-    plugins: {
-      '': {
-        rules: Object.fromEntries(builtinRules.entries()),
+const configs = await antfu({
+  astro: true,
+  formatters: true,
+  imports: true,
+  jsx: {
+    a11y: true,
+  },
+  jsonc: true,
+  markdown: true,
+  nextjs: true,
+  react: true,
+  solid: true,
+  pnpm: true,
+  regexp: true,
+  stylistic: true,
+  gitignore: true,
+  svelte: true,
+  typescript: {
+    tsconfigPath: 'tsconfig.json',
+    erasableOnly: true,
+  },
+  unicorn: true,
+  unocss: true,
+  vue: {
+    a11y: true,
+  },
+  yaml: true,
+  toml: true,
+  test: true,
+})
+  .prepend(
+    {
+      plugins: {
+        '': {
+          rules: Object.fromEntries(builtinRules.entries()),
+        },
       },
     },
-  },
-  astro(),
-  comments(),
-  formatters(),
-  imports(),
-  javascript(),
-  jsx({ a11y: true }),
-  jsdoc(),
-  jsonc(),
-  markdown(),
-  node(),
-  perfectionist(),
-  nextjs(),
-  react(),
-  solid(),
-  sortPackageJson(),
-  stylistic(),
-  svelte(),
-  test(),
-  toml(),
-  regexp(),
-  typescript(),
-  unicorn(),
-  unocss(),
-  vue(),
-  yaml(),
-)
+  )
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[]
 
