@@ -1,8 +1,8 @@
 {
   "name": "@antfu/eslint-config",
   "type": "module",
-  "version": "6.0.0",
-  "packageManager": "pnpm@10.18.3",
+  "version": "6.2.0",
+  "packageManager": "pnpm@10.20.0",
   "description": "Anthony's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
@@ -44,7 +44,7 @@
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "^2.0.1",
-    "@next/eslint-plugin-next": "^15.4.0-canary.115",
+    "@next/eslint-plugin-next": ">=15.0.0",
     "@prettier/plugin-xml": "^3.4.1",
     "@unocss/eslint-plugin": ">=0.50.0",
     "astro-eslint-parser": "^1.0.2",

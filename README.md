@@ -129,7 +129,7 @@ Add the following settings to your `.vscode/settings.json`:
     "source.organizeImports": "never"
   },
 
-  // Silent the stylistic rules in you IDE, but still auto fix them
+  // Silent the stylistic rules in your IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off", "fixable": true },
     { "rule": "format/*", "severity": "off", "fixable": true },
@@ -223,7 +223,7 @@ lspconfig.eslint.setup(
       "postcss"
     },
     settings = {
-      -- Silent the stylistic rules in you IDE, but still auto fix them
+      -- Silent the stylistic rules in your IDE, but still auto fix them
       rulesCustomizations = customizations,
     },
   }
@@ -274,11 +274,23 @@ And that's it! Or you can configure each integration individually, for example:
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-// Type of the project. 'lib' for libraries, the default is 'app'
+  // Type of the project. 'lib' for libraries, the default is 'app'
   type: 'lib',
 
+  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+  // The `ignores` option in the option (first argument) is specifically treated to always be global ignores
+  // And will **extend** the config's default ignores, not override them
+  // You can also pass a function to modify the default ignores
+  ignores: [
+    '**/fixtures',
+    // ...globs
+  ],
+
+  // Parse the `.gitignore` file to get the ignores, on by default
+  gitignore: true,
+
   // Enable stylistic formatting rules
-  // stylistic: true,
+  stylistic: true,
 
   // Or customize the stylistic rules
   stylistic: {
@@ -293,12 +305,6 @@ export default antfu({
   // Disable jsonc and yaml support
   jsonc: false,
   yaml: false,
-
-  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
-  ignores: [
-    '**/fixtures',
-    // ...globs
-  ]
 })
 ```
 
@@ -402,11 +408,11 @@ type foo = { bar: 2 }
 ```
 
 > [!NOTE]
-> About plugin renaming - it is actually rather a dangrous move that might leading to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
+> About plugin renaming - it is actually rather a dangerous move that might lead to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
 >
 > This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
 >
-> That said, it's probably still not a good idea. You might not want to doing this if you are maintaining your own eslint config.
+> That said, it's probably still not a good idea. You might not want to do this if you are maintaining your own eslint config.
 >
 > Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
 
