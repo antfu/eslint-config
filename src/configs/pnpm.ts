@@ -1,8 +1,10 @@
-import type { TypedFlatConfigItem } from '../types'
+import type { OptionsIsInEditor, TypedFlatConfigItem } from '../types'
 
 import { interopDefault } from '../utils'
 
-export async function pnpm(): Promise<TypedFlatConfigItem[]> {
+export async function pnpm(
+  options: OptionsIsInEditor,
+): Promise<TypedFlatConfigItem[]> {
   const [
     pluginPnpm,
     yamlParser,
@@ -27,9 +29,18 @@ export async function pnpm(): Promise<TypedFlatConfigItem[]> {
         pnpm: pluginPnpm,
       },
       rules: {
-        'pnpm/json-enforce-catalog': 'error',
-        'pnpm/json-prefer-workspace-settings': 'error',
-        'pnpm/json-valid-catalog': 'error',
+        'pnpm/json-enforce-catalog': [
+          'error',
+          { autofix: !options.isInEditor },
+        ],
+        'pnpm/json-prefer-workspace-settings': [
+          'error',
+          { autofix: !options.isInEditor },
+        ],
+        'pnpm/json-valid-catalog': [
+          'error',
+          { autofix: !options.isInEditor },
+        ],
       },
     },
     {

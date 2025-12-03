@@ -282,7 +282,9 @@ export function antfu(
 
   if (enableCatalogs) {
     configs.push(
-      pnpm(),
+      pnpm({
+        isInEditor,
+      }),
     )
   }
 
