@@ -1,10 +1,10 @@
+strictPeerDependencies: false
+ignoreWorkspaceRootCheck: true
+shamefullyHoist: true
+shellEmulator: true
+
 packages:
   - fixtures/*
-
-strictPeerDependencies: false
-shamefullyHoist: true
-ignoreWorkspaceRootCheck: true
-shellEmulator: true
 
 overrides:
   '@eslint-community/eslint-utils': ^4.9.0
