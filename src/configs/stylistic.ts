@@ -3,6 +3,7 @@ import { pluginAntfu } from '../plugins'
 import { interopDefault } from '../utils'
 
 export const StylisticConfigDefaults: StylisticConfig = {
+  experimental: false,
   indent: 2,
   jsx: true,
   quotes: 'single',
@@ -17,6 +18,7 @@ export async function stylistic(
   options: StylisticOptions = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
+    experimental,
     indent,
     jsx,
     lessOpinionated = false,
@@ -31,6 +33,7 @@ export async function stylistic(
   const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'))
 
   const config = pluginStylistic.configs.customize({
+    experimental,
     indent,
     jsx,
     pluginName: 'style',
