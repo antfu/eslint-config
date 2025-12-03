@@ -82,7 +82,7 @@ export const defaultPluginRenaming = {
  *  The merged ESLint configurations.
  */
 export function antfu(
-  options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
+  options: OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> = {},
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
