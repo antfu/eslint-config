@@ -1,9 +1,9 @@
 catalogMode: prefer
 cleanupUnusedCatalogs: true
-strictPeerDependencies: false
 ignoreWorkspaceRootCheck: true
 shamefullyHoist: true
 shellEmulator: true
+strictPeerDependencies: false
 trustPolicy: no-downgrade
 
 packages:
@@ -34,6 +34,8 @@ catalogs:
     tsx: ^4.21.0
     typescript: ^5.9.3
     vitest: ^4.0.15
+  inline:
+    find-up-simple: ^1.0.1
   peer:
     '@eslint-react/eslint-plugin': ^2.3.12
     '@next/eslint-plugin-next': ^16.0.7

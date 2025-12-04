@@ -3,6 +3,7 @@ import type { RuleOptions } from './typegen'
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types'
 
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
+import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
 import {
   astro,
@@ -94,7 +95,7 @@ export function antfu(
     imports: enableImports = true,
     jsx: enableJsx = true,
     nextjs: enableNextjs = false,
-    pnpm: enableCatalogs = false, // TODO: smart detect
+    pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
