@@ -5,10 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 catalogs:
-  default:
-    find-up-simple:
-      specifier: ^1.0.1
-      version: 1.0.1
   dev:
     '@antfu/ni':
       specifier: ^28.0.0
@@ -58,6 +54,10 @@ catalogs:
     vitest:
       specifier: ^4.0.15
       version: 4.0.15
+  inline:
+    find-up-simple:
+      specifier: ^1.0.1
+      version: 1.0.1
   peer:
     '@eslint-react/eslint-plugin':
       specifier: ^2.3.12
@@ -412,7 +412,7 @@ importers:
         specifier: catalog:dev
         version: 9.6.1
       find-up-simple:
-        specifier: 'catalog:'
+        specifier: catalog:inline
         version: 1.0.1
       jiti:
         specifier: catalog:dev
