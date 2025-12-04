@@ -53,6 +53,14 @@ export async function pnpm(
         pnpm: pluginPnpm,
       },
       rules: {
+        'pnpm/yaml-enforce-settings': ['error', {
+          settings: {
+            catalogMode: 'prefer',
+            cleanupUnusedCatalogs: true,
+            shellEmulator: true,
+            trustPolicy: 'no-downgrade',
+          },
+        }],
         'pnpm/yaml-no-duplicate-catalog-item': 'error',
         'pnpm/yaml-no-unused-catalog-item': 'error',
       },

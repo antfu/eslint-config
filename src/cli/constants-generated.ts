@@ -1,6 +1,6 @@
 export const versionsMap = {
-  "@eslint-react/eslint-plugin": "^2.3.11",
-  "@next/eslint-plugin-next": "^16.0.6",
+  "@eslint-react/eslint-plugin": "^2.3.12",
+  "@next/eslint-plugin-next": "^16.0.7",
   "@unocss/eslint-plugin": "^66.5.10",
   "astro-eslint-parser": "^1.2.2",
   "eslint": "^9.39.1",
@@ -12,5 +12,5 @@ export const versionsMap = {
   "eslint-plugin-svelte": "^3.13.0",
   "prettier-plugin-astro": "^0.14.1",
   "prettier-plugin-slidev": "^1.0.5",
-  "svelte-eslint-parser": "^1.4.0"
+  "svelte-eslint-parser": "^1.4.1"
 }
