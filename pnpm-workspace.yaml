@@ -3,7 +3,6 @@ cleanupUnusedCatalogs: true
 ignoreWorkspaceRootCheck: true
 shamefullyHoist: true
 shellEmulator: true
-strictPeerDependencies: false
 trustPolicy: no-downgrade
 
 packages:
@@ -27,7 +26,7 @@ catalogs:
     execa: ^9.6.1
     jiti: ^2.6.1
     lint-staged: ^16.2.7
-    pnpm-workspace-yaml: ^1.4.0
+    pnpm-workspace-yaml: ^1.4.1
     simple-git-hooks: ^2.13.1
     tinyglobby: ^0.2.15
     tsdown: ^0.15.12
@@ -79,7 +78,7 @@ catalogs:
     eslint-plugin-n: ^17.23.1
     eslint-plugin-no-only-tests: ^3.3.0
     eslint-plugin-perfectionist: ^4.15.1
-    eslint-plugin-pnpm: ^1.4.0
+    eslint-plugin-pnpm: ^1.4.1
     eslint-plugin-regexp: ^2.10.0
     eslint-plugin-toml: ^0.12.0
     eslint-plugin-unicorn: ^62.0.0
@@ -99,3 +98,5 @@ onlyBuiltDependencies:
   - esbuild
   - simple-git-hooks
   - unrs-resolver
+
+strictPeerDependencies: false
