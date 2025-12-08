@@ -56,7 +56,6 @@ export async function pnpm(
         'pnpm/yaml-enforce-settings': ['error', {
           settings: {
             catalogMode: 'prefer',
-            cleanupUnusedCatalogs: true,
             shellEmulator: true,
             trustPolicy: 'no-downgrade',
           },
