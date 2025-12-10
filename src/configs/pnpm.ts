@@ -1,4 +1,4 @@
-import type { OptionsPnpm, TypedFlatConfigItem } from '../types'
+import type { OptionsIsInEditor, OptionsPnpm, TypedFlatConfigItem } from '../types'
 import fs from 'node:fs/promises'
 import { findUp } from 'find-up-simple'
 
@@ -14,7 +14,7 @@ async function detectCatalogUsage(): Promise<boolean> {
 }
 
 export async function pnpm(
-  options: OptionsPnpm,
+  options: OptionsPnpm & OptionsIsInEditor = {},
 ): Promise<TypedFlatConfigItem[]> {
   const [
     pluginPnpm,

@@ -257,7 +257,7 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
-export interface OptionsPnpm extends OptionsIsInEditor {
+export interface OptionsPnpm {
   /**
    * Requires catalogs usage
    */
@@ -485,7 +485,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @experimental
    * @default false
    */
-  pnpm?: boolean
+  pnpm?: boolean | OptionsPnpm
 
   /**
    * Use external formatters to format files.

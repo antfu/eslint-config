@@ -285,6 +285,7 @@ export function antfu(
   if (enableCatalogs) {
     configs.push(
       pnpm({
+        ...resolveSubOptions(options, 'pnpm'),
         isInEditor,
       }),
     )
