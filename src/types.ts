@@ -257,6 +257,13 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
+export interface OptionsPnpm extends OptionsIsInEditor {
+  /**
+   * Requires catalogs usage
+   */
+  catalogs?: boolean
+}
+
 export interface OptionsUnoCSS extends OptionsOverrides {
   /**
    * Enable attributify support.
