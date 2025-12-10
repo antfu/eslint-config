@@ -27,7 +27,7 @@ export async function pnpm(
   ])
 
   const {
-    catalogs = detectCatalogUsage(),
+    catalogs = await detectCatalogUsage(),
     isInEditor = false,
   } = options
 
