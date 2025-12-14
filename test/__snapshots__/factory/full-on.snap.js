@@ -326,14 +326,7 @@
         "extraFileExtensions": [
           ".vue",
         ],
-        "projectService": {
-          "allowDefaultProject": [
-            "./*.js",
-          ],
-          "defaultProject": "tsconfig.json",
-        },
         "sourceType": "module",
-        "tsconfigRootDir": "/Users/antfu/i/eslint-config",
       },
     },
     "name": "antfu/typescript/type-aware-parser",

@@ -1,5 +1,5 @@
 import type { OptionsConfig, TypedFlatConfigItem } from '../src/types'
-import { expect, it } from 'vitest'
+import { it } from 'vitest'
 import { CONFIG_PRESET_FULL_OFF, CONFIG_PRESET_FULL_ON } from '../src/config-presets'
 import { antfu } from '../src/factory'
 
@@ -78,8 +78,10 @@ function serializeConfigs(configs: TypedFlatConfigItem[]) {
         }
       }
       delete clone.languageOptions.globals
-      if ((c.languageOptions.parserOptions as any)?.parser) {
+      if (c.languageOptions.parserOptions) {
         delete clone.languageOptions.parserOptions.parser
+        delete clone.languageOptions.parserOptions.projectService
+        delete clone.languageOptions.parserOptions.tsconfigRootDir
       }
     }
     if (c.processor) {
@@ -100,7 +102,7 @@ function serializeConfigs(configs: TypedFlatConfigItem[]) {
 }
 
 suites.forEach(({ name, configs }) => {
-  it(`factory ${name}`, async () => {
+  it.concurrent(`factory ${name}`, async ({ expect }) => {
     const config = await antfu(configs)
     await expect(serializeConfigs(config))
       .toMatchFileSnapshot(`./__snapshots__/factory/${name}.snap.js`)

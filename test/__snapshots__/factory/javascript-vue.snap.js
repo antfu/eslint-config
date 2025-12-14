@@ -452,7 +452,6 @@
         "extraFileExtensions": [
           ".vue",
         ],
-        "parser": null,
         "sourceType": "module",
       },
     },
