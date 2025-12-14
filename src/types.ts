@@ -262,6 +262,27 @@ export interface OptionsPnpm extends OptionsIsInEditor {
    * Requires catalogs usage
    */
   catalogs?: boolean
+
+  /**
+   * Enable linting for package.json, will install the jsonc parser
+   *
+   * @default true
+   */
+  json?: boolean
+
+  /**
+   * Enable linting for pnpm-workspace.yaml, will install the yaml parser
+   *
+   * @default true
+   */
+  yaml?: boolean
+
+  /**
+   * Sort entries in pnpm-workspace.yaml
+   *
+   * @default false
+   */
+  sort?: boolean
 }
 
 export interface OptionsUnoCSS extends OptionsOverrides {
@@ -485,7 +506,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @experimental
    * @default false
    */
-  pnpm?: boolean
+  pnpm?: boolean | OptionsPnpm
 
   /**
    * Use external formatters to format files.
