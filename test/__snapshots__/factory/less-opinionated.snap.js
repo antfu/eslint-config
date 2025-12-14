@@ -132,6 +132,27 @@
     ],
   },
   {
+    "name": "antfu/command/rules",
+    "plugins": [
+      "command",
+    ],
+    "rules": [
+      "command/command",
+    ],
+  },
+  {
+    "name": "antfu/perfectionist/setup",
+    "plugins": [
+      "perfectionist",
+    ],
+    "rules": [
+      "perfectionist/sort-exports",
+      "perfectionist/sort-imports",
+      "perfectionist/sort-named-exports",
+      "perfectionist/sort-named-imports",
+    ],
+  },
+  {
     "name": "antfu/node/rules",
     "plugins": [
       "node",
@@ -170,45 +191,6 @@
       "jsdoc/require-yields-check",
       "jsdoc/check-alignment",
       "jsdoc/multiline-blocks",
-    ],
-  },
-  {
-    "name": "antfu/imports/rules",
-    "plugins": [
-      "antfu",
-      "import",
-    ],
-    "rules": [
-      "antfu/import-dedupe",
-      "antfu/no-import-dist",
-      "antfu/no-import-node-modules-by-path",
-      "import/consistent-type-specifier-style",
-      "import/first",
-      "import/no-duplicates",
-      "import/no-mutable-exports",
-      "import/no-named-default",
-      "import/newline-after-import",
-    ],
-  },
-  {
-    "name": "antfu/command/rules",
-    "plugins": [
-      "command",
-    ],
-    "rules": [
-      "command/command",
-    ],
-  },
-  {
-    "name": "antfu/perfectionist/setup",
-    "plugins": [
-      "perfectionist",
-    ],
-    "rules": [
-      "perfectionist/sort-exports",
-      "perfectionist/sort-imports",
-      "perfectionist/sort-named-exports",
-      "perfectionist/sort-named-imports",
     ],
   },
   {
@@ -439,9 +421,7 @@
       "style/jsx-wrap-multilines",
       "antfu/consistent-list-newline",
       "antfu/consistent-chaining",
-      "antfu/curly",
-      "antfu/if-newline",
-      "antfu/top-level-function",
+      "curly",
     ],
   },
   {

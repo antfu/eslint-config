@@ -93,8 +93,10 @@ export function antfu(
     gitignore: enableGitignore = true,
     ignores: userIgnores = [],
     imports: enableImports = true,
+    jsdoc: enableJsdoc = true,
     jsx: enableJsx = true,
     nextjs: enableNextjs = false,
+    node: enableNode = true,
     pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
     react: enableReact = false,
     regexp: enableRegexp = true,
@@ -155,29 +157,32 @@ export function antfu(
       overrides: getOverrides(options, 'javascript'),
     }),
     comments(),
-    node(),
-    jsdoc({
-      stylistic: stylisticOptions,
-    }),
-    imports({
-      stylistic: stylisticOptions,
-    }),
     command(),
 
     // Optional plugins (installed but not enabled by default)
     perfectionist(),
   )
 
+  if (enableNode) {
+    configs.push(
+      node(),
+    )
+  }
+
+  if (enableJsdoc) {
+    configs.push(
+      jsdoc({
+        stylistic: stylisticOptions,
+      }),
+    )
+  }
+
   if (enableImports) {
     configs.push(
-      imports(enableImports === true
-        ? {
-            stylistic: stylisticOptions,
-          }
-        : {
-            stylistic: stylisticOptions,
-            ...enableImports,
-          }),
+      imports({
+        stylistic: stylisticOptions,
+        ...resolveSubOptions(options, 'imports'),
+      }),
     )
   }
 

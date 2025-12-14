@@ -131,62 +131,6 @@
     ],
   },
   {
-    "name": "antfu/node/rules",
-    "plugins": [
-      "node",
-    ],
-    "rules": [
-      "node/handle-callback-err",
-      "node/no-deprecated-api",
-      "node/no-exports-assign",
-      "node/no-new-require",
-      "node/no-path-concat",
-      "node/prefer-global/buffer",
-      "node/prefer-global/process",
-      "node/process-exit-as-throw",
-    ],
-  },
-  {
-    "name": "antfu/jsdoc/rules",
-    "plugins": [
-      "jsdoc",
-    ],
-    "rules": [
-      "jsdoc/check-access",
-      "jsdoc/check-param-names",
-      "jsdoc/check-property-names",
-      "jsdoc/check-types",
-      "jsdoc/empty-tags",
-      "jsdoc/implements-on-classes",
-      "jsdoc/no-defaults",
-      "jsdoc/no-multi-asterisks",
-      "jsdoc/require-param-name",
-      "jsdoc/require-property",
-      "jsdoc/require-property-description",
-      "jsdoc/require-property-name",
-      "jsdoc/require-returns-check",
-      "jsdoc/require-returns-description",
-      "jsdoc/require-yields-check",
-    ],
-  },
-  {
-    "name": "antfu/imports/rules",
-    "plugins": [
-      "antfu",
-      "import",
-    ],
-    "rules": [
-      "antfu/import-dedupe",
-      "antfu/no-import-dist",
-      "antfu/no-import-node-modules-by-path",
-      "import/consistent-type-specifier-style",
-      "import/first",
-      "import/no-duplicates",
-      "import/no-mutable-exports",
-      "import/no-named-default",
-    ],
-  },
-  {
     "name": "antfu/command/rules",
     "plugins": [
       "command",
@@ -206,22 +150,6 @@
       "perfectionist/sort-named-exports",
       "perfectionist/sort-named-imports",
     ],
-  },
-  {
-    "files": [
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])tsx",
-    ],
-    "languageOptions": {
-      "parserOptions": {
-        "ecmaFeatures": {
-          "jsx": true,
-        },
-      },
-    },
-    "name": "antfu/jsx/setup",
-    "plugins": [],
-    "rules": [],
   },
   {
     "files": [

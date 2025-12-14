@@ -2,38 +2,10 @@ import fs from 'node:fs/promises'
 
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
+import { CONFIG_PRESET_FULL_ON } from 'src/config-presets'
 import { antfu } from '../src/factory'
 
-const configs = await antfu({
-  astro: true,
-  formatters: true,
-  imports: true,
-  jsx: {
-    a11y: true,
-  },
-  jsonc: true,
-  markdown: true,
-  nextjs: true,
-  react: true,
-  solid: true,
-  pnpm: true,
-  regexp: true,
-  stylistic: true,
-  gitignore: true,
-  svelte: true,
-  typescript: {
-    tsconfigPath: 'tsconfig.json',
-    erasableOnly: true,
-  },
-  unicorn: true,
-  unocss: true,
-  vue: {
-    a11y: true,
-  },
-  yaml: true,
-  toml: true,
-  test: true,
-})
+const configs = await antfu(CONFIG_PRESET_FULL_ON)
   .prepend(
     {
       plugins: {

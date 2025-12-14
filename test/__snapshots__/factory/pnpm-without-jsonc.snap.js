@@ -132,6 +132,27 @@
     ],
   },
   {
+    "name": "antfu/command/rules",
+    "plugins": [
+      "command",
+    ],
+    "rules": [
+      "command/command",
+    ],
+  },
+  {
+    "name": "antfu/perfectionist/setup",
+    "plugins": [
+      "perfectionist",
+    ],
+    "rules": [
+      "perfectionist/sort-exports",
+      "perfectionist/sort-imports",
+      "perfectionist/sort-named-exports",
+      "perfectionist/sort-named-imports",
+    ],
+  },
+  {
     "name": "antfu/node/rules",
     "plugins": [
       "node",
@@ -170,45 +191,6 @@
       "jsdoc/require-yields-check",
       "jsdoc/check-alignment",
       "jsdoc/multiline-blocks",
-    ],
-  },
-  {
-    "name": "antfu/imports/rules",
-    "plugins": [
-      "antfu",
-      "import",
-    ],
-    "rules": [
-      "antfu/import-dedupe",
-      "antfu/no-import-dist",
-      "antfu/no-import-node-modules-by-path",
-      "import/consistent-type-specifier-style",
-      "import/first",
-      "import/no-duplicates",
-      "import/no-mutable-exports",
-      "import/no-named-default",
-      "import/newline-after-import",
-    ],
-  },
-  {
-    "name": "antfu/command/rules",
-    "plugins": [
-      "command",
-    ],
-    "rules": [
-      "command/command",
-    ],
-  },
-  {
-    "name": "antfu/perfectionist/setup",
-    "plugins": [
-      "perfectionist",
-    ],
-    "rules": [
-      "perfectionist/sort-exports",
-      "perfectionist/sort-imports",
-      "perfectionist/sort-named-exports",
-      "perfectionist/sort-named-imports",
     ],
   },
   {
@@ -439,7 +421,9 @@
       "style/jsx-wrap-multilines",
       "antfu/consistent-list-newline",
       "antfu/consistent-chaining",
-      "curly",
+      "antfu/curly",
+      "antfu/if-newline",
+      "antfu/top-level-function",
     ],
   },
   {
@@ -733,99 +717,6 @@
       "vue/quote-props",
       "vue/space-in-parens",
       "vue/template-curly-spacing",
-    ],
-  },
-  {
-    "name": "antfu/jsonc/setup",
-    "plugins": [
-      "jsonc",
-    ],
-  },
-  {
-    "files": [
-      "**/*.json",
-      "**/*.json5",
-      "**/*.jsonc",
-    ],
-    "languageOptions": {
-      "parser": "jsonc-eslint-parser",
-    },
-    "name": "antfu/jsonc/rules",
-    "rules": [
-      "jsonc/no-bigint-literals",
-      "jsonc/no-binary-expression",
-      "jsonc/no-binary-numeric-literals",
-      "jsonc/no-dupe-keys",
-      "jsonc/no-escape-sequence-in-identifier",
-      "jsonc/no-floating-decimal",
-      "jsonc/no-hexadecimal-numeric-literals",
-      "jsonc/no-infinity",
-      "jsonc/no-multi-str",
-      "jsonc/no-nan",
-      "jsonc/no-number-props",
-      "jsonc/no-numeric-separators",
-      "jsonc/no-octal",
-      "jsonc/no-octal-escape",
-      "jsonc/no-octal-numeric-literals",
-      "jsonc/no-parenthesized",
-      "jsonc/no-plus-sign",
-      "jsonc/no-regexp-literals",
-      "jsonc/no-sparse-arrays",
-      "jsonc/no-template-literals",
-      "jsonc/no-undefined-value",
-      "jsonc/no-unicode-codepoint-escapes",
-      "jsonc/no-useless-escape",
-      "jsonc/space-unary-ops",
-      "jsonc/valid-json-number",
-      "jsonc/vue-custom-block/no-parsing-error",
-      "jsonc/array-bracket-spacing",
-      "jsonc/comma-dangle",
-      "jsonc/comma-style",
-      "jsonc/indent",
-      "jsonc/key-spacing",
-      "jsonc/object-curly-newline",
-      "jsonc/object-curly-spacing",
-      "jsonc/object-property-newline",
-      "jsonc/quote-props",
-      "jsonc/quotes",
-    ],
-  },
-  {
-    "files": [
-      "**/package.json",
-    ],
-    "name": "antfu/sort/package-json",
-    "rules": [
-      "jsonc/sort-array-values",
-      "jsonc/sort-keys",
-    ],
-  },
-  {
-    "files": [
-      "**/[jt]sconfig.json",
-      "**/[jt]sconfig.*.json",
-    ],
-    "name": "antfu/sort/tsconfig-json",
-    "rules": [
-      "jsonc/sort-keys",
-    ],
-  },
-  {
-    "files": [
-      "package.json",
-      "**/package.json",
-    ],
-    "languageOptions": {
-      "parser": "jsonc-eslint-parser",
-    },
-    "name": "antfu/pnpm/package-json",
-    "plugins": [
-      "pnpm",
-    ],
-    "rules": [
-      "pnpm/json-enforce-catalog",
-      "pnpm/json-prefer-workspace-settings",
-      "pnpm/json-valid-catalog",
     ],
   },
   {

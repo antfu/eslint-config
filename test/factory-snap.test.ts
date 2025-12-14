@@ -1,32 +1,11 @@
-import type { OptionsConfig, TypedFlatConfigItem } from 'src/types'
+import type { OptionsConfig, TypedFlatConfigItem } from '../src/types'
 import { expect, it } from 'vitest'
+import { CONFIG_PRESET_FULL_OFF, CONFIG_PRESET_FULL_ON } from '../src/config-presets'
 import { antfu } from '../src/factory'
 
 interface Suite {
   name: string
   configs: OptionsConfig
-}
-
-const FULL_OFF: OptionsConfig = {
-  gitignore: false,
-  typescript: false,
-  yaml: false,
-  jsonc: false,
-  pnpm: false,
-  react: false,
-  solid: false,
-  svelte: false,
-  toml: false,
-  vue: false,
-  test: false,
-  unocss: false,
-  imports: false,
-  isInEditor: false,
-  lessOpinionated: true,
-  markdown: false,
-  regexp: false,
-  stylistic: false,
-  unicorn: false,
 }
 
 const suites: Suite[] = [
@@ -36,7 +15,11 @@ const suites: Suite[] = [
   },
   {
     name: 'full-off',
-    configs: FULL_OFF,
+    configs: CONFIG_PRESET_FULL_OFF,
+  },
+  {
+    name: 'full-on',
+    configs: CONFIG_PRESET_FULL_ON,
   },
   {
     name: 'less-opinionated',
@@ -120,6 +103,6 @@ suites.forEach(({ name, configs }) => {
   it(`factory ${name}`, async () => {
     const config = await antfu(configs)
     await expect(serializeConfigs(config))
-      .toMatchFileSnapshot(`./__snapshots__/factory/${name}.ts`)
+      .toMatchFileSnapshot(`./__snapshots__/factory/${name}.snap.js`)
   })
 })
