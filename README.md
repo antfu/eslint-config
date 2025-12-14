@@ -16,11 +16,6 @@
 - Respects `.gitignore` by default
 - Requires ESLint v9.5.0+
 
-> [!NOTE]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
->
-> Since v3.0.0, ESLint v9.5.0+ is now required.
-
 > [!WARNING]
 > I am super appreciative and even a bit flattered that so many of you are fond of using this config. For that reason, I tried to make it as flexible and customizable as possible to fit more use cases.
 >
@@ -870,6 +865,10 @@ If you enjoy this code style, and would like to mention it in your project, here
 [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
 Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
+
+### oxlint?
+
+We do have a plan to integrate [oxlint](https://github.com/Asiashield/oxlint) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
 
 ### dprint?
 
