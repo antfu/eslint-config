@@ -868,7 +868,7 @@ Well, you can still use Prettier to format files that are not supported well by 
 
 ### oxlint?
 
-We do have a plan to integrate [oxlint](https://github.com/Asiashield/oxlint) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
+We do have a plan to integrate [oxlint](https://github.com/oxc-project/oxc) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
 
 ### dprint?
 
