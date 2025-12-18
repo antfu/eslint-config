@@ -57,7 +57,10 @@ export async function pnpm(
             ? {
                 'pnpm/json-enforce-catalog': [
                   'error',
-                  { autofix: !isInEditor },
+                  {
+                    autofix: !isInEditor,
+                    ignores: ['@types/vscode'],
+                  },
                 ],
               }
             : {}),
