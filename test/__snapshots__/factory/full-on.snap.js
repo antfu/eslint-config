@@ -916,6 +916,7 @@
       "react/no-use-context",
       "react/no-useless-forward-ref",
       "react/prefer-use-state-lazy-initialization",
+      "react/prefer-namespace-import",
       "react-dom/no-dangerously-set-innerhtml",
       "react-dom/no-dangerously-set-innerhtml-with-children",
       "react-dom/no-find-dom-node",
