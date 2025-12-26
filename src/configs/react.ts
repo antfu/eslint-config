@@ -138,6 +138,7 @@ export async function react(
         'react/no-use-context': 'warn',
         'react/no-useless-forward-ref': 'warn',
         'react/prefer-use-state-lazy-initialization': 'warn',
+        'react/prefer-namespace-import': 'error',
 
         // recommended rules from eslint-plugin-react-dom https://eslint-react.xyz/docs/rules/overview#dom-rules
         'react-dom/no-dangerously-set-innerhtml': 'warn',
