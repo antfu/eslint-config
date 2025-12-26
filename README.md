@@ -291,6 +291,9 @@ export default antfu({
   stylistic: {
     indent: 2, // 4, or 'tab'
     quotes: 'single', // or 'double'
+    overrides: {
+      'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    },
   },
 
   // TypeScript and Vue are autodetected, you can also explicitly enable them:
@@ -654,6 +657,29 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   svelte: true,
+})
+```
+
+To control which rules apply to your Svelte files, you can apply overrides like this:
+ 
+```js
+// eslint.config.js
+import { antfu } from '@antfu/eslint-config'
+
+export default antfu({
+  svelte: true,
+}).overrides({
+  'antfu/svelte/rules': {
+    rules: {
+      'svelte/no-dom-manipulating': 'error',
+    },
+  },
+  'antfu/typescript/rules': {
+    files: ['**/*.svelte'],
+    rules: {
+      'prefer-destructuring': 'error',
+    },
+  },
 })
 ```
 
