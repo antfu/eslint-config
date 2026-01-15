@@ -285,7 +285,7 @@ export default antfu({
   gitignore: true,
 
   // Enable stylistic formatting rules
-  stylistic: true,
+  // stylistic: true,
 
   // Or customize the stylistic rules
   stylistic: {
