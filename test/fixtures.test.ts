@@ -37,6 +37,7 @@ runWithConfig(
   {
     typescript: true,
     vue: true,
+    toml: true,
     stylistic: {
       indent: 'tab',
       quotes: 'double',
