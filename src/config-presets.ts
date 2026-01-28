@@ -2,6 +2,7 @@ import type { OptionsConfig } from './types'
 
 // @keep-sorted
 export const CONFIG_PRESET_FULL_ON: OptionsConfig = {
+  angular: true,
   astro: true,
   formatters: true,
   gitignore: true,
@@ -39,6 +40,7 @@ export const CONFIG_PRESET_FULL_ON: OptionsConfig = {
 }
 
 export const CONFIG_PRESET_FULL_OFF: OptionsConfig = {
+  angular: false,
   astro: false,
   formatters: false,
   gitignore: false,

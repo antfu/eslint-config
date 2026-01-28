@@ -46,6 +46,8 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@angular-eslint/eslint-plugin": "^21.1.0",
+    "@angular-eslint/eslint-plugin-template": "^21.1.0",
     "@eslint-react/eslint-plugin": "^2.0.1",
     "@next/eslint-plugin-next": ">=15.0.0",
     "@prettier/plugin-xml": "^3.4.1",
@@ -153,6 +155,9 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
+    "@angular-eslint/eslint-plugin": "catalog:peer",
+    "@angular-eslint/eslint-plugin-template": "catalog:peer",
+    "@angular/core": "catalog:dev",
     "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "catalog:dev",
     "@eslint-react/eslint-plugin": "catalog:peer",
