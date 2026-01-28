@@ -436,6 +436,17 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   astro?: boolean | OptionsOverrides
 
   /**
+   * Enable Angular support.
+   *
+   * Requires installing:
+   * - `@angular-eslint/eslint-plugin`
+   * - `@angular-eslint/eslint-plugin-template`
+   *
+   * @default false
+   */
+  angular?: boolean | OptionsOverrides
+
+  /**
    * Enable linting for **code snippets** in Markdown.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.

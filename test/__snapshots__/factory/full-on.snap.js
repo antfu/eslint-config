@@ -1164,6 +1164,45 @@
     ],
   },
   {
+    "name": "antfu/angular/setup",
+    "plugins": [
+      "angular",
+    ],
+  },
+  {
+    "files": [
+      "**/*.?([cm])ts",
+    ],
+    "languageOptions": {
+      "parser": "typescript-eslint/parser",
+    },
+    "name": "antfu/angular/rules/ts",
+    "processor": "extract-inline-html",
+    "rules": [
+      "angular/contextual-lifecycle",
+      "angular/no-empty-lifecycle-method",
+      "angular/no-input-rename",
+      "angular/no-inputs-metadata-property",
+      "angular/no-output-native",
+      "angular/no-output-on-prefix",
+      "angular/no-output-rename",
+      "angular/no-outputs-metadata-property",
+      "angular/prefer-inject",
+      "angular/prefer-standalone",
+      "angular/use-lifecycle-interface",
+      "angular/use-pipe-transform-interface",
+    ],
+  },
+  {
+    "files": [
+      "**/*.htm?(l)",
+    ],
+    "name": "antfu/angular/rules/html",
+    "rules": [
+      "angular/template/alt-text",
+    ],
+  },
+  {
     "name": "antfu/jsonc/setup",
     "plugins": [
       "jsonc",

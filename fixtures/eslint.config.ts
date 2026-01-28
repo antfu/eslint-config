@@ -1,4 +1,4 @@
-import { antfu } from './src'
+import { antfu } from '../src'
 
 export default antfu(
   {
@@ -9,6 +9,7 @@ export default antfu(
     solid: true,
     svelte: true,
     astro: true,
+    angular: true,
     typescript: true,
     formatters: true,
     pnpm: true,
