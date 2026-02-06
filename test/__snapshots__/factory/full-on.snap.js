@@ -899,7 +899,6 @@
       "react/no-direct-mutation-state",
       "react/no-duplicate-key",
       "react/no-forward-ref",
-      "react/no-implicit-key",
       "react/no-missing-key",
       "react/no-nested-component-definitions",
       "react/no-nested-lazy-component-declarations",
@@ -966,6 +965,7 @@
     "name": "antfu/react/type-aware-rules",
     "rules": [
       "react/no-leaked-conditional-rendering",
+      "react/no-implicit-key",
     ],
   },
   {

@@ -54,6 +54,7 @@ export async function react(
 
   const typeAwareRules: TypedFlatConfigItem['rules'] = {
     'react/no-leaked-conditional-rendering': 'warn',
+    'react/no-implicit-key': 'warn',
   }
 
   const [
@@ -121,7 +122,6 @@ export async function react(
         'react/no-direct-mutation-state': 'error',
         'react/no-duplicate-key': 'error',
         'react/no-forward-ref': 'warn',
-        'react/no-implicit-key': 'warn',
         'react/no-missing-key': 'error',
         'react/no-nested-component-definitions': 'error',
         'react/no-nested-lazy-component-declarations': 'error',
