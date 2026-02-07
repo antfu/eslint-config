@@ -35,6 +35,7 @@ import {
   vue,
   yaml,
 } from './configs'
+import { angular } from './configs/angular'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import { interopDefault, isInEditorEnv } from './utils'
@@ -87,6 +88,7 @@ export function antfu(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
+    angular: enableAngular = false,
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
@@ -304,6 +306,12 @@ export function antfu(
         stylistic: stylisticOptions,
       }),
     )
+  }
+
+  if (enableAngular) {
+    configs.push(angular({
+      overrides: getOverrides(options, 'angular'),
+    }))
   }
 
   if (options.jsonc ?? true) {

@@ -20,6 +20,7 @@ afterAll(async () => {
 runWithConfig('js', {
   typescript: false,
   vue: false,
+  ignores: ['**/*.ts'],
 })
 runWithConfig('all', {
   typescript: true,

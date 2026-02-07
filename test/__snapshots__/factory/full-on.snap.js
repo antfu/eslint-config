@@ -153,6 +153,12 @@
     ],
   },
   {
+    "files": [
+      "**/*.?([cm])js",
+      "**/*.?([cm])jsx",
+      "**/*.?([cm])ts",
+      "**/*.?([cm])tsx",
+    ],
     "name": "antfu/node/rules",
     "plugins": [
       "node",
@@ -169,6 +175,12 @@
     ],
   },
   {
+    "files": [
+      "**/*.?([cm])js",
+      "**/*.?([cm])jsx",
+      "**/*.?([cm])ts",
+      "**/*.?([cm])tsx",
+    ],
     "name": "antfu/jsdoc/rules",
     "plugins": [
       "jsdoc",
@@ -1181,6 +1193,52 @@
       "- style/jsx-closing-tag-location",
       "- style/jsx-one-expression-per-line",
       "- style/no-multiple-empty-lines",
+    ],
+  },
+  {
+    "name": "antfu/angular/setup",
+    "plugins": [
+      "angular",
+      "angular-template",
+    ],
+  },
+  {
+    "files": [
+      "**/*.?([cm])ts",
+    ],
+    "name": "antfu/angular/rules/ts",
+    "processor": "extract-inline-html",
+    "rules": [
+      "angular/contextual-lifecycle",
+      "angular/no-empty-lifecycle-method",
+      "angular/no-input-rename",
+      "angular/no-inputs-metadata-property",
+      "angular/no-output-native",
+      "angular/no-output-on-prefix",
+      "angular/no-output-rename",
+      "angular/no-outputs-metadata-property",
+      "angular/prefer-inject",
+      "angular/prefer-standalone",
+      "angular/use-lifecycle-interface",
+      "angular/use-pipe-transform-interface",
+    ],
+  },
+  {
+    "files": [
+      "**/*.htm?(l)",
+    ],
+    "languageOptions": {
+      "parser": "angular-eslint/template-parser",
+    },
+    "name": "antfu/angular/rules/template",
+    "rules": [
+      "angular-template/banana-in-box",
+      "angular-template/eqeqeq",
+      "angular-template/no-negated-async",
+      "angular-template/prefer-control-flow",
+      "- style/indent",
+      "style/no-multiple-empty-lines",
+      "- style/no-trailing-spaces",
     ],
   },
   {
