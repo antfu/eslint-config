@@ -1,5 +1,6 @@
 import type { OptionsStylistic, TypedFlatConfigItem } from '../types'
 
+import { GLOB_SRC } from '../globs'
 import { interopDefault } from '../utils'
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
@@ -9,6 +10,7 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
 
   return [
     {
+      files: [GLOB_SRC],
       name: 'antfu/jsdoc/rules',
       plugins: {
         jsdoc: await interopDefault(import('eslint-plugin-jsdoc')),

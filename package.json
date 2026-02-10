@@ -46,6 +46,9 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@angular-eslint/eslint-plugin": "^21.1.0",
+    "@angular-eslint/eslint-plugin-template": "^21.1.0",
+    "@angular-eslint/template-parser": "^21.1.0",
     "@eslint-react/eslint-plugin": "^2.11.0",
     "@next/eslint-plugin-next": ">=15.0.0",
     "@prettier/plugin-xml": "^3.4.1",
@@ -65,6 +68,15 @@
     "svelte-eslint-parser": ">=0.37.0"
   },
   "peerDependenciesMeta": {
+    "@angular-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@angular-eslint/eslint-plugin-template": {
+      "optional": true
+    },
+    "@angular-eslint/template-parser": {
+      "optional": true
+    },
     "@eslint-react/eslint-plugin": {
       "optional": true
     },
@@ -153,6 +165,10 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
+    "@angular-eslint/eslint-plugin": "catalog:peer",
+    "@angular-eslint/eslint-plugin-template": "catalog:peer",
+    "@angular-eslint/template-parser": "catalog:peer",
+    "@angular/core": "catalog:dev",
     "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "catalog:dev",
     "@eslint-react/eslint-plugin": "catalog:peer",
@@ -163,6 +179,7 @@
     "@types/node": "catalog:dev",
     "@unocss/eslint-plugin": "catalog:peer",
     "astro-eslint-parser": "catalog:peer",
+    "baseline-browser-mapping": "catalog:dev",
     "bumpp": "catalog:dev",
     "eslint": "catalog:peer",
     "eslint-plugin-astro": "catalog:peer",

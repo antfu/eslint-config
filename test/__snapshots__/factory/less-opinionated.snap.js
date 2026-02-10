@@ -153,6 +153,9 @@
     ],
   },
   {
+    "files": [
+      "**/*.?([cm])[jt]s?(x)",
+    ],
     "name": "antfu/node/rules",
     "plugins": [
       "node",
@@ -169,6 +172,9 @@
     ],
   },
   {
+    "files": [
+      "**/*.?([cm])[jt]s?(x)",
+    ],
     "name": "antfu/jsdoc/rules",
     "plugins": [
       "jsdoc",
