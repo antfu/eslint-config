@@ -736,9 +736,7 @@ export default antfu({
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
 ```bash
-npm i -D @angular-eslint/eslint-plugin
-npm i -D @angular-eslint/eslint-plugin-template
-npm i -D @angular-eslint/template-parser
+npm i -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser
 ```
 
 ### Optional Rules

@@ -6,6 +6,7 @@ import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
 import {
+  angular,
   astro,
   command,
   comments,
@@ -35,7 +36,6 @@ import {
   vue,
   yaml,
 } from './configs'
-import { angular } from './configs/angular'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import { interopDefault, isInEditorEnv } from './utils'

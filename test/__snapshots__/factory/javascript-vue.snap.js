@@ -154,10 +154,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])js",
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.?([cm])[jt]s?(x)",
     ],
     "name": "antfu/node/rules",
     "plugins": [
@@ -176,10 +173,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])js",
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.?([cm])[jt]s?(x)",
     ],
     "name": "antfu/jsdoc/rules",
     "plugins": [

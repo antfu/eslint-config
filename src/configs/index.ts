@@ -1,3 +1,4 @@
+export * from './angular'
 export * from './astro'
 export * from './command'
 export * from './comments'
