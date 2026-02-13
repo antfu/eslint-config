@@ -875,10 +875,24 @@
     "files": [
       "**/*.md",
     ],
-    "languageOptions": {
-      "parser": "parser-plain",
-    },
+    "language": "markdown/gfm",
     "name": "antfu/markdown/parser",
+  },
+  {
+    "files": [
+      "**/*.md",
+    ],
+    "rules": [
+      "- command/command",
+      "- no-irregular-whitespace",
+      "- perfectionist/sort-exports",
+      "- perfectionist/sort-imports",
+      "- regexp/no-legacy-features",
+      "- regexp/no-missing-g-flag",
+      "- regexp/no-useless-dollar-replacements",
+      "- regexp/no-useless-flag",
+      "- style/indent",
+    ],
   },
   {
     "files": [
