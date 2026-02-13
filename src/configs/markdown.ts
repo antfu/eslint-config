@@ -45,6 +45,7 @@ export async function markdown(
     {
       files,
       rules: {
+        // Disable rules do not work with markdown sourcecode.
         'command/command': 'off',
         'no-irregular-whitespace': 'off',
         'perfectionist/sort-exports': 'off',
