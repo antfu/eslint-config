@@ -74,7 +74,7 @@ export async function markdown(
           },
         },
       },
-      name: 'antfu/markdown/disables',
+      name: 'antfu/markdown/disables/code',
       rules: {
         'antfu/no-top-level-await': 'off',
 
