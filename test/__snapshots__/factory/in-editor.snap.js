@@ -950,16 +950,8 @@
     "files": [
       "**/*.md",
     ],
+    "name": "antfu/markdown/rules",
     "rules": [
-      "- command/command",
-      "- no-irregular-whitespace",
-      "- perfectionist/sort-exports",
-      "- perfectionist/sort-imports",
-      "- regexp/no-legacy-features",
-      "- regexp/no-missing-g-flag",
-      "- regexp/no-useless-dollar-replacements",
-      "- regexp/no-useless-flag",
-      "- style/indent",
       "markdown/fenced-code-language",
       "markdown/heading-increment",
       "markdown/no-duplicate-definitions",
@@ -981,6 +973,23 @@
   },
   {
     "files": [
+      "**/*.md",
+    ],
+    "name": "antfu/markdown/disables/markdown",
+    "rules": [
+      "- command/command",
+      "- no-irregular-whitespace",
+      "- perfectionist/sort-exports",
+      "- perfectionist/sort-imports",
+      "- regexp/no-legacy-features",
+      "- regexp/no-missing-g-flag",
+      "- regexp/no-useless-dollar-replacements",
+      "- regexp/no-useless-flag",
+      "- style/indent",
+    ],
+  },
+  {
+    "files": [
       "**/*.md/**/*.?([cm])[jt]s?(x)",
       "**/*.md/**/*.vue",
     ],
@@ -991,7 +1000,7 @@
         },
       },
     },
-    "name": "antfu/markdown/disables",
+    "name": "antfu/markdown/disables/code",
     "rules": [
       "- antfu/no-top-level-await",
       "- no-alert",

@@ -13,7 +13,7 @@ export async function markdown(
     files = [GLOB_MARKDOWN],
     gfm = true,
     overrides = {},
-    overridesMarkdown = {},
+    overridesRules: overridesMarkdown = {},
   } = options
 
   const markdown = await interopDefault(import('@eslint/markdown'))
@@ -44,6 +44,17 @@ export async function markdown(
     },
     {
       files,
+      name: 'antfu/markdown/rules',
+      rules: {
+        ...markdown.configs.recommended.at(0)?.rules,
+        // https://github.com/eslint/markdown/issues/294
+        'markdown/no-missing-label-refs': 'off',
+        ...overridesMarkdown,
+      },
+    },
+    {
+      files,
+      name: 'antfu/markdown/disables/markdown',
       rules: {
         // Disable rules do not work with markdown sourcecode.
         'command/command': 'off',
@@ -55,11 +66,6 @@ export async function markdown(
         'regexp/no-useless-dollar-replacements': 'off',
         'regexp/no-useless-flag': 'off',
         'style/indent': 'off',
-        ...markdown.configs.recommended.at(0)?.rules,
-        // https://github.com/eslint/markdown/issues/294
-        'markdown/no-missing-label-refs': 'off',
-
-        ...overridesMarkdown,
       },
     },
     {
