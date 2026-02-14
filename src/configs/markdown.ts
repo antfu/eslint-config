@@ -13,7 +13,7 @@ export async function markdown(
     files = [GLOB_MARKDOWN],
     gfm = true,
     overrides = {},
-    overridesRules: overridesMarkdown = {},
+    overridesMarkdown = {},
   } = options
 
   const markdown = await interopDefault(import('@eslint/markdown'))

@@ -191,7 +191,7 @@ export interface OptionsMarkdown extends OptionsOverrides {
   /**
    * Override rules for markdown itself.
    */
-  overridesRules?: TypedFlatConfigItem['rules']
+  overridesMarkdown?: TypedFlatConfigItem['rules']
 }
 
 export interface OptionsTypeScriptParserOptions {
