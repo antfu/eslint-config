@@ -10,11 +10,14 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
 
   return [
     {
-      files: [GLOB_SRC],
-      name: 'antfu/jsdoc/rules',
+      name: 'antfu/jsdoc/setup',
       plugins: {
         jsdoc: await interopDefault(import('eslint-plugin-jsdoc')),
       },
+    },
+    {
+      files: [GLOB_SRC],
+      name: 'antfu/jsdoc/rules',
       rules: {
         'jsdoc/check-access': 'warn',
         'jsdoc/check-param-names': 'warn',
