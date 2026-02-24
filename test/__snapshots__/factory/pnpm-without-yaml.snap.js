@@ -172,13 +172,16 @@
     ],
   },
   {
+    "name": "antfu/jsdoc/setup",
+    "plugins": [
+      "jsdoc",
+    ],
+  },
+  {
     "files": [
       "**/*.?([cm])[jt]s?(x)",
     ],
     "name": "antfu/jsdoc/rules",
-    "plugins": [
-      "jsdoc",
-    ],
     "rules": [
       "jsdoc/check-access",
       "jsdoc/check-param-names",
