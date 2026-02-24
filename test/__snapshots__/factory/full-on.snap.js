@@ -1248,9 +1248,7 @@
       "**/*.json5",
       "**/*.jsonc",
     ],
-    "languageOptions": {
-      "parser": "jsonc-eslint-parser",
-    },
+    "language": "jsonc/x",
     "name": "antfu/jsonc/rules",
     "rules": [
       "jsonc/no-bigint-literals",
@@ -1316,9 +1314,7 @@
       "package.json",
       "**/package.json",
     ],
-    "languageOptions": {
-      "parser": "jsonc-eslint-parser",
-    },
+    "language": "jsonc/x",
     "name": "antfu/pnpm/package-json",
     "plugins": [
       "pnpm",
