@@ -153,13 +153,16 @@
     ],
   },
   {
+    "name": "antfu/node/setup",
+    "plugins": [
+      "node",
+    ],
+  },
+  {
     "files": [
       "**/*.?([cm])[jt]s?(x)",
     ],
     "name": "antfu/node/rules",
-    "plugins": [
-      "node",
-    ],
     "rules": [
       "node/handle-callback-err",
       "node/no-deprecated-api",
