@@ -135,6 +135,9 @@ catalogs:
     '@clack/prompts':
       specifier: ^1.0.1
       version: 1.0.1
+    '@e18e/eslint-plugin':
+      specifier: ^0.2.0
+      version: 0.2.0
     '@eslint-community/eslint-plugin-eslint-comments':
       specifier: ^4.6.0
       version: 4.6.0
@@ -255,6 +258,9 @@ importers:
       '@clack/prompts':
         specifier: catalog:prod
         version: 1.0.1
+      '@e18e/eslint-plugin':
+        specifier: catalog:prod
+        version: 0.2.0(eslint@10.0.2(jiti@2.6.1))
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: catalog:prod
         version: 4.6.0(eslint@10.0.2(jiti@2.6.1))
@@ -628,6 +634,17 @@ packages:
 
   '@dprint/toml@0.7.0':
     resolution: {integrity: sha512-eFaQTcfxKHB+YyTh83x7GEv+gDPuj9q5NFOTaoj5rZmQTbj6OgjjMxUicmS1R8zYcx8YAq5oA9J3YFa5U6x2gA==}
+
+  '@e18e/eslint-plugin@0.2.0':
+    resolution: {integrity: sha512-mXgODVwhuDjTJ+UT+XSvmMmCidtGKfrV5nMIv1UtpWex2pYLsIM3RSpT8HWIMAebS9qANbXPKlSX4BE7ZvuCgA==}
+    peerDependencies:
+      eslint: ^10.0.2
+      oxlint: ^1.41.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+      oxlint:
+        optional: true
 
   '@emnapi/core@1.7.1':
     resolution: {integrity: sha512-o1uhUASyo921r2XtHYOHy7gdkGLge8ghBEQHMWmyJFoXlpU58kIrhhN3w26lpQb6dspetweapMn2CSNwQ8I4wg==}
@@ -2274,6 +2291,9 @@ packages:
       '@typescript-eslint/utils': ^8.56.1
       eslint: ^10.0.2
 
+  eslint-plugin-depend@1.4.0:
+    resolution: {integrity: sha512-MQs+m4nHSfgAO9bJDsBzqw0ofK/AOA0vfeY/6ahofqcUMLeM6/D1sTYs21fOhc17kNU/gn58YCtj20XaAssh2A==}
+
   eslint-plugin-erasable-syntax-only@0.4.0:
     resolution: {integrity: sha512-7dx2gpfVn0FFEGukLqsF/izW4hGvSaySNOkcuSCO4q6Khh0ecOGYlRhW9hhDUtNryuKc+cXd1WFiQdpae3xzaQ==}
     engines: {node: '>=20.18.0'}
@@ -3186,6 +3206,9 @@ packages:
 
   mlly@1.8.0:
     resolution: {integrity: sha512-l8D9ODSRWLe2KHJSifWGwBqpTZXIXTeo8mlKjY+E2HAakaTeNpqAyBZ8GSqLzHgw4XmHmC8whvpjJNMbFZN7/g==}
+
+  module-replacements@2.11.0:
+    resolution: {integrity: sha512-j5sNQm3VCpQQ7nTqGeOZtoJtV3uKERgCBm9QRhmGRiXiqkf7iRFOkfxdJRZWLkqYY8PNf4cDQF/WfXUYLENrRA==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -4213,6 +4236,12 @@ snapshots:
   '@dprint/markdown@0.21.1': {}
 
   '@dprint/toml@0.7.0': {}
+
+  '@e18e/eslint-plugin@0.2.0(eslint@10.0.2(jiti@2.6.1))':
+    dependencies:
+      eslint-plugin-depend: 1.4.0
+    optionalDependencies:
+      eslint: 10.0.2(jiti@2.6.1)
 
   '@emnapi/core@1.7.1':
     dependencies:
@@ -5721,6 +5750,12 @@ snapshots:
       '@typescript-eslint/utils': 8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
       eslint: 10.0.2(jiti@2.6.1)
 
+  eslint-plugin-depend@1.4.0:
+    dependencies:
+      empathic: 2.0.0
+      module-replacements: 2.11.0
+      semver: 7.7.4
+
   eslint-plugin-erasable-syntax-only@0.4.0(@typescript-eslint/parser@8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3))(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/parser': 8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3)
@@ -7021,6 +7056,8 @@ snapshots:
       pathe: 2.0.3
       pkg-types: 1.3.1
       ufo: 1.6.1
+
+  module-replacements@2.11.0: {}
 
   ms@2.1.3: {}
 
