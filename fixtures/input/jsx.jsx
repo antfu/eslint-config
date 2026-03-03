@@ -1,10 +1,13 @@
 import React from 'react';
+
+const PATTERN = /\.\d+/ig
+
 export function HelloWorld({
   greeting = "hello", greeted = '"World"', silent = false, onMouseOver,}) {
 
   const [num] = React.useState(()=>    Math
       .floor (Math.random() * 1E+7).toString()
-        .replace(/\.\d+/ig, ""))
+        .replace(PATTERN, ""))
 
   if(!greeting){
     return null};

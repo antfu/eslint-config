@@ -1,5 +1,7 @@
 import React from "react"
 
+const PATTERN = /\.\d+/g
+
 export function HelloWorld({
 	greeting = "hello",
 	greeted = "\"World\"",
@@ -9,7 +11,7 @@ export function HelloWorld({
 	const [num] = React.useState(() => Math
 		.floor (Math.random() * 1e+7)
 		.toString()
-		.replace(/\.\d+/g, ""))
+		.replace(PATTERN, ""))
 
 	if (!greeting) {
 		return null
