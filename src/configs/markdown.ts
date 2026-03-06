@@ -47,6 +47,7 @@ export async function markdown(
       name: 'antfu/markdown/rules',
       rules: {
         ...markdown.configs.recommended.at(0)?.rules,
+        'markdown/fenced-code-language': 'off',
         // https://github.com/eslint/markdown/issues/294
         'markdown/no-missing-label-refs': 'off',
         ...overridesMarkdown,
