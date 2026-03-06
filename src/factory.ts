@@ -36,6 +36,7 @@ import {
   vue,
   yaml,
 } from './configs'
+import { e18e } from './configs/e18e'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
 import { interopDefault, isInEditorEnv } from './utils'
@@ -92,6 +93,7 @@ export function antfu(
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
+    e18e: enableE18e = true,
     gitignore: enableGitignore = true,
     ignores: userIgnores = [],
     imports: enableImports = true,
@@ -184,6 +186,15 @@ export function antfu(
       imports({
         stylistic: stylisticOptions,
         ...resolveSubOptions(options, 'imports'),
+      }),
+    )
+  }
+
+  if (enableE18e) {
+    configs.push(
+      e18e({
+        isInEditor,
+        ...enableE18e === true ? {} : enableE18e,
       }),
     )
   }

@@ -66,6 +66,7 @@ it('esm eslint.config.js', async () => {
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
 
+  // eslint-disable-next-line e18e/prefer-static-regex
   const eslintConfigContent = (await fs.readFile(join(genPath, 'eslint.config.mjs'), 'utf-8')).replace(/\\/g, '/')
 
   expect(stdout).toContain('Created eslint.config.mjs')
