@@ -1,0 +1,16 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index bdb32053192c10c34023d0c4f80032d7324a82af..d39422b7d42a5e791b7620fa2f66a30eec77273b 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -104,9 +104,10 @@ function parseRuleId(ruleId) {
+ }
+ 
+ function renamePluginsInRules(rules, map) {
++  const entries = Object.entries(map).sort(([a], [b]) => b.length - a.length)
+   return Object.fromEntries(
+     Object.entries(rules).map(([key, value]) => {
+-      for (const [from, to] of Object.entries(map)) {
++      for (const [from, to] of entries) {
+         if (key.startsWith(`${from}/`))
+           return [to + key.slice(from.length), value];
+       }
