@@ -9,8 +9,6 @@ trustPolicyExclude:
 
 packages:
   - fixtures/*
-patchedDependencies:
-  eslint-flat-config-utils: patches/eslint-flat-config-utils.patch
 
 catalogs:
   dev:
@@ -76,7 +74,7 @@ catalogs:
     ansis: ^4.2.0
     cac: ^7.0.0
     eslint-config-flat-gitignore: ^2.2.1
-    eslint-flat-config-utils: ^3.0.1
+    eslint-flat-config-utils: ^3.0.2
     eslint-merge-processors: ^2.0.0
     eslint-plugin-antfu: ^3.2.2
     eslint-plugin-command: ^3.5.2
