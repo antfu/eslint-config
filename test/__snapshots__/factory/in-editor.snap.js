@@ -561,6 +561,7 @@
       "test/prefer-hooks-in-order",
       "test/prefer-lowercase-title",
       "- antfu/no-top-level-await",
+      "- e18e/prefer-static-regex",
       "- no-unused-expressions",
       "- node/prefer-global/process",
       "- ts/explicit-function-return-type",
@@ -1030,6 +1031,7 @@
     "name": "antfu/markdown/disables/code",
     "rules": [
       "- antfu/no-top-level-await",
+      "- e18e/prefer-static-regex",
       "- no-alert",
       "- no-console",
       "- no-labels",
