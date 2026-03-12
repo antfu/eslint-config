@@ -381,6 +381,7 @@
       "ts/no-import-type-side-effects",
       "ts/no-redeclare",
       "ts/no-use-before-define",
+      "ts/explicit-function-return-type",
     ],
   },
   {

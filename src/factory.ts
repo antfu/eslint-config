@@ -106,6 +106,7 @@ export function antfu(
     regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
+    type: appType = 'app',
     typescript: enableTypeScript = isPackageExists('typescript') || isPackageExists('@typescript/native-preview'),
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
@@ -221,7 +222,7 @@ export function antfu(
         ...typescriptOptions,
         componentExts,
         overrides: getOverrides(options, 'typescript'),
-        type: options.type,
+        type: appType,
       }),
     )
   }
