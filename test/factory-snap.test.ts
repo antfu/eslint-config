@@ -54,6 +54,12 @@ const suites: Suite[] = [
       isInEditor: true,
     },
   },
+  {
+    name: 'lib',
+    configs: {
+      type: 'lib',
+    },
+  },
 ]
 
 const ignoreConfigs: string[] = [

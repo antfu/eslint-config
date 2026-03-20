@@ -381,6 +381,7 @@
       "ts/no-import-type-side-effects",
       "ts/no-redeclare",
       "ts/no-use-before-define",
+      "ts/explicit-function-return-type",
     ],
   },
   {
@@ -457,7 +458,9 @@
       "style/jsx-wrap-multilines",
       "antfu/consistent-list-newline",
       "antfu/consistent-chaining",
-      "curly",
+      "antfu/curly",
+      "antfu/if-newline",
+      "antfu/top-level-function",
     ],
   },
   {

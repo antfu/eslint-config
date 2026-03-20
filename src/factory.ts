@@ -107,7 +107,8 @@ export function antfu(
     regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
-    typescript: enableTypeScript = isPackageExists('typescript'),
+    type: appType = 'app',
+    typescript: enableTypeScript = isPackageExists('typescript') || isPackageExists('@typescript/native-preview'),
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some(i => isPackageExists(i)),
@@ -222,7 +223,7 @@ export function antfu(
         ...typescriptOptions,
         componentExts,
         overrides: getOverrides(options, 'typescript'),
-        type: options.type,
+        type: appType,
       }),
     )
   }

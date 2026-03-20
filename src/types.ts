@@ -183,7 +183,7 @@ export interface OptionsE18e extends OptionsOverrides {
    * Include module replacements rules
    *
    * @see https://github.com/e18e/eslint-plugin#module-replacements
-   * @default options.isInEditor
+   * @default type === 'lib' && isInEditor
    */
   moduleReplacements?: boolean
   /**
