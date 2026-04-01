@@ -16,9 +16,7 @@ export const CONFIG_PRESET_FULL_ON: OptionsConfig = {
   nextjs: true,
   node: true,
   pnpm: true,
-  react: {
-    reactCompiler: true,
-  },
+  react: true,
   regexp: true,
   solid: true,
   stylistic: {
