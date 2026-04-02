@@ -71,11 +71,7 @@ export async function react(
       name: 'antfu/react/setup',
       plugins: {
         'react': plugins['@eslint-react'],
-        'react-dom': plugins['@eslint-react/dom'],
-        'react-naming-convention': plugins['@eslint-react/naming-convention'],
         'react-refresh': pluginReactRefresh,
-        'react-rsc': plugins['@eslint-react/rsc'],
-        'react-web-api': plugins['@eslint-react/web-api'],
       },
     },
     {
