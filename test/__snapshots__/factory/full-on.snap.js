@@ -952,6 +952,7 @@
       "react/jsx-no-children-prop-with-children",
       "react/jsx-no-comment-textnodes",
       "react/jsx-no-key-after-spread",
+      "react/jsx-no-leaked-semicolon",
       "react/jsx-no-namespace",
       "react/rsc-function-definition",
       "react/dom-no-dangerously-set-innerhtml",
