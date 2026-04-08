@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-objects */
 import type { OptionsFiles, OptionsReact, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 
 import { isPackageExists } from 'local-pkg'
@@ -87,8 +86,6 @@ export async function react(
       name: 'antfu/react/rules',
       rules: {
         ...pluginReact.configs.recommended.rules,
-
-        'react/prefer-namespace-import': 'error',
 
         // preconfigured rules from eslint-plugin-react-refresh https://github.com/ArnaudBarre/eslint-plugin-react-refresh/tree/main/src
         'react-refresh/only-export-components': [
