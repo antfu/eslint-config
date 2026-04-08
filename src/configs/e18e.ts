@@ -27,7 +27,9 @@ export async function e18e(options: OptionsE18e & OptionsProjectType & OptionsIs
         ...moduleReplacements ? { ...configs.moduleReplacements!.rules } : {},
         ...performanceImprovements ? { ...configs.performanceImprovements!.rules } : {},
 
-        // these are a bit opinionated and dangerous, so we'll disable them for now
+        // these are a bit opinionated and dangerous (introducing behavioral changes), so we'll disable them by default for now
+        'e18e/prefer-array-at': 'off',
+        'e18e/prefer-array-from-map': 'off',
         'e18e/prefer-array-to-reversed': 'off',
         'e18e/prefer-array-to-sorted': 'off',
         'e18e/prefer-array-to-spliced': 'off',
