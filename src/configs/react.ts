@@ -143,8 +143,8 @@ export async function react(
       name: 'antfu/react/typescript',
       rules: {
         // Disables rules that are already handled by TypeScript
-        'react-dom/no-string-style-prop': 'off',
-        'react-dom/no-unknown-property': 'off',
+        'react/dom-no-string-style-prop': 'off',
+        'react/dom-no-unknown-property': 'off',
       },
     },
     ...isTypeAware

@@ -982,8 +982,8 @@
     ],
     "name": "antfu/react/typescript",
     "rules": [
-      "- react-dom/no-string-style-prop",
-      "- react-dom/no-unknown-property",
+      "- react/dom-no-string-style-prop",
+      "- react/dom-no-unknown-property",
     ],
   },
   {
