@@ -27,6 +27,13 @@ export async function e18e(options: OptionsE18e & OptionsProjectType & OptionsIs
         ...moduleReplacements ? { ...configs.moduleReplacements!.rules } : {},
         ...performanceImprovements ? { ...configs.performanceImprovements!.rules } : {},
 
+        // e18e/prefer-static-regex is too strict for non-lib projects, and most of the time the performance improvement is negligible, so we'll disable it by default for app projects
+        ...(type === 'lib'
+          ? {}
+          : {
+              'e18e/prefer-static-regex': 'off',
+            }),
+
         // these are a bit opinionated and dangerous (introducing behavioral changes), so we'll disable them by default for now
         'e18e/prefer-array-at': 'off',
         'e18e/prefer-array-from-map': 'off',
