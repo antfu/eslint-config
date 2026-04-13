@@ -79,12 +79,20 @@ export const GLOB_EXCLUDE = [
   '**/.output',
   '**/.vite-inspect',
   '**/.yarn',
-  '**/vite.config.*.timestamp-*',
 
   '**/CHANGELOG*.md',
-  '**/*.min.*',
   '**/LICENSE*',
+  '**/*.min.*',
   '**/__snapshots__',
+
+  // Tools temp files
+  '**/vite.config.*.timestamp-*',
   '**/auto-import?(s).d.ts',
   '**/components.d.ts',
+
+  // AI related
+  '**/.context',
+  '**/.claude',
+  '**/.agents',
+  '**/.*/skills',
 ]
