@@ -5,7 +5,7 @@
 export type VendoredPrettierOptions = Partial<VendoredPrettierOptionsRequired>
 
 export type VendoredPrettierRuleOptions = VendoredPrettierOptions & {
-  parser?: BuiltInParserName | ExternalParserName
+  parser: BuiltInParserName | ExternalParserName
   [k: string]: unknown | undefined
 }
 

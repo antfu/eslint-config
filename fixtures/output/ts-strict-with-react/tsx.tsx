@@ -2,7 +2,7 @@ export function Component1() {
   return <div />
 }
 
-export function jsx2() {
+export function Component2() {
   const props = { a: 1, b: 2 }
   return (
     <a foo="bar" bar="foo">

@@ -2,43 +2,19 @@ import fs from 'node:fs/promises'
 
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
 import { builtinRules } from 'eslint/use-at-your-own-risk'
+import { CONFIG_PRESET_FULL_ON } from '../src/config-presets'
+import { antfu } from '../src/factory'
 
-import { astro, combine, comments, formatters, imports, javascript, jsdoc, jsonc, jsx, markdown, nextjs, node, perfectionist, react, regexp, solid, sortPackageJson, stylistic, svelte, test, toml, typescript, unicorn, unocss, vue, yaml } from '../src'
-
-const configs = await combine(
-  {
-    plugins: {
-      '': {
-        rules: Object.fromEntries(builtinRules.entries()),
+const configs = await antfu(CONFIG_PRESET_FULL_ON)
+  .prepend(
+    {
+      plugins: {
+        '': {
+          rules: Object.fromEntries(builtinRules.entries()),
+        },
       },
     },
-  },
-  astro(),
-  comments(),
-  formatters(),
-  imports(),
-  javascript(),
-  jsx({ a11y: true }),
-  jsdoc(),
-  jsonc(),
-  markdown(),
-  node(),
-  perfectionist(),
-  nextjs(),
-  react(),
-  solid(),
-  sortPackageJson(),
-  stylistic(),
-  svelte(),
-  test(),
-  toml(),
-  regexp(),
-  typescript(),
-  unicorn(),
-  unocss(),
-  vue(),
-  yaml(),
-)
+  )
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[]
 

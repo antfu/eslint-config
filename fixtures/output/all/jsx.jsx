@@ -1,18 +1,21 @@
+import React from 'react'
+
+const PATTERN = /\.\d+/g
+
 export function HelloWorld({
   greeting = 'hello',
   greeted = '"World"',
   silent = false,
   onMouseOver,
 }) {
+  const [num] = React.useState(() => Math
+    .floor (Math.random() * 1e+7)
+    .toString()
+    .replace(PATTERN, ''))
+
   if (!greeting) {
     return null
   };
-
-  // TODO: Don't use random in render
-  const num = Math
-    .floor (Math.random() * 1e+7)
-    .toString()
-    .replace(/\.\d+/g, '')
 
   return (
     <div className="HelloWorld" title={`You are visitor number ${num}`} onMouseOver={onMouseOver}>

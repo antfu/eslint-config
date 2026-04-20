@@ -16,13 +16,7 @@ export async function jsonc(
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
-  const [
-    pluginJsonc,
-    parserJsonc,
-  ] = await Promise.all([
-    interopDefault(import('eslint-plugin-jsonc')),
-    interopDefault(import('jsonc-eslint-parser')),
-  ] as const)
+  const pluginJsonc = await interopDefault(import('eslint-plugin-jsonc'))
 
   return [
     {
@@ -33,9 +27,7 @@ export async function jsonc(
     },
     {
       files,
-      languageOptions: {
-        parser: parserJsonc,
-      },
+      language: 'jsonc/x',
       name: 'antfu/jsonc/rules',
       rules: {
         'jsonc/no-bigint-literals': 'error',
@@ -70,7 +62,7 @@ export async function jsonc(
               'jsonc/array-bracket-spacing': ['error', 'never'],
               'jsonc/comma-dangle': ['error', 'never'],
               'jsonc/comma-style': ['error', 'last'],
-              'jsonc/indent': ['error', indent],
+              'jsonc/indent': ['error', typeof indent === 'number' ? indent : indent === 'tab' ? 'tab' : 2],
               'jsonc/key-spacing': ['error', { afterColon: true, beforeColon: false }],
               'jsonc/object-curly-newline': ['error', { consistent: true, multiline: true }],
               'jsonc/object-curly-spacing': ['error', 'always'],

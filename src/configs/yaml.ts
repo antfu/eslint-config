@@ -58,7 +58,7 @@ export async function yaml(
               'yaml/flow-mapping-curly-spacing': 'error',
               'yaml/flow-sequence-bracket-newline': 'error',
               'yaml/flow-sequence-bracket-spacing': 'error',
-              'yaml/indent': ['error', indent === 'tab' ? 2 : indent],
+              'yaml/indent': ['error', typeof indent === 'number' ? indent : 2],
               'yaml/key-spacing': 'error',
               'yaml/no-tab-indent': 'error',
               'yaml/quotes': ['error', { avoidEscape: true, prefer: quotes === 'backtick' ? 'single' : quotes }],
@@ -67,42 +67,6 @@ export async function yaml(
           : {},
 
         ...overrides,
-      },
-    },
-    {
-      files: ['pnpm-workspace.yaml'],
-      name: 'antfu/yaml/pnpm-workspace',
-      rules: {
-        'yaml/sort-keys': [
-          'error',
-          {
-            order: [
-              'packages',
-              'overrides',
-              'patchedDependencies',
-              'hoistPattern',
-              'catalog',
-              'catalogs',
-
-              'allowedDeprecatedVersions',
-              'allowNonAppliedPatches',
-              'configDependencies',
-              'ignoredBuiltDependencies',
-              'ignoredOptionalDependencies',
-              'neverBuiltDependencies',
-              'onlyBuiltDependencies',
-              'onlyBuiltDependenciesFile',
-              'packageExtensions',
-              'peerDependencyRules',
-              'supportedArchitectures',
-            ],
-            pathPattern: '^$',
-          },
-          {
-            order: { type: 'asc' },
-            pathPattern: '.*',
-          },
-        ],
       },
     },
   ]

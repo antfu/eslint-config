@@ -16,11 +16,6 @@
 - Respects `.gitignore` by default
 - Requires ESLint v9.5.0+
 
-> [!NOTE]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
->
-> Since v3.0.0, ESLint v9.5.0+ is now required.
-
 > [!WARNING]
 > I am super appreciative and even a bit flattered that so many of you are fond of using this config. For that reason, I tried to make it as flexible and customizable as possible to fit more use cases.
 >
@@ -129,7 +124,7 @@ Add the following settings to your `.vscode/settings.json`:
     "source.organizeImports": "never"
   },
 
-  // Silent the stylistic rules in you IDE, but still auto fix them
+  // Silent the stylistic rules in your IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off", "fixable": true },
     { "rule": "format/*", "severity": "off", "fixable": true },
@@ -167,6 +162,72 @@ Add the following settings to your `.vscode/settings.json`:
     "pcss",
     "postcss"
   ]
+}
+```
+
+</details>
+
+<details>
+<summary>🔲 Zed support</summary>
+
+<br>
+
+Add the following settings to your `.zed/settings.json`:
+
+```jsonc
+{
+  "format_on_save": "on",
+  "formatter": [
+    // Use ESLint's --fix:
+    { "code_action": "source.fixAll.eslint" }
+  ],
+  // Enable eslint for all supported languages
+  // Defaults only include https://github.com/search?q=repo%3Azed-industries%2Fzed%20eslint_languages&type=code
+  "languages": {
+    "HTML": {
+      "language_servers": ["...", "eslint"]
+    },
+    "Markdown": {
+      "language_servers": ["...", "eslint"]
+    },
+    "JSON": {
+      "language_servers": ["...", "eslint"]
+    },
+    "JSONC": {
+      "language_servers": ["...", "eslint"]
+    },
+    "YAML": {
+      "language_servers": ["...", "eslint"]
+    },
+    "CSS": {
+      "language_servers": ["...", "eslint"]
+    }
+    // Add other languages as needed
+  },
+  "lsp": {
+    "eslint": {
+      "settings": {
+        // Remove after https://github.com/zed-industries/zed/issues/49387
+        "experimental": {
+          "useFlatConfig": false
+        },
+
+        // Silent the stylistic rules in your IDE, but still auto fix them
+        "rulesCustomizations": [
+          { "rule": "style/*", "severity": "off", "fixable": true },
+          { "rule": "format/*", "severity": "off", "fixable": true },
+          { "rule": "*-indent", "severity": "off", "fixable": true },
+          { "rule": "*-spacing", "severity": "off", "fixable": true },
+          { "rule": "*-spaces", "severity": "off", "fixable": true },
+          { "rule": "*-order", "severity": "off", "fixable": true },
+          { "rule": "*-dangle", "severity": "off", "fixable": true },
+          { "rule": "*-newline", "severity": "off", "fixable": true },
+          { "rule": "*quotes", "severity": "off", "fixable": true },
+          { "rule": "*semi", "severity": "off", "fixable": true }
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -223,7 +284,7 @@ lspconfig.eslint.setup(
       "postcss"
     },
     settings = {
-      -- Silent the stylistic rules in you IDE, but still auto fix them
+      -- Silent the stylistic rules in your IDE, but still auto fix them
       rulesCustomizations = customizations,
     },
   }
@@ -274,8 +335,20 @@ And that's it! Or you can configure each integration individually, for example:
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-// Type of the project. 'lib' for libraries, the default is 'app'
+  // Type of the project. 'lib' for libraries, the default is 'app'
   type: 'lib',
+
+  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+  // The `ignores` option in the option (first argument) is specifically treated to always be global ignores
+  // And will **extend** the config's default ignores, not override them
+  // You can also pass a function to modify the default ignores
+  ignores: [
+    '**/fixtures',
+    // ...globs
+  ],
+
+  // Parse the `.gitignore` file to get the ignores, on by default
+  gitignore: true,
 
   // Enable stylistic formatting rules
   // stylistic: true,
@@ -293,12 +366,6 @@ export default antfu({
   // Disable jsonc and yaml support
   jsonc: false,
   yaml: false,
-
-  // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
-  ignores: [
-    '**/fixtures',
-    // ...globs
-  ]
 })
 ```
 
@@ -402,11 +469,11 @@ type foo = { bar: 2 }
 ```
 
 > [!NOTE]
-> About plugin renaming - it is actually rather a dangrous move that might leading to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
+> About plugin renaming - it is actually rather a dangerous move that might lead to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
 >
 > This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
 >
-> That said, it's probably still not a good idea. You might not want to doing this if you are maintaining your own eslint config.
+> That said, it's probably still not a good idea. You might not want to do this if you are maintaining your own eslint config.
 >
 > Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
 
@@ -621,7 +688,7 @@ export default antfu({
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
 ```bash
-npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh
+npm i -D @eslint-react/eslint-plugin eslint-plugin-react-refresh
 ```
 
 #### Next.js
@@ -719,6 +786,25 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D @unocss/eslint-plugin
 ```
 
+#### Angular
+
+To enable Angular support, you need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  angular: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser
+```
+
 ### Optional Rules
 
 This config also provides some optional plugins/rules for extended usage.
@@ -779,8 +865,11 @@ Auto-fixing for the following rules are disabled when ESLint is running in a cod
 - [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 - [`test/no-only-tests`](https://github.com/levibuzolic/eslint-plugin-no-only-tests)
 - [`unused-imports/no-unused-imports`](https://www.npmjs.com/package/eslint-plugin-unused-imports)
+- [`pnpm/json-enforce-catalog`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
+- [`pnpm/json-prefer-workspace-settings`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
+- [`pnpm/json-valid-catalog`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
 
-Since v3.16.0, they are no longer disabled, but made non-fixable using [this helper](https://github.com/antfu/eslint-flat-config-utils#composerdisablerulesfix).
+> Since v3.16.0, they are no longer disabled, but made non-fixable using [this helper](https://github.com/antfu/eslint-flat-config-utils#composerdisablerulesfix).
 
 This is to prevent unused imports from getting removed by the editor during refactoring to get a better developer experience. Those rules will be applied when you run ESLint in the terminal or [Lint Staged](#lint-staged). If you don't want this behavior, you can disable them:
 
@@ -861,6 +950,10 @@ If you enjoy this code style, and would like to mention it in your project, here
 [Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
 Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
+
+### oxlint?
+
+We do have a plan to integrate [oxlint](https://github.com/oxc-project/oxc) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
 
 ### dprint?
 
