@@ -865,7 +865,6 @@ export interface RuleOptions {
   'quotes'?: Linter.RuleEntry<Quotes>;
   'radix'?: Linter.RuleEntry<Radix>;
   'react-refresh/only-export-components'?: Linter.RuleEntry<ReactRefreshOnlyExportComponents>;
-  'react/component-hook-factories'?: Linter.RuleEntry<[]>;
   'react/dom-no-dangerously-set-innerhtml'?: Linter.RuleEntry<[]>;
   'react/dom-no-dangerously-set-innerhtml-with-children'?: Linter.RuleEntry<[]>;
   'react/dom-no-find-dom-node'?: Linter.RuleEntry<[]>;
@@ -884,6 +883,7 @@ export interface RuleOptions {
   'react/dom-no-void-elements-with-children'?: Linter.RuleEntry<[]>;
   'react/error-boundaries'?: Linter.RuleEntry<[]>;
   'react/exhaustive-deps'?: Linter.RuleEntry<ReactExhaustiveDeps>;
+  'react/globals'?: Linter.RuleEntry<[]>;
   'react/immutability'?: Linter.RuleEntry<[]>;
   'react/jsx-no-children-prop'?: Linter.RuleEntry<[]>;
   'react/jsx-no-children-prop-with-children'?: Linter.RuleEntry<[]>;
@@ -941,16 +941,18 @@ export interface RuleOptions {
   'react/rules-of-hooks'?: Linter.RuleEntry<ReactRulesOfHooks>;
   'react/set-state-in-effect'?: Linter.RuleEntry<[]>;
   'react/set-state-in-render'?: Linter.RuleEntry<[]>;
+  'react/static-components'?: Linter.RuleEntry<[]>;
   'react/unsupported-syntax'?: Linter.RuleEntry<[]>;
   'react/use-memo'?: Linter.RuleEntry<[]>;
   'react/use-state'?: Linter.RuleEntry<ReactUseState>;
   'react/web-api-no-leaked-event-listener'?: Linter.RuleEntry<[]>;
+  'react/web-api-no-leaked-fetch'?: Linter.RuleEntry<[]>;
   'react/web-api-no-leaked-interval'?: Linter.RuleEntry<[]>;
   'react/web-api-no-leaked-resize-observer'?: Linter.RuleEntry<[]>;
   'react/web-api-no-leaked-timeout'?: Linter.RuleEntry<[]>;
-  'react/x-component-hook-factories'?: Linter.RuleEntry<[]>;
   'react/x-error-boundaries'?: Linter.RuleEntry<[]>;
   'react/x-exhaustive-deps'?: Linter.RuleEntry<ReactXExhaustiveDeps>;
+  'react/x-globals'?: Linter.RuleEntry<[]>;
   'react/x-immutability'?: Linter.RuleEntry<[]>;
   'react/x-no-access-state-in-setstate'?: Linter.RuleEntry<[]>;
   'react/x-no-array-index-key'?: Linter.RuleEntry<[]>;
@@ -996,6 +998,7 @@ export interface RuleOptions {
   'react/x-rules-of-hooks'?: Linter.RuleEntry<ReactXRulesOfHooks>;
   'react/x-set-state-in-effect'?: Linter.RuleEntry<[]>;
   'react/x-set-state-in-render'?: Linter.RuleEntry<[]>;
+  'react/x-static-components'?: Linter.RuleEntry<[]>;
   'react/x-unsupported-syntax'?: Linter.RuleEntry<[]>;
   'react/x-use-memo'?: Linter.RuleEntry<[]>;
   'react/x-use-state'?: Linter.RuleEntry<ReactXUseState>;
