@@ -519,13 +519,16 @@ export default antfu(
     },
   },
   {
-    // Without `files`, they are general rules for all files
+    // Without `files`, they are general rules for all files (Markdown excluded — see note below)
     rules: {
       'style/semi': ['error', 'never'],
     },
   }
 )
 ```
+
+> [!NOTE]
+> Rule overrides without an explicit `files` constraint are automatically excluded from Markdown files, via [`composer.setDefaultIgnores`](https://github.com/antfu/eslint-flat-config-utils#composersetdefaultignores). This prevents JS-only rules (e.g. `no-irregular-whitespace`, `perfectionist/sort-imports`) from crashing on `@eslint/markdown`'s `SourceCode`, which doesn't expose JS-specific methods like `getAllComments()`. If you want a rule to apply to Markdown, scope it explicitly with `files: ['**/*.md']`.
 
 We also provided the `overrides` options in each integration to make it easier:
 
