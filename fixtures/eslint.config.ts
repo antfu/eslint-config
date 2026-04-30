@@ -1,4 +1,4 @@
-import { antfu } from './src'
+import { antfu } from '../src'
 
 export default antfu(
   {
