@@ -861,6 +861,21 @@ export default antfu({
 })
 ```
 
+### Prettier 
+
+If you're using prettier outside eslint, you can disable the config via etc:
+
+```js
+import antfu from '@antfu/eslint-config'
+import prettierConflicts from 'eslint-config-prettier'
+
+export default antfu({
+	rules: {
+		'some-rule': 'off'
+	}
+}, prettierConflicts);
+```
+
 ### Editor Specific Disables
 
 Auto-fixing for the following rules are disabled when ESLint is running in a code editor:
