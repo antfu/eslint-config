@@ -39,6 +39,7 @@ import {
 import { e18e } from './configs/e18e'
 import { formatters } from './configs/formatters'
 import { regexp } from './configs/regexp'
+import { GLOB_MARKDOWN } from './globs'
 import { interopDefault, isInEditorEnv } from './utils'
 
 const flatConfigProps = [
@@ -98,6 +99,7 @@ export function antfu(
     jsx: enableJsx = true,
     nextjs: enableNextjs = false,
     node: enableNode = true,
+    perfectionist: enablePerfectionist = true,
     pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
     react: enableReact = false,
     regexp: enableRegexp = true,
@@ -160,10 +162,15 @@ export function antfu(
     }),
     comments(),
     command(),
-
-    // Optional plugins (installed but not enabled by default)
-    perfectionist(),
   )
+
+  if (enablePerfectionist) {
+    configs.push(
+      perfectionist({
+        overrides: getOverrides(options, 'perfectionist'),
+      }),
+    )
+  }
 
   if (enableNode) {
     configs.push(
@@ -407,6 +414,14 @@ export function antfu(
       ...configs,
       ...userConfigs as any,
     )
+
+  // Markdown uses the `markdown/gfm` language, whose `SourceCode` lacks JS-only
+  // methods like `getAllComments`. Without this, any rule override registered
+  // without a `files` constraint would apply globally and crash on `.md` files.
+  // See https://github.com/antfu/eslint-config/issues/837.
+  if (options.markdown ?? true) {
+    composer = composer.setDefaultIgnores(prev => [...prev, GLOB_MARKDOWN])
+  }
 
   if (autoRenamePlugins) {
     composer = composer

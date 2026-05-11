@@ -140,18 +140,6 @@
     ],
   },
   {
-    "name": "antfu/perfectionist/setup",
-    "plugins": [
-      "perfectionist",
-    ],
-    "rules": [
-      "perfectionist/sort-exports",
-      "perfectionist/sort-imports",
-      "perfectionist/sort-named-exports",
-      "perfectionist/sort-named-imports",
-    ],
-  },
-  {
     "name": "antfu/e18e/rules",
     "plugins": [
       "e18e",

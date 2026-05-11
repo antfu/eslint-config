@@ -19,6 +19,7 @@ export default antfu(
       },
     },
     formatters: true,
+    perfectionist: true,
     pnpm: true,
     type: 'lib',
     jsx: {

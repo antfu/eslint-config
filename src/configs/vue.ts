@@ -27,6 +27,7 @@ export async function vue(
     : options.sfcBlocks ?? {}
 
   const {
+    braceStyle = 'stroustrup',
     indent = 2,
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
@@ -182,7 +183,7 @@ export async function vue(
                 multiline: 'always',
                 singleline: 'always',
               }],
-              'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+              'vue/brace-style': ['error', braceStyle, { allowSingleLine: true }],
               'vue/comma-dangle': ['error', 'always-multiline'],
               'vue/comma-spacing': ['error', { after: true, before: false }],
               'vue/comma-style': ['error', 'last'],

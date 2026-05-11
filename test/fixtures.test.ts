@@ -116,6 +116,20 @@ runWithConfig(
   },
 )
 
+// https://github.com/antfu/eslint-config/issues/837
+runWithConfig(
+  'issue-837',
+  {
+    typescript: false,
+    vue: false,
+  },
+  {
+    rules: {
+      'no-irregular-whitespace': ['warn', { skipStrings: true, skipTemplates: true }],
+    },
+  },
+)
+
 function runWithConfig(name: string, configs: OptionsConfig, ...items: TypedFlatConfigItem[]) {
   it.concurrent(name, async ({ expect }) => {
     const from = resolve('fixtures/input')

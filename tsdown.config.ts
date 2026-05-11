@@ -1,5 +1,5 @@
 import { defineConfig } from 'tsdown'
-import ApiSnapshot from 'tsnapi/rolldown'
+import { StaleGuardRecorder } from 'tsdown-stale-guard'
 
 export default defineConfig({
   entry: [
@@ -11,8 +11,6 @@ export default defineConfig({
   format: ['esm'],
   exports: true,
   plugins: [
-    ApiSnapshot({
-      outputDir: 'test/__snapshots__/api',
-    }),
+    StaleGuardRecorder(),
   ],
 })

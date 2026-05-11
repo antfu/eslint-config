@@ -1,8 +1,8 @@
 {
   "name": "@antfu/eslint-config",
   "type": "module",
-  "version": "8.2.0",
-  "packageManager": "pnpm@10.33.0",
+  "version": "8.3.0",
+  "packageManager": "pnpm@10.33.4",
   "description": "Anthony's ESLint config",
   "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "release": "bumpp",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks && skills-npm"
   },
   "peerDependencies": {
     "@angular-eslint/eslint-plugin": "^21.1.0",
@@ -193,10 +193,12 @@
     "prettier-plugin-astro": "catalog:peer",
     "prettier-plugin-slidev": "catalog:peer",
     "simple-git-hooks": "catalog:dev",
+    "skills-npm": "catalog:dev",
     "svelte": "catalog:peer",
     "svelte-eslint-parser": "catalog:peer",
     "tinyglobby": "catalog:dev",
     "tsdown": "catalog:dev",
+    "tsdown-stale-guard": "catalog:dev",
     "tsnapi": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
@@ -221,12 +223,12 @@
   },
   "inlinedDependencies": {
     "@eslint-community/eslint-utils": "4.9.1",
-    "@typescript-eslint/scope-manager": "8.58.1",
-    "@typescript-eslint/types": "8.58.1",
-    "@typescript-eslint/utils": "8.58.1",
-    "@typescript-eslint/visitor-keys": "8.58.1",
-    "cached-factory": "0.1.0",
-    "eslint-plugin-erasable-syntax-only": "0.4.0",
+    "@typescript-eslint/scope-manager": "8.59.2",
+    "@typescript-eslint/types": "8.59.2",
+    "@typescript-eslint/utils": "8.59.2",
+    "@typescript-eslint/visitor-keys": "8.59.2",
+    "cached-factory": "0.2.0",
+    "eslint-plugin-erasable-syntax-only": "0.4.1",
     "eslint-visitor-keys": [
       "3.4.3",
       "5.0.1"
