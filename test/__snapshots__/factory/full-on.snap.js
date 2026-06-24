@@ -267,13 +267,16 @@
     ],
   },
   {
-    "ignores": [
-      "**/*.md",
-    ],
-    "name": "antfu/unicorn/rules",
+    "name": "antfu/unicorn/setup",
     "plugins": [
       "unicorn",
     ],
+  },
+  {
+    "files": [
+      "**/*.?([cm])[jt]s?(x)",
+    ],
+    "name": "antfu/unicorn/rules",
     "rules": [
       "unicorn/consistent-empty-array-spread",
       "unicorn/error-message",
@@ -999,6 +1002,7 @@
       "react/dom-no-void-elements-with-children",
       "react/web-api-no-leaked-event-listener",
       "react/web-api-no-leaked-fetch",
+      "react/web-api-no-leaked-intersection-observer",
       "react/web-api-no-leaked-interval",
       "react/web-api-no-leaked-resize-observer",
       "react/web-api-no-leaked-timeout",

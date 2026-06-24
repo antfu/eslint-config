@@ -267,13 +267,16 @@
     ],
   },
   {
-    "ignores": [
-      "**/*.md",
-    ],
-    "name": "antfu/unicorn/rules",
+    "name": "antfu/unicorn/setup",
     "plugins": [
       "unicorn",
     ],
+  },
+  {
+    "files": [
+      "**/*.?([cm])[jt]s?(x)",
+    ],
+    "name": "antfu/unicorn/rules",
     "rules": [
       "unicorn/consistent-empty-array-spread",
       "unicorn/error-message",

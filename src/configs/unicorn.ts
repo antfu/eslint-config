@@ -1,5 +1,6 @@
 import type { OptionsUnicorn, TypedFlatConfigItem } from '../types'
 
+import { GLOB_SRC } from '../globs'
 import { pluginUnicorn } from '../plugins'
 
 export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatConfigItem[]> {
@@ -9,10 +10,14 @@ export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatCo
   } = options
   return [
     {
-      name: 'antfu/unicorn/rules',
+      name: 'antfu/unicorn/setup',
       plugins: {
         unicorn: pluginUnicorn,
       },
+    },
+    {
+      files: [GLOB_SRC],
+      name: 'antfu/unicorn/rules',
       rules: {
         ...(allRecommended
           ? pluginUnicorn.configs.recommended.rules as any

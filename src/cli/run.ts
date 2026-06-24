@@ -75,7 +75,7 @@ export async function run(options: CliRunOptions = {}): Promise<void> {
         })
       },
       extra: ({ results }) => {
-        const isArgExtraValid = argExtra?.length && !argExtra.filter(element => !extra.includes(<ExtraLibrariesOption>element)).length
+        const isArgExtraValid = argExtra?.length && argExtra.every(element => extra.includes(<ExtraLibrariesOption>element))
 
         if (!results.uncommittedConfirmed || isArgExtraValid)
           return
