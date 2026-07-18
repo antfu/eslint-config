@@ -176,6 +176,7 @@ Add the following settings to your `.zed/settings.json`:
 
 ```jsonc
 {
+  "format_on_save": "on",
   // Use ESLint's --fix:
   "code_actions_on_format": {
     "source.fixAll.eslint": true
