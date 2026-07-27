@@ -54,6 +54,7 @@
     "astro-eslint-parser": ">=1.0.2",
     "eslint": "^9.10.0 || ^10.0.0",
     "eslint-plugin-astro": ">=1.2.0",
+    "eslint-plugin-erasable-syntax-only": "^0.4.2",
     "eslint-plugin-format": ">=0.1.0",
     "eslint-plugin-jsx-a11y": ">=6.10.2",
     "eslint-plugin-react-refresh": "^0.5.0",
@@ -90,6 +91,9 @@
       "optional": true
     },
     "eslint-plugin-astro": {
+      "optional": true
+    },
+    "eslint-plugin-erasable-syntax-only": {
       "optional": true
     },
     "eslint-plugin-format": {
@@ -222,17 +226,6 @@
     "*": "eslint --fix"
   },
   "inlinedDependencies": {
-    "@eslint-community/eslint-utils": "4.9.1",
-    "@typescript-eslint/scope-manager": "8.62.0",
-    "@typescript-eslint/types": "8.62.0",
-    "@typescript-eslint/utils": "8.62.0",
-    "@typescript-eslint/visitor-keys": "8.62.0",
-    "cached-factory": "0.3.0",
-    "eslint-plugin-erasable-syntax-only": "0.4.2",
-    "eslint-visitor-keys": [
-      "3.4.3",
-      "5.0.1"
-    ],
     "find-up-simple": "1.0.1"
   }
 }
