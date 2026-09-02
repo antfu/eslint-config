@@ -1,12 +1,13 @@
-import type { OptionsOverrides, TypedFlatConfigItem } from '../types'
+import type { OptionsHasTypeScript, OptionsOverrides, TypedFlatConfigItem } from '../types'
 
 import { ensurePackages, interopDefault } from '../utils'
 
 export async function antiSlop(
-  options: OptionsOverrides = {},
+  options: OptionsHasTypeScript & OptionsOverrides = {},
 ): Promise<TypedFlatConfigItem[]> {
   const {
     overrides = {},
+    typescript = false,
   } = options
 
   await ensurePackages([
@@ -30,6 +31,13 @@ export async function antiSlop(
         sonarjs: pluginSonarjs,
       },
       rules: {
+        // Size, complexity, and naming limits guarding against code that is
+        // hard for humans to review, see https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era
+        'complexity': ['error', { max: 15 }],
+        'id-length': ['error', { exceptions: ['_', 'i', 'j'], min: 3, properties: 'never' }],
+        'max-depth': ['error', { max: 4 }],
+        'max-lines-per-function': ['error', { max: 50, skipBlankLines: true, skipComments: true }],
+
         'slop/max-comment-length': 'error',
         'slop/no-chained-type-assertions': 'error',
         'slop/no-em-dash': 'error',
@@ -57,6 +65,12 @@ export async function antiSlop(
         'sonarjs/no-unused-collection': 'error',
         'sonarjs/no-use-of-empty-return-value': 'error',
         'sonarjs/prefer-single-boolean-return': 'error',
+
+        // `any` silently erases type safety, the typescript config leaves it off by default
+        // but agents reach for it whenever typings get inconvenient
+        ...typescript
+          ? { 'ts/no-explicit-any': 'error' }
+          : {},
 
         ...overrides,
       },

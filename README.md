@@ -827,7 +827,7 @@ export default antfu({
 })
 ```
 
-This enables [`eslint-plugin-slop`](https://github.com/antfu/eslint-plugin-slop) and a curated, in-house maintained subset of [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS) rules focusing on redundant and duplicated code.
+This enables [`eslint-plugin-slop`](https://github.com/antfu/eslint-plugin-slop) and a curated, in-house maintained subset of [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS) rules focusing on redundant and duplicated code. On top of that, it limits function size, complexity, nesting depth, and identifier length via ESLint core rules, and disallows explicit `any` when TypeScript is enabled (inspired by [this writeup on keeping AI-authored code clean](https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era)).
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
@@ -835,7 +835,7 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D eslint-plugin-slop eslint-plugin-sonarjs
 ```
 
-Since linters only see one file at a time, we recommend pairing this option with [`jscpd`](https://github.com/kucherenko/jscpd) to detect copy-paste duplication across files, and [`knip`](https://knip.dev) to find unused files, dependencies, and exports.
+Since linters only see one file at a time, we recommend pairing this option with [`jscpd`](https://github.com/kucherenko/jscpd) to detect copy-paste duplication across files, and [`knip`](https://knip.dev) to find unused files, dependencies, and exports. Circular-import detection is also out of scope for this config ([`eslint-plugin-import-lite`](https://github.com/9romise/eslint-plugin-import-lite) intentionally omits resolution-heavy rules like `import/no-cycle`), so consider a dedicated tool such as [`madge`](https://github.com/pahen/madge) or [`dpdm`](https://github.com/acrazing/dpdm) if you need it.
 
 ### Optional Rules
 

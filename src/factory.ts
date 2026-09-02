@@ -212,14 +212,6 @@ export function antfu(
     )
   }
 
-  if (enableAntiSlop) {
-    configs.push(
-      antiSlop({
-        overrides: getOverrides(options, 'antiSlop'),
-      }),
-    )
-  }
-
   if (enableVue) {
     componentExts.push('vue')
   }
@@ -237,6 +229,16 @@ export function antfu(
         componentExts,
         overrides: getOverrides(options, 'typescript'),
         type: appType,
+      }),
+    )
+  }
+
+  // Registered after the TypeScript config so its `ts/no-explicit-any` override takes effect
+  if (enableAntiSlop) {
+    configs.push(
+      antiSlop({
+        overrides: getOverrides(options, 'antiSlop'),
+        typescript: !!enableTypeScript,
       }),
     )
   }
