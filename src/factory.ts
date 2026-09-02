@@ -7,7 +7,7 @@ import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
 import {
   angular,
-  antiSlop,
+  antislop,
   astro,
   command,
   comments,
@@ -89,7 +89,7 @@ export function antfu(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     angular: enableAngular = false,
-    antiSlop: enableAntiSlop = false,
+    antislop: enableAntislop = false,
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
@@ -234,10 +234,11 @@ export function antfu(
   }
 
   // Registered after the TypeScript config so its `ts/no-explicit-any` override takes effect
-  if (enableAntiSlop) {
+  if (enableAntislop) {
     configs.push(
-      antiSlop({
-        overrides: getOverrides(options, 'antiSlop'),
+      antislop({
+        ...resolveSubOptions(options, 'antislop'),
+        overrides: getOverrides(options, 'antislop'),
         typescript: !!enableTypeScript,
       }),
     )

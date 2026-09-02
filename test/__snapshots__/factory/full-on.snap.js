@@ -519,7 +519,7 @@
     "ignores": [
       "**/*.md",
     ],
-    "name": "antfu/anti-slop/rules",
+    "name": "antfu/antislop/rules",
     "plugins": [
       "slop",
       "sonarjs",
@@ -528,8 +528,10 @@
       "slop/max-comment-length",
       "slop/no-chained-type-assertions",
       "slop/no-em-dash",
+      "slop/no-jargon",
       "slop/no-trivial-functions",
       "slop/no-trivial-type-aliases",
+      "slop/prefer-jsdoc",
       "sonarjs/cognitive-complexity",
       "sonarjs/no-all-duplicated-branches",
       "sonarjs/no-collapsible-if",

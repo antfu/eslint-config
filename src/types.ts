@@ -195,6 +195,40 @@ export interface OptionsE18e extends OptionsOverrides {
   performanceImprovements?: boolean
 }
 
+export interface OptionsAntislop extends OptionsOverrides {
+  /**
+   * Enable rules from `eslint-plugin-slop`.
+   *
+   * @see https://github.com/antfu/eslint-plugin-slop
+   * @default true
+   */
+  slop?: boolean
+
+  /**
+   * Options passed to `eslint-plugin-slop` via `settings.slop`,
+   * controlling the working directory and inspection mode.
+   *
+   * @see https://github.com/antfu/eslint-plugin-slop#inspection-modes
+   */
+  slopOptions?: {
+    cwd?: string
+    inspection?: 'full' | 'uncommitted' | 'recent-changes' | {
+      mode: 'full' | 'uncommitted'
+    } | {
+      mode: 'recent-changes'
+      tracebackCommits?: number
+    }
+  }
+
+  /**
+   * Enable the curated subset of rules from `eslint-plugin-sonarjs`.
+   *
+   * @see https://github.com/SonarSource/SonarJS
+   * @default true
+   */
+  sonarjs?: boolean
+}
+
 export interface OptionsUnicorn extends OptionsOverrides {
   /**
    * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
@@ -514,9 +548,11 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * - `eslint-plugin-slop`
    * - `eslint-plugin-sonarjs`
    *
+   * @experimental The enabled rule set is maintained in-house and may change
+   * in any release without following semver.
    * @default false
    */
-  antiSlop?: boolean | OptionsOverrides
+  antislop?: boolean | OptionsAntislop
 
   /**
    * Enable linting for **code snippets** in Markdown and the markdown content itself.

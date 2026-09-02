@@ -4,7 +4,7 @@
 // #region Functions
 export async function angular(_) {}
 export function antfu(_, ..._) {}
-export async function antiSlop(_) {}
+export async function antislop(_) {}
 export async function astro(_) {}
 export async function combine(..._) {}
 export async function command() {}

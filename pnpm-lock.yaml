@@ -117,8 +117,8 @@ catalogs:
       specifier: ^0.5.5
       version: 0.5.5
     eslint-plugin-slop:
-      specifier: ^0.1.0
-      version: 0.1.0
+      specifier: ^0.1.1
+      version: 0.1.1
     eslint-plugin-solid:
       specifier: ^0.17.0
       version: 0.17.0
@@ -437,7 +437,7 @@ importers:
         version: 0.5.5(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-slop:
         specifier: catalog:peer
-        version: 0.1.0(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0))
+        version: 0.1.1(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-solid:
         specifier: catalog:peer
         version: 0.17.0(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
@@ -2748,8 +2748,8 @@ packages:
     peerDependencies:
       eslint: '>=9.38.0'
 
-  eslint-plugin-slop@0.1.0:
-    resolution: {integrity: sha512-02WDC56D09Jfvjgbyd/fYtHCPx82OUwJ1U7il0hDuwukQSzjQJpd8s5vVWnmnfJTFNlIhrAx0fOVXvHKeXBC0A==}
+  eslint-plugin-slop@0.1.1:
+    resolution: {integrity: sha512-Zcp3WvGF1uC1599Sg0ZZr9kFa/9nGYEDBbw+ZePXD/tuS0MhiiHXv2u5jTtOk1Ou9yxCoG5t3LqFDAV4T7Z9FA==}
     peerDependencies:
       eslint: ^10.0.0
 
@@ -6738,7 +6738,7 @@ snapshots:
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
 
-  eslint-plugin-slop@0.1.0(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0)):
+  eslint-plugin-slop@0.1.1(eslint@10.9.1(jiti@2.7.0)(supports-color@7.2.0)):
     dependencies:
       diff: 9.0.0
       eslint: 10.9.1(jiti@2.7.0)(supports-color@7.2.0)

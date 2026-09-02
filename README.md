@@ -816,6 +816,9 @@ npm i -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @a
 
 #### Anti-Slop
 
+> [!WARNING]
+> Experimental: the enabled rule set is maintained in-house and may change in any release without following semver.
+
 To guard against low-value code patterns commonly introduced by AI agents, you can explicitly turn on the anti-slop rules:
 
 ```js
@@ -823,11 +826,30 @@ To guard against low-value code patterns commonly introduced by AI agents, you c
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  antiSlop: true,
+  antislop: true,
 })
 ```
 
 This enables [`eslint-plugin-slop`](https://github.com/antfu/eslint-plugin-slop) and a curated, in-house maintained subset of [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS) rules focusing on redundant and duplicated code. It also disallows explicit `any` when TypeScript is enabled (inspired by [this writeup on keeping AI-authored code clean](https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era)).
+
+You can toggle each plugin and pass options to `eslint-plugin-slop`:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  antislop: {
+    slop: true,
+    sonarjs: false,
+    // passed to `eslint-plugin-slop` via `settings.slop`,
+    // for example to only inspect recently changed code
+    slopOptions: {
+      inspection: { mode: 'recent-changes', tracebackCommits: 5 },
+    },
+  },
+})
+```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 

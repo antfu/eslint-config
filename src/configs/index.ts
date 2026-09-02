@@ -1,5 +1,5 @@
 export * from './angular'
-export * from './anti-slop'
+export * from './antislop'
 export * from './astro'
 export * from './command'
 export * from './comments'
