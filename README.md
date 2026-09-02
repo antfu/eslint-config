@@ -835,7 +835,7 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D eslint-plugin-slop eslint-plugin-sonarjs
 ```
 
-Since linters only see one file at a time, we recommend pairing this option with [`jscpd`](https://github.com/kucherenko/jscpd) to detect copy-paste duplication across files, and [`knip`](https://knip.dev) to find unused files, dependencies, and exports. Circular-import detection is also out of scope for this config ([`eslint-plugin-import-lite`](https://github.com/9romise/eslint-plugin-import-lite) intentionally omits resolution-heavy rules like `import/no-cycle`), so consider a dedicated tool such as [`madge`](https://github.com/pahen/madge) or [`dpdm`](https://github.com/acrazing/dpdm) if you need it.
+Since linters only see one file at a time, we recommend pairing this option with [`jscpd`](https://github.com/kucherenko/jscpd) to detect copy-paste duplication across files, and [`knip`](https://knip.dev) to find unused files, dependencies, and exports.
 
 ### Optional Rules
 
