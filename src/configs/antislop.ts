@@ -8,7 +8,6 @@ export async function antislop(
   const {
     overrides = {},
     slop = true,
-    slopOptions,
     sonarjs = true,
     typescript = false,
   } = options
@@ -33,8 +32,8 @@ export async function antislop(
         ...slop ? { slop: pluginSlop } : {},
         ...sonarjs ? { sonarjs: pluginSonarjs } : {},
       },
-      ...slopOptions
-        ? { settings: { slop: slopOptions } }
+      ...typeof slop === 'object'
+        ? { settings: { slop } }
         : {},
       rules: {
         ...slop

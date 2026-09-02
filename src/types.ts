@@ -195,30 +195,27 @@ export interface OptionsE18e extends OptionsOverrides {
   performanceImprovements?: boolean
 }
 
+export interface OptionsSlop {
+  cwd?: string
+  inspection?: 'full' | 'uncommitted' | 'recent-changes' | {
+    mode: 'full' | 'uncommitted'
+  } | {
+    mode: 'recent-changes'
+    tracebackCommits?: number
+  }
+}
+
 export interface OptionsAntislop extends OptionsOverrides {
   /**
    * Enable rules from `eslint-plugin-slop`.
    *
+   * Passing an object enables the rules and forwards it to the plugin
+   * via `settings.slop`, controlling the working directory and inspection mode.
+   *
    * @see https://github.com/antfu/eslint-plugin-slop
    * @default true
    */
-  slop?: boolean
-
-  /**
-   * Options passed to `eslint-plugin-slop` via `settings.slop`,
-   * controlling the working directory and inspection mode.
-   *
-   * @see https://github.com/antfu/eslint-plugin-slop#inspection-modes
-   */
-  slopOptions?: {
-    cwd?: string
-    inspection?: 'full' | 'uncommitted' | 'recent-changes' | {
-      mode: 'full' | 'uncommitted'
-    } | {
-      mode: 'recent-changes'
-      tracebackCommits?: number
-    }
-  }
+  slop?: boolean | OptionsSlop
 
   /**
    * Enable the curated subset of rules from `eslint-plugin-sonarjs`.

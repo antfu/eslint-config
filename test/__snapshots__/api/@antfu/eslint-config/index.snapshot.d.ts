@@ -3,16 +3,7 @@
  */
 // #region Interfaces
 export interface OptionsAntislop extends OptionsOverrides {
-  slop?: boolean;
-  slopOptions?: {
-    cwd?: string;
-    inspection?: 'full' | 'uncommitted' | 'recent-changes' | {
-      mode: 'full' | 'uncommitted';
-    } | {
-      mode: 'recent-changes';
-      tracebackCommits?: number;
-    };
-  };
+  slop?: boolean | OptionsSlop;
   sonarjs?: boolean;
 }
 export interface OptionsComponentExts {
@@ -116,6 +107,15 @@ export interface OptionsProjectType {
 export interface OptionsReact extends OptionsOverrides {}
 export interface OptionsRegExp {
   level?: 'error' | 'warn';
+}
+export interface OptionsSlop {
+  cwd?: string;
+  inspection?: 'full' | 'uncommitted' | 'recent-changes' | {
+    mode: 'full' | 'uncommitted';
+  } | {
+    mode: 'recent-changes';
+    tracebackCommits?: number;
+  };
 }
 export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig;

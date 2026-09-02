@@ -840,11 +840,10 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   antislop: {
-    slop: true,
     sonarjs: false,
-    // passed to `eslint-plugin-slop` via `settings.slop`,
-    // for example to only inspect recently changed code
-    slopOptions: {
+    // an object enables `eslint-plugin-slop` and is forwarded to it
+    // via `settings.slop`, for example to only inspect recently changed code
+    slop: {
       inspection: { mode: 'recent-changes', tracebackCommits: 5 },
     },
   },
