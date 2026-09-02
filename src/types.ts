@@ -500,6 +500,25 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   angular?: boolean | OptionsOverrides
 
   /**
+   * Enable anti-slop rules, guarding against low-value code patterns
+   * commonly introduced by AI agents.
+   *
+   * Enables [eslint-plugin-slop](https://github.com/antfu/eslint-plugin-slop) and
+   * a curated subset of [eslint-plugin-sonarjs](https://github.com/SonarSource/SonarJS).
+   *
+   * We also recommend pairing this with [jscpd](https://github.com/kucherenko/jscpd)
+   * and [knip](https://github.com/webpro-nl/knip) to catch copy-paste duplication
+   * and unused files, dependencies, and exports.
+   *
+   * Requires installing:
+   * - `eslint-plugin-slop`
+   * - `eslint-plugin-sonarjs`
+   *
+   * @default false
+   */
+  antiSlop?: boolean | OptionsOverrides
+
+  /**
    * Enable linting for **code snippets** in Markdown and the markdown content itself.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.

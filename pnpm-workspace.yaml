@@ -4,6 +4,7 @@ minimumReleaseAgeExcludePrune: true
 minimumReleaseAgeExclude:
   - eslint-plugin-pnpm@1.9.1
   - pnpm-workspace-yaml@1.9.1
+  - eslint-plugin-slop@0.1.0
 
 trustPolicy: no-downgrade
 trustPolicyExclude:
@@ -75,7 +76,9 @@ catalogs:
     eslint-plugin-format: ^2.0.1
     eslint-plugin-jsx-a11y: ^6.10.2
     eslint-plugin-react-refresh: ^0.5.5
+    eslint-plugin-slop: ^0.1.0
     eslint-plugin-solid: ^0.17.0
+    eslint-plugin-sonarjs: ^4.2.0
     eslint-plugin-svelte: ^3.23.0
     eslint-plugin-vuejs-accessibility: ^2.6.0
     prettier-plugin-astro: ^0.14.1

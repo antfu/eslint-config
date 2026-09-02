@@ -814,6 +814,29 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/template-parser
 ```
 
+#### Anti-Slop
+
+To guard against low-value code patterns commonly introduced by AI agents, you can explicitly turn on the anti-slop rules:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  antiSlop: true,
+})
+```
+
+This enables [`eslint-plugin-slop`](https://github.com/antfu/eslint-plugin-slop) and a curated, in-house maintained subset of [`eslint-plugin-sonarjs`](https://github.com/SonarSource/SonarJS) rules focusing on redundant and duplicated code.
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D eslint-plugin-slop eslint-plugin-sonarjs
+```
+
+Since linters only see one file at a time, we recommend pairing this option with [`jscpd`](https://github.com/kucherenko/jscpd) to detect copy-paste duplication across files, and [`knip`](https://knip.dev) to find unused files, dependencies, and exports.
+
 ### Optional Rules
 
 This config also provides some optional plugins/rules for extended usage.

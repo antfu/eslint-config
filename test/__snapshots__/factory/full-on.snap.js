@@ -296,6 +296,42 @@
     ],
   },
   {
+    "ignores": [
+      "**/*.md",
+    ],
+    "name": "antfu/anti-slop/rules",
+    "plugins": [
+      "slop",
+      "sonarjs",
+    ],
+    "rules": [
+      "slop/max-comment-length",
+      "slop/no-chained-type-assertions",
+      "slop/no-em-dash",
+      "slop/no-trivial-functions",
+      "slop/no-trivial-type-aliases",
+      "sonarjs/cognitive-complexity",
+      "sonarjs/no-all-duplicated-branches",
+      "sonarjs/no-collapsible-if",
+      "sonarjs/no-commented-code",
+      "sonarjs/no-dead-store",
+      "sonarjs/no-duplicated-branches",
+      "sonarjs/no-element-overwrite",
+      "sonarjs/no-empty-collection",
+      "sonarjs/no-gratuitous-expressions",
+      "sonarjs/no-identical-conditions",
+      "sonarjs/no-identical-expressions",
+      "sonarjs/no-identical-functions",
+      "sonarjs/no-invariant-returns",
+      "sonarjs/no-inverted-boolean-check",
+      "sonarjs/no-redundant-boolean",
+      "sonarjs/no-redundant-jump",
+      "sonarjs/no-unused-collection",
+      "sonarjs/no-use-of-empty-return-value",
+      "sonarjs/prefer-single-boolean-return",
+    ],
+  },
+  {
     "files": [
       "**/*.?([cm])jsx",
       "**/*.?([cm])tsx",
@@ -1407,6 +1443,21 @@
       "pnpm/yaml-enforce-settings",
       "pnpm/yaml-no-duplicate-catalog-item",
       "pnpm/yaml-no-unused-catalog-item",
+    ],
+  },
+  {
+    "files": [
+      "pnpm-workspace.yaml",
+    ],
+    "languageOptions": {
+      "parser": "yaml-eslint-parser",
+    },
+    "name": "antfu/pnpm/pnpm-workspace-yaml-stylistic",
+    "plugins": [
+      "pnpm",
+    ],
+    "rules": [
+      "pnpm/yaml-blank-lines",
     ],
   },
   {

@@ -58,7 +58,9 @@
     "eslint-plugin-format": ">=0.1.0",
     "eslint-plugin-jsx-a11y": ">=6.10.2",
     "eslint-plugin-react-refresh": "^0.5.0",
+    "eslint-plugin-slop": ">=0.1.0",
     "eslint-plugin-solid": "^0.17.0",
+    "eslint-plugin-sonarjs": ">=4.0.0",
     "eslint-plugin-svelte": ">=2.35.1",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "prettier-plugin-astro": "^0.14.0",
@@ -105,7 +107,13 @@
     "eslint-plugin-react-refresh": {
       "optional": true
     },
+    "eslint-plugin-slop": {
+      "optional": true
+    },
     "eslint-plugin-solid": {
+      "optional": true
+    },
+    "eslint-plugin-sonarjs": {
       "optional": true
     },
     "eslint-plugin-svelte": {
@@ -185,7 +193,9 @@
     "eslint-plugin-format": "catalog:peer",
     "eslint-plugin-jsx-a11y": "catalog:peer",
     "eslint-plugin-react-refresh": "catalog:peer",
+    "eslint-plugin-slop": "catalog:peer",
     "eslint-plugin-solid": "catalog:peer",
+    "eslint-plugin-sonarjs": "catalog:peer",
     "eslint-plugin-svelte": "catalog:peer",
     "eslint-plugin-vuejs-accessibility": "catalog:peer",
     "eslint-typegen": "catalog:dev",

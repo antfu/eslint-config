@@ -7,6 +7,7 @@ import { findUpSync } from 'find-up-simple'
 import { isPackageExists } from 'local-pkg'
 import {
   angular,
+  antiSlop,
   astro,
   command,
   comments,
@@ -88,6 +89,7 @@ export function antfu(
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
     angular: enableAngular = false,
+    antiSlop: enableAntiSlop = false,
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
@@ -207,6 +209,14 @@ export function antfu(
   if (enableUnicorn) {
     configs.push(
       unicorn(enableUnicorn === true ? {} : enableUnicorn),
+    )
+  }
+
+  if (enableAntiSlop) {
+    configs.push(
+      antiSlop({
+        overrides: getOverrides(options, 'antiSlop'),
+      }),
     )
   }
 
