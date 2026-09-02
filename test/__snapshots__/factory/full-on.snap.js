@@ -525,10 +525,6 @@
       "sonarjs",
     ],
     "rules": [
-      "complexity",
-      "id-length",
-      "max-depth",
-      "max-lines-per-function",
       "slop/max-comment-length",
       "slop/no-chained-type-assertions",
       "slop/no-em-dash",

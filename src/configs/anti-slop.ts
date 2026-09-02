@@ -31,13 +31,6 @@ export async function antiSlop(
         sonarjs: pluginSonarjs,
       },
       rules: {
-        // Size, complexity, and naming limits guarding against code that is
-        // hard for humans to review, see https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era
-        'complexity': ['error', { max: 15 }],
-        'id-length': ['error', { exceptions: ['_', 'i', 'j'], min: 3, properties: 'never' }],
-        'max-depth': ['error', { max: 4 }],
-        'max-lines-per-function': ['error', { max: 50, skipBlankLines: true, skipComments: true }],
-
         'slop/max-comment-length': 'error',
         'slop/no-chained-type-assertions': 'error',
         'slop/no-em-dash': 'error',
