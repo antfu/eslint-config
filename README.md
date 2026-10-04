@@ -915,6 +915,25 @@ export default antfu({
 })
 ```
 
+Type aware rules apply to TypeScript and TSX files by default, using
+`['**/*.?([cm])ts', '**/*.?([cm])tsx']`. Vue files are excluded by default because
+type aware linting can substantially increase lint time. To opt in for Vue files,
+enable Vue support and include them in `filesTypeAware` while retaining the
+TypeScript and TSX patterns:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  vue: true,
+  typescript: {
+    tsconfigPath: 'tsconfig.json',
+    filesTypeAware: ['**/*.?([cm])ts', '**/*.?([cm])tsx', '**/*.vue'],
+  },
+})
+```
+
 ### Prettier
 
 If you're using prettier outside eslint, you can disable the config via etc:
