@@ -423,7 +423,7 @@ export interface RuleOptions {
   'jsdoc/check-line-alignment'?: Linter.RuleEntry<JsdocCheckLineAlignment>;
   'jsdoc/check-param-names'?: Linter.RuleEntry<JsdocCheckParamNames>;
   'jsdoc/check-property-names'?: Linter.RuleEntry<JsdocCheckPropertyNames>;
-  'jsdoc/check-syntax'?: Linter.RuleEntry<[]>;
+  'jsdoc/check-syntax'?: Linter.RuleEntry<JsdocCheckSyntax>;
   'jsdoc/check-tag-names'?: Linter.RuleEntry<JsdocCheckTagNames>;
   'jsdoc/check-template-names'?: Linter.RuleEntry<[]>;
   'jsdoc/check-types'?: Linter.RuleEntry<JsdocCheckTypes>;
@@ -1156,6 +1156,7 @@ export interface RuleOptions {
   'solid/jsx-uses-vars'?: Linter.RuleEntry<[]>;
   'solid/no-accessor-as-prop'?: Linter.RuleEntry<[]>;
   'solid/no-array-handlers'?: Linter.RuleEntry<[]>;
+  'solid/no-boolean-enumerated-attribute'?: Linter.RuleEntry<[]>;
   'solid/no-browser-globals-in-server-function'?: Linter.RuleEntry<[]>;
   'solid/no-destructure'?: Linter.RuleEntry<[]>;
   'solid/no-innerhtml'?: Linter.RuleEntry<SolidNoInnerhtml>;
@@ -1166,7 +1167,10 @@ export interface RuleOptions {
   'solid/no-react-specific-props'?: Linter.RuleEntry<[]>;
   'solid/no-restated-default-options'?: Linter.RuleEntry<[]>;
   'solid/no-single-arg-create-effect'?: Linter.RuleEntry<[]>;
+  'solid/no-store-mutation-outside-setter'?: Linter.RuleEntry<[]>;
   'solid/no-unknown-namespaces'?: Linter.RuleEntry<SolidNoUnknownNamespaces>;
+  'solid/no-unused-signal'?: Linter.RuleEntry<[]>;
+  'solid/no-write-in-pure-computation'?: Linter.RuleEntry<[]>;
   'solid/prefer-classlist'?: Linter.RuleEntry<SolidPreferClasslist>;
   'solid/prefer-for'?: Linter.RuleEntry<[]>;
   'solid/prefer-onSettled-for-side-effects'?: Linter.RuleEntry<[]>;
@@ -1918,6 +1922,7 @@ export interface RuleOptions {
   'unicorn/better-regex'?: Linter.RuleEntry<[]>;
   'unicorn/catch-error-name'?: Linter.RuleEntry<UnicornCatchErrorName>;
   'unicorn/class-reference-in-static-methods'?: Linter.RuleEntry<UnicornClassReferenceInStaticMethods>;
+  'unicorn/comma-spacing'?: Linter.RuleEntry<[]>;
   'unicorn/comment-content'?: Linter.RuleEntry<UnicornCommentContent>;
   'unicorn/consistent-arrow-return-style'?: Linter.RuleEntry<[]>;
   'unicorn/consistent-assert'?: Linter.RuleEntry<[]>;
@@ -1948,8 +1953,10 @@ export interface RuleOptions {
   'unicorn/filename-case'?: Linter.RuleEntry<UnicornFilenameCase>;
   'unicorn/id-match'?: Linter.RuleEntry<UnicornIdMatch>;
   'unicorn/import-style'?: Linter.RuleEntry<UnicornImportStyle>;
+  'unicorn/indent'?: Linter.RuleEntry<UnicornIndent>;
   'unicorn/isolated-functions'?: Linter.RuleEntry<UnicornIsolatedFunctions>;
   'unicorn/iteration-fallback-style'?: Linter.RuleEntry<UnicornIterationFallbackStyle>;
+  'unicorn/key-name-casing'?: Linter.RuleEntry<UnicornKeyNameCasing>;
   'unicorn/logical-assignment-operators'?: Linter.RuleEntry<UnicornLogicalAssignmentOperators>;
   'unicorn/max-nested-calls'?: Linter.RuleEntry<UnicornMaxNestedCalls>;
   'unicorn/name-replacements'?: Linter.RuleEntry<UnicornNameReplacements>;
@@ -1971,53 +1978,74 @@ export interface RuleOptions {
   'unicorn/no-array-sort-for-min-max'?: Linter.RuleEntry<[]>;
   'unicorn/no-array-splice'?: Linter.RuleEntry<[]>;
   'unicorn/no-asterisk-prefix-in-documentation-comments'?: Linter.RuleEntry<[]>;
+  'unicorn/no-async-iterator-callback'?: Linter.RuleEntry<[]>;
   'unicorn/no-async-promise-finally'?: Linter.RuleEntry<[]>;
   'unicorn/no-await-expression-member'?: Linter.RuleEntry<[]>;
   'unicorn/no-await-in-promise-methods'?: Linter.RuleEntry<[]>;
   'unicorn/no-barrel-files'?: Linter.RuleEntry<[]>;
   'unicorn/no-blob-to-file'?: Linter.RuleEntry<[]>;
   'unicorn/no-boolean-sort-comparator'?: Linter.RuleEntry<[]>;
-  'unicorn/no-break-in-nested-loop'?: Linter.RuleEntry<[]>;
+  'unicorn/no-break-in-nested-loop'?: Linter.RuleEntry<UnicornNoBreakInNestedLoop>;
   'unicorn/no-canvas-to-image'?: Linter.RuleEntry<[]>;
   'unicorn/no-chained-comparison'?: Linter.RuleEntry<[]>;
   'unicorn/no-collection-bracket-access'?: Linter.RuleEntry<[]>;
   'unicorn/no-computed-property-existence-check'?: Linter.RuleEntry<[]>;
+  'unicorn/no-conflicting-constraints'?: Linter.RuleEntry<[]>;
   'unicorn/no-confusing-array-splice'?: Linter.RuleEntry<[]>;
   'unicorn/no-confusing-array-with'?: Linter.RuleEntry<[]>;
   'unicorn/no-console-spaces'?: Linter.RuleEntry<[]>;
   'unicorn/no-constant-zero-expression'?: Linter.RuleEntry<[]>;
   'unicorn/no-declarations-before-early-exit'?: Linter.RuleEntry<[]>;
+  'unicorn/no-deprecated-css-features'?: Linter.RuleEntry<[]>;
   'unicorn/no-document-cookie'?: Linter.RuleEntry<[]>;
   'unicorn/no-double-comparison'?: Linter.RuleEntry<[]>;
+  'unicorn/no-duplicate-css-selectors'?: Linter.RuleEntry<[]>;
+  'unicorn/no-duplicate-font-family-names'?: Linter.RuleEntry<[]>;
   'unicorn/no-duplicate-if-branches'?: Linter.RuleEntry<[]>;
   'unicorn/no-duplicate-logical-operands'?: Linter.RuleEntry<[]>;
   'unicorn/no-duplicate-loops'?: Linter.RuleEntry<[]>;
   'unicorn/no-duplicate-set-values'?: Linter.RuleEntry<[]>;
   'unicorn/no-empty-file'?: Linter.RuleEntry<UnicornNoEmptyFile>;
+  'unicorn/no-empty-link-text'?: Linter.RuleEntry<[]>;
   'unicorn/no-error-property-assignment'?: Linter.RuleEntry<[]>;
   'unicorn/no-exports-in-scripts'?: Linter.RuleEntry<[]>;
   'unicorn/no-for-each'?: Linter.RuleEntry<[]>;
   'unicorn/no-for-loop'?: Linter.RuleEntry<[]>;
   'unicorn/no-global-object-property-assignment'?: Linter.RuleEntry<[]>;
   'unicorn/no-hex-escape'?: Linter.RuleEntry<[]>;
-  'unicorn/no-immediate-mutation'?: Linter.RuleEntry<[]>;
+  'unicorn/no-immediate-mutation'?: Linter.RuleEntry<UnicornNoImmediateMutation>;
   'unicorn/no-impossible-length-comparison'?: Linter.RuleEntry<[]>;
+  'unicorn/no-incomplete-accessor-override'?: Linter.RuleEntry<[]>;
   'unicorn/no-incorrect-query-selector'?: Linter.RuleEntry<[]>;
   'unicorn/no-incorrect-template-string-interpolation'?: Linter.RuleEntry<[]>;
+  'unicorn/no-ineffective-csp-directives'?: Linter.RuleEntry<[]>;
   'unicorn/no-instanceof-array'?: Linter.RuleEntry<[]>;
   'unicorn/no-instanceof-builtins'?: Linter.RuleEntry<UnicornNoInstanceofBuiltins>;
   'unicorn/no-invalid-argument-count'?: Linter.RuleEntry<UnicornNoInvalidArgumentCount>;
+  'unicorn/no-invalid-boolean-attribute-value'?: Linter.RuleEntry<[]>;
   'unicorn/no-invalid-character-comparison'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-dom-token'?: Linter.RuleEntry<[]>;
   'unicorn/no-invalid-fetch-options'?: Linter.RuleEntry<[]>;
   'unicorn/no-invalid-file-input-accept'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-integrity'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-intl-options'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-media-features'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-property-descriptor'?: Linter.RuleEntry<[]>;
   'unicorn/no-invalid-remove-event-listener'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-response-options'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-style-set-property'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-temporal-arithmetic'?: Linter.RuleEntry<[]>;
+  'unicorn/no-invalid-url-protocol-comparison'?: Linter.RuleEntry<[]>;
   'unicorn/no-invalid-well-known-symbol-methods'?: Linter.RuleEntry<[]>;
+  'unicorn/no-javascript-url'?: Linter.RuleEntry<[]>;
   'unicorn/no-keyword-prefix'?: Linter.RuleEntry<UnicornNoKeywordPrefix>;
   'unicorn/no-late-current-target-access'?: Linter.RuleEntry<[]>;
   'unicorn/no-late-event-control'?: Linter.RuleEntry<[]>;
+  'unicorn/no-leading-empty-lines'?: Linter.RuleEntry<[]>;
   'unicorn/no-length-as-slice-end'?: Linter.RuleEntry<[]>;
   'unicorn/no-lonely-if'?: Linter.RuleEntry<[]>;
   'unicorn/no-loop-iterable-mutation'?: Linter.RuleEntry<[]>;
+  'unicorn/no-loss-of-precision'?: Linter.RuleEntry<[]>;
   'unicorn/no-magic-array-flat-depth'?: Linter.RuleEntry<[]>;
   'unicorn/no-manually-wrapped-comments'?: Linter.RuleEntry<[]>;
   'unicorn/no-mismatched-map-key'?: Linter.RuleEntry<[]>;
@@ -2030,6 +2058,7 @@ export interface RuleOptions {
   'unicorn/no-negated-condition'?: Linter.RuleEntry<[]>;
   'unicorn/no-negation-in-equality-check'?: Linter.RuleEntry<[]>;
   'unicorn/no-nested-ternary'?: Linter.RuleEntry<[]>;
+  'unicorn/no-nesting-with-mixed-specificity'?: Linter.RuleEntry<[]>;
   'unicorn/no-new-array'?: Linter.RuleEntry<[]>;
   'unicorn/no-new-buffer'?: Linter.RuleEntry<[]>;
   'unicorn/no-non-function-verb-prefix'?: Linter.RuleEntry<UnicornNoNonFunctionVerbPrefix>;
@@ -2038,8 +2067,11 @@ export interface RuleOptions {
   'unicorn/no-object-as-default-parameter'?: Linter.RuleEntry<[]>;
   'unicorn/no-object-methods-with-collections'?: Linter.RuleEntry<[]>;
   'unicorn/no-optional-chaining-on-undeclared-variable'?: Linter.RuleEntry<[]>;
+  'unicorn/no-prevent-default-in-passive-listener'?: Linter.RuleEntry<[]>;
   'unicorn/no-process-exit'?: Linter.RuleEntry<[]>;
   'unicorn/no-redundant-comparison'?: Linter.RuleEntry<[]>;
+  'unicorn/no-redundant-nested-style-rules'?: Linter.RuleEntry<[]>;
+  'unicorn/no-repeated-call-wrappers'?: Linter.RuleEntry<[]>;
   'unicorn/no-return-array-push'?: Linter.RuleEntry<[]>;
   'unicorn/no-selector-as-dom-name'?: Linter.RuleEntry<[]>;
   'unicorn/no-shorthand-property-overrides'?: Linter.RuleEntry<[]>;
@@ -2050,19 +2082,23 @@ export interface RuleOptions {
   'unicorn/no-this-assignment'?: Linter.RuleEntry<[]>;
   'unicorn/no-this-outside-of-class'?: Linter.RuleEntry<[]>;
   'unicorn/no-top-level-assignment-in-function'?: Linter.RuleEntry<[]>;
-  'unicorn/no-top-level-side-effects'?: Linter.RuleEntry<[]>;
+  'unicorn/no-top-level-side-effects'?: Linter.RuleEntry<UnicornNoTopLevelSideEffects>;
   'unicorn/no-transition-all'?: Linter.RuleEntry<[]>;
   'unicorn/no-typeof-undefined'?: Linter.RuleEntry<UnicornNoTypeofUndefined>;
   'unicorn/no-uncalled-method'?: Linter.RuleEntry<[]>;
   'unicorn/no-undeclared-class-members'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unknown-css-annotations'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unknown-pseudo-selectors'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-array-flat-depth'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-array-flat-map'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-array-splice-count'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-await'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-boolean-comparison'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unnecessary-default-arguments'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-fetch-options'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-global-this'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-nested-ternary'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unnecessary-parameters'?: Linter.RuleEntry<UnicornNoUnnecessaryParameters>;
   'unicorn/no-unnecessary-polyfills'?: Linter.RuleEntry<UnicornNoUnnecessaryPolyfills>;
   'unicorn/no-unnecessary-slice-end'?: Linter.RuleEntry<[]>;
   'unicorn/no-unnecessary-splice'?: Linter.RuleEntry<[]>;
@@ -2074,12 +2110,17 @@ export interface RuleOptions {
   'unicorn/no-unreadable-object-destructuring'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-buffer-conversion'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-dom-html'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unsafe-json-serialization'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-promise-all-settled-values'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-property-key'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-sqlite-interpolation'?: Linter.RuleEntry<[]>;
   'unicorn/no-unsafe-string-replacement'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unscoped-css-nesting-selector'?: Linter.RuleEntry<[]>;
   'unicorn/no-unused-array-method-return'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unused-builtin-method-return'?: Linter.RuleEntry<[]>;
+  'unicorn/no-unused-iterator-helper'?: Linter.RuleEntry<[]>;
   'unicorn/no-unused-properties'?: Linter.RuleEntry<[]>;
+  'unicorn/no-url-in-search-params'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-boolean-cast'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-coercion'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-collection-argument'?: Linter.RuleEntry<[]>;
@@ -2097,10 +2138,12 @@ export interface RuleOptions {
   'unicorn/no-useless-promise-resolve-reject'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-re-export'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-recursion'?: Linter.RuleEntry<[]>;
+  'unicorn/no-useless-set-construction'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-spread'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-switch-case'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-template-literals'?: Linter.RuleEntry<[]>;
   'unicorn/no-useless-undefined'?: Linter.RuleEntry<UnicornNoUselessUndefined>;
+  'unicorn/no-using-resource-escape'?: Linter.RuleEntry<[]>;
   'unicorn/no-xor-as-exponentiation'?: Linter.RuleEntry<[]>;
   'unicorn/no-zero-fractions'?: Linter.RuleEntry<[]>;
   'unicorn/number-literal-case'?: Linter.RuleEntry<UnicornNumberLiteralCase>;
@@ -2131,9 +2174,10 @@ export interface RuleOptions {
   'unicorn/prefer-class-fields'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-classlist-toggle'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-code-point'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-combined-guards'?: Linter.RuleEntry<UnicornPreferCombinedGuards>;
   'unicorn/prefer-continue'?: Linter.RuleEntry<UnicornPreferContinue>;
   'unicorn/prefer-date-now'?: Linter.RuleEntry<[]>;
-  'unicorn/prefer-default-parameters'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-default-parameters'?: Linter.RuleEntry<UnicornPreferDefaultParameters>;
   'unicorn/prefer-direct-iteration'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-dispose'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-dom-node-append'?: Linter.RuleEntry<[]>;
@@ -2145,8 +2189,9 @@ export interface RuleOptions {
   'unicorn/prefer-early-return'?: Linter.RuleEntry<UnicornPreferEarlyReturn>;
   'unicorn/prefer-else-if'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-error-is-error'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-escaped-irregular-whitespace'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-event-target'?: Linter.RuleEntry<[]>;
-  'unicorn/prefer-explicit-viewport-units'?: Linter.RuleEntry<UnicornPreferExplicitViewportUnits>;
+  'unicorn/prefer-explicit-viewport-units'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-export-from'?: Linter.RuleEntry<UnicornPreferExportFrom>;
   'unicorn/prefer-flat-math-min-max'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-get-or-insert-computed'?: Linter.RuleEntry<[]>;
@@ -2165,8 +2210,11 @@ export interface RuleOptions {
   'unicorn/prefer-iterator-helpers'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-iterator-to-array'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-iterator-to-array-at-end'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-iterator-zip'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-json-import'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-json-parse-buffer'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-keyboard-event-key'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-literal-ascii'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-location-assign'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-logical-operator-over-ternary'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-map-from-entries'?: Linter.RuleEntry<[]>;
@@ -2174,6 +2222,7 @@ export interface RuleOptions {
   'unicorn/prefer-math-constants'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-math-min-max'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-math-trunc'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-media-feature-range-syntax'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-minimal-ternary'?: Linter.RuleEntry<UnicornPreferMinimalTernary>;
   'unicorn/prefer-modern-dom-apis'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-modern-math-apis'?: Linter.RuleEntry<[]>;
@@ -2192,6 +2241,7 @@ export interface RuleOptions {
   'unicorn/prefer-optional-catch-binding'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-path2d'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-private-class-fields'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-promise-static-methods'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-promise-try'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-promise-with-resolvers'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-prototype-methods'?: Linter.RuleEntry<[]>;
@@ -2206,9 +2256,10 @@ export interface RuleOptions {
   'unicorn/prefer-set-methods'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-set-size'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-short-arrow-method'?: Linter.RuleEntry<UnicornPreferShortArrowMethod>;
+  'unicorn/prefer-short-escape-sequences'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-simple-condition-first'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-simple-sort-comparator'?: Linter.RuleEntry<[]>;
-  'unicorn/prefer-simplified-conditions'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-simplified-conditions'?: Linter.RuleEntry<UnicornPreferSimplifiedConditions>;
   'unicorn/prefer-single-array-predicate'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-single-call'?: Linter.RuleEntry<UnicornPreferSingleCall>;
   'unicorn/prefer-single-object-destructuring'?: Linter.RuleEntry<[]>;
@@ -2227,6 +2278,7 @@ export interface RuleOptions {
   'unicorn/prefer-structured-clone'?: Linter.RuleEntry<UnicornPreferStructuredClone>;
   'unicorn/prefer-switch'?: Linter.RuleEntry<UnicornPreferSwitch>;
   'unicorn/prefer-temporal'?: Linter.RuleEntry<UnicornPreferTemporal>;
+  'unicorn/prefer-temporal-conversion'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-ternary'?: Linter.RuleEntry<UnicornPreferTernary>;
   'unicorn/prefer-then-catch'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-toggle-attribute'?: Linter.RuleEntry<[]>;
@@ -2234,6 +2286,7 @@ export interface RuleOptions {
   'unicorn/prefer-type-error'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-type-literal-last'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-uint8array-base64'?: Linter.RuleEntry<[]>;
+  'unicorn/prefer-uint8array-hex'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-unary-minus'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-unicode-code-point-escapes'?: Linter.RuleEntry<[]>;
   'unicorn/prefer-url-can-parse'?: Linter.RuleEntry<[]>;
@@ -2252,6 +2305,7 @@ export interface RuleOptions {
   'unicorn/require-passive-events'?: Linter.RuleEntry<[]>;
   'unicorn/require-post-message-target-origin'?: Linter.RuleEntry<[]>;
   'unicorn/require-proxy-trap-boolean-return'?: Linter.RuleEntry<[]>;
+  'unicorn/require-text-decoder-streaming'?: Linter.RuleEntry<[]>;
   'unicorn/single-line-block-comment-style'?: Linter.RuleEntry<UnicornSingleLineBlockCommentStyle>;
   'unicorn/string-content'?: Linter.RuleEntry<UnicornStringContent>;
   'unicorn/switch-case-braces'?: Linter.RuleEntry<UnicornSwitchCaseBraces>;
@@ -3384,6 +3438,7 @@ type InitDeclarations = ([] | ["always"] | [] | ["never"] | ["never", {
   ignoreForLoopInit?: boolean;
 }]);
 type JsdocCheckAlignment = [] | [{
+  ignoreEmptyLines?: boolean;
   innerIndent?: number;
 }];
 type JsdocCheckExamples = [] | [{
@@ -3409,6 +3464,7 @@ type JsdocCheckExamples = [] | [{
 }];
 type JsdocCheckIndentation = [] | [{
   allowIndentedSections?: boolean;
+  allowNoSpaceAfterAsterisk?: boolean;
   excludeTags?: string[];
 }];
 type JsdocCheckLineAlignment = [] | [("always" | "never" | "any")] | [("always" | "never" | "any"), {
@@ -3439,6 +3495,9 @@ type JsdocCheckParamNames = [] | [{
   useDefaultObjectProperties?: boolean;
 }];
 type JsdocCheckPropertyNames = [] | [{
+  enableFixer?: boolean;
+}];
+type JsdocCheckSyntax = [] | [{
   enableFixer?: boolean;
 }];
 type JsdocCheckTagNames = [] | [{
@@ -3603,6 +3662,7 @@ type JsdocNoUndefinedTypes = [] | [{
 type JsdocNoUnnecessaryTypeAssertion = [] | [{
   checkLiteralConstAssertions?: boolean;
   enableFixer?: boolean;
+  fixTypeChangingCasts?: boolean;
   preferConstToLiteralTuples?: boolean;
   treatAnyAsRedundant?: boolean;
   typesToIgnore?: string[];
@@ -3785,7 +3845,6 @@ type JsdocRequireTags = [] | [{
   tags?: (string | {
     context?: string;
     tag?: string;
-    [k: string]: unknown | undefined;
   })[];
 }];
 type JsdocRequireTemplate = [] | [{
@@ -11506,6 +11565,9 @@ type UnicornFilenameCase = [] | [({
   })[];
   multipleFileExtensions?: boolean;
   checkDirectories?: boolean;
+  directoryRoots?: (string | {
+    [k: string]: unknown | undefined;
+  })[];
 } | {
   cases?: {
     camelCase?: boolean;
@@ -11519,6 +11581,9 @@ type UnicornFilenameCase = [] | [({
   })[];
   multipleFileExtensions?: boolean;
   checkDirectories?: boolean;
+  directoryRoots?: (string | {
+    [k: string]: unknown | undefined;
+  })[];
 })];
 type UnicornIdMatch = [] | [string] | [string, {
   properties?: boolean;
@@ -11535,6 +11600,10 @@ type UnicornImportStyle = [] | [{
   extendDefaultStyles?: boolean;
   styles?: _UnicornImportStyle_ModuleStyles;
 }];
+type UnicornIndent = [] | [{
+  indent?: ("tab" | number);
+  tabWidth?: number;
+}];
 type UnicornIsolatedFunctions = [] | [{
   overrideGlobals?: {
     [k: string]: (boolean | ("readonly" | "writable" | "writeable" | "off")) | undefined;
@@ -11544,6 +11613,14 @@ type UnicornIsolatedFunctions = [] | [{
   comments?: string[];
 }];
 type UnicornIterationFallbackStyle = [] | [("guard" | "fallback")];
+type UnicornKeyNameCasing = [] | [{
+  camelCase?: boolean;
+  PascalCase?: boolean;
+  SCREAMING_SNAKE_CASE?: boolean;
+  "kebab-case"?: boolean;
+  snake_case?: boolean;
+  ignore?: string[];
+}];
 type UnicornLogicalAssignmentOperators = (([] | ["always"] | ["always", {
   enforceForIfStatements?: boolean;
 }] | ["never"]) & unknown[]);
@@ -11577,8 +11654,14 @@ type UnicornNoArrayReverse = [] | [{
 type UnicornNoArraySort = [] | [{
   allowExpressionStatement?: boolean;
 }];
+type UnicornNoBreakInNestedLoop = [] | [{
+  checkContinue?: boolean;
+}];
 type UnicornNoEmptyFile = [] | [{
   allowComments?: boolean;
+}];
+type UnicornNoImmediateMutation = [] | [{
+  checkConditionals?: boolean;
 }];
 type UnicornNoInstanceofBuiltins = [] | [{
   useErrorIsError?: boolean;
@@ -11610,8 +11693,16 @@ type UnicornNoNull = [] | [{
   checkArguments?: boolean;
   checkStrictEquality?: boolean;
 }];
+type UnicornNoTopLevelSideEffects = [] | [{
+  allow?: {
+    [k: string]: string[] | undefined;
+  };
+}];
 type UnicornNoTypeofUndefined = [] | [{
   checkGlobalVariables?: boolean;
+}];
+type UnicornNoUnnecessaryParameters = [] | [{
+  minimumCallCount?: number;
 }];
 type UnicornNoUnnecessaryPolyfills = [] | [{
   targets?: (string | string[] | {
@@ -11666,8 +11757,16 @@ type UnicornPreferAt = [] | [{
   getLastElementFunctions?: string[];
   checkAllIndexAccess?: boolean;
 }];
+type UnicornPreferCombinedGuards = [] | [{
+  checkCompoundConditions?: boolean;
+  checkMultiStatementBodies?: boolean;
+}];
 type UnicornPreferContinue = [] | [{
   maximumStatements?: number;
+  checkShortBodies?: boolean;
+}];
+type UnicornPreferDefaultParameters = [] | [{
+  checkFallbackExpressions?: boolean;
 }];
 type UnicornPreferDomNodeHtmlMethods = [] | [{
   checkGetHTML?: boolean;
@@ -11675,9 +11774,7 @@ type UnicornPreferDomNodeHtmlMethods = [] | [{
 }];
 type UnicornPreferEarlyReturn = [] | [{
   maximumStatements?: number;
-}];
-type UnicornPreferExplicitViewportUnits = [] | [{
-  unit?: ("dvh" | "svh" | "lvh");
+  checkShortBodies?: boolean;
 }];
 type UnicornPreferExportFrom = [] | [{
   checkUsedVariables?: boolean;
@@ -11712,6 +11809,9 @@ type UnicornPreferSetHas = [] | [{
   minimumItems?: number;
 }];
 type UnicornPreferShortArrowMethod = [] | [("always" | "consistent-as-needed")];
+type UnicornPreferSimplifiedConditions = [] | [{
+  negatedConditions?: ("simplify" | "expand");
+}];
 type UnicornPreferSingleCall = [] | [{
   ignore?: string[];
 }];
@@ -11730,7 +11830,10 @@ type UnicornPreferTemporal = [] | [{
   checkReferences?: boolean;
   checkMethods?: boolean;
 }];
-type UnicornPreferTernary = [] | [("always" | "only-single-line")];
+type UnicornPreferTernary = [] | [("always" | "only-single-line")] | [("always" | "only-single-line"), {
+  checkVaryingBase?: boolean;
+  checkComputedMemberAccess?: boolean;
+}];
 type UnicornRelativeUrlStyle = [] | [("never" | "always")];
 type UnicornRequireCssEscape = [] | [{
   checkAllSelectors?: boolean;
