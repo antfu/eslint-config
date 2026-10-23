@@ -14,7 +14,17 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
         'jsonc/sort-array-values': [
           'error',
           {
-            order: { type: 'asc' },
+            // Keep negated patterns after includes, otherwise they have no effect
+            order: [
+              {
+                order: { type: 'asc' },
+                valuePattern: '^[^!]',
+              },
+              {
+                order: { type: 'asc' },
+                valuePattern: '^!',
+              },
+            ],
             pathPattern: '^files$',
           },
         ],
