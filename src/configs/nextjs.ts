@@ -5,7 +5,12 @@ import { ensurePackages, interopDefault } from '../utils'
 function normalizeRules(rules: Record<string, any>): Record<string, any> {
   return Object.fromEntries(
     Object.entries(rules).map(([key, value]) =>
-      [key, typeof value === 'string' ? [value] : value],
+      [
+        key,
+        typeof value === 'string'
+          ? [value]
+          : value,
+      ],
     ),
   )
 }

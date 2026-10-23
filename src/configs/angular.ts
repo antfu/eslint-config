@@ -82,7 +82,10 @@ export async function angular(
          * we need to mute some style lint rules for angular inline templates,
          */
         'style/indent': 'off',
-        'style/no-multiple-empty-lines': ['error', { max: 1 }],
+        'style/no-multiple-empty-lines': [
+          'error',
+          { max: 1 },
+        ],
         'style/no-trailing-spaces': 'off',
 
         ...angularTemplateRules,

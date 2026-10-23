@@ -23,9 +23,21 @@ function mergePrettierOptions(
 
 function buildCssConfigs(prettierOptions: VendoredPrettierOptions): TypedFlatConfigItem[] {
   return ([
-    [[GLOB_CSS, GLOB_POSTCSS], 'css', 'antfu/formatter/css'],
-    [[GLOB_SCSS], 'scss', 'antfu/formatter/scss'],
-    [[GLOB_LESS], 'less', 'antfu/formatter/less'],
+    [
+      [GLOB_CSS, GLOB_POSTCSS],
+      'css',
+      'antfu/formatter/css',
+    ],
+    [
+      [GLOB_SCSS],
+      'scss',
+      'antfu/formatter/scss',
+    ],
+    [
+      [GLOB_LESS],
+      'less',
+      'antfu/formatter/less',
+    ],
   ] as const).map(([files, parser, name]) => ({
     files: [...files],
     languageOptions: {
@@ -56,7 +68,10 @@ function buildXmlLikeConfig(
     rules: {
       'format/prettier': [
         'error',
-        mergePrettierOptions({ ...prettierXmlOptions, ...prettierOptions }, {
+        mergePrettierOptions({
+          ...prettierXmlOptions,
+          ...prettierOptions,
+        }, {
           parser: 'xml',
           plugins: [
             '@prettier/plugin-xml',
@@ -224,9 +239,13 @@ function buildGraphqlConfig(prettierOptions: VendoredPrettierOptions): TypedFlat
 function getFormattersPackagesToEnsure(options: OptionsFormatters): (string | undefined)[] {
   return [
     'eslint-plugin-format',
-    options.markdown && options.slidev ? 'prettier-plugin-slidev' : undefined,
+    options.markdown && options.slidev
+      ? 'prettier-plugin-slidev'
+      : undefined,
     options.astro ? 'prettier-plugin-astro' : undefined,
-    (options.xml || options.svg) ? '@prettier/plugin-xml' : undefined,
+    (options.xml || options.svg)
+      ? '@prettier/plugin-xml'
+      : undefined,
   ]
 }
 
@@ -256,7 +275,9 @@ export async function formatters(
       printWidth: 120,
       semi,
       singleQuote: quotes === 'single',
-      tabWidth: typeof indent === 'number' ? indent : 2,
+      tabWidth: typeof indent === 'number'
+        ? indent
+        : 2,
       trailingComma: 'all',
       useTabs: indent === 'tab',
     } satisfies VendoredPrettierOptions,
@@ -271,8 +292,12 @@ export async function formatters(
   }
 
   const dprintOptions = {
-    indentWidth: typeof indent === 'number' ? indent : 2,
-    quoteStyle: quotes === 'single' ? 'preferSingle' : 'preferDouble',
+    indentWidth: typeof indent === 'number'
+      ? indent
+      : 2,
+    quoteStyle: quotes === 'single'
+      ? 'preferSingle'
+      : 'preferDouble',
     useTabs: indent === 'tab',
     // TODO: refine the type of `options.dprintOptions` in the future to avoid this ts comment.
     // @ts-expect-error - `options.dprintOptions` is boolean

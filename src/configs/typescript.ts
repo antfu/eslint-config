@@ -48,7 +48,10 @@ export async function typescript(
     'dot-notation': 'off',
     'no-implied-eval': 'off',
     'ts/await-thenable': 'error',
-    'ts/dot-notation': ['error', { allowKeywords: true }],
+    'ts/dot-notation': [
+      'error',
+      { allowKeywords: true },
+    ],
     'ts/no-floating-promises': 'error',
     'ts/no-for-in-array': 'error',
     'ts/no-implied-eval': 'error',
@@ -63,7 +66,10 @@ export async function typescript(
     'ts/restrict-plus-operands': 'error',
     'ts/restrict-template-expressions': 'error',
     'ts/return-await': ['error', 'in-try-catch'],
-    'ts/strict-boolean-expressions': ['error', { allowNullableBoolean: true, allowNullableObject: true }],
+    'ts/strict-boolean-expressions': [
+      'error',
+      { allowNullableBoolean: true, allowNullableObject: true },
+    ],
     'ts/switch-exhaustiveness-check': 'error',
     'ts/unbound-method': 'error',
   }
@@ -79,7 +85,9 @@ export async function typescript(
   function makeParser(typeAware: boolean, files: string[], ignores?: string[]): TypedFlatConfigItem {
     return {
       files,
-      ...ignores ? { ignores } : {},
+      ...ignores
+        ? { ignores }
+        : {},
       languageOptions: {
         parser: parserTs,
         parserOptions: {
@@ -135,32 +143,50 @@ export async function typescript(
         'no-redeclare': 'off',
         'no-use-before-define': 'off',
         'no-useless-constructor': 'off',
-        'ts/ban-ts-comment': ['error', { 'ts-expect-error': 'allow-with-description' }],
+        'ts/ban-ts-comment': [
+          'error',
+          { 'ts-expect-error': 'allow-with-description' },
+        ],
         'ts/consistent-type-definitions': ['error', 'interface'],
-        'ts/consistent-type-imports': ['error', {
-          disallowTypeAnnotations: false,
-          fixStyle: 'separate-type-imports',
-          prefer: 'type-imports',
-        }],
+        'ts/consistent-type-imports': [
+          'error',
+          {
+            disallowTypeAnnotations: false,
+            fixStyle: 'separate-type-imports',
+            prefer: 'type-imports',
+          },
+        ],
 
         'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         'ts/no-dupe-class-members': 'error',
         'ts/no-dynamic-delete': 'off',
-        'ts/no-empty-object-type': ['error', { allowInterfaces: 'always' }],
+        'ts/no-empty-object-type': [
+          'error',
+          { allowInterfaces: 'always' },
+        ],
         'ts/no-explicit-any': 'off',
         'ts/no-extraneous-class': 'off',
         'ts/no-import-type-side-effects': 'error',
         'ts/no-invalid-void-type': 'off',
         'ts/no-non-null-assertion': 'off',
-        'ts/no-redeclare': ['error', { builtinGlobals: false }],
+        'ts/no-redeclare': [
+          'error',
+          { builtinGlobals: false },
+        ],
         'ts/no-require-imports': 'error',
-        'ts/no-unused-expressions': ['error', {
-          allowShortCircuit: true,
-          allowTaggedTemplates: true,
-          allowTernary: true,
-        }],
+        'ts/no-unused-expressions': [
+          'error',
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true,
+          },
+        ],
         'ts/no-unused-vars': 'off',
-        'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+        'ts/no-use-before-define': [
+          'error',
+          { classes: false, functions: false, variables: true },
+        ],
         'ts/no-useless-constructor': 'off',
         'ts/no-wrapper-object-types': 'error',
         'ts/triple-slash-reference': 'off',
@@ -168,11 +194,14 @@ export async function typescript(
 
         ...(type === 'lib'
           ? {
-              'ts/explicit-function-return-type': ['error', {
-                allowExpressions: true,
-                allowHigherOrderFunctions: true,
-                allowIIFEs: true,
-              }],
+              'ts/explicit-function-return-type': [
+                'error',
+                {
+                  allowExpressions: true,
+                  allowHigherOrderFunctions: true,
+                  allowIIFEs: true,
+                },
+              ],
             }
           : {}
         ),
@@ -180,15 +209,17 @@ export async function typescript(
       },
     },
     ...isTypeAware
-      ? [{
-          files: filesTypeAware,
-          ignores: ignoresTypeAware,
-          name: 'antfu/typescript/rules-type-aware',
-          rules: {
-            ...typeAwareRules,
-            ...overridesTypeAware,
+      ? [
+          {
+            files: filesTypeAware,
+            ignores: ignoresTypeAware,
+            name: 'antfu/typescript/rules-type-aware',
+            rules: {
+              ...typeAwareRules,
+              ...overridesTypeAware,
+            },
           },
-        }]
+        ]
       : [],
     ...erasableOnly
       ? [

@@ -125,7 +125,10 @@ runWithConfig(
   },
   {
     rules: {
-      'no-irregular-whitespace': ['warn', { skipStrings: true, skipTemplates: true }],
+      'no-irregular-whitespace': [
+        'warn',
+        { skipStrings: true, skipTemplates: true },
+      ],
     },
   },
 )

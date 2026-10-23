@@ -40,7 +40,9 @@ describe('jsx-a11y rules', () => {
   })
 
   it('should ignore a11y error if not enabled', async () => {
-    const eslint = await createESLint({ jsx: { a11y: false } })
+    const eslint = await createESLint({
+      jsx: { a11y: false },
+    })
     const code = await readFixture('jsx-a11y-errors/invalid-anchor-href.jsx')
 
     const results = await eslint.lintText(code, { filePath: 'test.jsx' })

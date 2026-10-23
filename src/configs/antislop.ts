@@ -14,45 +14,66 @@ export async function antislop(
   } = options
 
   await ensurePackages([
-    ...slop ? ['eslint-plugin-slop'] : [],
-    ...sonarjs ? ['eslint-plugin-sonarjs'] : [],
+    ...slop
+      ? ['eslint-plugin-slop']
+      : [],
+    ...sonarjs
+      ? ['eslint-plugin-sonarjs']
+      : [],
   ])
 
   const [
     pluginSlop,
     pluginSonarjs,
   ] = await Promise.all([
-    slop ? interopDefault(import('eslint-plugin-slop')) : undefined,
-    sonarjs ? interopDefault(import('eslint-plugin-sonarjs')) : undefined,
+    slop
+      ? interopDefault(import('eslint-plugin-slop'))
+      : undefined,
+    sonarjs
+      ? interopDefault(import('eslint-plugin-sonarjs'))
+      : undefined,
   ])
 
   return [
     {
       name: 'antfu/antislop/setup',
       plugins: {
-        ...slop ? { slop: pluginSlop } : {},
-        ...sonarjs ? { sonarjs: pluginSonarjs } : {},
+        ...slop
+          ? { slop: pluginSlop }
+          : {},
+        ...sonarjs
+          ? { sonarjs: pluginSonarjs }
+          : {},
       },
       ...typeof slop === 'object'
-        ? { settings: { slop } }
+        ? {
+            settings: { slop },
+          }
         : {},
     },
     // `no-em-dash` supports any language, so it's applied across all
     // prose-bearing file types instead of being limited to JS/TS
     ...slop
-      ? [{
-          files: [...GLOB_ALL_SRC, GLOB_JSONC, GLOB_TOML, GLOB_GRAPHQL],
-          /**
-           * Markdown code fences are already scanned as part of the raw
-           * Markdown text, so exclude the virtual embedded-code files to
-           * avoid reporting the same em dash twice
-           */
-          ignores: [GLOB_MARKDOWN_CODE],
-          name: 'antfu/antislop/rules/universal',
-          rules: {
-            'slop/no-em-dash': 'error',
-          },
-        } as TypedFlatConfigItem]
+      ? [
+          {
+            files: [
+              ...GLOB_ALL_SRC,
+              GLOB_JSONC,
+              GLOB_TOML,
+              GLOB_GRAPHQL,
+            ],
+            /**
+             * Markdown code fences are already scanned as part of the raw
+             * Markdown text, so exclude the virtual embedded-code files to
+             * avoid reporting the same em dash twice
+             */
+            ignores: [GLOB_MARKDOWN_CODE],
+            name: 'antfu/antislop/rules/universal',
+            rules: {
+              'slop/no-em-dash': 'error',
+            },
+          } as TypedFlatConfigItem,
+        ]
       : [],
     {
       files: [GLOB_SRC],
@@ -75,7 +96,9 @@ export async function antislop(
           ? {
               ...cognitiveComplexity === false
                 ? {}
-                : { 'sonarjs/cognitive-complexity': ['error', cognitiveComplexity] as const },
+                : {
+                    'sonarjs/cognitive-complexity': ['error', cognitiveComplexity] as const,
+                  },
               'sonarjs/no-all-duplicated-branches': 'error',
               'sonarjs/no-collapsible-if': 'error',
               'sonarjs/no-commented-code': 'error',

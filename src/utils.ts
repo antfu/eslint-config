@@ -106,7 +106,9 @@ export function renamePluginInConfigs(configs: TypedFlatConfigItem[], map: Recor
 }
 
 export function toArray<T>(value: T | T[]): T[] {
-  return Array.isArray(value) ? value : [value]
+  return Array.isArray(value)
+    ? value
+    : [value]
 }
 
 export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> {
@@ -116,7 +118,9 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
 }
 
 export function isPackageInScope(name: string): boolean {
-  return isPackageExists(name, { paths: [scopeUrl] })
+  return isPackageExists(name, {
+    paths: [scopeUrl],
+  })
 }
 
 export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
@@ -129,7 +133,9 @@ export async function ensurePackages(packages: (string | undefined)[]): Promise<
 
   const p = await import('@clack/prompts')
   const result = await p.confirm({
-    message: `${nonExistingPackages.length === 1 ? 'Package is' : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. Do you want to install them?`,
+    message: `${nonExistingPackages.length === 1
+      ? 'Package is'
+      : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. Do you want to install them?`,
   })
   if (result)
     await import('@antfu/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }))

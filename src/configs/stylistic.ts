@@ -54,13 +54,8 @@ export async function stylistic(
       rules: {
         ...config.rules,
 
-        ...experimental
-          ? {}
-          : {
-              'antfu/consistent-list-newline': 'error',
-            },
-
         'antfu/consistent-chaining': 'error',
+        'antfu/consistent-list-newline': 'error',
 
         ...(lessOpinionated
           ? {
@@ -69,12 +64,19 @@ export async function stylistic(
           : {
               'antfu/curly': 'error',
               'antfu/if-newline': 'error',
+              'antfu/reasonable-newline': 'error',
               'antfu/top-level-function': 'error',
             }
         ),
 
-        'style/generator-star-spacing': ['error', { after: true, before: false }],
-        'style/yield-star-spacing': ['error', { after: true, before: false }],
+        'style/generator-star-spacing': [
+          'error',
+          { after: true, before: false },
+        ],
+        'style/yield-star-spacing': [
+          'error',
+          { after: true, before: false },
+        ],
 
         ...overrides,
       },

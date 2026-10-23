@@ -27,7 +27,10 @@ export async function imports(options: OptionsOverrides & OptionsStylistic = {})
 
         ...stylistic
           ? {
-              'import/newline-after-import': ['error', { count: 1 }],
+              'import/newline-after-import': [
+                'error',
+                { count: 1 },
+              ],
             }
           : {},
 

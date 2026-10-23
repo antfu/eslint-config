@@ -55,7 +55,9 @@ catch (error) {
 // Use a ternary conditional operator
 const isEven = num => num % 2 === 0
 const number = 7
-log(`${number} is ${isEven(number) ? 'even' : 'odd'}.`)
+log(`${number} is ${isEven(number)
+  ? 'even'
+  : 'odd'}.`)
 
 // Use a callback function with setTimeout for asynchronous code
 setTimeout(() => {

@@ -45,7 +45,10 @@ export async function javascript(
         'unused-imports': pluginUnusedImports,
       },
       rules: {
-        'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
+        'accessor-pairs': [
+          'error',
+          { enforceForClassMembers: true, setWithoutGet: true },
+        ],
 
         'antfu/no-top-level-await': 'error',
 
@@ -53,9 +56,15 @@ export async function javascript(
         'block-scoped-var': 'error',
         'constructor-super': 'error',
         'default-case-last': 'error',
-        'dot-notation': ['error', { allowKeywords: true }],
+        'dot-notation': [
+          'error',
+          { allowKeywords: true },
+        ],
         'eqeqeq': ['error', 'smart'],
-        'new-cap': ['error', { capIsNew: false, newIsCap: true, properties: true }],
+        'new-cap': [
+          'error',
+          { capIsNew: false, newIsCap: true, properties: true },
+        ],
         'no-alert': 'error',
         'no-array-constructor': 'error',
         'no-async-promise-executor': 'error',
@@ -64,7 +73,12 @@ export async function javascript(
         'no-class-assign': 'error',
         'no-compare-neg-zero': 'error',
         'no-cond-assign': ['error', 'always'],
-        'no-console': ['error', { allow: ['warn', 'error'] }],
+        'no-console': [
+          'error',
+          {
+            allow: ['warn', 'error'],
+          },
+        ],
         'no-const-assign': 'error',
         'no-control-regex': 'error',
         'no-debugger': 'error',
@@ -73,7 +87,10 @@ export async function javascript(
         'no-dupe-class-members': 'error',
         'no-dupe-keys': 'error',
         'no-duplicate-case': 'error',
-        'no-empty': ['error', { allowEmptyCatch: true }],
+        'no-empty': [
+          'error',
+          { allowEmptyCatch: true },
+        ],
         'no-empty-character-class': 'error',
         'no-empty-pattern': 'error',
         'no-eval': 'error',
@@ -89,7 +106,10 @@ export async function javascript(
         'no-invalid-regexp': 'error',
         'no-irregular-whitespace': 'error',
         'no-iterator': 'error',
-        'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
+        'no-labels': [
+          'error',
+          { allowLoop: false, allowSwitch: false },
+        ],
         'no-lone-blocks': 'error',
         'no-loss-of-precision': 'error',
         'no-misleading-character-class': 'error',
@@ -103,7 +123,10 @@ export async function javascript(
         'no-octal-escape': 'error',
         'no-proto': 'error',
         'no-prototype-builtins': 'error',
-        'no-redeclare': ['error', { builtinGlobals: false }],
+        'no-redeclare': [
+          'error',
+          { builtinGlobals: false },
+        ],
         'no-regex-spaces': 'error',
         'no-restricted-globals': [
           'error',
@@ -123,7 +146,10 @@ export async function javascript(
           'TSEnumDeclaration[const=true]',
           'TSExportAssignment',
         ],
-        'no-self-assign': ['error', { props: true }],
+        'no-self-assign': [
+          'error',
+          { props: true },
+        ],
         'no-self-compare': 'error',
         'no-sequences': 'error',
         'no-shadow-restricted-names': 'error',
@@ -135,23 +161,35 @@ export async function javascript(
         'no-undef-init': 'error',
         'no-unexpected-multiline': 'error',
         'no-unmodified-loop-condition': 'error',
-        'no-unneeded-ternary': ['error', { defaultAssignment: false }],
+        'no-unneeded-ternary': [
+          'error',
+          { defaultAssignment: false },
+        ],
         'no-unreachable': 'error',
         'no-unreachable-loop': 'error',
         'no-unsafe-finally': 'error',
         'no-unsafe-negation': 'error',
-        'no-unused-expressions': ['error', {
-          allowShortCircuit: true,
-          allowTaggedTemplates: true,
-          allowTernary: true,
-        }],
-        'no-unused-vars': ['error', {
-          args: 'none',
-          caughtErrors: 'none',
-          ignoreRestSiblings: true,
-          vars: 'all',
-        }],
-        'no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
+        'no-unused-expressions': [
+          'error',
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true,
+          },
+        ],
+        'no-unused-vars': [
+          'error',
+          {
+            args: 'none',
+            caughtErrors: 'none',
+            ignoreRestSiblings: true,
+            vars: 'all',
+          },
+        ],
+        'no-use-before-define': [
+          'error',
+          { classes: false, functions: false, variables: true },
+        ],
         'no-useless-backreference': 'error',
         'no-useless-call': 'error',
         'no-useless-catch': 'error',
@@ -169,7 +207,10 @@ export async function javascript(
             ignoreConstructors: false,
           },
         ],
-        'one-var': ['error', { initialized: 'never' }],
+        'one-var': [
+          'error',
+          { initialized: 'never' },
+        ],
         'prefer-arrow-callback': [
           'error',
           {
@@ -186,7 +227,10 @@ export async function javascript(
         ],
         'prefer-exponentiation-operator': 'error',
         'prefer-promise-reject-errors': 'error',
-        'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+        'prefer-regex-literals': [
+          'error',
+          { disallowRedundantWrapping: true },
+        ],
         'prefer-rest-params': 'error',
         'prefer-spread': 'error',
         'prefer-template': 'error',
@@ -203,8 +247,14 @@ export async function javascript(
             varsIgnorePattern: '^_',
           },
         ],
-        'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
-        'valid-typeof': ['error', { requireStringLiterals: true }],
+        'use-isnan': [
+          'error',
+          { enforceForIndexOf: true, enforceForSwitchCase: true },
+        ],
+        'valid-typeof': [
+          'error',
+          { requireStringLiterals: true },
+        ],
         'vars-on-top': 'error',
         'yoda': ['error', 'never'],
 

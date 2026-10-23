@@ -129,32 +129,41 @@ export function antfu(
       ? options.stylistic
       : {}
 
-  if (stylisticOptions && !('jsx' in stylisticOptions))
-    stylisticOptions.jsx = typeof enableJsx === 'object' ? true : enableJsx
+  if (stylisticOptions && !('jsx' in stylisticOptions)) {
+    stylisticOptions.jsx = typeof enableJsx === 'object'
+      ? true
+      : enableJsx
+  }
 
   const configs: Awaitable<TypedFlatConfigItem[]>[] = []
 
   if (enableGitignore) {
     if (typeof enableGitignore !== 'boolean') {
       configs.push(
-        interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-          name: 'antfu/gitignore',
-          ...enableGitignore,
-        })]),
+        interopDefault(import('eslint-config-flat-gitignore')).then(r => [
+          r({
+            name: 'antfu/gitignore',
+            ...enableGitignore,
+          }),
+        ]),
       )
     }
     else {
       configs.push(
-        interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-          name: 'antfu/gitignore',
-          strict: false,
-        })]),
+        interopDefault(import('eslint-config-flat-gitignore')).then(r => [
+          r({
+            name: 'antfu/gitignore',
+            strict: false,
+          }),
+        ]),
       )
     }
   }
 
   const typescriptOptions = resolveSubOptions(options, 'typescript')
-  const tsconfigPath = 'tsconfigPath' in typescriptOptions ? typescriptOptions.tsconfigPath : undefined
+  const tsconfigPath = 'tsconfigPath' in typescriptOptions
+    ? typescriptOptions.tsconfigPath
+    : undefined
 
   // Base configs
   configs.push(
@@ -202,14 +211,18 @@ export function antfu(
     configs.push(
       e18e({
         isInEditor,
-        ...enableE18e === true ? {} : enableE18e,
+        ...enableE18e === true
+          ? {}
+          : enableE18e,
       }),
     )
   }
 
   if (enableUnicorn) {
     configs.push(
-      unicorn(enableUnicorn === true ? {} : enableUnicorn),
+      unicorn(enableUnicorn === true
+        ? {}
+        : enableUnicorn),
     )
   }
 
@@ -219,7 +232,9 @@ export function antfu(
 
   if (enableJsx) {
     configs.push(
-      jsx(enableJsx === true ? {} : enableJsx),
+      jsx(enableJsx === true
+        ? {}
+        : enableJsx),
     )
   }
 
@@ -257,7 +272,9 @@ export function antfu(
 
   if (enableRegexp) {
     configs.push(
-      regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp),
+      regexp(typeof enableRegexp === 'boolean'
+        ? {}
+        : enableRegexp),
     )
   }
 
@@ -399,7 +416,9 @@ export function antfu(
     configs.push(
       formatters(
         options.formatters,
-        typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
+        typeof stylisticOptions === 'boolean'
+          ? {}
+          : stylisticOptions,
       ),
     )
   }

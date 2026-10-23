@@ -34,7 +34,9 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
         case 'formatter':
           (<const>[
             ...dependenciesMap.formatter,
-            ...(result.frameworks.includes('astro') ? dependenciesMap.formatterAstro : []),
+            ...(result.frameworks.includes('astro')
+              ? dependenciesMap.formatterAstro
+              : []),
           ]).forEach((f) => {
             if (!f)
               return

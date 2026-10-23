@@ -182,6 +182,7 @@ export interface RuleOptions {
   'angular-template/prefer-ngsrc'?: Linter.RuleEntry<[]>;
   'angular-template/prefer-self-closing-tags'?: Linter.RuleEntry<[]>;
   'angular-template/prefer-static-string-properties'?: Linter.RuleEntry<AngularTemplatePreferStaticStringProperties>;
+  'angular-template/prefer-style-binding'?: Linter.RuleEntry<[]>;
   'angular-template/prefer-template-literal'?: Linter.RuleEntry<[]>;
   'angular-template/require-switch-default'?: Linter.RuleEntry<[]>;
   'angular-template/role-has-required-aria'?: Linter.RuleEntry<[]>;
@@ -197,7 +198,7 @@ export interface RuleOptions {
   'angular/contextual-lifecycle'?: Linter.RuleEntry<[]>;
   'angular/directive-class-suffix'?: Linter.RuleEntry<AngularDirectiveClassSuffix>;
   'angular/directive-selector'?: Linter.RuleEntry<AngularDirectiveSelector>;
-  'angular/inject-at-top'?: Linter.RuleEntry<[]>;
+  'angular/inject-at-top'?: Linter.RuleEntry<AngularInjectAtTop>;
   'angular/no-async-lifecycle-method'?: Linter.RuleEntry<[]>;
   'angular/no-attribute-decorator'?: Linter.RuleEntry<[]>;
   'angular/no-developer-preview'?: Linter.RuleEntry<[]>;
@@ -224,9 +225,10 @@ export interface RuleOptions {
   'angular/prefer-output-emitter-ref'?: Linter.RuleEntry<[]>;
   'angular/prefer-output-readonly'?: Linter.RuleEntry<[]>;
   'angular/prefer-service-decorator'?: Linter.RuleEntry<[]>;
-  'angular/prefer-signal-model'?: Linter.RuleEntry<[]>;
+  'angular/prefer-signal-model'?: Linter.RuleEntry<AngularPreferSignalModel>;
   'angular/prefer-signals'?: Linter.RuleEntry<AngularPreferSignals>;
-  'angular/prefer-standalone'?: Linter.RuleEntry<[]>;
+  'angular/prefer-standalone'?: Linter.RuleEntry<AngularPreferStandalone>;
+  'angular/reactive-context-must-read-signal'?: Linter.RuleEntry<AngularReactiveContextMustReadSignal>;
   'angular/relative-url-prefix'?: Linter.RuleEntry<[]>;
   'angular/require-lifecycle-on-prototype'?: Linter.RuleEntry<[]>;
   'angular/require-localize-metadata'?: Linter.RuleEntry<AngularRequireLocalizeMetadata>;
@@ -248,6 +250,7 @@ export interface RuleOptions {
   'antfu/no-import-node-modules-by-path'?: Linter.RuleEntry<[]>;
   'antfu/no-top-level-await'?: Linter.RuleEntry<[]>;
   'antfu/no-ts-export-equal'?: Linter.RuleEntry<[]>;
+  'antfu/reasonable-newline'?: Linter.RuleEntry<AntfuReasonableNewline>;
   'antfu/top-level-function'?: Linter.RuleEntry<[]>;
   'array-bracket-newline'?: Linter.RuleEntry<ArrayBracketNewline>;
   'array-bracket-spacing'?: Linter.RuleEntry<ArrayBracketSpacing>;
@@ -484,6 +487,7 @@ export interface RuleOptions {
   'jsdoc/sort-tags'?: Linter.RuleEntry<JsdocSortTags>;
   'jsdoc/tag-lines'?: Linter.RuleEntry<JsdocTagLines>;
   'jsdoc/text-escaping'?: Linter.RuleEntry<JsdocTextEscaping>;
+  'jsdoc/ts-ban-ts-comment'?: Linter.RuleEntry<JsdocTsBanTsComment>;
   'jsdoc/ts-method-signature-style'?: Linter.RuleEntry<JsdocTsMethodSignatureStyle>;
   'jsdoc/ts-no-empty-object-type'?: Linter.RuleEntry<[]>;
   'jsdoc/ts-no-unnecessary-template-expression'?: Linter.RuleEntry<JsdocTsNoUnnecessaryTemplateExpression>;
@@ -856,6 +860,7 @@ export interface RuleOptions {
   'perfectionist/sort-array-includes'?: Linter.RuleEntry<PerfectionistSortArrayIncludes>;
   'perfectionist/sort-arrays'?: Linter.RuleEntry<PerfectionistSortArrays>;
   'perfectionist/sort-classes'?: Linter.RuleEntry<PerfectionistSortClasses>;
+  'perfectionist/sort-constructor-parameters'?: Linter.RuleEntry<PerfectionistSortConstructorParameters>;
   'perfectionist/sort-decorators'?: Linter.RuleEntry<PerfectionistSortDecorators>;
   'perfectionist/sort-enums'?: Linter.RuleEntry<PerfectionistSortEnums>;
   'perfectionist/sort-export-attributes'?: Linter.RuleEntry<PerfectionistSortExportAttributes>;
@@ -917,7 +922,7 @@ export interface RuleOptions {
   'react/dom-no-string-style-prop'?: Linter.RuleEntry<[]>;
   'react/dom-no-unknown-property'?: Linter.RuleEntry<ReactDomNoUnknownProperty>;
   'react/dom-no-unsafe-iframe-sandbox'?: Linter.RuleEntry<[]>;
-  'react/dom-no-unsafe-target-blank'?: Linter.RuleEntry<[]>;
+  'react/dom-no-unsafe-target-blank'?: Linter.RuleEntry<ReactDomNoUnsafeTargetBlank>;
   'react/dom-no-use-form-state'?: Linter.RuleEntry<[]>;
   'react/dom-no-void-elements-with-children'?: Linter.RuleEntry<[]>;
   'react/error-boundaries'?: Linter.RuleEntry<[]>;
@@ -1138,6 +1143,7 @@ export interface RuleOptions {
   'slop/no-chained-type-assertions'?: Linter.RuleEntry<SlopNoChainedTypeAssertions>;
   'slop/no-em-dash'?: Linter.RuleEntry<SlopNoEmDash>;
   'slop/no-jargon'?: Linter.RuleEntry<SlopNoJargon>;
+  'slop/no-static-only-class'?: Linter.RuleEntry<SlopNoStaticOnlyClass>;
   'slop/no-trivial-functions'?: Linter.RuleEntry<SlopNoTrivialFunctions>;
   'slop/no-trivial-type-aliases'?: Linter.RuleEntry<SlopNoTrivialTypeAliases>;
   'slop/prefer-jsdoc'?: Linter.RuleEntry<SlopPreferJsdoc>;
@@ -1182,6 +1188,7 @@ export interface RuleOptions {
   'sonarjs/assertions-in-test-cases'?: Linter.RuleEntry<[]>;
   'sonarjs/assertions-in-tests'?: Linter.RuleEntry<[]>;
   'sonarjs/async-test-assertions'?: Linter.RuleEntry<[]>;
+  'sonarjs/avoid-mutating-nested-properties-of-shallow-clones'?: Linter.RuleEntry<[]>;
   'sonarjs/aws-apigateway-public-api'?: Linter.RuleEntry<[]>;
   'sonarjs/aws-ec2-rds-dms-public'?: Linter.RuleEntry<[]>;
   'sonarjs/aws-ec2-unencrypted-ebs-volume'?: Linter.RuleEntry<[]>;
@@ -1211,6 +1218,7 @@ export interface RuleOptions {
   'sonarjs/cognitive-complexity'?: Linter.RuleEntry<SonarjsCognitiveComplexity>;
   'sonarjs/comma-or-logical-or-case'?: Linter.RuleEntry<[]>;
   'sonarjs/comment-regex'?: Linter.RuleEntry<SonarjsCommentRegex>;
+  'sonarjs/composite-assertions'?: Linter.RuleEntry<[]>;
   'sonarjs/concise-regex'?: Linter.RuleEntry<[]>;
   'sonarjs/conditional-indentation'?: Linter.RuleEntry<[]>;
   'sonarjs/confidential-information-logging'?: Linter.RuleEntry<[]>;
@@ -1286,10 +1294,12 @@ export interface RuleOptions {
   'sonarjs/no-commented-code'?: Linter.RuleEntry<[]>;
   'sonarjs/no-control-regex'?: Linter.RuleEntry<[]>;
   'sonarjs/no-dead-store'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-debounce-throttle-in-render'?: Linter.RuleEntry<[]>;
   'sonarjs/no-debug-commands-in-ui-tests'?: Linter.RuleEntry<[]>;
   'sonarjs/no-default-utility-imports'?: Linter.RuleEntry<[]>;
   'sonarjs/no-delete-var'?: Linter.RuleEntry<[]>;
   'sonarjs/no-duplicate-in-composite'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-duplicate-parameterized-test-case'?: Linter.RuleEntry<[]>;
   'sonarjs/no-duplicate-string'?: Linter.RuleEntry<SonarjsNoDuplicateString>;
   'sonarjs/no-duplicate-test-title'?: Linter.RuleEntry<[]>;
   'sonarjs/no-duplicated-branches'?: Linter.RuleEntry<[]>;
@@ -1299,6 +1309,7 @@ export interface RuleOptions {
   'sonarjs/no-empty-character-class'?: Linter.RuleEntry<[]>;
   'sonarjs/no-empty-collection'?: Linter.RuleEntry<[]>;
   'sonarjs/no-empty-group'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-empty-parameterized-test-dataset'?: Linter.RuleEntry<[]>;
   'sonarjs/no-empty-test-file'?: Linter.RuleEntry<[]>;
   'sonarjs/no-empty-test-title'?: Linter.RuleEntry<[]>;
   'sonarjs/no-equals-in-for-termination'?: Linter.RuleEntry<[]>;
@@ -1343,12 +1354,14 @@ export interface RuleOptions {
   'sonarjs/no-misleading-character-class'?: Linter.RuleEntry<[]>;
   'sonarjs/no-mixed-completion-style'?: Linter.RuleEntry<[]>;
   'sonarjs/no-mixed-content'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-mutate-reactive-state-in-updated-hook'?: Linter.RuleEntry<[]>;
   'sonarjs/no-nested-assignment'?: Linter.RuleEntry<[]>;
   'sonarjs/no-nested-conditional'?: Linter.RuleEntry<[]>;
   'sonarjs/no-nested-functions'?: Linter.RuleEntry<SonarjsNoNestedFunctions>;
   'sonarjs/no-nested-incdec'?: Linter.RuleEntry<[]>;
   'sonarjs/no-nested-switch'?: Linter.RuleEntry<[]>;
   'sonarjs/no-nested-template-literals'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-networkidle-wait'?: Linter.RuleEntry<[]>;
   'sonarjs/no-os-command-from-path'?: Linter.RuleEntry<[]>;
   'sonarjs/no-parameter-reassignment'?: Linter.RuleEntry<[]>;
   'sonarjs/no-primitive-wrappers'?: Linter.RuleEntry<[]>;
@@ -1388,6 +1401,8 @@ export interface RuleOptions {
   'sonarjs/no-useless-intersection'?: Linter.RuleEntry<[]>;
   'sonarjs/no-useless-react-setstate'?: Linter.RuleEntry<[]>;
   'sonarjs/no-variable-usage-before-declaration'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-vue-class-component'?: Linter.RuleEntry<[]>;
+  'sonarjs/no-vue-mixins'?: Linter.RuleEntry<[]>;
   'sonarjs/no-weak-cipher'?: Linter.RuleEntry<[]>;
   'sonarjs/no-weak-keys'?: Linter.RuleEntry<[]>;
   'sonarjs/no-wildcard-import'?: Linter.RuleEntry<[]>;
@@ -1399,8 +1414,11 @@ export interface RuleOptions {
   'sonarjs/os-command'?: Linter.RuleEntry<[]>;
   'sonarjs/parameterized-tests'?: Linter.RuleEntry<[]>;
   'sonarjs/post-message'?: Linter.RuleEntry<[]>;
+  'sonarjs/prefer-cypress-should'?: Linter.RuleEntry<[]>;
   'sonarjs/prefer-default-last'?: Linter.RuleEntry<[]>;
   'sonarjs/prefer-immediate-return'?: Linter.RuleEntry<[]>;
+  'sonarjs/prefer-native-axios-alternative'?: Linter.RuleEntry<[]>;
+  'sonarjs/prefer-native-jquery-alternative'?: Linter.RuleEntry<[]>;
   'sonarjs/prefer-native-lodash-alternative'?: Linter.RuleEntry<[]>;
   'sonarjs/prefer-object-literal'?: Linter.RuleEntry<[]>;
   'sonarjs/prefer-promise-shorthand'?: Linter.RuleEntry<[]>;
@@ -1429,10 +1447,13 @@ export interface RuleOptions {
   'sonarjs/strict-transport-security'?: Linter.RuleEntry<[]>;
   'sonarjs/strings-comparison'?: Linter.RuleEntry<[]>;
   'sonarjs/super-linear-regex'?: Linter.RuleEntry<[]>;
+  'sonarjs/synchronous-exception-assertions'?: Linter.RuleEntry<[]>;
   'sonarjs/synchronous-suite-callback'?: Linter.RuleEntry<[]>;
   'sonarjs/table-header'?: Linter.RuleEntry<[]>;
   'sonarjs/table-header-reference'?: Linter.RuleEntry<[]>;
   'sonarjs/test-check-exception'?: Linter.RuleEntry<[]>;
+  'sonarjs/testing-library-prefer-query-by-disappearance'?: Linter.RuleEntry<[]>;
+  'sonarjs/testing-library-query-assertion'?: Linter.RuleEntry<[]>;
   'sonarjs/todo-tag'?: Linter.RuleEntry<[]>;
   'sonarjs/too-many-break-or-continue-in-loop'?: Linter.RuleEntry<[]>;
   'sonarjs/unicode-aware-regex'?: Linter.RuleEntry<[]>;
@@ -1446,6 +1467,7 @@ export interface RuleOptions {
   'sonarjs/useless-string-operation'?: Linter.RuleEntry<[]>;
   'sonarjs/values-not-convertible-to-numbers'?: Linter.RuleEntry<[]>;
   'sonarjs/variable-name'?: Linter.RuleEntry<SonarjsVariableName>;
+  'sonarjs/vitest-mock-at-module-scope'?: Linter.RuleEntry<[]>;
   'sonarjs/void-use'?: Linter.RuleEntry<[]>;
   'sonarjs/weak-ssl'?: Linter.RuleEntry<[]>;
   'sonarjs/web-sql-database'?: Linter.RuleEntry<[]>;
@@ -1757,7 +1779,7 @@ export interface RuleOptions {
   'toml/vue-custom-block/no-parsing-error'?: Linter.RuleEntry<[]>;
   'ts/adjacent-overload-signatures'?: Linter.RuleEntry<[]>;
   'ts/array-type'?: Linter.RuleEntry<TsArrayType>;
-  'ts/await-thenable'?: Linter.RuleEntry<[]>;
+  'ts/await-thenable'?: Linter.RuleEntry<TsAwaitThenable>;
   'ts/ban-ts-comment'?: Linter.RuleEntry<TsBanTsComment>;
   'ts/ban-tslint-comment'?: Linter.RuleEntry<[]>;
   'ts/class-literal-property-style'?: Linter.RuleEntry<TsClassLiteralPropertyStyle>;
@@ -1797,6 +1819,7 @@ export interface RuleOptions {
   'ts/no-extraneous-class'?: Linter.RuleEntry<TsNoExtraneousClass>;
   'ts/no-floating-promises'?: Linter.RuleEntry<TsNoFloatingPromises>;
   'ts/no-for-in-array'?: Linter.RuleEntry<[]>;
+  'ts/no-generated-empty-object-type'?: Linter.RuleEntry<[]>;
   'ts/no-implied-eval'?: Linter.RuleEntry<[]>;
   'ts/no-import-type-side-effects'?: Linter.RuleEntry<[]>;
   'ts/no-inferrable-types'?: Linter.RuleEntry<TsNoInferrableTypes>;
@@ -1836,6 +1859,7 @@ export interface RuleOptions {
   'ts/no-unsafe-assignment'?: Linter.RuleEntry<[]>;
   'ts/no-unsafe-call'?: Linter.RuleEntry<[]>;
   'ts/no-unsafe-declaration-merging'?: Linter.RuleEntry<[]>;
+  'ts/no-unsafe-enum-assignment'?: Linter.RuleEntry<[]>;
   'ts/no-unsafe-enum-comparison'?: Linter.RuleEntry<[]>;
   'ts/no-unsafe-function-type'?: Linter.RuleEntry<[]>;
   'ts/no-unsafe-member-access'?: Linter.RuleEntry<TsNoUnsafeMemberAccess>;
@@ -2401,6 +2425,7 @@ export interface RuleOptions {
   'vue/no-restricted-v-on'?: Linter.RuleEntry<VueNoRestrictedVOn>;
   'vue/no-root-v-if'?: Linter.RuleEntry<[]>;
   'vue/no-setup-props-reactivity-loss'?: Linter.RuleEntry<[]>;
+  'vue/no-shadow-native-events'?: Linter.RuleEntry<[]>;
   'vue/no-shared-component-data'?: Linter.RuleEntry<[]>;
   'vue/no-side-effects-in-computed-properties'?: Linter.RuleEntry<[]>;
   'vue/no-spaces-around-equal-signs-in-attribute'?: Linter.RuleEntry<[]>;
@@ -2715,19 +2740,19 @@ type AngularComponentMaxInlineDeclarations = [] | [{
 }];
 type AngularComponentSelector = [] | [({
   type: (string | ("element" | "attribute")[]);
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 } | [{
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }] | [{
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }, {
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }])];
 type AngularConsistentComponentStyles = [] | [("array" | "string")];
@@ -2736,21 +2761,24 @@ type AngularDirectiveClassSuffix = [] | [{
 }];
 type AngularDirectiveSelector = [] | [({
   type: (string | ("element" | "attribute")[]);
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 } | [{
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }] | [{
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }, {
   type: ("element" | "attribute");
-  prefix?: (string | unknown[]);
+  prefix?: (string | string[]);
   style: ("camelCase" | "kebab-case");
 }])];
+type AngularInjectAtTop = [] | [{
+  additionalInjectFunctions?: string[];
+}];
 type AngularNoInputPrefix = [] | [{
   prefixes?: string[];
 }];
@@ -2763,12 +2791,21 @@ type AngularPipePrefix = [] | [{
 type AngularPreferOnPushComponentChangeDetection = [] | [{
   allowExplicitOnPush?: boolean;
 }];
+type AngularPreferSignalModel = [] | [{
+  useTypeChecking?: boolean;
+}];
 type AngularPreferSignals = [] | [{
   preferReadonlySignalProperties?: boolean;
   preferInputSignals?: boolean;
   preferQuerySignals?: boolean;
   useTypeChecking?: boolean;
   additionalSignalCreationFunctions?: string[];
+}];
+type AngularPreferStandalone = [] | [{
+  allowExplicitStandalone?: boolean;
+}];
+type AngularReactiveContextMustReadSignal = [] | [{
+  checkResources?: boolean;
 }];
 type AngularRequireLocalizeMetadata = [] | [{
   requireDescription?: boolean;
@@ -2778,8 +2815,10 @@ type AngularRequireLocalizeMetadata = [] | [{
 type AngularSortKeysInTypeDecorator = [] | [{
   Component?: string[];
   Directive?: string[];
+  Injectable?: string[];
   NgModule?: string[];
   Pipe?: string[];
+  allowUnconfiguredProperties?: boolean;
 }];
 type AngularTemplateAttributesOrder = [] | [{
   alphabetical?: boolean;
@@ -2790,6 +2829,8 @@ type AngularTemplateButtonHasType = [] | [{
 }];
 type AngularTemplateClickEventsHaveKeyEvents = [] | [{
   ignoreWithDirectives?: string[];
+  requireKeyCode?: boolean;
+  allowedKeyCodes?: string[];
 }];
 type AngularTemplateConditionalComplexity = [] | [{
   maxComplexity?: number;
@@ -2838,8 +2879,8 @@ type AngularTemplateNoDuplicateAttributes = [] | [{
   ignore?: string[];
 }];
 type AngularTemplateNoInlineStyles = [] | [{
-  allowNgStyle?: boolean;
-  allowBindToStyle?: boolean;
+  allowNgStyle?: (boolean | "dynamic");
+  allowBindToStyle?: (boolean | "dynamic");
 }];
 type AngularTemplateNoInterpolationInAttributes = [] | [{
   allowSubstringInterpolation?: boolean;
@@ -2866,6 +2907,7 @@ type AngularTemplateUseTrackByFunction = [] | [{
 }];
 type AngularUseInjectableProvidedIn = [] | [{
   ignoreClassNamePattern?: string;
+  allowProvidedInNull?: boolean;
 }];
 type AntfuConsistentChaining = [] | [{
   allowLeadingPropertyAccess?: boolean;
@@ -2896,6 +2938,12 @@ type AntfuConsistentListNewline = [] | [{
 type AntfuIndentUnindent = [] | [{
   indent?: number;
   tags?: string[];
+}];
+type AntfuReasonableNewline = [] | [{
+  minObjectProperties?: number;
+  objectLineLength?: number;
+  minArrayItems?: number;
+  arrayLineLength?: number;
 }];
 type ArrayBracketNewline = [] | [(("always" | "never" | "consistent") | {
   multiline?: boolean;
@@ -3176,9 +3224,11 @@ type EslintCommentsDisableEnablePair = [] | [{
 }];
 type EslintCommentsNoRestrictedDisable = string[];
 type EslintCommentsNoUse = [] | [{
-  allow?: ("eslint" | "eslint-disable" | "eslint-disable-line" | "eslint-disable-next-line" | "eslint-enable" | "eslint-env" | "exported" | "global" | "globals")[];
+  additionalDirectives?: string[];
+  allow?: string[];
 }];
 type EslintCommentsRequireDescription = [] | [{
+  additionalDirectives?: string[];
   ignore?: ("eslint" | "eslint-disable" | "eslint-disable-line" | "eslint-disable-next-line" | "eslint-enable" | "eslint-env" | "exported" | "global" | "globals")[];
 }];
 type FormatDprint = [] | [{
@@ -3553,6 +3603,7 @@ type JsdocNoUndefinedTypes = [] | [{
 type JsdocNoUnnecessaryTypeAssertion = [] | [{
   checkLiteralConstAssertions?: boolean;
   enableFixer?: boolean;
+  preferConstToLiteralTuples?: boolean;
   treatAnyAsRedundant?: boolean;
   typesToIgnore?: string[];
 }];
@@ -3797,6 +3848,21 @@ type JsdocTagLines = [] | [("always" | "any" | "never")] | [("always" | "any" | 
 type JsdocTextEscaping = [] | [{
   escapeHTML?: boolean;
   escapeMarkdown?: boolean;
+}];
+type JsdocTsBanTsComment = [] | [{
+  minimumDescriptionLength?: number;
+  "ts-check"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string;
+  });
+  "ts-expect-error"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string;
+  });
+  "ts-ignore"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string;
+  });
+  "ts-nocheck"?: (boolean | "allow-with-description" | {
+    descriptionFormat?: string;
+  });
 }];
 type JsdocTsMethodSignatureStyle = [] | [("method" | "property")] | [("method" | "property"), {
   enableFixer?: boolean;
@@ -5036,7 +5102,7 @@ type NodeNoUnsupportedFeaturesEsSyntax = [] | [{
 type NodeNoUnsupportedFeaturesNodeBuiltins = [] | [{
   version?: string;
   allowExperimental?: boolean;
-  ignores?: ("__filename" | "__dirname" | "require" | "require.cache" | "require.extensions" | "require.main" | "require.resolve" | "require.resolve.paths" | "module" | "module.children" | "module.exports" | "module.filename" | "module.id" | "module.isPreloading" | "module.loaded" | "module.parent" | "module.path" | "module.paths" | "module.require" | "exports" | "AbortController" | "AbortSignal" | "AbortSignal.abort" | "AbortSignal.timeout" | "AbortSignal.any" | "DOMException" | "FormData" | "Headers" | "MessageEvent" | "Navigator" | "Request" | "Response" | "WebAssembly" | "WebSocket" | "fetch" | "global" | "queueMicrotask" | "navigator" | "navigator.hardwareConcurrency" | "navigator.language" | "navigator.languages" | "navigator.locks" | "navigator.locks.request" | "navigator.locks.query" | "navigator.platform" | "navigator.userAgent" | "structuredClone" | "localStorage" | "sessionStorage" | "Storage" | "Blob" | "new Buffer()" | "Buffer" | "Buffer.alloc" | "Buffer.allocUnsafe" | "Buffer.allocUnsafeSlow" | "Buffer.byteLength" | "Buffer.compare" | "Buffer.concat" | "Buffer.copyBytesFrom" | "Buffer.from" | "Buffer.isBuffer" | "Buffer.isEncoding" | "File" | "atob" | "btoa" | "console" | "console.profile" | "console.profileEnd" | "console.timeStamp" | "console.Console" | "console.assert" | "console.clear" | "console.count" | "console.countReset" | "console.debug" | "console.dir" | "console.dirxml" | "console.error" | "console.group" | "console.groupCollapsed" | "console.groupEnd" | "console.info" | "console.log" | "console.table" | "console.time" | "console.timeEnd" | "console.timeLog" | "console.trace" | "console.warn" | "crypto" | "crypto.subtle" | "crypto.subtle.decapsulateBits" | "crypto.subtle.decapsulateKey" | "crypto.subtle.decrypt" | "crypto.subtle.deriveBits" | "crypto.subtle.deriveKey" | "crypto.subtle.digest" | "crypto.subtle.encapsulateBits" | "crypto.subtle.encapsulateKey" | "crypto.subtle.encrypt" | "crypto.subtle.exportKey" | "crypto.subtle.generateKey" | "crypto.subtle.getPublicKey" | "crypto.subtle.importKey" | "crypto.subtle.sign" | "crypto.subtle.unwrapKey" | "crypto.subtle.verify" | "crypto.subtle.wrapKey" | "crypto.getRandomValues" | "crypto.randomUUID" | "Crypto" | "CryptoKey" | "SubtleCrypto" | "SubtleCrypto.supports" | "CloseEvent" | "CustomEvent" | "Event" | "EventSource" | "EventTarget" | "PerformanceEntry" | "PerformanceMark" | "PerformanceMeasure" | "PerformanceObserver" | "PerformanceObserverEntryList" | "PerformanceResourceTiming" | "performance" | "performance.clearMarks" | "performance.clearMeasures" | "performance.clearResourceTimings" | "performance.eventLoopUtilization" | "performance.getEntries" | "performance.getEntriesByName" | "performance.getEntriesByType" | "performance.mark" | "performance.markResourceTiming" | "performance.measure" | "performance.nodeTiming" | "performance.nodeTiming.bootstrapComplete" | "performance.nodeTiming.environment" | "performance.nodeTiming.idleTime" | "performance.nodeTiming.loopExit" | "performance.nodeTiming.loopStart" | "performance.nodeTiming.nodeStart" | "performance.nodeTiming.uvMetricsInfo" | "performance.nodeTiming.v8Start" | "performance.now" | "performance.onresourcetimingbufferfull" | "performance.setResourceTimingBufferSize" | "performance.timeOrigin" | "performance.timerify" | "performance.toJSON" | "process" | "process.allowedNodeEnvironmentFlags" | "process.availableMemory" | "process.arch" | "process.argv" | "process.argv0" | "process.channel" | "process.config" | "process.connected" | "process.debugPort" | "process.env" | "process.execArgv" | "process.execPath" | "process.execve" | "process.exitCode" | "process.features.cached_builtins" | "process.features.debug" | "process.features.inspector" | "process.features.ipv6" | "process.features.require_module" | "process.features.tls" | "process.features.tls_alpn" | "process.features.tls_ocsp" | "process.features.tls_sni" | "process.features.typescript" | "process.features.uv" | "process.finalization.register" | "process.finalization.registerBeforeExit" | "process.finalization.unregister" | "process.getBuiltinModule" | "process.mainModule" | "process.noDeprecation" | "process.permission" | "process.pid" | "process.platform" | "process.ppid" | "process.ref" | "process.release" | "process.report" | "process.report.excludeEnv" | "process.sourceMapsEnabled" | "process.stdin" | "process.stdin.isRaw" | "process.stdin.isTTY" | "process.stdin.setRawMode" | "process.stdout" | "process.stdout.clearLine" | "process.stdout.clearScreenDown" | "process.stdout.columns" | "process.stdout.cursorTo" | "process.stdout.getColorDepth" | "process.stdout.getWindowSize" | "process.stdout.hasColors" | "process.stdout.isTTY" | "process.stdout.moveCursor" | "process.stdout.rows" | "process.stderr" | "process.stderr.clearLine" | "process.stderr.clearScreenDown" | "process.stderr.columns" | "process.stderr.cursorTo" | "process.stderr.getColorDepth" | "process.stderr.getWindowSize" | "process.stderr.hasColors" | "process.stderr.isTTY" | "process.stderr.moveCursor" | "process.stderr.rows" | "process.threadCpuUsage" | "process.throwDeprecation" | "process.title" | "process.traceDeprecation" | "process.version" | "process.versions" | "process.abort" | "process.chdir" | "process.constrainedMemory" | "process.cpuUsage" | "process.cwd" | "process.disconnect" | "process.dlopen" | "process.emitWarning" | "process.exit" | "process.getActiveResourcesInfo" | "process.getegid" | "process.geteuid" | "process.getgid" | "process.getgroups" | "process.getuid" | "process.hasUncaughtExceptionCaptureCallback" | "process.hrtime" | "process.hrtime.bigint" | "process.initgroups" | "process.kill" | "process.loadEnvFile" | "process.memoryUsage" | "process.rss" | "process.nextTick" | "process.resourceUsage" | "process.send" | "process.setegid" | "process.seteuid" | "process.setgid" | "process.setgroups" | "process.setuid" | "process.setSourceMapsEnabled" | "process.setUncaughtExceptionCaptureCallback" | "process.umask" | "process.unref" | "process.uptime" | "ReadableStream" | "ReadableStream.from" | "ReadableStreamDefaultReader" | "ReadableStreamBYOBReader" | "ReadableStreamDefaultController" | "ReadableByteStreamController" | "ReadableStreamBYOBRequest" | "WritableStream" | "WritableStreamDefaultWriter" | "WritableStreamDefaultController" | "TransformStream" | "TransformStreamDefaultController" | "ByteLengthQueuingStrategy" | "CountQueuingStrategy" | "TextEncoderStream" | "TextDecoderStream" | "CompressionStream" | "DecompressionStream" | "setInterval" | "clearInterval" | "setTimeout" | "clearTimeout" | "setImmediate" | "clearImmediate" | "URL" | "URL.canParse" | "URL.createObjectURL" | "URL.revokeObjectURL" | "URLSearchParams" | "TextDecoder" | "TextEncoder" | "BroadcastChannel" | "MessageChannel" | "MessagePort" | "assert" | "assert.Assert" | "assert.assert" | "assert.deepEqual" | "assert.deepStrictEqual" | "assert.doesNotMatch" | "assert.doesNotReject" | "assert.doesNotThrow" | "assert.equal" | "assert.fail" | "assert.ifError" | "assert.match" | "assert.notDeepEqual" | "assert.notDeepStrictEqual" | "assert.notEqual" | "assert.notStrictEqual" | "assert.ok" | "assert.partialDeepStrictEqual" | "assert.rejects" | "assert.strictEqual" | "assert.throws" | "assert.CallTracker" | "assert.strict" | "assert.strict.Assert" | "assert.strict.assert" | "assert.strict.deepEqual" | "assert.strict.deepStrictEqual" | "assert.strict.doesNotMatch" | "assert.strict.doesNotReject" | "assert.strict.doesNotThrow" | "assert.strict.equal" | "assert.strict.fail" | "assert.strict.ifError" | "assert.strict.match" | "assert.strict.notDeepEqual" | "assert.strict.notDeepStrictEqual" | "assert.strict.notEqual" | "assert.strict.notStrictEqual" | "assert.strict.ok" | "assert.strict.partialDeepStrictEqual" | "assert.strict.rejects" | "assert.strict.strictEqual" | "assert.strict.throws" | "assert.strict.CallTracker" | "assert/strict" | "assert/strict.Assert" | "assert/strict.assert" | "assert/strict.deepEqual" | "assert/strict.deepStrictEqual" | "assert/strict.doesNotMatch" | "assert/strict.doesNotReject" | "assert/strict.doesNotThrow" | "assert/strict.equal" | "assert/strict.fail" | "assert/strict.ifError" | "assert/strict.match" | "assert/strict.notDeepEqual" | "assert/strict.notDeepStrictEqual" | "assert/strict.notEqual" | "assert/strict.notStrictEqual" | "assert/strict.ok" | "assert/strict.partialDeepStrictEqual" | "assert/strict.rejects" | "assert/strict.strictEqual" | "assert/strict.throws" | "assert/strict.CallTracker" | "async_hooks" | "async_hooks.createHook" | "async_hooks.executionAsyncResource" | "async_hooks.executionAsyncId" | "async_hooks.triggerAsyncId" | "async_hooks.AsyncLocalStorage" | "async_hooks.AsyncLocalStorage.bind" | "async_hooks.AsyncLocalStorage.snapshot" | "async_hooks.AsyncResource" | "async_hooks.AsyncResource.bind" | "buffer" | "buffer.constants" | "buffer.INSPECT_MAX_BYTES" | "buffer.kMaxLength" | "buffer.kStringMaxLength" | "buffer.atob" | "buffer.btoa" | "buffer.isAscii" | "buffer.isUtf8" | "buffer.resolveObjectURL" | "buffer.transcode" | "buffer.SlowBuffer" | "buffer.Blob" | "new buffer.Buffer()" | "buffer.Buffer" | "buffer.Buffer.alloc" | "buffer.Buffer.allocUnsafe" | "buffer.Buffer.allocUnsafeSlow" | "buffer.Buffer.byteLength" | "buffer.Buffer.compare" | "buffer.Buffer.concat" | "buffer.Buffer.copyBytesFrom" | "buffer.Buffer.from" | "buffer.Buffer.isBuffer" | "buffer.Buffer.isEncoding" | "buffer.File" | "child_process" | "child_process.exec" | "child_process.execFile" | "child_process.fork" | "child_process.spawn" | "child_process.execFileSync" | "child_process.execSync" | "child_process.spawnSync" | "child_process.ChildProcess" | "cluster" | "cluster.isMaster" | "cluster.isPrimary" | "cluster.isWorker" | "cluster.schedulingPolicy" | "cluster.settings" | "cluster.worker" | "cluster.workers" | "cluster.disconnect" | "cluster.fork" | "cluster.setupMaster" | "cluster.setupPrimary" | "cluster.Worker" | "crypto.constants" | "crypto.fips" | "crypto.webcrypto" | "crypto.webcrypto.subtle" | "crypto.webcrypto.subtle.decapsulateBits" | "crypto.webcrypto.subtle.decapsulateKey" | "crypto.webcrypto.subtle.decrypt" | "crypto.webcrypto.subtle.deriveBits" | "crypto.webcrypto.subtle.deriveKey" | "crypto.webcrypto.subtle.digest" | "crypto.webcrypto.subtle.encapsulateBits" | "crypto.webcrypto.subtle.encapsulateKey" | "crypto.webcrypto.subtle.encrypt" | "crypto.webcrypto.subtle.exportKey" | "crypto.webcrypto.subtle.generateKey" | "crypto.webcrypto.subtle.getPublicKey" | "crypto.webcrypto.subtle.importKey" | "crypto.webcrypto.subtle.sign" | "crypto.webcrypto.subtle.unwrapKey" | "crypto.webcrypto.subtle.verify" | "crypto.webcrypto.subtle.wrapKey" | "crypto.webcrypto.getRandomValues" | "crypto.webcrypto.randomUUID" | "crypto.argon2" | "crypto.argon2Sync" | "crypto.checkPrime" | "crypto.checkPrimeSync" | "crypto.createCipher" | "crypto.createCipheriv" | "crypto.createDecipher" | "crypto.createDecipheriv" | "crypto.createDiffieHellman" | "crypto.createDiffieHellmanGroup" | "crypto.createECDH" | "crypto.createHash" | "crypto.createHmac" | "crypto.createPrivateKey" | "crypto.createPublicKey" | "crypto.createSecretKey" | "crypto.createSign" | "crypto.createVerify" | "crypto.decapsulate" | "crypto.diffieHellman" | "crypto.encapsulate" | "crypto.generateKey" | "crypto.generateKeyPair" | "crypto.generateKeyPairSync" | "crypto.generateKeySync" | "crypto.generatePrime" | "crypto.generatePrimeSync" | "crypto.getCipherInfo" | "crypto.getCiphers" | "crypto.getCurves" | "crypto.getDiffieHellman" | "crypto.getFips" | "crypto.getHashes" | "crypto.hash" | "crypto.hkdf" | "crypto.hkdfSync" | "crypto.pbkdf2" | "crypto.pbkdf2Sync" | "crypto.privateDecrypt" | "crypto.privateEncrypt" | "crypto.publicDecrypt" | "crypto.publicEncrypt" | "crypto.randomBytes" | "crypto.randomFillSync" | "crypto.randomFill" | "crypto.randomInt" | "crypto.scrypt" | "crypto.scryptSync" | "crypto.secureHeapUsed" | "crypto.setEngine" | "crypto.setFips" | "crypto.sign" | "crypto.timingSafeEqual" | "crypto.verify" | "crypto.Certificate" | "crypto.Certificate.exportChallenge" | "crypto.Certificate.exportPublicKey" | "crypto.Certificate.verifySpkac" | "crypto.Cipher" | "crypto.Decipher" | "crypto.DiffieHellman" | "crypto.DiffieHellmanGroup" | "crypto.ECDH" | "crypto.ECDH.convertKey" | "crypto.Hash()" | "new crypto.Hash()" | "crypto.Hash" | "crypto.Hmac()" | "new crypto.Hmac()" | "crypto.Hmac" | "crypto.KeyObject" | "crypto.KeyObject.from" | "crypto.Sign" | "crypto.Verify" | "crypto.X509Certificate" | "dgram" | "dgram.createSocket" | "dgram.Socket" | "diagnostics_channel" | "diagnostics_channel.hasSubscribers" | "diagnostics_channel.channel" | "diagnostics_channel.subscribe" | "diagnostics_channel.unsubscribe" | "diagnostics_channel.tracingChannel" | "diagnostics_channel.Channel" | "diagnostics_channel.TracingChannel" | "dns" | "dns.Resolver" | "dns.getServers" | "dns.lookup" | "dns.lookupService" | "dns.resolve" | "dns.resolve4" | "dns.resolve6" | "dns.resolveAny" | "dns.resolveCname" | "dns.resolveCaa" | "dns.resolveMx" | "dns.resolveNaptr" | "dns.resolveNs" | "dns.resolvePtr" | "dns.resolveSoa" | "dns.resolveSrv" | "dns.resolveTlsa" | "dns.resolveTxt" | "dns.reverse" | "dns.setDefaultResultOrder" | "dns.getDefaultResultOrder" | "dns.setServers" | "dns.promises" | "dns.promises.Resolver" | "dns.promises.cancel" | "dns.promises.getServers" | "dns.promises.lookup" | "dns.promises.lookupService" | "dns.promises.resolve" | "dns.promises.resolve4" | "dns.promises.resolve6" | "dns.promises.resolveAny" | "dns.promises.resolveCaa" | "dns.promises.resolveCname" | "dns.promises.resolveMx" | "dns.promises.resolveNaptr" | "dns.promises.resolveNs" | "dns.promises.resolvePtr" | "dns.promises.resolveSoa" | "dns.promises.resolveSrv" | "dns.promises.resolveTlsa" | "dns.promises.resolveTxt" | "dns.promises.reverse" | "dns.promises.setDefaultResultOrder" | "dns.promises.getDefaultResultOrder" | "dns.promises.setServers" | "dns/promises" | "dns/promises.Resolver" | "dns/promises.cancel" | "dns/promises.getServers" | "dns/promises.lookup" | "dns/promises.lookupService" | "dns/promises.resolve" | "dns/promises.resolve4" | "dns/promises.resolve6" | "dns/promises.resolveAny" | "dns/promises.resolveCaa" | "dns/promises.resolveCname" | "dns/promises.resolveMx" | "dns/promises.resolveNaptr" | "dns/promises.resolveNs" | "dns/promises.resolvePtr" | "dns/promises.resolveSoa" | "dns/promises.resolveSrv" | "dns/promises.resolveTlsa" | "dns/promises.resolveTxt" | "dns/promises.reverse" | "dns/promises.setDefaultResultOrder" | "dns/promises.getDefaultResultOrder" | "dns/promises.setServers" | "domain" | "domain.create" | "domain.Domain" | "events" | "events.Event" | "events.EventTarget" | "events.CustomEvent" | "events.NodeEventTarget" | "events.EventEmitter" | "events.EventEmitter.defaultMaxListeners" | "events.EventEmitter.errorMonitor" | "events.EventEmitter.captureRejections" | "events.EventEmitter.captureRejectionSymbol" | "events.EventEmitter.getEventListeners" | "events.EventEmitter.getMaxListeners" | "events.EventEmitter.once" | "events.EventEmitter.listenerCount" | "events.EventEmitter.on" | "events.EventEmitter.setMaxListeners" | "events.EventEmitter.addAbortListener" | "events.EventEmitterAsyncResource" | "events.EventEmitterAsyncResource.defaultMaxListeners" | "events.EventEmitterAsyncResource.errorMonitor" | "events.EventEmitterAsyncResource.captureRejections" | "events.EventEmitterAsyncResource.captureRejectionSymbol" | "events.EventEmitterAsyncResource.getEventListeners" | "events.EventEmitterAsyncResource.getMaxListeners" | "events.EventEmitterAsyncResource.once" | "events.EventEmitterAsyncResource.listenerCount" | "events.EventEmitterAsyncResource.on" | "events.EventEmitterAsyncResource.setMaxListeners" | "events.EventEmitterAsyncResource.addAbortListener" | "events.defaultMaxListeners" | "events.errorMonitor" | "events.captureRejections" | "events.captureRejectionSymbol" | "events.getEventListeners" | "events.getMaxListeners" | "events.once" | "events.listenerCount" | "events.on" | "events.setMaxListeners" | "events.addAbortListener" | "fs" | "fs.promises" | "fs.promises.FileHandle" | "fs.promises.access" | "fs.promises.appendFile" | "fs.promises.chmod" | "fs.promises.chown" | "fs.promises.constants" | "fs.promises.copyFile" | "fs.promises.cp" | "fs.promises.glob" | "fs.promises.lchmod" | "fs.promises.lchown" | "fs.promises.link" | "fs.promises.lstat" | "fs.promises.lutimes" | "fs.promises.mkdir" | "fs.promises.mkdtemp" | "fs.promises.mkdtempDisposable" | "fs.promises.open" | "fs.promises.opendir" | "fs.promises.readFile" | "fs.promises.readdir" | "fs.promises.readlink" | "fs.promises.realpath" | "fs.promises.rename" | "fs.promises.rm" | "fs.promises.rmdir" | "fs.promises.stat" | "fs.promises.statfs" | "fs.promises.symlink" | "fs.promises.truncate" | "fs.promises.unlink" | "fs.promises.utimes" | "fs.promises.watch" | "fs.promises.writeFile" | "fs.access" | "fs.appendFile" | "fs.chmod" | "fs.chown" | "fs.close" | "fs.copyFile" | "fs.cp" | "fs.createReadStream" | "fs.createWriteStream" | "fs.exists" | "fs.fchmod" | "fs.fchown" | "fs.fdatasync" | "fs.fstat" | "fs.fsync" | "fs.ftruncate" | "fs.futimes" | "fs.glob" | "fs.lchmod" | "fs.lchown" | "fs.link" | "fs.lstat" | "fs.lutimes" | "fs.mkdir" | "fs.mkdtemp" | "fs.native" | "fs.open" | "fs.openAsBlob" | "fs.opendir" | "fs.read" | "fs.readdir" | "fs.readFile" | "fs.readlink" | "fs.readv" | "fs.realpath" | "fs.realpath.native" | "fs.rename" | "fs.rm" | "fs.rmdir" | "fs.stat" | "fs.statfs" | "fs.symlink" | "fs.truncate" | "fs.unlink" | "fs.unwatchFile" | "fs.utimes" | "fs.watch" | "fs.watchFile" | "fs.write" | "fs.writeFile" | "fs.writev" | "fs.accessSync" | "fs.appendFileSync" | "fs.chmodSync" | "fs.chownSync" | "fs.closeSync" | "fs.copyFileSync" | "fs.cpSync" | "fs.existsSync" | "fs.fchmodSync" | "fs.fchownSync" | "fs.fdatasyncSync" | "fs.fstatSync" | "fs.fsyncSync" | "fs.ftruncateSync" | "fs.futimesSync" | "fs.globSync" | "fs.lchmodSync" | "fs.lchownSync" | "fs.linkSync" | "fs.lstatSync" | "fs.lutimesSync" | "fs.mkdirSync" | "fs.mkdtempSync" | "fs.mkdtempDisposableSync" | "fs.opendirSync" | "fs.openSync" | "fs.readdirSync" | "fs.readFileSync" | "fs.readlinkSync" | "fs.readSync" | "fs.readvSync" | "fs.realpathSync" | "fs.realpathSync.native" | "fs.renameSync" | "fs.rmdirSync" | "fs.rmSync" | "fs.statfsSync" | "fs.statSync" | "fs.symlinkSync" | "fs.truncateSync" | "fs.unlinkSync" | "fs.utimesSync" | "fs.writeFileSync" | "fs.writeSync" | "fs.writevSync" | "fs.constants" | "fs.Dir" | "fs.Dirent" | "fs.FSWatcher" | "fs.StatWatcher" | "fs.ReadStream" | "fs.Stats()" | "new fs.Stats()" | "fs.Stats" | "fs.StatFs" | "fs.WriteStream" | "fs.Utf8Stream" | "fs.common_objects" | "fs/promises" | "fs/promises.FileHandle" | "fs/promises.access" | "fs/promises.appendFile" | "fs/promises.chmod" | "fs/promises.chown" | "fs/promises.constants" | "fs/promises.copyFile" | "fs/promises.cp" | "fs/promises.glob" | "fs/promises.lchmod" | "fs/promises.lchown" | "fs/promises.link" | "fs/promises.lstat" | "fs/promises.lutimes" | "fs/promises.mkdir" | "fs/promises.mkdtemp" | "fs/promises.mkdtempDisposable" | "fs/promises.open" | "fs/promises.opendir" | "fs/promises.readFile" | "fs/promises.readdir" | "fs/promises.readlink" | "fs/promises.realpath" | "fs/promises.rename" | "fs/promises.rm" | "fs/promises.rmdir" | "fs/promises.stat" | "fs/promises.statfs" | "fs/promises.symlink" | "fs/promises.truncate" | "fs/promises.unlink" | "fs/promises.utimes" | "fs/promises.watch" | "fs/promises.writeFile" | "http2" | "http2.constants" | "http2.sensitiveHeaders" | "http2.createServer" | "http2.createSecureServer" | "http2.connect" | "http2.getDefaultSettings" | "http2.getPackedSettings" | "http2.getUnpackedSettings" | "http2.performServerHandshake" | "http2.Http2Session" | "http2.ServerHttp2Session" | "http2.ClientHttp2Session" | "http2.Http2Stream" | "http2.ClientHttp2Stream" | "http2.ServerHttp2Stream" | "http2.Http2Server" | "http2.Http2SecureServer" | "http2.Http2ServerRequest" | "http2.Http2ServerResponse" | "http" | "http.METHODS" | "http.STATUS_CODES" | "http.globalAgent" | "http.maxHeaderSize" | "http.createServer" | "http.get" | "http.request" | "http.validateHeaderName" | "http.validateHeaderValue" | "http.setMaxIdleHTTPParsers" | "http.Agent()" | "http.Agent" | "http.ClientRequest()" | "http.ClientRequest" | "http.Server()" | "http.Server" | "http.ServerResponse()" | "http.ServerResponse" | "http.IncomingMessage()" | "http.IncomingMessage" | "http.OutgoingMessage()" | "http.OutgoingMessage" | "http.WebSocket()" | "http.WebSocket" | "_http_agent" | "_http_client" | "_http_common" | "_http_incoming" | "_http_outgoing" | "_http_server" | "https" | "https.globalAgent" | "https.createServer" | "https.get" | "https.request" | "https.Agent" | "https.Server" | "inspector" | "inspector.Session" | "inspector.Network.dataReceived" | "inspector.Network.dataSent" | "inspector.Network.loadingFailed" | "inspector.Network.loadingFinished" | "inspector.Network.requestWillBeSent" | "inspector.Network.responseReceived" | "inspector.Network.webSocketCreated" | "inspector.Network.webSocketHandshakeResponseReceived" | "inspector.Network.webSocketClosed" | "inspector.NetworkResources.put" | "inspector.console" | "inspector.close" | "inspector.open" | "inspector.url" | "inspector.waitForDebugger" | "inspector/promises" | "inspector/promises.Session" | "inspector/promises.Network.dataReceived" | "inspector/promises.Network.dataSent" | "inspector/promises.Network.loadingFailed" | "inspector/promises.Network.loadingFinished" | "inspector/promises.Network.requestWillBeSent" | "inspector/promises.Network.responseReceived" | "inspector/promises.Network.webSocketCreated" | "inspector/promises.Network.webSocketHandshakeResponseReceived" | "inspector/promises.Network.webSocketClosed" | "inspector/promises.NetworkResources.put" | "inspector/promises.console" | "inspector/promises.close" | "inspector/promises.open" | "inspector/promises.url" | "inspector/promises.waitForDebugger" | "module.builtinModules" | "module.constants.compileCacheStatus" | "module.createRequire" | "module.createRequireFromPath" | "module.enableCompileCache" | "module.findPackageJSON" | "module.flushCompileCache" | "module.getCompileCacheDir" | "module.getSourceMapsSupport" | "module.isBuiltin" | "module.registerHooks" | "module.register" | "module.setSourceMapsSupport" | "module.stripTypeScriptTypes" | "module.syncBuiltinESMExports" | "module.findSourceMap" | "module.SourceMap" | "module.Module.builtinModules" | "module.Module.createRequire" | "module.Module.createRequireFromPath" | "module.Module.enableCompileCache" | "module.Module.findPackageJSON" | "module.Module.flushCompileCache" | "module.Module.getCompileCacheDir" | "module.Module.getSourceMapsSupport" | "module.Module.isBuiltin" | "module.Module.registerHooks" | "module.Module.register" | "module.Module.setSourceMapsSupport" | "module.Module.stripTypeScriptTypes" | "module.Module.syncBuiltinESMExports" | "module.Module.findSourceMap" | "module.Module.SourceMap" | "net" | "net.connect" | "net.createConnection" | "net.createServer" | "net.getDefaultAutoSelectFamily" | "net.setDefaultAutoSelectFamily" | "net.getDefaultAutoSelectFamilyAttemptTimeout" | "net.setDefaultAutoSelectFamilyAttemptTimeout" | "net.isIP" | "net.isIPv4" | "net.isIPv6" | "net.BlockList" | "net.BlockList.isBlockList" | "net.SocketAddress" | "net.SocketAddress.parse" | "net.Server" | "net.Socket" | "os" | "os.EOL" | "os.constants" | "os.constants.priority" | "os.devNull" | "os.availableParallelism" | "os.arch" | "os.cpus" | "os.endianness" | "os.freemem" | "os.getPriority" | "os.homedir" | "os.hostname" | "os.loadavg" | "os.machine" | "os.networkInterfaces" | "os.platform" | "os.release" | "os.setPriority" | "os.tmpdir" | "os.totalmem" | "os.type" | "os.uptime" | "os.userInfo" | "os.version" | "path" | "path.posix" | "path.posix.delimiter" | "path.posix.sep" | "path.posix.basename" | "path.posix.dirname" | "path.posix.extname" | "path.posix.format" | "path.posix.matchesGlob" | "path.posix.isAbsolute" | "path.posix.join" | "path.posix.normalize" | "path.posix.parse" | "path.posix.relative" | "path.posix.resolve" | "path.posix.toNamespacedPath" | "path.win32" | "path.win32.delimiter" | "path.win32.sep" | "path.win32.basename" | "path.win32.dirname" | "path.win32.extname" | "path.win32.format" | "path.win32.matchesGlob" | "path.win32.isAbsolute" | "path.win32.join" | "path.win32.normalize" | "path.win32.parse" | "path.win32.relative" | "path.win32.resolve" | "path.win32.toNamespacedPath" | "path.delimiter" | "path.sep" | "path.basename" | "path.dirname" | "path.extname" | "path.format" | "path.matchesGlob" | "path.isAbsolute" | "path.join" | "path.normalize" | "path.parse" | "path.relative" | "path.resolve" | "path.toNamespacedPath" | "path/posix" | "path/posix.delimiter" | "path/posix.sep" | "path/posix.basename" | "path/posix.dirname" | "path/posix.extname" | "path/posix.format" | "path/posix.matchesGlob" | "path/posix.isAbsolute" | "path/posix.join" | "path/posix.normalize" | "path/posix.parse" | "path/posix.relative" | "path/posix.resolve" | "path/posix.toNamespacedPath" | "path/win32" | "path/win32.delimiter" | "path/win32.sep" | "path/win32.basename" | "path/win32.dirname" | "path/win32.extname" | "path/win32.format" | "path/win32.matchesGlob" | "path/win32.isAbsolute" | "path/win32.join" | "path/win32.normalize" | "path/win32.parse" | "path/win32.relative" | "path/win32.resolve" | "path/win32.toNamespacedPath" | "perf_hooks" | "perf_hooks.performance" | "perf_hooks.performance.clearMarks" | "perf_hooks.performance.clearMeasures" | "perf_hooks.performance.clearResourceTimings" | "perf_hooks.performance.eventLoopUtilization" | "perf_hooks.performance.getEntries" | "perf_hooks.performance.getEntriesByName" | "perf_hooks.performance.getEntriesByType" | "perf_hooks.performance.mark" | "perf_hooks.performance.markResourceTiming" | "perf_hooks.performance.measure" | "perf_hooks.performance.nodeTiming" | "perf_hooks.performance.nodeTiming.bootstrapComplete" | "perf_hooks.performance.nodeTiming.environment" | "perf_hooks.performance.nodeTiming.idleTime" | "perf_hooks.performance.nodeTiming.loopExit" | "perf_hooks.performance.nodeTiming.loopStart" | "perf_hooks.performance.nodeTiming.nodeStart" | "perf_hooks.performance.nodeTiming.uvMetricsInfo" | "perf_hooks.performance.nodeTiming.v8Start" | "perf_hooks.performance.now" | "perf_hooks.performance.onresourcetimingbufferfull" | "perf_hooks.performance.setResourceTimingBufferSize" | "perf_hooks.performance.timeOrigin" | "perf_hooks.performance.timerify" | "perf_hooks.performance.toJSON" | "perf_hooks.createHistogram" | "perf_hooks.eventLoopUtilization" | "perf_hooks.timerify" | "perf_hooks.monitorEventLoopDelay" | "perf_hooks.PerformanceEntry" | "perf_hooks.PerformanceMark" | "perf_hooks.PerformanceMeasure" | "perf_hooks.PerformanceNodeEntry" | "perf_hooks.PerformanceNodeTiming" | "perf_hooks.PerformanceResourceTiming" | "perf_hooks.PerformanceObserver" | "perf_hooks.PerformanceObserverEntryList" | "perf_hooks.Histogram" | "perf_hooks.IntervalHistogram" | "perf_hooks.RecordableHistogram" | "punycode" | "punycode.ucs2" | "punycode.version" | "punycode.decode" | "punycode.encode" | "punycode.toASCII" | "punycode.toUnicode" | "querystring" | "querystring.decode" | "querystring.encode" | "querystring.escape" | "querystring.parse" | "querystring.stringify" | "querystring.unescape" | "readline" | "readline.promises" | "readline.promises.createInterface" | "readline.promises.Interface" | "readline.promises.Readline" | "readline.clearLine" | "readline.clearScreenDown" | "readline.createInterface" | "readline.cursorTo" | "readline.moveCursor" | "readline.Interface" | "readline.emitKeypressEvents" | "readline.InterfaceConstructor" | "readline/promises" | "readline/promises.createInterface" | "readline/promises.Interface" | "readline/promises.Readline" | "repl" | "repl.start" | "repl.writer" | "repl.REPLServer()" | "repl.REPLServer" | "repl.REPL_MODE_MAGIC" | "repl.REPL_MODE_SLOPPY" | "repl.REPL_MODE_STRICT" | "repl.Recoverable()" | "repl.Recoverable" | "repl.builtinModules" | "sea" | "sea.isSea" | "sea.getAsset" | "sea.getAssetAsBlob" | "sea.getAssetKeys" | "sea.getRawAsset" | "sea.sea.isSea" | "sea.sea.getAsset" | "sea.sea.getAssetAsBlob" | "sea.sea.getAssetKeys" | "sea.sea.getRawAsset" | "stream" | "stream.promises" | "stream.promises.pipeline" | "stream.promises.finished" | "stream.finished" | "stream.pipeline" | "stream.compose" | "stream.duplexPair" | "stream.Readable" | "stream.Readable.from" | "stream.Readable.isDisturbed" | "stream.Readable.fromWeb" | "stream.Readable.toWeb" | "stream.Writable" | "stream.Writable.fromWeb" | "stream.Writable.toWeb" | "stream.Duplex" | "stream.Duplex.from" | "stream.Duplex.fromWeb" | "stream.Duplex.toWeb" | "stream.Transform" | "stream.isErrored" | "stream.isReadable" | "stream.addAbortSignal" | "stream.getDefaultHighWaterMark" | "stream.setDefaultHighWaterMark" | "stream/promises.pipeline" | "stream/promises.finished" | "stream/web" | "stream/web.ReadableStream" | "stream/web.ReadableStream.from" | "stream/web.ReadableStreamDefaultReader" | "stream/web.ReadableStreamBYOBReader" | "stream/web.ReadableStreamDefaultController" | "stream/web.ReadableByteStreamController" | "stream/web.ReadableStreamBYOBRequest" | "stream/web.WritableStream" | "stream/web.WritableStreamDefaultWriter" | "stream/web.WritableStreamDefaultController" | "stream/web.TransformStream" | "stream/web.TransformStreamDefaultController" | "stream/web.ByteLengthQueuingStrategy" | "stream/web.CountQueuingStrategy" | "stream/web.TextEncoderStream" | "stream/web.TextDecoderStream" | "stream/web.CompressionStream" | "stream/web.DecompressionStream" | "stream/consumers" | "stream/consumers.arrayBuffer" | "stream/consumers.blob" | "stream/consumers.buffer" | "stream/consumers.json" | "stream/consumers.text" | "_stream_duplex" | "_stream_passthrough" | "_stream_readable" | "_stream_transform" | "_stream_wrap" | "_stream_writable" | "string_decoder" | "string_decoder.StringDecoder" | "sqlite" | "sqlite.constants" | "sqlite.constants.SQLITE_CHANGESET_OMIT" | "sqlite.constants.SQLITE_CHANGESET_REPLACE" | "sqlite.constants.SQLITE_CHANGESET_ABORT" | "sqlite.backup" | "sqlite.DatabaseSync" | "sqlite.Session" | "sqlite.StatementSync" | "sqlite.SQLITE_CHANGESET_OMIT" | "sqlite.SQLITE_CHANGESET_REPLACE" | "sqlite.SQLITE_CHANGESET_ABORT" | "test" | "test.after" | "test.afterEach" | "test.assert" | "test.assert.register" | "test.before" | "test.beforeEach" | "test.describe" | "test.describe.only" | "test.describe.skip" | "test.describe.todo" | "test.it" | "test.it.only" | "test.it.skip" | "test.it.todo" | "test.mock" | "test.mock.fn" | "test.mock.getter" | "test.mock.method" | "test.mock.module" | "test.mock.property" | "test.mock.reset" | "test.mock.restoreAll" | "test.mock.setter" | "test.mock.timers" | "test.mock.timers.enable" | "test.mock.timers.reset" | "test.mock.timers.tick" | "test.only" | "test.run" | "test.snapshot" | "test.snapshot.setDefaultSnapshotSerializers" | "test.snapshot.setResolveSnapshotPath" | "test.skip" | "test.suite" | "test.test" | "test.test.only" | "test.test.skip" | "test.test.todo" | "test.todo" | "timers" | "timers.Immediate" | "timers.Timeout" | "timers.setImmediate" | "timers.clearImmediate" | "timers.setInterval" | "timers.clearInterval" | "timers.setTimeout" | "timers.clearTimeout" | "timers.promises" | "timers.promises.setTimeout" | "timers.promises.setImmediate" | "timers.promises.setInterval" | "timers.promises.scheduler.wait" | "timers.promises.scheduler.yield" | "timers/promises" | "timers/promises.setTimeout" | "timers/promises.setImmediate" | "timers/promises.setInterval" | "timers/promises.scheduler.wait" | "timers/promises.scheduler.yield" | "tls" | "tls.checkServerIdentity" | "tls.connect" | "tls.createSecureContext" | "tls.createSecurePair" | "tls.createServer" | "tls.CryptoStream" | "tls.DEFAULT_CIPHERS" | "tls.DEFAULT_ECDH_CURVE" | "tls.DEFAULT_MAX_VERSION" | "tls.DEFAULT_MIN_VERSION" | "tls.getCACertificates" | "tls.getCiphers" | "tls.rootCertificates" | "tls.SecureContext" | "tls.SecurePair" | "tls.Server" | "tls.setDefaultCACertificates" | "tls.TLSSocket" | "_tls_common" | "_tls_wrap" | "trace_events" | "trace_events.createTracing" | "trace_events.getEnabledCategories" | "tty" | "tty.isatty" | "tty.ReadStream" | "tty.WriteStream" | "url" | "url.domainToASCII" | "url.domainToUnicode" | "url.fileURLToPath" | "url.format" | "url.pathToFileURL" | "url.urlToHttpOptions" | "url.URL" | "url.URL.canParse" | "url.URL.createObjectURL" | "url.URL.revokeObjectURL" | "url.URLPattern" | "url.URLSearchParams" | "url.Url" | "util.promisify" | "util.promisify.custom" | "util.callbackify" | "util.debuglog" | "util.debug" | "util.deprecate" | "util.diff" | "util.format" | "util.formatWithOptions" | "util.getCallSite" | "util.getCallSites" | "util.getSystemErrorName" | "util.getSystemErrorMap" | "util.getSystemErrorMessage" | "util.inherits" | "util.inspect" | "util.inspect.custom" | "util.inspect.defaultOptions" | "util.inspect.replDefaults" | "util.isDeepStrictEqual" | "util.parseArgs" | "util.parseEnv" | "util.setTraceSigInt" | "util.stripVTControlCharacters" | "util.styleText" | "util.toUSVString" | "util.transferableAbortController" | "util.transferableAbortSignal" | "util.aborted" | "util.MIMEType" | "util.MIMEParams" | "util.TextDecoder" | "util.TextEncoder" | "util.types" | "util.types.isExternal" | "util.types.isDate" | "util.types.isArgumentsObject" | "util.types.isBigIntObject" | "util.types.isBooleanObject" | "util.types.isNumberObject" | "util.types.isStringObject" | "util.types.isSymbolObject" | "util.types.isNativeError" | "util.types.isRegExp" | "util.types.isAsyncFunction" | "util.types.isGeneratorFunction" | "util.types.isGeneratorObject" | "util.types.isPromise" | "util.types.isMap" | "util.types.isSet" | "util.types.isMapIterator" | "util.types.isSetIterator" | "util.types.isWeakMap" | "util.types.isWeakSet" | "util.types.isArrayBuffer" | "util.types.isDataView" | "util.types.isSharedArrayBuffer" | "util.types.isProxy" | "util.types.isModuleNamespaceObject" | "util.types.isAnyArrayBuffer" | "util.types.isBoxedPrimitive" | "util.types.isArrayBufferView" | "util.types.isTypedArray" | "util.types.isUint8Array" | "util.types.isUint8ClampedArray" | "util.types.isUint16Array" | "util.types.isUint32Array" | "util.types.isInt8Array" | "util.types.isInt16Array" | "util.types.isInt32Array" | "util.types.isFloat16Array" | "util.types.isFloat32Array" | "util.types.isFloat64Array" | "util.types.isBigInt64Array" | "util.types.isBigUint64Array" | "util.types.isKeyObject" | "util.types.isCryptoKey" | "util.types.isWebAssemblyCompiledModule" | "util._extend" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util" | "util/types" | "util/types.isExternal" | "util/types.isDate" | "util/types.isArgumentsObject" | "util/types.isBigIntObject" | "util/types.isBooleanObject" | "util/types.isNumberObject" | "util/types.isStringObject" | "util/types.isSymbolObject" | "util/types.isNativeError" | "util/types.isRegExp" | "util/types.isAsyncFunction" | "util/types.isGeneratorFunction" | "util/types.isGeneratorObject" | "util/types.isPromise" | "util/types.isMap" | "util/types.isSet" | "util/types.isMapIterator" | "util/types.isSetIterator" | "util/types.isWeakMap" | "util/types.isWeakSet" | "util/types.isArrayBuffer" | "util/types.isDataView" | "util/types.isSharedArrayBuffer" | "util/types.isProxy" | "util/types.isModuleNamespaceObject" | "util/types.isAnyArrayBuffer" | "util/types.isBoxedPrimitive" | "util/types.isArrayBufferView" | "util/types.isTypedArray" | "util/types.isUint8Array" | "util/types.isUint8ClampedArray" | "util/types.isUint16Array" | "util/types.isUint32Array" | "util/types.isInt8Array" | "util/types.isInt16Array" | "util/types.isInt32Array" | "util/types.isFloat16Array" | "util/types.isFloat32Array" | "util/types.isFloat64Array" | "util/types.isBigInt64Array" | "util/types.isBigUint64Array" | "util/types.isKeyObject" | "util/types.isCryptoKey" | "util/types.isWebAssemblyCompiledModule" | "v8" | "v8.serialize" | "v8.deserialize" | "v8.Serializer" | "v8.Deserializer" | "v8.DefaultSerializer" | "v8.DefaultDeserializer" | "v8.promiseHooks" | "v8.promiseHooks.onInit" | "v8.promiseHooks.onSettled" | "v8.promiseHooks.onBefore" | "v8.promiseHooks.onAfter" | "v8.promiseHooks.createHook" | "v8.startupSnapshot" | "v8.startupSnapshot.addSerializeCallback" | "v8.startupSnapshot.addDeserializeCallback" | "v8.startupSnapshot.setDeserializeMainFunction" | "v8.startupSnapshot.isBuildingSnapshot" | "v8.cachedDataVersionTag" | "v8.getHeapCodeStatistics" | "v8.getHeapSnapshot" | "v8.getHeapSpaceStatistics" | "v8.getHeapStatistics" | "v8.isStringOneByteRepresentation" | "v8.queryObjects" | "v8.setFlagsFromString" | "v8.stopCoverage" | "v8.takeCoverage" | "v8.writeHeapSnapshot" | "v8.setHeapSnapshotNearHeapLimit" | "v8.GCProfiler" | "v8.startCpuProfile" | "vm.constants" | "vm.compileFunction" | "vm.createContext" | "vm.isContext" | "vm.measureMemory" | "vm.runInContext" | "vm.runInNewContext" | "vm.runInThisContext" | "vm.Script" | "vm.Module" | "vm.SourceTextModule" | "vm.SyntheticModule" | "vm" | "wasi.WASI" | "wasi" | "worker_threads" | "worker_threads.parentPort" | "worker_threads.resourceLimits" | "worker_threads.SHARE_ENV" | "worker_threads.threadId" | "worker_threads.threadName" | "worker_threads.workerData" | "worker_threads.getEnvironmentData" | "worker_threads.getHeapStatistics" | "worker_threads.markAsUncloneable" | "worker_threads.markAsUntransferable" | "worker_threads.isInternalThread" | "worker_threads.isMainThread" | "worker_threads.isMarkedAsUntransferable" | "worker_threads.locks" | "worker_threads.locks.request" | "worker_threads.locks.query" | "worker_threads.moveMessagePortToContext" | "worker_threads.postMessageToThread" | "worker_threads.receiveMessageOnPort" | "worker_threads.setEnvironmentData" | "worker_threads.BroadcastChannel" | "worker_threads.MessageChannel" | "worker_threads.MessagePort" | "worker_threads.Worker" | "zlib.brotliCompress" | "zlib.brotliCompressSync" | "zlib.brotliDecompress" | "zlib.brotliDecompressSync" | "zlib.constants" | "zlib.constants.ZSTD_e_continue" | "zlib.constants.ZSTD_e_flush" | "zlib.constants.ZSTD_e_end" | "zlib.constants.ZSTD_fast" | "zlib.constants.ZSTD_dfast" | "zlib.constants.ZSTD_greedy" | "zlib.constants.ZSTD_lazy" | "zlib.constants.ZSTD_lazy2" | "zlib.constants.ZSTD_btlazy2" | "zlib.constants.ZSTD_btopt" | "zlib.constants.ZSTD_btultra" | "zlib.constants.ZSTD_btultra2" | "zlib.constants.ZSTD_c_compressionLevel" | "zlib.constants.ZSTD_c_windowLog" | "zlib.constants.ZSTD_c_hashLog" | "zlib.constants.ZSTD_c_chainLog" | "zlib.constants.ZSTD_c_searchLog" | "zlib.constants.ZSTD_c_minMatch" | "zlib.constants.ZSTD_c_targetLength" | "zlib.constants.ZSTD_c_strategy" | "zlib.constants.ZSTD_c_enableLongDistanceMatching" | "zlib.constants.ZSTD_c_ldmHashLog" | "zlib.constants.ZSTD_c_ldmMinMatch" | "zlib.constants.ZSTD_c_ldmBucketSizeLog" | "zlib.constants.ZSTD_c_ldmHashRateLog" | "zlib.constants.ZSTD_c_contentSizeFlag" | "zlib.constants.ZSTD_c_checksumFlag" | "zlib.constants.ZSTD_c_dictIDFlag" | "zlib.constants.ZSTD_c_nbWorkers" | "zlib.constants.ZSTD_c_jobSize" | "zlib.constants.ZSTD_c_overlapLog" | "zlib.constants.ZSTD_d_windowLogMax" | "zlib.constants.ZSTD_CLEVEL_DEFAULT" | "zlib.constants.ZSTD_error_no_error" | "zlib.constants.ZSTD_error_GENERIC" | "zlib.constants.ZSTD_error_prefix_unknown" | "zlib.constants.ZSTD_error_version_unsupported" | "zlib.constants.ZSTD_error_frameParameter_unsupported" | "zlib.constants.ZSTD_error_frameParameter_windowTooLarge" | "zlib.constants.ZSTD_error_corruption_detected" | "zlib.constants.ZSTD_error_checksum_wrong" | "zlib.constants.ZSTD_error_literals_headerWrong" | "zlib.constants.ZSTD_error_dictionary_corrupted" | "zlib.constants.ZSTD_error_dictionary_wrong" | "zlib.constants.ZSTD_error_dictionaryCreation_failed" | "zlib.constants.ZSTD_error_parameter_unsupported" | "zlib.constants.ZSTD_error_parameter_combination_unsupported" | "zlib.constants.ZSTD_error_parameter_outOfBound" | "zlib.constants.ZSTD_error_tableLog_tooLarge" | "zlib.constants.ZSTD_error_maxSymbolValue_tooLarge" | "zlib.constants.ZSTD_error_maxSymbolValue_tooSmall" | "zlib.constants.ZSTD_error_stabilityCondition_notRespected" | "zlib.constants.ZSTD_error_stage_wrong" | "zlib.constants.ZSTD_error_init_missing" | "zlib.constants.ZSTD_error_memory_allocation" | "zlib.constants.ZSTD_error_workSpace_tooSmall" | "zlib.constants.ZSTD_error_dstSize_tooSmall" | "zlib.constants.ZSTD_error_srcSize_wrong" | "zlib.constants.ZSTD_error_dstBuffer_null" | "zlib.constants.ZSTD_error_noForwardProgress_destFull" | "zlib.constants.ZSTD_error_noForwardProgress_inputEmpty" | "zlib.crc32" | "zlib.createBrotliCompress" | "zlib.createBrotliDecompress" | "zlib.createDeflate" | "zlib.createDeflateRaw" | "zlib.createGunzip" | "zlib.createGzip" | "zlib.createInflate" | "zlib.createInflateRaw" | "zlib.createUnzip" | "zlib.createZstdCompress" | "zlib.createZstdDecompress" | "zlib.deflate" | "zlib.deflateRaw" | "zlib.deflateRawSync" | "zlib.deflateSync" | "zlib.gunzip" | "zlib.gunzipSync" | "zlib.gzip" | "zlib.gzipSync" | "zlib.inflate" | "zlib.inflateRaw" | "zlib.inflateRawSync" | "zlib.inflateSync" | "zlib.unzip" | "zlib.unzipSync" | "zlib.zstdCompress" | "zlib.zstdCompressSync" | "zlib.zstdDecompress" | "zlib.zstdDecompressSync" | "zlib.BrotliCompress()" | "zlib.BrotliCompress" | "zlib.BrotliDecompress()" | "zlib.BrotliDecompress" | "zlib.Deflate()" | "zlib.Deflate" | "zlib.DeflateRaw()" | "zlib.DeflateRaw" | "zlib.Gunzip()" | "zlib.Gunzip" | "zlib.Gzip()" | "zlib.Gzip" | "zlib.Inflate()" | "zlib.Inflate" | "zlib.InflateRaw()" | "zlib.InflateRaw" | "zlib.Unzip()" | "zlib.Unzip" | "zlib.ZstdCompress" | "zlib.ZstdDecompress" | "zlib.ZstdOptions" | "zlib" | "import.meta.resolve" | "import.meta.dirname" | "import.meta.filename" | "import.meta.main")[];
+  ignores?: ("__filename" | "__dirname" | "require" | "require.cache" | "require.extensions" | "require.main" | "require.resolve" | "require.resolve.paths" | "module" | "module.children" | "module.exports" | "module.filename" | "module.id" | "module.isPreloading" | "module.loaded" | "module.parent" | "module.path" | "module.paths" | "module.require" | "exports" | "AbortController" | "AbortSignal" | "AbortSignal.abort" | "AbortSignal.timeout" | "AbortSignal.any" | "DOMException" | "QuotaExceededError" | "FormData" | "Headers" | "MessageEvent" | "Navigator" | "Request" | "Response" | "WebAssembly" | "Worker" | "WebSocket" | "fetch" | "global" | "queueMicrotask" | "navigator" | "navigator.hardwareConcurrency" | "navigator.language" | "navigator.languages" | "navigator.locks" | "navigator.locks.request" | "navigator.locks.query" | "navigator.platform" | "navigator.userAgent" | "structuredClone" | "localStorage" | "sessionStorage" | "Storage" | "Blob" | "new Buffer()" | "Buffer" | "Buffer.alloc" | "Buffer.allocUnsafe" | "Buffer.allocUnsafeSlow" | "Buffer.byteLength" | "Buffer.compare" | "Buffer.concat" | "Buffer.copyBytesFrom" | "Buffer.from" | "Buffer.isBuffer" | "Buffer.isEncoding" | "Buffer.stringLength" | "File" | "atob" | "btoa" | "console" | "console.profile" | "console.profileEnd" | "console.timeStamp" | "console.Console" | "console.assert" | "console.clear" | "console.count" | "console.countReset" | "console.debug" | "console.dir" | "console.dirxml" | "console.error" | "console.group" | "console.groupCollapsed" | "console.groupEnd" | "console.info" | "console.log" | "console.table" | "console.time" | "console.timeEnd" | "console.timeLog" | "console.trace" | "console.warn" | "crypto" | "crypto.subtle" | "crypto.subtle.decapsulateBits" | "crypto.subtle.decapsulateKey" | "crypto.subtle.decrypt" | "crypto.subtle.deriveBits" | "crypto.subtle.deriveKey" | "crypto.subtle.digest" | "crypto.subtle.encapsulateBits" | "crypto.subtle.encapsulateKey" | "crypto.subtle.encrypt" | "crypto.subtle.exportKey" | "crypto.subtle.generateKey" | "crypto.subtle.getPublicKey" | "crypto.subtle.importKey" | "crypto.subtle.sign" | "crypto.subtle.unwrapKey" | "crypto.subtle.verify" | "crypto.subtle.wrapKey" | "crypto.getRandomValues" | "crypto.randomUUID" | "Crypto" | "CryptoKey" | "SubtleCrypto" | "SubtleCrypto.supports" | "CloseEvent" | "CustomEvent" | "ErrorEvent" | "Event" | "EventSource" | "EventTarget" | "PerformanceEntry" | "PerformanceMark" | "PerformanceMeasure" | "PerformanceObserver" | "PerformanceObserverEntryList" | "PerformanceResourceTiming" | "performance" | "performance.clearMarks" | "performance.clearMeasures" | "performance.clearResourceTimings" | "performance.eventLoopUtilization" | "performance.getEntries" | "performance.getEntriesByName" | "performance.getEntriesByType" | "performance.mark" | "performance.markResourceTiming" | "performance.measure" | "performance.nodeTiming" | "performance.nodeTiming.bootstrapComplete" | "performance.nodeTiming.environment" | "performance.nodeTiming.idleTime" | "performance.nodeTiming.loopExit" | "performance.nodeTiming.loopStart" | "performance.nodeTiming.nodeStart" | "performance.nodeTiming.uvMetricsInfo" | "performance.nodeTiming.v8Start" | "performance.now" | "performance.onresourcetimingbufferfull" | "performance.setResourceTimingBufferSize" | "performance.timeOrigin" | "performance.timerify" | "performance.toJSON" | "process" | "process.allowedNodeEnvironmentFlags" | "process.availableMemory" | "process.arch" | "process.argv" | "process.argv0" | "process.channel" | "process.config" | "process.connected" | "process.debugPort" | "process.env" | "process.execArgv" | "process.execPath" | "process.execve" | "process.exitCode" | "process.features.cached_builtins" | "process.features.debug" | "process.features.inspector" | "process.features.ipv6" | "process.features.require_module" | "process.features.tls" | "process.features.tls_alpn" | "process.features.tls_ocsp" | "process.features.tls_sni" | "process.features.typescript" | "process.features.uv" | "process.finalization.register" | "process.finalization.registerBeforeExit" | "process.finalization.unregister" | "process.getBuiltinModule" | "process.mainModule" | "process.noDeprecation" | "process.permission" | "process.permission.drop" | "process.pid" | "process.platform" | "process.ppid" | "process.ref" | "process.release" | "process.report" | "process.report.excludeEnv" | "process.sourceMapsEnabled" | "process.stdin" | "process.stdin.isRaw" | "process.stdin.isTTY" | "process.stdin.setRawMode" | "process.stdout" | "process.stdout.clearLine" | "process.stdout.clearScreenDown" | "process.stdout.columns" | "process.stdout.cursorTo" | "process.stdout.getColorDepth" | "process.stdout.getWindowSize" | "process.stdout.hasColors" | "process.stdout.isTTY" | "process.stdout.moveCursor" | "process.stdout.rows" | "process.stderr" | "process.stderr.clearLine" | "process.stderr.clearScreenDown" | "process.stderr.columns" | "process.stderr.cursorTo" | "process.stderr.getColorDepth" | "process.stderr.getWindowSize" | "process.stderr.hasColors" | "process.stderr.isTTY" | "process.stderr.moveCursor" | "process.stderr.rows" | "process.threadCpuUsage" | "process.throwDeprecation" | "process.title" | "process.traceDeprecation" | "process.version" | "process.versions" | "process.abort" | "process.addUncaughtExceptionCaptureCallback" | "process.chdir" | "process.constrainedMemory" | "process.cpuUsage" | "process.cwd" | "process.disconnect" | "process.dlopen" | "process.emitWarning" | "process.exit" | "process.getActiveResourcesInfo" | "process.getegid" | "process.geteuid" | "process.getgid" | "process.getgroups" | "process.getuid" | "process.hasUncaughtExceptionCaptureCallback" | "process.hrtime" | "process.hrtime.bigint" | "process.initgroups" | "process.kill" | "process.loadEnvFile" | "process.memoryUsage" | "process.rss" | "process.nextTick" | "process.resourceUsage" | "process.send" | "process.setegid" | "process.seteuid" | "process.setgid" | "process.setgroups" | "process.setuid" | "process.setSourceMapsEnabled" | "process.setUncaughtExceptionCaptureCallback" | "process.umask" | "process.unref" | "process.uptime" | "ReadableStream" | "ReadableStream.from" | "ReadableStreamDefaultReader" | "ReadableStreamBYOBReader" | "ReadableStreamDefaultController" | "ReadableByteStreamController" | "ReadableStreamBYOBRequest" | "WritableStream" | "WritableStreamDefaultWriter" | "WritableStreamDefaultController" | "TransformStream" | "TransformStreamDefaultController" | "ByteLengthQueuingStrategy" | "CountQueuingStrategy" | "TextEncoderStream" | "TextDecoderStream" | "CompressionStream" | "DecompressionStream" | "setInterval" | "clearInterval" | "setTimeout" | "clearTimeout" | "setImmediate" | "clearImmediate" | "URL" | "URL.canParse" | "URL.createObjectURL" | "URL.revokeObjectURL" | "URLSearchParams" | "TextDecoder" | "TextEncoder" | "BroadcastChannel" | "MessageChannel" | "MessagePort" | "assert" | "assert.Assert" | "assert.assert" | "assert.deepEqual" | "assert.deepStrictEqual" | "assert.doesNotMatch" | "assert.doesNotReject" | "assert.doesNotThrow" | "assert.equal" | "assert.fail" | "assert.ifError" | "assert.match" | "assert.notDeepEqual" | "assert.notDeepStrictEqual" | "assert.notEqual" | "assert.notStrictEqual" | "assert.ok" | "assert.partialDeepStrictEqual" | "assert.rejects" | "assert.strictEqual" | "assert.throws" | "assert.CallTracker" | "assert.strict" | "assert.strict.Assert" | "assert.strict.assert" | "assert.strict.deepEqual" | "assert.strict.deepStrictEqual" | "assert.strict.doesNotMatch" | "assert.strict.doesNotReject" | "assert.strict.doesNotThrow" | "assert.strict.equal" | "assert.strict.fail" | "assert.strict.ifError" | "assert.strict.match" | "assert.strict.notDeepEqual" | "assert.strict.notDeepStrictEqual" | "assert.strict.notEqual" | "assert.strict.notStrictEqual" | "assert.strict.ok" | "assert.strict.partialDeepStrictEqual" | "assert.strict.rejects" | "assert.strict.strictEqual" | "assert.strict.throws" | "assert.strict.CallTracker" | "assert/strict" | "assert/strict.Assert" | "assert/strict.assert" | "assert/strict.deepEqual" | "assert/strict.deepStrictEqual" | "assert/strict.doesNotMatch" | "assert/strict.doesNotReject" | "assert/strict.doesNotThrow" | "assert/strict.equal" | "assert/strict.fail" | "assert/strict.ifError" | "assert/strict.match" | "assert/strict.notDeepEqual" | "assert/strict.notDeepStrictEqual" | "assert/strict.notEqual" | "assert/strict.notStrictEqual" | "assert/strict.ok" | "assert/strict.partialDeepStrictEqual" | "assert/strict.rejects" | "assert/strict.strictEqual" | "assert/strict.throws" | "assert/strict.CallTracker" | "async_hooks" | "async_hooks.createHook" | "async_hooks.executionAsyncResource" | "async_hooks.executionAsyncId" | "async_hooks.triggerAsyncId" | "async_hooks.AsyncLocalStorage" | "async_hooks.AsyncLocalStorage.bind" | "async_hooks.AsyncLocalStorage.snapshot" | "async_hooks.AsyncResource" | "async_hooks.AsyncResource.bind" | "bench" | "bench.after" | "bench.afterEach" | "bench.before" | "bench.beforeEach" | "bench.bench" | "bench.bench.only" | "bench.bench.skip" | "bench.createRunner" | "bench.describe" | "bench.only" | "bench.run" | "bench.runFile" | "bench.skip" | "bench.suite" | "bench/reporters" | "bench/reporters.json" | "bench/reporters.spec" | "buffer" | "buffer.constants" | "buffer.INSPECT_MAX_BYTES" | "buffer.kMaxLength" | "buffer.kStringMaxLength" | "buffer.atob" | "buffer.btoa" | "buffer.isAscii" | "buffer.isLatin1" | "buffer.isUtf8" | "buffer.resolveObjectURL" | "buffer.transcode" | "buffer.SlowBuffer" | "buffer.Blob" | "new buffer.Buffer()" | "buffer.Buffer" | "buffer.Buffer.alloc" | "buffer.Buffer.allocUnsafe" | "buffer.Buffer.allocUnsafeSlow" | "buffer.Buffer.byteLength" | "buffer.Buffer.compare" | "buffer.Buffer.concat" | "buffer.Buffer.copyBytesFrom" | "buffer.Buffer.from" | "buffer.Buffer.isBuffer" | "buffer.Buffer.isEncoding" | "buffer.Buffer.stringLength" | "buffer.File" | "child_process" | "child_process.exec" | "child_process.execFile" | "child_process.fork" | "child_process.spawn" | "child_process.execFileSync" | "child_process.execSync" | "child_process.spawnSync" | "child_process.ChildProcess" | "cluster" | "cluster.isMaster" | "cluster.isPrimary" | "cluster.isWorker" | "cluster.schedulingPolicy" | "cluster.settings" | "cluster.worker" | "cluster.workers" | "cluster.disconnect" | "cluster.fork" | "cluster.setupMaster" | "cluster.setupPrimary" | "cluster.Worker" | "crypto.constants" | "crypto.fips" | "crypto.webcrypto" | "crypto.webcrypto.subtle" | "crypto.webcrypto.subtle.decapsulateBits" | "crypto.webcrypto.subtle.decapsulateKey" | "crypto.webcrypto.subtle.decrypt" | "crypto.webcrypto.subtle.deriveBits" | "crypto.webcrypto.subtle.deriveKey" | "crypto.webcrypto.subtle.digest" | "crypto.webcrypto.subtle.encapsulateBits" | "crypto.webcrypto.subtle.encapsulateKey" | "crypto.webcrypto.subtle.encrypt" | "crypto.webcrypto.subtle.exportKey" | "crypto.webcrypto.subtle.generateKey" | "crypto.webcrypto.subtle.getPublicKey" | "crypto.webcrypto.subtle.importKey" | "crypto.webcrypto.subtle.sign" | "crypto.webcrypto.subtle.unwrapKey" | "crypto.webcrypto.subtle.verify" | "crypto.webcrypto.subtle.wrapKey" | "crypto.webcrypto.getRandomValues" | "crypto.webcrypto.randomUUID" | "crypto.argon2" | "crypto.argon2Sync" | "crypto.checkPrime" | "crypto.checkPrimeSync" | "crypto.createCipher" | "crypto.createCipheriv" | "crypto.createDecipher" | "crypto.createDecipheriv" | "crypto.createDiffieHellman" | "crypto.createDiffieHellmanGroup" | "crypto.createECDH" | "crypto.createHash" | "crypto.createHmac" | "crypto.createMac" | "crypto.createPrivateKey" | "crypto.createPublicKey" | "crypto.createSecretKey" | "crypto.createSign" | "crypto.createVerify" | "crypto.decapsulate" | "crypto.diffieHellman" | "crypto.encapsulate" | "crypto.generateKey" | "crypto.generateKeyPair" | "crypto.generateKeyPairSync" | "crypto.generateKeySync" | "crypto.generatePrime" | "crypto.generatePrimeSync" | "crypto.getCipherInfo" | "crypto.getCiphers" | "crypto.getCurves" | "crypto.getDiffieHellman" | "crypto.getFips" | "crypto.getHashes" | "crypto.getMacs" | "crypto.hash" | "crypto.hkdf" | "crypto.hkdfSync" | "crypto.parsePKCS12" | "crypto.pbkdf2" | "crypto.pbkdf2Sync" | "crypto.privateDecrypt" | "crypto.privateEncrypt" | "crypto.publicDecrypt" | "crypto.publicEncrypt" | "crypto.randomBytes" | "crypto.randomFillSync" | "crypto.randomFill" | "crypto.randomInt" | "crypto.randomUUIDv7" | "crypto.scrypt" | "crypto.scryptSync" | "crypto.secureHeapUsed" | "crypto.setEngine" | "crypto.setFips" | "crypto.sign" | "crypto.timingSafeEqual" | "crypto.verify" | "crypto.Certificate" | "crypto.Certificate.exportChallenge" | "crypto.Certificate.exportPublicKey" | "crypto.Certificate.verifySpkac" | "crypto.Cipher" | "crypto.Decipher" | "crypto.DiffieHellman" | "crypto.DiffieHellmanGroup" | "crypto.ECDH" | "crypto.ECDH.convertKey" | "crypto.Hash()" | "new crypto.Hash()" | "crypto.Hash" | "crypto.Hmac()" | "new crypto.Hmac()" | "crypto.Hmac" | "crypto.KeyObject" | "crypto.KeyObject.from" | "crypto.Sign" | "crypto.Verify" | "crypto.X509Certificate" | "dgram" | "dgram.createSocket" | "dgram.Socket" | "diagnostics_channel" | "diagnostics_channel.hasSubscribers" | "diagnostics_channel.channel" | "diagnostics_channel.subscribe" | "diagnostics_channel.unsubscribe" | "diagnostics_channel.tracingChannel" | "diagnostics_channel.boundedChannel" | "diagnostics_channel.Channel" | "diagnostics_channel.TracingChannel" | "diagnostics_channel.BoundedChannel" | "dns" | "dns.Resolver" | "dns.getServers" | "dns.lookup" | "dns.lookupService" | "dns.resolve" | "dns.resolve4" | "dns.resolve6" | "dns.resolveAny" | "dns.resolveCname" | "dns.resolveCaa" | "dns.resolveMx" | "dns.resolveNaptr" | "dns.resolveNs" | "dns.resolvePtr" | "dns.resolveSoa" | "dns.resolveSrv" | "dns.resolveTlsa" | "dns.resolveTxt" | "dns.reverse" | "dns.setDefaultResultOrder" | "dns.getDefaultResultOrder" | "dns.setServers" | "dns.promises" | "dns.promises.Resolver" | "dns.promises.cancel" | "dns.promises.getServers" | "dns.promises.lookup" | "dns.promises.lookupService" | "dns.promises.resolve" | "dns.promises.resolve4" | "dns.promises.resolve6" | "dns.promises.resolveAny" | "dns.promises.resolveCaa" | "dns.promises.resolveCname" | "dns.promises.resolveMx" | "dns.promises.resolveNaptr" | "dns.promises.resolveNs" | "dns.promises.resolvePtr" | "dns.promises.resolveSoa" | "dns.promises.resolveSrv" | "dns.promises.resolveTlsa" | "dns.promises.resolveTxt" | "dns.promises.reverse" | "dns.promises.setDefaultResultOrder" | "dns.promises.getDefaultResultOrder" | "dns.promises.setServers" | "dns/promises" | "dns/promises.Resolver" | "dns/promises.cancel" | "dns/promises.getServers" | "dns/promises.lookup" | "dns/promises.lookupService" | "dns/promises.resolve" | "dns/promises.resolve4" | "dns/promises.resolve6" | "dns/promises.resolveAny" | "dns/promises.resolveCaa" | "dns/promises.resolveCname" | "dns/promises.resolveMx" | "dns/promises.resolveNaptr" | "dns/promises.resolveNs" | "dns/promises.resolvePtr" | "dns/promises.resolveSoa" | "dns/promises.resolveSrv" | "dns/promises.resolveTlsa" | "dns/promises.resolveTxt" | "dns/promises.reverse" | "dns/promises.setDefaultResultOrder" | "dns/promises.getDefaultResultOrder" | "dns/promises.setServers" | "dtls" | "dtls.connect" | "dtls.createSecureContext" | "dtls.listen" | "domain" | "domain.create" | "domain.Domain" | "events" | "events.Event" | "events.EventTarget" | "events.CustomEvent" | "events.NodeEventTarget" | "events.EventEmitter" | "events.EventEmitter.defaultMaxListeners" | "events.EventEmitter.errorMonitor" | "events.EventEmitter.captureRejections" | "events.EventEmitter.captureRejectionSymbol" | "events.EventEmitter.getEventListeners" | "events.EventEmitter.getMaxListeners" | "events.EventEmitter.once" | "events.EventEmitter.listenerCount" | "events.EventEmitter.on" | "events.EventEmitter.setMaxListeners" | "events.EventEmitter.addAbortListener" | "events.EventEmitterAsyncResource" | "events.EventEmitterAsyncResource.defaultMaxListeners" | "events.EventEmitterAsyncResource.errorMonitor" | "events.EventEmitterAsyncResource.captureRejections" | "events.EventEmitterAsyncResource.captureRejectionSymbol" | "events.EventEmitterAsyncResource.getEventListeners" | "events.EventEmitterAsyncResource.getMaxListeners" | "events.EventEmitterAsyncResource.once" | "events.EventEmitterAsyncResource.listenerCount" | "events.EventEmitterAsyncResource.on" | "events.EventEmitterAsyncResource.setMaxListeners" | "events.EventEmitterAsyncResource.addAbortListener" | "events.defaultMaxListeners" | "events.errorMonitor" | "events.captureRejections" | "events.captureRejectionSymbol" | "events.getEventListeners" | "events.getMaxListeners" | "events.once" | "events.listenerCount" | "events.on" | "events.setMaxListeners" | "events.addAbortListener" | "ffi" | "ffi.DynamicLibrary" | "ffi.dlclose" | "ffi.dlopen" | "ffi.dlsym" | "ffi.exportArrayBuffer" | "ffi.exportArrayBufferView" | "ffi.exportBuffer" | "ffi.exportString" | "ffi.getCurrentEventLoop" | "ffi.getFloat32" | "ffi.getFloat64" | "ffi.getInt16" | "ffi.getInt32" | "ffi.getInt64" | "ffi.getInt8" | "ffi.getRawPointer" | "ffi.getUint16" | "ffi.getUint32" | "ffi.getUint64" | "ffi.getUint8" | "ffi.setFloat32" | "ffi.setFloat64" | "ffi.setInt16" | "ffi.setInt32" | "ffi.setInt64" | "ffi.setInt8" | "ffi.setUint16" | "ffi.setUint32" | "ffi.setUint64" | "ffi.setUint8" | "ffi.suffix" | "ffi.toArrayBuffer" | "ffi.toBuffer" | "ffi.toString" | "ffi.types" | "fs" | "fs.promises" | "fs.promises.FileHandle" | "fs.promises.access" | "fs.promises.appendFile" | "fs.promises.chmod" | "fs.promises.chown" | "fs.promises.constants" | "fs.promises.copyFile" | "fs.promises.cp" | "fs.promises.glob" | "fs.promises.lchmod" | "fs.promises.lchown" | "fs.promises.link" | "fs.promises.lstat" | "fs.promises.lutimes" | "fs.promises.mkdir" | "fs.promises.mkdtemp" | "fs.promises.mkdtempDisposable" | "fs.promises.open" | "fs.promises.opendir" | "fs.promises.readFile" | "fs.promises.readdir" | "fs.promises.readlink" | "fs.promises.realpath" | "fs.promises.rename" | "fs.promises.rm" | "fs.promises.rmdir" | "fs.promises.stat" | "fs.promises.statfs" | "fs.promises.symlink" | "fs.promises.truncate" | "fs.promises.unlink" | "fs.promises.utimes" | "fs.promises.watch" | "fs.promises.writeFile" | "fs.access" | "fs.appendFile" | "fs.chmod" | "fs.chown" | "fs.close" | "fs.copyFile" | "fs.cp" | "fs.createReadStream" | "fs.createWriteStream" | "fs.exists" | "fs.fchmod" | "fs.fchown" | "fs.fdatasync" | "fs.fstat" | "fs.fsync" | "fs.ftruncate" | "fs.futimes" | "fs.glob" | "fs.lchmod" | "fs.lchown" | "fs.link" | "fs.lstat" | "fs.lutimes" | "fs.mkdir" | "fs.mkdtemp" | "fs.native" | "fs.open" | "fs.openAsBlob" | "fs.opendir" | "fs.read" | "fs.readdir" | "fs.readFile" | "fs.readlink" | "fs.readv" | "fs.realpath" | "fs.realpath.native" | "fs.rename" | "fs.rm" | "fs.rmdir" | "fs.stat" | "fs.statfs" | "fs.symlink" | "fs.truncate" | "fs.unlink" | "fs.unwatchFile" | "fs.utimes" | "fs.watch" | "fs.watchFile" | "fs.write" | "fs.writeFile" | "fs.writev" | "fs.accessSync" | "fs.appendFileSync" | "fs.chmodSync" | "fs.chownSync" | "fs.closeSync" | "fs.copyFileSync" | "fs.cpSync" | "fs.existsSync" | "fs.fchmodSync" | "fs.fchownSync" | "fs.fdatasyncSync" | "fs.fstatSync" | "fs.fsyncSync" | "fs.ftruncateSync" | "fs.futimesSync" | "fs.globSync" | "fs.lchmodSync" | "fs.lchownSync" | "fs.linkSync" | "fs.lstatSync" | "fs.lutimesSync" | "fs.mkdirSync" | "fs.mkdtempSync" | "fs.mkdtempDisposableSync" | "fs.opendirSync" | "fs.openSync" | "fs.openAsBlobSync" | "fs.readdirSync" | "fs.readFileSync" | "fs.readlinkSync" | "fs.readSync" | "fs.readvSync" | "fs.realpathSync" | "fs.realpathSync.native" | "fs.renameSync" | "fs.rmdirSync" | "fs.rmSync" | "fs.statfsSync" | "fs.statSync" | "fs.symlinkSync" | "fs.truncateSync" | "fs.unlinkSync" | "fs.utimesSync" | "fs.writeFileSync" | "fs.writeSync" | "fs.writevSync" | "fs.constants" | "fs.F_OK" | "fs.R_OK" | "fs.W_OK" | "fs.X_OK" | "fs.Dir" | "fs.Dirent" | "fs.FSWatcher" | "fs.StatWatcher" | "fs.ReadStream" | "fs.Stats()" | "new fs.Stats()" | "fs.Stats" | "fs.StatFs" | "fs.WriteStream" | "fs.Utf8Stream" | "fs.common_objects" | "fs/promises" | "fs/promises.FileHandle" | "fs/promises.access" | "fs/promises.appendFile" | "fs/promises.chmod" | "fs/promises.chown" | "fs/promises.constants" | "fs/promises.copyFile" | "fs/promises.cp" | "fs/promises.glob" | "fs/promises.lchmod" | "fs/promises.lchown" | "fs/promises.link" | "fs/promises.lstat" | "fs/promises.lutimes" | "fs/promises.mkdir" | "fs/promises.mkdtemp" | "fs/promises.mkdtempDisposable" | "fs/promises.open" | "fs/promises.opendir" | "fs/promises.readFile" | "fs/promises.readdir" | "fs/promises.readlink" | "fs/promises.realpath" | "fs/promises.rename" | "fs/promises.rm" | "fs/promises.rmdir" | "fs/promises.stat" | "fs/promises.statfs" | "fs/promises.symlink" | "fs/promises.truncate" | "fs/promises.unlink" | "fs/promises.utimes" | "fs/promises.watch" | "fs/promises.writeFile" | "http2" | "http2.constants" | "http2.sensitiveHeaders" | "http2.createServer" | "http2.createSecureServer" | "http2.connect" | "http2.getDefaultSettings" | "http2.getPackedSettings" | "http2.getUnpackedSettings" | "http2.performServerHandshake" | "http2.Http2Session" | "http2.ServerHttp2Session" | "http2.ClientHttp2Session" | "http2.Http2Stream" | "http2.ClientHttp2Stream" | "http2.ServerHttp2Stream" | "http2.Http2Server" | "http2.Http2SecureServer" | "http2.Http2ServerRequest" | "http2.Http2ServerResponse" | "http" | "http.METHODS" | "http.STATUS_CODES" | "http.globalAgent" | "http.maxHeaderSize" | "http.createServer" | "http.get" | "http.request" | "http.validateHeaderName" | "http.validateHeaderValue" | "http.isValidHeaderName" | "http.isValidHeaderValue" | "http.websocketMask" | "http.websocketUnmask" | "http.setMaxIdleHTTPParsers" | "http.setGlobalProxyFromEnv" | "http.Agent()" | "http.Agent" | "http.ClientRequest()" | "http.ClientRequest" | "http.Server()" | "http.Server" | "http.ServerResponse()" | "http.ServerResponse" | "http.IncomingMessage()" | "http.IncomingMessage" | "http.OutgoingMessage()" | "http.OutgoingMessage" | "http.WebSocket()" | "http.WebSocket" | "_http_agent" | "_http_client" | "_http_common" | "_http_incoming" | "_http_outgoing" | "_http_server" | "https" | "https.globalAgent" | "https.createServer" | "https.get" | "https.request" | "https.Agent" | "https.Server" | "inspector" | "inspector.Session" | "inspector.DOMStorage.domStorageItemAdded" | "inspector.DOMStorage.domStorageItemRemoved" | "inspector.DOMStorage.domStorageItemUpdated" | "inspector.DOMStorage.domStorageItemsCleared" | "inspector.DOMStorage.registerStorage" | "inspector.Network.dataReceived" | "inspector.Network.dataSent" | "inspector.Network.loadingFailed" | "inspector.Network.loadingFinished" | "inspector.Network.requestWillBeSent" | "inspector.Network.responseReceived" | "inspector.Network.webSocketCreated" | "inspector.Network.webSocketHandshakeResponseReceived" | "inspector.Network.webSocketClosed" | "inspector.NetworkResources.put" | "inspector.console" | "inspector.close" | "inspector.open" | "inspector.url" | "inspector.waitForDebugger" | "inspector/promises" | "inspector/promises.Session" | "inspector/promises.DOMStorage.domStorageItemAdded" | "inspector/promises.DOMStorage.domStorageItemRemoved" | "inspector/promises.DOMStorage.domStorageItemUpdated" | "inspector/promises.DOMStorage.domStorageItemsCleared" | "inspector/promises.DOMStorage.registerStorage" | "inspector/promises.Network.dataReceived" | "inspector/promises.Network.dataSent" | "inspector/promises.Network.loadingFailed" | "inspector/promises.Network.loadingFinished" | "inspector/promises.Network.requestWillBeSent" | "inspector/promises.Network.responseReceived" | "inspector/promises.Network.webSocketCreated" | "inspector/promises.Network.webSocketHandshakeResponseReceived" | "inspector/promises.Network.webSocketClosed" | "inspector/promises.NetworkResources.put" | "inspector/promises.console" | "inspector/promises.close" | "inspector/promises.open" | "inspector/promises.url" | "inspector/promises.waitForDebugger" | "module._debug" | "module.builtinModules" | "module.constants.compileCacheStatus" | "module.createRequire" | "module.createRequireFromPath" | "module.enableCompileCache" | "module.findPackageJSON" | "module.flushCompileCache" | "module.getCompileCacheDir" | "module.getSourceMapsSupport" | "module.isBuiltin" | "module.registerHooks" | "module.register" | "module.setSourceMapsSupport" | "module.stripTypeScriptTypes" | "module.syncBuiltinESMExports" | "module.findSourceMap" | "module.SourceMap" | "module.Module._debug" | "module.Module.builtinModules" | "module.Module.createRequire" | "module.Module.createRequireFromPath" | "module.Module.enableCompileCache" | "module.Module.findPackageJSON" | "module.Module.flushCompileCache" | "module.Module.getCompileCacheDir" | "module.Module.getSourceMapsSupport" | "module.Module.isBuiltin" | "module.Module.registerHooks" | "module.Module.register" | "module.Module.setSourceMapsSupport" | "module.Module.stripTypeScriptTypes" | "module.Module.syncBuiltinESMExports" | "module.Module.findSourceMap" | "module.Module.SourceMap" | "net" | "net.connect" | "net.createConnection" | "net.createServer" | "net.getDefaultAutoSelectFamily" | "net.setDefaultAutoSelectFamily" | "net.getDefaultAutoSelectFamilyAttemptTimeout" | "net.setDefaultAutoSelectFamilyAttemptTimeout" | "net.isIP" | "net.isIPv4" | "net.isIPv6" | "net.BoundSocket" | "net.BlockList" | "net.BlockList.isBlockList" | "net.BlockList.PRIVATE_RANGES" | "net.SocketAddress" | "net.SocketAddress.parse" | "net.Server" | "net.Socket" | "os" | "os.EOL" | "os.constants" | "os.constants.priority" | "os.devNull" | "os.availableParallelism" | "os.arch" | "os.cpus" | "os.endianness" | "os.freemem" | "os.getPriority" | "os.homedir" | "os.hostname" | "os.loadavg" | "os.machine" | "os.networkInterfaces" | "os.platform" | "os.release" | "os.setPriority" | "os.tmpdir" | "os.totalmem" | "os.type" | "os.uptime" | "os.userInfo" | "os.version" | "path" | "path.posix" | "path.posix.delimiter" | "path.posix.sep" | "path.posix.basename" | "path.posix.dirname" | "path.posix.extname" | "path.posix.format" | "path.posix.matchesGlob" | "path.posix.isAbsolute" | "path.posix.join" | "path.posix.normalize" | "path.posix.parse" | "path.posix.relative" | "path.posix.resolve" | "path.posix.toNamespacedPath" | "path.win32" | "path.win32.delimiter" | "path.win32.sep" | "path.win32.basename" | "path.win32.dirname" | "path.win32.extname" | "path.win32.format" | "path.win32.matchesGlob" | "path.win32.isAbsolute" | "path.win32.join" | "path.win32.normalize" | "path.win32.parse" | "path.win32.relative" | "path.win32.resolve" | "path.win32.toNamespacedPath" | "path.delimiter" | "path.sep" | "path.basename" | "path.dirname" | "path.extname" | "path.format" | "path.matchesGlob" | "path.isAbsolute" | "path.join" | "path.normalize" | "path.parse" | "path.relative" | "path.resolve" | "path.toNamespacedPath" | "path/posix" | "path/posix.delimiter" | "path/posix.sep" | "path/posix.basename" | "path/posix.dirname" | "path/posix.extname" | "path/posix.format" | "path/posix.matchesGlob" | "path/posix.isAbsolute" | "path/posix.join" | "path/posix.normalize" | "path/posix.parse" | "path/posix.relative" | "path/posix.resolve" | "path/posix.toNamespacedPath" | "path/win32" | "path/win32.delimiter" | "path/win32.sep" | "path/win32.basename" | "path/win32.dirname" | "path/win32.extname" | "path/win32.format" | "path/win32.matchesGlob" | "path/win32.isAbsolute" | "path/win32.join" | "path/win32.normalize" | "path/win32.parse" | "path/win32.relative" | "path/win32.resolve" | "path/win32.toNamespacedPath" | "perf_hooks" | "perf_hooks.performance" | "perf_hooks.performance.clearMarks" | "perf_hooks.performance.clearMeasures" | "perf_hooks.performance.clearResourceTimings" | "perf_hooks.performance.eventLoopUtilization" | "perf_hooks.performance.getEntries" | "perf_hooks.performance.getEntriesByName" | "perf_hooks.performance.getEntriesByType" | "perf_hooks.performance.mark" | "perf_hooks.performance.markResourceTiming" | "perf_hooks.performance.measure" | "perf_hooks.performance.nodeTiming" | "perf_hooks.performance.nodeTiming.bootstrapComplete" | "perf_hooks.performance.nodeTiming.environment" | "perf_hooks.performance.nodeTiming.idleTime" | "perf_hooks.performance.nodeTiming.loopExit" | "perf_hooks.performance.nodeTiming.loopStart" | "perf_hooks.performance.nodeTiming.nodeStart" | "perf_hooks.performance.nodeTiming.uvMetricsInfo" | "perf_hooks.performance.nodeTiming.v8Start" | "perf_hooks.performance.now" | "perf_hooks.performance.onresourcetimingbufferfull" | "perf_hooks.performance.setResourceTimingBufferSize" | "perf_hooks.performance.timeOrigin" | "perf_hooks.performance.timerify" | "perf_hooks.performance.toJSON" | "perf_hooks.createHistogram" | "perf_hooks.createSlidingWindowHistogram" | "perf_hooks.eventLoopUtilization" | "perf_hooks.importHistogram" | "perf_hooks.timerify" | "perf_hooks.monitorEventLoopDelay" | "perf_hooks.PerformanceEntry" | "perf_hooks.PerformanceMark" | "perf_hooks.PerformanceMeasure" | "perf_hooks.PerformanceNodeEntry" | "perf_hooks.PerformanceNodeTiming" | "perf_hooks.PerformanceResourceTiming" | "perf_hooks.PerformanceObserver" | "perf_hooks.PerformanceObserverEntryList" | "perf_hooks.Histogram" | "perf_hooks.IntervalHistogram" | "perf_hooks.RecordableHistogram" | "punycode" | "punycode.ucs2" | "punycode.version" | "punycode.decode" | "punycode.encode" | "punycode.toASCII" | "punycode.toUnicode" | "querystring" | "querystring.decode" | "querystring.encode" | "querystring.escape" | "querystring.parse" | "querystring.stringify" | "querystring.unescape" | "readline" | "readline.promises" | "readline.promises.createInterface" | "readline.promises.Interface" | "readline.promises.Readline" | "readline.clearLine" | "readline.clearScreenDown" | "readline.createInterface" | "readline.cursorTo" | "readline.moveCursor" | "readline.Interface" | "readline.emitKeypressEvents" | "readline.InterfaceConstructor" | "readline/promises" | "readline/promises.createInterface" | "readline/promises.Interface" | "readline/promises.Readline" | "repl" | "repl.start" | "repl.writer" | "repl.REPLServer()" | "repl.REPLServer" | "repl.REPL_MODE_MAGIC" | "repl.REPL_MODE_SLOPPY" | "repl.REPL_MODE_STRICT" | "repl.Recoverable()" | "repl.Recoverable" | "repl.builtinModules" | "sea" | "sea.isSea" | "sea.getAsset" | "sea.getAssetAsBlob" | "sea.getAssetKeys" | "sea.getRawAsset" | "sea.sea.isSea" | "sea.sea.getAsset" | "sea.sea.getAssetAsBlob" | "sea.sea.getAssetKeys" | "sea.sea.getRawAsset" | "stream" | "stream.promises" | "stream.promises.pipeline" | "stream.promises.finished" | "stream.finished" | "stream.pipeline" | "stream.compose" | "stream.duplexPair" | "stream.Readable" | "stream.Readable.from" | "stream.Readable.isDisturbed" | "stream.Readable.fromWeb" | "stream.Readable.toWeb" | "stream.Writable" | "stream.Writable.fromWeb" | "stream.Writable.toWeb" | "stream.Duplex" | "stream.Duplex.from" | "stream.Duplex.fromWeb" | "stream.Duplex.toWeb" | "stream.Transform" | "stream.isErrored" | "stream.isReadable" | "stream.addAbortSignal" | "stream.getDefaultHighWaterMark" | "stream.setDefaultHighWaterMark" | "stream/promises.pipeline" | "stream/promises.finished" | "stream/web" | "stream/web.ReadableStream" | "stream/web.ReadableStream.from" | "stream/web.ReadableStreamDefaultReader" | "stream/web.ReadableStreamBYOBReader" | "stream/web.ReadableStreamDefaultController" | "stream/web.ReadableByteStreamController" | "stream/web.ReadableStreamBYOBRequest" | "stream/web.ReadableStreamTee" | "stream/web.WritableStream" | "stream/web.WritableStreamDefaultWriter" | "stream/web.WritableStreamDefaultController" | "stream/web.TransformStream" | "stream/web.TransformStreamDefaultController" | "stream/web.ByteLengthQueuingStrategy" | "stream/web.CountQueuingStrategy" | "stream/web.TextEncoderStream" | "stream/web.TextDecoderStream" | "stream/web.CompressionStream" | "stream/web.DecompressionStream" | "stream/consumers" | "stream/consumers.arrayBuffer" | "stream/consumers.blob" | "stream/consumers.buffer" | "stream/consumers.bytes" | "stream/consumers.json" | "stream/consumers.text" | "stream/iter" | "stream/iter.array" | "stream/iter.arrayBuffer" | "stream/iter.arrayBufferSync" | "stream/iter.arraySync" | "stream/iter.broadcast" | "stream/iter.broadcastProtocol" | "stream/iter.bytes" | "stream/iter.bytesSync" | "stream/iter.drainableProtocol" | "stream/iter.dump" | "stream/iter.dumpSync" | "stream/iter.duplex" | "stream/iter.from" | "stream/iter.fromSync" | "stream/iter.merge" | "stream/iter.ondrain" | "stream/iter.pipeTo" | "stream/iter.pipeToSync" | "stream/iter.pull" | "stream/iter.pullSync" | "stream/iter.push" | "stream/iter.share" | "stream/iter.shareProtocol" | "stream/iter.shareSync" | "stream/iter.shareSyncProtocol" | "stream/iter.tap" | "stream/iter.tapSync" | "stream/iter.text" | "stream/iter.textSync" | "stream/iter.toAsyncStreamable" | "stream/iter.toStreamable" | "stream/iter.fromReadable" | "stream/iter.fromWritable" | "stream/iter.toReadable" | "stream/iter.toReadableSync" | "stream/iter.toWritable" | "stream/iter.Broadcast" | "stream/iter.Broadcast.from" | "stream/iter.Share" | "stream/iter.Share.from" | "stream/iter.Stream" | "stream/iter.Stream.array" | "stream/iter.Stream.arrayBuffer" | "stream/iter.Stream.arrayBufferSync" | "stream/iter.Stream.arraySync" | "stream/iter.Stream.broadcast" | "stream/iter.Stream.broadcastProtocol" | "stream/iter.Stream.bytes" | "stream/iter.Stream.bytesSync" | "stream/iter.Stream.drainableProtocol" | "stream/iter.Stream.dump" | "stream/iter.Stream.dumpSync" | "stream/iter.Stream.duplex" | "stream/iter.Stream.from" | "stream/iter.Stream.fromSync" | "stream/iter.Stream.merge" | "stream/iter.Stream.ondrain" | "stream/iter.Stream.pipeTo" | "stream/iter.Stream.pipeToSync" | "stream/iter.Stream.pull" | "stream/iter.Stream.pullSync" | "stream/iter.Stream.push" | "stream/iter.Stream.share" | "stream/iter.Stream.shareProtocol" | "stream/iter.Stream.shareSync" | "stream/iter.Stream.shareSyncProtocol" | "stream/iter.Stream.tap" | "stream/iter.Stream.tapSync" | "stream/iter.Stream.text" | "stream/iter.Stream.textSync" | "stream/iter.Stream.toAsyncStreamable" | "stream/iter.Stream.toStreamable" | "stream/iter.SyncShare" | "stream/iter.SyncShare.fromSync" | "_stream_duplex" | "_stream_passthrough" | "_stream_readable" | "_stream_transform" | "_stream_wrap" | "_stream_writable" | "string_decoder" | "string_decoder.StringDecoder" | "sqlite" | "sqlite.constants" | "sqlite.constants.SQLITE_CHANGESET_OMIT" | "sqlite.constants.SQLITE_CHANGESET_REPLACE" | "sqlite.constants.SQLITE_CHANGESET_ABORT" | "sqlite.backup" | "sqlite.Database" | "sqlite.DatabaseSync" | "sqlite.Session" | "sqlite.Statement" | "sqlite.StatementSync" | "sqlite.SQLITE_CHANGESET_OMIT" | "sqlite.SQLITE_CHANGESET_REPLACE" | "sqlite.SQLITE_CHANGESET_ABORT" | "test" | "test.after" | "test.afterEach" | "test.assert" | "test.assert.register" | "test.before" | "test.beforeEach" | "test.describe" | "test.describe.only" | "test.describe.skip" | "test.describe.todo" | "test.getTestContext" | "test.it" | "test.it.only" | "test.it.skip" | "test.it.todo" | "test.mock" | "test.mock.fn" | "test.mock.getter" | "test.mock.method" | "test.mock.module" | "test.mock.property" | "test.mock.reset" | "test.mock.restoreAll" | "test.mock.setter" | "test.mock.timers" | "test.mock.timers.enable" | "test.mock.timers.reset" | "test.mock.timers.tick" | "test.only" | "test.run" | "test.snapshot" | "test.snapshot.setDefaultSnapshotSerializers" | "test.snapshot.setResolveSnapshotPath" | "test.skip" | "test.suite" | "test.test" | "test.test.only" | "test.test.skip" | "test.test.todo" | "test.todo" | "timers" | "timers.Immediate" | "timers.Timeout" | "timers.setImmediate" | "timers.clearImmediate" | "timers.setInterval" | "timers.clearInterval" | "timers.setTimeout" | "timers.clearTimeout" | "timers.promises" | "timers.promises.setTimeout" | "timers.promises.setImmediate" | "timers.promises.setInterval" | "timers.promises.scheduler.wait" | "timers.promises.scheduler.yield" | "timers/promises" | "timers/promises.setTimeout" | "timers/promises.setImmediate" | "timers/promises.setInterval" | "timers/promises.scheduler.wait" | "timers/promises.scheduler.yield" | "tls" | "tls.checkServerIdentity" | "tls.connect" | "tls.createSecureContext" | "tls.createSecurePair" | "tls.createServer" | "tls.CryptoStream" | "tls.DEFAULT_CIPHERS" | "tls.DEFAULT_ECDH_CURVE" | "tls.DEFAULT_MAX_VERSION" | "tls.DEFAULT_MIN_VERSION" | "tls.getCertificateCompressionAlgorithms" | "tls.getCACertificates" | "tls.getCiphers" | "tls.rootCertificates" | "tls.SecureContext" | "tls.SecurePair" | "tls.Server" | "tls.setDefaultCACertificates" | "tls.TLSSocket" | "_tls_common" | "_tls_wrap" | "trace_events" | "trace_events.createTracing" | "trace_events.getEnabledCategories" | "tty" | "tty.isatty" | "tty.ReadStream" | "tty.WriteStream" | "url" | "url.domainToASCII" | "url.domainToUnicode" | "url.fileURLToPath" | "url.format" | "url.pathToFileURL" | "url.urlToHttpOptions" | "url.URL" | "url.URL.canParse" | "url.URL.createObjectURL" | "url.URL.revokeObjectURL" | "url.URLPattern" | "url.URLSearchParams" | "url.Url" | "util.promisify" | "util.promisify.custom" | "util.callbackify" | "util.convertProcessSignalToExitCode" | "util.debounce" | "util.debuglog" | "util.debug" | "util.deprecate" | "util.diff" | "util.format" | "util.formatWithOptions" | "util.getCallSite" | "util.getCallSites" | "util.getSystemErrorName" | "util.getSystemErrorMap" | "util.getSystemErrorMessage" | "util.inherits" | "util.inspect" | "util.inspect.custom" | "util.inspect.defaultOptions" | "util.inspect.replDefaults" | "util.isDeepStrictEqual" | "util.isPartialDeepStrictEqual" | "util.markPromiseAsHandled" | "util.parseArgs" | "util.parseEnv" | "util.setTraceSigInt" | "util.stripVTControlCharacters" | "util.styleText" | "util.throttle" | "util.toUSVString" | "util.transferableAbortController" | "util.transferableAbortSignal" | "util.aborted" | "util.MIMEType" | "util.MIMEType.parse" | "util.MIMEParams" | "util.TextDecoder" | "util.TextEncoder" | "util.types" | "util.types.isExternal" | "util.types.isDate" | "util.types.isArgumentsObject" | "util.types.isBigIntObject" | "util.types.isBooleanObject" | "util.types.isNumberObject" | "util.types.isStringObject" | "util.types.isSymbolObject" | "util.types.isNativeError" | "util.types.isRegExp" | "util.types.isAsyncFunction" | "util.types.isGeneratorFunction" | "util.types.isGeneratorObject" | "util.types.isPromise" | "util.types.isMap" | "util.types.isSet" | "util.types.isMapIterator" | "util.types.isSetIterator" | "util.types.isWeakMap" | "util.types.isWeakSet" | "util.types.isArrayBuffer" | "util.types.isDataView" | "util.types.isSharedArrayBuffer" | "util.types.isProxy" | "util.types.isModuleNamespaceObject" | "util.types.isAnyArrayBuffer" | "util.types.isBoxedPrimitive" | "util.types.isArrayBufferView" | "util.types.isTypedArray" | "util.types.isUint8Array" | "util.types.isUint8ClampedArray" | "util.types.isUint16Array" | "util.types.isUint32Array" | "util.types.isInt8Array" | "util.types.isInt16Array" | "util.types.isInt32Array" | "util.types.isFloat16Array" | "util.types.isFloat32Array" | "util.types.isFloat64Array" | "util.types.isBigInt64Array" | "util.types.isBigUint64Array" | "util.types.isKeyObject" | "util.types.isCryptoKey" | "util.types.isWebAssemblyCompiledModule" | "util._extend" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util" | "util/types" | "util/types.isExternal" | "util/types.isDate" | "util/types.isArgumentsObject" | "util/types.isBigIntObject" | "util/types.isBooleanObject" | "util/types.isNumberObject" | "util/types.isStringObject" | "util/types.isSymbolObject" | "util/types.isNativeError" | "util/types.isRegExp" | "util/types.isAsyncFunction" | "util/types.isGeneratorFunction" | "util/types.isGeneratorObject" | "util/types.isPromise" | "util/types.isMap" | "util/types.isSet" | "util/types.isMapIterator" | "util/types.isSetIterator" | "util/types.isWeakMap" | "util/types.isWeakSet" | "util/types.isArrayBuffer" | "util/types.isDataView" | "util/types.isSharedArrayBuffer" | "util/types.isProxy" | "util/types.isModuleNamespaceObject" | "util/types.isAnyArrayBuffer" | "util/types.isBoxedPrimitive" | "util/types.isArrayBufferView" | "util/types.isTypedArray" | "util/types.isUint8Array" | "util/types.isUint8ClampedArray" | "util/types.isUint16Array" | "util/types.isUint32Array" | "util/types.isInt8Array" | "util/types.isInt16Array" | "util/types.isInt32Array" | "util/types.isFloat16Array" | "util/types.isFloat32Array" | "util/types.isFloat64Array" | "util/types.isBigInt64Array" | "util/types.isBigUint64Array" | "util/types.isKeyObject" | "util/types.isCryptoKey" | "util/types.isWebAssemblyCompiledModule" | "v8" | "v8.serialize" | "v8.deserialize" | "v8.Serializer" | "v8.Deserializer" | "v8.DefaultSerializer" | "v8.DefaultDeserializer" | "v8.promiseHooks" | "v8.promiseHooks.onInit" | "v8.promiseHooks.onSettled" | "v8.promiseHooks.onBefore" | "v8.promiseHooks.onAfter" | "v8.promiseHooks.createHook" | "v8.startupSnapshot" | "v8.startupSnapshot.addSerializeCallback" | "v8.startupSnapshot.addDeserializeCallback" | "v8.startupSnapshot.setDeserializeMainFunction" | "v8.startupSnapshot.isBuildingSnapshot" | "v8.cachedDataVersionTag" | "v8.getHeapCodeStatistics" | "v8.getHeapSnapshot" | "v8.getHeapSpaceStatistics" | "v8.getHeapStatistics" | "v8.isStringOneByteRepresentation" | "v8.queryObjects" | "v8.setFlagsFromString" | "v8.stopCoverage" | "v8.takeCoverage" | "v8.writeHeapSnapshot" | "v8.setHeapSnapshotNearHeapLimit" | "v8.setHeapProfileNearHeapLimit" | "v8.GCProfiler" | "v8.startCpuProfile" | "v8.startHeapProfile" | "vfs" | "vfs.ComposableProvider" | "vfs.create" | "vfs.MemoryProvider" | "vfs.registerProvider" | "vfs.RealFSProvider" | "vfs.vfsBase" | "vfs.VirtualFileSystem" | "vfs.VirtualProvider" | "vfs.ZipProvider" | "vm.constants" | "vm.compileFunction" | "vm.createContext" | "vm.isContext" | "vm.measureMemory" | "vm.runInContext" | "vm.runInNewContext" | "vm.runInThisContext" | "vm.Script" | "vm.Module" | "vm.SourceTextModule" | "vm.SyntheticModule" | "vm" | "wasi.WASI" | "wasi" | "worker_threads" | "worker_threads.parentPort" | "worker_threads.resourceLimits" | "worker_threads.SHARE_ENV" | "worker_threads.threadId" | "worker_threads.threadName" | "worker_threads.workerData" | "worker_threads.getEnvironmentData" | "worker_threads.getHeapStatistics" | "worker_threads.markAsUncloneable" | "worker_threads.markAsUntransferable" | "worker_threads.isInternalThread" | "worker_threads.isMainThread" | "worker_threads.isMarkedAsUntransferable" | "worker_threads.locks" | "worker_threads.locks.request" | "worker_threads.locks.query" | "worker_threads.moveMessagePortToContext" | "worker_threads.postMessageToThread" | "worker_threads.receiveMessageOnPort" | "worker_threads.setEnvironmentData" | "worker_threads.BroadcastChannel" | "worker_threads.MessageChannel" | "worker_threads.MessagePort" | "worker_threads.Worker" | "zlib.brotliCompress" | "zlib.brotliCompressSync" | "zlib.brotliDecompress" | "zlib.brotliDecompressSync" | "zlib.constants" | "zlib.constants.ZSTD_e_continue" | "zlib.constants.ZSTD_e_flush" | "zlib.constants.ZSTD_e_end" | "zlib.constants.ZSTD_fast" | "zlib.constants.ZSTD_dfast" | "zlib.constants.ZSTD_greedy" | "zlib.constants.ZSTD_lazy" | "zlib.constants.ZSTD_lazy2" | "zlib.constants.ZSTD_btlazy2" | "zlib.constants.ZSTD_btopt" | "zlib.constants.ZSTD_btultra" | "zlib.constants.ZSTD_btultra2" | "zlib.constants.ZSTD_c_compressionLevel" | "zlib.constants.ZSTD_c_windowLog" | "zlib.constants.ZSTD_c_hashLog" | "zlib.constants.ZSTD_c_chainLog" | "zlib.constants.ZSTD_c_searchLog" | "zlib.constants.ZSTD_c_minMatch" | "zlib.constants.ZSTD_c_targetLength" | "zlib.constants.ZSTD_c_strategy" | "zlib.constants.ZSTD_c_enableLongDistanceMatching" | "zlib.constants.ZSTD_c_ldmHashLog" | "zlib.constants.ZSTD_c_ldmMinMatch" | "zlib.constants.ZSTD_c_ldmBucketSizeLog" | "zlib.constants.ZSTD_c_ldmHashRateLog" | "zlib.constants.ZSTD_c_contentSizeFlag" | "zlib.constants.ZSTD_c_checksumFlag" | "zlib.constants.ZSTD_c_dictIDFlag" | "zlib.constants.ZSTD_c_nbWorkers" | "zlib.constants.ZSTD_c_jobSize" | "zlib.constants.ZSTD_c_overlapLog" | "zlib.constants.ZSTD_d_windowLogMax" | "zlib.constants.ZSTD_CLEVEL_DEFAULT" | "zlib.constants.ZSTD_error_no_error" | "zlib.constants.ZSTD_error_GENERIC" | "zlib.constants.ZSTD_error_prefix_unknown" | "zlib.constants.ZSTD_error_version_unsupported" | "zlib.constants.ZSTD_error_frameParameter_unsupported" | "zlib.constants.ZSTD_error_frameParameter_windowTooLarge" | "zlib.constants.ZSTD_error_corruption_detected" | "zlib.constants.ZSTD_error_checksum_wrong" | "zlib.constants.ZSTD_error_literals_headerWrong" | "zlib.constants.ZSTD_error_dictionary_corrupted" | "zlib.constants.ZSTD_error_dictionary_wrong" | "zlib.constants.ZSTD_error_dictionaryCreation_failed" | "zlib.constants.ZSTD_error_parameter_unsupported" | "zlib.constants.ZSTD_error_parameter_combination_unsupported" | "zlib.constants.ZSTD_error_parameter_outOfBound" | "zlib.constants.ZSTD_error_tableLog_tooLarge" | "zlib.constants.ZSTD_error_maxSymbolValue_tooLarge" | "zlib.constants.ZSTD_error_maxSymbolValue_tooSmall" | "zlib.constants.ZSTD_error_stabilityCondition_notRespected" | "zlib.constants.ZSTD_error_stage_wrong" | "zlib.constants.ZSTD_error_init_missing" | "zlib.constants.ZSTD_error_memory_allocation" | "zlib.constants.ZSTD_error_workSpace_tooSmall" | "zlib.constants.ZSTD_error_dstSize_tooSmall" | "zlib.constants.ZSTD_error_srcSize_wrong" | "zlib.constants.ZSTD_error_dstBuffer_null" | "zlib.constants.ZSTD_error_noForwardProgress_destFull" | "zlib.constants.ZSTD_error_noForwardProgress_inputEmpty" | "zlib.crc32" | "zlib.createBrotliCompress" | "zlib.createBrotliDecompress" | "zlib.createDeflate" | "zlib.createDeflateRaw" | "zlib.createGunzip" | "zlib.createGzip" | "zlib.createInflate" | "zlib.createInflateRaw" | "zlib.createUnzip" | "zlib.createZstdCompress" | "zlib.createZstdDecompress" | "zlib.deflate" | "zlib.deflateRaw" | "zlib.deflateRawSync" | "zlib.deflateSync" | "zlib.gunzip" | "zlib.gunzipSync" | "zlib.gzip" | "zlib.gzipSync" | "zlib.inflate" | "zlib.inflateRaw" | "zlib.inflateRawSync" | "zlib.inflateSync" | "zlib.unzip" | "zlib.unzipSync" | "zlib.zstdCompress" | "zlib.zstdCompressSync" | "zlib.zstdDecompress" | "zlib.zstdDecompressSync" | "zlib.createZipArchive" | "zlib.createZipArchiveSync" | "zlib.getMaxZipContentSize" | "zlib.setMaxZipContentSize" | "zlib.zipFiles" | "zlib.BrotliCompress()" | "zlib.BrotliCompress" | "zlib.BrotliDecompress()" | "zlib.BrotliDecompress" | "zlib.Deflate()" | "zlib.Deflate" | "zlib.DeflateRaw()" | "zlib.DeflateRaw" | "zlib.Gunzip()" | "zlib.Gunzip" | "zlib.Gzip()" | "zlib.Gzip" | "zlib.Inflate()" | "zlib.Inflate" | "zlib.InflateRaw()" | "zlib.InflateRaw" | "zlib.Unzip()" | "zlib.Unzip" | "zlib.ZstdCompress" | "zlib.ZstdDecompress" | "zlib.ZstdOptions" | "zlib.ZipBuffer" | "zlib.ZipEntry" | "zlib.ZipEntry.create" | "zlib.ZipEntry.createStream" | "zlib.ZipEntry.createSymlink" | "zlib.ZipEntry.createSync" | "zlib.ZipEntry.read" | "zlib.ZipFile" | "zlib.ZipFile.open" | "zlib.ZipFile.openSync" | "zlib" | "zlib/iter" | "zlib/iter.compressBrotli" | "zlib/iter.compressBrotliSync" | "zlib/iter.compressDeflate" | "zlib/iter.compressDeflateSync" | "zlib/iter.compressGzip" | "zlib/iter.compressGzipSync" | "zlib/iter.compressZstd" | "zlib/iter.compressZstdSync" | "zlib/iter.decompressBrotli" | "zlib/iter.decompressBrotliSync" | "zlib/iter.decompressDeflate" | "zlib/iter.decompressDeflateSync" | "zlib/iter.decompressGzip" | "zlib/iter.decompressGzipSync" | "zlib/iter.decompressZstd" | "zlib/iter.decompressZstdSync" | "import.meta.resolve" | "import.meta.dirname" | "import.meta.filename" | "import.meta.main")[];
 }];
 type NodePreferGlobalBuffer = [] | [("always" | "never")];
 type NodePreferGlobalConsole = [] | [("always" | "never")];
@@ -5939,6 +6005,265 @@ type PerfectionistSortClasses = {
   });
   partitionByNewLine?: boolean;
 }[];
+type PerfectionistSortConstructorParameters = [{
+  fallbackSort?: {
+    type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    order?: ("asc" | "desc");
+  };
+  type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+  specialCharacters?: ("remove" | "trim" | "keep");
+  ignoreCase?: boolean;
+  alphabet?: string;
+  locales?: (string | string[]);
+  order?: ("asc" | "desc");
+  customGroups?: ({
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    groupName: string;
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+    anyOf: [{
+      elementNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+      modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+      selector?: "parameter";
+      decoratorNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+    }, ...({
+      elementNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+      modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+      selector?: "parameter";
+      decoratorNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+    })[]];
+  } | {
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    groupName: string;
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+    elementNamePattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+    modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+    selector?: "parameter";
+    decoratorNamePattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+  })[];
+  newlinesInside?: (("ignore" | number) | "newlinesBetween");
+  groups?: (string | [string, ...(string)[]] | {
+    newlinesBetween: ("ignore" | number);
+  } | {
+    group: (string | [string, ...(string)[]]);
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    commentAbove?: string;
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+  })[];
+  newlinesBetween?: ("ignore" | number);
+  useConfigurationIf: {
+    allNamesMatchPattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+    matchesAstSelector?: string;
+  };
+  partitionByComment?: (boolean | (({
+    pattern: string;
+    flags?: string;
+  } | string)[] | ({
+    pattern: string;
+    flags?: string;
+  } | string)) | {
+    block?: (boolean | (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string)));
+    line?: (boolean | (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string)));
+  });
+  partitionByNewLine?: boolean;
+}, ...({
+  fallbackSort?: {
+    type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    order?: ("asc" | "desc");
+  };
+  type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+  specialCharacters?: ("remove" | "trim" | "keep");
+  ignoreCase?: boolean;
+  alphabet?: string;
+  locales?: (string | string[]);
+  order?: ("asc" | "desc");
+  customGroups?: ({
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    groupName: string;
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+    anyOf: [{
+      elementNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+      modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+      selector?: "parameter";
+      decoratorNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+    }, ...({
+      elementNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+      modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+      selector?: "parameter";
+      decoratorNamePattern?: (({
+        pattern: string;
+        flags?: string;
+      } | string)[] | ({
+        pattern: string;
+        flags?: string;
+      } | string));
+    })[]];
+  } | {
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    groupName: string;
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+    elementNamePattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+    modifiers?: ("decorated" | "override" | "readonly" | "protected" | "private" | "public")[];
+    selector?: "parameter";
+    decoratorNamePattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+  })[];
+  newlinesInside?: (("ignore" | number) | "newlinesBetween");
+  groups?: (string | [string, ...(string)[]] | {
+    newlinesBetween: ("ignore" | number);
+  } | {
+    group: (string | [string, ...(string)[]]);
+    fallbackSort?: {
+      type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+      order?: ("asc" | "desc");
+    };
+    commentAbove?: string;
+    type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
+    newlinesInside?: ("ignore" | number);
+    order?: ("asc" | "desc");
+  })[];
+  newlinesBetween?: ("ignore" | number);
+  useConfigurationIf: {
+    allNamesMatchPattern?: (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string));
+    matchesAstSelector?: string;
+  };
+  partitionByComment?: (boolean | (({
+    pattern: string;
+    flags?: string;
+  } | string)[] | ({
+    pattern: string;
+    flags?: string;
+  } | string)) | {
+    block?: (boolean | (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string)));
+    line?: (boolean | (({
+      pattern: string;
+      flags?: string;
+    } | string)[] | ({
+      pattern: string;
+      flags?: string;
+    } | string)));
+  });
+  partitionByNewLine?: boolean;
+})[]];
 type PerfectionistSortDecorators = {
   fallbackSort?: {
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order");
@@ -6654,10 +6979,6 @@ type PerfectionistSortImports = {
     sortBy?: ("specifier" | "path");
   })[];
   newlinesBetween?: ("ignore" | number);
-  tsconfig?: {
-    rootDir: string;
-    filename?: string;
-  };
   maxLineLength?: number;
   sortSideEffects?: boolean;
   environment?: ("node" | "bun");
@@ -6692,6 +7013,10 @@ type PerfectionistSortImports = {
     pattern: string;
     flags?: string;
   } | string));
+  tsconfig?: {
+    rootDir: string;
+    filename?: string;
+  };
 }[];
 type PerfectionistSortInterfaces = {
   fallbackSort?: {
@@ -7271,6 +7596,7 @@ type PerfectionistSortModules = [] | [{
     order?: ("asc" | "desc");
   })[];
   newlinesBetween?: ("ignore" | number);
+  additionalModuleBlockTypes?: string[];
   useExperimentalDependencyDetection?: boolean;
   newlinesBetweenOverloadSignatures?: ("ignore" | number);
   partitionByComment?: (boolean | (({
@@ -7296,6 +7622,10 @@ type PerfectionistSortModules = [] | [{
     } | string)));
   });
   partitionByNewLine?: boolean;
+  tsconfig?: {
+    rootDir: string;
+    filename?: string;
+  };
 }];
 type PerfectionistSortNamedExports = {
   fallbackSort?: {
@@ -7663,6 +7993,13 @@ type PerfectionistSortObjects = {
   partitionByComputedKey?: boolean;
   styledComponents?: boolean;
   useExperimentalDependencyDetection?: boolean;
+  ignoreCallbackDependenciesPatterns?: (({
+    pattern: string;
+    flags?: string;
+  } | string)[] | ({
+    pattern: string;
+    flags?: string;
+  } | string));
   partitionByComment?: (boolean | (({
     pattern: string;
     flags?: string;
@@ -8151,6 +8488,13 @@ type PerfectionistSortVariableDeclarations = {
     matchesAstSelector?: string;
   };
   useExperimentalDependencyDetection?: boolean;
+  ignoreCallbackDependenciesPatterns?: (({
+    pattern: string;
+    flags?: string;
+  } | string)[] | ({
+    pattern: string;
+    flags?: string;
+  } | string));
   partitionByComment?: (boolean | (({
     pattern: string;
     flags?: string;
@@ -8271,6 +8615,9 @@ type ReactDomNoUnknownProperty = [] | [{
   ignore?: string[];
   requireDataLowercase?: boolean;
 }];
+type ReactDomNoUnsafeTargetBlank = [] | [{
+  allowReferrer?: boolean;
+}];
 type ReactExhaustiveDeps = [] | [{
   additionalHooks?: string;
   enableDangerousAutofixThisMayCauseInfiniteLoops?: boolean;
@@ -8288,6 +8635,7 @@ type ReactRefreshOnlyExportComponents = [] | [{
   extraHOCs?: string[];
   allowExportNames?: string[];
   allowConstantExport?: boolean;
+  allowCompoundComponents?: boolean;
   checkJS?: boolean;
 }];
 type ReactRulesOfHooks = [] | [{
@@ -8460,6 +8808,13 @@ type SlopNoJargon = [] | [{
   extraWords?: string[];
   ignoreJSDoc?: boolean;
   words?: string[];
+}];
+type SlopNoStaticOnlyClass = [] | [{
+  cwd?: string;
+  inspection?: (("full" | "uncommitted" | "recent-changes") | {
+    mode: ("full" | "uncommitted" | "recent-changes");
+    tracebackCommits?: number;
+  });
 }];
 type SlopNoTrivialFunctions = [] | [{
   cwd?: string;
@@ -10170,6 +10525,9 @@ type TsArrayType = [] | [{
   default?: ("array" | "generic" | "array-simple");
   readonly?: ("array" | "generic" | "array-simple");
 }];
+type TsAwaitThenable = [] | [{
+  allowMixedPromiseArrays?: boolean;
+}];
 type TsBanTsComment = [] | [{
   minimumDescriptionLength?: number;
   "ts-check"?: (boolean | "allow-with-description" | {
@@ -10698,7 +11056,9 @@ type TsNoMeaninglessVoidOperator = [] | [{
   checkNever?: boolean;
 }];
 type TsNoMisusedPromises = [] | [{
-  checksConditionals?: boolean;
+  checksConditionals?: (boolean | {
+    flagUnions?: ("all" | "strict" | "none");
+  });
   checksSpreads?: boolean;
   checksVoidReturn?: (boolean | {
     arguments?: boolean;
@@ -12208,7 +12568,7 @@ type VueNoDeprecatedSlotAttribute = [] | [{
   ignoreParents?: string[];
 }];
 type VueNoDupeKeys = [] | [{
-  groups?: unknown[];
+  groups?: string[];
 }];
 type VueNoDuplicateAttributes = [] | [{
   allowCoexistClass?: boolean;
@@ -12322,8 +12682,8 @@ type VueNoReservedComponentNames = [] | [{
   htmlElementCaseSensitive?: boolean;
 }];
 type VueNoReservedKeys = [] | [{
-  reserved?: unknown[];
-  groups?: unknown[];
+  reserved?: string[];
+  groups?: string[];
 }];
 type VueNoReservedProps = [] | [{
   vueVersion?: (2 | 3);
@@ -12394,7 +12754,7 @@ type VueNoTemplateTargetBlank = [] | [{
   enforceDynamicLinks?: ("always" | "never");
 }];
 type VueNoUndefComponents = [] | [{
-  ignorePatterns?: unknown[];
+  ignorePatterns?: string[];
 }];
 type VueNoUndefDirectives = [] | [{
   ignore?: string[];
@@ -12511,7 +12871,7 @@ type VueOperatorLinebreak = [] | [(("after" | "before" | "none") | null)] | [(("
   };
 }];
 type VueOrderInComponents = [] | [{
-  order?: unknown[];
+  order?: (string | string[])[];
 }];
 type VuePaddingLineBetweenBlocks = [] | [("never" | "always")];
 type VuePaddingLineBetweenTags = [] | [{
@@ -12583,8 +12943,8 @@ type VueSinglelineHtmlElementContentNewline = [] | [{
 type VueSlotNameCasing = [] | [("camelCase" | "kebab-case" | "singleword")];
 type VueSortKeys = [] | [("asc" | "desc")] | [("asc" | "desc"), {
   caseSensitive?: boolean;
-  ignoreChildrenOf?: unknown[];
-  ignoreGrandchildrenOf?: unknown[];
+  ignoreChildrenOf?: string[];
+  ignoreGrandchildrenOf?: string[];
   minKeys?: number;
   natural?: boolean;
   allowLineSeparatedGroups?: boolean;
@@ -12609,7 +12969,7 @@ type VueValidVFor = [] | [{
   allowEmptyAlias?: boolean;
 }];
 type VueValidVOn = [] | [{
-  modifiers?: unknown[];
+  modifiers?: string[];
 }];
 type VueValidVSlot = [] | [{
   allowModifiers?: boolean;

@@ -580,7 +580,10 @@ export default antfu()
     'antfu/stylistic/rules',
     {
       rules: {
-        'style/generator-star-spacing': ['error', { after: true, before: false }],
+        'style/generator-star-spacing': [
+          'error',
+          { after: true, before: false }
+        ],
       }
     }
   )

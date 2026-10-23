@@ -148,14 +148,16 @@ export async function react(
       },
     },
     ...isTypeAware
-      ? [{
-          files: filesTypeAware,
-          ignores: ignoresTypeAware,
-          name: 'antfu/react/type-aware-rules',
-          rules: {
-            ...typeAwareRules,
+      ? [
+          {
+            files: filesTypeAware,
+            ignores: ignoresTypeAware,
+            name: 'antfu/react/type-aware-rules',
+            rules: {
+              ...typeAwareRules,
+            },
           },
-        }]
+        ]
       : [],
   ]
 }

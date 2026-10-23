@@ -15,7 +15,9 @@ export async function yaml(
   const {
     indent = 2,
     quotes = 'single',
-  } = typeof stylistic === 'boolean' ? {} : stylistic
+  } = typeof stylistic === 'boolean'
+    ? {}
+    : stylistic
 
   const [
     pluginYaml,
@@ -58,11 +60,27 @@ export async function yaml(
               'yaml/flow-mapping-curly-spacing': 'error',
               'yaml/flow-sequence-bracket-newline': 'error',
               'yaml/flow-sequence-bracket-spacing': 'error',
-              'yaml/indent': ['error', typeof indent === 'number' ? indent : 2],
+              'yaml/indent': [
+                'error',
+                typeof indent === 'number'
+                  ? indent
+                  : 2,
+              ],
               'yaml/key-spacing': 'error',
-              'yaml/no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
+              'yaml/no-multiple-empty-lines': [
+                'error',
+                { max: 1, maxBOF: 0, maxEOF: 0 },
+              ],
               'yaml/no-tab-indent': 'error',
-              'yaml/quotes': ['error', { avoidEscape: true, prefer: quotes === 'backtick' ? 'single' : quotes }],
+              'yaml/quotes': [
+                'error',
+                {
+                  avoidEscape: true,
+                  prefer: quotes === 'backtick'
+                    ? 'single'
+                    : quotes,
+                },
+              ],
               'yaml/spaced-comment': 'error',
             }
           : {},

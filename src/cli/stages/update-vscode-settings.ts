@@ -32,7 +32,9 @@ export async function updateVscodeSettings(result: PromptResult): Promise<void> 
     let settingsContent = await fsp.readFile(settingsPath, 'utf8')
 
     settingsContent = settingsContent.trim().replace(LAST_LINE_PATTERN, '')
-    settingsContent += settingsContent.endsWith(',') || settingsContent.endsWith('{') ? '' : ','
+    settingsContent += settingsContent.endsWith(',') || settingsContent.endsWith('{')
+      ? ''
+      : ','
     settingsContent += `${vscodeSettingsString}}\n`
 
     await fsp.writeFile(settingsPath, settingsContent, 'utf-8')

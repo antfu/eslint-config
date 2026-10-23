@@ -44,7 +44,9 @@ export async function solid(
           ecmaFeatures: {
             jsx: true,
           },
-          ...isTypeAware ? { project: tsconfigPath } : {},
+          ...isTypeAware
+            ? { project: tsconfigPath }
+            : {},
         },
         sourceType: 'module',
       },
@@ -52,12 +54,15 @@ export async function solid(
       rules: {
         /** reactivity */
         'solid/components-return-once': 'warn',
-        'solid/event-handlers': ['error', {
+        'solid/event-handlers': [
+          'error',
+          {
           /** if true, don't warn on ambiguously named event handlers like `onclick` or `onchange` */
-          ignoreCase: false,
-          /** if true, warn when spreading event handlers onto JSX. Enable for Solid < v1.6. */
-          warnOnSpread: false,
-        }],
+            ignoreCase: false,
+            /** if true, warn when spreading event handlers onto JSX. Enable for Solid < v1.6. */
+            warnOnSpread: false,
+          },
+        ],
         /** these rules are mostly style suggestions */
         'solid/imports': 'error',
         /** identifier usage is important */
@@ -67,17 +72,28 @@ export async function solid(
         'solid/jsx-uses-vars': 'error',
         'solid/no-destructure': 'error',
         /** security problems */
-        'solid/no-innerhtml': ['error', { allowStatic: true }],
+        'solid/no-innerhtml': [
+          'error',
+          { allowStatic: true },
+        ],
         'solid/no-react-deps': 'error',
         'solid/no-react-specific-props': 'error',
         'solid/no-unknown-namespaces': 'error',
         'solid/prefer-for': 'error',
         'solid/reactivity': 'warn',
         'solid/self-closing-comp': 'error',
-        'solid/style-prop': ['error', { styleProps: ['style', 'css'] }],
+        'solid/style-prop': [
+          'error',
+          {
+            styleProps: ['style', 'css'],
+          },
+        ],
         ...typescript
           ? {
-              'solid/jsx-no-undef': ['error', { typescriptEnabled: true }],
+              'solid/jsx-no-undef': [
+                'error',
+                { typescriptEnabled: true },
+              ],
               'solid/no-unknown-namespaces': 'off',
             }
           : {},

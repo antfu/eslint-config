@@ -31,7 +31,9 @@ export async function jsx(options: OptionsJSX = {}): Promise<TypedFlatConfigItem
 
   const a11yRules = {
     ...(a11yConfig.rules || {}),
-    ...(typeof a11y === 'object' && a11y.overrides ? a11y.overrides : {}),
+    ...(typeof a11y === 'object' && a11y.overrides
+      ? a11y.overrides
+      : {}),
   }
 
   // Merge base config with a11y configuration
