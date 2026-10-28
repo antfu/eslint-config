@@ -172,7 +172,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/node/rules",
     "rules": [
@@ -194,7 +194,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/jsdoc/rules",
     "rules": [
@@ -274,7 +274,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/unicorn/rules",
     "rules": [
@@ -297,8 +297,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}jsx",
+      "**/*.{,[cm]}tsx",
     ],
     "languageOptions": {
       "parserOptions": {
@@ -320,8 +320,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
       "**/*.vue",
     ],
     "languageOptions": {
@@ -337,8 +337,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
       "**/*.vue",
     ],
     "name": "antfu/typescript/rules",
@@ -577,11 +577,11 @@
   },
   {
     "files": [
-      "**/__tests__/**/*.?([cm])[jt]s?(x)",
-      "**/*.spec.?([cm])[jt]s?(x)",
-      "**/*.test.?([cm])[jt]s?(x)",
-      "**/*.bench.?([cm])[jt]s?(x)",
-      "**/*.benchmark.?([cm])[jt]s?(x)",
+      "**/__tests__/**/*.{,[cm]}[jt]s{,x}",
+      "**/*.spec.{,[cm]}[jt]s{,x}",
+      "**/*.test.{,[cm]}[jt]s{,x}",
+      "**/*.bench.{,[cm]}[jt]s{,x}",
+      "**/*.benchmark.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/test/rules",
     "rules": [
@@ -932,7 +932,7 @@
   },
   {
     "files": [
-      "**/*.y?(a)ml",
+      "**/*.{yml,yaml}",
     ],
     "languageOptions": {
       "parser": "yaml-eslint-parser",
@@ -1048,7 +1048,7 @@
   },
   {
     "files": [
-      "**/*.md/**/*.?([cm])[jt]s?(x)",
+      "**/*.md/**/*.{,[cm]}[jt]s{,x}",
       "**/*.md/**/*.vue",
     ],
     "languageOptions": {
@@ -1090,7 +1090,7 @@
   },
   {
     "files": [
-      "**/scripts/**/*.?([cm])[jt]s?(x)",
+      "**/scripts/**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/scripts",
     "rules": [
@@ -1101,8 +1101,8 @@
   },
   {
     "files": [
-      "**/cli/**/*.?([cm])[jt]s?(x)",
-      "**/cli.?([cm])[jt]s?(x)",
+      "**/cli/**/*.{,[cm]}[jt]s{,x}",
+      "**/cli.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/cli",
     "rules": [
@@ -1113,7 +1113,7 @@
   {
     "files": [
       "**/bin/**/*",
-      "**/bin.?([cm])[jt]s?(x)",
+      "**/bin.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/bin",
     "rules": [
@@ -1123,7 +1123,7 @@
   },
   {
     "files": [
-      "**/*.d.?([cm])ts",
+      "**/*.d.{,[cm]}ts",
     ],
     "name": "antfu/disables/dts",
     "rules": [
@@ -1144,8 +1144,8 @@
   },
   {
     "files": [
-      "**/*.config.?([cm])[jt]s?(x)",
-      "**/*.config.*.?([cm])[jt]s?(x)",
+      "**/*.config.{,[cm]}[jt]s{,x}",
+      "**/*.config.*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/config-files",
     "rules": [

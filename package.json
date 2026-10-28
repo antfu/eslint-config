@@ -21,6 +21,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./cli": "./dist/cli.mjs",
+    "./oxlint": "./dist/oxlint.mjs",
     "./package.json": "./package.json"
   },
   "types": "./dist/index.d.mts",
@@ -63,6 +64,8 @@
     "eslint-plugin-sonarjs": ">=4.0.0",
     "eslint-plugin-svelte": ">=2.35.1",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
+    "oxlint": "^1.85.0",
+    "oxlint-flat-config": "^0.4.0",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-slidev": "^1.0.5",
     "svelte-eslint-parser": ">=0.37.0"
@@ -120,6 +123,12 @@
       "optional": true
     },
     "eslint-plugin-vuejs-accessibility": {
+      "optional": true
+    },
+    "oxlint": {
+      "optional": true
+    },
+    "oxlint-flat-config": {
       "optional": true
     },
     "prettier-plugin-astro": {
@@ -202,6 +211,9 @@
     "find-up-simple": "catalog:inline",
     "jiti": "catalog:dev",
     "lint-staged": "catalog:dev",
+    "oxlint": "catalog:peer",
+    "oxlint-flat-config": "catalog:peer",
+    "oxlint-tsgolint": "catalog:dev",
     "pnpm-workspace-yaml": "catalog:dev",
     "prettier-plugin-astro": "catalog:peer",
     "prettier-plugin-slidev": "catalog:peer",

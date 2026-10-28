@@ -30,7 +30,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
       },
     },
     {
-      files: ['**/*.d.?([cm])ts'],
+      files: ['**/*.d.{,[cm]}ts'],
       name: 'antfu/disables/dts',
       rules: {
         'eslint-comments/no-unlimited-disable': 'off',

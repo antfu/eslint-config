@@ -166,7 +166,7 @@
   },
   {
     "files": [
-      "**/scripts/**/*.?([cm])[jt]s?(x)",
+      "**/scripts/**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/scripts",
     "rules": [
@@ -177,8 +177,8 @@
   },
   {
     "files": [
-      "**/cli/**/*.?([cm])[jt]s?(x)",
-      "**/cli.?([cm])[jt]s?(x)",
+      "**/cli/**/*.{,[cm]}[jt]s{,x}",
+      "**/cli.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/cli",
     "rules": [
@@ -189,7 +189,7 @@
   {
     "files": [
       "**/bin/**/*",
-      "**/bin.?([cm])[jt]s?(x)",
+      "**/bin.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/bin",
     "rules": [
@@ -199,7 +199,7 @@
   },
   {
     "files": [
-      "**/*.d.?([cm])ts",
+      "**/*.d.{,[cm]}ts",
     ],
     "name": "antfu/disables/dts",
     "rules": [
@@ -220,8 +220,8 @@
   },
   {
     "files": [
-      "**/*.config.?([cm])[jt]s?(x)",
-      "**/*.config.*.?([cm])[jt]s?(x)",
+      "**/*.config.{,[cm]}[jt]s{,x}",
+      "**/*.config.*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/config-files",
     "rules": [

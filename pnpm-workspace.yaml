@@ -28,6 +28,7 @@ minimumReleaseAgeExclude:
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - cached-factory@0.1.0
+  - oxlint-flat-config@0.4.0
 
 update:
   ignoreDeps:
@@ -62,6 +63,7 @@ catalogs:
     eslint-typegen: ^2.3.1
     jiti: ^2.7.0
     lint-staged: ^17.6.0
+    oxlint-tsgolint: ^7.0.2005
     pnpm-workspace-yaml: ^1.9.1
     semver: ^7.8.5
     simple-git-hooks: ^2.14.0
@@ -100,6 +102,8 @@ catalogs:
     eslint-plugin-sonarjs: ^4.2.2
     eslint-plugin-svelte: ^3.23.1
     eslint-plugin-vuejs-accessibility: ^2.6.3
+    oxlint: ^1.89.0
+    oxlint-flat-config: ^0.4.0
     prettier-plugin-astro: ^1.1.1
     prettier-plugin-slidev: ^1.0.5
     svelte: ^5.57.2

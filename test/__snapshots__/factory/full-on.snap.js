@@ -172,7 +172,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/node/rules",
     "rules": [
@@ -194,7 +194,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/jsdoc/rules",
     "rules": [
@@ -274,7 +274,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/unicorn/rules",
     "rules": [
@@ -297,8 +297,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}jsx",
+      "**/*.{,[cm]}tsx",
     ],
     "languageOptions": {
       "parserOptions": {
@@ -357,8 +357,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
       "**/*.vue",
     ],
     "languageOptions": {
@@ -374,8 +374,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
     ],
     "ignores": [
       "**/*.md/**",
@@ -394,8 +394,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
       "**/*.vue",
     ],
     "name": "antfu/typescript/rules",
@@ -467,8 +467,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
     ],
     "ignores": [
       "**/*.md/**",
@@ -524,22 +524,22 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
       "**/*.{c,le,sc}ss",
       "**/*.json",
       "**/*.json5",
       "**/*.md",
-      "**/*.svelte?(.{js,ts})",
+      "**/*.svelte{,.js,.ts}",
       "**/*.vue",
-      "**/*.y?(a)ml",
+      "**/*.{yml,yaml}",
       "**/*.xml",
-      "**/*.htm?(l)",
+      "**/*.{htm,html}",
       "**/*.jsonc",
       "**/*.toml",
       "**/*.{g,graph}ql",
     ],
     "ignores": [
-      "**/*.md/**/*.?([cm])[jt]s?(x)",
+      "**/*.md/**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/antislop/rules/universal",
     "rules": [
@@ -548,7 +548,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/antislop/rules/javascript",
     "rules": [
@@ -756,11 +756,11 @@
   },
   {
     "files": [
-      "**/__tests__/**/*.?([cm])[jt]s?(x)",
-      "**/*.spec.?([cm])[jt]s?(x)",
-      "**/*.test.?([cm])[jt]s?(x)",
-      "**/*.bench.?([cm])[jt]s?(x)",
-      "**/*.benchmark.?([cm])[jt]s?(x)",
+      "**/__tests__/**/*.{,[cm]}[jt]s{,x}",
+      "**/*.spec.{,[cm]}[jt]s{,x}",
+      "**/*.test.{,[cm]}[jt]s{,x}",
+      "**/*.bench.{,[cm]}[jt]s{,x}",
+      "**/*.benchmark.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/test/rules",
     "rules": [
@@ -999,7 +999,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "languageOptions": {
       "parserOptions": {
@@ -1081,8 +1081,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
     ],
     "name": "antfu/react/typescript",
     "rules": [
@@ -1092,8 +1092,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}ts",
+      "**/*.{,[cm]}tsx",
     ],
     "ignores": [
       "**/*.md/**",
@@ -1112,7 +1112,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])[jt]s?(x)",
+      "**/*.{,[cm]}[jt]s{,x}",
     ],
     "languageOptions": {
       "parserOptions": {
@@ -1161,8 +1161,8 @@
   },
   {
     "files": [
-      "**/*.?([cm])jsx",
-      "**/*.?([cm])tsx",
+      "**/*.{,[cm]}jsx",
+      "**/*.{,[cm]}tsx",
     ],
     "languageOptions": {
       "parser": "typescript-eslint/parser",
@@ -1204,7 +1204,7 @@
   },
   {
     "files": [
-      "**/*.svelte?(.{js,ts})",
+      "**/*.svelte{,.js,.ts}",
     ],
     "languageOptions": {
       "parser": "svelte-eslint-parser",
@@ -1332,7 +1332,7 @@
   },
   {
     "files": [
-      "**/*.?([cm])ts",
+      "**/*.{,[cm]}ts",
     ],
     "name": "antfu/angular/rules/ts",
     "processor": "extract-inline-html",
@@ -1353,7 +1353,7 @@
   },
   {
     "files": [
-      "**/*.htm?(l)",
+      "**/*.{htm,html}",
     ],
     "languageOptions": {
       "parser": "angular-eslint/template-parser",
@@ -1513,7 +1513,7 @@
   },
   {
     "files": [
-      "**/*.y?(a)ml",
+      "**/*.{yml,yaml}",
     ],
     "languageOptions": {
       "parser": "yaml-eslint-parser",
@@ -1629,7 +1629,7 @@
   },
   {
     "files": [
-      "**/*.md/**/*.?([cm])[jt]s?(x)",
+      "**/*.md/**/*.{,[cm]}[jt]s{,x}",
       "**/*.md/**/*.vue",
     ],
     "languageOptions": {
@@ -1714,7 +1714,7 @@
   },
   {
     "files": [
-      "**/*.htm?(l)",
+      "**/*.{htm,html}",
     ],
     "languageOptions": {
       "parser": "parser-plain",
@@ -1803,7 +1803,7 @@
   },
   {
     "files": [
-      "**/scripts/**/*.?([cm])[jt]s?(x)",
+      "**/scripts/**/*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/scripts",
     "rules": [
@@ -1814,8 +1814,8 @@
   },
   {
     "files": [
-      "**/cli/**/*.?([cm])[jt]s?(x)",
-      "**/cli.?([cm])[jt]s?(x)",
+      "**/cli/**/*.{,[cm]}[jt]s{,x}",
+      "**/cli.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/cli",
     "rules": [
@@ -1826,7 +1826,7 @@
   {
     "files": [
       "**/bin/**/*",
-      "**/bin.?([cm])[jt]s?(x)",
+      "**/bin.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/bin",
     "rules": [
@@ -1836,7 +1836,7 @@
   },
   {
     "files": [
-      "**/*.d.?([cm])ts",
+      "**/*.d.{,[cm]}ts",
     ],
     "name": "antfu/disables/dts",
     "rules": [
@@ -1857,8 +1857,8 @@
   },
   {
     "files": [
-      "**/*.config.?([cm])[jt]s?(x)",
-      "**/*.config.*.?([cm])[jt]s?(x)",
+      "**/*.config.{,[cm]}[jt]s{,x}",
+      "**/*.config.*.{,[cm]}[jt]s{,x}",
     ],
     "name": "antfu/disables/config-files",
     "rules": [

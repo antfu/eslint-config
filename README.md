@@ -916,13 +916,16 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   { type: 'app' },
   {
-    files: ['packages/libs/**/*.?([cm])ts', 'packages/libs/**/*.?([cm])tsx'],
+    files: ['packages/libs/**/*.{,[cm]}ts', 'packages/libs/**/*.{,[cm]}tsx'],
     rules: {
-      'ts/explicit-function-return-type': ['error', {
-        allowExpressions: true,
-        allowHigherOrderFunctions: true,
-        allowIIFEs: true,
-      }],
+      'ts/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: true,
+          allowHigherOrderFunctions: true,
+          allowIIFEs: true,
+        }
+      ],
     },
   },
 )
@@ -948,7 +951,7 @@ export default antfu({
 ```
 
 Type aware rules apply to TypeScript and TSX files by default, using
-`['**/*.?([cm])ts', '**/*.?([cm])tsx']`. Vue files are excluded by default because
+`['**/*.{,[cm]}ts', '**/*.{,[cm]}tsx']`. Vue files are excluded by default because
 type aware linting can substantially increase lint time. To opt in for Vue files,
 enable Vue support and include them in `filesTypeAware` while retaining the
 TypeScript and TSX patterns:
@@ -961,10 +964,42 @@ export default antfu({
   vue: true,
   typescript: {
     tsconfigPath: 'tsconfig.json',
-    filesTypeAware: ['**/*.?([cm])ts', '**/*.?([cm])tsx', '**/*.vue'],
+    filesTypeAware: ['**/*.{,[cm]}ts', '**/*.{,[cm]}tsx', '**/*.vue'],
   },
 })
 ```
+
+### Oxlint (Experimental)
+
+You can run this config with [Oxlint](https://oxc.rs/docs/guide/usage/linter.html). `toOxlint()` converts the config to Oxlint's format with [`oxlint-flat-config`](https://github.com/liangmiQwQ/oxlint-flat-config). Rules that Oxlint has ported run natively. The rest run their original ESLint plugins as [Oxlint JS plugins](https://oxc.rs/docs/guide/usage/linter/js-plugins.html). If `oxlint` and `oxlint-flat-config` are missing, you'll be prompted to install them.
+
+```ts
+// oxlint.config.ts
+import antfu from '@antfu/eslint-config'
+import { toOxlint } from '@antfu/eslint-config/oxlint'
+
+export default await toOxlint(
+  antfu({
+    // same options as in eslint.config.js
+  }),
+  // optionally, more Oxlint flat config objects
+)
+```
+
+For [type aware rules](#type-aware-rules), also install `oxlint-tsgolint` and pass `{ options: { typeAware: true } }` to `toOxlint()`.
+
+For JS, TS, JSX and TSX files, `oxlint --fix` produces the same output as ESLint on our [fixtures](./fixtures/oxlint). The current limitations:
+
+- **Only JS and TS are fully linted.** In Vue, Svelte and Astro files, Oxlint only lints the `<script>` blocks. Template rules are dropped (117 of the 150 `vue/*` rules in the default Vue setup). Variables that are only used in the template are reported as unused.
+- **Some files are not linted at all.** This covers Markdown (including its code blocks), JSON, YAML, TOML, `pnpm-workspace.yaml`, and everything handled by [formatters](#formatters). All of them need a custom parser, and Oxlint JS plugins don't support custom parsers yet.
+- **No speed-up for now.** In a TypeScript project, 136 of the 309 enabled rules run natively. The other 173 run as JS plugins, mostly `style/*`, `regexp/*`, `antfu/*` and `e18e/*`. Loading the config also imports every ESLint plugin. On this repo (~60 files), `oxlint` takes about as long as `eslint`, and most of that time goes to loading the config.
+- **`oxlint --fix` applies a single pass.** ESLint repeats fixes up to 10 times. Run `oxlint --fix` again until nothing changes. Our fixtures need up to 7 passes.
+- **Some rules get new names.** Oxlint reserves the names of its built-in plugins. When a rule has no native port, its plugin is loaded under a `-js` suffix: `eslint-js/*`, `unicorn-js/*`, `jsdoc-js/*`, `node-js/*`, `import-js/*`, `jsx-a11y-js/*` and `react-js/*`. Disable comments for these rules must use the new name.
+- **Native ports can differ.** Native ports can behave a bit differently from the original rules. Rules whose options Oxlint rejects fall back to the JS plugin.
+- **No extglobs.** Oxlint doesn't support extglob patterns like `?(x)` in `files` or `ignores`. Write braces like `{,x}` instead. This config's own globs only use braces.
+- **Some ESLint config fields are dropped.** Only `files`, `ignores`, `rules`, `settings` (unscoped only) and `languageOptions.globals` are kept. Oxlint lints every JS/TS-like file it finds, even when an option like `typescript: false` would make ESLint skip it.
+
+Track the progress of official support in [Oxlint Integration Plan](https://github.com/antfu/eslint-config/issues/767).
 
 ### Prettier
 
@@ -1076,7 +1111,7 @@ Well, you can still use Prettier to format files that are not supported well by 
 
 ### oxlint?
 
-We do have a plan to integrate [oxlint](https://github.com/oxc-project/oxc) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
+We do have a plan to integrate [oxlint](https://github.com/oxc-project/oxc) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767). Meanwhile, you can try the [experimental Oxlint support](#oxlint-experimental).
 
 ### dprint?
 
