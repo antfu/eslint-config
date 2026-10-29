@@ -159,6 +159,7 @@ export function isInEditorEnv(): boolean {
 export function isInGitHooksOrLintStaged(): boolean {
   return !!(
     process.env.GIT_PARAMS
+    || process.env.GIT_INDEX_FILE
     || process.env.VSCODE_GIT_COMMAND
     || process.env.npm_lifecycle_script?.startsWith('lint-staged')
   )
