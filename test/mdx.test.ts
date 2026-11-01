@@ -1,4 +1,6 @@
 import type { OptionsMarkdown } from '../src/types'
+import fs from 'node:fs/promises'
+import { resolve } from 'node:path'
 import { ESLint } from 'eslint'
 import { describe, expect, it } from 'vitest'
 import { antfu } from '../src'
@@ -46,6 +48,24 @@ describe('markdown mdx', () => {
         ruleId: 'no-undef',
       }),
     ])
+  })
+
+  it('formats Markdown with eslint-plugin-mdx', async () => {
+    const input = await fs.readFile('fixtures/input/markdown.md', 'utf8')
+    const configs = await antfu({
+      formatters: false,
+      markdown: { parser: 'mdx' },
+      react: false,
+      typescript: false,
+    })
+    const eslint = new ESLint({
+      fix: true,
+      overrideConfigFile: true,
+      overrideConfig: configs as any,
+    })
+    const [result] = await eslint.lintText(input, { filePath: 'fixtures/input/markdown.md' })
+
+    await expect(result.output).toMatchFileSnapshot(resolve('fixtures/output/mdx-markdown/markdown.md'))
   })
 
   it('uses eslint-plugin-mdx for Markdown only when requested', async () => {
