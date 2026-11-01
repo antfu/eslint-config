@@ -127,13 +127,6 @@ export interface OptionsFormatters {
   markdown?: 'prettier' | 'dprint' | boolean
 
   /**
-   * Enable formatting support for MDX.
-   *
-   * Currently only support Prettier.
-   */
-  mdx?: 'prettier' | boolean
-
-  /**
    * Enable formatting support for GraphQL.
    */
   graphql?: 'prettier' | boolean
@@ -259,6 +252,15 @@ export interface OptionsMarkdown extends OptionsOverrides {
    * @default true
    */
   gfm?: boolean
+
+  /**
+   * Parser used for Markdown (`.md`) files.
+   *
+   * Use `mdx` to parse them with `eslint-plugin-mdx`.
+   *
+   * @default 'markdown'
+   */
+  parser?: 'markdown' | 'mdx'
 
   /**
    * Override rules for markdown itself.

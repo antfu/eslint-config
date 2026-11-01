@@ -91,6 +91,7 @@ export interface OptionsJSX {
 export interface OptionsJSXA11y extends OptionsOverrides {}
 export interface OptionsMarkdown extends OptionsOverrides {
   gfm?: boolean;
+  parser?: 'markdown' | 'mdx';
   overridesMarkdown?: TypedFlatConfigItem['rules'];
 }
 export interface OptionsOverrides {
@@ -616,6 +617,7 @@ export interface RuleOptions {
   'max-params'?: Linter.RuleEntry<MaxParams>;
   'max-statements'?: Linter.RuleEntry<MaxStatements>;
   'max-statements-per-line'?: Linter.RuleEntry<MaxStatementsPerLine>;
+  'mdx/remark'?: Linter.RuleEntry<[]>;
   'multiline-comment-style'?: Linter.RuleEntry<MultilineCommentStyle>;
   'multiline-ternary'?: Linter.RuleEntry<MultilineTernary>;
   'new-cap'?: Linter.RuleEntry<NewCap>;
@@ -2642,7 +2644,7 @@ export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
 
 // #region Types
 export type Awaitable<T> = T | Promise<T>;
-export type ConfigNames = 'antfu/gitignore' | 'antfu/ignores' | 'antfu/javascript/setup' | 'antfu/javascript/rules' | 'antfu/eslint-comments/rules' | 'antfu/command/rules' | 'antfu/perfectionist/setup' | 'antfu/node/setup' | 'antfu/node/rules' | 'antfu/jsdoc/setup' | 'antfu/jsdoc/rules' | 'antfu/imports/rules' | 'antfu/e18e/rules' | 'antfu/unicorn/setup' | 'antfu/unicorn/rules' | 'antfu/jsx/setup' | 'antfu/typescript/setup' | 'antfu/typescript/parser' | 'antfu/typescript/type-aware-parser' | 'antfu/typescript/rules' | 'antfu/typescript/rules-type-aware' | 'antfu/typescript/erasable-syntax-only' | 'antfu/antislop/setup' | 'antfu/antislop/rules/universal' | 'antfu/antislop/rules/javascript' | 'antfu/stylistic/rules' | 'antfu/regexp/rules' | 'antfu/test/setup' | 'antfu/test/rules' | 'antfu/vue/setup' | 'antfu/vue/rules' | 'antfu/react/setup' | 'antfu/react/rules' | 'antfu/react/typescript' | 'antfu/react/type-aware-rules' | 'antfu/nextjs/setup' | 'antfu/nextjs/rules' | 'antfu/solid/setup' | 'antfu/solid/rules' | 'antfu/svelte/setup' | 'antfu/svelte/rules' | 'antfu/unocss' | 'antfu/astro/setup' | 'antfu/astro/rules' | 'antfu/angular/setup' | 'antfu/angular/rules/ts' | 'antfu/angular/rules/template' | 'antfu/jsonc/setup' | 'antfu/jsonc/rules' | 'antfu/sort/package-json' | 'antfu/sort/tsconfig-json' | 'antfu/pnpm/package-json' | 'antfu/pnpm/pnpm-workspace-yaml' | 'antfu/pnpm/pnpm-workspace-yaml-stylistic' | 'antfu/pnpm/pnpm-workspace-yaml-sort' | 'antfu/yaml/setup' | 'antfu/yaml/rules' | 'antfu/toml/setup' | 'antfu/toml/rules' | 'antfu/markdown/setup' | 'antfu/markdown/processor' | 'antfu/markdown/parser' | 'antfu/markdown/rules' | 'antfu/markdown/disables/code' | 'antfu/formatter/setup' | 'antfu/formatter/css' | 'antfu/formatter/scss' | 'antfu/formatter/less' | 'antfu/formatter/html' | 'antfu/formatter/xml' | 'antfu/formatter/svg' | 'antfu/formatter/markdown' | 'antfu/formatter/astro' | 'antfu/formatter/astro/disables' | 'antfu/formatter/graphql' | 'antfu/disables/scripts' | 'antfu/disables/cli' | 'antfu/disables/bin' | 'antfu/disables/dts' | 'antfu/disables/cjs' | 'antfu/disables/config-files';
+export type ConfigNames = 'antfu/gitignore' | 'antfu/ignores' | 'antfu/javascript/setup' | 'antfu/javascript/rules' | 'antfu/eslint-comments/rules' | 'antfu/command/rules' | 'antfu/perfectionist/setup' | 'antfu/node/setup' | 'antfu/node/rules' | 'antfu/jsdoc/setup' | 'antfu/jsdoc/rules' | 'antfu/imports/rules' | 'antfu/e18e/rules' | 'antfu/unicorn/setup' | 'antfu/unicorn/rules' | 'antfu/jsx/setup' | 'antfu/typescript/setup' | 'antfu/typescript/parser' | 'antfu/typescript/type-aware-parser' | 'antfu/typescript/rules' | 'antfu/typescript/rules-type-aware' | 'antfu/typescript/erasable-syntax-only' | 'antfu/antislop/setup' | 'antfu/antislop/rules/universal' | 'antfu/antislop/rules/javascript' | 'antfu/stylistic/rules' | 'antfu/regexp/rules' | 'antfu/test/setup' | 'antfu/test/rules' | 'antfu/vue/setup' | 'antfu/vue/rules' | 'antfu/react/setup' | 'antfu/react/rules' | 'antfu/react/typescript' | 'antfu/react/type-aware-rules' | 'antfu/nextjs/setup' | 'antfu/nextjs/rules' | 'antfu/solid/setup' | 'antfu/solid/rules' | 'antfu/svelte/setup' | 'antfu/svelte/rules' | 'antfu/unocss' | 'antfu/astro/setup' | 'antfu/astro/rules' | 'antfu/angular/setup' | 'antfu/angular/rules/ts' | 'antfu/angular/rules/template' | 'antfu/jsonc/setup' | 'antfu/jsonc/rules' | 'antfu/sort/package-json' | 'antfu/sort/tsconfig-json' | 'antfu/pnpm/package-json' | 'antfu/pnpm/pnpm-workspace-yaml' | 'antfu/pnpm/pnpm-workspace-yaml-stylistic' | 'antfu/pnpm/pnpm-workspace-yaml-sort' | 'antfu/yaml/setup' | 'antfu/yaml/rules' | 'antfu/toml/setup' | 'antfu/toml/rules' | 'antfu/markdown/mdx' | 'antfu/markdown/setup' | 'antfu/markdown/processor' | 'antfu/markdown/parser' | 'antfu/markdown/rules' | 'antfu/markdown/disables/code' | 'antfu/formatter/setup' | 'antfu/formatter/css' | 'antfu/formatter/scss' | 'antfu/formatter/less' | 'antfu/formatter/html' | 'antfu/formatter/xml' | 'antfu/formatter/svg' | 'antfu/formatter/markdown' | 'antfu/formatter/mdx' | 'antfu/formatter/astro' | 'antfu/formatter/astro/disables' | 'antfu/formatter/graphql' | 'antfu/disables/scripts' | 'antfu/disables/cli' | 'antfu/disables/bin' | 'antfu/disables/dts' | 'antfu/disables/cjs' | 'antfu/disables/config-files';
 export type OptionsTypescript = (OptionsTypeScriptWithTypes & OptionsOverrides & OptionsTypeScriptErasableOnly) | (OptionsTypeScriptParserOptions & OptionsOverrides & OptionsTypeScriptErasableOnly);
 export type ResolvedOptions<T> = T extends boolean ? never : NonNullable<T>;
 export type Rules = Record<string, Linter.RuleEntry<any> | undefined> & RuleOptions;
@@ -2662,7 +2664,7 @@ export declare function command(): Promise<TypedFlatConfigItem[]>;
 export declare function comments(): Promise<TypedFlatConfigItem[]>;
 export declare function disables(): Promise<TypedFlatConfigItem[]>;
 export declare function ensurePackages(_: (string | undefined)[]): Promise<void>;
-export declare function formatters(_?: OptionsFormatters | true, _?: StylisticConfig): Promise<TypedFlatConfigItem[]>;
+export declare function formatters(_?: OptionsFormatters | true, _?: StylisticConfig, _?: boolean, _?: boolean): Promise<TypedFlatConfigItem[]>;
 export declare function getOverrides<K extends keyof OptionsConfig>(_: OptionsConfig, _: K): Partial<Linter.RulesRecord & RuleOptions>;
 export declare function ignores(_?: string[] | ((_: string[]) => string[]), _?: boolean): Promise<TypedFlatConfigItem[]>;
 export declare function imports(_?: OptionsOverrides & OptionsStylistic): Promise<TypedFlatConfigItem[]>;
@@ -2730,6 +2732,8 @@ export declare const GLOB_LESS: string;
 export declare const GLOB_MARKDOWN: string;
 export declare const GLOB_MARKDOWN_CODE: string;
 export declare const GLOB_MARKDOWN_IN_MARKDOWN: string;
+export declare const GLOB_MDX: string;
+export declare const GLOB_MDX_CODE: string;
 export declare const GLOB_POSTCSS: string;
 export declare const GLOB_SCSS: string;
 export declare const GLOB_SRC: string;

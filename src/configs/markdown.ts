@@ -1,121 +1,143 @@
-import type { Linter } from 'eslint'
+import type { OptionsComponentExts, OptionsFiles, OptionsMarkdown, TypedFlatConfigItem } from '../types'
+
+import { mergeProcessors, processorPassThrough } from 'eslint-merge-processors'
+import { GLOB_MARKDOWN, GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_IN_MARKDOWN, GLOB_MDX, GLOB_MDX_CODE } from '../globs'
+
 import { interopDefault } from '../utils'
-import type { FlatConfigItem, OptionsComponentExts, OptionsFiles, OptionsOverrides } from '../types'
-import { GLOB_MARKDOWN_CODE, GLOB_MARKDOWN_OR_MDX } from '../globs'
 
 export async function markdown(
-  options: OptionsFiles & OptionsComponentExts & OptionsOverrides = {},
-): Promise<FlatConfigItem[]> {
+  options: OptionsFiles & OptionsComponentExts & OptionsMarkdown = {},
+): Promise<TypedFlatConfigItem[]> {
   const {
     componentExts = [],
+    files = [GLOB_MARKDOWN],
+    gfm = true,
     overrides = {},
+    overridesMarkdown = {},
+    parser = 'markdown',
   } = options
 
-  const mdx = await interopDefault(import('eslint-plugin-mdx'))
-  const mdxParser = mdx.configs.flat.languageOptions!.parser!
+  const configs: TypedFlatConfigItem[] = []
 
-  const patchedParser: Linter.ParserModule = {
-    ...mdxParser,
-    parse(text, options) {
-      // @ts-expect-error cast
-      const result = mdxParser.parseForESLint!(text, options)
-      const body = result.ast.body
+  const codeBlocks: TypedFlatConfigItem = {
+    files: [
+      GLOB_MARKDOWN_CODE,
+      GLOB_MDX_CODE,
+      ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`),
+      ...componentExts.map(ext => `${GLOB_MDX}/**/*.${ext}`),
+    ],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          impliedStrict: true,
+        },
+      },
+    },
+    name: 'antfu/markdown/disables/code',
+    rules: {
+      'antfu/no-top-level-await': 'off',
 
-      function predicate(token: { start: number, end: number }) {
-        for (const node of body) {
-          if (node.start <= token.start! && node.end >= token.end!)
-            return true
-        }
-        return false
-      }
+      'e18e/prefer-static-regex': 'off',
 
-      // `eslint-mdx` produces extra tokens that are not presented in the AST, causing rules like `indent` to fail
-      result.ast.tokens = result.ast.tokens.filter(predicate)
-      result.ast.comments = result.ast.comments.filter(predicate)
+      'no-alert': 'off',
+      'no-console': 'off',
+      'no-labels': 'off',
+      'no-lone-blocks': 'off',
+      'no-restricted-syntax': 'off',
+      'no-undef': 'off',
+      'no-unused-expressions': 'off',
+      'no-unused-labels': 'off',
 
-      return result
+      'no-unused-vars': 'off',
+
+      'node/prefer-global/process': 'off',
+
+      'style/comma-dangle': 'off',
+      'style/eol-last': 'off',
+      'style/padding-line-between-statements': 'off',
+
+      'ts/consistent-type-imports': 'off',
+      'ts/explicit-function-return-type': 'off',
+      'ts/no-namespace': 'off',
+      'ts/no-redeclare': 'off',
+      'ts/no-require-imports': 'off',
+      'ts/no-unused-expressions': 'off',
+      'ts/no-unused-vars': 'off',
+      'ts/no-use-before-define': 'off',
+
+      'unicode-bom': 'off',
+      'unused-imports/no-unused-imports': 'off',
+      'unused-imports/no-unused-vars': 'off',
+
+      ...overrides,
     },
   }
 
-  // @ts-expect-error cast
-  patchedParser.parseForESLint = patchedParser.parse
-
-  return [
-    {
-      files: [GLOB_MARKDOWN_OR_MDX],
-      languageOptions: {
-        ecmaVersion: 'latest',
-        globals: {
-          React: false,
-        },
-        parser: patchedParser,
-        sourceType: 'module',
-      },
-      name: 'antfu:markdown-mdx:setup',
-      plugins: {
-        mdx,
-      },
-      processor: mdx.createRemarkProcessor({
-        lintCodeBlocks: true,
-      }),
-      rules: {
-        'mdx/remark': 'warn',
-        'no-unused-expressions': 'error',
-
-        // Those rules are not compatible with MDX
-        // 'style/indent': 'off',
-        'style/jsx-closing-bracket-location': 'off',
-        // 'style/jsx-indent': 'off',
-      },
-    },
-    {
-      files: [
-        GLOB_MARKDOWN_CODE,
-        ...componentExts.map(ext => `${GLOB_MARKDOWN_OR_MDX}/**/*.${ext}`),
-      ],
-      languageOptions: {
-        parserOptions: {
-          ecmaFeatures: {
-            impliedStrict: true,
-          },
-        },
-      },
-      name: 'antfu:markdown-mdx:code-blocks',
-      rules: {
-        'import/newline-after-import': 'off',
-
-        'no-alert': 'off',
-        'no-console': 'off',
-        'no-labels': 'off',
-        'no-lone-blocks': 'off',
-        'no-restricted-syntax': 'off',
-        'no-undef': 'off',
-        'no-unused-expressions': 'off',
-        'no-unused-labels': 'off',
-
-        'no-unused-vars': 'off',
-
-        'node/prefer-global/process': 'off',
-
-        'style/comma-dangle': 'off',
-        'style/eol-last': 'off',
-        'style/padding-line-between-statements': 'off',
-
-        'ts/consistent-type-imports': 'off',
-        'ts/explicit-function-return-type': 'off',
-        'ts/no-namespace': 'off',
-        'ts/no-redeclare': 'off',
-        'ts/no-require-imports': 'off',
-        'ts/no-unused-expressions': 'off',
-        'ts/no-unused-vars': 'off',
-        'ts/no-use-before-define': 'off',
-
-        'unicode-bom': 'off',
-        'unused-imports/no-unused-imports': 'off',
-        'unused-imports/no-unused-vars': 'off',
-
-        ...overrides,
-      },
-    },
+  const mdxFiles = [
+    ...(parser === 'mdx'
+      ? files
+      : []),
+    GLOB_MDX,
   ]
+
+  if (mdxFiles.length > 0) {
+    const mdxPlugin = await interopDefault(import('eslint-plugin-mdx'))
+
+    configs.push({
+      ...mdxPlugin.configs.flat,
+      files: mdxFiles,
+      name: 'antfu/markdown/mdx',
+      rules: {
+        ...mdxPlugin.configs.flat.rules,
+        ...overridesMarkdown,
+      },
+    })
+  }
+
+  if (parser === 'markdown') {
+    const markdown = await interopDefault(import('@eslint/markdown'))
+
+    configs.push(
+      {
+        name: 'antfu/markdown/setup',
+        plugins: {
+          markdown,
+        },
+      },
+      {
+        files,
+        ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
+        name: 'antfu/markdown/processor',
+        /**
+         * `eslint-plugin-markdown` only creates virtual files for code blocks,
+         * but not the markdown file itself. We use `eslint-merge-processors` to
+         * add a pass-through processor for the markdown file itself.
+         */
+        processor: mergeProcessors([
+          markdown.processors!.markdown,
+          processorPassThrough,
+        ]),
+      },
+      {
+        files,
+        language: gfm ? 'markdown/gfm' : 'markdown/commonmark',
+        name: 'antfu/markdown/parser',
+      },
+      {
+        files,
+        name: 'antfu/markdown/rules',
+        rules: {
+          ...markdown.configs.recommended.at(0)?.rules,
+          'markdown/fenced-code-language': 'off',
+          /** https://github.com/eslint/markdown/issues/294 */
+          'markdown/no-missing-label-refs': 'off',
+          ...overridesMarkdown,
+        },
+      },
+    )
+  }
+
+  configs.push(codeBlocks)
+
+  return configs
 }

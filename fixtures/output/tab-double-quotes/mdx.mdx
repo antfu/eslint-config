@@ -1,4 +1,4 @@
-import { Baz } from "./Fixture"
+import { Bar, Baz, Foo } from "./Fixture"
 
 export const foo = {
 	hi: `Fudge ${Baz.displayName || "Baz"}`,
@@ -16,18 +16,18 @@ export const hello = "hello"
 
 { /* I'm a comment */ }
 
-	<Foo bg="red">
-		<Bar>hi    </Bar>
-       { hello }
-       { /* another comment */}
-	</Foo>
+<Foo bg="red">
+	<Bar>hi    </Bar>
+	{ hello }
+	{ /* another comment */}
+</Foo>
 
 ```
 test codeblock
 ```
 
 ```js
-module.exports = "test"
+module.exports = 'test'
 ```
 
 ```sh

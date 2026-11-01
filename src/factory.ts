@@ -407,17 +407,33 @@ export function antfu(
     configs.push(
       markdown({
         componentExts,
+        ...typeof options.markdown === 'object'
+          ? options.markdown
+          : {},
         overrides: getOverrides(options, 'markdown'),
       }),
     )
   }
 
   if (options.formatters) {
-    configs.push(formatters(
-      options.formatters,
-      typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
-      options.markdown !== false,
-    ))
+    configs.push(
+      formatters(
+        options.formatters,
+        typeof stylisticOptions === 'boolean'
+          ? {}
+          : stylisticOptions,
+        typeof options.markdown === 'object' && options.markdown.parser === 'mdx',
+        options.markdown !== false,
+      ),
+    )
+  }
+
+  configs.push(
+    disables(),
+  )
+
+  if ('files' in options) {
+    throw new Error('[@antfu/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.')
   }
 
   // User can optionally pass a flat config item to the first argument

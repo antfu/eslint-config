@@ -910,6 +910,29 @@
     ],
   },
   {
+    "files": [
+      "**/*.mdx",
+    ],
+    "languageOptions": {
+      "parser": "eslint-mdx",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true,
+        },
+      },
+    },
+    "name": "antfu/markdown/mdx",
+    "plugins": [
+      "mdx",
+    ],
+    "processor": "mdx/remark",
+    "rules": [
+      "mdx/remark",
+      "no-unused-expressions",
+      "- react/react-in-jsx-scope",
+    ],
+  },
+  {
     "name": "antfu/markdown/setup",
     "plugins": [
       "markdown",
@@ -960,7 +983,9 @@
   {
     "files": [
       "**/*.md/**/*.?([cm])[jt]s?(x)",
+      "**/*.mdx/**/*.?([cm])[jt]s?(x)",
       "**/*.md/**/*.vue",
+      "**/*.mdx/**/*.vue",
     ],
     "languageOptions": {
       "parserOptions": {
