@@ -11,7 +11,7 @@ export async function command() {}
 export async function comments() {}
 export async function disables() {}
 export async function ensurePackages(_) {}
-export async function formatters(_, _) {}
+export async function formatters(_, _, _, _) {}
 export function getOverrides(_, _) {}
 export async function ignores(_, _) {}
 export async function imports(_) {}
@@ -68,6 +68,8 @@ export var GLOB_LESS /* const */
 export var GLOB_MARKDOWN /* const */
 export var GLOB_MARKDOWN_CODE /* const */
 export var GLOB_MARKDOWN_IN_MARKDOWN /* const */
+export var GLOB_MDX /* const */
+export var GLOB_MDX_CODE /* const */
 export var GLOB_POSTCSS /* const */
 export var GLOB_SCSS /* const */
 export var GLOB_SRC /* const */

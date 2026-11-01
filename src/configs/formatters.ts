@@ -2,7 +2,7 @@ import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '..
 import type { VendoredPrettierOptions, VendoredPrettierRuleOptions } from '../vender/prettier-types'
 
 import { isPackageExists } from 'local-pkg'
-import { GLOB_ASTRO, GLOB_ASTRO_TS, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_SVG, GLOB_XML } from '../globs'
+import { GLOB_ASTRO, GLOB_ASTRO_TS, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_MDX, GLOB_POSTCSS, GLOB_SCSS, GLOB_SVG, GLOB_XML } from '../globs'
 
 import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils'
 import { StylisticConfigDefaults } from './stylistic'
@@ -86,6 +86,8 @@ function buildMarkdownConfigs(
   options: OptionsFormatters,
   prettierOptions: VendoredPrettierOptions,
   dprintOptions: Record<string, unknown>,
+  markdownMdx: boolean,
+  mdxEnabled: boolean,
 ): TypedFlatConfigItem[] {
   const formater = options.markdown === true
     ? 'prettier'
@@ -101,9 +103,13 @@ function buildMarkdownConfigs(
     {
       files: [GLOB_MARKDOWN],
       ignores: GLOB_SLIDEV,
-      languageOptions: {
-        parser: parserPlain,
-      },
+      ...(markdownMdx
+        ? {}
+        : {
+            languageOptions: {
+              parser: parserPlain,
+            },
+          }),
       name: 'antfu/formatter/markdown',
       rules: {
         [`format/${formater}`]: [
@@ -138,6 +144,22 @@ function buildMarkdownConfigs(
             plugins: [
               'prettier-plugin-slidev',
             ],
+          }),
+        ],
+      },
+    })
+  }
+
+  if (mdxEnabled && formater === 'prettier') {
+    configs.push({
+      files: [GLOB_MDX],
+      name: 'antfu/formatter/mdx',
+      rules: {
+        'format/prettier': [
+          'error',
+          mergePrettierOptions(prettierOptions, {
+            embeddedLanguageFormatting: 'off',
+            parser: 'mdx',
           }),
         ],
       },
@@ -252,6 +274,8 @@ function getFormattersPackagesToEnsure(options: OptionsFormatters): (string | un
 export async function formatters(
   rawOptions: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  markdownMdx = false,
+  mdxEnabled = true,
 ): Promise<TypedFlatConfigItem[]> {
   const options = resolveFormattersOptions(rawOptions)
 
@@ -328,7 +352,7 @@ export async function formatters(
     configs.push(buildXmlLikeConfig(prettierOptions, prettierXmlOptions, [GLOB_SVG], 'antfu/formatter/svg'))
 
   if (options.markdown)
-    configs.push(...buildMarkdownConfigs(options, prettierOptions, dprintOptions))
+    configs.push(...buildMarkdownConfigs(options, prettierOptions, dprintOptions, markdownMdx, mdxEnabled))
 
   if (options.astro)
     configs.push(...buildAstroConfigs(prettierOptions))

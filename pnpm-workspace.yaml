@@ -24,10 +24,13 @@ minimumReleaseAgeExclude:
   - eslint-plugin-react-x@5.28.6
   - jsdoc-type-pratt-parser@9.4.0
   - svelte-eslint-parser@1.10.0
+  - eslint-mdx@3.9.0
+  - eslint-plugin-mdx@3.9.0
 
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - cached-factory@0.1.0
+  - undici-types@6.21.0
 
 update:
   ignoreDeps:
@@ -125,6 +128,7 @@ catalogs:
     eslint-plugin-import-lite: ^0.6.0
     eslint-plugin-jsdoc: ^65.4.1
     eslint-plugin-jsonc: ^3.4.2
+    eslint-plugin-mdx: ^3.9.0
     eslint-plugin-n: ^18.5.0
     eslint-plugin-no-only-tests: ^3.4.0
     eslint-plugin-perfectionist: ^5.13.0

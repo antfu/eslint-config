@@ -254,6 +254,15 @@ export interface OptionsMarkdown extends OptionsOverrides {
   gfm?: boolean
 
   /**
+   * Parser used for Markdown (`.md`) files.
+   *
+   * Use `mdx` to parse them with `eslint-plugin-mdx`.
+   *
+   * @default 'markdown'
+   */
+  parser?: 'markdown' | 'mdx'
+
+  /**
    * Override rules for markdown itself.
    */
   overridesMarkdown?: TypedFlatConfigItem['rules']

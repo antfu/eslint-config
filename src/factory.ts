@@ -407,6 +407,9 @@ export function antfu(
     configs.push(
       markdown({
         componentExts,
+        ...typeof options.markdown === 'object'
+          ? options.markdown
+          : {},
         overrides: getOverrides(options, 'markdown'),
       }),
     )
@@ -419,6 +422,8 @@ export function antfu(
         typeof stylisticOptions === 'boolean'
           ? {}
           : stylisticOptions,
+        typeof options.markdown === 'object' && options.markdown.parser === 'mdx',
+        options.markdown !== false,
       ),
     )
   }
@@ -455,7 +460,13 @@ export function antfu(
   // methods like `getAllComments`. Without this, any rule override registered
   // without a `files` constraint would apply globally and crash on `.md` files.
   // See https://github.com/antfu/eslint-config/issues/837.
-  if (options.markdown ?? true) {
+  if (
+    (options.markdown ?? true)
+    && !(
+      typeof options.markdown === 'object'
+      && options.markdown.parser === 'mdx'
+    )
+  ) {
     composer = composer.setDefaultIgnores(prev => [...prev, GLOB_MARKDOWN])
   }
 
