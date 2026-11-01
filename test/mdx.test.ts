@@ -50,7 +50,7 @@ describe('markdown mdx', () => {
     ])
   })
 
-  it('formats Markdown with eslint-plugin-mdx', async () => {
+  it('lints Markdown with eslint-plugin-mdx', async () => {
     const input = await fs.readFile('fixtures/input/markdown.md', 'utf8')
     const configs = await antfu({
       formatters: false,
